@@ -1,10 +1,10 @@
 import React from "react";
-import Navigation from "./navigation";
+import Navigation2 from "./navigation2";
 
 export default function Header({ siteName }) {
   return (
     <div>
-      <Navigation siteName={siteName} />
+      <Navigation2 siteName={siteName} />
     </div>
   );
 }

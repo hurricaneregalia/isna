@@ -3,26 +3,14 @@ import { myDatabase } from "./firebaseConfig";
 
 export const fetchSiteIdentity = async () => {
   try {
-    const siteIdentityRef = ref(myDatabase, "siteIdentity");
-    const snapshot = await get(siteIdentityRef);
-
+    const myDatabaseref = ref(myDatabase, "siteIdentity");
+    const snapshot = await get(myDatabaseref);
     if (snapshot.exists()) {
       return snapshot.val();
     }
-    return null;
+    return {};
   } catch (error) {
-    console.error("Error fetching site identity:", error);
-    throw error;
-  }
-};
-
-export const updateSiteIdentity = async (data) => {
-  try {
-    const siteIdentityRef = ref(myDatabase, "siteIdentity");
-    await set(siteIdentityRef, data);
-    return true;
-  } catch (error) {
-    console.error("Error updating site identity:", error);
+    console.error("Error fetching roles:", error);
     throw error;
   }
 };
