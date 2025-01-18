@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "./header";
 import Footer from "./footer";
-import { fetchSiteIdentity } from "@/app/firebase/dataSiteIdentity";
+import { fetchSiteIdentity } from "@/app/firebase/readData";
 
 export default function HeaderFooter({ children }) {
   const [siteIdentity, setSiteIdentity] = useState(null);

@@ -23,8 +23,7 @@ export default function ThemeSwitch() {
       <input type="checkbox" className="theme-controller" id="theme-switch" onChange={toggleTheme} checked={theme === "dark"} />
 
       <LuSunMedium className="swap-on h-7 w-7" />
-
-      <LuMoon className="swap-off h-7 w-7 fill-current" />
+      <LuMoon className="swap-off h-7 w-7" />
     </label>
   );
 }
