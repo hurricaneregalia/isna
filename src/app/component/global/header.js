@@ -1,11 +1,10 @@
 import React from "react";
 import Navigation from "./navigation";
 
-export default function Header() {
+export default function Header({ siteName }) {
   return (
     <div>
-      Header
-      <Navigation />
+      <Navigation siteName={siteName} />
     </div>
   );
 }

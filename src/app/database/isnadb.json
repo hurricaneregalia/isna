@@ -1,0 +1,177 @@
+{
+  "roles": {
+    "admin": {
+      "permissions": {
+        "accessSensitiveData": true,
+        "createUser": true,
+        "deleteUser": true,
+        "manageProducts": true,
+        "manageRoles": true,
+        "readUser": true,
+        "updateUser": true,
+        "viewReports": true
+      },
+      "roleName": "admin"
+    },
+    "customer": {
+      "permissions": {
+        "accessSensitiveData": false,
+        "createUser": false,
+        "deleteUser": false,
+        "manageProducts": true,
+        "manageRoles": false,
+        "readUser": true,
+        "updateUser": true,
+        "viewReports": true
+      },
+      "roleName": "customer"
+    }
+  },
+  "users": {
+    "userId001": {
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "role": "admin",
+      "createdAt": "2025-01-01T12:00:00Z",
+      "updatedAt": "2025-01-10T12:00:00Z"
+    },
+    "userId002": {
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "role": "customer",
+      "createdAt": "2025-01-05T12:00:00Z",
+      "updatedAt": "2025-01-15T12:00:00Z"
+    }
+  },
+  "services": {
+    "starter": {
+      "name": "Starter Package",
+      "price": 500000,
+      "description": "Layanan dasar untuk website bisnis kecil.",
+      "features": ["Copywriting untuk 5 halaman", "SEO dasar", "Pengiriman dalam 5 hari"],
+      "createdAt": "2025-01-01T12:00:00Z",
+      "updatedAt": "2025-01-01T12:00:00Z"
+    },
+    "enterprise": {
+      "name": "Enterprise Package",
+      "price": 1500000,
+      "description": "Layanan lengkap untuk website perusahaan besar.",
+      "features": ["Copywriting untuk 15 halaman", "SEO lanjutan", "Pengiriman dalam 10 hari", "Revisi 3 kali"],
+      "createdAt": "2025-01-01T12:00:00Z",
+      "updatedAt": "2025-01-01T12:00:00Z"
+    },
+    "business": {
+      "name": "Business Package",
+      "price": 1000000,
+      "description": "Paket untuk pengusaha yang membutuhkan web profesional.",
+      "features": ["Copywriting untuk 10 halaman", "SEO dasar dan konten blog", "Pengiriman dalam 7 hari", "Revisi 2 kali"],
+      "createdAt": "2025-01-01T12:00:00Z",
+      "updatedAt": "2025-01-01T12:00:00Z"
+    }
+  },
+  "paymentMethods": {
+    "userId001": {
+      "paymentMethodId001": {
+        "type": "bank transfer",
+        "bankName": "Bank BCA",
+        "accountNumber": "1234567890",
+        "createdAt": "2025-01-10T12:00:00Z"
+      },
+      "paymentMethodId002": {
+        "type": "bank transfer",
+        "bankName": "Bank Mandiri",
+        "accountNumber": "0987654321",
+        "createdAt": "2025-01-12T12:00:00Z"
+      },
+      "paymentMethodId003": {
+        "type": "e-wallet",
+        "bankName": "GoPay",
+        "accountNumber": "GO123456789",
+        "createdAt": "2025-01-14T12:00:00Z"
+      }
+    },
+    "userId002": {
+      "paymentMethodId004": {
+        "type": "bank transfer",
+        "bankName": "Bank BNI",
+        "accountNumber": "1122334455",
+        "createdAt": "2025-01-16T12:00:00Z"
+      },
+      "paymentMethodId005": {
+        "type": "e-wallet",
+        "bankName": "DANA",
+        "accountNumber": "DANA99887766",
+        "createdAt": "2025-01-17T12:00:00Z"
+      }
+    }
+  },
+  "purchases": {
+    "purchaseId001": {
+      "userId": "userId001",
+      "serviceId": "starter",
+      "price": 500000,
+      "paymentMethodId": "paymentMethodId001",
+      "status": "pending",
+      "purchaseDate": "2025-01-15T12:00:00Z",
+      "completedDate": "2025-01-16T12:00:00Z",
+      "serviceStartDate": "2025-01-20T12:00:00Z",
+      "serviceEndDate": "2025-02-20T12:00:00Z"
+    },
+    "purchaseId002": {
+      "userId": "userId002",
+      "serviceId": "business",
+      "price": 1000000,
+      "paymentMethodId": "paymentMethodId004",
+      "status": "completed",
+      "purchaseDate": "2025-01-16T12:00:00Z",
+      "completedDate": "2025-01-18T12:00:00Z",
+      "serviceStartDate": "2025-01-20T12:00:00Z",
+      "serviceEndDate": "2025-02-20T12:00:00Z"
+    },
+    "purchaseId003": {
+      "userId": "userId001",
+      "serviceId": "enterprise",
+      "price": 1500000,
+      "paymentMethodId": "paymentMethodId002",
+      "status": "pending",
+      "purchaseDate": "2025-01-18T12:00:00Z",
+      "completedDate": "2025-01-19T12:00:00Z",
+      "serviceStartDate": "2025-01-25T12:00:00Z",
+      "serviceEndDate": "2025-02-25T12:00:00Z"
+    }
+  },
+  "siteIdentity": {
+    "siteName": "Isna",
+    "tagline": "Best Copywriting Services for Your Website",
+    "description": "A professional copywriting service to enhance your website's content and performance.",
+    "logo": {
+      "url": "https://example.com/path/to/logo.png",
+      "altText": "My Awesome Site Logo"
+    },
+    "favicon": {
+      "url": "https://example.com/path/to/favicon.ico",
+      "altText": "Favicon of My Awesome Site"
+    },
+    "socialLinks": {
+      "facebook": "https://facebook.com/myawesomesite",
+      "twitter": "https://twitter.com/myawesomesite",
+      "instagram": "https://instagram.com/myawesomesite",
+      "linkedin": "https://linkedin.com/company/myawesomesite"
+    },
+    "seo": {
+      "metaTitle": "Professional Copywriting Services | My Awesome Site",
+      "metaDescription": "Get high-quality copywriting services for your website. Improve your content with experts.",
+      "metaKeywords": ["copywriting", "website content", "SEO", "web copy", "digital marketing"],
+      "robots": "index, follow",
+      "canonicalUrl": "https://www.myawesomesite.com"
+    },
+    "contactInfo": {
+      "email": "contact@myawesomesite.com",
+      "phone": "+62 21 1234 5678",
+      "address": "Jl. Raya No. 123, Jakarta, Indonesia"
+    },
+    "footer": {
+      "copyright": "© 2025 My Awesome Site. All rights reserved."
+    }
+  }
+}
