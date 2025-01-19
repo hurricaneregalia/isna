@@ -1,14 +1,9 @@
 import React from "react";
+import hero from "./hero.module.css";
 
 export default function Hero() {
   return (
-    <div
-      className="hero min-h-screen"
-      style={{
-        backgroundImage: "url(images/landingPage/hero/bgHero2.webp)",
-        // backgroundAttachment: "fixed",
-      }}
-    >
+    <div className={`hero min-h-screen ${hero.heroImage}`}>
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-neutral-content text-center">
         <div className="max-w-md">
