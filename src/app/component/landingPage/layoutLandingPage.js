@@ -23,11 +23,11 @@ export default function LayoutLandingPage({ children }) {
         }
       />
       <Grid1colums
+        id="layanan"
         col1={
           <TextDesctiption
             title="Choose the right plan for you"
             description="Choose an affordable plan thats packed with the best features for engaging your audience, creating customer loyalty, and driving sales."
-            id="layanan"
           />
         }
         col2={

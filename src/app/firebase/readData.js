@@ -24,7 +24,21 @@ export const fetchServices = async () => {
     }
     return {};
   } catch (error) {
-    console.error("Error fetching roles:", error);
+    console.error("Error fetching services:", error);
+    throw error;
+  }
+};
+
+export const fetchSPages = async () => {
+  try {
+    const pagesRef = ref(myDatabase, "pages");
+    const snapshot = await get(pagesRef);
+    if (snapshot.exists()) {
+      return snapshot.val();
+    }
+    return {};
+  } catch (error) {
+    console.error("Error fetching pages:", error);
     throw error;
   }
 };

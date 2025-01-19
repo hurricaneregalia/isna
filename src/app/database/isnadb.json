@@ -1,47 +1,11 @@
 {
   "pages": {
     "landingPage": {
-      "desire": {
-        "ctaButton": {
-          "link": "/checkout",
-          "text": "Mulai Sekarang"
-        },
-        "desireTitle": "Inikah yang Anda inginkan saat ini?",
-        "image": {
-          "altText": "Hero Image",
-          "url": "https://example.com/path/to/image.png"
-        }
-      },
-      "hero": {
-        "ctaButton": {
-          "link": "/checkout",
-          "text": "Mulai Sekarang"
-        },
-        "description": "Best Copywriting Services for Your Website",
-        "image": {
-          "altText": "Hero Image",
-          "url": "https://example.com/path/to/image.png"
-        },
-        "title": "HAL INI MEMBUAT PENJUALAN LEBIH MUDAH DAN PENUH BERKAH."
-      },
-      "interest": {
-        "ctaButton": {
-          "link": "/checkout",
-          "text": "Mulai Sekarang"
-        },
-        "image": {
-          "altText": "Hero Image",
-          "url": "https://example.com/path/to/image.png"
-        },
-        "interestItem": {
-          "interestItemId1": {
-            "description": "Konten website yang menarik dan informatif untuk meningkatkan visibilitas dan engagement.",
-            "id": "keinginan",
-            "title": "Konten Website"
-          }
-        },
-        "interestTitle": "Inikah yang Anda inginkan saat ini?"
-      }
+      "pageName": "landingPage",
+      "heroTitle": "Hal ini membuat penjualan lebih mudah dan penuh berkah.",
+      "heroDescription": "Kami ada di sini untuk membantu Anda meningkatkan penjualan dan membuat bisnis Anda lebih sukses.",
+      "heroImage": "/images/landingPage/hero/bgHero2.webp",
+      "heroBtnTxt": "Dapatkan Sekarang"
     }
   },
   "paymentMethods": {
@@ -197,7 +161,7 @@
       "metaTitle": "Professional Copywriting Services | My Awesome Site",
       "robots": "index, follow"
     },
-    "siteName": "Isna",
+    "siteName": "Isna Project",
     "socialLinks": {
       "facebook": "https://facebook.com/myawesomesite",
       "instagram": "https://instagram.com/myawesomesite",
