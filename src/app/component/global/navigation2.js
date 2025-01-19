@@ -1,17 +1,14 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import ThemeSwitch from "./themeSwitch";
 import Link from "next/link";
 import logo from "../../../../public/images/siteIdentity/logo.svg";
 import logo2 from "../../../../public/images/siteIdentity/logo2.svg";
 import userPhoto from "../../../../public/images/user/default/userphoto.jpg";
 import Image from "next/image";
-import NavModal from "./navModal";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { FaXmark } from "react-icons/fa6";
-import { FaRegBell } from "react-icons/fa";
 
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from "@headlessui/react";
 import Profile from "./profile";
 import Notif from "./notif";
 
@@ -42,7 +39,7 @@ export default function Navigation2({ siteName }) {
     <Disclosure as="nav" className="bg-base-300">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
-          <div className="flex items-center sm:block">
+          <div className="flex items-center sm:block px-4 sm:px-0">
             <div className="flex shrink-0 items-center">
               <Link href="/" className="flex items-center">
                 <Image src={logo2} alt="logo" width={100} height={100} className="w-5 h-5 me-1" />
@@ -70,22 +67,38 @@ export default function Navigation2({ siteName }) {
             <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-base-content sm:hidden">
               <span className="absolute -inset-0.5" />
               <span className="sr-only">Open main menu</span>
-              <HiMenuAlt3 aria-hidden="true" className="hidden size-6 group-data-[open]:block" />
-              <FaXmark aria-hidden="true" className="block size-6 group-data-[open]:hidden" />
+              <HiMenuAlt3 aria-hidden="true" className="block size-6 group-data-[open]:hidden" />
+              <FaXmark aria-hidden="true" className="hidden size-6 group-data-[open]:block" />
             </DisclosureButton>
           </div>
         </div>
       </div>
-
-      <DisclosurePanel className="sm:hidden">
-        <div className="space-y-1 px-2 pb-3 pt-2">
-          {navMenu.map((item) => (
-            <Link key={item.key} href={item.href} className="block rounded-md px-3 py-2 text-base-content font-medium">
-              <DisclosureButton as="div">{item.name}</DisclosureButton>
-            </Link>
-          ))}
-        </div>
-      </DisclosurePanel>
+      <Transition
+        enter="transition duration-300 ease-out"
+        enterFrom="transform -translate-y-2 opacity-0"
+        enterTo="transform translate-y-0 opacity-100"
+        leave="transition duration-200 ease-in"
+        leaveFrom="transform translate-y-0 opacity-100"
+        leaveTo="transform -translate-y-2 opacity-0"
+      >
+        <DisclosurePanel className="sm:hidden">
+          <div className="relative">
+            <div className="absolute space-y-1 px-2 pb-3 pt-2 bg-base-300 w-full">
+              <div className="px-4">
+                {navMenu.map((item) => (
+                  <Link
+                    key={item.key}
+                    href={item.href}
+                    className="block rounded-md px-3 py-2 text-base-content font-medium hover:bg-base-200 transition-all duration-300 ease-in-out active:bg-base-200 mb-1"
+                  >
+                    <DisclosureButton as="span">{item.name}</DisclosureButton>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </DisclosurePanel>
+      </Transition>
     </Disclosure>
   );
 }
