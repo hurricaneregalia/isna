@@ -6,7 +6,7 @@ export default function Hero() {
       className="hero min-h-screen"
       style={{
         backgroundImage: "url(images/landingPage/hero/bgHero2.webp)",
-        backgroundAttachment: "fixed",
+        // backgroundAttachment: "fixed",
       }}
     >
       <div className="hero-overlay bg-opacity-60"></div>

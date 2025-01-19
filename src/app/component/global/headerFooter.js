@@ -4,6 +4,7 @@ import Header from "./header";
 import Footer from "./footer";
 import { fetchSiteIdentity } from "@/app/firebase/readData";
 import Loading from "./loading";
+import Head from "next/head";
 
 export default function HeaderFooter({ children }) {
   const [siteIdentity, setSiteIdentity] = useState(null);
@@ -27,10 +28,17 @@ export default function HeaderFooter({ children }) {
   }
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header siteName={siteIdentity?.siteName} />
-      {children}
-      <Footer footerText={siteIdentity?.footer.copyright} />
-    </div>
+    <>
+      <Head>
+        <title>{siteIdentity?.siteName || "Welcome"}</title>
+        <meta name="description" content={siteIdentity.description || ""} />
+        {/* Tambahkan meta tags lainnya jika diperlukan */}
+      </Head>
+      <div className="flex flex-col min-h-screen">
+        <Header siteName={siteIdentity?.siteName} />
+        {children}
+        <Footer footerText={siteIdentity?.footer.copyright} />
+      </div>
+    </>
   );
 }
