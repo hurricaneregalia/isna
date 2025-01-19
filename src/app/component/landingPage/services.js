@@ -33,20 +33,12 @@ export default function Services() {
   }
 
   return (
-    <div className="relative isolate bg-base-100 text-base-content px-6 py-24 sm:py-32 lg:px-8" id="layanan">
-      <div aria-hidden="true" className="absolute inset-x-0 -top-3 -z-10 transform-gpu overflow-hidden px-36 blur-3xl"></div>
-      <div className="mx-auto max-w-4xl text-center">
-        <h2 className="text-base/7 font-semibold text-primary">Layanan</h2>
-        <p className="mt-2 text-balance text-5xl font-bold tracking-tight text-base-content">Choose the right plan for you</p>
-      </div>
-      <p className="mx-auto mt-6 max-w-2xl text-center text-base-content mb-10">
-        Choose an affordable plan thats packed with the best features for engaging your audience, creating customer loyalty, and driving sales.
-      </p>
+    <div className="relative isolate bg-base-100 text-base-content">
       <div className="w-full">
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto">
           <div className="grid gap-4 md:grid-cols-3">
             {Object.entries(services).map(([key, service]) => (
-              <div key={key} className="card bg-base-100 shadow-xl border border-primary rounded-lg">
+              <div key={key} className={`card bg-base-100 rounded-lg ${service.marking ? "border border-primary shadow-lg shadow-indigo-500/50" : "shadow-xl"}`}>
                 <div className="card-body">
                   <div>
                     <p className="font-normal">{service.name}</p>
@@ -54,7 +46,7 @@ export default function Services() {
                     <p>{service.description}</p>
                   </div>
                   <div className="space-y-2 my-5">
-                    <h3 className="font-semibold">Fitur:</h3>
+                    <h3 className="font-semibold">Fitur</h3>
                     <ul className="space-y-2">
                       {service.features.map((feature, index) => (
                         <li key={index} className="flex items-center gap-2">

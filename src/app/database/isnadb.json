@@ -173,5 +173,51 @@
     "footer": {
       "copyright": "© 2025 My Awesome Site. All rights reserved."
     }
+  },
+
+  "pages": {
+    "landingPage": {
+      "hero": {
+        "title": "HAL INI MEMBUAT PENJUALAN LEBIH MUDAH DAN PENUH BERKAH.",
+        "description": "Best Copywriting Services for Your Website",
+        "ctaButton": {
+          "text": "Mulai Sekarang",
+          "link": "/checkout"
+        },
+        "image": {
+          "url": "https://example.com/path/to/image.png",
+          "altText": "Hero Image"
+        }
+      },
+      "interest": {
+        "interestTitle": "Inikah yang Anda inginkan saat ini?",
+        "interestItem": {
+          "interestItemId1": {
+            "id": "keinginan",
+            "title": "Konten Website",
+            "description": "Konten website yang menarik dan informatif untuk meningkatkan visibilitas dan engagement."
+          }
+        },
+        "image": {
+          "url": "https://example.com/path/to/image.png",
+          "altText": "Hero Image"
+        },
+        "ctaButton": {
+          "text": "Mulai Sekarang",
+          "link": "/checkout"
+        }
+      },
+      "desire": {
+        "desireTitle": "Inikah yang Anda inginkan saat ini?",
+        "image": {
+          "url": "https://example.com/path/to/image.png",
+          "altText": "Hero Image"
+        },
+        "ctaButton": {
+          "text": "Mulai Sekarang",
+          "link": "/checkout"
+        }
+      }
+    }
   }
 }
