@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./header";
 import Footer from "./footer";
 import { fetchSiteIdentity } from "@/app/firebase/readData";
+import Loading from "./loading";
 
 export default function HeaderFooter({ children }) {
   const [siteIdentity, setSiteIdentity] = useState(null);
@@ -20,6 +21,10 @@ export default function HeaderFooter({ children }) {
 
     getSiteIdentity();
   }, []);
+
+  if (!siteIdentity) {
+    return <Loading />;
+  }
 
   return (
     <div className="flex flex-col min-h-screen">
