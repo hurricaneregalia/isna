@@ -19,7 +19,7 @@ export default function ThemeSwitch() {
   };
 
   return (
-    <label className="swap swap-rotate">
+    <label className="swap swap-rotate" htmlFor="theme-switch">
       <input type="checkbox" className="theme-controller" id="theme-switch" onChange={toggleTheme} checked={theme === "dark"} />
 
       <LuSunMedium className="swap-on h-7 w-7" />

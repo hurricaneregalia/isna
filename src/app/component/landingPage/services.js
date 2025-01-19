@@ -38,7 +38,7 @@ export default function Services() {
         <div className="container mx-auto">
           <div className="grid gap-4 md:grid-cols-3">
             {Object.entries(services).map(([key, service]) => (
-              <div key={key} className={`card bg-base-100 rounded-lg ${service.marking ? "border border-primary shadow-lg shadow-indigo-500/50" : "shadow-xl"}`}>
+              <div key={key} className={`card bg-base-300 rounded-lg ${service.marking ? "border border-primary shadow-lg shadow-indigo-500/50" : "shadow-xl"}`}>
                 <div className="card-body">
                   <div>
                     <p className="font-normal">{service.name}</p>

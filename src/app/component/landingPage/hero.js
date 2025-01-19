@@ -1,12 +1,11 @@
 import React from "react";
-import Image from "next/image";
 
 export default function Hero() {
   return (
     <div
       className="hero min-h-screen"
       style={{
-        backgroundImage: "url(images/landingPage/hero/bgHero.webp)",
+        backgroundImage: "url(images/landingPage/hero/bgHero2.webp)",
         backgroundAttachment: "fixed",
       }}
     >
