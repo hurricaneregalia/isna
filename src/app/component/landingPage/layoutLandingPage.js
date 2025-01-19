@@ -4,7 +4,7 @@ import Hero from "./hero";
 import Services from "./services";
 import Grid2colums from "../global/grid2colums";
 import ImageComponent from "../global/imageComponent";
-import hero from "../../../../public/images/landingPage/hero/bgHero.webp";
+import hero from "../../../../public/images/landingPage/hero/bgHero2.webp";
 import TextDesctiption from "../global/textDesctiption";
 import Grid1colums from "../global/grid1colums";
 
@@ -16,9 +16,9 @@ export default function LayoutLandingPage({ children }) {
         col1={<TextDesctiption title="Lorem ipsum" description="Lorem ipsum dolor sit amet gargantuar adilipsing elit" id="lorem" />}
         col2={
           <div className="grid grid-cols-3 gap-4">
-            <ImageComponent src={hero} alt="hero" width={1000} height={1000} priority={true} />
-            <ImageComponent src={hero} alt="hero" width={1000} height={1000} priority={true} />
-            <ImageComponent src={hero} alt="hero" width={1000} height={1000} priority={true} />
+            <ImageComponent src={hero} alt="hero" width={300} height={300} priority={false} />
+            <ImageComponent src={hero} alt="hero" width={300} height={300} priority={false} />
+            <ImageComponent src={hero} alt="hero" width={300} height={300} priority={false} />
           </div>
         }
       />
