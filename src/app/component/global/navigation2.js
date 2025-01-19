@@ -42,7 +42,7 @@ export default function Navigation2({ siteName }) {
           <div className="flex items-center sm:block px-4 sm:px-0">
             <div className="flex shrink-0 items-center">
               <Link href="/" className="flex items-center">
-                <Image src={logo2} alt="logo" width={100} height={100} className="w-5 h-5 me-1" />
+                <Image src={logo2} alt="logo" width={20} height={20} className="w-5 h-5 me-1" />
                 <span className="font-bold capitalize">{siteName}</span>
               </Link>
             </div>

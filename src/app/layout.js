@@ -23,7 +23,6 @@ export async function generateMetadata() {
         icon: [{ url: "/favicon.ico" }],
         apple: [{ url: "/favicon.ico" }],
       },
-      manifest: "/site.webmanifest",
       openGraph: {
         title: siteIdentity.siteName,
         description: siteIdentity.description,
