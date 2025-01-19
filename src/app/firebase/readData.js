@@ -14,3 +14,17 @@ export const fetchSiteIdentity = async () => {
     throw error;
   }
 };
+
+export const fetchServices = async () => {
+  try {
+    const servicesRef = ref(myDatabase, "services");
+    const snapshot = await get(servicesRef);
+    if (snapshot.exists()) {
+      return snapshot.val();
+    }
+    return {};
+  } catch (error) {
+    console.error("Error fetching roles:", error);
+    throw error;
+  }
+};

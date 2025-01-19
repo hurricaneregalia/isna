@@ -22,10 +22,10 @@ export default function HeaderFooter({ children }) {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header siteName={siteIdentity?.siteName} />
       {children}
-      <Footer />
+      <Footer footerText={siteIdentity?.footer.copyright} />
     </div>
   );
 }

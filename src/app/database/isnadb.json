@@ -44,7 +44,7 @@
     }
   },
   "services": {
-    "starter": {
+    "serviceId01": {
       "name": "Starter Package",
       "price": 500000,
       "description": "Layanan dasar untuk website bisnis kecil.",
@@ -52,7 +52,7 @@
       "createdAt": "2025-01-01T12:00:00Z",
       "updatedAt": "2025-01-01T12:00:00Z"
     },
-    "enterprise": {
+    "serviceId02": {
       "name": "Enterprise Package",
       "price": 1500000,
       "description": "Layanan lengkap untuk website perusahaan besar.",
@@ -60,7 +60,7 @@
       "createdAt": "2025-01-01T12:00:00Z",
       "updatedAt": "2025-01-01T12:00:00Z"
     },
-    "business": {
+    "serviceId03": {
       "name": "Business Package",
       "price": 1000000,
       "description": "Paket untuk pengusaha yang membutuhkan web profesional.",
