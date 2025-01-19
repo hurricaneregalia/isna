@@ -20,6 +20,11 @@ export default function Navigation2({ siteName }) {
       key: "home", // Gunakan string unik sebagai key
     },
     {
+      name: "Bisnis",
+      href: "#keinginan-pebisnis",
+      key: "bisnis",
+    },
+    {
       name: "Manfaat",
       href: "#manfaat",
       key: "manfaat",

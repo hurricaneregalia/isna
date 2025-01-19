@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Profile({ userPhoto }) {
   return (
-    <Menu as="div" className="relative ml-1">
+    <Menu as="div" className="relative ml-2">
       <div>
         <MenuButton className="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
           <span className="absolute -inset-1.5" />

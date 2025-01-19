@@ -3,6 +3,8 @@ import { fetchServices } from "@/app/firebase/readData";
 import React, { useEffect, useState } from "react";
 import Loading from "../global/loading";
 import { FaCheck } from "react-icons/fa";
+import BtnLinkPrimary from "../global/btnLinkPrimary";
+import { FaArrowRight } from "react-icons/fa6";
 
 export default function Services() {
   const [services, setServices] = useState(null);
@@ -38,7 +40,7 @@ export default function Services() {
         <div className="container mx-auto">
           <div className="grid gap-4 md:grid-cols-3">
             {Object.entries(services).map(([key, service]) => (
-              <div key={key} className={`card bg-base-300 rounded-lg ${service.marking ? "border border-primary shadow-lg shadow-indigo-500/50" : "shadow-xl"}`}>
+              <div key={key} className={`card bg-base-300 rounded-none rounded-bl-3xl ${service.marking ? "border border-primary shadow-lg shadow-indigo-500/50" : ""}`}>
                 <div className="card-body">
                   <div>
                     <p className="font-normal">{service.name}</p>
@@ -57,7 +59,7 @@ export default function Services() {
                     </ul>
                   </div>
                   <div className="card-actions justify-end mt-auto">
-                    <button className="btn btn-primary w-full">Pilih</button>
+                    <BtnLinkPrimary href={`/services/${key}`} btnTxt="Pilih" btnFull={true} iconRight={<FaArrowRight />} />
                   </div>
                 </div>
               </div>
