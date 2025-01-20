@@ -9,30 +9,36 @@
       "interest": {
         "interestTitle": "Inikah yang Anda inginkan saat ini?",
         "interestDescription": "Kami menyediakan layanan copywriting yang berkualitas tinggi untuk membantu Anda meningkatkan penjualan dan membuat bisnis Anda lebih sukses.",
-        "interestImage": "/images/landingPage/interest/interest1.webp",
+        "interestImage": "/images/landingPage/interestIMg.webp",
         "interestBtnTxt": "Lihat Semua Layanan",
         "interestItems": [
           {
             "itemTitle": "Ingin bebas dari keptusasaan.",
             "itemDescription": "Merasa putus asa karena produk tidak diminati target pasar, menjadi beban yang cukup berat.",
-            "itemIcon": "fa-face-frown"
+            "itemIcon": "FaRegFaceGrinStars"
           },
           {
             "itemTitle": "Ingin meningkatkan penjualan.",
             "itemDescription": "Promosi dijalankan dengan lebih mudah sehingga ada perubahan penjualan yang signifikan.",
-            "itemIcon": "fa-face-frown"
+            "itemIcon": "IoStatsChart"
           },
           {
             "itemTitle": "Ingin biaya promosi yang efektif.",
             "itemDescription": "Biaya yang digunakan sesuai dengan perencanaan dan profit yang dihasilkan.",
-            "itemIcon": "fa-face-frown"
+            "itemIcon": "LiaMoneyBillWaveSolid"
           },
           {
             "itemTitle": "Ingin lebih semangat dalam bisnis.",
             "itemDescription": "Menjalankan bisnis jadi lebih semangat karena profit semakin bertumbuh.",
-            "itemIcon": "fa-face-frown"
+            "itemIcon": "FaFire"
           }
         ]
+      },
+      "cta1": {
+        "title": "Ini adalah kunci untuk mewujudkan hal yang Anda inginkan!",
+        "description": "",
+        "btnTxt": "Lihat ini",
+        "ctaImage": "/images/landingPage/LPlakiLakiJanganMenyerah.webp"
       }
     }
   },

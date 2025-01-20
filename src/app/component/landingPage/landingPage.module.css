@@ -1,0 +1,12 @@
+.heroImage {
+  background-image: url('/images/landingPage/hero/bgHero2.webp');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+.bg1 {
+  background-image: url('/images/landingPage/bgShine.webp');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}

@@ -5,12 +5,13 @@ import Hero from "./hero";
 import Services from "./services";
 import Grid2colums from "../global/grid2colums";
 import ImageComponent from "../global/imageComponent";
-import hero from "../../../../public/images/landingPage/hero/bgHero2.webp";
 import TextDesctiption from "../global/textDesctiption";
 import Grid1colums from "../global/grid1colums";
 import { fetchSPages } from "@/app/firebase/readData";
 import Loading from "../global/loading";
-import { Fa42Group, FaUser } from "react-icons/fa6";
+import InterestList from "./interestList";
+import FullBlock from "../global/fullBlock";
+import landingPage from "./landingPage.module.css";
 
 export default function LayoutLandingPage({ children }) {
   const [pages, setPages] = useState(null);
@@ -54,24 +55,14 @@ export default function LayoutLandingPage({ children }) {
 
   return (
     <Content>
-      <Hero title={pages.landingPage.heroTitle} description={pages.landingPage.heroDescription} btnTxt={pages.landingPage.heroBtnTxt} />
+      <Hero bg={landingPage.heroImage} title={pages.landingPage.heroTitle} description={pages.landingPage.heroDescription} btnTxt={pages.landingPage.heroBtnTxt} />
+      <Grid1colums col1={<ImageComponent src={pages.landingPage.interest.interestImage} alt="keinginan-pebisnis" width={1000} height={1000} />} />
       <Grid1colums
         id="keinginan-pebisnis"
         col1={<TextDesctiption title={pages.landingPage.interest.interestTitle} description={pages.landingPage.interest.interestDescription} />}
-        col2={
-          <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
-            {pages.landingPage.interest.interestItems.map((item, index) => (
-              <div key={index} className="col-span-1 flex justify-stretch">
-                <div className="bg-base-200 p-8 rounded-bl-3xl">
-                  <FaUser />
-                  <h3 className=" font-bold mb-3 mt-2">{item.itemTitle}</h3>
-                  <p>{item.itemDescription}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        }
+        col2={<InterestList listItem={pages.landingPage.interest.interestItems} />}
       />
+      <FullBlock bg={landingPage.bg1} title={pages.landingPage.cta1.title} btnTxt={pages.landingPage.cta1.btnTxt} ctaImage={pages.landingPage.cta1.ctaImage} />
       <Grid1colums
         id="layanan"
         col1={

@@ -35,12 +35,12 @@ export default function Services() {
   }
 
   return (
-    <div className="relative isolate bg-base-100 text-base-content">
+    <div className="relative isolate text-base-content">
       <div className="w-full">
         <div className="container mx-auto">
           <div className="grid gap-4 md:grid-cols-3">
             {Object.entries(services).map(([key, service]) => (
-              <div key={key} className={`card bg-base-300 rounded-none rounded-bl-3xl ${service.marking ? "border border-primary shadow-lg shadow-indigo-500/50" : ""}`}>
+              <div key={key} className={`card bg-base-100 rounded-none rounded-bl-3xl ${service.marking ? "border border-primary shadow-lg shadow-indigo-500/50" : ""}`}>
                 <div className="card-body">
                   <div>
                     <p className="font-normal">{service.name}</p>
