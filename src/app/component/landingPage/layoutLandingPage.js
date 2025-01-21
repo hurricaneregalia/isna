@@ -57,28 +57,26 @@ export default function LayoutLandingPage({ children }) {
 
   return (
     <Content>
-      <Hero bg={landingPage.heroImage} title={pages.landingPage.heroTitle} description={pages.landingPage.heroDescription} btnTxt={pages.landingPage.heroBtnTxt} />
+      <Hero bg={landingPage.heroImage} title={pages.landingPage.hero.title} description={pages.landingPage.hero.description} btnTxt={pages.landingPage.hero.btnTxt} />
 
-      <Grid1colums col1={<ImageComponent src={pages.landingPage.interest.interestImage} alt="keinginan-pebisnis" width={1000} height={1000} />} />
-      <LayoutPrimary id="keinginan-pebisnis" title={pages.landingPage.interest.interestTitle} description={pages.landingPage.interest.interestDescription} footer="" headAlign="">
+      <Grid1colums col1={<ImageComponent src={pages.landingPage.interest.image} alt="keinginan-pebisnis" width={1000} height={1000} />} />
+      <LayoutPrimary id="keinginan-pebisnis" title={pages.landingPage.interest.title} description={pages.landingPage.interest.description} footer="" headAlign="">
         <Grid2List listItem={pages.landingPage.interest.interestItems} />
       </LayoutPrimary>
-      <LayoutSecondary id="hunutu" title={pages.landingPage.interest.interestTitle} description={pages.landingPage.interest.interestDescription} footer="" headAlign="">
-        <Grid2List listItem={pages.landingPage.interest.interestItems} />
-      </LayoutSecondary>
-      <FullBlock bg={landingPage.bg1} title={pages.landingPage.cta1.title} btnTxt={pages.landingPage.cta1.btnTxt} ctaImage={pages.landingPage.cta1.ctaImage} />
-      <FullBlock
-        bg=""
-        title={pages.landingPage.solution.title}
-        btnTxt={pages.landingPage.solution.btnTxt}
-        ctaImage={pages.landingPage.solution.ctaImage}
-        id="solusi"
-        description={pages.landingPage.solution.description}
-        themes="dark"
-      >
-        <Grid2List listItem={pages.landingPage.interest.interestItems} />
-      </FullBlock>
 
+      <FullBlock bg={landingPage.bg1} title={pages.landingPage.cta1.title} btnTxt={pages.landingPage.cta1.btnTxt} ctaImage={pages.landingPage.cta1.ctaImage} />
+
+      <LayoutSecondary
+        id="solusi"
+        title={pages.landingPage.solution.title}
+        description={pages.landingPage.solution.description}
+        footer=""
+        headAlign="left"
+        src={pages.landingPage.solution.image}
+        imageAlt={pages.landingPage.solution.title}
+      >
+        <Grid2List listItem={pages.landingPage.solution.solutionItems} />
+      </LayoutSecondary>
       <Grid1colums
         id="layanan"
         col1={

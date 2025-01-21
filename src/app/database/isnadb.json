@@ -2,35 +2,37 @@
   "pages": {
     "landingPage": {
       "pageName": "landingPage",
-      "heroTitle": "Hal ini membuat penjualan lebih mudah dan penuh berkah.",
-      "heroDescription": "Kami ada di sini untuk membantu Anda meningkatkan penjualan dan membuat bisnis Anda lebih sukses.",
-      "heroImage": "/images/landingPage/hero/bgHero2.webp",
-      "heroBtnTxt": "Dapatkan Sekarang",
+      "hero": {
+        "title": "Hal ini membuat penjualan lebih mudah dan penuh berkah.",
+        "description": "Kami ada di sini untuk membantu Anda meningkatkan penjualan dan membuat bisnis Anda lebih sukses.",
+        "image": "/images/landingPage/hero/bgHero2.webp",
+        "btnTxt": "Dapatkan Sekarang"
+      },
       "interest": {
-        "interestTitle": "Inikah yang Anda inginkan saat ini?",
-        "interestDescription": "Kami menyediakan layanan copywriting yang berkualitas tinggi untuk membantu Anda meningkatkan penjualan dan membuat bisnis Anda lebih sukses.",
-        "interestImage": "/images/landingPage/interestIMg.webp",
-        "interestBtnTxt": "Lihat Semua Layanan",
+        "title": "Inikah yang Anda inginkan saat ini?",
+        "description": "Kami menyediakan layanan copywriting yang berkualitas tinggi untuk membantu Anda meningkatkan penjualan dan membuat bisnis Anda lebih sukses.",
+        "image": "/images/landingPage/interestIMg.webp",
+        "btnTxt": "Lihat Semua Layanan",
         "interestItems": [
           {
-            "itemTitle": "Ingin bebas dari keptusasaan.",
-            "itemDescription": "Merasa putus asa karena produk tidak diminati target pasar, menjadi beban yang cukup berat.",
-            "itemIcon": "FaRegFaceGrinStars"
+            "title": "Ingin bebas dari keptusasaan.",
+            "description": "Merasa putus asa karena produk tidak diminati target pasar, menjadi beban yang cukup berat.",
+            "icon": "FaRegFaceGrinStars"
           },
           {
-            "itemTitle": "Ingin meningkatkan penjualan.",
-            "itemDescription": "Promosi dijalankan dengan lebih mudah sehingga ada perubahan penjualan yang signifikan.",
-            "itemIcon": "IoStatsChart"
+            "title": "Ingin meningkatkan penjualan.",
+            "description": "Promosi dijalankan dengan lebih mudah sehingga ada perubahan penjualan yang signifikan.",
+            "icon": "IoStatsChart"
           },
           {
-            "itemTitle": "Ingin biaya promosi yang efektif.",
-            "itemDescription": "Biaya yang digunakan sesuai dengan perencanaan dan profit yang dihasilkan.",
-            "itemIcon": "LiaMoneyBillWaveSolid"
+            "title": "Ingin biaya promosi yang efektif.",
+            "description": "Biaya yang digunakan sesuai dengan perencanaan dan profit yang dihasilkan.",
+            "icon": "LiaMoneyBillWaveSolid"
           },
           {
-            "itemTitle": "Ingin lebih semangat dalam bisnis.",
-            "itemDescription": "Menjalankan bisnis jadi lebih semangat karena profit semakin bertumbuh.",
-            "itemIcon": "FaFire"
+            "title": "Ingin lebih semangat dalam bisnis.",
+            "description": "Menjalankan bisnis jadi lebih semangat karena profit semakin bertumbuh.",
+            "icon": "FaFire"
           }
         ]
       },
@@ -38,13 +40,35 @@
         "title": "Ini adalah kunci untuk mewujudkan hal yang Anda inginkan!",
         "description": "",
         "btnTxt": "Lihat ini",
-        "ctaImage": "/images/landingPage/LPlakiLakiJanganMenyerah.webp"
+        "image": "/images/landingPage/LPlakiLakiJanganMenyerah.webp"
       },
       "solution": {
         "title": "Solusi tepat untuk meningkatkan penjualan.",
         "description": "Solusinya Anda harus membuat copywriting yang tepat sasaran. Copywriting harus dibuat berdasarkan analisa produk dan Analisa target pasar yang akurat, kombo tersebut akan menjadi senjata penawaran yang sangat kuat. Copywriting yang dibuat akan menggambarkan nilai produk Anda secara detail, mendalam dan sesuai dengan keinginan target pasar.",
         "btnTxt": "",
-        "ctaImage": "/images/landingPage/LPlakiLakiBatik.webp"
+        "image": "/images/landingPage/LPlakiLakiBatik.webp",
+        "solutionItems": [
+          {
+            "title": "Analisa Produk.",
+            "description": "Analisa produk bermanfaat untuk mengetahui keunggulan produk. Dengan mengetahui keunggulan maka pesan akan disampaikan lebih mudah dan lebih efisien.",
+            "icon": "AiOutlineProduct"
+          },
+          {
+            "title": "Analisa Target Pasar.",
+            "description": "Analisa target pasar bermanfaat untuk mengetahui kriteria orang-orang yang cocok dengan produk yang Anda jual. Dengan demikian, InsyaAllah proses pemasaran akan lebih terarah.",
+            "icon": "TbTargetArrow"
+          },
+          {
+            "title": "Persuasive Copywriting.",
+            "description": "Persuasive copywriting bermanfaat untuk menarik perhatian target pasar, membangun kepercayaan, dan mendorong mereka untuk melakukan pembelian. Metode ini akan meningkatkan minat beli target pasar.",
+            "icon": "HiOutlineSpeakerphone"
+          },
+          {
+            "title": "Landing Page.",
+            "description": "Landing page digunakan untuk menampilkan penawaran digital. Analisa + copywriting + landing page = senjata yang sangat kuat untuk meningkatkan penjualan produk atau jasa.",
+            "icon": "CgWebsite"
+          }
+        ]
       }
     }
   },

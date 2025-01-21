@@ -35,6 +35,11 @@ export default function Navigation2({ siteName }) {
       key: "layanan",
     },
     {
+      name: "Api lokal",
+      href: "/api/lokal",
+      key: "api",
+    },
+    {
       name: "Login",
       href: "/login",
       key: "login",
