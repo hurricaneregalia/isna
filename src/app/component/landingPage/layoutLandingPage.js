@@ -9,9 +9,11 @@ import TextDesctiption from "../global/textDesctiption";
 import Grid1colums from "../global/grid1colums";
 import { fetchSPages } from "@/app/firebase/readData";
 import Loading from "../global/loading";
-import InterestList from "./interestList";
+import Grid2List from "./grid2List";
 import FullBlock from "../global/fullBlock";
 import landingPage from "./landingPage.module.css";
+import LayoutPrimary from "../global/layoutPrimary";
+import LayoutSecondary from "../global/layoutSecondary";
 
 export default function LayoutLandingPage({ children }) {
   const [pages, setPages] = useState(null);
@@ -56,13 +58,27 @@ export default function LayoutLandingPage({ children }) {
   return (
     <Content>
       <Hero bg={landingPage.heroImage} title={pages.landingPage.heroTitle} description={pages.landingPage.heroDescription} btnTxt={pages.landingPage.heroBtnTxt} />
+
       <Grid1colums col1={<ImageComponent src={pages.landingPage.interest.interestImage} alt="keinginan-pebisnis" width={1000} height={1000} />} />
-      <Grid1colums
-        id="keinginan-pebisnis"
-        col1={<TextDesctiption title={pages.landingPage.interest.interestTitle} description={pages.landingPage.interest.interestDescription} />}
-        col2={<InterestList listItem={pages.landingPage.interest.interestItems} />}
-      />
+      <LayoutPrimary id="keinginan-pebisnis" title={pages.landingPage.interest.interestTitle} description={pages.landingPage.interest.interestDescription} footer="" headAlign="">
+        <Grid2List listItem={pages.landingPage.interest.interestItems} />
+      </LayoutPrimary>
+      <LayoutSecondary id="hunutu" title={pages.landingPage.interest.interestTitle} description={pages.landingPage.interest.interestDescription} footer="" headAlign="">
+        <Grid2List listItem={pages.landingPage.interest.interestItems} />
+      </LayoutSecondary>
       <FullBlock bg={landingPage.bg1} title={pages.landingPage.cta1.title} btnTxt={pages.landingPage.cta1.btnTxt} ctaImage={pages.landingPage.cta1.ctaImage} />
+      <FullBlock
+        bg=""
+        title={pages.landingPage.solution.title}
+        btnTxt={pages.landingPage.solution.btnTxt}
+        ctaImage={pages.landingPage.solution.ctaImage}
+        id="solusi"
+        description={pages.landingPage.solution.description}
+        themes="dark"
+      >
+        <Grid2List listItem={pages.landingPage.interest.interestItems} />
+      </FullBlock>
+
       <Grid1colums
         id="layanan"
         col1={

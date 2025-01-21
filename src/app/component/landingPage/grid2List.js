@@ -3,7 +3,7 @@ import { FaFire, FaRegFaceGrinStars } from "react-icons/fa6";
 import { IoStatsChart } from "react-icons/io5";
 import { LiaMoneyBillWaveSolid } from "react-icons/lia";
 
-export default function InterestList({ listItem }) {
+export default function Grid2List({ listItem }) {
   return (
     <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
       {listItem.map((item, index) => (

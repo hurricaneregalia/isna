@@ -39,6 +39,12 @@
         "description": "",
         "btnTxt": "Lihat ini",
         "ctaImage": "/images/landingPage/LPlakiLakiJanganMenyerah.webp"
+      },
+      "solution": {
+        "title": "Solusi tepat untuk meningkatkan penjualan.",
+        "description": "Solusinya Anda harus membuat copywriting yang tepat sasaran. Copywriting harus dibuat berdasarkan analisa produk dan Analisa target pasar yang akurat, kombo tersebut akan menjadi senjata penawaran yang sangat kuat. Copywriting yang dibuat akan menggambarkan nilai produk Anda secara detail, mendalam dan sesuai dengan keinginan target pasar.",
+        "btnTxt": "",
+        "ctaImage": "/images/landingPage/LPlakiLakiBatik.webp"
       }
     }
   },

@@ -30,9 +30,8 @@ export default function HeaderFooter({ children }) {
   return (
     <>
       <Head>
-        <title>{siteIdentity?.siteName || "Welcome"}</title>
-        <meta name="description" content={siteIdentity.description || ""} />
-        {/* Tambahkan meta tags lainnya jika diperlukan */}
+        <title>{siteIdentity?.siteName}</title>
+        <meta name="description" content={siteIdentity.description} />
       </Head>
       <div className="flex flex-col min-h-screen">
         <Header siteName={siteIdentity?.siteName} />

@@ -25,9 +25,9 @@ export default function Navigation2({ siteName }) {
       key: "bisnis",
     },
     {
-      name: "Manfaat",
-      href: "#manfaat",
-      key: "manfaat",
+      name: "Solusi",
+      href: "#solusi",
+      key: "solusi",
     },
     {
       name: "Layanan",
@@ -52,13 +52,13 @@ export default function Navigation2({ siteName }) {
               </Link>
             </div>
           </div>
-          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+          <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start" id="desktopNav">
             <div className="hidden sm:ml-6 sm:block w-full">
               <div className="flex flex-row-reverse">
                 <div className="space-x-4 ">
                   {navMenu.map((item) => (
                     <Link key={item.name} href={item.href} aria-current={item.current ? "page" : undefined} className="text-base-content">
-                      {item.name}
+                      <DisclosureButton as="span">{item.name}</DisclosureButton>
                     </Link>
                   ))}
                 </div>
@@ -91,12 +91,10 @@ export default function Navigation2({ siteName }) {
             <div className="absolute space-y-1 px-2 pb-3 pt-2 bg-base-300 w-full">
               <div className="px-4">
                 {navMenu.map((item) => (
-                  <Link
-                    key={item.key}
-                    href={item.href}
-                    className="block rounded-md px-3 py-2 text-base-content font-medium hover:bg-base-200 transition-all duration-300 ease-in-out active:bg-base-200 mb-1"
-                  >
-                    <DisclosureButton as="span">{item.name}</DisclosureButton>
+                  <Link key={item.key} href={item.href} className="">
+                    <DisclosureButton as="span" className="block rounded-md px-3 py-2 text-base-content font-medium hover:bg-base-200 transition-all duration-300 ease-in-out active:bg-base-200 mb-1">
+                      {item.name}
+                    </DisclosureButton>
                   </Link>
                 ))}
               </div>
