@@ -2,7 +2,7 @@ import React from "react";
 import TextDesctiption from "./textDesctiption";
 import ImageComponent from "./imageComponent";
 
-export default function LayoutSecondary({ children, id, title, description, footer, headAlign, src, imageAlt }) {
+export default function LayoutSecondary({ children, id, title, description, footer, headAlign, imageUrl, imageAlt }) {
   const footerFx = footer ? <div className="">{footer}</div> : null;
   return (
     <section className="py-20" id={id}>
@@ -15,7 +15,7 @@ export default function LayoutSecondary({ children, id, title, description, foot
             </div>
           </div>
           <div className="w-full">
-            <ImageComponent src={src} alt={imageAlt} width={300} height={300} priority={false} />
+            <ImageComponent imageUrl={imageUrl} imageAlt={imageAlt} width={300} height={300} priority={false} />
           </div>
         </div>
         <div className="py-10">{children}</div>

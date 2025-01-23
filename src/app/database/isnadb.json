@@ -13,7 +13,7 @@
         "description": "Kami menyediakan layanan copywriting yang berkualitas tinggi untuk membantu Anda meningkatkan penjualan dan membuat bisnis Anda lebih sukses.",
         "image": "/images/landingPage/interestIMg.webp",
         "btnTxt": "Lihat Semua Layanan",
-        "interestItems": [
+        "listItem": [
           {
             "title": "Ingin bebas dari keptusasaan.",
             "description": "Merasa putus asa karena produk tidak diminati target pasar, menjadi beban yang cukup berat.",
@@ -38,16 +38,44 @@
       },
       "cta1": {
         "title": "Ini adalah kunci untuk mewujudkan hal yang Anda inginkan!",
-        "description": "",
         "btnTxt": "Lihat ini",
         "image": "/images/landingPage/LPlakiLakiJanganMenyerah.webp"
+      },
+      "cta2": {
+        "title": "Kabar baik untuk pebisnis muslim.",
+        "btnTxt": "Lihat ini",
+        "description": "Kalamana copy mendukung pebisnis muslim untuk mengembangkan bisnis dan bersaing di dunia digital. Kalamana copy merupakan landing page copywriting services, atau penyedia jasa pembuatan copywriting khusus untuk meningkatkan penjualan di landing page. Kalamana copy membuat copywriting berdasarkan hasil Analisa produk dan target pasar, sehingga copywriting yang ditampilkan di landing page akan lebih efektif dan tepat sasaran.",
+        "image": "/images/landingPage/LPlakiLakiJasKopeah.webp"
+      },
+      "kemampuan": {
+        "title": "Kemampuan Kalamana Copy.",
+        "description": "uhuuhu",
+        "image": "/images/landingPage/LPlogo.webp",
+        "listItem": [
+          {
+            "title": "Membuat analisa produk.",
+            "description": "Anda dapat mengetahui kelebihan produk dengan lebih jelas."
+          },
+          {
+            "title": "Membuat analisa target pasar.",
+            "description": "Anda dapat mengetahui target pasar yang benar-benar membutuhkan produk yang Anda jual."
+          },
+          {
+            "title": "Membuat persuasive copywriting.",
+            "description": "Anda dapat mendorong target pasar untuk segera membeli produk."
+          },
+          {
+            "title": "Membuat landing page.",
+            "description": "Anda dapat menampilkan penawaran kepada target pasar di internet untuk meningkatkan penjualan."
+          }
+        ]
       },
       "solution": {
         "title": "Solusi tepat untuk meningkatkan penjualan.",
         "description": "Solusinya Anda harus membuat copywriting yang tepat sasaran. Copywriting harus dibuat berdasarkan analisa produk dan Analisa target pasar yang akurat, kombo tersebut akan menjadi senjata penawaran yang sangat kuat. Copywriting yang dibuat akan menggambarkan nilai produk Anda secara detail, mendalam dan sesuai dengan keinginan target pasar.",
         "btnTxt": "",
         "image": "/images/landingPage/LPlakiLakiBatik.webp",
-        "solutionItems": [
+        "listItem": [
           {
             "title": "Analisa Produk.",
             "description": "Analisa produk bermanfaat untuk mengetahui keunggulan produk. Dengan mengetahui keunggulan maka pesan akan disampaikan lebih mudah dan lebih efisien.",

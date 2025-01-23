@@ -3,17 +3,17 @@ import React, { useEffect, useState } from "react";
 import Content from "../global/content";
 import Hero from "./hero";
 import Services from "./services";
-import Grid2colums from "../global/grid2colums";
 import ImageComponent from "../global/imageComponent";
 import TextDesctiption from "../global/textDesctiption";
 import Grid1colums from "../global/grid1colums";
 import { fetchSPages } from "@/app/firebase/readData";
 import Loading from "../global/loading";
 import Grid2List from "./grid2List";
-import FullBlock from "../global/fullBlock";
 import landingPage from "./landingPage.module.css";
 import LayoutPrimary from "../global/layoutPrimary";
 import LayoutSecondary from "../global/layoutSecondary";
+import LayoutFullBlock from "../global/layoutFullBlock";
+import BtnLinkPrimary from "../global/btnLinkPrimary";
 
 export default function LayoutLandingPage({ children }) {
   const [pages, setPages] = useState(null);
@@ -59,12 +59,21 @@ export default function LayoutLandingPage({ children }) {
     <Content>
       <Hero bg={landingPage.heroImage} title={pages.landingPage.hero.title} description={pages.landingPage.hero.description} btnTxt={pages.landingPage.hero.btnTxt} />
 
-      <Grid1colums col1={<ImageComponent src={pages.landingPage.interest.image} alt="keinginan-pebisnis" width={1000} height={1000} />} />
+      <Grid1colums col1={<ImageComponent imageUrl={pages.landingPage.interest.image} imageAlt="keinginan-pebisnis" width={1000} height={1000} />} />
       <LayoutPrimary id="keinginan-pebisnis" title={pages.landingPage.interest.title} description={pages.landingPage.interest.description} footer="" headAlign="">
-        <Grid2List listItem={pages.landingPage.interest.interestItems} />
+        <Grid2List listItem={pages.landingPage.interest.listItem} />
       </LayoutPrimary>
 
-      <FullBlock bg={landingPage.bg1} title={pages.landingPage.cta1.title} btnTxt={pages.landingPage.cta1.btnTxt} ctaImage={pages.landingPage.cta1.ctaImage} />
+      <LayoutFullBlock
+        id="call-to-action"
+        bg={landingPage.bg1}
+        title={pages.landingPage.cta1.title}
+        btnTxt={pages.landingPage.cta1.btnTxt}
+        imageUrl={pages.landingPage.cta1.image}
+        imageAlt={pages.landingPage.cta1.title}
+      >
+        <BtnLinkPrimary btnTxt="lihat caranya" href="#solusi" />
+      </LayoutFullBlock>
 
       <LayoutSecondary
         id="solusi"
@@ -72,11 +81,24 @@ export default function LayoutLandingPage({ children }) {
         description={pages.landingPage.solution.description}
         footer=""
         headAlign="left"
-        src={pages.landingPage.solution.image}
+        imageUrl={pages.landingPage.solution.image}
         imageAlt={pages.landingPage.solution.title}
       >
-        <Grid2List listItem={pages.landingPage.solution.solutionItems} />
+        <Grid2List listItem={pages.landingPage.solution.listItem} />
       </LayoutSecondary>
+      <LayoutFullBlock
+        id="kalamanacopy"
+        bg=""
+        reverse={true}
+        title={pages.landingPage.cta2.title}
+        description={pages.landingPage.cta2.description}
+        btnTxt={pages.landingPage.cta2.btnTxt}
+        imageUrl={pages.landingPage.cta2.image}
+        imageAlt={pages.landingPage.cta2.title}
+      >
+        <BtnLinkPrimary btnTxt="lihat caranya" href="#solusi" />
+      </LayoutFullBlock>
+
       <Grid1colums
         id="layanan"
         col1={
