@@ -7,12 +7,13 @@ import { TbTargetArrow } from "react-icons/tb";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { CgWebsite } from "react-icons/cg";
 
-export default function Grid2List({ listItem }) {
+export default function Grid2List({ listItem, border }) {
+  const borderFx = border ? "border border-1" : "";
   return (
     <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
       {listItem.map((item, index) => (
         <div key={index} className="col-span-1 flex justify-stretch">
-          <div className="bg-base-100 p-8 rounded-bl-3xl">
+          <div className={`bg-base-100 p-8 rounded-bl-3xl ${borderFx}`}>
             {item.icon === "FaRegFaceGrinStars" ? (
               <FaRegFaceGrinStars className="text-4xl mb-10 mt-4" />
             ) : item.icon === "IoStatsChart" ? (

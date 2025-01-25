@@ -8,6 +8,7 @@ export const SiteIdentityProvider = ({ children }) => {
   const [siteIdentity, setSiteIdentity] = useState(null);
 
   useEffect(() => {
+    // Fungsi untuk mengambil data hanya sekali ketika komponen pertama kali di-render
     const getSiteIdentity = async () => {
       try {
         const data = await fetchSiteIdentity();
@@ -17,10 +18,11 @@ export const SiteIdentityProvider = ({ children }) => {
       }
     };
 
+    // Hanya panggil getSiteIdentity jika siteIdentity masih null
     if (!siteIdentity) {
       getSiteIdentity();
     }
-  }, [siteIdentity]);
+  }, []); // Kosongkan array dependency untuk menjalankan hanya sekali saat mount pertama kali
 
   return <SiteIdentityContext.Provider value={{ siteIdentity, setSiteIdentity }}>{children}</SiteIdentityContext.Provider>;
 };

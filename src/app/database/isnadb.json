@@ -8,6 +8,12 @@
         "image": "/images/landingPage/hero/bgHero2.webp",
         "btnTxt": "Dapatkan Sekarang"
       },
+
+      "callToServices": {
+        "title": "Ayo Tingkatkan Penjualan Bisnis Anda.",
+        "description": "Pilih layanan yang Anda butuhkan. Mari tingkatkan penjualan menggunakan copywriting dan landing page yang lebih efektif.",
+        "image": ""
+      },
       "interest": {
         "title": "Inikah yang Anda inginkan saat ini?",
         "description": "Kami menyediakan layanan copywriting yang berkualitas tinggi untuk membantu Anda meningkatkan penjualan dan membuat bisnis Anda lebih sukses.",
@@ -44,29 +50,33 @@
       "cta2": {
         "title": "Kabar baik untuk pebisnis muslim.",
         "btnTxt": "Lihat ini",
-        "description": "Kalamana copy mendukung pebisnis muslim untuk mengembangkan bisnis dan bersaing di dunia digital. Kalamana copy merupakan landing page copywriting services, atau penyedia jasa pembuatan copywriting khusus untuk meningkatkan penjualan di landing page. Kalamana copy membuat copywriting berdasarkan hasil Analisa produk dan target pasar, sehingga copywriting yang ditampilkan di landing page akan lebih efektif dan tepat sasaran.",
+        "description": "Kalamanacopy mendukung pebisnis muslim untuk mengembangkan bisnis dan bersaing di dunia digital. Kalamanacopy merupakan landing page copywriting services, atau penyedia jasa pembuatan copywriting khusus untuk meningkatkan penjualan di landing page. Kalamanacopy membuat copywriting berdasarkan hasil Analisa produk dan target pasar, sehingga copywriting yang ditampilkan di landing page akan lebih efektif dan tepat sasaran.",
         "image": "/images/landingPage/LPlakiLakiJasKopeah.webp"
       },
       "kemampuan": {
-        "title": "Kemampuan Kalamana Copy.",
-        "description": "uhuuhu",
+        "title": "Kemampuan Kalamanacopy.",
+        "description": "Kalamanacopy memiliki berbagai kemampuan yang dapat mendukung penjualan produk dan jasa pebisnis muslim.",
         "image": "/images/landingPage/LPlogo.webp",
         "listItem": [
           {
             "title": "Membuat analisa produk.",
-            "description": "Anda dapat mengetahui kelebihan produk dengan lebih jelas."
+            "description": "Anda dapat mengetahui kelebihan produk dengan lebih jelas.",
+            "icon": "HiOutlineSpeakerphone"
           },
           {
             "title": "Membuat analisa target pasar.",
-            "description": "Anda dapat mengetahui target pasar yang benar-benar membutuhkan produk yang Anda jual."
+            "description": "Anda dapat mengetahui target pasar yang benar-benar membutuhkan produk yang Anda jual.",
+            "icon": "TbTargetArrow"
           },
           {
             "title": "Membuat persuasive copywriting.",
-            "description": "Anda dapat mendorong target pasar untuk segera membeli produk."
+            "description": "Anda dapat mendorong target pasar untuk segera membeli produk.",
+            "icon": "AiOutlineProduct"
           },
           {
             "title": "Membuat landing page.",
-            "description": "Anda dapat menampilkan penawaran kepada target pasar di internet untuk meningkatkan penjualan."
+            "description": "Anda dapat menampilkan penawaran kepada target pasar di internet untuk meningkatkan penjualan.",
+            "icon": "CgWebsite"
           }
         ]
       },

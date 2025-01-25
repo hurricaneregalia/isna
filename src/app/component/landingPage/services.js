@@ -59,7 +59,7 @@ export default function Services() {
                     </ul>
                   </div>
                   <div className="card-actions justify-end mt-auto">
-                    <BtnLinkPrimary href={`/services/${key}`} btnTxt="Pilih" btnFull={true} iconRight={<FaArrowRight />} />
+                    <BtnLinkPrimary btnUrl={`/services/${key}`} btnTxt="Pilih" btnFull={true} iconRight={<FaArrowRight />} />
                   </div>
                 </div>
               </div>

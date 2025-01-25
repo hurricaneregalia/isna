@@ -2,10 +2,10 @@ import React from "react";
 import TextDesctiption from "./textDesctiption";
 import ImageComponent from "./imageComponent";
 
-export default function LayoutSecondary({ children, id, title, description, footer, headAlign, imageUrl, imageAlt }) {
+export default function LayoutSecondary({ children, id, title, description, footer, headAlign, imageUrl, imageAlt, bg }) {
   const footerFx = footer ? <div className="">{footer}</div> : null;
   return (
-    <section className="py-20" id={id}>
+    <section className={`py-20 ${bg}`} id={id}>
       <div className="container lg:w-8/12 px-8 mx-auto">
         <div className="flex flex-col-reverse sm:flex-row gap-20 mb-10">
           <div className="w-full">

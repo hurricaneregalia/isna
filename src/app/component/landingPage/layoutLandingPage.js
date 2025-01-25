@@ -60,7 +60,7 @@ export default function LayoutLandingPage({ children }) {
       <Hero bg={landingPage.heroImage} title={pages.landingPage.hero.title} description={pages.landingPage.hero.description} btnTxt={pages.landingPage.hero.btnTxt} />
 
       <Grid1colums col1={<ImageComponent imageUrl={pages.landingPage.interest.image} imageAlt="keinginan-pebisnis" width={1000} height={1000} />} />
-      <LayoutPrimary id="keinginan-pebisnis" title={pages.landingPage.interest.title} description={pages.landingPage.interest.description} footer="" headAlign="">
+      <LayoutPrimary id="keinginan-pebisnis" bg="bg-transparent" title={pages.landingPage.interest.title} description={pages.landingPage.interest.description} footer="" headAlign="">
         <Grid2List listItem={pages.landingPage.interest.listItem} />
       </LayoutPrimary>
 
@@ -69,11 +69,10 @@ export default function LayoutLandingPage({ children }) {
         bg={landingPage.bg1}
         title={pages.landingPage.cta1.title}
         btnTxt={pages.landingPage.cta1.btnTxt}
+        btnUrl="#solusi"
         imageUrl={pages.landingPage.cta1.image}
         imageAlt={pages.landingPage.cta1.title}
-      >
-        <BtnLinkPrimary btnTxt="lihat caranya" href="#solusi" />
-      </LayoutFullBlock>
+      ></LayoutFullBlock>
 
       <LayoutSecondary
         id="solusi"
@@ -87,32 +86,35 @@ export default function LayoutLandingPage({ children }) {
         <Grid2List listItem={pages.landingPage.solution.listItem} />
       </LayoutSecondary>
       <LayoutFullBlock
-        id="kalamanacopy"
+        id="good news"
         bg=""
         reverse={true}
         title={pages.landingPage.cta2.title}
         description={pages.landingPage.cta2.description}
         btnTxt={pages.landingPage.cta2.btnTxt}
+        btnUrl="#kalamanacopy"
         imageUrl={pages.landingPage.cta2.image}
         imageAlt={pages.landingPage.cta2.title}
-      >
-        <BtnLinkPrimary btnTxt="lihat caranya" href="#solusi" />
-      </LayoutFullBlock>
+      ></LayoutFullBlock>
 
-      <Grid1colums
-        id="layanan"
-        col1={
-          <TextDesctiption
-            title="Choose the right plan for you"
-            description="Choose an affordable plan thats packed with the best features for engaging your audience, creating customer loyalty, and driving sales."
-          />
-        }
-        col2={
-          <div className="grid grid-cols-1 gap-4">
-            <Services />
-          </div>
-        }
-      />
+      <LayoutSecondary
+        id="kalamanacopy"
+        title={pages.landingPage.kemampuan.title}
+        description={pages.landingPage.kemampuan.description}
+        footer=""
+        headAlign="left"
+        imageUrl={pages.landingPage.kemampuan.image}
+        imageAlt={pages.landingPage.kemampuan.title}
+      >
+        <Grid2List listItem={pages.landingPage.kemampuan.listItem} />
+      </LayoutSecondary>
+
+      <LayoutPrimary id="manfaat" bg="bg-transparent" title={pages.landingPage.kemampuan.title} description={pages.landingPage.kemampuan.description} footer="" headAlign="">
+        <Grid2List listItem={pages.landingPage.kemampuan.listItem} />
+      </LayoutPrimary>
+      <LayoutPrimary id="layanan" bg={landingPage.bg1} title={pages.landingPage.callToServices.title} description={pages.landingPage.callToServices.description} footer="" headAlign="">
+        <Services />
+      </LayoutPrimary>
     </Content>
   );
 }
