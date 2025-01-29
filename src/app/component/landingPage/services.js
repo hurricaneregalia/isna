@@ -40,14 +40,14 @@ export default function Services() {
         <div className="container mx-auto">
           <div className="grid gap-4 md:grid-cols-3">
             {Object.entries(services).map(([key, service]) => (
-              <div key={key} className={`card bg-base-100 rounded-none rounded-bl-3xl ${service.marking ? "border border-primary shadow-lg shadow-indigo-500/50" : ""}`}>
-                <div className="card-body">
-                  <div>
+              <div key={key} className={`card bg-base-100 rounded-none rounded-bl-3xl ${service.marking ? "border border-primary shadow-xl shadow-indigo-500/50" : ""}`}>
+                <div className="card-body p-0">
+                  <div className=" bg-gray-900 text-gray-300 rounded-bl-3xl p-8">
                     <p className="font-normal">{service.name}</p>
-                    <p className="text-3xl font-bold my-2 text-primary">{service.price.toLocaleString("id-ID")}</p>
+                    <p className="text-3xl font-bold my-2 text-secondary">{service.price.toLocaleString("id-ID")}</p>
                     <p>{service.description}</p>
                   </div>
-                  <div className="space-y-2 my-5">
+                  <div className="space-y-2 my-5 px-8">
                     <h3 className="font-semibold">Fitur</h3>
                     <ul className="space-y-2">
                       {service.features.map((feature, index) => (
@@ -58,7 +58,7 @@ export default function Services() {
                       ))}
                     </ul>
                   </div>
-                  <div className="card-actions justify-end mt-auto">
+                  <div className="card-actions justify-end mt-auto p-8 pt-0">
                     <BtnLinkPrimary btnUrl={`/services/${key}`} btnTxt="Pilih" btnFull={true} iconRight={<FaArrowRight />} />
                   </div>
                 </div>
