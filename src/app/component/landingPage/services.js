@@ -1,36 +1,47 @@
 "use client";
-import { fetchServices } from "@/app/firebase/readData";
+import { fetchServices, fetchServicesCategory } from "@/app/firebase/readData";
 import React, { useEffect, useState } from "react";
 import Loading from "../global/loading";
-import { FaCheck } from "react-icons/fa";
 import BtnLinkPrimary from "../global/btnLinkPrimary";
 import { FaArrowRight } from "react-icons/fa6";
+import { LuCircleCheckBig } from "react-icons/lu";
 
 export default function Services() {
   const [services, setServices] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [categories, setCategories] = useState(null); // Untuk menyimpan data kategori
 
   useEffect(() => {
-    const getservices = async () => {
+    const getServicesAndCategories = async () => {
       try {
-        const data = await fetchServices();
-        console.log("services:", data);
-        setServices(data);
+        // Fetch data kategori
+        const categoryData = await fetchServicesCategory();
+        console.log("categories:", categoryData);
+        setCategories(categoryData);
+
+        // Fetch data layanan
+        const serviceData = await fetchServices();
+        console.log("services:", serviceData);
+
+        // Filter services berdasarkan kategori jika kategori ada
+        const filteredServices = Object.fromEntries(Object.entries(serviceData).filter(([key, service]) => service.category === 1));
+
+        setServices(filteredServices);
       } catch (error) {
-        console.error("Error fetching services:", error);
+        console.error("Error fetching services or categories:", error);
       } finally {
         setIsLoading(false);
       }
     };
 
-    getservices();
+    getServicesAndCategories();
   }, []);
 
   if (isLoading) {
     return <Loading />;
   }
 
-  if (!services || services.length === 0) {
+  if (!services || Object.keys(services).length === 0) {
     return <div>No services found</div>;
   }
 
@@ -45,14 +56,13 @@ export default function Services() {
                   <div className=" bg-gray-900 text-gray-300 rounded-bl-3xl p-8">
                     <p className="font-normal">{service.name}</p>
                     <p className="text-3xl font-bold my-2 text-secondary">{service.price.toLocaleString("id-ID")}</p>
-                    <p>{service.description}</p>
+                    <p className="font-normal">{categories && categories[service.category] ? categories[service.category] : "Kategori tidak ditemukan"}</p>
                   </div>
                   <div className="space-y-2 my-5 px-8">
-                    <h3 className="font-semibold">Fitur</h3>
                     <ul className="space-y-2">
                       {service.features.map((feature, index) => (
                         <li key={index} className="flex items-center gap-2">
-                          <FaCheck className="text-purple-300" />
+                          <LuCircleCheckBig className="text-green-500" />
                           <span>{feature}</span>
                         </li>
                       ))}

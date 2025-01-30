@@ -212,31 +212,49 @@
   "services": {
     "serviceId01": {
       "createdAt": "2025-01-01T12:00:00Z",
-      "description": "Layanan dasar untuk website bisnis kecil.",
-      "features": ["Copywriting untuk 5 halaman", "SEO dasar", "Pengiriman dalam 5 hari"],
+      "description": "Untuk memulai bisnis online.",
+      "features": ["1 set copywriting"],
       "marking": false,
-      "name": "Starter Package",
-      "price": 500000,
+      "name": "Qolilan copy",
+      "category": 1,
+      "price": 69000,
       "updatedAt": "2025-01-01T12:00:00Z"
     },
     "serviceId02": {
       "createdAt": "2025-01-01T12:00:00Z",
-      "description": "Layanan lengkap untuk website perusahaan besar.",
-      "features": ["Copywriting untuk 15 halaman", "SEO lanjutan", "Pengiriman dalam 10 hari", "Revisi 3 kali"],
+      "description": "Untuk mengembangkan bisnis online.",
+      "features": ["1 set copywriting", "Analisa produk"],
       "marking": true,
-      "name": "Enterprise Package",
-      "price": 1500000,
+      "name": "Juz In copy",
+      "category": 1,
+      "price": 145900,
       "updatedAt": "2025-01-01T12:00:00Z"
     },
     "serviceId03": {
       "createdAt": "2025-01-01T12:00:00Z",
-      "description": "Paket untuk pengusaha yang membutuhkan web profesional.",
-      "features": ["Copywriting untuk 10 halaman", "SEO dasar dan konten blog", "Pengiriman dalam 7 hari", "Revisi 2 kali"],
+      "description": "Untuk branding bisnis online",
+      "features": ["1 set copywriting", "Analisa produk", "Analisa target pasar", "Consumer insight"],
       "marking": false,
-      "name": "Business Package",
-      "price": 1000000,
+      "name": "Kamilan copy",
+      "category": 1,
+      "price": 159000,
+      "updatedAt": "2025-01-01T12:00:00Z"
+    },
+    "serviceId04": {
+      "createdAt": "2025-01-01T12:00:00Z",
+      "description": "website",
+      "features": ["lorem", "ipsum"],
+      "marking": false,
+      "name": "website",
+      "category": 2,
+      "price": 159000,
       "updatedAt": "2025-01-01T12:00:00Z"
     }
+  },
+  "servicesCategory": {
+    "1": "copywriting",
+    "2": "landing page",
+    "3": "iklan"
   },
   "siteIdentity": {
     "contactInfo": {

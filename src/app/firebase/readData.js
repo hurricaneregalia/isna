@@ -29,6 +29,20 @@ export const fetchServices = async () => {
   }
 };
 
+export const fetchServicesCategory = async () => {
+  try {
+    const servicesCattegoryRef = ref(myDatabase, "servicesCategory");
+    const snapshot = await get(servicesCattegoryRef);
+    if (snapshot.exists()) {
+      return snapshot.val();
+    }
+    return {};
+  } catch (error) {
+    console.error("Error fetching services kategori:", error);
+    throw error;
+  }
+};
+
 export const fetchSPages = async () => {
   try {
     const pagesRef = ref(myDatabase, "pages");
