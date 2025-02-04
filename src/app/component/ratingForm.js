@@ -1,18 +1,22 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import { FaCheckCircle, FaExclamationTriangle, FaTachometerAlt } from "react-icons/fa";
+import LogoMeterCard from "../logometer/logoMeterCard";
+import * as constants from "../logometer/reviewList";
+import { FaCircle } from "react-icons/fa6";
 
 const aspects = [
-  { id: 1, name: "Simplicity" },
-  { id: 2, name: "Relevance" },
-  { id: 3, name: "Unique" },
-  { id: 4, name: "Scalability" },
-  { id: 5, name: "Timelessness" },
-  { id: 6, name: "Balance" },
-  { id: 7, name: "Color" },
-  { id: 8, name: "Typography" },
-  { id: 9, name: "Flexibility" },
-  { id: 10, name: "Story" },
+  { id: 1, name: "simplicity" },
+  { id: 2, name: "relevance" },
+  { id: 3, name: "unique" },
+  { id: 4, name: "scalability" },
+  { id: 5, name: "timelessness" },
+  { id: 6, name: "balance" },
+  { id: 7, name: "color" },
+  { id: 8, name: "typography" },
+  { id: 9, name: "flexibility" },
+  { id: 10, name: "story" },
 ];
 
 const RatingForm = () => {
@@ -49,84 +53,112 @@ const RatingForm = () => {
   const imagePlaceholder = "/images/landingPage/LPlakiLakiBatik.webp";
 
   return (
-    <div className="w-full">
-      <div className="mb-4">
-        <label className="block font-semibold" htmlFor="brandName">
-          Brand Name
-        </label>
-        <input type="text" value={brandName} onChange={(e) => setBrandName(e.target.value)} className="input input-bordered w-full" id="brandName" name="brandName" />
-      </div>
-
-      <label className="block font-semibold mb-2" htmlFor="fileInput">
-        Upload Logo
-      </label>
-      <div
-        className={`mb-4 p-6 border-2 border-dashed ${dragging ? "border-primary bg-gray-100" : "border-gray-300"} rounded-lg text-center cursor-pointer`}
-        onDragOver={(e) => {
-          e.preventDefault();
-          setDragging(true);
-        }}
-        onDragLeave={() => setDragging(false)}
-        onDrop={handleDrop}
-        onClick={() => document.getElementById("fileInput").click()}
-      >
-        <p className="font-semibold">Drag & Drop your logo here or click to upload</p>
-        <input id="fileInput" type="file" accept="image/*" onChange={(e) => handleFileChange(e.target.files[0])} className="hidden" />
-      </div>
-
-      {aspects.map((aspect) => (
-        <div key={aspect.id} className="mb-10">
-          <div className="flex justify-between">
-            <label className="block font-bold" htmlFor={aspect.id}>
-              {aspect.name}
+    <>
+      <LogoMeterCard>
+        <div className="w-full">
+          <div className="mb-4">
+            <label className="block font-semibold" htmlFor="brandName">
+              Nama Brand
             </label>
-            <span className={`ml-2 text-lg font-bold ${ratings[aspect.id] < 6.5 ? "text-red-500" : ratings[aspect.id] < 8.5 ? "text-orange-500" : "text-green-500"}`}>{ratings[aspect.id]}</span>
+            <input type="text" value={brandName} onChange={(e) => setBrandName(e.target.value)} className="input input-bordered w-full" id="brandName" name="brandName" />
           </div>
-          <div className="p-0 m-0 relative">
-            <div className=" absolute w-full inset-0 mt-1">
-              <div className="flex w-full justify-between text-xs px-2">
-                {[5, 6, 7, 8, 9, 10].map((val) => (
-                  <div key={val} className="border-l-2 border-gray-200" style={{ height: 10 }}></div>
-                ))}
+
+          <label className="block font-semibold mb-2" htmlFor="fileInput">
+            Pilih Logo
+          </label>
+          <div
+            className={`mb-4 p-6 border-2 border-dashed ${dragging ? "border-primary bg-gray-100" : "border-gray-300"} rounded-lg text-center cursor-pointer`}
+            onDragOver={(e) => {
+              e.preventDefault();
+              setDragging(true);
+            }}
+            onDragLeave={() => setDragging(false)}
+            onDrop={handleDrop}
+            onClick={() => document.getElementById("fileInput").click()}
+          >
+            <p className="font-semibold">Drag & Drop your logo here or click to upload</p>
+            <input id="fileInput" type="file" accept="image/*" onChange={(e) => handleFileChange(e.target.files[0])} className="hidden" />
+            {/* <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={300} height={300} className="mt-4 mx-auto" /> */}
+          </div>
+        </div>
+      </LogoMeterCard>
+      <LogoMeterCard mb="mb-0">
+        <div>
+          {aspects.map((aspect) => (
+            <div key={aspect.id} className="mb-10">
+              <div className="flex justify-between">
+                <label className="block font-bold capitalize" htmlFor={aspect.id}>
+                  {aspect.name}
+                </label>
+                <span className={`ml-2 text-lg font-bold ${ratings[aspect.id] < 6.5 ? "text-red-500" : ratings[aspect.id] < 8.5 ? "text-orange-400" : "text-green-500"}`}>{ratings[aspect.id]}</span>
+              </div>
+              <div className="p-0 m-0 relative">
+                <div className=" absolute w-full inset-0 mt-1">
+                  <div className="flex w-full justify-between text-xs px-2">
+                    {[5, 6, 7, 8, 9, 10].map((val) => (
+                      <div key={val} className="border-l-2 border-gray-200" style={{ height: 10 }}></div>
+                    ))}
+                  </div>
+                </div>
+                <div className=" absolute w-full inset-0">
+                  <input
+                    type="range"
+                    id={aspect.id}
+                    min="5"
+                    max="10"
+                    step="1"
+                    value={ratings[aspect.id]}
+                    onChange={(e) => handleChange(aspect.id, e.target.value)}
+                    className="range range-xs range-primary "
+                  />
+                </div>
               </div>
             </div>
-            <div className=" absolute w-full inset-0">
-              <input
-                type="range"
-                id={aspect.id}
-                min="5"
-                max="10"
-                step="1"
-                value={ratings[aspect.id]}
-                onChange={(e) => handleChange(aspect.id, e.target.value)}
-                className="range range-xs range-primary "
-              />
-            </div>
-          </div>
-        </div>
-      ))}
+          ))}
 
-      <div className="mt-6 flex-none sm:flex">
-        <div className="sm:w-1/2 w-full">
-          <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={500} height={500} className="mt-4 mx-auto w-full object-contain" />
-        </div>
-        <div className="sm:w-1/2 w-full text-center p-4 flex items-center justify-center">
-          <div id="score">
-            <p className="font-bold">Logo Score</p>
-            <div>{brandName ? brandName : "Nama brand"}</div>
-            <div
-              className={`radial-progress border-4 mt-4 ${
-                progress < 65 ? "bg-red-500 text-red-200 border-red-500" : progress < 90 ? "bg-orange-500 text-orange-200 border-orange-500" : "bg-green-500 text-green-200 border-green-500"
-              }`}
-              style={{ "--value": progress, "--thickness": "5px" }}
-              role="progressbar"
-            >
-              <span className="text-3xl">{averageRating}</span>
+          <div className="mt-6 flex-none sm:flex bg-slate-100 rounded-xl p-4">
+            <div className="sm:w-1/2 w-full">
+              <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={500} height={500} className="mt-4 mx-auto w-full object-contain" />
+            </div>
+            <div className="sm:w-1/2 w-full text-center p-4 flex items-center justify-center">
+              <div id="score">
+                <div className=" flex items-center">
+                  <p className="me-1">
+                    <FaTachometerAlt />
+                  </p>
+                  <p>Logo Score</p>
+                </div>
+                <p className=" capitalize font-bold">{brandName ? brandName : "Nama brand"}</p>
+                <div
+                  className={`radial-progress border-4 mt-4 ${
+                    progress < 65 ? "bg-red-500 text-red-200 border-red-500" : progress < 90 ? "bg-orange-400 text-orange-200 border-orange-400" : "bg-green-500 text-green-200 border-green-500"
+                  }`}
+                  style={{ "--value": progress, "--thickness": "5px" }}
+                  role="progressbar"
+                >
+                  <span className="text-3xl">{averageRating}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+        <div>
+          {aspects.map((aspect) => (
+            <div key={aspect.id} className="mb-10">
+              <div className="flex">
+                <p className={`mr-2 mt-1 ${ratings[aspect.id] < 6.5 ? "text-red-500" : ratings[aspect.id] < 8.5 ? "text-orange-400" : "text-green-500"}`}>
+                  {ratings[aspect.id] < 6.5 ? <FaExclamationTriangle /> : ratings[aspect.id] < 8.5 ? <FaCircle /> : <FaCheckCircle />}
+                </p>
+                <div>
+                  <p className="font-bold capitalize">{aspect.name}</p>
+                  <p>{ratings[aspect.id] < 6.5 ? constants[aspect.name + "Bad"] : ratings[aspect.id] < 8.5 ? constants[aspect.name + "Std"] : constants[aspect.name + "Good"]}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </LogoMeterCard>
+    </>
   );
 };
 
