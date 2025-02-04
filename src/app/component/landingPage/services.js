@@ -3,8 +3,8 @@ import { fetchServices, fetchServicesCategory } from "@/app/firebase/readData";
 import React, { useEffect, useState } from "react";
 import Loading from "../global/loading";
 import BtnLinkPrimary from "../global/btnLinkPrimary";
-import { FaArrowRight } from "react-icons/fa6";
-import { LuCircleCheckBig } from "react-icons/lu";
+import { FaArrowRight, FaCheck, FaRegStar, FaRegStarHalfStroke, FaStar, FaXmark } from "react-icons/fa6";
+import { PiCheckFatFill } from "react-icons/pi";
 
 export default function Services() {
   const [services, setServices] = useState(null);
@@ -54,16 +54,16 @@ export default function Services() {
               <div key={key} className={`card bg-base-100 rounded-none rounded-bl-3xl ${service.marking ? "border border-primary shadow-xl shadow-indigo-500/50" : ""}`}>
                 <div className="card-body p-0">
                   <div className=" bg-gray-900 text-gray-300 rounded-bl-3xl p-8">
+                    <div className=" text-2xl mb-5">{service.icon === "FaRegStar" ? <FaRegStar /> : service.icon === "FaRegStarHalfStroke" ? <FaRegStarHalfStroke /> : <FaStar />}</div>
                     <p className="font-normal">{service.name}</p>
                     <p className="text-3xl font-bold my-2 text-secondary">{service.price.toLocaleString("id-ID")}</p>
-                    <p className="font-normal">{categories && categories[service.category] ? categories[service.category] : "Kategori tidak ditemukan"}</p>
                   </div>
                   <div className="space-y-2 my-5 px-8">
                     <ul className="space-y-2">
                       {service.features.map((feature, index) => (
                         <li key={index} className="flex items-center gap-2">
-                          <LuCircleCheckBig className="text-green-500" />
-                          <span>{feature}</span>
+                          {feature.isEnabled === true ? <FaCheck className="text-green-500" /> : <FaXmark className="text-red-500" />}
+                          <span className={feature.isEnabled === true ? "" : "opacity-50 line-through"}>{feature.name}</span>
                         </li>
                       ))}
                     </ul>

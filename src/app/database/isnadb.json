@@ -213,7 +213,15 @@
     "serviceId01": {
       "createdAt": "2025-01-01T12:00:00Z",
       "description": "Untuk memulai bisnis online.",
-      "features": ["1 set copywriting"],
+      "features": [
+        { "name": "1 set copywriting", "isEnabled": true },
+        { "name": "SEO friendly", "isEnabled": true },
+        { "name": "Analisis produk", "isEnabled": false },
+        { "name": "Analisis target pasar", "isEnabled": false },
+        { "name": "Consumer insight", "isEnabled": false },
+        { "name": "Support branding", "isEnabled": false }
+      ],
+      "icon": "FaRegStar",
       "marking": false,
       "name": "Qolilan copy",
       "category": 1,
@@ -223,9 +231,17 @@
     "serviceId02": {
       "createdAt": "2025-01-01T12:00:00Z",
       "description": "Untuk mengembangkan bisnis online.",
-      "features": ["1 set copywriting", "Analisa produk"],
-      "marking": true,
-      "name": "Juz In copy",
+      "features": [
+        { "name": "1 set copywriting", "isEnabled": true },
+        { "name": "SEO friendly", "isEnabled": true },
+        { "name": "Analisis produk", "isEnabled": true },
+        { "name": "Analisis target pasar", "isEnabled": false },
+        { "name": "Consumer insight", "isEnabled": false },
+        { "name": "Support branding", "isEnabled": false }
+      ],
+      "icon": "FaRegStarHalfStroke",
+      "marking": false,
+      "name": "Mumtazan copy",
       "category": 1,
       "price": 145900,
       "updatedAt": "2025-01-01T12:00:00Z"
@@ -233,8 +249,16 @@
     "serviceId03": {
       "createdAt": "2025-01-01T12:00:00Z",
       "description": "Untuk branding bisnis online",
-      "features": ["1 set copywriting", "Analisa produk", "Analisa target pasar", "Consumer insight"],
-      "marking": false,
+      "features": [
+        { "name": "1 set copywriting", "isEnabled": true },
+        { "name": "SEO friendly", "isEnabled": true },
+        { "name": "Analisis produk", "isEnabled": true },
+        { "name": "Analisis target pasar", "isEnabled": true },
+        { "name": "Consumer insight", "isEnabled": true },
+        { "name": "Support branding", "isEnabled": true }
+      ],
+      "icon": "FaStar",
+      "marking": true,
       "name": "Kamilan copy",
       "category": 1,
       "price": 159000,
