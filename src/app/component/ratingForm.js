@@ -80,12 +80,12 @@ const RatingForm = () => {
             <label className="block font-bold" htmlFor={aspect.id}>
               {aspect.name}
             </label>
-            <span className="ml-2 text-lg text-green-600 font-bold">{ratings[aspect.id]}</span>
+            <span className={`ml-2 text-lg font-bold ${ratings[aspect.id] < 6.5 ? "text-red-500" : ratings[aspect.id] < 8.5 ? "text-orange-500" : "text-green-500"}`}>{ratings[aspect.id]}</span>
           </div>
           <div className="p-0 m-0 relative">
             <div className=" absolute w-full inset-0 mt-1">
               <div className="flex w-full justify-between text-xs px-2">
-                {[5, 5.5, 6, 6.5, 7, 7.5, 8, 8.5, 9, 9.5, 10].map((val) => (
+                {[5, 6, 7, 8, 9, 10].map((val) => (
                   <div key={val} className="border-l-2 border-gray-200" style={{ height: 10 }}></div>
                 ))}
               </div>
@@ -96,11 +96,11 @@ const RatingForm = () => {
                 id={aspect.id}
                 min="5"
                 max="10"
-                step="0.5"
+                step="1"
                 value={ratings[aspect.id]}
                 onChange={(e) => handleChange(aspect.id, e.target.value)}
-                className="range range-xs range-primary"
-              />{" "}
+                className="range range-xs range-primary "
+              />
             </div>
           </div>
         </div>
