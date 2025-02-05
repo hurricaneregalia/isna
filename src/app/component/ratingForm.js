@@ -150,7 +150,9 @@ const RatingForm = () => {
                   {ratings[aspect.id] < 6.5 ? <FaExclamationTriangle /> : ratings[aspect.id] < 8.5 ? <FaCircle /> : <FaCheckCircle />}
                 </p>
                 <div>
-                  <p className="font-bold capitalize">{aspect.name}</p>
+                  <p className="font-bold capitalize">
+                    {aspect.name} {ratings[aspect.id]}
+                  </p>
                   <p>{ratings[aspect.id] < 6.5 ? constants[aspect.name + "Bad"] : ratings[aspect.id] < 8.5 ? constants[aspect.name + "Std"] : constants[aspect.name + "Good"]}</p>
                 </div>
               </div>
