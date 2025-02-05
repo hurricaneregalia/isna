@@ -40,17 +40,12 @@ export const colorSuggest = "Memilih warna logo yang sesuai dengan visi misi mam
 export const colorStd = "colorStd";
 export const colorGood = "Warna sudah sesuai dengan visi misi. Warna logo yang digunakan mencerminkan arah dan nilai-nilai yang ingin dicapai oleh brand Anda.";
 
-export const typographyBad = "typographyBad";
-export const typographySuggest = "typographySuggest";
-export const typographyStd = "typographyStd";
-export const typographyGood = "typographyGood";
+export const typographyBad = "Typography kurang efektif. Jenis huruf yang digunakan tidak cukup jelas dalam ukuran kecil. Selain itu, kombinasi font yang digunakan terasa tidak serasi dengan logo.";
+export const typographySuggest = "Untuk typography yang lebih baik, disarankan memilih font yang lebih mudah dibaca dan memiliki desain yang serasi dengan logo";
+export const typographyStd = "Typography cukup efektif. Jenis huruf yang digunakan cukup jelas dalam ukuran kecil. Kombinasi font yang digunakan cukup serasi dengan logo.";
+export const typographyGood = "Typography sangat efektif. Jenis huruf yang digunakan terlihat jelas dalam ukuran kecil. Kombinasi font yang digunakan sangat serasi dengan logo.";
 
-export const flexibilityBad = "flexibilityBad";
+export const flexibilityBad = "Logo kurang fleksibel. Logo tidak memiliki variasi hitam, putih dan warna latar belakang, sehingga hanya bisa digunakan dalam beberapa media saja.";
 export const flexibilitySuggest = "flexibilitySuggest";
-export const flexibilityStd = "flexibilityStd";
-export const flexibilityGood = "flexibilityGood";
-
-export const storyBad = "Warna tidak sesuai dengan visi misi. Warna logo tidak menggambarkan tujuan jangka panjang atau nilai-nilai inti yang ingin dicapai oleh brand";
-export const storySuggest = "Memilih warna logo yang sesuai dengan visi misi mampu membuat identitas brand Anda lebih kuat";
-export const storyStd = "storyStd";
-export const storyGood = "Warna sudah sesuai dengan visi misi. Warna logo yang digunakan mencerminkan arah dan nilai-nilai yang ingin dicapai oleh brand Anda.";
+export const flexibilityStd = "Logo cukup fleksibel. Logo memiliki beberapa variasi hitam/ putih/ warna latar belakang, sehingga bisa digunakan dalam media yang lebih banyak.";
+export const flexibilityGood = "Logo sangat fleksibel. Logo memiliki variasi yang lengkap seperti hitam/ putih/ warna latar belakang, sehingga bisa digunakan dalam media apa saja";
