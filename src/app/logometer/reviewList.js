@@ -10,7 +10,7 @@ export const relevanceStd = "avatar3";
 export const relevanceGood = "Logo ini sudah relevan dengan visi misi. Elemen logo yang digunakan mencerminkan arah dan nilai-nilai yang ingin dicapai oleh brand Anda.";
 
 export const uniqueBad = "Logo terlalu umum. Desainnya generik dan tidak memiliki elemen yang khas, membuatnya sulit untuk diingat atau sulit dibedakan dengan pesaing lain.";
-export const uniqueSuggest = "Supaya logo memiliki identitas yang kuat, disarankan untuk mengeksplorasi elemen desain yang lebih original dan khas";
+export const uniqueSuggest = "Supaya logo memiliki identitas yang kuat, disarankan untuk mengeksplorasi elemen desain yang lebih original dan khas.";
 export const uniqueStd = "uniqueStd";
 export const uniqueGood =
   "Logo ini memiliki elemen yang khas, menciptakan identitas yang kuat dan membuatnya mudah dibedakan dari pesaing. Desain yang unik ini membantu brand Anda tampil lebih menonjol dan mudah dikenali.";

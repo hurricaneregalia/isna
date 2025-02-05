@@ -4,8 +4,9 @@ import Image from "next/image";
 import { FaCheckCircle, FaExclamationTriangle, FaTachometerAlt } from "react-icons/fa";
 import LogoMeterCard from "../logometer/logoMeterCard";
 import * as constants from "../logometer/reviewList";
-import { FaCircle } from "react-icons/fa6";
+import { FaCircle, FaRegComment } from "react-icons/fa6";
 import logoMeterCss from "../logometer/logoMeter.module.css";
+import { BiCommentAdd } from "react-icons/bi";
 
 const aspects = [
   { id: 1, name: "simplicity" },
@@ -116,9 +117,9 @@ const RatingForm = () => {
             </div>
           ))}
 
-          <div className="mt-6 flex-none sm:flex bg-slate-100 rounded-xl p-4">
+          <div className="mt-20 flex-none sm:flex bg-slate-100 rounded-xl p-10 mb-10 ">
             <div className="sm:w-1/2 w-full">
-              <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={500} height={500} className="mt-4 mx-auto w-full object-contain" />
+              <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={500} height={500} className="mx-auto w-full object-contain" />
             </div>
             <div className="sm:w-1/2 w-full text-center p-4 flex items-center justify-center">
               <div id="score">
@@ -143,8 +144,8 @@ const RatingForm = () => {
           </div>
         </div>
         <div>
-          {aspects.slice(0, 4).map((aspect) => (
-            <div key={aspect.id} className="mb-10">
+          {aspects.slice(0, 4).map((aspect, index, array) => (
+            <div key={aspect.id} className={`py-5 ${index !== array.length - 1 ? "border-b" : ""}`}>
               <div className="flex">
                 <p className={`mr-2 mt-1 ${ratings[aspect.id] < 6.5 ? "text-red-500" : ratings[aspect.id] < 8.5 ? "text-orange-400" : "text-green-500"}`}>
                   {ratings[aspect.id] < 6.5 ? <FaExclamationTriangle /> : ratings[aspect.id] < 8.5 ? <FaCircle /> : <FaCheckCircle />}
@@ -156,42 +157,79 @@ const RatingForm = () => {
                   <p>{ratings[aspect.id] < 6.5 ? constants[aspect.name + "Bad"] : ratings[aspect.id] < 8.5 ? constants[aspect.name + "Std"] : constants[aspect.name + "Good"]}</p>
                 </div>
               </div>
+              {ratings[aspect.id] < 6.5 ? (
+                <div className="flex pt-3">
+                  <p className="mr-2 mt-1 text-gray-500">
+                    <FaRegComment />
+                  </p>
+                  <div>
+                    <p className=" font-bold">Saran</p>
+                    <p>{constants[aspect.name + "Suggest"]}</p>
+                  </div>
+                </div>
+              ) : null}
             </div>
           ))}
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 mb-10">
             <p className="mb-4 font-bold">Ukuran media digital</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-xl overflow-hidden bg-red-500">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-xl overflow-hidden">
               <div className="flex flex-col items-center text-center py-5 bg-gray-100">
-                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className="w-4 h-auto" />
+                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className="w-4 h-auto mb-3 sm:mb-0" />
                 <p className="mt-auto">Lebar 16px</p>
               </div>
               <div className="flex flex-col items-center text-center py-5 bg-gray-200">
-                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className="w-8 h-auto" />
+                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className="w-8 h-auto mb-3 sm:mb-0" />
                 <p className="mt-auto">Lebar 32px</p>
               </div>
               <div className="flex flex-col items-center text-center py-5 bg-gray-300 w-full">
-                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className="w-16 h-auto" />
+                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className="w-16 h-auto mb-3 sm:mb-0" />
                 <p className="mt-auto">Lebar 64px</p>
               </div>
             </div>
           </div>
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 pb-7 border-b">
             <p className="mb-4 font-bold">Ukuran media cetak</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-xl overflow-hidden bg-red-500">
               <div className="flex flex-col items-center text-center py-5 bg-gray-100">
-                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className={`${logoMeterCss.wMm5} h-auto`} />
+                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className={`${logoMeterCss.wMm5} h-auto mb-3 sm:mb-0`} />
                 <p className="mt-auto">Lebar 5mm</p>
               </div>
               <div className="flex flex-col items-center text-center py-5 bg-gray-200">
-                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className={`${logoMeterCss.wCm1} h-auto`} />
+                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className={`${logoMeterCss.wCm1} h-auto mb-3 sm:mb-0`} />
                 <p className="mt-auto">Lebar 10mm</p>
               </div>
               <div className="flex flex-col items-center text-center py-5 bg-gray-300 w-full">
-                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className={`${logoMeterCss.wCm2} h-auto`} />
+                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className={`${logoMeterCss.wCm2} h-auto mb-3 sm:mb-0`} />
                 <p className="mt-auto">Lebar 20mm</p>
               </div>
             </div>
           </div>
+          {aspects.slice(5, 9).map((aspect, index, array) => (
+            <div key={aspect.id} className={`py-5 ${index !== array.length - 1 ? "border-b" : ""}`}>
+              <div className="flex">
+                <p className={`mr-2 mt-1 ${ratings[aspect.id] < 6.5 ? "text-red-500" : ratings[aspect.id] < 8.5 ? "text-orange-400" : "text-green-500"}`}>
+                  {ratings[aspect.id] < 6.5 ? <FaExclamationTriangle /> : ratings[aspect.id] < 8.5 ? <FaCircle /> : <FaCheckCircle />}
+                </p>
+                <div>
+                  <p className="font-bold capitalize">
+                    {aspect.name} {ratings[aspect.id]}
+                  </p>
+                  <p>{ratings[aspect.id] < 6.5 ? constants[aspect.name + "Bad"] : ratings[aspect.id] < 8.5 ? constants[aspect.name + "Std"] : constants[aspect.name + "Good"]}</p>
+                </div>
+              </div>
+              {ratings[aspect.id] < 6.5 ? (
+                <div className="flex pt-3">
+                  <p className="mr-2 mt-1 text-gray-500">
+                    <BiCommentAdd />
+                  </p>
+                  <div>
+                    <p className="font-bold">Saran</p>
+                    <p>{constants[aspect.name + "Suggest"]}</p>
+                  </div>
+                </div>
+              ) : null}
+            </div>
+          ))}
         </div>
       </LogoMeterCard>
     </>
