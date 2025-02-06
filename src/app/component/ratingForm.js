@@ -6,7 +6,10 @@ import LogoMeterCard from "../logometer/logoMeterCard";
 import * as constants from "../logometer/reviewList";
 import { FaCircle, FaRegComment } from "react-icons/fa6";
 import logoMeterCss from "../logometer/logoMeter.module.css";
-import { BiCommentAdd } from "react-icons/bi";
+import WaBtn from "../logometer/waBtn";
+import LogoManipulator from "../logometer/logoManipulator";
+import LogoNegative from "../logometer/logoNegative";
+import LogoBackground from "../logometer/logoBackground";
 
 const aspects = [
   { id: 1, name: "simplicity" },
@@ -220,7 +223,7 @@ const RatingForm = () => {
               {ratings[aspect.id] < 6.5 ? (
                 <div className="flex pt-3">
                   <p className="mr-2 mt-1 text-gray-500">
-                    <BiCommentAdd />
+                    <FaRegComment />
                   </p>
                   <div>
                     <p className="font-bold">Saran</p>
@@ -230,6 +233,30 @@ const RatingForm = () => {
               ) : null}
             </div>
           ))}
+          <div className="container mx-auto px-4 pb-7">
+            <p className="mb-4 font-bold">Variasi logo</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-xl overflow-hidden bg-red-500">
+              <div className="flex flex-col items-center text-center p-3 bg-gray-100 gap-3">
+                <LogoManipulator imageUrl={logo ? logo : imagePlaceholder} />
+                <p className="mt-auto">Logo positif</p>
+              </div>
+              <div className="flex flex-col items-center text-center p-3 bg-gray-200 gap-3">
+                <LogoNegative imageUrl={logo ? logo : imagePlaceholder} />
+                <p className="mt-auto">Logo negatif</p>
+              </div>
+              <div className="flex flex-col items-center text-center p-3 bg-gray-300 w-full gap-3">
+                <div className=" w-full h-full bg-blue-500 p-0">
+                  <LogoBackground imageUrl={logo ? logo : imagePlaceholder} imgPlaceholder={imagePlaceholder} />
+                </div>
+                <p className="mt-auto">Background logo</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="w-full text-center p-5 mt-10">
+          <WaBtn btnTxt="Perbaiki logo" brandName={brandName ? brandName : "Nama brand"}>
+            {aspects.map((aspect) => `${aspect.name} ${ratings[aspect.id]}`).join(", ")}
+          </WaBtn>
         </div>
       </LogoMeterCard>
     </>
@@ -237,3 +264,4 @@ const RatingForm = () => {
 };
 
 export default RatingForm;
+<img src="path_to_logo.jpg" class="filter grayscale brightness-0 invert w-24 h-24" alt="Logo" />;
