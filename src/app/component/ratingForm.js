@@ -10,6 +10,8 @@ import WaBtn from "../logometer/waBtn";
 import LogoManipulator from "../logometer/logoManipulator";
 import LogoNegative from "../logometer/logoNegative";
 import LogoBackground from "../logometer/logoBackground";
+import LogoOutline from "../logometer/logoOutline";
+import LogoEffect from "../logometer/logoOutline";
 
 const aspects = [
   { id: 1, name: "simplicity" },
@@ -238,6 +240,25 @@ const RatingForm = () => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-xl overflow-hidden bg-red-500">
               <div className="flex flex-col items-center text-center p-3 bg-gray-100 gap-3">
                 <LogoManipulator imageUrl={logo ? logo : imagePlaceholder} />
+                <p className="mt-auto">Logo positif</p>
+              </div>
+              <div className="flex flex-col items-center text-center p-3 bg-gray-200 gap-3">
+                <LogoNegative imageUrl={logo ? logo : imagePlaceholder} />
+                <p className="mt-auto">Logo negatif</p>
+              </div>
+              <div className="flex flex-col items-center text-center p-3 bg-gray-300 w-full gap-3">
+                <div className=" w-full h-full bg-blue-500 p-0">
+                  <LogoBackground imageUrl={logo ? logo : imagePlaceholder} imgPlaceholder={imagePlaceholder} />
+                </div>
+                <p className="mt-auto">Background logo</p>
+              </div>
+            </div>
+          </div>
+          <div className="container mx-auto px-4 pb-7">
+            <p className="mb-4 font-bold">Logo outline</p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-xl overflow-hidden bg-red-500">
+              <div className="flex flex-col items-center text-center p-3 bg-gray-100 gap-3">
+                <LogoEffect imageUrl={logo ? logo : imagePlaceholder} />
                 <p className="mt-auto">Logo positif</p>
               </div>
               <div className="flex flex-col items-center text-center p-3 bg-gray-200 gap-3">
