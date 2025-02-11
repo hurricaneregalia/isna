@@ -14,7 +14,10 @@ export default function LogoManipulator({ imageUrl }) {
     // Set the willReadFrequently attribute to improve performance with frequent getImageData calls
     canvas.willReadFrequently = true;
 
-    img.onload = () => {
+    const handleImageLoad = () => {
+      // Clear the canvas before starting manipulation
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
       // Set canvas size to image size
       canvas.width = img.width;
       canvas.height = img.height;
@@ -49,9 +52,18 @@ export default function LogoManipulator({ imageUrl }) {
       setModifiedImage(modifiedImageURL);
     };
 
+    // Set image load event
+    img.onload = handleImageLoad;
+
     // Handle error loading image
     img.onerror = () => {
       console.error("Image failed to load");
+    };
+
+    // Return cleanup function to remove event listeners
+    return () => {
+      img.onload = null;
+      img.onerror = null;
     };
   }, [imageUrl]);
 

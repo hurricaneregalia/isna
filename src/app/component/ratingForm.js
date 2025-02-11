@@ -10,7 +10,6 @@ import WaBtn from "../logometer/waBtn";
 import LogoManipulator from "../logometer/logoManipulator";
 import LogoNegative from "../logometer/logoNegative";
 import LogoBackground from "../logometer/logoBackground";
-import LogoOutline from "../logometer/logoOutline";
 import LogoEffect from "../logometer/logoOutline";
 import LogoEffectInverse from "../logometer/logoOutlineInverse";
 import LogoEffectInverseBg from "../logometer/logoOutlineInverseBg";
@@ -179,16 +178,16 @@ const RatingForm = () => {
           ))}
           <div className="container mx-auto px-4 mb-10">
             <p className="mb-4 font-bold">Ukuran media digital</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-xl overflow-hidden">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 rounded-xl overflow-hidden">
               <div className="flex flex-col items-center text-center py-5 bg-gray-100">
                 <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className="w-4 h-auto mb-3 sm:mb-0" />
                 <p className="mt-auto">Lebar 16px</p>
               </div>
-              <div className="flex flex-col items-center text-center py-5 bg-gray-200">
+              <div className="flex flex-col items-center text-center py-5 bg-gray-100">
                 <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className="w-8 h-auto mb-3 sm:mb-0" />
                 <p className="mt-auto">Lebar 32px</p>
               </div>
-              <div className="flex flex-col items-center text-center py-5 bg-gray-300 w-full">
+              <div className="flex flex-col items-center text-center py-5 bg-gray-100 w-full">
                 <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className="w-16 h-auto mb-3 sm:mb-0" />
                 <p className="mt-auto">Lebar 64px</p>
               </div>
@@ -196,16 +195,16 @@ const RatingForm = () => {
           </div>
           <div className="container mx-auto px-4 pb-7 border-b">
             <p className="mb-4 font-bold">Ukuran media cetak</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-xl overflow-hidden bg-red-500">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 rounded-xl overflow-hidde">
               <div className="flex flex-col items-center text-center py-5 bg-gray-100">
                 <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className={`${logoMeterCss.wMm5} h-auto mb-3 sm:mb-0`} />
                 <p className="mt-auto">Lebar 5mm</p>
               </div>
-              <div className="flex flex-col items-center text-center py-5 bg-gray-200">
+              <div className="flex flex-col items-center text-center py-5 bg-gray-100">
                 <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className={`${logoMeterCss.wCm1} h-auto mb-3 sm:mb-0`} />
                 <p className="mt-auto">Lebar 10mm</p>
               </div>
-              <div className="flex flex-col items-center text-center py-5 bg-gray-300 w-full">
+              <div className="flex flex-col items-center text-center py-5 bg-gray-100 w-full">
                 <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className={`${logoMeterCss.wCm2} h-auto mb-3 sm:mb-0`} />
                 <p className="mt-auto">Lebar 20mm</p>
               </div>
@@ -239,16 +238,20 @@ const RatingForm = () => {
           ))}
           <div className="container mx-auto px-4 pb-7">
             <p className="mb-4 font-bold">Variasi logo</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-xl overflow-hidden bg-red-500">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 rounded-xl overflow-hidden">
+              <div className="flex flex-col items-center text-center p-3 bg-gray-100 gap-3">
+                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className="w-full h-auto" />
+                <p className="mt-auto">Logo original</p>
+              </div>
               <div className="flex flex-col items-center text-center p-3 bg-gray-100 gap-3">
                 <LogoManipulator imageUrl={logo ? logo : imagePlaceholder} />
                 <p className="mt-auto">Logo positif</p>
               </div>
-              <div className="flex flex-col items-center text-center p-3 bg-gray-200 gap-3">
+              <div className="flex flex-col items-center text-center p-3 bg-gray-100 gap-3">
                 <LogoNegative imageUrl={logo ? logo : imagePlaceholder} />
                 <p className="mt-auto">Logo negatif</p>
               </div>
-              <div className="flex flex-col items-center text-center p-3 bg-gray-300 w-full gap-3">
+              <div className="flex flex-col items-center text-center p-3 bg-gray-100 w-full gap-3">
                 <div className=" w-full h-full bg-blue-500 p-0">
                   <LogoBackground imageUrl={logo ? logo : imagePlaceholder} imgPlaceholder={imagePlaceholder} />
                 </div>
@@ -258,20 +261,24 @@ const RatingForm = () => {
           </div>
           <div className="container mx-auto px-4 pb-7">
             <p className="mb-4 font-bold">Logo outline</p>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-0 rounded-xl overflow-hidden bg-red-500">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 rounded-xl overflow-hidden">
+              <div className="flex flex-col items-center text-center p-3 bg-gray-100 gap-3">
+                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className="w-full h-auto" />
+                <p className="mt-auto">Logo original</p>
+              </div>
               <div className="flex flex-col items-center text-center p-3 bg-gray-100 gap-3">
                 <LogoEffect imageUrl={logo ? logo : imagePlaceholder} />
-                <p className="mt-auto">Logo positif</p>
+                <p className="mt-auto">Logo outline positif</p>
               </div>
-              <div className="flex flex-col items-center text-center p-3 bg-gray-200 gap-3">
+              <div className="flex flex-col items-center text-center p-3 bg-gray-100 gap-3">
                 <LogoEffectInverse imageUrl={logo ? logo : imagePlaceholder} />
-                <p className="mt-auto">Logo negatif</p>
+                <p className="mt-auto">Logo outline negatif</p>
               </div>
-              <div className="flex flex-col items-center text-center p-3 bg-gray-300 w-full gap-3">
+              <div className="flex flex-col items-center text-center p-3 bg-gray-100 w-full gap-3">
                 <div className=" w-full h-full bg-blue-500 p-0">
                   <LogoEffectInverseBg imageUrl={logo ? logo : imagePlaceholder} imgPlaceholder={imagePlaceholder} />
                 </div>
-                <p className="mt-auto">Background logo</p>
+                <p className="mt-auto">Background logo outline</p>
               </div>
             </div>
           </div>
