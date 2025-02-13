@@ -4,7 +4,6 @@ import Content from "../global/content";
 import Hero from "./hero";
 import Services from "./services";
 import ImageComponent from "../global/imageComponent";
-import TextDesctiption from "../global/textDesctiption";
 import Grid1colums from "../global/grid1colums";
 import { fetchSPages } from "@/app/firebase/readData";
 import Loading from "../global/loading";
@@ -13,7 +12,7 @@ import landingPage from "./landingPage.module.css";
 import LayoutPrimary from "../global/layoutPrimary";
 import LayoutSecondary from "../global/layoutSecondary";
 import LayoutFullBlock from "../global/layoutFullBlock";
-import BtnLinkPrimary from "../global/btnLinkPrimary";
+import Countdown from "./countdown";
 
 export default function LayoutLandingPage({ children }) {
   const [pages, setPages] = useState(null);
@@ -114,6 +113,11 @@ export default function LayoutLandingPage({ children }) {
       </LayoutPrimary>
       <LayoutPrimary id="layanan" bg={landingPage.bg1} title={pages.landingPage.callToServices.title} description={pages.landingPage.callToServices.description} footer="" headAlign="">
         <Services />
+      </LayoutPrimary>
+
+      <LayoutPrimary id="bonus" bg="bg-transparent" title={pages.landingPage.bonus.title + " seharga Rp. 700.000"} description={pages.landingPage.bonus.description} footer="" headAlign="">
+        <Grid2List listItem={pages.landingPage.bonus.listItem} />
+        <Countdown targetDate={new Date("2025-03-31T23:59:59")} />
       </LayoutPrimary>
     </Content>
   );

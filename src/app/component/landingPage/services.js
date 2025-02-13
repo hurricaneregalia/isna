@@ -69,7 +69,7 @@ export default function Services() {
                     </ul>
                   </div>
                   <div className="card-actions justify-end mt-auto p-8 pt-0">
-                    <BtnLinkPrimary btnUrl={`/services/${key}`} btnTxt="Pilih" btnFull={true} iconRight={<FaArrowRight />} />
+                    <BtnLinkPrimary btnUrl={`/services/${key}`} btnTxt="Pilih" btnFull={true} iconRight={<FaArrowRight />} btnStyle={`${service.marking ? "shadow-lg shadow-indigo-500/50" : ""}`} />
                   </div>
                 </div>
               </div>

@@ -1,7 +1,6 @@
 "use client";
 import React, { useState } from "react";
 import RatingForm from "../component/ratingForm";
-import HeaderFooter from "../component/global/headerFooter";
 
 const Logometer = () => {
   return (

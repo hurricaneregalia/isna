@@ -107,6 +107,35 @@
             "icon": "CgWebsite"
           }
         ]
+      },
+
+      "bonus": {
+        "title": "Bonus review logo",
+        "description": "Dapatkan insight mengenai seberapa efektif desain logo Anda dalam mendukung kesuksesan bisnis yang Anda jalankan.",
+        "btnTxt": "",
+        "image": "/images/landingPage/LPlakiLakiBatik.webp",
+        "listItem": [
+          {
+            "title": "Relevansi logo.",
+            "description": "",
+            "icon": "AiOutlineProduct"
+          },
+          {
+            "title": "Kelebihan kekurangan.",
+            "description": "",
+            "icon": "TbTargetArrow"
+          },
+          {
+            "title": "Kekuatan identitas.",
+            "description": "",
+            "icon": "HiOutlineSpeakerphone"
+          },
+          {
+            "title": "Dan lain-lain.",
+            "description": "",
+            "icon": "CgWebsite"
+          }
+        ]
       }
     }
   },
