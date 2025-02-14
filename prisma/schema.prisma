@@ -10,12 +10,12 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./primaryData.db"
+  url      = env("DATABASE_URL")
 }
 
-model users {
+model Users {
   id         String   @id @default(cuid())
-  fisrtName  String
+  firstName  String
   lastName   String
   email      String
   createDate DateTime @default(now())
@@ -32,26 +32,101 @@ model BonusListItem {
   landingPage   LandingPage @relation(fields: [landingPageId], references: [id], onDelete: Cascade)
 }
 
+model InterestListItem {
+  id            String      @id @default(cuid())
+  title         String
+  desc          String
+  icon          String
+  createDate    DateTime    @default(now())
+  updateDate    DateTime    @updatedAt
+  landingPageId String // Foreign Key ke LandingPage
+  landingPage   LandingPage @relation(fields: [landingPageId], references: [id], onDelete: Cascade)
+}
+
+model SkillListItem {
+  id            String      @id @default(cuid())
+  title         String
+  desc          String
+  icon          String
+  createDate    DateTime    @default(now())
+  updateDate    DateTime    @updatedAt
+  landingPageId String // Foreign Key ke LandingPage
+  landingPage   LandingPage @relation(fields: [landingPageId], references: [id], onDelete: Cascade)
+}
+
+model SolutionListItem {
+  id            String      @id @default(cuid())
+  title         String
+  desc          String
+  icon          String
+  createDate    DateTime    @default(now())
+  updateDate    DateTime    @updatedAt
+  landingPageId String // Foreign Key ke LandingPage
+  landingPage   LandingPage @relation(fields: [landingPageId], references: [id], onDelete: Cascade)
+}
+
+model ServicesCategory {
+  id         String   @id @default(cuid())
+  title      String
+  createDate DateTime @default(now())
+  updateDate DateTime @updatedAt
+  servicesId String // Foreign Key ke LandingPage
+  services   Services @relation(fields: [servicesId], references: [id], onDelete: Cascade)
+}
+
+model Services {
+  id          String             @id @default(cuid())
+  category    ServicesCategory[]
+  description String
+  icon        String
+  isBest      Boolean
+  title       String
+  price       BigInt
+}
+
 model LandingPage {
-  id                String          @id @default(cuid())
+  id                String             @id @default(cuid())
   bonusTitle        String
   bonusDesc         String
   bonusBtnTxt       String
-  bonusListItems    BonusListItem[] // Relasi one-to-many ke BonusListItem
-  ctaServicesTitle  String          @default("")
-  ctaServicesDesc   String          @default("")
-  ctaServicesImg    String          @default("")
-  ctaServicesBtnTxt String          @default("")
-  ctaBuyTitle       String          @default("")
-  ctaBuyDesc        String          @default("")
-  ctaBuyImg         String          @default("")
-  ctaBuyBtnTxt      String          @default("")
-  ctaAltTitle       String          @default("")
-  ctaAltDesc        String          @default("")
-  ctaAltImg         String          @default("")
-  ctaAltBtnTxt      String          @default("")
-  createDate        DateTime        @default(now())
-  updateDate        DateTime        @updatedAt
+  bonusListItems    BonusListItem[]
+  ctaServicesTitle  String             @default("")
+  ctaServicesDesc   String             @default("")
+  ctaServicesImg    String             @default("")
+  ctaServicesBtnTxt String             @default("")
+  ctaBuyTitle       String             @default("")
+  ctaBuyDesc        String             @default("")
+  ctaBuyImg         String             @default("")
+  ctaBuyBtnTxt      String             @default("")
+  ctaAltTitle       String             @default("")
+  ctaAltDesc        String             @default("")
+  ctaAltImg         String             @default("")
+  ctaAltBtnTxt      String             @default("")
+  heroBtnTxt        String             @default("")
+  heroDesc          String             @default("")
+  heroImg           String             @default("")
+  heroTitle         String             @default("")
+  interestBtnTxt    String             @default("")
+  interestDesc      String             @default("")
+  interestImg       String             @default("")
+  interestListItems InterestListItem[]
+  interestTitle     String             @default("")
+  skillBtnTxt       String             @default("")
+  skillDesc         String             @default("")
+  skillImg          String             @default("")
+  skillListItems    SkillListItem[]
+  skillTitle        String             @default("")
+  scoreBtnTxt       String             @default("")
+  scoreDesc         String             @default("")
+  scoreImg          String             @default("")
+  scoreTitle        String             @default("")
+  solutionBtnTxt    String             @default("")
+  solutionDesc      String             @default("")
+  solutionImg       String             @default("")
+  solutionListItems SolutionListItem[]
+  solutionTitle     String             @default("")
+  createDate        DateTime           @default(now())
+  updateDate        DateTime           @updatedAt
 }
 
 // npx prisma migrate dev

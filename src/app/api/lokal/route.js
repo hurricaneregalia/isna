@@ -1,26 +1,28 @@
-import path from "path";
-import { promises as fs } from "fs"; // Menggunakan fs.promises untuk menangani file secara async
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export async function GET(req) {
   try {
-    // Tentukan path ke file JSON lokal
-    const filePath = path.join(process.cwd(), "src", "app", "database", "isnadb.json");
+    // Ambil data dari model LandingPage beserta relasi yang relevan
+    const landingPages = await prisma.landingPage.findMany({
+      include: {
+        bonusListItems: true,
+        interestListItems: true,
+        skillListItems: true,
+        solutionListItems: true,
+      },
+    });
 
-    // Membaca file JSON secara async
-    const fileData = await fs.readFile(filePath, "utf8");
-
-    // Mengubah file JSON menjadi objek JavaScript
-    const jsonData = JSON.parse(fileData);
-
-    // Mengirimkan data JSON sebagai respons
-    return new Response(JSON.stringify(jsonData), {
+    // Mengembalikan response dengan status 200 dan data
+    return new Response(JSON.stringify(landingPages), {
       status: 200,
       headers: {
         "Content-Type": "application/json",
       },
     });
-  } catch (err) {
-    console.error("Gagal membaca file JSON:", err);
-    return new Response("Error membaca file lokal", { status: 500 });
+  } catch (error) {
+    console.error(error);
+    return new Response("Internal Server Error", { status: 500 });
   }
 }
