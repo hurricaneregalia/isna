@@ -108,7 +108,6 @@
           }
         ]
       },
-
       "bonus": {
         "title": "Bonus review logo",
         "description": "Dapatkan insight mengenai seberapa efektif desain logo Anda dalam mendukung kesuksesan bisnis yang Anda jalankan.",
@@ -136,6 +135,13 @@
             "icon": "CgWebsite"
           }
         ]
+      },
+      "score": {
+        "title": "Kualitas landingpage.",
+        "description": "Rata-rata score landingpage dari kalamanacopy.",
+        "btnTxt": "",
+        "image": "/images/landingPage/landingpage-diagnose.jpg",
+        "listItem": ""
       }
     }
   },

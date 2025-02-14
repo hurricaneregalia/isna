@@ -13,6 +13,9 @@ import LayoutPrimary from "../global/layoutPrimary";
 import LayoutSecondary from "../global/layoutSecondary";
 import LayoutFullBlock from "../global/layoutFullBlock";
 import Countdown from "./countdown";
+import FinalCta from "../global/finalCta";
+import BtnLinkPrimary from "../global/btnLinkPrimary";
+import { FaArrowRight } from "react-icons/fa6";
 
 export default function LayoutLandingPage({ children }) {
   const [pages, setPages] = useState(null);
@@ -117,8 +120,17 @@ export default function LayoutLandingPage({ children }) {
 
       <LayoutPrimary id="bonus" bg="bg-transparent" title={pages.landingPage.bonus.title + " seharga Rp. 700.000"} description={pages.landingPage.bonus.description} footer="" headAlign="">
         <Grid2List listItem={pages.landingPage.bonus.listItem} />
-        <Countdown targetDate={new Date("2025-03-31T23:59:59")} />
+        <div className="w-full text-center py-8 sm:w-8/12 mx-auto">
+          <Countdown targetDate={new Date("2025-03-31T23:59:59")} />
+        </div>
+        <div className="w-full text-center py-8">
+          <BtnLinkPrimary btnUrl="#layanan" btnTxt="Dapatkan bonus" btnFull={false} iconRight={<FaArrowRight />} btnStyle="" />
+        </div>
       </LayoutPrimary>
+      <LayoutPrimary id="score" bg="bg-transparent" title={pages.landingPage.score.title} description={pages.landingPage.score.description} footer="" headAlign="">
+        <ImageComponent imageUrl={pages.landingPage.score.image} imageAlt={pages.landingPage.score.title} width={1000} height={1000} />
+      </LayoutPrimary>
+      <FinalCta id="dapat-bonus" title="Ayo tingkatkan penjualan bisnis anda dan dapatkan bonusnya." headAlign={false} bg={landingPage.bg1} />
     </Content>
   );
 }

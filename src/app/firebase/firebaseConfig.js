@@ -10,6 +10,10 @@ const firebaseConfig = {
   messagingSenderId: "444364295916",
   appId: "1:444364295916:web:668f0ddd0b3297f3efdfc9",
   measurementId: "G-HCZYY0Z32Q",
+  cookieOptions: {
+    secure: true,
+    sameSite: "strict",
+  },
 };
 const app = initializeApp(firebaseConfig);
 const myDatabase = getDatabase(app);
