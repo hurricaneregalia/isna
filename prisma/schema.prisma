@@ -1,0 +1,58 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./primaryData.db"
+}
+
+model users {
+  id         String   @id @default(cuid())
+  fisrtName  String
+  lastName   String
+  email      String
+  createDate DateTime @default(now())
+  updateDate DateTime @updatedAt
+}
+
+model BonusListItem {
+  id            String      @id @default(cuid())
+  title         String
+  icon          String
+  createDate    DateTime    @default(now())
+  updateDate    DateTime    @updatedAt
+  landingPageId String // Foreign Key ke LandingPage
+  landingPage   LandingPage @relation(fields: [landingPageId], references: [id], onDelete: Cascade)
+}
+
+model LandingPage {
+  id                String          @id @default(cuid())
+  bonusTitle        String
+  bonusDesc         String
+  bonusBtnTxt       String
+  bonusListItems    BonusListItem[] // Relasi one-to-many ke BonusListItem
+  ctaServicesTitle  String          @default("")
+  ctaServicesDesc   String          @default("")
+  ctaServicesImg    String          @default("")
+  ctaServicesBtnTxt String          @default("")
+  ctaBuyTitle       String          @default("")
+  ctaBuyDesc        String          @default("")
+  ctaBuyImg         String          @default("")
+  ctaBuyBtnTxt      String          @default("")
+  ctaAltTitle       String          @default("")
+  ctaAltDesc        String          @default("")
+  ctaAltImg         String          @default("")
+  ctaAltBtnTxt      String          @default("")
+  createDate        DateTime        @default(now())
+  updateDate        DateTime        @updatedAt
+}
+
+// npx prisma migrate dev
+//npx prisma studio
