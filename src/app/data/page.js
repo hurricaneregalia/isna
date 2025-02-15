@@ -26,7 +26,7 @@ export default function LayoutLandingPage({ children }) {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/lokal")
+      .get("/api/lokal")
       .then((response) => {
         // Ambil objek pertama dari array dan simpan sebagai objek
         const obj = response.data[0];
