@@ -32,7 +32,7 @@ export default function Grid2List({ listItem, border }) {
               <FaFire className="text-4xl mb-10 mt-4" />
             )}
             <h3 className="font-bold mb-3 mt-2 text-xl">{item.title}</h3>
-            <p>{item.description}</p>
+            <p>{item.desc ? item.desc : item.description}</p>
           </div>
         </div>
       ))}
