@@ -3,13 +3,13 @@ import ImageComponent from "./imageComponent";
 import BtnLinkPrimary from "./btnLinkPrimary";
 import TextDesctiption from "./textDesctiption";
 
-export default function LayoutFullBlock({ children, id, title, description, footer, headAlign, imageUrl, imageAlt, bg, reverse, btnTxt, btnUrl }) {
+export default function LayoutFullBlock({ children, id, title, description, footer, headAlign, imageUrl, imageAlt, bg, reverse, btnTxt, btnUrl, iconRight }) {
   const reverseFx = reverse ? "flex-col-reverse sm:flex-row-reverse" : "flex-col-reverse sm:flex-row";
   const bgFx = bg ? bg : "bg-base-100";
   const textFx = bg === "" || bg === "bg-transparent" ? "" : "text-neutral-content";
   const btnFx = btnTxt ? (
     <div className="mt-6">
-      <BtnLinkPrimary btnTxt={btnTxt} btnUrl={btnUrl} />
+      <BtnLinkPrimary btnTxt={btnTxt} btnUrl={btnUrl} iconRight={iconRight} />
     </div>
   ) : (
     ""

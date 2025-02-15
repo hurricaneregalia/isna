@@ -51,6 +51,37 @@ export default function LayoutLandingPage({ children }) {
           <LayoutPrimary id="keinginan-pebisnis" bg="bg-transparent" title={data.interestTitle} description={data.interestDesc} footer="" headAlign="">
             <Grid2List listItem={data.interestListItems} />
           </LayoutPrimary>
+
+          <LayoutFullBlock
+            id="call-to-action"
+            bg={landingPage.bg1}
+            title={data.cta1Title}
+            btnTxt={data.cta1BtnTxt}
+            btnUrl="#solusi"
+            imageUrl={data.cta1Img}
+            imageAlt={data.cta1Title}
+            iconRight={<FaArrowRight />}
+          ></LayoutFullBlock>
+
+          <LayoutSecondary id="solusi" title={data.solutionTitle} description={data.solutionDesc} footer="" headAlign="left" imageUrl={data.solutionImg} imageAlt={data.solutionTitle}>
+            <Grid2List listItem={data.solutionListItems} />
+          </LayoutSecondary>
+
+          <LayoutFullBlock
+            id="good-news"
+            bg=""
+            reverse={true}
+            title={data.cta2Title}
+            description={data.cta2Desc}
+            btnTxt={data.cta2Txt}
+            btnUrl="#kalamanacopy"
+            imageUrl={data.cta2Img}
+            imageAlt={data.cta2Title}
+          />
+
+          <LayoutSecondary id="kalamanacopy" title={data.skillTitle} description={data.skillDesc} footer="" headAlign="left" imageUrl={data.skillImg} imageAlt={data.skillTitle}>
+            <Grid2List listItem={data.skillListItems} />
+          </LayoutSecondary>
         </Content>
       </main>
     </HeaderFooter>
