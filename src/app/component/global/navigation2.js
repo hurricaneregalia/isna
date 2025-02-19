@@ -14,6 +14,7 @@ export default function Navigation2({ siteName }) {
   const navMenu = [
     { name: "Home", href: "#", key: "home" },
     { name: "Bisnis", href: "#keinginan-pebisnis", key: "bisnis" },
+    { name: "Data", href: "/data", key: "data" },
     { name: "Solusi", href: "#solusi", key: "solusi" },
     { name: "Layanan", href: "#layanan", key: "layanan" },
     { name: "Api lokal", href: "/api/lokal", key: "api" },

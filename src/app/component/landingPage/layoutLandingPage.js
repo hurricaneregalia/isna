@@ -88,7 +88,7 @@ export default function LayoutLandingPage({ children }) {
         <Grid2List listItem={pages.landingPage.solution.listItem} />
       </LayoutSecondary>
       <LayoutFullBlock
-        id="good news"
+        id="good-news"
         bg=""
         reverse={true}
         title={pages.landingPage.cta2.title}

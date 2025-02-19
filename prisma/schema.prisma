@@ -14,7 +14,7 @@ datasource db {
 }
 
 model Users {
-  id         String   @id @default(cuid())
+  id         Int      @id @default(autoincrement())
   firstName  String
   lastName   String
   email      String
@@ -23,111 +23,124 @@ model Users {
 }
 
 model BonusListItem {
-  id            String      @id @default(cuid())
-  createDate    DateTime    @default(now())
-  icon          String
-  title         String
-  updateDate    DateTime    @updatedAt
-  landingPageId String // Foreign Key ke LandingPage
-  landingPage   LandingPage @relation(fields: [landingPageId], references: [id], onDelete: Cascade)
+  id         Int      @id @default(autoincrement())
+  createDate DateTime @default(now())
+  icon       String
+  title      String
+  updateDate DateTime @updatedAt
 }
 
 model InterestListItem {
-  id            String      @id @default(cuid())
-  desc          String
-  icon          String
-  title         String
-  createDate    DateTime    @default(now())
-  updateDate    DateTime    @updatedAt
-  landingPageId String // Foreign Key ke LandingPage
-  landingPage   LandingPage @relation(fields: [landingPageId], references: [id], onDelete: Cascade)
+  id         Int      @id @default(autoincrement())
+  desc       String
+  icon       String
+  title      String
+  createDate DateTime @default(now())
+  updateDate DateTime @updatedAt
 }
 
 model SkillListItem {
-  id            String      @id @default(cuid())
+  id            Int      @id @default(autoincrement())
   desc          String
   icon          String
   title         String
-  createDate    DateTime    @default(now())
-  updateDate    DateTime    @updatedAt
-  landingPageId String // Foreign Key ke LandingPage
-  landingPage   LandingPage @relation(fields: [landingPageId], references: [id], onDelete: Cascade)
+  createDate    DateTime @default(now())
+  updateDate    DateTime @updatedAt
+  landingPageId Int
 }
 
 model SolutionListItem {
-  id            String      @id @default(cuid())
+  id            Int      @id @default(autoincrement())
   desc          String
   icon          String
   title         String
-  createDate    DateTime    @default(now())
-  updateDate    DateTime    @updatedAt
-  landingPageId String // Foreign Key ke LandingPage
-  landingPage   LandingPage @relation(fields: [landingPageId], references: [id], onDelete: Cascade)
+  createDate    DateTime @default(now())
+  updateDate    DateTime @updatedAt
+  landingPageId Int
+}
+
+model FeatureServicesListItem {
+  id                 Int              @id @default(autoincrement())
+  title              String
+  isActive           Boolean          @default(false) // Menambahkan default value
+  createDate         DateTime         @default(now())
+  updateDate         DateTime         @updatedAt
+  servicesListItemId Int
+  servicesListItem   ServicesListItem @relation(fields: [servicesListItemId], references: [id], onDelete: Cascade)
+}
+
+model ServicesListItem {
+  id                      Int                       @id @default(autoincrement())
+  desc                    String
+  icon                    String
+  title                   String
+  price                   Float // Harga produk
+  stock                   Int                       @default(0) // Menambahkan default value untuk kolom stock
+  isBest                  Boolean                   @default(false) // Menambahkan default value
+  category                String                    @default("")
+  createDate              DateTime                  @default(now())
+  updateDate              DateTime                  @updatedAt
+  FeatureServicesListItem FeatureServicesListItem[]
 }
 
 model ServicesCategory {
-  id         String   @id @default(cuid())
+  id         Int      @id @default(autoincrement())
+  title      String   @default("")
   createDate DateTime @default(now())
-  title      String
   updateDate DateTime @updatedAt
-  servicesId String // Foreign Key ke LandingPage
-  services   Services @relation(fields: [servicesId], references: [id], onDelete: Cascade)
 }
 
-model Services {
-  id          String             @id @default(cuid())
-  category    ServicesCategory[]
-  description String
-  icon        String
-  isBest      Boolean
-  title       String
-  price       BigInt
+model SiteIdentity {
+  id      Int    @id @default(autoincrement())
+  address String
+  email   String
 }
 
 model LandingPage {
-  id                String             @id @default(cuid())
-  bonusBtnTxt       String             @default("")
-  bonusDesc         String             @default("")
-  bonusListItems    BonusListItem[]
-  bonusTitle        String
-  cta1BtnTxt        String             @default("")
-  cta1Desc          String             @default("")
-  cta1Img           String             @default("")
-  cta1Title         String             @default("")
-  cta2BtnTxt        String             @default("")
-  cta2Desc          String             @default("")
-  cta2Img           String             @default("")
-  cta2Title         String             @default("")
-  cta3BtnTxt        String             @default("")
-  cta3Desc          String             @default("")
-  cta3Img           String             @default("")
-  cta3Title         String             @default("")
-  heroBtnTxt        String             @default("")
-  heroDesc          String             @default("")
-  heroImg           String             @default("")
-  heroTitle         String             @default("")
-  interestBtnTxt    String             @default("")
-  interestDesc      String             @default("")
-  interestImg       String             @default("")
-  interestListItems InterestListItem[]
-  interestTitle     String             @default("")
-  scoreBtnTxt       String             @default("")
-  scoreDesc         String             @default("")
-  scoreImg          String             @default("")
-  scoreTitle        String             @default("")
-  skillBtnTxt       String             @default("")
-  skillDesc         String             @default("")
-  skillImg          String             @default("")
-  skillListItems    SkillListItem[]
-  skillTitle        String             @default("")
-  solutionBtnTxt    String             @default("")
-  solutionDesc      String             @default("")
-  solutionImg       String             @default("")
-  solutionListItems SolutionListItem[]
-  solutionTitle     String             @default("")
-  createDate        DateTime           @default(now())
-  updateDate        DateTime           @updatedAt
+  id             Int      @id @default(autoincrement())
+  bonusBtnTxt    String   @default("")
+  bonusDesc      String   @default("")
+  bonusTitle     String
+  cta1BtnTxt     String   @default("")
+  cta1Desc       String   @default("")
+  cta1Img        String   @default("")
+  cta1Title      String   @default("")
+  cta2BtnTxt     String   @default("")
+  cta2Desc       String   @default("")
+  cta2Img        String   @default("")
+  cta2Title      String   @default("")
+  cta3BtnTxt     String   @default("")
+  cta3Desc       String   @default("")
+  cta3Img        String   @default("")
+  cta3Title      String   @default("")
+  heroBtnTxt     String   @default("")
+  heroDesc       String   @default("")
+  heroImg        String   @default("")
+  heroTitle      String   @default("")
+  interestBtnTxt String   @default("")
+  interestDesc   String   @default("")
+  interestImg    String   @default("")
+  interestTitle  String   @default("")
+  scoreBtnTxt    String   @default("")
+  scoreDesc      String   @default("")
+  scoreImg       String   @default("")
+  scoreTitle     String   @default("")
+  servicesBtnTxt String   @default("")
+  servicesDesc   String   @default("")
+  servicesImg    String   @default("")
+  servicesTitle  String   @default("")
+  skillBtnTxt    String   @default("")
+  skillDesc      String   @default("")
+  skillImg       String   @default("")
+  skillTitle     String   @default("")
+  solutionBtnTxt String   @default("")
+  solutionDesc   String   @default("")
+  solutionImg    String   @default("")
+  solutionTitle  String   @default("")
+  createDate     DateTime @default(now())
+  updateDate     DateTime @updatedAt
 }
 
 //npx prisma migrate dev
+//npx prisma generate
 //npx prisma studio

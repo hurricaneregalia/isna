@@ -1,31 +1,42 @@
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/app/database/prisma";
 
-const prisma = new PrismaClient();
-
-export async function GET(req) {
+export async function GET(request) {
   try {
-    // Ambil data dari model LandingPage beserta relasi yang relevan
-    const landingPages = await prisma.landingPage.findMany({
-      include: {
-        bonusListItems: true,
-        interestListItems: true,
-        skillListItems: true,
-        solutionListItems: true,
+    const landingPage = await prisma.landingPage.findMany();
+    const users = await prisma.users.findMany();
+    const bonusListItems = await prisma.bonusListItem.findMany();
+    const interestListItems = await prisma.interestListItem.findMany();
+    const skillListItems = await prisma.skillListItem.findMany();
+    const solutionListItems = await prisma.solutionListItem.findMany();
+    const featureServicesListItems = await prisma.featureServicesListItem.findMany();
+    const servicesListItems = await prisma.servicesListItem.findMany();
+    const servicesCategories = await prisma.servicesCategory.findMany();
+    const siteIdentities = await prisma.siteIdentity.findMany();
+
+    const responseData = {
+      landingPage,
+      users,
+      bonusListItems,
+      interestListItems,
+      skillListItems,
+      solutionListItems,
+      featureServicesListItems,
+      servicesListItems,
+      servicesCategories,
+      siteIdentities,
+    };
+
+    // Mengembalikan data dalam format JSON dengan pretty-print
+    return new Response(JSON.stringify(responseData, null, 2), {
+      status: 200,
+      headers: {
+        "Content-Type": "application/json",
       },
     });
-
-    // Mengembalikan response dengan status 200 dan data dengan pretty print
-    return new Response(
-      JSON.stringify(landingPages, null, 2), // null untuk menggunakan default replacer, 2 untuk indentasi
-      {
-        status: 200,
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
   } catch (error) {
     console.error(error);
-    return new Response("Internal Server Error", { status: 500 });
+    return new Response("Internal Server Error", {
+      status: 500,
+    });
   }
 }

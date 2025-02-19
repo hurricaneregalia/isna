@@ -1,87 +1,109 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import ImageComponent from "../component/global/imageComponent";
-import Grid1colums from "../component/global/grid1colums";
-import { fetchSPages } from "@/app/firebase/readData";
-import Loading from "../component/global/loading";
-import landingPage from "../component/landingPage/landingPage.module.css";
+import axios from "axios";
+import Hero from "../component/landingPage/hero";
 import LayoutPrimary from "../component/global/layoutPrimary";
 import LayoutSecondary from "../component/global/layoutSecondary";
 import LayoutFullBlock from "../component/global/layoutFullBlock";
-import FinalCta from "../component/global/finalCta";
-import BtnLinkPrimary from "../component/global/btnLinkPrimary";
-import { FaArrowRight } from "react-icons/fa6";
 import Content from "../component/global/content";
-import Hero from "../component/landingPage/hero";
-import Services from "../component/landingPage/services";
-import Grid2List from "../component/landingPage/grid2List";
-import Countdown from "../component/landingPage/countdown";
+import Loading from "../component/global/loading";
 import HeaderFooter from "../component/global/headerFooter";
-import axios from "axios";
+import ServicesSqlite from "../component/landingPage/servicesSqlite";
+import { FaArrowRight } from "react-icons/fa6";
+import Grid2List from "../component/landingPage/grid2List";
+import landingPageStyle from "../component/landingPage/landingPage.module.css";
 
-export default function LayoutLandingPage({ children }) {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+export default function LayoutLandingPage() {
+  const [data, setData] = useState({
+    landingPage: null,
+    interestList: [],
+    solutionList: [],
+    skillList: [],
+    servicesList: [],
+    loading: true,
+    error: null,
+  });
+
+  // Fungsi untuk mengambil data
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("/api/lokal");
+      setData({
+        landingPage: response.data.landingPage[0] || null,
+        interestList: response.data.interestListItems || [],
+        skillList: response.data.skillListItems || [],
+        solutionList: response.data.solutionListItems || [],
+        servicesList: response.data.servicesListItems || [],
+        loading: false,
+        error: null,
+      });
+    } catch (err) {
+      setData({
+        ...data,
+        loading: false,
+        error: err.message || "Terjadi kesalahan",
+      });
+    }
+  };
 
   useEffect(() => {
-    axios
-      .get("/api/lokal")
-      .then((response) => {
-        // Ambil objek pertama dari array dan simpan sebagai objek
-        const obj = response.data[0];
-        setData(obj); // Menyimpan objek tersebut ke dalam state
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
+    fetchData();
   }, []);
 
-  if (loading) return <Loading />;
-  if (error) return <p>Terjadi kesalahan: {error.message}</p>;
+  // Menangani kondisi loading dan error
+  if (data.loading) return <Loading />;
+  if (data.error) return <p>Terjadi kesalahan: {data.error}</p>;
+  if (!data.landingPage) return <p>Data belum tersedia</p>;
 
   return (
     <HeaderFooter siteName="sitename lorem" copyright="copyrihgth lorem">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <Content>
-          <Hero bg={landingPage.heroImage} title={data.heroTitle} description={data.heroDesc} btnTxt={data.heroBtnTxt} />
-          <Grid1colums col1={<ImageComponent imageUrl={data.interestImg} imageAlt={data.interestTitle} width={1000} height={1000} />} />
-          <LayoutPrimary id="keinginan-pebisnis" bg="bg-transparent" title={data.interestTitle} description={data.interestDesc} footer="" headAlign="">
-            <Grid2List listItem={data.interestListItems} />
+          <Hero bg={landingPageStyle.heroImage} title={data.landingPage.heroTitle} description={data.landingPage.heroDesc} btnTxt={data.landingPage.heroBtnTxt} />
+          <LayoutPrimary id="keinginan-pebisnis" bg="bg-transparent" title={data.landingPage.interestTitle}>
+            <Grid2List listItem={data.interestList} />
           </LayoutPrimary>
 
           <LayoutFullBlock
             id="call-to-action"
-            bg={landingPage.bg1}
-            title={data.cta1Title}
-            btnTxt={data.cta1BtnTxt}
+            bg={landingPageStyle.bg1}
+            title={data.landingPage.cta1Title}
+            btnTxt={data.landingPage.cta1BtnTxt}
             btnUrl="#solusi"
-            imageUrl={data.cta1Img}
-            imageAlt={data.cta1Title}
+            imageUrl={data.landingPage.cta1Img}
+            imageAlt={data.landingPage.cta1Title}
             iconRight={<FaArrowRight />}
-          ></LayoutFullBlock>
+          />
 
-          <LayoutSecondary id="solusi" title={data.solutionTitle} description={data.solutionDesc} footer="" headAlign="left" imageUrl={data.solutionImg} imageAlt={data.solutionTitle}>
-            <Grid2List listItem={data.solutionListItems} />
+          <LayoutSecondary
+            id="solusi"
+            title={data.landingPage.solutionTitle}
+            description={data.landingPage.solutionDesc}
+            imageUrl={data.landingPage.solutionImg}
+            imageAlt={data.landingPage.solutionTitle}
+          >
+            <Grid2List listItem={data.solutionList} />
           </LayoutSecondary>
 
           <LayoutFullBlock
             id="good-news"
             bg=""
             reverse={true}
-            title={data.cta2Title}
-            description={data.cta2Desc}
-            btnTxt={data.cta2Txt}
+            title={data.landingPage.cta2Title}
+            description={data.landingPage.cta2Desc}
+            btnTxt={data.landingPage.cta2Txt}
             btnUrl="#kalamanacopy"
-            imageUrl={data.cta2Img}
-            imageAlt={data.cta2Title}
+            imageUrl={data.landingPage.cta2Img}
+            imageAlt={data.landingPage.cta2Title}
           />
 
-          <LayoutSecondary id="kalamanacopy" title={data.skillTitle} description={data.skillDesc} footer="" headAlign="left" imageUrl={data.skillImg} imageAlt={data.skillTitle}>
-            <Grid2List listItem={data.skillListItems} />
+          <LayoutSecondary id="kalamanacopy" title={data.landingPage.skillTitle} description={data.landingPage.skillDesc} imageUrl={data.landingPage.skillImg} imageAlt={data.landingPage.skillTitle}>
+            <Grid2List listItem={data.skillList} />
           </LayoutSecondary>
+
+          <LayoutPrimary id="layanan" bg={landingPageStyle.bg1} title={data.landingPage.servicesTitle}>
+            <ServicesSqlite listItem={data.servicesList} />
+          </LayoutPrimary>
         </Content>
       </main>
     </HeaderFooter>
