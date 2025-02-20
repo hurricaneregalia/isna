@@ -4,6 +4,12 @@
   background-size: cover;
   background-position: center;
 }
+/* Media Query untuk perangkat mobile */
+@media (max-width: 425px) {
+  .heroImage {
+    background-image: url('/images/landingPage/hero/bgHero2-mobile.webp');
+  }
+}
 .bg1 {
   background-image: url('/images/landingPage/bgShine.webp');
   background-attachment: fixed;
