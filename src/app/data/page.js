@@ -12,6 +12,10 @@ import { FaArrowRight } from "react-icons/fa6";
 import Grid2List from "../component/landingPage/grid2List";
 import landingPageStyle from "../component/landingPage/landingPage.module.css";
 import HeaderFooterSqlite from "../component/global/headerFooterSqlite";
+import ImageComponent from "../component/global/imageComponent";
+import FinalCta from "../component/global/finalCta";
+import Countdown from "../component/landingPage/countdown";
+import BtnLinkPrimary from "../component/global/btnLinkPrimary";
 
 export default function LayoutLandingPage() {
   const [data, setData] = useState({
@@ -22,6 +26,7 @@ export default function LayoutLandingPage() {
     servicesList: [],
     featureServicesListItems: [],
     siteIdentities: null,
+    bonusListItems: [],
     loading: true,
     error: null,
   });
@@ -38,6 +43,7 @@ export default function LayoutLandingPage() {
         servicesList: response.data.servicesListItems || [],
         featureServicesListItems: response.data.featureServicesListItems || [],
         siteIdentities: response.data.siteIdentities[0] || null,
+        bonusListItems: response.data.bonusListItems || [],
         loading: false,
         error: null,
       });
@@ -103,6 +109,20 @@ export default function LayoutLandingPage() {
           <LayoutPrimary id="layanan" bg={landingPageStyle.bg1} title={data.landingPage.servicesTitle}>
             <ServicesSqlite listItem={data.servicesList} subListItem={data.featureServicesListItems} />
           </LayoutPrimary>
+
+          <LayoutPrimary id="bonus" bg="bg-transparent" title={data.landingPage.bonusTitle + " seharga Rp. 700.000"} description={data.landingPage.bonusDesc} footer="" headAlign="">
+            <Grid2List listItem={data.bonusListItems} />
+            <div className="w-full text-center py-8 sm:w-8/12 mx-auto">
+              <Countdown targetDate={new Date("2025-03-31T23:59:59")} />
+            </div>
+            <div className="w-full text-center py-8">
+              <BtnLinkPrimary btnUrl="#layanan" btnTxt="Dapatkan bonus" btnFull={false} iconRight={<FaArrowRight />} btnStyle="" />
+            </div>
+          </LayoutPrimary>
+          <LayoutPrimary id="score" bg="bg-transparent" title={data.landingPage.scoreTitle} description={data.landingPage.scoreDesc} footer="" headAlign="">
+            <ImageComponent imageUrl={data.landingPage.scoreImg} imageAlt={data.landingPage.scoreTitle} width={1000} height={1000} />
+          </LayoutPrimary>
+          <FinalCta id="dapat-bonus" title="Ayo tingkatkan penjualan bisnis anda dan dapatkan bonusnya." headAlign={false} bg={landingPageStyle.bg1} />
         </Content>
       </main>
     </HeaderFooterSqlite>
