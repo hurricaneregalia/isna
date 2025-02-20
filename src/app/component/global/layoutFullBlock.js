@@ -8,7 +8,7 @@ export default function LayoutFullBlock({ children, id, title, description, foot
   const bgFx = bg ? bg : "bg-base-100";
   const textFx = bg === "" || bg === "bg-transparent" ? "" : "text-neutral-content";
   const btnFx = btnTxt ? (
-    <div className="mt-6">
+    <div className="mt-20">
       <BtnLinkPrimary btnTxt={btnTxt} btnUrl={btnUrl} iconRight={iconRight} />
     </div>
   ) : (

@@ -90,12 +90,6 @@ model ServicesCategory {
   updateDate DateTime @updatedAt
 }
 
-model SiteIdentity {
-  id      Int    @id @default(autoincrement())
-  address String
-  email   String
-}
-
 model LandingPage {
   id             Int      @id @default(autoincrement())
   bonusBtnTxt    String   @default("")
@@ -139,6 +133,35 @@ model LandingPage {
   solutionTitle  String   @default("")
   createDate     DateTime @default(now())
   updateDate     DateTime @updatedAt
+}
+
+model SocialLinks {
+  id       Int    @id @default(autoincrement())
+  platform String
+  url      String
+  userName String
+}
+
+model SiteIdentity {
+  id                 Int    @id @default(autoincrement())
+  contactAddress     String
+  contactEmail       String
+  contactPhone       String
+  seoCanonalUrl      String
+  seoMetaDescription String
+  seoMetaKeywords    String
+  seoMetaTitle       String
+  seoRobots          String
+  siteCopyright      String
+  siteDescription    String
+  siteFaviconAltText String
+  siteFaviconUrl     String
+  siteLogoAlt        String
+  siteLogoUrl        String
+  siteName           String
+  siteOgImageAltText String
+  siteOgImageUrl     String
+  siteTagline        String
 }
 
 //npx prisma migrate dev
