@@ -19,10 +19,12 @@ export const metadata = {
 };
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <SiteIdentityProvider>
-        <body className="min-h-screen bg-base-100 text-base-content">{children}</body>
-      </SiteIdentityProvider>
-    </html>
+    <>
+      <html lang="en" className="scroll-smooth">
+        <SiteIdentityProvider>
+          <body className="min-h-screen bg-base-100 text-base-content">{children}</body>
+        </SiteIdentityProvider>
+      </html>
+    </>
   );
 }

@@ -16,6 +16,7 @@ import ImageComponent from "../component/global/imageComponent";
 import FinalCta from "../component/global/finalCta";
 import Countdown from "../component/landingPage/countdown";
 import BtnLinkPrimary from "../component/global/btnLinkPrimary";
+import Head from "next/head";
 
 export default function LayoutLandingPage() {
   const [data, setData] = useState({
@@ -66,65 +67,71 @@ export default function LayoutLandingPage() {
   if (!data.landingPage) return <p>Data belum tersedia</p>;
 
   return (
-    <HeaderFooterSqlite siteName={data.siteIdentities.siteName} copyright={data.siteIdentities.copyright}>
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Content>
-          <Hero bg={landingPageStyle.heroImage} title={data.landingPage.heroTitle} description={data.landingPage.heroDesc} btnTxt={data.landingPage.heroBtnTxt} />
-          <LayoutPrimary id="keinginan-pebisnis" bg="bg-transparent" title={data.landingPage.interestTitle}>
-            <Grid2List listItem={data.interestList} />
-          </LayoutPrimary>
-          <LayoutFullBlock
-            id="call-to-action"
-            bg={landingPageStyle.bg1}
-            title={data.landingPage.cta1Title}
-            btnTxt={data.landingPage.cta1BtnTxt}
-            btnUrl="#solusi"
-            imageUrl={data.landingPage.cta1Img}
-            imageAlt={data.landingPage.cta1Title}
-            iconRight={<FaArrowRight />}
-          />
-          <LayoutSecondary
-            id="solusi"
-            title={data.landingPage.solutionTitle}
-            description={data.landingPage.solutionDesc}
-            imageUrl={data.landingPage.solutionImg}
-            imageAlt={data.landingPage.solutionTitle}
-          >
-            <Grid2List listItem={data.solutionList} />
-          </LayoutSecondary>
-          <LayoutFullBlock
-            id="good-news"
-            bg=""
-            reverse={true}
-            title={data.landingPage.cta2Title}
-            description={data.landingPage.cta2Desc}
-            btnTxt={data.landingPage.cta2Txt}
-            btnUrl="#kalamanacopy"
-            imageUrl={data.landingPage.cta2Img}
-            imageAlt={data.landingPage.cta2Title}
-          />
-          <LayoutSecondary id="kalamanacopy" title={data.landingPage.skillTitle} description={data.landingPage.skillDesc} imageUrl={data.landingPage.skillImg} imageAlt={data.landingPage.skillTitle}>
-            <Grid2List listItem={data.skillList} />
-          </LayoutSecondary>
-          <LayoutPrimary id="layanan" bg={landingPageStyle.bg1} title={data.landingPage.servicesTitle}>
-            <ServicesSqlite listItem={data.servicesList} subListItem={data.featureServicesListItems} />
-          </LayoutPrimary>
+    <>
+      <Head>
+        <link rel="preload" href="/images/landingPage/hero/bgHero2.webp" as="image" />
+        <link rel="preload" href="/images/landingPage/bgShine.webp" as="image" />
+      </Head>
+      <HeaderFooterSqlite siteName={data.siteIdentities.siteName} copyright={data.siteIdentities.copyright}>
+        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+          <Content>
+            <Hero bg={landingPageStyle.heroImage} title={data.landingPage.heroTitle} description={data.landingPage.heroDesc} btnTxt={data.landingPage.heroBtnTxt} />
+            <LayoutPrimary id="keinginan-pebisnis" bg="bg-transparent" title={data.landingPage.interestTitle}>
+              <Grid2List listItem={data.interestList} />
+            </LayoutPrimary>
+            <LayoutFullBlock
+              id="call-to-action"
+              bg={landingPageStyle.bg1}
+              title={data.landingPage.cta1Title}
+              btnTxt={data.landingPage.cta1BtnTxt}
+              btnUrl="#solusi"
+              imageUrl={data.landingPage.cta1Img}
+              imageAlt={data.landingPage.cta1Title}
+              iconRight={<FaArrowRight />}
+            />
+            <LayoutSecondary
+              id="solusi"
+              title={data.landingPage.solutionTitle}
+              description={data.landingPage.solutionDesc}
+              imageUrl={data.landingPage.solutionImg}
+              imageAlt={data.landingPage.solutionTitle}
+            >
+              <Grid2List listItem={data.solutionList} />
+            </LayoutSecondary>
+            <LayoutFullBlock
+              id="good-news"
+              bg=""
+              reverse={true}
+              title={data.landingPage.cta2Title}
+              description={data.landingPage.cta2Desc}
+              btnTxt={data.landingPage.cta2Txt}
+              btnUrl="#kalamanacopy"
+              imageUrl={data.landingPage.cta2Img}
+              imageAlt={data.landingPage.cta2Title}
+            />
+            <LayoutSecondary id="kalamanacopy" title={data.landingPage.skillTitle} description={data.landingPage.skillDesc} imageUrl={data.landingPage.skillImg} imageAlt={data.landingPage.skillTitle}>
+              <Grid2List listItem={data.skillList} />
+            </LayoutSecondary>
+            <LayoutPrimary id="layanan" bg={landingPageStyle.bg1} title={data.landingPage.servicesTitle}>
+              <ServicesSqlite listItem={data.servicesList} subListItem={data.featureServicesListItems} />
+            </LayoutPrimary>
 
-          <LayoutPrimary id="bonus" bg="bg-transparent" title={data.landingPage.bonusTitle + " seharga Rp. 700.000"} description={data.landingPage.bonusDesc} footer="" headAlign="">
-            <Grid2List listItem={data.bonusListItems} />
-            <div className="w-full text-center py-8 sm:w-8/12 mx-auto">
-              <Countdown targetDate={new Date("2025-03-31T23:59:59")} />
-            </div>
-            <div className="w-full text-center py-8">
-              <BtnLinkPrimary btnUrl="#layanan" btnTxt="Dapatkan bonus" btnFull={false} iconRight={<FaArrowRight />} btnStyle="" />
-            </div>
-          </LayoutPrimary>
-          <LayoutPrimary id="score" bg="bg-transparent" title={data.landingPage.scoreTitle} description={data.landingPage.scoreDesc} footer="" headAlign="">
-            <ImageComponent imageUrl={data.landingPage.scoreImg} imageAlt={data.landingPage.scoreTitle} width={1000} height={1000} />
-          </LayoutPrimary>
-          <FinalCta id="dapat-bonus" title="Ayo tingkatkan penjualan bisnis anda dan dapatkan bonusnya." headAlign={false} bg={landingPageStyle.bg1} />
-        </Content>
-      </main>
-    </HeaderFooterSqlite>
+            <LayoutPrimary id="bonus" bg="bg-transparent" title={data.landingPage.bonusTitle + " seharga Rp. 700.000"} description={data.landingPage.bonusDesc} footer="" headAlign="">
+              <Grid2List listItem={data.bonusListItems} />
+              <div className="w-full text-center py-8 sm:w-8/12 mx-auto">
+                <Countdown targetDate={new Date("2025-03-31T23:59:59")} />
+              </div>
+              <div className="w-full text-center py-8">
+                <BtnLinkPrimary btnUrl="#layanan" btnTxt="Dapatkan bonus" btnFull={false} iconRight={<FaArrowRight />} btnStyle="" />
+              </div>
+            </LayoutPrimary>
+            <LayoutPrimary id="score" bg="bg-transparent" title={data.landingPage.scoreTitle} description={data.landingPage.scoreDesc} footer="" headAlign="">
+              <ImageComponent imageUrl={data.landingPage.scoreImg} imageAlt={data.landingPage.scoreTitle} width={1000} height={1000} />
+            </LayoutPrimary>
+            <FinalCta id="dapat-bonus" title="Ayo tingkatkan penjualan bisnis anda dan dapatkan bonusnya." headAlign={false} bg={landingPageStyle.bg1} />
+          </Content>
+        </main>
+      </HeaderFooterSqlite>
+    </>
   );
 }
