@@ -78,9 +78,9 @@ model ServicesListItem {
   stock                   Int                       @default(0) // Menambahkan default value untuk kolom stock
   isBest                  Boolean                   @default(false) // Menambahkan default value
   category                String                    @default("")
+  featureServicesListItem FeatureServicesListItem[]
   createDate              DateTime                  @default(now())
   updateDate              DateTime                  @updatedAt
-  FeatureServicesListItem FeatureServicesListItem[]
 }
 
 model ServicesCategory {

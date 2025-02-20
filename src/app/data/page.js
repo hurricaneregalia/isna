@@ -20,6 +20,7 @@ export default function LayoutLandingPage() {
     solutionList: [],
     skillList: [],
     servicesList: [],
+    featureServicesListItems: [],
     loading: true,
     error: null,
   });
@@ -34,6 +35,7 @@ export default function LayoutLandingPage() {
         skillList: response.data.skillListItems || [],
         solutionList: response.data.solutionListItems || [],
         servicesList: response.data.servicesListItems || [],
+        featureServicesListItems: response.data.featureServicesListItems || [],
         loading: false,
         error: null,
       });
@@ -102,7 +104,7 @@ export default function LayoutLandingPage() {
           </LayoutSecondary>
 
           <LayoutPrimary id="layanan" bg={landingPageStyle.bg1} title={data.landingPage.servicesTitle}>
-            <ServicesSqlite listItem={data.servicesList} />
+            <ServicesSqlite listItem={data.servicesList} subListItem={data.featureServicesListItems} />
           </LayoutPrimary>
         </Content>
       </main>
