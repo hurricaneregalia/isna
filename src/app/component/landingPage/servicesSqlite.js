@@ -5,7 +5,7 @@ import { PiCheckFatFill } from "react-icons/pi";
 
 export default function ServicesSqlite({ listItem, subListItem }) {
   return (
-    <div className="relative isolate text-base-content">
+    <div className="text-base-content">
       <div className="w-full">
         <div className="container mx-auto">
           <div className="grid gap-4 md:grid-cols-3">
@@ -13,7 +13,7 @@ export default function ServicesSqlite({ listItem, subListItem }) {
               listItem.map((item, index) => {
                 const list = subListItem.filter((service) => service.servicesListItemId === item.id);
                 return (
-                  <div key={index} className={`card bg-base-100 rounded-none rounded-bl-3xl ${item.isBest ? "border border-primary shadow-xl shadow-indigo-500/50" : ""}`}>
+                  <div key={index} className={`bg-base-100 rounded-none rounded-bl-3xl ${item.isBest ? "border border-primary shadow-xl shadow-indigo-500/50" : ""}`}>
                     <div className="card-body p-0">
                       <div className="bg-gray-900 text-gray-300 rounded-bl-3xl p-8">
                         <div className="text-2xl mb-5">

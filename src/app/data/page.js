@@ -70,7 +70,6 @@ export default function LayoutLandingPage() {
   return (
     <>
       <CanvasCursor />
-
       <Head>
         <link rel="preload" href="/images/landingPage/hero/bgHero2.webp" as="image" />
         <link rel="preload" href="/images/landingPage/bgShine.webp" as="image" />
@@ -118,7 +117,6 @@ export default function LayoutLandingPage() {
             <LayoutPrimary id="layanan" bg={landingPageStyle.bg1} title={data.landingPage.servicesTitle}>
               <ServicesSqlite listItem={data.servicesList} subListItem={data.featureServicesListItems} />
             </LayoutPrimary>
-
             <LayoutPrimary
               id="bonus"
               bg="bg-transparent"
