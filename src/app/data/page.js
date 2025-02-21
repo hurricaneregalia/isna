@@ -17,6 +17,8 @@ import FinalCta from "../component/global/finalCta";
 import Countdown from "../component/landingPage/countdown";
 import BtnLinkPrimary from "../component/global/btnLinkPrimary";
 import Head from "next/head";
+import CanvasCursor from "../component/canvasCursor/CanvasCursor";
+import FluidCursor from "../component/canvasCursor/FluidCursor";
 
 export default function LayoutLandingPage() {
   const [data, setData] = useState({
@@ -116,10 +118,17 @@ export default function LayoutLandingPage() {
               <ServicesSqlite listItem={data.servicesList} subListItem={data.featureServicesListItems} />
             </LayoutPrimary>
 
-            <LayoutPrimary id="bonus" bg="bg-transparent" title={data.landingPage.bonusTitle + " seharga Rp. 700.000"} description={data.landingPage.bonusDesc} footer="" headAlign="">
+            <LayoutPrimary
+              id="bonus"
+              bg="bg-transparent"
+              title={data.landingPage.bonusTitle + " seharga Rp. " + data.landingPage.bonusPrice.toLocaleString("id-ID")}
+              description={data.landingPage.bonusDesc}
+              footer=""
+              headAlign=""
+            >
               <Grid2List listItem={data.bonusListItems} />
               <div className="w-full text-center py-8 sm:w-8/12 mx-auto">
-                <Countdown targetDate={new Date("2025-03-31T23:59:59")} />
+                <Countdown targetDate={new Date(data.landingPage.bonusCounter)} bonusPeriode={data.landingPage.bonusCounter} />
               </div>
               <div className="w-full text-center py-8">
                 <BtnLinkPrimary btnUrl="#layanan" btnTxt="Dapatkan bonus" btnFull={false} iconRight={<FaArrowRight />} btnStyle="" />
@@ -129,6 +138,7 @@ export default function LayoutLandingPage() {
               <ImageComponent imageUrl={data.landingPage.scoreImg} imageAlt={data.landingPage.scoreTitle} width={1000} height={1000} />
             </LayoutPrimary>
             <FinalCta id="dapat-bonus" title="Ayo tingkatkan penjualan bisnis anda dan dapatkan bonusnya." headAlign={false} bg={landingPageStyle.bg1} />
+            <FluidCursor />
           </Content>
         </main>
       </HeaderFooterSqlite>

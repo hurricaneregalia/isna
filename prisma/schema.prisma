@@ -93,7 +93,9 @@ model ServicesCategory {
 model LandingPage {
   id             Int      @id @default(autoincrement())
   bonusBtnTxt    String   @default("")
+  bonusCounter   DateTime @default(now())
   bonusDesc      String   @default("")
+  bonusPrice     Float    @default(0)
   bonusTitle     String
   cta1BtnTxt     String   @default("")
   cta1Desc       String   @default("")

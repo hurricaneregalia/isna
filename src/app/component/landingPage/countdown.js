@@ -1,9 +1,19 @@
 "use client";
 import { useState, useEffect } from "react";
 
-const Countdown = ({ targetDate }) => {
+const Countdown = ({ targetDate, bonusPeriode }) => {
+  // Fungsi untuk mengkonversi targetDate ke waktu WIB
+  const convertToWIB = (date) => {
+    const utcDate = new Date(date);
+    // Menambahkan 7 jam untuk mengkonversi UTC ke WIB
+    utcDate.setHours(utcDate.getHours() - 7);
+    return utcDate;
+  };
+
+  // Menghitung sisa waktu
   const calculateTimeLeft = () => {
-    const difference = targetDate - new Date();
+    const targetDateWIB = convertToWIB(targetDate);
+    const difference = targetDateWIB - new Date();
     let timeLeft = {};
 
     if (difference > 0) {
@@ -31,23 +41,36 @@ const Countdown = ({ targetDate }) => {
     <div className="">
       <div className="text-center">
         <div className="text-2xl font-bold py-8">
-          <p>Bonus berakhir dalam</p>
+          {timeLeft.seconds ? (
+            <>
+              Bonus berlaku sampai{" "}
+              {new Date(bonusPeriode).toLocaleDateString("id-ID", {
+                day: "2-digit",
+                month: "long",
+                year: "numeric",
+              })}
+              <hr />
+              Berakhir dalam
+            </>
+          ) : (
+            "Periode promo sudah habis"
+          )}
         </div>
         <div className="grid grid-cols-4 mx-auto gap-4 w-full">
           <div className="bg-base-100 w-full py-4 rounded-bl-3xl">
-            <p className=" text-3xl font-bold">{timeLeft.days}</p>
+            <p className=" text-3xl font-bold">{timeLeft.days ? timeLeft.days : 0}</p>
             <p>Hari</p>
           </div>
           <div className="bg-base-100 w-full py-4 rounded-bl-3xl">
-            <p className=" text-3xl font-bold">{timeLeft.hours}</p>
+            <p className=" text-3xl font-bold">{timeLeft.hours ? timeLeft.hours : 0}</p>
             <p>Jam</p>
           </div>
           <div className="bg-base-100 w-full py-4 rounded-bl-3xl">
-            <p className=" text-3xl font-bold">{timeLeft.minutes}</p>
+            <p className=" text-3xl font-bold">{timeLeft.minutes ? timeLeft.minutes : 0}</p>
             <p>Menit</p>
           </div>
           <div className="bg-base-100 w-full py-4 rounded-bl-3xl">
-            <p className=" text-3xl font-bold">{timeLeft.seconds}</p>
+            <p className=" text-3xl font-bold">{timeLeft.seconds ? timeLeft.seconds : 0}</p>
             <p>Detik</p>
           </div>
         </div>
