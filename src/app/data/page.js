@@ -18,7 +18,6 @@ import Countdown from "../component/landingPage/countdown";
 import BtnLinkPrimary from "../component/global/btnLinkPrimary";
 import Head from "next/head";
 import CanvasCursor from "../component/canvasCursor/CanvasCursor";
-import FluidCursor from "../component/canvasCursor/FluidCursor";
 
 export default function LayoutLandingPage() {
   const [data, setData] = useState({
@@ -70,6 +69,8 @@ export default function LayoutLandingPage() {
 
   return (
     <>
+      <CanvasCursor />
+
       <Head>
         <link rel="preload" href="/images/landingPage/hero/bgHero2.webp" as="image" />
         <link rel="preload" href="/images/landingPage/bgShine.webp" as="image" />
@@ -138,7 +139,6 @@ export default function LayoutLandingPage() {
               <ImageComponent imageUrl={data.landingPage.scoreImg} imageAlt={data.landingPage.scoreTitle} width={1000} height={1000} />
             </LayoutPrimary>
             <FinalCta id="dapat-bonus" title="Ayo tingkatkan penjualan bisnis anda dan dapatkan bonusnya." headAlign={false} bg={landingPageStyle.bg1} />
-            <FluidCursor />
           </Content>
         </main>
       </HeaderFooterSqlite>
