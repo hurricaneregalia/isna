@@ -49,7 +49,7 @@ const Countdown = ({ targetDate, bonusPeriode }) => {
                 month: "long",
                 year: "numeric",
               })}
-              <hr />
+              <hr className=" opacity-0" />
               Berakhir dalam
             </>
           ) : (

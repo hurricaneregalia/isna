@@ -24,9 +24,9 @@ model Users {
 
 model BonusListItem {
   id         Int      @id @default(autoincrement())
-  createDate DateTime @default(now())
   icon       String
   title      String
+  createDate DateTime @default(now())
   updateDate DateTime @updatedAt
 }
 
@@ -142,6 +142,14 @@ model SocialLinks {
   platform String
   url      String
   userName String
+}
+
+model FacebookPixel {
+  id           Int      @id @default(autoincrement())
+  pixelId      String // Facebook Pixel ID
+  campaignName String // Nama event yang terjadi
+  createdAt    DateTime @default(now()) // Waktu data dimasukkan
+  updatedAt    DateTime @updatedAt // Waktu data terakhir diperbarui
 }
 
 model SiteIdentity {

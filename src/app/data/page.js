@@ -18,6 +18,7 @@ import Countdown from "../component/landingPage/countdown";
 import BtnLinkPrimary from "../component/global/btnLinkPrimary";
 import Head from "next/head";
 import CanvasCursor from "../component/canvasCursor/CanvasCursor";
+import ScrollAnimation from "../component/global/scrollAnimation";
 
 export default function LayoutLandingPage() {
   const [data, setData] = useState({
