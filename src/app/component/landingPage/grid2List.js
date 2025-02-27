@@ -6,14 +6,13 @@ import { AiOutlineProduct } from "react-icons/ai";
 import { TbTargetArrow } from "react-icons/tb";
 import { HiOutlineSpeakerphone } from "react-icons/hi";
 import { CgWebsite } from "react-icons/cg";
-import ScrollAnimation from "../global/scrollAnimation";
 
 export default function Grid2List({ listItem, border }) {
   const borderFx = border ? "border border-1" : "";
   return (
     <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
       {listItem.map((item, index) => (
-        <ScrollAnimation customStyle="col-span-1 flex justify-stretch" key={index}>
+        <div className="col-span-1 flex justify-stretch" key={index} data-aos="flip-right">
           <div className={`bg-base-100 p-8 rounded-bl-3xl w-full ${borderFx}`}>
             {item.icon === "FaRegFaceGrinStars" ? (
               <FaRegFaceGrinStars className="text-4xl mb-10 mt-4" />
@@ -35,7 +34,7 @@ export default function Grid2List({ listItem, border }) {
             <p className="font-bold mb-3 my-2 text-xl h3">{item.title}</p>
             <p>{item.desc ? item.desc : item.description}</p>
           </div>
-        </ScrollAnimation>
+        </div>
       ))}
     </div>
   );

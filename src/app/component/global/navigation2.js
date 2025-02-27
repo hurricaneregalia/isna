@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ThemeSwitch from "./themeSwitch";
 import Link from "next/link";
 import logo2 from "../../../../public/images/siteIdentity/logo2.svg";
@@ -9,8 +9,16 @@ import { FaXmark } from "react-icons/fa6";
 import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from "@headlessui/react";
 import Profile from "./profile";
 import Notif from "./notif";
+import Aos from "aos";
+import "../../../../node_modules/aos/dist/aos.css";
 
 export default function Navigation2({ siteName }) {
+  useEffect(() => {
+    Aos.init({
+      easing: "ease-out-back",
+      duration: 1000,
+    });
+  }, []);
   const navMenu = [
     { name: "Home", href: "#", key: "home" },
     { name: "Bisnis", href: "#keinginan-pebisnis", key: "bisnis" },
