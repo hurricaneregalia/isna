@@ -13,29 +13,27 @@ export default function Grid2List({ listItem, border }) {
   return (
     <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
       {listItem.map((item, index) => (
-        <ScrollAnimation key={index}>
-          <div className="col-span-1 flex justify-stretch">
-            <div className={`bg-base-100 p-8 rounded-bl-3xl w-full ${borderFx}`}>
-              {item.icon === "FaRegFaceGrinStars" ? (
-                <FaRegFaceGrinStars className="text-4xl mb-10 mt-4" />
-              ) : item.icon === "IoStatsChart" ? (
-                <IoStatsChart className="text-4xl mb-10 mt-4" />
-              ) : item.icon === "AiOutlineProduct" ? (
-                <AiOutlineProduct className="text-4xl mb-10 mt-4" />
-              ) : item.icon === "TbTargetArrow" ? (
-                <TbTargetArrow className="text-4xl mb-10 mt-4" />
-              ) : item.icon === "HiOutlineSpeakerphone" ? (
-                <HiOutlineSpeakerphone className="text-4xl mb-10 mt-4" />
-              ) : item.icon === "CgWebsite" ? (
-                <CgWebsite className="text-4xl mb-10 mt-4" />
-              ) : item.icon === "LiaMoneyBillWaveSolid" ? (
-                <LiaMoneyBillWaveSolid className="text-4xl mb-10 mt-4" />
-              ) : (
-                <FaFire className="text-4xl mb-10 mt-4" />
-              )}
-              <p className="font-bold mb-3 my-2 text-xl h3">{item.title}</p>
-              <p>{item.desc ? item.desc : item.description}</p>
-            </div>
+        <ScrollAnimation customStyle="col-span-1 flex justify-stretch" key={index}>
+          <div className={`bg-base-100 p-8 rounded-bl-3xl w-full ${borderFx}`}>
+            {item.icon === "FaRegFaceGrinStars" ? (
+              <FaRegFaceGrinStars className="text-4xl mb-10 mt-4" />
+            ) : item.icon === "IoStatsChart" ? (
+              <IoStatsChart className="text-4xl mb-10 mt-4" />
+            ) : item.icon === "AiOutlineProduct" ? (
+              <AiOutlineProduct className="text-4xl mb-10 mt-4" />
+            ) : item.icon === "TbTargetArrow" ? (
+              <TbTargetArrow className="text-4xl mb-10 mt-4" />
+            ) : item.icon === "HiOutlineSpeakerphone" ? (
+              <HiOutlineSpeakerphone className="text-4xl mb-10 mt-4" />
+            ) : item.icon === "CgWebsite" ? (
+              <CgWebsite className="text-4xl mb-10 mt-4" />
+            ) : item.icon === "LiaMoneyBillWaveSolid" ? (
+              <LiaMoneyBillWaveSolid className="text-4xl mb-10 mt-4" />
+            ) : (
+              <FaFire className="text-4xl mb-10 mt-4" />
+            )}
+            <p className="font-bold mb-3 my-2 text-xl h3">{item.title}</p>
+            <p>{item.desc ? item.desc : item.description}</p>
           </div>
         </ScrollAnimation>
       ))}

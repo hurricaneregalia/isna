@@ -1,7 +1,7 @@
 "use client";
-import React, { Children, useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-export default function ScrollAnimation({ children }) {
+export default function ScrollAnimation({ children, customStyle }) {
   const elementRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -33,7 +33,7 @@ export default function ScrollAnimation({ children }) {
   }, []);
 
   return (
-    <div ref={elementRef} className={`${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"} transition-all duration-1000 ease-in-out transform`}>
+    <div ref={elementRef} className={`${customStyle} ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"} transition-all duration-1000 ease-in-out transform `}>
       {children}
     </div>
   );
