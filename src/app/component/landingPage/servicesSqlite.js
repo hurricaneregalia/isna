@@ -13,16 +13,18 @@ export default function ServicesSqlite({ listItem, subListItem }) {
               listItem.map((item, index) => {
                 const list = subListItem.filter((service) => service.servicesListItemId === item.id);
                 return (
-                  <div key={index} className={`bg-base-100 rounded-none rounded-bl-3xl ${item.isBest ? "border border-primary shadow-xl shadow-indigo-500/50" : ""}`}>
+                  <div key={index} className={`bg-base-100 rounded-none rounded-bl-3xl ${item.isBest ? "border border-primary shadow-xl shadow-indigo-500/50" : ""}`} data-aos="fade-up">
                     <div className="card-body p-0">
-                      <div className="bg-gray-900 text-gray-300 rounded-bl-3xl p-8">
+                      <div className="bg-gray-900 text-gray-300 rounded-bl-3xl p-8 overflow-hidden">
                         <div className="text-2xl mb-5">
                           {item.icon === "FaRegStar" && <FaRegStar />}
                           {item.icon === "FaRegStarHalfStroke" && <FaRegStarHalfStroke />}
                           {item.icon === "FaStar" && <FaStar />}
                         </div>
                         <p className="font-normal">{item.title}</p>
-                        <p className="text-3xl font-bold my-2 text-secondary">{item.price.toLocaleString("id-ID")}</p>
+                        <p className="text-3xl font-bold my-2 text-secondary" data-aos="fade-left">
+                          {item.price.toLocaleString("id-ID")}
+                        </p>
                       </div>
 
                       <div className="space-y-2 my-5 px-8">

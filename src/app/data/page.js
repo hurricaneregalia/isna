@@ -69,7 +69,6 @@ export default function LayoutLandingPage() {
 
   return (
     <>
-      <CanvasCursor />
       <Head>
         <link rel="preload" href="/images/landingPage/hero/bgHero2.webp" as="image" />
         <link rel="preload" href="/images/landingPage/bgShine.webp" as="image" />
@@ -133,10 +132,11 @@ export default function LayoutLandingPage() {
                 <BtnLinkPrimary btnUrl="#layanan" btnTxt="Dapatkan bonus" btnFull={false} iconRight={<FaArrowRight />} btnStyle="" />
               </div>
             </LayoutPrimary>
-            <LayoutPrimary id="score" bg="bg-transparent" title={data.landingPage.scoreTitle} description={data.landingPage.scoreDesc} footer="" headAlign="">
+            <LayoutPrimary anime="fade-up" id="score" bg="bg-transparent" title={data.landingPage.scoreTitle} description={data.landingPage.scoreDesc} footer="" headAlign="">
               <ImageComponent imageUrl={data.landingPage.scoreImg} imageAlt={data.landingPage.scoreTitle} width={1000} height={1000} />
             </LayoutPrimary>
             <FinalCta id="dapat-bonus" title="Ayo tingkatkan penjualan bisnis anda dan dapatkan bonusnya." headAlign={false} bg={landingPageStyle.bg1} />
+            <CanvasCursor />
           </Content>
         </main>
       </HeaderFooterSqlite>

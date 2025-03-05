@@ -12,7 +12,7 @@ export default function Grid2List({ listItem, border }) {
   return (
     <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
       {listItem.map((item, index) => (
-        <div className="col-span-1 flex justify-stretch" key={index} data-aos="flip-right">
+        <div className="col-span-1 flex justify-stretch" key={index} data-aos="fade-up">
           <div className={`bg-base-100 p-8 rounded-bl-3xl w-full ${borderFx}`}>
             {item.icon === "FaRegFaceGrinStars" ? (
               <FaRegFaceGrinStars className="text-4xl mb-10 mt-4" />

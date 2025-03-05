@@ -8,13 +8,13 @@ export default function LayoutSecondary({ children, id, title, description, foot
     <section className={`py-20 ${bg}`} id={id}>
       <div className="container lg:w-8/12 px-8 mx-auto">
         <div className="flex flex-col-reverse sm:flex-row gap-20 mb-10">
-          <div className="w-full">
+          <div className="w-full" data-aos="fade-up">
             <p className="text-base/7 font-semibold text-primary capitalize">{id}</p>
             <div className="mt-6">
               <TextDesctiption title={title} description={description} />
             </div>
           </div>
-          <div className="w-full">
+          <div className="w-full" data-aos="flip-left">
             <ImageComponent imageUrl={imageUrl} imageAlt={imageAlt} width={300} height={300} priority={false} />
           </div>
         </div>

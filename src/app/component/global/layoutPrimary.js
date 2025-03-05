@@ -1,9 +1,10 @@
 import React from "react";
 import TextDesctiption from "./textDesctiption";
 
-export default function LayoutPrimary({ children, id, title, description, footer, headAlign, bg }) {
+export default function LayoutPrimary({ children, id, title, description, footer, headAlign, bg, anime }) {
   const footerFx = footer ? <div className="">{footer}</div> : null;
   const textFx = bg === "" || bg === "bg-transparent" ? "" : "text-neutral-content";
+  const animFX = anime ? "fade-up" : "";
   return (
     <section className={`py-20 ${bg} rounded-bl-3xl`} id={id}>
       <div className={`container lg:w-8/12 px-8 mx-auto`}>
@@ -13,7 +14,9 @@ export default function LayoutPrimary({ children, id, title, description, footer
             <TextDesctiption title={title} description={description} />
           </div>
         </div>
-        <div className="py-10">{children}</div>
+        <div className="py-10" data-aos={animFX}>
+          {children}
+        </div>
         {footerFx}
       </div>
     </section>

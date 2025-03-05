@@ -21,7 +21,7 @@ export default function LayoutFullBlock({ children, id, title, description, foot
     <section className={`py-20 ${bgFx} rounded-bl-3xl`} id={id}>
       <div className="container lg:w-8/12 px-8 mx-auto">
         <div className={`flex gap-20 ${reverseFx}`}>
-          <div className="w-full">
+          <div className="w-full" data-aos="fade-up">
             <p className="font-semibold text-primary capitalize">{id.replace(/-/g, " ")}</p>
             <div className={`mt-6 ${textFx}`}>
               <TextDesctiption title={title} description={descriptionFx} />
@@ -29,7 +29,7 @@ export default function LayoutFullBlock({ children, id, title, description, foot
             </div>
             <div>{children}</div>
           </div>
-          <div className="w-full">
+          <div className="w-full" data-aos="flip-left">
             <ImageComponent imageUrl={imageUrl} imageAlt={imageAlt} width={300} height={300} priority={false} />
           </div>
         </div>

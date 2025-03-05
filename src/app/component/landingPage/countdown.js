@@ -57,20 +57,20 @@ const Countdown = ({ targetDate, bonusPeriode }) => {
           )}
         </div>
         <div className="grid grid-cols-4 mx-auto gap-4 w-full">
-          <div className="bg-base-100 w-full py-4 rounded-bl-3xl">
-            <p className=" text-3xl font-bold">{timeLeft.days ? timeLeft.days : 0}</p>
+          <div className="bg-base-100 w-full py-4 rounded-bl-3xl" data-aos="flip-left">
+            <p className=" text-3xl font-bold text-primary">{timeLeft.days ? timeLeft.days : 0}</p>
             <p>Hari</p>
           </div>
-          <div className="bg-base-100 w-full py-4 rounded-bl-3xl">
-            <p className=" text-3xl font-bold">{timeLeft.hours ? timeLeft.hours : 0}</p>
+          <div className="bg-base-100 w-full py-4 rounded-bl-3xl" data-aos="flip-left">
+            <p className=" text-3xl font-bold text-primary">{timeLeft.hours ? timeLeft.hours : 0}</p>
             <p>Jam</p>
           </div>
-          <div className="bg-base-100 w-full py-4 rounded-bl-3xl">
-            <p className=" text-3xl font-bold">{timeLeft.minutes ? timeLeft.minutes : 0}</p>
+          <div className="bg-base-100 w-full py-4 rounded-bl-3xl" data-aos="flip-left">
+            <p className=" text-3xl font-bold text-primary">{timeLeft.minutes ? timeLeft.minutes : 0}</p>
             <p>Menit</p>
           </div>
-          <div className="bg-base-100 w-full py-4 rounded-bl-3xl">
-            <p className=" text-3xl font-bold">{timeLeft.seconds ? timeLeft.seconds : 0}</p>
+          <div className="bg-base-100 w-full py-4 rounded-bl-3xl" data-aos="flip-left">
+            <p className=" text-3xl font-bold text-primary">{timeLeft.seconds ? timeLeft.seconds : 0}</p>
             <p>Detik</p>
           </div>
         </div>
