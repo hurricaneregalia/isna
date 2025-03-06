@@ -27,6 +27,7 @@
     "theme-change": "^2.5.0"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^7.0.2",
     "daisyui": "^4.12.23",
     "eslint": "^8",
     "eslint-config-next": "14.2.22",
