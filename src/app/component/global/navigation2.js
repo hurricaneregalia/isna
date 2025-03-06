@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import ThemeSwitch from "./themeSwitch";
 import Link from "next/link";

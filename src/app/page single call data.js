@@ -1,3 +1,4 @@
+import HeaderFooter from "./component/global/headerFooter";
 import HeaderFooterSqlite from "./component/global/headerFooterSqlite";
 import LayoutLandingPage from "./component/landingPage/layoutLandingPage";
 
