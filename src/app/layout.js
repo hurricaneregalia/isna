@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import HeadMetaData from "./component/global/headMetaData";
+import { WebVitals } from "./component/global/WebVitals";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -19,7 +20,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-base-100 text-base-content">{children}</body>
+      <body className="min-h-screen bg-base-100 text-base-content">
+        <WebVitals />
+        {children}
+      </body>
     </html>
   );
 }
