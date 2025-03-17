@@ -16,6 +16,23 @@ const geistMono = localFont({
 export const metadata = {
   title: "Isna Project",
   description: "Get high-quality copywriting services for your website. Improve your content with experts.",
+  keywords: ["Next.js", "React", "JavaScript"],
+  authors: [{ name: "Kalamanacopy", url: "https://kalamanacopy.vercel.app" }],
+  creator: "Kalamanacopy",
+  robots: {
+    index: false,
+    follow: true,
+    nocache: true,
+    googleBot: {
+      index: true,
+      follow: false,
+      noimageindex: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  category: "copywriting",
 };
 export default function RootLayout({ children }) {
   return (
