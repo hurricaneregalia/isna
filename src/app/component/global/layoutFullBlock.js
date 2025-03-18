@@ -3,7 +3,7 @@ import ImageComponent from "./imageComponent";
 import BtnLinkPrimary from "./btnLinkPrimary";
 import TextDesctiption from "./textDesctiption";
 
-export default function LayoutFullBlock({ children, id, title, description, footer, headAlign, imageUrl, imageAlt, bg, reverse, btnTxt, btnUrl, iconRight }) {
+export default function LayoutFullBlock({ children, id, title, description, footer, headAlign, list, imageUrl, imageAlt, bg, reverse, btnTxt, btnUrl, iconRight }) {
   const reverseFx = reverse ? "flex-col-reverse sm:flex-row-reverse" : "flex-col-reverse sm:flex-row";
   const bgFx = bg ? bg : "bg-base-100";
   const textFx = bg === "" || bg === "bg-transparent" ? "" : "text-neutral-content";
@@ -15,6 +15,7 @@ export default function LayoutFullBlock({ children, id, title, description, foot
     ""
   );
   const descriptionFx = description ? description : "";
+  const listFx = list ? <div className="mt-6">{list}</div> : null;
   const footerFx = footer ? <div className="">{footer}</div> : null;
 
   return (
@@ -25,6 +26,7 @@ export default function LayoutFullBlock({ children, id, title, description, foot
             <p className="font-semibold text-primary capitalize">{id.replace(/-/g, " ")}</p>
             <div className={`mt-6 ${textFx}`}>
               <TextDesctiption title={title} description={descriptionFx} />
+              {listFx}
               {btnFx}
             </div>
             <div>{children}</div>

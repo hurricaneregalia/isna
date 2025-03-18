@@ -1,0 +1,23 @@
+import React from "react";
+import Quotes from "./quotes";
+import { BiSolidQuoteLeft, BiSolidQuoteRight } from "react-icons/bi";
+
+export default function Hadist({ title, desc, sanad, quotes, listItem }) {
+  return (
+    <section className="p-10">
+      {listItem.map((item, index) => (
+        <div className="w-full text-center" key={index} data-aos="fade-up">
+          <div className="rounded-bl-3xl bg-slate-500 px-5 py-10 w-full relative">
+            <BiSolidQuoteLeft className="absolute top-0 left-3 text-5xl -mt-6" />
+            <Quotes title={item.title} description={item.desc} sanad={`(HR. ${item.sanad}, No. ${item.noHadist})`} />
+            <p className=" font-bold mt-5 "></p>
+            <BiSolidQuoteRight className="absolute bottom-0 right-3 text-5xl -mb-6" />
+          </div>
+          <div className="mt-10 text-lg">
+            <p>{item.quotes}</p>
+          </div>
+        </div>
+      ))}
+    </section>
+  );
+}

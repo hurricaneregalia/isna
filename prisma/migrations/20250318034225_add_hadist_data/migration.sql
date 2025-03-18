@@ -1,0 +1,8 @@
+-- CreateTable
+CREATE TABLE "HadistListItem" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "icon" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "createDate" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updateDate" DATETIME NOT NULL
+);

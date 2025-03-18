@@ -16,6 +16,8 @@ import LayoutPrimary from "../global/layoutPrimary";
 import ServicesSqlite from "./servicesSqlite";
 import Grid2List from "./grid2List";
 import CanvasCursor from "../canvasCursor/CanvasCursor";
+import ListRows from "../global/listRows";
+import Hadist from "../global/hadist";
 
 export default function LayoutLandingPage({ children }) {
   const [data, setData] = useState({
@@ -24,6 +26,7 @@ export default function LayoutLandingPage({ children }) {
     solutionList: [],
     skillList: [],
     servicesList: [],
+    hadistList: [],
     featureServicesListItems: [],
     bonusListItems: [],
     loading: true,
@@ -40,6 +43,7 @@ export default function LayoutLandingPage({ children }) {
         skillList: response.data.skillListItems || [],
         solutionList: response.data.solutionListItems || [],
         servicesList: response.data.servicesListItems || [],
+        hadistList: response.data.hadistListItem || [],
         featureServicesListItems: response.data.featureServicesListItems || [],
         bonusListItems: response.data.bonusListItems || [],
         loading: false,
@@ -66,6 +70,45 @@ export default function LayoutLandingPage({ children }) {
   return (
     <Content>
       <Hero bg={landingPageStyle.heroImage} title={data.landingPage.heroTitle} description={data.landingPage.heroDesc} btnTxt={data.landingPage.heroBtnTxt} />
+
+      <LayoutFullBlock
+        id="fakta"
+        bg={landingPageStyle.bg1}
+        title={data.landingPage.interestTitle}
+        description={data.landingPage.interestDesc}
+        btnTxt={data.landingPage.cta1BtnTxt}
+        btnUrl="#solusi"
+        imageUrl={data.landingPage.cta1Img}
+        imageAlt={data.landingPage.cta1Title}
+        iconRight={<FaArrowRight />}
+      />
+
+      <LayoutFullBlock
+        id="salah"
+        bg={landingPageStyle.bg1}
+        title={data.landingPage.interestListTitle}
+        description=""
+        list={<ListRows listItem={data.interestList} />}
+        btnTxt={data.landingPage.cta1BtnTxt}
+        btnUrl="#solusi"
+        imageUrl={data.landingPage.cta1Img}
+        imageAlt={data.landingPage.cta1Title}
+        iconRight={<FaArrowRight />}
+        reverse={true}
+      />
+
+      <LayoutFullBlock
+        id="solusi"
+        bg={landingPageStyle.bg1}
+        title={data.landingPage.solutionTitle}
+        description={data.landingPage.solutionDesc}
+        btnTxt={data.landingPage.cta1BtnTxt}
+        btnUrl="#solusi"
+        imageUrl={data.landingPage.cta1Img}
+        imageAlt={data.landingPage.cta1Title}
+        iconRight={<FaArrowRight />}
+      />
+      <Hadist listItem={data.hadistList} />
       <LayoutPrimary id="keinginan-pebisnis" bg="bg-transparent" title={data.landingPage.interestTitle}>
         <Grid2List listItem={data.interestList} />
       </LayoutPrimary>
