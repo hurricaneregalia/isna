@@ -18,6 +18,7 @@ import Grid2List from "./grid2List";
 import CanvasCursor from "../canvasCursor/CanvasCursor";
 import ListRows from "../global/listRows";
 import Hadist from "../global/hadist";
+import ListRowsDidapatkan from "../global/listRowsDidapatkan";
 
 export default function LayoutLandingPage({ children }) {
   const [data, setData] = useState({
@@ -29,6 +30,7 @@ export default function LayoutLandingPage({ children }) {
     hadistList: [],
     featureServicesListItems: [],
     bonusListItems: [],
+    didapatkanListItems: [],
     benefitList: [],
     loading: true,
     error: null,
@@ -47,6 +49,7 @@ export default function LayoutLandingPage({ children }) {
         hadistList: response.data.hadistListItem || [],
         featureServicesListItems: response.data.featureServicesListItems || [],
         bonusListItems: response.data.bonusListItems || [],
+        didapatkanList: response.data.didapatkanListItems || [],
         benefitList: response.data.benefitListItem || [],
         loading: false,
         error: null,
@@ -118,13 +121,37 @@ export default function LayoutLandingPage({ children }) {
         description=""
         list={<ListRows listItem={data.benefitList} iconStyle="good" />}
         btnTxt={data.landingPage.cta1BtnTxt}
-        btnUrl="#solusi"
+        btnUrl="#sungguh"
         imageUrl={data.landingPage.cta1Img}
         imageAlt={data.landingPage.cta1Title}
         iconRight={<FaArrowRight />}
         reverse={true}
       />
 
+      <LayoutFullBlock
+        id="manfaat"
+        bg={landingPageStyle.bg1}
+        title={data.landingPage.manfaatTitle}
+        description={data.landingPage.manfaatDesc}
+        btnTxt={data.landingPage.cta1BtnTxt}
+        btnUrl="#solusi"
+        imageUrl={data.landingPage.cta1Img}
+        imageAlt={data.landingPage.cta1Title}
+        iconRight={<FaArrowRight />}
+      />
+      <LayoutFullBlock
+        id="dapatkan"
+        bg={landingPageStyle.bg1}
+        title={data.landingPage.didapatkanTitle}
+        description=""
+        list={<ListRowsDidapatkan listItem={data.didapatkanList} iconStyle="good" />}
+        btnTxt={data.landingPage.cta1BtnTxt}
+        btnUrl="#sungguh"
+        imageUrl={data.landingPage.cta1Img}
+        imageAlt={data.landingPage.cta1Title}
+        iconRight={<FaArrowRight />}
+        reverse={true}
+      />
       <LayoutPrimary id="keinginan-pebisnis" bg="bg-transparent" title={data.landingPage.interestTitle}>
         <Grid2List listItem={data.interestList} />
       </LayoutPrimary>

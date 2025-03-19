@@ -14,6 +14,7 @@ export async function GET(request) {
     const siteIdentities = await prisma.siteIdentity.findMany();
     const hadistListItem = await prisma.hadistListItem.findMany();
     const benefitListItem = await prisma.benefitListItem.findMany();
+    const didapatkanListItems = await prisma.didapatkanListItem.findMany();
 
     const responseData = {
       landingPage,
@@ -28,6 +29,7 @@ export async function GET(request) {
       siteIdentities,
       hadistListItem,
       benefitListItem,
+      didapatkanListItems,
     };
 
     // Mengembalikan data dalam format JSON dengan pretty-print

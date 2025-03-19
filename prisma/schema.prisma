@@ -44,27 +44,36 @@ model HadistListItem {
 
 model InterestListItem {
   id         Int      @id @default(autoincrement())
-  desc       String
   icon       String
   title      String
+  desc       String
   createDate DateTime @default(now())
   updateDate DateTime @updatedAt
 }
 
 model BenefitListItem {
   id         Int      @id @default(autoincrement())
-  desc       String
   icon       String
   title      String
+  desc       String
+  createDate DateTime @default(now())
+  updateDate DateTime @updatedAt
+}
+
+model DidapatkanListItem {
+  id         Int      @id @default(autoincrement())
+  icon       String
+  title      String
+  desc       String
   createDate DateTime @default(now())
   updateDate DateTime @updatedAt
 }
 
 model SkillListItem {
   id            Int      @id @default(autoincrement())
-  desc          String
   icon          String
   title         String
+  desc          String
   createDate    DateTime @default(now())
   updateDate    DateTime @updatedAt
   landingPageId Int
@@ -72,9 +81,9 @@ model SkillListItem {
 
 model SolutionListItem {
   id            Int      @id @default(autoincrement())
-  desc          String
   icon          String
   title         String
+  desc          String
   createDate    DateTime @default(now())
   updateDate    DateTime @updatedAt
   landingPageId Int
@@ -112,56 +121,66 @@ model ServicesCategory {
 }
 
 model LandingPage {
-  id                Int      @id @default(autoincrement())
-  benefitBtnTxt     String   @default("")
-  benefitDesc       String   @default("")
-  benefitListTitle  String   @default("")
-  benefitImg        String   @default("")
-  benefitTitle      String   @default("")
-  bonusBtnTxt       String   @default("")
-  bonusCounter      DateTime @default(now())
-  bonusDesc         String   @default("")
-  bonusPrice        Float    @default(0)
-  bonusTitle        String
-  cta1BtnTxt        String   @default("")
-  cta1Desc          String   @default("")
-  cta1Img           String   @default("")
-  cta1Title         String   @default("")
-  cta2BtnTxt        String   @default("")
-  cta2Desc          String   @default("")
-  cta2Img           String   @default("")
-  cta2Title         String   @default("")
-  cta3BtnTxt        String   @default("")
-  cta3Desc          String   @default("")
-  cta3Img           String   @default("")
-  cta3Title         String   @default("")
-  heroBtnTxt        String   @default("")
-  heroDesc          String   @default("")
-  heroImg           String   @default("")
-  heroTitle         String   @default("")
-  interestBtnTxt    String   @default("")
-  interestDesc      String   @default("")
-  interestListTitle String   @default("")
-  interestImg       String   @default("")
-  interestTitle     String   @default("")
-  scoreBtnTxt       String   @default("")
-  scoreDesc         String   @default("")
-  scoreImg          String   @default("")
-  scoreTitle        String   @default("")
-  servicesBtnTxt    String   @default("")
-  servicesDesc      String   @default("")
-  servicesImg       String   @default("")
-  servicesTitle     String   @default("")
-  skillBtnTxt       String   @default("")
-  skillDesc         String   @default("")
-  skillImg          String   @default("")
-  skillTitle        String   @default("")
-  solutionBtnTxt    String   @default("")
-  solutionDesc      String   @default("")
-  solutionImg       String   @default("")
-  solutionTitle     String   @default("")
-  createDate        DateTime @default(now())
-  updateDate        DateTime @updatedAt
+  id                  Int      @id @default(autoincrement())
+  benefitBtnTxt       String   @default("")
+  benefitDesc         String   @default("")
+  benefitListTitle    String   @default("")
+  benefitImg          String   @default("")
+  benefitTitle        String   @default("")
+  bonusBtnTxt         String   @default("")
+  bonusCounter        DateTime @default(now())
+  bonusDesc           String   @default("")
+  bonusPrice          Float    @default(0)
+  bonusTitle          String
+  cta1BtnTxt          String   @default("")
+  cta1Desc            String   @default("")
+  cta1Img             String   @default("")
+  cta1Title           String   @default("")
+  cta2BtnTxt          String   @default("")
+  cta2Desc            String   @default("")
+  cta2Img             String   @default("")
+  cta2Title           String   @default("")
+  cta3BtnTxt          String   @default("")
+  cta3Desc            String   @default("")
+  cta3Img             String   @default("")
+  cta3Title           String   @default("")
+  didapatkanBtnTxt    String   @default("")
+  didapatkanDesc      String   @default("")
+  didapatkanListTitle String   @default("")
+  didapatkanImg       String   @default("")
+  didapatkanTitle     String   @default("")
+  heroBtnTxt          String   @default("")
+  heroDesc            String   @default("")
+  heroImg             String   @default("")
+  heroTitle           String   @default("")
+  interestBtnTxt      String   @default("")
+  interestDesc        String   @default("")
+  interestListTitle   String   @default("")
+  interestImg         String   @default("")
+  interestTitle       String   @default("")
+  manfaatBtnTxt       String   @default("")
+  manfaatDesc         String   @default("")
+  manfaatListTitle    String   @default("")
+  manfaatImg          String   @default("")
+  manfaatTitle        String   @default("")
+  scoreBtnTxt         String   @default("")
+  scoreDesc           String   @default("")
+  scoreImg            String   @default("")
+  scoreTitle          String   @default("")
+  servicesBtnTxt      String   @default("")
+  servicesDesc        String   @default("")
+  servicesImg         String   @default("")
+  servicesTitle       String   @default("")
+  skillBtnTxt         String   @default("")
+  skillDesc           String   @default("")
+  skillImg            String   @default("")
+  skillTitle          String   @default("")
+  solutionBtnTxt      String   @default("")
+  solutionDesc        String   @default("")
+  solutionImg         String   @default("")
+  solutionTitle       String   @default("")
+  createDate          DateTime @default(now())
+  updateDate          DateTime @updatedAt
 }
 
 model SocialLinks {
