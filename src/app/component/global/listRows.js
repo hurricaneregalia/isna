@@ -9,7 +9,7 @@ export default function ListRows({ listItem, border, iconStyle }) {
         <li key={index} data-aos="fade-up">
           <div className={`w-full ${borderFx}`}>
             <div className=" flex  items-top gap-2 ">
-              <p> {iconFx}</p>
+              <p>{iconFx}</p>
               <p className="mb-2 text-lg h3">{item.title}</p>
             </div>
           </div>

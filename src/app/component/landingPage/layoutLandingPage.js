@@ -29,6 +29,7 @@ export default function LayoutLandingPage({ children }) {
     hadistList: [],
     featureServicesListItems: [],
     bonusListItems: [],
+    benefitList: [],
     loading: true,
     error: null,
   });
@@ -46,6 +47,7 @@ export default function LayoutLandingPage({ children }) {
         hadistList: response.data.hadistListItem || [],
         featureServicesListItems: response.data.featureServicesListItems || [],
         bonusListItems: response.data.bonusListItems || [],
+        benefitList: response.data.benefitListItem || [],
         loading: false,
         error: null,
       });
@@ -109,6 +111,20 @@ export default function LayoutLandingPage({ children }) {
         iconRight={<FaArrowRight />}
       />
       <Hadist listItem={data.hadistList} />
+      <LayoutFullBlock
+        id="sungguh-sungguh "
+        bg={landingPageStyle.bg1}
+        title={data.landingPage.benefitListTitle}
+        description=""
+        list={<ListRows listItem={data.benefitList} iconStyle="good" />}
+        btnTxt={data.landingPage.cta1BtnTxt}
+        btnUrl="#solusi"
+        imageUrl={data.landingPage.cta1Img}
+        imageAlt={data.landingPage.cta1Title}
+        iconRight={<FaArrowRight />}
+        reverse={true}
+      />
+
       <LayoutPrimary id="keinginan-pebisnis" bg="bg-transparent" title={data.landingPage.interestTitle}>
         <Grid2List listItem={data.interestList} />
       </LayoutPrimary>

@@ -9,7 +9,7 @@ export default function Hero({ title, description, btnTxt, bg }) {
       <div className="hero-overlay bg-opacity-60 "></div>
       <div className="text-neutral-content text-center">
         <div className="max-w-3xl px-4">
-          <h1 className="mb-5 text-5xl font-bold">{title}</h1>
+          <h1 className="mb-5 sm:text-5xl text-3xl font-bold">{title}</h1>
           <p className="mb-20 text-lg">{description}</p>
           {btnFX}
         </div>

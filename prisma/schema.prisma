@@ -51,6 +51,15 @@ model InterestListItem {
   updateDate DateTime @updatedAt
 }
 
+model BenefitListItem {
+  id         Int      @id @default(autoincrement())
+  desc       String
+  icon       String
+  title      String
+  createDate DateTime @default(now())
+  updateDate DateTime @updatedAt
+}
+
 model SkillListItem {
   id            Int      @id @default(autoincrement())
   desc          String
@@ -104,6 +113,11 @@ model ServicesCategory {
 
 model LandingPage {
   id                Int      @id @default(autoincrement())
+  benefitBtnTxt     String   @default("")
+  benefitDesc       String   @default("")
+  benefitListTitle  String   @default("")
+  benefitImg        String   @default("")
+  benefitTitle      String   @default("")
   bonusBtnTxt       String   @default("")
   bonusCounter      DateTime @default(now())
   bonusDesc         String   @default("")
