@@ -16,3 +16,9 @@
   background-size: cover;
   background-position: center;
 }
+.pattern1 {
+  background-image: url('/images/landingPage/pattern-01.svg');
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-size: 75px;
+}

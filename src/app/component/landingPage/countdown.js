@@ -43,14 +43,15 @@ const Countdown = ({ targetDate, bonusPeriode }) => {
         <div className="text-2xl font-bold py-8">
           {timeLeft.seconds ? (
             <>
+              ⏳⏳⏳
+              <hr className=" opacity-0" />
               Bonus berlaku sampai{" "}
               {new Date(bonusPeriode).toLocaleDateString("id-ID", {
                 day: "2-digit",
                 month: "long",
                 year: "numeric",
               })}
-              <hr className=" opacity-0" />
-              Berakhir dalam
+              , Berakhir dalam:
             </>
           ) : (
             "Periode promo sudah habis"

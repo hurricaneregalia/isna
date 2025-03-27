@@ -26,6 +26,8 @@ model BonusListItem {
   id         Int      @id @default(autoincrement())
   icon       String
   title      String
+  desc       String   @default("")
+  price      Float    @default(0)
   createDate DateTime @default(now())
   updateDate DateTime @updatedAt
 }
@@ -47,6 +49,16 @@ model InterestListItem {
   icon       String
   title      String
   desc       String
+  createDate DateTime @default(now())
+  updateDate DateTime @updatedAt
+}
+
+model AlurListItem {
+  id         Int      @id @default(autoincrement())
+  icon       String
+  title      String
+  desc       String
+  img        String
   createDate DateTime @default(now())
   updateDate DateTime @updatedAt
 }

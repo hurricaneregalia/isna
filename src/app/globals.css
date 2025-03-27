@@ -32,3 +32,27 @@ body {
 .smallIcons {
   font-size: 8px;
 }
+
+@keyframes beat-fade-zoom {
+  0% {
+    transform: scale(1); /* Ukuran normal */
+    opacity: 0.2; /* Opasitas penuh */
+  }
+  33% {
+    transform: scale(1.2); /* Memperbesar */
+    opacity: 1; /* Mengurangi opasitas */
+  }
+  66% {
+    transform: scale(1); /* Kembali ke ukuran normal */
+    opacity: 0.2; /* Opasitas penuh */
+  }
+  100% {
+    transform: scale(1.2); /* Memperbesar lagi */
+    opacity: 1; /* Mengurangi opasitas lagi */
+  }
+}
+
+.fa-beat-fade-zoom {
+  display: inline-block;
+  animation: beat-fade-zoom 2s ease-in-out infinite;
+}

@@ -3,7 +3,7 @@ import TextDesctiption from "./textDesctiption";
 import BtnLinkPrimary from "./btnLinkPrimary";
 import { FaArrowRight } from "react-icons/fa6";
 
-export default function FinalCta({ id, title, description, headAlign, bg }) {
+export default function FinalCta({ id, title, description, headAlign, bg, ctaTxt }) {
   const textFx = bg === "" || bg === "bg-transparent" ? "" : "text-neutral-content";
   return (
     <section id={id}>
@@ -15,7 +15,7 @@ export default function FinalCta({ id, title, description, headAlign, bg }) {
           </div>
         </div>
         <div className="pt-10 text-center">
-          <BtnLinkPrimary btnUrl="#layanan" btnTxt="Dapatkan bonus" btnFull={false} iconRight={<FaArrowRight />} btnStyle="" />
+          <BtnLinkPrimary btnUrl="#layanan" btnTxt={ctaTxt} btnFull={false} iconRight={<FaArrowRight />} btnStyle="" />
         </div>
       </div>
     </section>

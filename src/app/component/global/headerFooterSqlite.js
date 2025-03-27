@@ -41,7 +41,7 @@ export default function HeaderFooterSqlite({ children, copyright }) {
       <div className="flex flex-col min-h-screen">
         <Header siteName={data.siteIdentities.siteName} />
         {children}
-        <Footer footerText={data.siteIdentities.siteCopyright} />
+        <Footer footerText={data.siteIdentities.siteCopyright} siteName={data.siteIdentities.siteName} />
       </div>
     </>
   );
