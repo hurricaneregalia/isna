@@ -106,7 +106,7 @@ export default function LayoutLandingPage({ children }) {
       />
 
       <LayoutFullBlock
-        id="solusi testing ok"
+        id="solusi"
         bg={landingPageStyle.bg1}
         title={data.landingPage.solutionTitle}
         description={data.landingPage.solutionDesc}
@@ -160,8 +160,8 @@ export default function LayoutLandingPage({ children }) {
       </LayoutPrimary>
       <FinalCta id="keinginan" ctaTxt="Order Copywriting" title={data.landingPage.cta1Title} headAlign={false} bg={landingPageStyle.bg1} description={data.landingPage.cta1Desc} />
 
-      <LayoutPrimary id="alur penjualan" bg="bg-transparent" title={data.landingPage.bonusTitle} iconTitle="🔥">
-        <Alur listItem={data.alurList} />
+      <LayoutPrimary id="alur" bg="bg-transparent" title="Alur Mendapatkan Penjualan.">
+        <Alur listItem={data.alurList} imageUrl={data.landingPage.cta1Img} />
       </LayoutPrimary>
       <LayoutPrimary id="bonuss" bg="bg-transparent" title={data.landingPage.bonusTitle} iconTitle="🔥">
         <Grid2List listItem={data.bonusListItems} />

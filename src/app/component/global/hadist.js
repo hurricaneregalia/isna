@@ -4,7 +4,7 @@ import { BiSolidQuoteLeft, BiSolidQuoteRight } from "react-icons/bi";
 
 export default function Hadist({ title, desc, sanad, quotes, listItem, bg }) {
   return (
-    <section className={` ${bg} p-20`}>
+    <section className={` ${bg} lg:p-20 sm:p-10 p-0`}>
       <div className="p-10 container lg:w-8/12 px-8 mx-auto">
         {listItem.map((item, index) => (
           <div className="w-full text-center" key={index} data-aos="fade-up">
