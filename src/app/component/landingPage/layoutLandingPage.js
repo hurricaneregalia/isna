@@ -106,7 +106,7 @@ export default function LayoutLandingPage({ children }) {
       />
 
       <LayoutFullBlock
-        id="solusi"
+        id="solusi testing"
         bg={landingPageStyle.bg1}
         title={data.landingPage.solutionTitle}
         description={data.landingPage.solutionDesc}
