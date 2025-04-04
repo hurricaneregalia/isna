@@ -49,6 +49,7 @@ model InterestListItem {
   icon       String
   title      String
   desc       String
+  img       String @default("")
   createDate DateTime @default(now())
   updateDate DateTime @updatedAt
 }

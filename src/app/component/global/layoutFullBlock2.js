@@ -6,7 +6,7 @@ import TextTitleH2 from "./textHeadingTitle";
 import TextHeadingTitle from "./textHeadingTitle";
 import TextBody from "./textBody";
 
-export default function LayoutFullBlock({
+export default function LayoutFullBlock2({
   children,
   id,
   title,
@@ -26,16 +26,6 @@ export default function LayoutFullBlock({
   const reverseFx = reverse ? "flex-col-reverse sm:flex-row-reverse" : "flex-col-reverse sm:flex-row";
   const bgFx = bg ? bg : "bg-base-100";
   const textFx = bg === "" || bg === "bg-transparent" ? "" : "text-neutral-content";
-  const btnFx = btnTxt ? (
-    <div className="mt-20 relative z-10">
-      <BtnLinkPrimary btnTxt={btnTxt} btnUrl={btnUrl} iconRight={iconRight} />
-    </div>
-  ) : (
-    ""
-  );
-  const descriptionFx = description ? description : "";
-  const listFx = list ? <div className="mt-6">{list}</div> : null;
-  const textBodyFx = textBody ? <TextBody description={description} /> : null;
   const footerFx = footer ? <div className="">{footer}</div> : null;
 
   return (
@@ -45,15 +35,12 @@ export default function LayoutFullBlock({
           <div className="w-full" data-aos="fade-up">
             <p className="font-semibold text-primary capitalize">{id.replace(/-/g, " ")}</p>
             <div className={`${textFx} grid grid-1 gap-5`}>
-              <TextHeadingTitle title={title} iconTitle={null} titleCase={2} h={2} />
-              {textBodyFx}
-              {listFx}
-              {btnFx}
+              <div className="sm:w-1/2 w-full">
+                <TextHeadingTitle title={title} iconTitle={null} titleCase={2} h={2} />
+              </div>
+              <div className="mt-6">{list}</div>
             </div>
             <div>{children}</div>
-          </div>
-          <div className="w-full" data-aos="flip-left">
-            <ImageComponent imageUrl={imageUrl} imageAlt={imageAlt} width={300} height={300} priority={false} />
           </div>
         </div>
         {footerFx}

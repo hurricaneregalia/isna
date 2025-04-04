@@ -20,6 +20,8 @@ import ListRows from "../global/listRows";
 import Hadist from "../global/hadist";
 import ListRowsDidapatkan from "../global/listRowsDidapatkan";
 import Alur from "./alur";
+import LayoutFullBlock2 from "../global/layoutFullBlock2";
+import ListThumbnails from "../global/listThumbnails";
 
 export default function LayoutLandingPage({ children }) {
   const [data, setData] = useState({
@@ -77,27 +79,33 @@ export default function LayoutLandingPage({ children }) {
 
   return (
     <Content>
-      <Hero bg={landingPageStyle.heroImage} title={data.landingPage.heroTitle} description={data.landingPage.heroDesc} btnTxt={data.landingPage.heroBtnTxt} />
+      <Hero
+        bg={landingPageStyle.heroImage}
+        title={data.landingPage.heroTitle}
+        description={data.landingPage.heroDesc}
+        btnTxt={data.landingPage.heroBtnTxt}
+      />
 
       <LayoutFullBlock
         id="fakta"
-        bg={landingPageStyle.bg1}
+        bg=""
         title={data.landingPage.interestTitle}
         description={data.landingPage.interestDesc}
-        btnTxt={data.landingPage.cta1BtnTxt}
+        btnTxt=""
         btnUrl="#solusi"
         imageUrl={data.landingPage.cta1Img}
         imageAlt={data.landingPage.cta1Title}
         iconRight={<FaArrowRight />}
+        textBody={true}
       />
 
-      <LayoutFullBlock
-        id="salah"
-        bg={landingPageStyle.bg1}
+      <LayoutFullBlock2
+        id="fenomena"
+        bg=""
         title={data.landingPage.interestListTitle}
         description=""
-        list={<ListRows listItem={data.interestList} />}
-        btnTxt={data.landingPage.cta1BtnTxt}
+        list={<ListThumbnails listItem={data.interestList} />}
+        btnTxt={null}
         btnUrl="#solusi"
         imageUrl={data.landingPage.cta1Img}
         imageAlt={data.landingPage.cta1Title}
@@ -158,7 +166,14 @@ export default function LayoutLandingPage({ children }) {
       <LayoutPrimary id="layanan services" bg={landingPageStyle.bg1} title={data.landingPage.servicesTitle}>
         <ServicesSqlite listItem={data.servicesList} subListItem={data.featureServicesListItems} />
       </LayoutPrimary>
-      <FinalCta id="keinginan" ctaTxt="Order Copywriting" title={data.landingPage.cta1Title} headAlign={false} bg={landingPageStyle.bg1} description={data.landingPage.cta1Desc} />
+      <FinalCta
+        id="keinginan"
+        ctaTxt="Order Copywriting"
+        title={data.landingPage.cta1Title}
+        headAlign={false}
+        bg={landingPageStyle.bg1}
+        description={data.landingPage.cta1Desc}
+      />
 
       <LayoutPrimary id="alur" bg="bg-transparent" title="Alur Mendapatkan Penjualan.">
         <Alur listItem={data.alurList} imageUrl={data.landingPage.cta1Img} />
