@@ -22,6 +22,7 @@ import ListRowsDidapatkan from "../global/listRowsDidapatkan";
 import Alur from "./alur";
 import LayoutFullBlock2 from "../global/layoutFullBlock2";
 import ListThumbnails from "../global/listThumbnails";
+import ListThumbnails2 from "../global/listThumbnails2";
 
 export default function LayoutLandingPage({ children }) {
   const [data, setData] = useState({
@@ -90,13 +91,12 @@ export default function LayoutLandingPage({ children }) {
         id="fakta"
         bg=""
         title={data.landingPage.interestTitle}
-        description={data.landingPage.interestDesc}
+        textBody={data.landingPage.interestDesc}
         btnTxt=""
         btnUrl="#solusi"
         imageUrl={data.landingPage.cta1Img}
         imageAlt={data.landingPage.cta1Title}
         iconRight={<FaArrowRight />}
-        textBody={true}
       />
 
       <LayoutFullBlock2
@@ -117,8 +117,8 @@ export default function LayoutLandingPage({ children }) {
         id="solusi"
         bg={landingPageStyle.bg1}
         title={data.landingPage.solutionTitle}
-        description={data.landingPage.solutionDesc}
-        btnTxt={data.landingPage.cta1BtnTxt}
+        textBody={data.landingPage.solutionDesc}
+        btnTxt={null}
         btnUrl="#solusi"
         imageUrl={data.landingPage.cta1Img}
         imageAlt={data.landingPage.cta1Title}
@@ -130,13 +130,14 @@ export default function LayoutLandingPage({ children }) {
         bg={landingPageStyle.bg1}
         title={data.landingPage.benefitListTitle}
         description=""
-        list={<ListRows listItem={data.benefitList} iconStyle="good" />}
-        btnTxt={data.landingPage.cta1BtnTxt}
+        list={null}
+        btnTxt={null}
         btnUrl="#sungguh"
         imageUrl={data.landingPage.cta1Img}
         imageAlt={data.landingPage.cta1Title}
         iconRight={<FaArrowRight />}
         reverse={true}
+        footer={<ListThumbnails2 listItem={data.benefitList} />}
       />
 
       <LayoutFullBlock

@@ -5,7 +5,7 @@ export default function Quotes({ title, description, sanad, hadistNo }) {
   return (
     <div className="relative isolate">
       <h2 className="mt-2 font-bold tracking-tight text-3xl">{title}</h2>
-      <div className="rounded-2xl mt-6 text-lg border border-dashed p-5 relative ">
+      <div className="rounded-2xl mt-6 text-lg border border-dashed border-gray-300 p-5 relative ">
         <div className=" text-2xl mb-4"> 👍 🕌 🕌 👍</div>
         <blockquote className=" italic">{description}</blockquote>
         <span className=" flex items-center my-5 gap-1 text-center justify-center">

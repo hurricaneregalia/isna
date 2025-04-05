@@ -35,7 +35,7 @@ export default function LayoutFullBlock({
   );
   const descriptionFx = description ? description : "";
   const listFx = list ? <div className="mt-6">{list}</div> : null;
-  const textBodyFx = textBody ? <TextBody description={description} /> : null;
+  const textBodyFx = textBody ? <TextBody description={textBody} /> : null;
   const footerFx = footer ? <div className="">{footer}</div> : null;
 
   return (
