@@ -41,7 +41,7 @@ const Countdown = ({ targetDate, bonusPeriode }) => {
     <div className="">
       <div className="text-center">
         <div className="text-2xl font-bold py-8">
-          {timeLeft.seconds ? (
+          {timeLeft.days || timeLeft.hours || timeLeft.minutes || timeLeft.seconds ? (
             <>
               ⏳⏳⏳
               <hr className=" opacity-0" />

@@ -142,10 +142,10 @@ export default function LayoutLandingPage({ children }) {
 
       <LayoutFullBlock
         id="manfaat"
-        bg={landingPageStyle.bg1}
+        bg=""
         title={data.landingPage.manfaatTitle}
-        description={data.landingPage.manfaatDesc}
-        btnTxt={data.landingPage.cta1BtnTxt}
+        textBody={data.landingPage.manfaatDesc}
+        btnTxt={null}
         btnUrl="#solusi"
         imageUrl={data.landingPage.cta1Img}
         imageAlt={data.landingPage.cta1Title}
@@ -153,11 +153,11 @@ export default function LayoutLandingPage({ children }) {
       />
       <LayoutFullBlock
         id="dapatkan"
-        bg={landingPageStyle.bg1}
+        bg=""
         title={data.landingPage.didapatkanTitle}
         description=""
         list={<ListRowsDidapatkan listItem={data.didapatkanList} iconStyle="good" />}
-        btnTxt={data.landingPage.cta1BtnTxt}
+        btnTxt={null}
         btnUrl="#sungguh"
         imageUrl={data.landingPage.cta1Img}
         imageAlt={data.landingPage.cta1Title}
@@ -167,18 +167,19 @@ export default function LayoutLandingPage({ children }) {
       <LayoutPrimary id="layanan services" bg={landingPageStyle.bg1} title={data.landingPage.servicesTitle}>
         <ServicesSqlite listItem={data.servicesList} subListItem={data.featureServicesListItems} />
       </LayoutPrimary>
-      <FinalCta
-        id="keinginan"
-        ctaTxt="Order Copywriting"
-        title={data.landingPage.cta1Title}
-        headAlign={false}
-        bg={landingPageStyle.bg1}
-        description={data.landingPage.cta1Desc}
-      />
 
-      <LayoutPrimary id="alur" bg="bg-transparent" title="Alur Mendapatkan Penjualan.">
-        <Alur listItem={data.alurList} imageUrl={data.landingPage.cta1Img} />
+      <LayoutPrimary id="alur" bg="bg-transparent" title="Proses Persuasive Copywriting Mendapatkan Penjualan.">
+        <Alur listItem={data.alurList} imageUrl={data.landingPage.cta1Img} bg={landingPageStyle.pattern1} />
+        <FinalCta
+          id="keinginan"
+          ctaTxt="Order Copywriting"
+          title={data.landingPage.cta1Title}
+          headAlign={false}
+          bg={null}
+          description={data.landingPage.cta1Desc}
+        />
       </LayoutPrimary>
+
       <LayoutPrimary id="bonuss" bg="bg-transparent" title={data.landingPage.bonusTitle} iconTitle="🔥">
         <Grid2List listItem={data.bonusListItems} />
         <div className="mt-10 text-lg mx-auto text-center">

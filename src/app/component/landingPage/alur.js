@@ -1,7 +1,7 @@
 import React from "react";
 import ImageComponent from "../global/imageComponent";
 
-export default function Alur({ listItem, border, imageUrl }) {
+export default function Alur({ listItem, border, imageUrl, bg }) {
   const borderFx = border ? "border border-1" : "";
   return (
     <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">

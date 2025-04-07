@@ -13,7 +13,11 @@ export default function ServicesSqlite({ listItem, subListItem }) {
               listItem.map((item, index) => {
                 const list = subListItem.filter((service) => service.servicesListItemId === item.id);
                 return (
-                  <div key={index} className={`bg-base-100 rounded-none rounded-bl-3xl ${item.isBest ? "border border-primary shadow-xl shadow-indigo-500/50" : ""}`} data-aos="fade-up">
+                  <div
+                    key={index}
+                    className={`bg-base-100 rounded-none rounded-bl-3xl ${item.isBest ? "border border-primary shadow-xl shadow-indigo-500/50" : ""}`}
+                    data-aos="fade-up"
+                  >
                     <div className="card-body p-0">
                       <div className="bg-gray-900 text-gray-300 rounded-bl-3xl p-8 overflow-hidden">
                         <div className="text-2xl mb-5">
@@ -28,7 +32,6 @@ export default function ServicesSqlite({ listItem, subListItem }) {
                       </div>
 
                       <div className="space-y-2 my-5 px-8">
-                        <h3 className=" font-bold">Fitur</h3>
                         {list.length > 0 ? (
                           <ul className="space-y-2">
                             {list.map((service) => (

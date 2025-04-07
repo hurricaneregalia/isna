@@ -24,7 +24,7 @@ export default function LayoutFullBlock2({
   textBody,
 }) {
   const reverseFx = reverse ? "flex-col-reverse sm:flex-row-reverse" : "flex-col-reverse sm:flex-row";
-  const bgFx = bg ? bg : "bg-base-100";
+  const bgFx = bg ? bg : "bg-base-200";
   const textFx = bg === "" || bg === "bg-transparent" ? "" : "text-neutral-content";
   const footerFx = footer ? <div className="">{footer}</div> : null;
 
