@@ -1,5 +1,5 @@
 import React from "react";
-import TextDesctiption from "./textDesctiption";
+import TextDesctiption from "./textDescription";
 import ImageComponent from "./imageComponent";
 
 export default function LayoutSecondary({ children, id, title, description, footer, headAlign, imageUrl, imageAlt, bg }) {

@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TextDesctiption({ title, description, iconTitle }) {
+export default function TextDescription({ title, description, iconTitle }) {
   const descriptionFx = description ? <p className="mt-6 text-lg">{description}</p> : null;
   const iconTitleFX = iconTitle ? <span className=" text-4xl fa-beat-fade-zoom mx-2"> {iconTitle} </span> : null;
   return (

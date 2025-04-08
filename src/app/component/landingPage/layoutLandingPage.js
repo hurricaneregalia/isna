@@ -137,7 +137,7 @@ export default function LayoutLandingPage({ children }) {
         imageAlt={data.landingPage.cta1Title}
         iconRight={<FaArrowRight />}
         reverse={true}
-        footer={<ListThumbnails2 listItem={data.benefitList} />}
+        footer={<ListThumbnails2 listItem={data.benefitList} bg={landingPageStyle.pattern1} />}
       />
 
       <LayoutFullBlock
@@ -175,14 +175,19 @@ export default function LayoutLandingPage({ children }) {
           ctaTxt="Order Copywriting"
           title={data.landingPage.cta1Title}
           headAlign={false}
-          bg={null}
+          bg={`py-20 ${landingPageStyle.bg1}`}
           description={data.landingPage.cta1Desc}
+          btn={2}
+          ctaTxt1="Order"
+          ctaTxt2="Konsultasi"
+          btnUrl1="#"
+          btnUrl2="#ok"
         />
       </LayoutPrimary>
 
       <LayoutPrimary id="bonuss" bg="bg-transparent" title={data.landingPage.bonusTitle} iconTitle="🔥">
         <Grid2List listItem={data.bonusListItems} />
-        <div className="mt-10 text-lg mx-auto text-center">
+        <div className="mt-4 text-lg mx-auto text-center bg-base-100 py-10 rounded-bl-3xl" data-aos="fade-up">
           <p className="font-bold">✅ Pengelolaan landing page jadi lebih mudah!</p>
           <p>{data.landingPage.bonusDesc}</p>
         </div>

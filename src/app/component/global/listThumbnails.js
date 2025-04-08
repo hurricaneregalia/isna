@@ -24,16 +24,14 @@ export default function ListThumbnails({ listItem, border, iconStyle }) {
                 <p className="mb-5 text-3xl text-red-600">
                   <IoMdCloseCircleOutline />
                 </p>
-                <p className="text-xs mb-3 text-gray-200 flex gap-2" data-aos="fade-up">
+                <p className="text-xs mb-3 text-gray-200 flex gap-2">
                   {item.title}
                   <span className=" mt-1 flex">
                     <TfiLayoutLineSolid />
                     <TfiLayoutLineSolid />
                   </span>
                 </p>
-                <p className=" font-bold text-gray-50 sm:w-full w-3/5" data-aos="fade-up">
-                  {item.desc}
-                </p>
+                <p className=" font-bold text-gray-50 sm:w-full w-3/5">{item.desc}</p>
               </div>
             </div>
           </div>

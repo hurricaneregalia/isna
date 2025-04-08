@@ -1,5 +1,5 @@
 import React from "react";
-import TextDesctiption from "./textDesctiption";
+import TextDesctiption from "./textDescription";
 
 export default function LayoutPrimary({ children, id, title, description, footer, headAlign, bg, anime, iconTitle }) {
   const footerFx = footer ? <div className="">{footer}</div> : null;
