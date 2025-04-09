@@ -24,7 +24,7 @@ export default function ListThumbnails({ listItem, border, iconStyle }) {
                 <p className="mb-5 text-3xl text-red-600">
                   <IoMdCloseCircleOutline />
                 </p>
-                <p className="text-xs mb-3 text-gray-200 flex gap-2">
+                <p className="text-xs mb-3 text-amber-300 flex gap-2">
                   {item.title}
                   <span className=" mt-1 flex">
                     <TfiLayoutLineSolid />

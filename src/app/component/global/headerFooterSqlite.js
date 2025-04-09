@@ -4,6 +4,10 @@ import Header from "./header";
 import Footer from "./footer";
 import axios from "axios";
 import Loading from "./loading";
+import Navigation2 from "./navigation2";
+import Aos from "aos";
+import "../../../../node_modules/aos/dist/aos.css";
+import landingPageStyle from "../landingPage/landingPage.module.css";
 
 export default function HeaderFooterSqlite({ children, copyright }) {
   const [data, setData] = useState({
@@ -30,6 +34,15 @@ export default function HeaderFooterSqlite({ children, copyright }) {
 
   useEffect(() => {
     fetchData();
+    Aos.init({
+      easing: "ease-out-back",
+      duration: 1000,
+    });
+
+    // Menunda AOS refresh
+    setTimeout(() => {
+      Aos.refresh();
+    }, 5000);
   }, []);
 
   // Menangani kondisi loading dan error
@@ -39,7 +52,7 @@ export default function HeaderFooterSqlite({ children, copyright }) {
   return (
     <>
       <div className="flex flex-col min-h-screen">
-        <Header siteName={data.siteIdentities.siteName} />
+        <Navigation2 siteName={data.siteIdentities.siteName} bg={landingPageStyle.bg1} />
         {children}
         <Footer footerText={data.siteIdentities.siteCopyright} siteName={data.siteIdentities.siteName} />
       </div>

@@ -1,13 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import LayoutSecondary from "../global/layoutSecondary";
 import LayoutFullBlock from "../global/layoutFullBlock";
 import Content from "../global/content";
 import Loading from "../global/loading";
 import { FaArrowRight } from "react-icons/fa6";
 import landingPageStyle from "./landingPage.module.css";
-import ImageComponent from "../global/imageComponent";
 import FinalCta from "../global/finalCta";
 import Countdown from "./countdown";
 import BtnLinkPrimary from "../global/btnLinkPrimary";
@@ -16,13 +14,14 @@ import LayoutPrimary from "../global/layoutPrimary";
 import ServicesSqlite from "./servicesSqlite";
 import Grid2List from "./grid2List";
 import CanvasCursor from "../canvasCursor/CanvasCursor";
-import ListRows from "../global/listRows";
 import Hadist from "../global/hadist";
 import ListRowsDidapatkan from "../global/listRowsDidapatkan";
 import Alur from "./alur";
 import LayoutFullBlock2 from "../global/layoutFullBlock2";
 import ListThumbnails from "../global/listThumbnails";
 import ListThumbnails2 from "../global/listThumbnails2";
+import ViewportSize from "../global/viewportSize";
+import CountdownMini from "./countdownMini";
 
 export default function LayoutLandingPage({ children }) {
   const [data, setData] = useState({
@@ -152,7 +151,7 @@ export default function LayoutLandingPage({ children }) {
         iconRight={<FaArrowRight />}
       />
       <LayoutFullBlock
-        id="dapatkan"
+        id="penting"
         bg=""
         title={data.landingPage.didapatkanTitle}
         description=""
@@ -164,7 +163,7 @@ export default function LayoutLandingPage({ children }) {
         iconRight={<FaArrowRight />}
         reverse={true}
       />
-      <LayoutPrimary id="layanan services" bg={landingPageStyle.bg1} title={data.landingPage.servicesTitle}>
+      <LayoutPrimary id="layanan" bg={landingPageStyle.bg1} title={data.landingPage.servicesTitle}>
         <ServicesSqlite listItem={data.servicesList} subListItem={data.featureServicesListItems} />
       </LayoutPrimary>
 
@@ -180,25 +179,39 @@ export default function LayoutLandingPage({ children }) {
           btn={2}
           ctaTxt1="Order"
           ctaTxt2="Konsultasi"
-          btnUrl1="#"
+          btnUrl1="#layanan"
           btnUrl2="#ok"
-        />
+        >
+          <CountdownMini targetDate={new Date(data.landingPage.bonusCounter)} bonusPeriode={data.landingPage.bonusCounter} />
+        </FinalCta>
       </LayoutPrimary>
-
-      <LayoutPrimary id="bonuss" bg="bg-transparent" title={data.landingPage.bonusTitle} iconTitle="🔥">
+      <LayoutPrimary id="bonus" bg="bg-transparent" title={data.landingPage.bonusTitle} iconTitle="🔥">
         <Grid2List listItem={data.bonusListItems} />
-        <div className="mt-4 text-lg mx-auto text-center bg-base-100 py-10 rounded-bl-3xl" data-aos="fade-up">
-          <p className="font-bold">✅ Pengelolaan landing page jadi lebih mudah!</p>
-          <p>{data.landingPage.bonusDesc}</p>
+        <div className={`mt-4 text-lg mx-auto bg-base-300 overflow-hidden rounded-bl-3xl ${landingPageStyle.bg2}`} data-aos="fade-up">
+          <div className="flex text-neutral-content gap-3 py-10 px-5 bg-green-800 bg-opacity-80 ">
+            <div className="lg:hidden block text-4xl">✅</div>
+            <div className="lg:w-1/2 w-full">
+              <p className="font-bold mb-3"> Pengelolaan lebih mudah!</p>
+              <p className="w-full lg:w-2/3">{data.landingPage.bonusDesc}</p>
+            </div>
+          </div>
         </div>
-        <div className="w-full text-center py-8 sm:w-8/12 mx-auto">
-          <Countdown targetDate={new Date(data.landingPage.bonusCounter)} bonusPeriode={data.landingPage.bonusCounter} />
-        </div>
-        <div className="w-full text-center py-8">
-          <BtnLinkPrimary btnUrl="#layanan" btnTxt="Dapatkan bonus" btnFull={false} iconRight={<FaArrowRight />} btnStyle="" />
-        </div>
+        <FinalCta
+          id="claim-bonus"
+          ctaTxt="Order Copywriting"
+          title={data.landingPage.cta2Title}
+          headAlign={false}
+          bg={`py-20 ${landingPageStyle.bg1}`}
+          description={data.landingPage.cta2Desc}
+          btn={1}
+          ctaTxt1="Dapatkan Bonus"
+          ctaTxt2="Konsultasi"
+          btnUrl1="#layanan"
+          btnUrl2="#ok"
+        >
+          <CountdownMini targetDate={new Date(data.landingPage.bonusCounter)} bonusPeriode={data.landingPage.bonusCounter} />
+        </FinalCta>
       </LayoutPrimary>
-
       <CanvasCursor />
     </Content>
   );

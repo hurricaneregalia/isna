@@ -27,7 +27,7 @@ export default function ListThumbnails2({ listItem, border, iconStyle, bg }) {
           <div className={`w-full ${borderFx}`}>
             <div className="h-80 h-9/10">
               <div className={`hero-overlay bg-opacity-80 p-5 ${bg}`}>
-                <p className="mb-5 text-3xl text-green-400">
+                <p className="mb-5 text-3xl text-gray-50">
                   {item.icon === "LuNotepadText" ? (
                     <LuNotepadText />
                   ) : item.icon === "BiTargetLock" ? (
@@ -42,7 +42,7 @@ export default function ListThumbnails2({ listItem, border, iconStyle, bg }) {
                     <LiaMoneyBillWaveSolid />
                   ) : null}
                 </p>
-                <p className="text-xs mb-3 text-gray-200 flex gap-2">
+                <p className="text-xs mb-3 text-amber-300 flex gap-2">
                   {item.title}
                   <span className=" mt-1 flex">
                     <TfiLayoutLineSolid />

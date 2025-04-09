@@ -15,20 +15,20 @@ export default function ServicesSqlite({ listItem, subListItem }) {
                 return (
                   <div
                     key={index}
-                    className={`bg-base-100 rounded-none rounded-bl-3xl ${item.isBest ? "border border-primary shadow-xl shadow-indigo-500/50" : ""}`}
+                    className={`bg-base-100 rounded-none rounded-bl-3xl ${
+                      item.isBest ? "border border-amber-300 shadow-xl shadow-amber-300/50" : ""
+                    }`}
                     data-aos="fade-up"
                   >
                     <div className="card-body p-0">
                       <div className="bg-gray-900 text-gray-300 rounded-bl-3xl p-8 overflow-hidden">
-                        <div className="text-2xl mb-5">
-                          {item.icon === "FaRegStar" && <FaRegStar />}
-                          {item.icon === "FaRegStarHalfStroke" && <FaRegStarHalfStroke />}
-                          {item.icon === "FaStar" && <FaStar />}
+                        <div className="text-2xl mb-5 flex gap-1 text-amber-300">
+                          {Array.from({ length: item.quality }, (_, index) => (
+                            <FaRegStar key={index} />
+                          ))}
                         </div>
                         <p className="font-normal">{item.title}</p>
-                        <p className="text-3xl font-bold my-2 text-secondary" data-aos="fade-left">
-                          {item.price.toLocaleString("id-ID")}
-                        </p>
+                        <p className="text-3xl font-bold my-2">{item.price.toLocaleString("id-ID")}</p>
                       </div>
 
                       <div className="space-y-2 my-5 px-8">
@@ -52,7 +52,7 @@ export default function ServicesSqlite({ listItem, subListItem }) {
                           btnTxt="Pilih"
                           btnFull={true}
                           iconRight={<FaArrowRight />}
-                          btnStyle={`${item.isBest ? "shadow-lg shadow-indigo-500/50" : ""}`}
+                          btnStyle={`${item.isBest ? "shadow-lg shadow-amber-200" : ""}`}
                         />
                       </div>
                     </div>

@@ -7,7 +7,10 @@ export default function BtnLinkSecondary({ btnTxt, btnUrl, iconLeft, iconRight, 
   const iconRightFx = iconRight ? <span className={animateFx}>{iconRight}</span> : "";
   const btnFullFx = btnFull ? "w-full" : "";
   return (
-    <Link href={btnUrl} className={`btn btn-outline btn-primary rounded-full ${btnFullFx} ${btnStyle}`}>
+    <Link
+      href={btnUrl}
+      className={`btn border-amber-300 text-amber-300 bg-transparent hover:bg-green-500 hover:border-green-500 hover:text-green-50 rounded-full ${btnFullFx} ${btnStyle}`}
+    >
       {iconLeftFx}
       {btnTxt}
       {iconRightFx}

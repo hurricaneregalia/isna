@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import HeadMetaData from "./component/global/headMetaData";
 import { WebVitals } from "./component/global/WebVitals";
+import Head from "next/head"; // Import Head dari next/head
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -13,6 +14,7 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+
 export const metadata = {
   title: "Isna Project",
   description: "Get high-quality copywriting services for your website. Improve your content with experts.",
@@ -34,6 +36,7 @@ export const metadata = {
   },
   category: "copywriting",
 };
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">

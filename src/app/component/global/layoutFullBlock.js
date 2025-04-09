@@ -1,8 +1,6 @@
 import React from "react";
 import ImageComponent from "./imageComponent";
 import BtnLinkPrimary from "./btnLinkPrimary";
-import TextDesctiption from "./textDescription";
-import TextTitleH2 from "./textHeadingTitle";
 import TextHeadingTitle from "./textHeadingTitle";
 import TextBody from "./textBody";
 
@@ -27,7 +25,7 @@ export default function LayoutFullBlock({
   const bgFx = bg ? bg : "bg-base-200";
   const textFx = bg === "" || bg === "bg-transparent" ? "" : "text-neutral-content";
   const btnFx = btnTxt ? (
-    <div className="mt-20 relative z-10">
+    <div className="mt-20">
       <BtnLinkPrimary btnTxt={btnTxt} btnUrl={btnUrl} iconRight={iconRight} />
     </div>
   ) : (
@@ -43,7 +41,7 @@ export default function LayoutFullBlock({
       <div className="container lg:w-8/12 px-8 mx-auto">
         <div className={`flex gap-20 ${reverseFx}`}>
           <div className="w-full" data-aos="fade-up">
-            <p className="font-semibold text-primary capitalize">{id.replace(/-/g, " ")}</p>
+            <p className="font-semibold text-amber-300 capitalize">{id.replace(/-/g, " ")}</p>
             <div className={`${textFx} grid grid-1 gap-5`}>
               <TextHeadingTitle title={title} iconTitle={null} titleCase={2} h={2} />
               {textBodyFx}

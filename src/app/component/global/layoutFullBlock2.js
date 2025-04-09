@@ -33,7 +33,7 @@ export default function LayoutFullBlock2({
       <div className="container lg:w-8/12 px-8 mx-auto">
         <div className={`flex gap-20 ${reverseFx}`}>
           <div className="w-full" data-aos="fade-up">
-            <p className="font-semibold text-primary capitalize">{id.replace(/-/g, " ")}</p>
+            <p className="font-semibold text-amber-300 capitalize">{id.replace(/-/g, " ")}</p>
             <div className={`${textFx} grid grid-1 gap-5`}>
               <div className="sm:w-1/2 w-full">
                 <TextHeadingTitle title={title} iconTitle={null} titleCase={2} h={2} />

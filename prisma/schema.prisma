@@ -25,6 +25,7 @@ model Users {
 model BonusListItem {
   id         Int      @id @default(autoincrement())
   icon       String
+  img       String   @default("")
   title      String
   desc       String   @default("")
   price      Float    @default(0)
@@ -118,8 +119,9 @@ model ServicesListItem {
   icon                    String
   title                   String
   price                   Float // Harga produk
-  stock                   Int                       @default(0) // Menambahkan default value untuk kolom stock
-  isBest                  Boolean                   @default(false) // Menambahkan default value
+  quality                 Int                       @default(0)
+  stock                   Int                       @default(0) 
+  isBest                  Boolean                   @default(false)
   category                String                    @default("")
   featureServicesListItem FeatureServicesListItem[]
   createDate              DateTime                  @default(now())

@@ -46,15 +46,22 @@ export default function Services() {
   }
 
   return (
-    <div className="relative isolate text-base-content">
+    <div className="text-base-content">
       <div className="w-full">
         <div className="container mx-auto">
           <div className="grid gap-4 md:grid-cols-3">
             {Object.entries(services).map(([key, service]) => (
-              <div key={key} className={`card bg-base-100 rounded-none rounded-bl-3xl ${service.marking ? "border border-primary shadow-xl shadow-indigo-500/50" : ""}`}>
+              <div
+                key={key}
+                className={`card bg-base-100 rounded-none rounded-bl-3xl ${
+                  service.marking ? "border border-primary shadow-xl shadow-indigo-500/50" : ""
+                }`}
+              >
                 <div className="card-body p-0">
                   <div className=" bg-gray-900 text-gray-300 rounded-bl-3xl p-8">
-                    <div className=" text-2xl mb-5">{service.icon === "FaRegStar" ? <FaRegStar /> : service.icon === "FaRegStarHalfStroke" ? <FaRegStarHalfStroke /> : <FaStar />}</div>
+                    <div className=" text-2xl mb-5">
+                      {service.icon === "FaRegStar" ? <FaRegStar /> : service.icon === "FaRegStarHalfStroke" ? <FaRegStarHalfStroke /> : <FaStar />}
+                    </div>
                     <p className="font-normal">{service.name}</p>
                     <p className="text-3xl font-bold my-2 text-secondary">{service.price.toLocaleString("id-ID")}</p>
                   </div>
@@ -69,7 +76,13 @@ export default function Services() {
                     </ul>
                   </div>
                   <div className="card-actions justify-end mt-auto p-8 pt-0">
-                    <BtnLinkPrimary btnUrl={`/services/${key}`} btnTxt="Pilih" btnFull={true} iconRight={<FaArrowRight />} btnStyle={`${service.marking ? "shadow-lg shadow-indigo-500/50" : ""}`} />
+                    <BtnLinkPrimary
+                      btnUrl={`/services/${key}`}
+                      btnTxt="Pilih"
+                      btnFull={true}
+                      iconRight={<FaArrowRight />}
+                      btnStyle={`${service.marking ? "shadow-lg shadow-indigo-500/50" : ""}`}
+                    />
                   </div>
                 </div>
               </div>

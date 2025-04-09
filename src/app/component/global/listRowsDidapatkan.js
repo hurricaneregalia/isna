@@ -1,4 +1,5 @@
 import React from "react";
+import { FaCircleCheck } from "react-icons/fa6";
 
 export default function ListRowsDidapatkan({ listItem, border, iconStyle }) {
   const borderFx = border ? "border border-1" : "";
@@ -9,9 +10,11 @@ export default function ListRowsDidapatkan({ listItem, border, iconStyle }) {
         <li key={index} data-aos="fade-up">
           <div className={`w-full ${borderFx}`}>
             <div className=" flex  items-top gap-2 ">
-              <p>{iconFx}</p>
+              <p>
+                <FaCircleCheck className="text-2xl" />
+              </p>
               <div className="mb-3">
-                <p className="text-lg h3 bg-success px-2  inline rounded-md text-slate-200">{item.title}</p>
+                <p className="text-lg h3 bg-amber-300 px-2  inline rounded-md ">{item.title}</p>
                 <p className="text-lg">{item.desc}</p>
               </div>
             </div>

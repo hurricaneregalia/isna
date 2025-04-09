@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { LuMoon, LuSunMedium } from "react-icons/lu";
 
-export default function ThemeSwitch() {
+export default function ThemeSwitch({ textColor }) {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
@@ -23,13 +23,20 @@ export default function ThemeSwitch() {
       {/* Hidden but accessible label */}
       <span className="sr-only">Toggle theme</span>
 
-      <input type="checkbox" id="theme-switch" className="theme-controller" checked={theme === "dark"} onChange={toggleTheme} aria-label="Toggle between light and dark theme" />
+      <input
+        type="checkbox"
+        id="theme-switch"
+        className="theme-controller"
+        checked={theme === "dark"}
+        onChange={toggleTheme}
+        aria-label="Toggle between light and dark theme"
+      />
 
       {/* Sun icon */}
-      <LuSunMedium className="swap-on h-7 w-7 text-base-content" />
+      <LuSunMedium className={`swap-on h-7 w-7 ${textColor}`} />
 
       {/* Moon icon */}
-      <LuMoon className="swap-off h-7 w-7 text-base-content" />
+      <LuMoon className={`swap-off h-7 w-7 ${textColor}`} />
     </label>
   );
 }
