@@ -123,7 +123,7 @@ export default function LayoutLandingPage({ children }) {
         imageAlt={data.landingPage.cta1Title}
         iconRight={<FaArrowRight />}
       />
-      <Hadist listItem={data.hadistList} bg={landingPageStyle.pattern1} />
+      <Hadist listItem={data.hadistList} bg={landingPageStyle.patternKalmaanaLight} />
       <LayoutFullBlock
         id="sungguh-sungguh "
         bg={landingPageStyle.bg1}
@@ -136,7 +136,7 @@ export default function LayoutLandingPage({ children }) {
         imageAlt={data.landingPage.cta1Title}
         iconRight={<FaArrowRight />}
         reverse={true}
-        footer={<ListThumbnails2 listItem={data.benefitList} bg={landingPageStyle.pattern1} />}
+        footer={<ListThumbnails2 listItem={data.benefitList} bg={landingPageStyle.patternKalmaanaDark} />}
       />
 
       <LayoutFullBlock
@@ -188,7 +188,7 @@ export default function LayoutLandingPage({ children }) {
       <LayoutPrimary id="bonus" bg="bg-transparent" title={data.landingPage.bonusTitle} iconTitle="🔥">
         <Grid2List listItem={data.bonusListItems} />
         <div className={`mt-4 text-lg mx-auto bg-base-300 overflow-hidden rounded-bl-3xl ${landingPageStyle.bg2}`} data-aos="fade-up">
-          <div className="flex text-neutral-content gap-3 py-10 px-5 bg-green-800 bg-opacity-80 ">
+          <div className="flex gap-3 py-10 px-5 bg-amber-300 text-slate-900 bg-opacity-80 ">
             <div className="lg:hidden block text-4xl">✅</div>
             <div className="lg:w-1/2 w-full">
               <p className="font-bold mb-3"> Pengelolaan lebih mudah!</p>

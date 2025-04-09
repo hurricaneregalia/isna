@@ -28,3 +28,16 @@
   background-repeat: repeat;
   background-size: 75px;
 }
+.patternKalmaanaDark {
+  background-image: url("/images/siteIdentity/pattern-kalamanacopy_dark.svg");
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-size: 150px;
+}
+
+.patternKalmaanaLight {
+  background-image: url("/images/siteIdentity/pattern-kalamanacopy_light.svg");
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-size: 150px;
+}
