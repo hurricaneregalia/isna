@@ -40,7 +40,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-base-200 text-base-content">
+      <body className="min-h-screen bg-base-200 text-base-content patternKalmaanaLight">
         <WebVitals />
         {children}
       </body>

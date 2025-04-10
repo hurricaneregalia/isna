@@ -51,7 +51,7 @@ export default function LayoutFullBlock({
             <div>{children}</div>
           </div>
           <div className="w-full" data-aos="flip-left">
-            <ImageComponent imageUrl={imageUrl} imageAlt={imageAlt} width={300} height={300} priority={false} />
+            <ImageComponent imageUrl={imageUrl} imageAlt={imageAlt} width="100%" priority={false} />
           </div>
         </div>
         {footerFx}

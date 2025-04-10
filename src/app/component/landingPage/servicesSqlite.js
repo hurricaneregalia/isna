@@ -24,7 +24,7 @@ export default function ServicesSqlite({ listItem, subListItem }) {
                       <div className="bg-gray-900 text-gray-300 rounded-bl-3xl p-8 overflow-hidden">
                         <div className="text-2xl mb-5 flex gap-1 text-amber-300">
                           {Array.from({ length: item.quality }, (_, index) => (
-                            <FaRegStar key={index} />
+                            <FaStar key={index} />
                           ))}
                         </div>
                         <p className="font-normal">{item.title}</p>
@@ -52,7 +52,7 @@ export default function ServicesSqlite({ listItem, subListItem }) {
                           btnTxt="Pilih"
                           btnFull={true}
                           iconRight={<FaArrowRight />}
-                          btnStyle={`${item.isBest ? "shadow-lg shadow-amber-200" : ""}`}
+                          btnStyle={`${item.isBest ? "shadow-lg shadow-amber-200/50" : ""}`}
                         />
                       </div>
                     </div>

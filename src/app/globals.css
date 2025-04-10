@@ -56,3 +56,17 @@ body {
   display: inline-block;
   animation: beat-fade-zoom 2s ease-in-out infinite;
 }
+
+.patternKalmaanaDark {
+  background-image: url("/images/siteIdentity/pattern-kalamanacopy_dark.svg");
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-size: 150px;
+}
+
+.patternKalmaanaLight {
+  background-image: url("/images/siteIdentity/pattern-kalamanacopy_light.svg");
+  background-attachment: fixed;
+  background-repeat: repeat;
+  background-size: 100px;
+}

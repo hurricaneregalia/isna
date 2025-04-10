@@ -22,6 +22,8 @@ import ListThumbnails from "../global/listThumbnails";
 import ListThumbnails2 from "../global/listThumbnails2";
 import ViewportSize from "../global/viewportSize";
 import CountdownMini from "./countdownMini";
+import TextDescription from "../global/textDescription";
+import ImageComponent from "../global/imageComponent";
 
 export default function LayoutLandingPage({ children }) {
   const [data, setData] = useState({
@@ -88,7 +90,7 @@ export default function LayoutLandingPage({ children }) {
 
       <LayoutFullBlock
         id="fakta"
-        bg=""
+        bg="bg-transparent"
         title={data.landingPage.interestTitle}
         textBody={data.landingPage.interestDesc}
         btnTxt=""
@@ -110,6 +112,7 @@ export default function LayoutLandingPage({ children }) {
         imageAlt={data.landingPage.cta1Title}
         iconRight={<FaArrowRight />}
         reverse={true}
+        roundedBrand={false}
       />
 
       <LayoutFullBlock
@@ -123,7 +126,7 @@ export default function LayoutLandingPage({ children }) {
         imageAlt={data.landingPage.cta1Title}
         iconRight={<FaArrowRight />}
       />
-      <Hadist listItem={data.hadistList} bg={landingPageStyle.patternKalmaanaLight} />
+      <Hadist listItem={data.hadistList} bg="bg-transparent" />
       <LayoutFullBlock
         id="sungguh-sungguh "
         bg={landingPageStyle.bg1}
@@ -141,7 +144,7 @@ export default function LayoutLandingPage({ children }) {
 
       <LayoutFullBlock
         id="manfaat"
-        bg=""
+        bg="bg-transparent"
         title={data.landingPage.manfaatTitle}
         textBody={data.landingPage.manfaatDesc}
         btnTxt={null}
@@ -152,7 +155,7 @@ export default function LayoutLandingPage({ children }) {
       />
       <LayoutFullBlock
         id="penting"
-        bg=""
+        bg="bg-transparent"
         title={data.landingPage.didapatkanTitle}
         description=""
         list={<ListRowsDidapatkan listItem={data.didapatkanList} iconStyle="good" />}
@@ -187,15 +190,23 @@ export default function LayoutLandingPage({ children }) {
       </LayoutPrimary>
       <LayoutPrimary id="bonus" bg="bg-transparent" title={data.landingPage.bonusTitle} iconTitle="🔥">
         <Grid2List listItem={data.bonusListItems} />
-        <div className={`mt-4 text-lg mx-auto bg-base-300 overflow-hidden rounded-bl-3xl ${landingPageStyle.bg2}`} data-aos="fade-up">
-          <div className="flex gap-3 py-10 px-5 bg-amber-300 text-slate-900 bg-opacity-80 ">
-            <div className="lg:hidden block text-4xl">✅</div>
-            <div className="lg:w-1/2 w-full">
-              <p className="font-bold mb-3"> Pengelolaan lebih mudah!</p>
-              <p className="w-full lg:w-2/3">{data.landingPage.bonusDesc}</p>
+        <div className={`mt-4 text-lg mx-auto bg-base-300 overflow-hidden w-full rounded-bl-3xl ${landingPageStyle.bg2}`}>
+          <div className="containerSec flex flex-col md:flex-row gap-3 overflow-hidden bg-amber-300 text-slate-900 bg-opacity-80 ">
+            <div className="sec1 w-full lg:w-1/2 p-10">
+              <TextDescription title="Pengelolaan lebih mudah!" description={data.landingPage.bonusDesc} />
+            </div>
+            <div className="sec2 w-full lg:w-1/2 lg:pt-10 p-0 flex justify-center" data-aos="fade-up">
+              <ImageComponent
+                imageUrl="/images/landingPage/infinity-gauntlet.webp"
+                imageAlt="easy way"
+                width="100px"
+                priority={false}
+                rounded=" none"
+              />
             </div>
           </div>
         </div>
+
         <FinalCta
           id="claim-bonus"
           ctaTxt="Order Copywriting"

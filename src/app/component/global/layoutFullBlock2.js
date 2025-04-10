@@ -22,14 +22,16 @@ export default function LayoutFullBlock2({
   btnUrl,
   iconRight,
   textBody,
+  roundedBrand,
 }) {
   const reverseFx = reverse ? "flex-col-reverse sm:flex-row-reverse" : "flex-col-reverse sm:flex-row";
   const bgFx = bg ? bg : "bg-base-200";
   const textFx = bg === "" || bg === "bg-transparent" ? "" : "text-neutral-content";
   const footerFx = footer ? <div className="">{footer}</div> : null;
+  const roundedFx = roundedBrand ? null : "rounded-bl-3xl";
 
   return (
-    <section className={`py-20 ${bgFx} rounded-bl-3xl`} id={id}>
+    <section className={`py-20 ${bgFx} ${roundedFx}`} id={id}>
       <div className="container lg:w-8/12 px-8 mx-auto">
         <div className={`flex gap-20 ${reverseFx}`}>
           <div className="w-full" data-aos="fade-up">

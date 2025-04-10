@@ -41,13 +41,9 @@ export default function CountdownMini({ targetDate, bonusPeriode }) {
   return (
     <div className="mt-10 text-center">
       <div className="flex justify-center">
-        <p className=" inline-block text-red-50 mx-auto bg-red-500 px-2 rounded-full">
+        <p className=" inline-block text-red-50 mx-auto bg-red-500 px-2 rounded-md">
           <span className=" flex items-center ">
             <span>
-              <WiTime4 />
-            </span>
-            <span>
-              {" "}
               {timeLeft.days ? timeLeft.days : 0} Hari lagi : {timeLeft.hours ? timeLeft.hours : 0} : {timeLeft.minutes ? timeLeft.minutes : 0} :{" "}
               {timeLeft.seconds ? timeLeft.seconds : 0}
             </span>

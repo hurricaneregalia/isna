@@ -12,8 +12,7 @@ export default function Grid2List({ listItem, border }) {
               <ImageComponent
                 imageUrl={item.img}
                 imageAlt={item.title}
-                width={1000}
-                height={1000}
+                width="100%"
                 priority={false}
                 rounded="none"
                 cssStyle="object-cover lg:h-full lg:w-auto w-full h-auto"
