@@ -43,10 +43,10 @@ export default function CountdownMini({ targetDate, bonusPeriode }) {
       <div className="flex justify-center">
         <p className=" inline-block text-red-50 mx-auto bg-red-500 px-2 rounded-md">
           <span className=" flex items-center ">
-            <span>
+            <span className=" opacity-65">
               {timeLeft.days ? timeLeft.days : 0} Hari lagi : {timeLeft.hours ? timeLeft.hours : 0} : {timeLeft.minutes ? timeLeft.minutes : 0} :{" "}
-              {timeLeft.seconds ? timeLeft.seconds : 0}
             </span>
+            <span className="ml-1"> {timeLeft.seconds ? timeLeft.seconds : 0}</span>
           </span>
         </p>
       </div>
