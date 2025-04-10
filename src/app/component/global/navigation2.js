@@ -79,7 +79,7 @@ export default function Navigation2({ siteName, bg }) {
         >
           <DisclosurePanel id="mobile-menu" className="sm:hidden">
             <div className="relative">
-              <div className="absolute space-y-1 p-2 h-100 min-h-screen  bg-slate-900 rounded-bl-3xl w-full">
+              <div className="absolute space-y-1 p-2  bg-slate-900 rounded-bl-3xl w-full">
                 <div className="px-4">
                   {navMenu.map((item) => (
                     <Link key={item.key} href={item.href} className="">
