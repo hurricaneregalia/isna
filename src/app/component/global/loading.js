@@ -35,7 +35,7 @@ export default function Loading() {
     <div className="flex items-center justify-center flex-col min-h-screen bg-base-200 w-screen h-screen" data-theme={theme}>
       <div className="mb-4 text-center">
         <p className="font-bold m-0 text-2xl flex flex-row items-center justify-center text-base-content">
-          <span className="mr-1 text-primary">
+          <span className="mr-1 text-slate-900">
             <FaCoins />
           </span>
           Isna Project
@@ -43,7 +43,7 @@ export default function Loading() {
         <p className="m-0 text-base-content/70">tagline lorem ipsum</p>
       </div>
       <div className="flex space-x-2">
-        <span className="loading loading-dots loading-lg text-primary"></span>
+        <span className="loading loading-dots loading-lg text-slate-500"></span>
       </div>
     </div>
   );

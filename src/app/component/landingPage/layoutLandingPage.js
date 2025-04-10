@@ -195,7 +195,7 @@ export default function LayoutLandingPage({ children }) {
             <div className="sec1 w-full lg:w-1/2 p-10">
               <TextDescription title="Pengelolaan lebih mudah!" description={data.landingPage.bonusDesc} />
             </div>
-            <div className="sec2 w-full lg:w-1/2 lg:pt-10 p-0 flex justify-center" data-aos="fade-up">
+            <div className="sec2 w-full lg:w-1/2 sm:pt-10 p-0 flex justify-center" data-aos="fade-up">
               <ImageComponent
                 imageUrl="/images/landingPage/infinity-gauntlet.webp"
                 imageAlt="easy way"
