@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { GiGroundbreaker } from "react-icons/gi";
 import CanvasCursor from "./component/canvasCursor/CanvasCursor";
@@ -43,18 +42,27 @@ export default function NotFound() {
   }, []);
 
   return (
-    <main className="grid min-h-full place-items-center bg-base-100 px-6 py-24 sm:py-32 lg:px-8 h-screen">
-      <CanvasCursor />
-      <div className="text-center flex flex-col items-center justify-center">
-        <GiGroundbreaker className="text-9xl text-base-300 text-center" />
-        <p className="text-base font-semibold text-indigo-600">- 404 -</p>
-        <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">Page not found</h1>
-        <p className="mt-6 text-pretty text-lg font-medium text-base-content sm:text-xl/8">Sorry, we couldnt find the page youre looking for.</p>
-        <div className="mt-10 flex items-center justify-center gap-x-6">
-          <button className="rounded-md px-3.5 py-2.5 text-sm font-semibold shadow-sm btn btn-primary" onClick={back}>
-            <FaArrowLeft /> Back
-          </button>
-          <WhatsappBtn waBtnText={data.siteIdentities?.contactPhone || "Loading..."} waNumber={data.siteIdentities?.contactPhone || "Loading..."} waText="" />
+    <main className="min-h-full h-screen notFoundBg">
+      <div className="w-full h-full grid  place-items-center  bg-slate-900 bg-opacity-80 px-6 py-24 sm:py-32 lg:px-8 ">
+        <CanvasCursor />
+        <div className="text-center flex flex-col items-center justify-center ">
+          <GiGroundbreaker className="text-9xl text-base-300 text-center" />
+          <p className="text-base font-semibold text-amber-300">- 404 -</p>
+          <h1 className="mt-4 text-neutral-content text-balance text-5xl font-semibold tracking-tight sm:text-7xl">Page not found</h1>
+          <p className="mt-6 text-neutral-content text-pretty text-lg font-medium sm:text-xl/8">Sorry, we couldnt find the page youre looking for.</p>
+          <div className="mt-10 flex items-center justify-center gap-x-6">
+            <button
+              className="px-5 text-sm font-semibold shadow-sm btn bg-amber-300 hover:bg-amber-500 border-0 text-slate-900 rounded-full"
+              onClick={back}
+            >
+              <FaArrowLeft /> Back
+            </button>
+            <WhatsappBtn
+              waBtnText={data.siteIdentities?.contactPhone || "Loading..."}
+              waNumber={data.siteIdentities?.contactPhone || "Loading..."}
+              waText=""
+            />
+          </div>
         </div>
       </div>
     </main>

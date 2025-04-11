@@ -48,7 +48,7 @@ export default function ServicesSqlite({ listItem, subListItem }) {
 
                       <div className="card-actions justify-end mt-auto p-8 pt-0">
                         <BtnLinkPrimary
-                          btnUrl={`/items/${item.id}`} // Menggunakan item.id untuk URL dinamis
+                          btnUrl={`/services/package/${item.slug}`} // Menggunakan item.id untuk URL dinamis
                           btnTxt="Pilih"
                           btnFull={true}
                           iconRight={<FaArrowRight />}

@@ -12,11 +12,11 @@ import Notif from "./notif";
 
 export default function Navigation2({ siteName, bg }) {
   const navMenu = [
-    { name: "Home", href: "#", key: "home" },
-    { name: "Fakta", href: "#fakta", key: "fakta" },
-    { name: "Solusi", href: "#solusi", key: "solusi" },
-    { name: "Layanan", href: "#layanan", key: "layanan" },
-    { name: "Bonus", href: "#bonus", key: "bonus" },
+    { name: "Home", href: "/", key: "home" },
+    { name: "Fakta", href: "/#fakta", key: "fakta" },
+    { name: "Solusi", href: "/#solusi", key: "solusi" },
+    { name: "Layanan", href: "/#layanan", key: "layanan" },
+    { name: "Bonus", href: "/#bonus", key: "bonus" },
     { name: "Api lokal", href: "/api/lokal", key: "api" },
     { name: "Login", href: "/login", key: "login" },
   ];

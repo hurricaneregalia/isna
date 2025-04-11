@@ -25,7 +25,7 @@ model Users {
 model BonusListItem {
   id         Int      @id @default(autoincrement())
   icon       String
-  img       String   @default("")
+  img        String   @default("")
   title      String
   desc       String   @default("")
   price      Float    @default(0)
@@ -50,7 +50,7 @@ model InterestListItem {
   icon       String
   title      String
   desc       String
-  img       String @default("")
+  img        String   @default("")
   createDate DateTime @default(now())
   updateDate DateTime @updatedAt
 }
@@ -118,9 +118,10 @@ model ServicesListItem {
   desc                    String
   icon                    String
   title                   String
+  slug                    String                    @default("")
   price                   Float // Harga produk
   quality                 Int                       @default(0)
-  stock                   Int                       @default(0) 
+  stock                   Int                       @default(0)
   isBest                  Boolean                   @default(false)
   category                String                    @default("")
   featureServicesListItem FeatureServicesListItem[]
