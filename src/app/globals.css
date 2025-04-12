@@ -74,4 +74,5 @@ body {
   background-image: url("/images/landingPage/not-found.webp");
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
