@@ -24,7 +24,8 @@
     "react-icons": "^5.4.0",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-motion": "^1.0.1",
-    "theme-change": "^2.5.0"
+    "theme-change": "^2.5.0",
+    "yet-another-react-lightbox": "^3.22.0"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^7.0.2",

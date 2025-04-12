@@ -16,6 +16,7 @@ export async function GET(request) {
     const benefitListItem = await prisma.benefitListItem.findMany();
     const didapatkanListItems = await prisma.didapatkanListItem.findMany();
     const alurListItems = await prisma.alurListItem.findMany();
+    const servicesGalleryListItems = await prisma.servicesGalleryListItem.findMany();
 
     const responseData = {
       landingPage,
@@ -32,6 +33,7 @@ export async function GET(request) {
       benefitListItem,
       didapatkanListItems,
       alurListItems,
+      servicesGalleryListItems,
     };
 
     // Mengembalikan data dalam format JSON dengan pretty-print

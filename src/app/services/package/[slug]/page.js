@@ -1,5 +1,4 @@
 import HeaderFooterSqlite from "@/app/component/global/headerFooterSqlite";
-import ImageComponent from "@/app/component/global/imageComponent";
 import axios from "axios";
 import { notFound } from "next/navigation";
 import { FaStar } from "react-icons/fa6";
@@ -12,8 +11,18 @@ async function getServiceBySlug(slug) {
   try {
     const res = await axios.get(`${BASE_URL}/api/lokal`);
     const data = res.data.servicesListItems;
+    const galleries = res.data.servicesGalleryListItems;
+
     const service = data.find((item) => item.slug === slug);
-    return service || null;
+    if (!service) return null;
+
+    // Filter gallery yang cocok dengan service.id
+    const serviceGallery = galleries.filter((item) => item.servicesListItemId === service.id);
+
+    return {
+      ...service,
+      servicesGalleryListItems: serviceGallery,
+    };
   } catch (err) {
     console.error(err);
     return null;
@@ -27,8 +36,7 @@ export default async function ServicePackagePage({ params }) {
   return (
     <HeaderFooterSqlite>
       <div>
-        <HeroPackage img="/images/landingPage/not-found.webp" imageAlt={service.title} />
-
+        <HeroPackage img={service.img} imageAlt={service.title} listItem={service.servicesGalleryListItems} />
         <div className="lg:p-20 sm:p-10 p-5 grid grid-cols-2 lg:w-2/3 w-full mx-auto">
           <div className="flex flex-col gap-1">
             <h1>{service.title}</h1>
