@@ -9,8 +9,4 @@ module.exports = {
       },
     },
   },
-  plugins: [require("daisyui"), require("tailwindcss-motion")],
-  daisyui: {
-    themes: ["light", "dark"],
-  },
 };

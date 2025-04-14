@@ -46,7 +46,7 @@ export default function HeroPackage({ img, imageAlt, listItem }) {
             setIsOpen(true);
           }}
         >
-          <ImageComponent imageUrl={img} imageAlt={imageAlt} width="100%" priority={true} rounded="noround" cssStyle="object-cover h-full w-auto" />
+          <ImageComponent imageUrl={img} imageAlt={imageAlt} width="100%" priority={true} rounded-sm="noround" cssStyle="object-cover h-full w-auto" />
         </button>
 
         <div className="galler grid md:grid-cols-2 grid-cols-4 md:gap-3 gap-1">

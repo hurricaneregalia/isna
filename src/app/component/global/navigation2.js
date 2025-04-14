@@ -63,8 +63,8 @@ export default function Navigation2({ siteName, bg }) {
               >
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open main menu</span>
-                <HiMenuAlt3 aria-hidden="true" className="block size-6 group-data-[open]:hidden" />
-                <FaXmark aria-hidden="true" className="hidden size-6 group-data-[open]:block" />
+                <HiMenuAlt3 aria-hidden="true" className="block size-6 group-data-open:hidden" />
+                <FaXmark aria-hidden="true" className="hidden size-6 group-data-open:block" />
               </DisclosureButton>
             </div>
           </div>

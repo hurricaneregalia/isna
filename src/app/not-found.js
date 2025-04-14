@@ -52,7 +52,7 @@ export default function NotFound() {
           <p className="mt-6 text-neutral-content text-pretty text-lg font-medium sm:text-xl/8">Sorry, we couldnt find the page youre looking for.</p>
           <div className="mt-10 flex items-center justify-center gap-3">
             <button
-              className="px-5 text-sm font-semibold shadow-sm btn bg-amber-300 hover:bg-amber-500 border-0 text-slate-900 rounded-full"
+              className="px-5 text-sm font-semibold shadow-xs btn bg-amber-300 hover:bg-amber-500 border-0 text-slate-900 rounded-full"
               onClick={back}
             >
               <FaArrowLeft /> Back

@@ -227,6 +227,8 @@ model RegisterForm {
   options     String? // JSON atau comma-separated value untuk radio/select
   required    Boolean  @default(false)
   hint        String? // teks keterangan di bawah input
+  hintTrue    String   @default("")
+  hintFalse   String   @default("")
   createDate  DateTime @default(now())
   updateDate  DateTime @updatedAt
 }
