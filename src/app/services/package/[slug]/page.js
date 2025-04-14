@@ -12,6 +12,7 @@ async function getServiceBySlug(slug) {
     const res = await axios.get(`${BASE_URL}/api/lokal`);
     const data = res.data.servicesListItems;
     const galleries = res.data.servicesGalleryListItems;
+    const registerForm = res.data.registerForms;
 
     const service = data.find((item) => item.slug === slug);
     if (!service) return null;
@@ -22,6 +23,7 @@ async function getServiceBySlug(slug) {
     return {
       ...service,
       servicesGalleryListItems: serviceGallery,
+      registerForm,
     };
   } catch (err) {
     console.error(err);
@@ -54,7 +56,7 @@ export default async function ServicePackagePage({ params }) {
           </div>
         </div>
         <div className="lg:px-20 sm:px-10 px-5 lg:w-2/3 w-full mx-auto">
-          <FormPackage />
+          <FormPackage listItem={service.registerForm} />
         </div>
       </div>
     </HeaderFooterSqlite>

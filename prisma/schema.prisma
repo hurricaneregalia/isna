@@ -124,7 +124,7 @@ model ServicesListItem {
   quality                 Int                       @default(0)
   stock                   Int                       @default(0)
   isBest                  Boolean                   @default(false)
-  category                String                    @default("")
+  category                Int                       @default(0)
   featureServicesListItem FeatureServicesListItem[]
   servicesGalleryListItem ServicesGalleryListItem[] // Relasi one-to-many
   createDate              DateTime                  @default(now())
@@ -216,6 +216,19 @@ model SocialLinks {
   platform String
   url      String
   userName String
+}
+
+model RegisterForm {
+  id          Int      @id @default(autoincrement())
+  name        String
+  type        String
+  placeholder String
+  row         Int      @default(0)
+  options     String? // JSON atau comma-separated value untuk radio/select
+  required    Boolean  @default(false)
+  hint        String? // teks keterangan di bawah input
+  createDate  DateTime @default(now())
+  updateDate  DateTime @updatedAt
 }
 
 model FacebookPixel {
