@@ -229,6 +229,7 @@ model RegisterForm {
   hint        String? // teks keterangan di bawah input
   hintTrue    String   @default("")
   hintFalse   String   @default("")
+  isActive    Boolean  @default(true)
   createDate  DateTime @default(now())
   updateDate  DateTime @updatedAt
 }

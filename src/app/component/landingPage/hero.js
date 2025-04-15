@@ -6,7 +6,7 @@ export default function Hero({ title, description, btnTxt, bg }) {
   const btnFX = btnTxt ? <BtnLinkPrimary btnTxt={btnTxt} btnUrl="#layanan" iconRight={<FaArrowRight />} animate={true} /> : "";
   return (
     <div className={`${bg} hero min-h-screen rounded-bl-3xl overflow-hidden`}>
-      <div className="hero-overlay bg-opacity-60 "></div>
+      <div className="hero-overlay bg-slate-900/80 "></div>
       <div className="text-neutral-content text-center">
         <div className="max-w-3xl px-4">
           <h1 className="mb-5 sm:text-5xl text-3xl font-bold">{title}</h1>

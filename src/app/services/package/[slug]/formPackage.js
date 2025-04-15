@@ -1,5 +1,4 @@
 "use client";
-import BtnLinkPrimary from "@/app/component/global/btnLinkPrimary";
 import TextHeadingTitle from "@/app/component/global/textHeadingTitle";
 import React, { useEffect, useState } from "react";
 import { TiPencil } from "react-icons/ti";
@@ -8,6 +7,8 @@ import WhatsappBtn from "@/app/component/global/whatsappBtn";
 
 export default function FormPackage({ listItem, serviceName, servicePrice, serviceCategory, waNumber }) {
   const [formData, setFormData] = useState({});
+  const [orderId, setOrderId] = useState("");
+
   const handleChange = (e) => {
     const { name, value, type } = e.target;
     setFormData((prev) => ({
@@ -16,6 +17,12 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
     }));
   };
   useEffect(() => {
+    const generateOrderId = () => {
+      const datePart = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+      const randomPart = Math.random().toString(36).substring(2, 8).toUpperCase();
+      return `ORD-${datePart}-${randomPart}`;
+    };
+    setOrderId(generateOrderId());
     setFormData((prev) => ({
       ...prev,
       "14-nama-paket": serviceName,
@@ -167,59 +174,24 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
           waBtnText="checkout"
           waNumber={waNumber}
           waText={encodeURIComponent(
-            Object.entries(
-              Object.fromEntries(
-                Object.entries(formData).sort(([keyA], [keyB]) => {
-                  const numA = parseInt(keyA.split("-")[0], 10);
-                  const numB = parseInt(keyB.split("-")[0], 10);
-                  return numA - numB;
-                })
+            `Order ID: ${orderId}\n\n` +
+              Object.entries(
+                Object.fromEntries(
+                  Object.entries(formData).sort(([keyA, _a], [keyB, _b]) => {
+                    const numA = parseInt(keyA.split("-")[0], 10);
+                    const numB = parseInt(keyB.split("-")[0], 10);
+                    return numA - numB;
+                  })
+                )
               )
-            )
-              .map(([key, value]) => {
-                const label = key.replace(/^\d+-/, "").replace(/-/g, " ");
-                return `${label}: ${value}`;
-              })
-              .join("\n")
+                .map(([key, value]) => {
+                  const label = key.replace(/^\d+-/, "").replace(/-/g, " ");
+                  return `${label}: ${value}`;
+                })
+                .join("\n")
           )}
           forWa="btn-xl bg-green-500 hover:bg-green-600 capitalize text-green-100"
-        />{" "}
-      </div>
-      <div className="mt-10 bg-gray-100 p-4 rounded-lg text-sm">
-        <h3 className="font-bold mb-2">Preview Data:</h3>
-        <pre className="whitespace-pre-wrap break-words">
-          {JSON.stringify(
-            Object.fromEntries(
-              Object.entries(formData).sort(([keyA], [keyB]) => {
-                // Ambil angka depan dari key
-                const numA = parseInt(keyA.split("-")[0], 10);
-                const numB = parseInt(keyB.split("-")[0], 10);
-                return numA - numB;
-              })
-            ),
-            null,
-            2
-          )}
-        </pre>
-      </div>
-      <div className="space-y-2">
-        {Object.entries(
-          Object.fromEntries(
-            Object.entries(formData).sort(([keyA], [keyB]) => {
-              const numA = parseInt(keyA.split("-")[0], 10);
-              const numB = parseInt(keyB.split("-")[0], 10);
-              return numA - numB;
-            })
-          )
-        ).map(([key, value]) => {
-          // Hapus angka & dash di awal key biar tampilannya lebih rapi
-          const label = key.replace(/^\d+-/, "").replace(/-/g, " ");
-          return (
-            <p key={key}>
-              <strong className="capitalize">{label}:</strong> {value}
-            </p>
-          );
-        })}
+        />
       </div>
     </form>
   );

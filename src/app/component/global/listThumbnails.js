@@ -19,8 +19,8 @@ export default function ListThumbnails({ listItem, border, iconStyle }) {
           data-aos="fade-up"
         >
           <div className={`w-full ${borderFx}`}>
-            <div className="h-96 h-9/10">
-              <div className="hero-overlay bg-opacity-80 p-5">
+            <div className="h-96">
+              <div className="hero-overlay bg-slate-900/80 p-5">
                 <p className="mb-5 text-3xl text-red-600">
                   <IoMdCloseCircleOutline />
                 </p>

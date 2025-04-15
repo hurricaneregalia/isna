@@ -188,7 +188,7 @@ export default function LayoutLandingPage({ children }) {
       <LayoutPrimary id="bonus" bg="bg-transparent" title={data.landingPage.bonusTitle} iconTitle="🔥">
         <Grid2List listItem={data.bonusListItems} />
         <div className={`mt-4 text-lg mx-auto bg-base-300 overflow-hidden w-full rounded-bl-3xl ${landingPageStyle.bg2}`}>
-          <div className="containerSec flex flex-col md:flex-row gap-3 overflow-hidden bg-amber-300 text-slate-900 bg-opacity-80 ">
+          <div className="containerSec flex flex-col md:flex-row gap-3 overflow-hidden bg-amber-300/80 text-slate-900 ">
             <div className="sec1 w-full lg:w-1/2 p-10">
               <TextDescription title="Pengelolaan lebih mudah!" description={data.landingPage.bonusDesc} />
             </div>
