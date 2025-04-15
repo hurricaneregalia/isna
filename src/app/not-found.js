@@ -43,7 +43,7 @@ export default function NotFound() {
 
   return (
     <main className="min-h-full h-screen notFoundBg">
-      <div className="w-full h-full grid  place-items-center  bg-slate-900 bg-opacity-80 px-6 py-24 sm:py-32 lg:px-8 ">
+      <div className="w-full h-full grid  place-items-center bg-slate-900/80 px-6 py-24 sm:py-32 lg:px-8 ">
         <CanvasCursor />
         <div className="text-center flex flex-col items-center justify-center ">
           <GiGroundbreaker className="text-9xl text-base-300 text-center" />
@@ -57,11 +57,7 @@ export default function NotFound() {
             >
               <FaArrowLeft /> Back
             </button>
-            <WhatsappBtn
-              waBtnText={data.siteIdentities?.contactPhone || "Loading..."}
-              waNumber={data.siteIdentities?.contactPhone || "Loading..."}
-              waText=""
-            />
+            <WhatsappBtn waBtnText="" waNumber={data.siteIdentities?.contactPhone || "Loading..."} waText="" forWa={true} />
           </div>
         </div>
       </div>

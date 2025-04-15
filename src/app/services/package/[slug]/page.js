@@ -13,6 +13,8 @@ async function getServiceBySlug(slug) {
     const data = res.data.servicesListItems;
     const galleries = res.data.servicesGalleryListItems;
     const registerForm = res.data.registerForms;
+    const category = res.data.servicesCategories;
+    const siteIdentity = res.data.siteIdentities[0];
 
     const service = data.find((item) => item.slug === slug);
     if (!service) return null;
@@ -24,6 +26,8 @@ async function getServiceBySlug(slug) {
       ...service,
       servicesGalleryListItems: serviceGallery,
       registerForm,
+      servicesCategories: category,
+      siteIdentities: siteIdentity,
     };
   } catch (err) {
     console.error(err);
@@ -34,29 +38,42 @@ async function getServiceBySlug(slug) {
 export default async function ServicePackagePage({ params }) {
   const service = await getServiceBySlug(params.slug);
   if (!service) notFound();
+  const categoryTitle = service.servicesCategories.find((cat) => cat.id === service.category)?.title;
 
   return (
     <HeaderFooterSqlite>
       <div>
         <HeroPackage img={service.img} imageAlt={service.title} listItem={service.servicesGalleryListItems} />
-        <div className="lg:p-20 sm:p-10 p-5 grid grid-cols-2 lg:w-2/3 w-full mx-auto">
-          <div className="flex flex-col gap-1">
-            <h1>{service.title}</h1>
-            <h2 className=" text-3xl font-bold ">Rp. {service.price.toLocaleString("id-ID")}</h2>
-            <div>
-              <p className="bg-base-300 px-2 py-0 inline-block rounded-md">Kategory {service.category}</p>
+        <div className="sm:px-13 px-5 lg:w-2/3 w-full mx-auto mt-10">
+          <div className="bg-slate-900 text-neutral-content lg:p-10 sm:p-5 p-5">
+            <div className="flex w-full">
+              <div className="w-1/2 overflow-hidden">
+                <h1>{service.title}</h1>
+              </div>
+              <div className="w-1/2 ">
+                <p className="flex justify-end text-lg sm:text-2xl gap-1 text-amber-300">
+                  {Array.from({ length: service.quality }, (_, index) => (
+                    <FaStar key={index} />
+                  ))}
+                </p>
+              </div>
+            </div>
+            <div className=" flex flex-col w-full gap-2">
+              <h2 className=" text-3xl font-bold ">Rp. {service.price.toLocaleString("id-ID")}</h2>
+              <div>
+                <p className="bg-slate-700  px-2 py-1 inline-block capitalize text-sm rounded-md">{categoryTitle || "Tidak diketahui"}</p>
+              </div>
             </div>
           </div>
-          <div>
-            <p className=" flex justify-end text-2xl gap-1 text-amber-300">
-              {Array.from({ length: service.quality }, (_, index) => (
-                <FaStar key={index} />
-              ))}
-            </p>
-          </div>
         </div>
-        <div className="lg:px-20 sm:px-10 px-5 lg:w-2/3 w-full mx-auto">
-          <FormPackage listItem={service.registerForm} />
+        <div className="sm:px-13 px-5 lg:w-2/3 w-full mx-auto">
+          <FormPackage
+            listItem={service.registerForm}
+            serviceName={service.title}
+            servicePrice={service.price}
+            serviceCategory={categoryTitle}
+            waNumber={service.siteIdentities.contactPhone}
+          />
         </div>
       </div>
     </HeaderFooterSqlite>

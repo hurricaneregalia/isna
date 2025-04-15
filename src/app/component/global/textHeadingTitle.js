@@ -1,42 +1,50 @@
 import React from "react";
 
-export default function TextHeadingTitle({ title, iconTitle, titleCase, h }) {
-  // Menentukan iconTitleFX jika ada
-  const iconTitleFX = iconTitle ? <span className="text-4xl fa-beat-fade-zoom mx-2">{iconTitle}</span> : null;
+export default function TextHeadingTitle({ title, iconTitle, iconPosition, titleCase, h, cssStyle, anime }) {
+  // Heading tag dinamis
+  const HeadingTag = `h${h >= 1 && h <= 6 ? h : 6}`;
 
-  // Menentukan titleCaseFX berdasarkan nilai titleCase
-  const titleCaseFX = titleCase === 1 ? "uppercase" : titleCase === 2 ? "capitalize" : "normal-case";
+  // Text case utility
+  const titleCaseClass = titleCase === 1 ? "uppercase" : titleCase === 2 ? "capitalize" : "normal-case";
 
-  let HeadingTag;
-  switch (h) {
-    case 1:
-      HeadingTag = "h1";
-      break;
-    case 2:
-      HeadingTag = "h2";
-      break;
-    case 3:
-      HeadingTag = "h3";
-      break;
-    case 4:
-      HeadingTag = "h4";
-      break;
-    case 5:
-      HeadingTag = "h5";
-      break;
-    default:
-      HeadingTag = "h6";
-  }
+  // Text size based on heading level
+  const textSizeClass =
+    {
+      1: "text-4xl",
+      2: "text-3xl",
+      3: "text-2xl",
+      4: "text-xl",
+      5: "text-lg",
+      6: "text-md",
+    }[h] || "text-md";
+
+  // Generate content based on icon position
+  const renderContent = () => {
+    const icon = iconTitle && <span className={anime}>{iconTitle}</span>;
+    if (iconPosition === "left")
+      return (
+        <>
+          {icon} {title}
+        </>
+      );
+    if (iconPosition === "right")
+      return (
+        <>
+          {title} {icon}
+        </>
+      );
+    if (iconPosition === "both")
+      return (
+        <>
+          {icon} {title} {icon}
+        </>
+      );
+    return <>{title}</>; // default
+  };
 
   return (
-    <HeadingTag
-      className={`font-bold tracking-tight ${
-        h === 1 ? "text-4xl" : h === 2 ? "text-3xl" : h === 3 ? "text-2xl" : h === 4 ? "text-xl" : h === 5 ? "text-lg" : "text-md"
-      } ${titleCaseFX}`}
-    >
-      {iconTitleFX}
-      {title}
-      {iconTitleFX}
+    <HeadingTag className={`font-bold tracking-tight ${textSizeClass} ${titleCaseClass} ${cssStyle}`}>
+      <div className="flex items-center gap-1">{renderContent()}</div>
     </HeadingTag>
   );
 }

@@ -1,14 +1,36 @@
+"use client";
+import BtnLinkPrimary from "@/app/component/global/btnLinkPrimary";
 import TextHeadingTitle from "@/app/component/global/textHeadingTitle";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { TiPencil } from "react-icons/ti";
+import { FaArrowRight } from "react-icons/fa6";
+import WhatsappBtn from "@/app/component/global/whatsappBtn";
 
-export default function FormPackage({ listItem }) {
+export default function FormPackage({ listItem, serviceName, servicePrice, serviceCategory, waNumber }) {
+  const [formData, setFormData] = useState({});
+  const handleChange = (e) => {
+    const { name, value, type } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: type === "file" ? e.target.files[0]?.name : value, // ambil nama file
+    }));
+  };
+  useEffect(() => {
+    setFormData((prev) => ({
+      ...prev,
+      "14-nama-paket": serviceName,
+      "15-harga-paket": servicePrice,
+      "16-kategori": serviceCategory,
+    }));
+  }, [serviceName, servicePrice, serviceCategory]);
+
   return (
-    <form className="md:mt-0 mt-10">
-      <TextHeadingTitle title="Isi data bisnis Anda" iconTitle={null} titleCase={2} h={3} />
-      <div className="w-full grid grid-cols-1 gap-5 mt-4 border border-base-300 lg:p-30 p-5 rounded-bl-3xl">
+    <form className="mb-20">
+      <div className="w-full grid grid-cols-1 gap-5 border border-base-300 lg:p-30 p-5 pt-10 rounded-bl-3xl">
+        <TextHeadingTitle title="Isi data bisnis Anda" iconTitle={<TiPencil />} titleCase={2} h={3} cssStyle="mb-10" iconPosition="left" />
         {listItem.length > 0 ? (
           listItem.map((item) => {
-            const id = `${item.name}-${item.id}`.replace(/\s+/g, "-");
+            const id = `${item.id}-${item.name}`.replace(/\s+/g, "-");
             const label = item.name;
             const basePlaceholder = item.placeholder || item.name;
             const placeholder = item.required ? `${basePlaceholder} *` : basePlaceholder;
@@ -24,10 +46,12 @@ export default function FormPackage({ listItem }) {
                       <span className="capitalize mb-1">{item.name}</span>
                       <textarea
                         id={id}
+                        name={id}
                         placeholder={placeholder}
                         required={isRequired}
                         className="textarea textarea-lg placeholder:capitalize w-full"
                         rows={item.row || 3}
+                        onChange={handleChange}
                       ></textarea>
                       {item.hint && <p className="text-sm text-gray-500 mt-1">{item.hint}</p>}
                     </label>
@@ -39,7 +63,14 @@ export default function FormPackage({ listItem }) {
                         </span>
                         {options.map((opt, index) => (
                           <label key={index} className="inline-flex items-center gap-2">
-                            <input type="radio" name={id} value={opt} required={isRequired} className="radio input validator" />
+                            <input
+                              type="radio"
+                              name={id}
+                              value={opt}
+                              required={isRequired}
+                              className="radio input validator"
+                              onChange={handleChange}
+                            />
                             <span className="capitalize">{opt}</span>
                           </label>
                         ))}
@@ -50,19 +81,22 @@ export default function FormPackage({ listItem }) {
                     <>
                       <input
                         id={id}
+                        name={id}
                         type="file"
                         required={isRequired}
                         className="file-input input validator file-input-bordered file-input-lg w-full"
+                        onChange={handleChange}
                       />
                       <span className="capitalize">
                         {label} {isRequired && <span className="text-red-500 text-2xl">*</span>}
                       </span>
-                      {item.hint && <p className="text-sm text-gray-500 mt-1">{item.hint}</p>}
+                      <p className="validator-hint">{item.hintFalse || item.hintTrue}huntu</p>
                     </>
                   ) : (
                     <>
                       <input
                         id={id}
+                        name={id}
                         type={item.type}
                         placeholder={placeholder}
                         required={isRequired}
@@ -72,11 +106,12 @@ export default function FormPackage({ listItem }) {
                         maxLength={item.type === "tel" ? 15 : undefined}
                         title={item.type === "tel" ? "Masukkan nomor yang diawali dengan +62 dan diikuti 9–12 digit angka" : undefined}
                         className="input input-lg placeholder:capitalize w-full validator"
+                        onChange={handleChange}
                       />
                       <span className="capitalize">
                         {label} {isRequired && <span className="text-red-500 text-2xl">*</span>}
                       </span>
-                      {item.hint && <p className="text-sm text-gray-500 mt-1">{item.hint}</p>}
+                      <p className="validator-hint">{item.hintFalse || item.hintTrue}</p>
                     </>
                   )}
                 </label>
@@ -86,6 +121,105 @@ export default function FormPackage({ listItem }) {
         ) : (
           <p>No item</p>
         )}
+        <div>
+          <TextHeadingTitle title="Informasi paket" iconTitle={<TiPencil />} titleCase={2} h={3} cssStyle="my-10" iconPosition="left" />
+        </div>
+        <div className=" flex flex-col gap-5">
+          <label className="floating-label w-full" htmlFor="15-nama-paket">
+            <input
+              id="15-nama-paket"
+              name="15-nama-paket"
+              type="text"
+              defaultValue={serviceName}
+              placeholder={serviceName}
+              className="input input-lg placeholder:capitalize w-full"
+              disabled
+            />
+            <span className="capitalize">Nama paket</span>
+          </label>
+          <label className="floating-label w-full" htmlFor="16-harga">
+            <input
+              id="16-harga"
+              name="16-harga"
+              type="number"
+              defaultValue={servicePrice}
+              placeholder={servicePrice}
+              className="input input-lg placeholder:capitalize w-full"
+              disabled
+            />
+            <span className="capitalize">harga paket</span>
+          </label>
+          <label className="floating-label w-full" htmlFor="17-kategori">
+            <input
+              id="17-kategori"
+              name="17-kategori"
+              type="text"
+              defaultValue={serviceCategory}
+              placeholder={serviceCategory}
+              className="input input-lg placeholder:capitalize w-full"
+              disabled
+            />
+            <span className="capitalize">kategori</span>
+          </label>
+        </div>
+        <hr className="my-5 opacity-0" />
+        <WhatsappBtn
+          waBtnText="checkout"
+          waNumber={waNumber}
+          waText={encodeURIComponent(
+            Object.entries(
+              Object.fromEntries(
+                Object.entries(formData).sort(([keyA], [keyB]) => {
+                  const numA = parseInt(keyA.split("-")[0], 10);
+                  const numB = parseInt(keyB.split("-")[0], 10);
+                  return numA - numB;
+                })
+              )
+            )
+              .map(([key, value]) => {
+                const label = key.replace(/^\d+-/, "").replace(/-/g, " ");
+                return `${label}: ${value}`;
+              })
+              .join("\n")
+          )}
+          forWa="btn-xl bg-green-500 hover:bg-green-600 capitalize text-green-100"
+        />{" "}
+      </div>
+      <div className="mt-10 bg-gray-100 p-4 rounded-lg text-sm">
+        <h3 className="font-bold mb-2">Preview Data:</h3>
+        <pre className="whitespace-pre-wrap break-words">
+          {JSON.stringify(
+            Object.fromEntries(
+              Object.entries(formData).sort(([keyA], [keyB]) => {
+                // Ambil angka depan dari key
+                const numA = parseInt(keyA.split("-")[0], 10);
+                const numB = parseInt(keyB.split("-")[0], 10);
+                return numA - numB;
+              })
+            ),
+            null,
+            2
+          )}
+        </pre>
+      </div>
+      <div className="space-y-2">
+        {Object.entries(
+          Object.fromEntries(
+            Object.entries(formData).sort(([keyA], [keyB]) => {
+              const numA = parseInt(keyA.split("-")[0], 10);
+              const numB = parseInt(keyB.split("-")[0], 10);
+              return numA - numB;
+            })
+          )
+        ).map(([key, value]) => {
+          // Hapus angka & dash di awal key biar tampilannya lebih rapi
+          const label = key.replace(/^\d+-/, "").replace(/-/g, " ");
+          return (
+            <p key={key}>
+              <strong className="capitalize">{label}:</strong> {value}
+            </p>
+          );
+        })}
       </div>
     </form>
   );
