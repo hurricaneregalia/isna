@@ -79,7 +79,7 @@ export default function LayoutLandingPage({ children }) {
   return (
     <Content>
       <Hero
-        bg={landingPageStyle.heroImage}
+        bg="/images/landingPage/hero/bgHero2.webp"
         title={data.landingPage.heroTitle}
         description={data.landingPage.heroDesc}
         btnTxt={data.landingPage.heroBtnTxt}
