@@ -25,9 +25,18 @@ export const metadata = {
   },
 };
 
-export default function Home({ siteName, copyright }) {
+export default async function Home() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/siteidentity`, { cache: "no-store" });
+  const data = await res.json();
+
+  const identity = data.siteIdentities?.[0]; // ambil data pertama
+
+  if (!identity) {
+    return <p>Data site identity tidak ditemukan.</p>;
+  }
+
   return (
-    <HeaderFooterSqlite siteName={siteName} copyright={copyright}>
+    <HeaderFooterSqlite siteName={identity.siteName} copyright={identity.siteCopyright}>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
         <LayoutLandingPage />
       </main>

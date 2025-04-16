@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { FaStar } from "react-icons/fa6";
 import HeroPackage from "./heroPackage";
 import FormPackage from "./formPackage";
+import { GenerateMetadata } from "@/app/component/global/generateMetadata";
 
 const BASE_URL = process.env.NODE_ENV === "production" ? process.env.BASE_URL_PROD : process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -15,12 +16,12 @@ async function getServiceBySlug(slug) {
     const registerForm = res.data.registerForms;
     const category = res.data.servicesCategories;
     const siteIdentity = res.data.siteIdentities[0];
-
+    const metaDatas = res.data.metaData;
     const service = data.find((item) => item.slug === slug);
     if (!service) return null;
 
-    // Filter gallery yang cocok dengan service.id
     const serviceGallery = galleries.filter((item) => item.servicesListItemId === service.id);
+    const metaData = metaDatas.find((meta) => meta.serviceId === service.id);
 
     return {
       ...service,
@@ -28,6 +29,7 @@ async function getServiceBySlug(slug) {
       registerForm,
       servicesCategories: category,
       siteIdentities: siteIdentity,
+      metaData: metaData || null,
     };
   } catch (err) {
     console.error(err);
@@ -35,13 +37,36 @@ async function getServiceBySlug(slug) {
   }
 }
 
+export async function generateMetadata({ params }) {
+  const service = await getServiceBySlug(params.slug);
+  if (!service) return {};
+
+  const categoryTitle = service.servicesCategories.find((cat) => cat.id === service.category)?.title;
+  const meta = service.metaData;
+
+  return GenerateMetadata({
+    title: service.siteIdentities.siteName,
+    desc: `Layanan ${service.title} ${meta?.desc} Hanya di ${BASE_URL}/services/package/${params.slug}`,
+    keywords: [service.title, meta?.keywords],
+    author: meta?.author,
+    siteUrl: `${BASE_URL}/services/package/${params.slug}`,
+    baseUrl: service.siteIdentities.siteUrl,
+    siteName: service.siteIdentities.siteName,
+    ogImage: meta?.ogImage,
+    category: meta?.category,
+    index: meta?.index,
+    follow: meta?.follow,
+  });
+}
+
+// ✅ Komponen utama halaman
 export default async function ServicePackagePage({ params }) {
   const service = await getServiceBySlug(params.slug);
   if (!service) notFound();
   const categoryTitle = service.servicesCategories.find((cat) => cat.id === service.category)?.title;
 
   return (
-    <HeaderFooterSqlite>
+    <HeaderFooterSqlite siteName={service.siteIdentities.siteName} footerText={service.siteIdentities.siteCopyright}>
       <div>
         <HeroPackage img={service.img} imageAlt={service.title} listItem={service.servicesGalleryListItems} />
         <div className="sm:px-13 px-5 lg:w-2/3 w-full mx-auto mt-10">
@@ -72,6 +97,7 @@ export default async function ServicePackagePage({ params }) {
             serviceName={service.title}
             servicePrice={service.price}
             serviceCategory={categoryTitle}
+            sku={service.sku}
             waNumber={service.siteIdentities.contactPhone}
           />
         </div>

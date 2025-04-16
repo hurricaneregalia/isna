@@ -36,8 +36,8 @@ export default function HeroPackage({ img, imageAlt, listItem }) {
   ];
 
   return (
-    <div className="lg:p-20 sm:p-10 p-5 bg-slate-900  rounded-bl-3xl">
-      <div className="rounded-bl-2xl grid md:grid-cols-2 grid-cols-1 md:gap-3 gap-1 lg:w-2/3 mx-auto w-full overflow-hidden">
+    <div className="lg:p-20 sm:p-10 p-5 bg-slate-900 sm:rounded-bl-4xl rounded-bl-3xl">
+      <div className="lg:rounded-bl-3xl rounded-bl-xl grid md:grid-cols-2 grid-cols-1 md:gap-3 gap-1 lg:w-2/3 mx-auto w-full overflow-hidden">
         <button
           id="bigImage"
           type="button"

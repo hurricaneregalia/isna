@@ -17,7 +17,7 @@ export default function Navigation2({ siteName, bg }) {
     { name: "Solusi", href: "/#solusi", key: "solusi" },
     { name: "Layanan", href: "/#layanan", key: "layanan" },
     { name: "Bonus", href: "/#bonus", key: "bonus" },
-    { name: "Api lokal", href: "/api/lokal", key: "api" },
+    { name: "My Api", href: "/myapi", key: "myapi" },
     { name: "Login", href: "/login", key: "login" },
   ];
 

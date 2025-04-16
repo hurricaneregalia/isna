@@ -5,7 +5,7 @@ import { TiPencil } from "react-icons/ti";
 import { FaArrowRight } from "react-icons/fa6";
 import WhatsappBtn from "@/app/component/global/whatsappBtn";
 
-export default function FormPackage({ listItem, serviceName, servicePrice, serviceCategory, waNumber }) {
+export default function FormPackage({ listItem, serviceName, servicePrice, serviceCategory, waNumber, sku }) {
   const [formData, setFormData] = useState({});
   const [orderId, setOrderId] = useState("");
 
@@ -20,16 +20,18 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
     const generateOrderId = () => {
       const datePart = new Date().toISOString().slice(0, 10).replace(/-/g, "");
       const randomPart = Math.random().toString(36).substring(2, 8).toUpperCase();
-      return `ORD-${datePart}-${randomPart}`;
+      return `${sku || "ORD"}-${datePart}-${randomPart}`;
     };
+
     setOrderId(generateOrderId());
+
     setFormData((prev) => ({
       ...prev,
       "14-nama-paket": serviceName,
       "15-harga-paket": servicePrice,
       "16-kategori": serviceCategory,
     }));
-  }, [serviceName, servicePrice, serviceCategory]);
+  }, [sku, serviceName, servicePrice, serviceCategory]);
 
   return (
     <form className="mb-20">

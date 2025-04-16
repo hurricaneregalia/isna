@@ -115,11 +115,12 @@ model FeatureServicesListItem {
 
 model ServicesListItem {
   id                      Int                       @id @default(autoincrement())
+  title                   String
   desc                    String
+  sku                     String                    @default("")
   icon                    String
   img                     String                    @default("")
-  title                   String
-  slug                    String                    @default("")
+  slug                    String?                   @unique
   price                   Float
   quality                 Int                       @default(0)
   stock                   Int                       @default(0)
@@ -127,8 +128,27 @@ model ServicesListItem {
   category                Int                       @default(0)
   featureServicesListItem FeatureServicesListItem[]
   servicesGalleryListItem ServicesGalleryListItem[] // Relasi one-to-many
+  metaData                MetaData?
   createDate              DateTime                  @default(now())
   updateDate              DateTime                  @updatedAt
+}
+
+model MetaData {
+  id          Int               @id @default(autoincrement())
+  slug        String            @unique
+  title       String
+  desc        String
+  keywords    String
+  author      String            @default("")
+  ogImage     String?
+  category    String            @default("")
+  index       Boolean           @default(false)
+  follow      Boolean           @default(false)
+  service     ServicesListItem? @relation(fields: [serviceId], references: [id])
+  landingPage LandingPage?      @relation(fields: [serviceId], references: [id])
+  serviceId   Int?              @unique
+  createDate  DateTime          @default(now())
+  updateDate  DateTime          @updatedAt
 }
 
 model ServicesGalleryListItem {
@@ -149,66 +169,67 @@ model ServicesCategory {
 }
 
 model LandingPage {
-  id                  Int      @id @default(autoincrement())
-  benefitBtnTxt       String   @default("")
-  benefitDesc         String   @default("")
-  benefitListTitle    String   @default("")
-  benefitImg          String   @default("")
-  benefitTitle        String   @default("")
-  bonusBtnTxt         String   @default("")
-  bonusCounter        DateTime @default(now())
-  bonusDesc           String   @default("")
-  bonusPrice          Float    @default(0)
+  id                  Int       @id @default(autoincrement())
+  benefitBtnTxt       String    @default("")
+  benefitDesc         String    @default("")
+  benefitListTitle    String    @default("")
+  benefitImg          String    @default("")
+  benefitTitle        String    @default("")
+  bonusBtnTxt         String    @default("")
+  bonusCounter        DateTime  @default(now())
+  bonusDesc           String    @default("")
+  bonusPrice          Float     @default(0)
   bonusTitle          String
-  cta1BtnTxt          String   @default("")
-  cta1Desc            String   @default("")
-  cta1Img             String   @default("")
-  cta1Title           String   @default("")
-  cta2BtnTxt          String   @default("")
-  cta2Desc            String   @default("")
-  cta2Img             String   @default("")
-  cta2Title           String   @default("")
-  cta3BtnTxt          String   @default("")
-  cta3Desc            String   @default("")
-  cta3Img             String   @default("")
-  cta3Title           String   @default("")
-  didapatkanBtnTxt    String   @default("")
-  didapatkanDesc      String   @default("")
-  didapatkanListTitle String   @default("")
-  didapatkanImg       String   @default("")
-  didapatkanTitle     String   @default("")
-  heroBtnTxt          String   @default("")
-  heroDesc            String   @default("")
-  heroImg             String   @default("")
-  heroTitle           String   @default("")
-  interestBtnTxt      String   @default("")
-  interestDesc        String   @default("")
-  interestListTitle   String   @default("")
-  interestImg         String   @default("")
-  interestTitle       String   @default("")
-  manfaatBtnTxt       String   @default("")
-  manfaatDesc         String   @default("")
-  manfaatListTitle    String   @default("")
-  manfaatImg          String   @default("")
-  manfaatTitle        String   @default("")
-  scoreBtnTxt         String   @default("")
-  scoreDesc           String   @default("")
-  scoreImg            String   @default("")
-  scoreTitle          String   @default("")
-  servicesBtnTxt      String   @default("")
-  servicesDesc        String   @default("")
-  servicesImg         String   @default("")
-  servicesTitle       String   @default("")
-  skillBtnTxt         String   @default("")
-  skillDesc           String   @default("")
-  skillImg            String   @default("")
-  skillTitle          String   @default("")
-  solutionBtnTxt      String   @default("")
-  solutionDesc        String   @default("")
-  solutionImg         String   @default("")
-  solutionTitle       String   @default("")
-  createDate          DateTime @default(now())
-  updateDate          DateTime @updatedAt
+  cta1BtnTxt          String    @default("")
+  cta1Desc            String    @default("")
+  cta1Img             String    @default("")
+  cta1Title           String    @default("")
+  cta2BtnTxt          String    @default("")
+  cta2Desc            String    @default("")
+  cta2Img             String    @default("")
+  cta2Title           String    @default("")
+  cta3BtnTxt          String    @default("")
+  cta3Desc            String    @default("")
+  cta3Img             String    @default("")
+  cta3Title           String    @default("")
+  didapatkanBtnTxt    String    @default("")
+  didapatkanDesc      String    @default("")
+  didapatkanListTitle String    @default("")
+  didapatkanImg       String    @default("")
+  didapatkanTitle     String    @default("")
+  heroBtnTxt          String    @default("")
+  heroDesc            String    @default("")
+  heroImg             String    @default("")
+  heroTitle           String    @default("")
+  interestBtnTxt      String    @default("")
+  interestDesc        String    @default("")
+  interestListTitle   String    @default("")
+  interestImg         String    @default("")
+  interestTitle       String    @default("")
+  manfaatBtnTxt       String    @default("")
+  manfaatDesc         String    @default("")
+  manfaatListTitle    String    @default("")
+  manfaatImg          String    @default("")
+  manfaatTitle        String    @default("")
+  metaData            MetaData?
+  scoreBtnTxt         String    @default("")
+  scoreDesc           String    @default("")
+  scoreImg            String    @default("")
+  scoreTitle          String    @default("")
+  servicesBtnTxt      String    @default("")
+  servicesDesc        String    @default("")
+  servicesImg         String    @default("")
+  servicesTitle       String    @default("")
+  skillBtnTxt         String    @default("")
+  skillDesc           String    @default("")
+  skillImg            String    @default("")
+  skillTitle          String    @default("")
+  solutionBtnTxt      String    @default("")
+  solutionDesc        String    @default("")
+  solutionImg         String    @default("")
+  solutionTitle       String    @default("")
+  createDate          DateTime  @default(now())
+  updateDate          DateTime  @updatedAt
 }
 
 model SocialLinks {
@@ -232,6 +253,13 @@ model RegisterForm {
   isActive    Boolean  @default(true)
   createDate  DateTime @default(now())
   updateDate  DateTime @updatedAt
+}
+
+model ApiList {
+  id         Int      @id @default(autoincrement())
+  name       String
+  createDate DateTime @default(now())
+  updateDate DateTime @updatedAt
 }
 
 model FacebookPixel {
@@ -259,6 +287,8 @@ model SiteIdentity {
   siteLogoAlt        String
   siteLogoUrl        String
   siteName           String
+  siteUrl            String @default("")
+  baseUrl            String @default("")
   siteOgImageAltText String
   siteOgImageUrl     String
   siteTagline        String

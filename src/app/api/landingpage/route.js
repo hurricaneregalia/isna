@@ -3,7 +3,6 @@ import prisma from "@/app/database/prisma";
 export async function GET(request) {
   try {
     const landingPage = await prisma.landingPage.findMany();
-    const users = await prisma.users.findMany();
     const bonusListItems = await prisma.bonusListItem.findMany();
     const interestListItems = await prisma.interestListItem.findMany();
     const skillListItems = await prisma.skillListItem.findMany();
@@ -11,18 +10,14 @@ export async function GET(request) {
     const featureServicesListItems = await prisma.featureServicesListItem.findMany();
     const servicesListItems = await prisma.servicesListItem.findMany();
     const servicesCategories = await prisma.servicesCategory.findMany();
-    const siteIdentities = await prisma.siteIdentity.findMany();
     const hadistListItem = await prisma.hadistListItem.findMany();
     const benefitListItem = await prisma.benefitListItem.findMany();
     const didapatkanListItems = await prisma.didapatkanListItem.findMany();
     const alurListItems = await prisma.alurListItem.findMany();
     const servicesGalleryListItems = await prisma.servicesGalleryListItem.findMany();
-    const registerForms = await prisma.registerForm.findMany();
-    const metaData = await prisma.metaData.findMany();
 
     const responseData = {
       landingPage,
-      users,
       bonusListItems,
       interestListItems,
       skillListItems,
@@ -30,14 +25,11 @@ export async function GET(request) {
       featureServicesListItems,
       servicesListItems,
       servicesCategories,
-      siteIdentities,
       hadistListItem,
       benefitListItem,
       didapatkanListItems,
       alurListItems,
       servicesGalleryListItems,
-      registerForms,
-      metaData,
     };
 
     // Mengembalikan data dalam format JSON dengan pretty-print
