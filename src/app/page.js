@@ -1,5 +1,6 @@
+import dynamic from "next/dynamic";
 import HeaderFooterSqlite from "./component/global/headerFooterSqlite";
-import LayoutLandingPage from "./component/landingPage/layoutLandingPage";
+import Loading from "./loading";
 
 const BASE_URL = process.env.NODE_ENV === "production" ? process.env.BASE_URL_PROD : process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -65,6 +66,10 @@ export default async function Home() {
   if (!identity) {
     return <p>Data site identity tidak ditemukan.</p>;
   }
+  const LayoutLandingPage = dynamic(() => import("./component/landingPage/layoutLandingPage"), {
+    loading: () => <Loading />,
+    ssr: true,
+  });
 
   return (
     <HeaderFooterSqlite siteName={identity.siteName} footerText={identity.siteCopyright}>
