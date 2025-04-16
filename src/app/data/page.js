@@ -6,7 +6,7 @@ import LayoutPrimary from "../component/global/layoutPrimary";
 import LayoutSecondary from "../component/global/layoutSecondary";
 import LayoutFullBlock from "../component/global/layoutFullBlock";
 import Content from "../component/global/content";
-import Loading from "../component/global/loading";
+import Loading from "../component/global/loadingProcess";
 import ServicesSqlite from "../component/landingPage/servicesSqlite";
 import { FaArrowRight } from "react-icons/fa6";
 import Grid2List from "../component/landingPage/grid2List";
@@ -76,7 +76,12 @@ export default function LayoutLandingPage() {
       <HeaderFooterSqlite siteName={data.siteIdentities.siteName} copyright={data.siteIdentities.copyright}>
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
           <Content>
-            <Hero bg={landingPageStyle.heroImage} title={data.landingPage.heroTitle} description={data.landingPage.heroDesc} btnTxt={data.landingPage.heroBtnTxt} />
+            <Hero
+              bg={landingPageStyle.heroImage}
+              title={data.landingPage.heroTitle}
+              description={data.landingPage.heroDesc}
+              btnTxt={data.landingPage.heroBtnTxt}
+            />
             <LayoutPrimary id="keinginan-pebisnis" bg="bg-transparent" title={data.landingPage.interestTitle}>
               <Grid2List listItem={data.interestList} />
             </LayoutPrimary>
@@ -110,7 +115,13 @@ export default function LayoutLandingPage() {
               imageUrl={data.landingPage.cta2Img}
               imageAlt={data.landingPage.cta2Title}
             />
-            <LayoutSecondary id="kalamanacopy" title={data.landingPage.skillTitle} description={data.landingPage.skillDesc} imageUrl={data.landingPage.skillImg} imageAlt={data.landingPage.skillTitle}>
+            <LayoutSecondary
+              id="kalamanacopy"
+              title={data.landingPage.skillTitle}
+              description={data.landingPage.skillDesc}
+              imageUrl={data.landingPage.skillImg}
+              imageAlt={data.landingPage.skillTitle}
+            >
               <Grid2List listItem={data.skillList} />
             </LayoutSecondary>
             <LayoutPrimary id="layanan" bg={landingPageStyle.bg1} title={data.landingPage.servicesTitle}>
@@ -132,10 +143,23 @@ export default function LayoutLandingPage() {
                 <BtnLinkPrimary btnUrl="#layanan" btnTxt="Dapatkan bonus" btnFull={false} iconRight={<FaArrowRight />} btnStyle="" />
               </div>
             </LayoutPrimary>
-            <LayoutPrimary anime="fade-up" id="score" bg="bg-transparent" title={data.landingPage.scoreTitle} description={data.landingPage.scoreDesc} footer="" headAlign="">
+            <LayoutPrimary
+              anime="fade-up"
+              id="score"
+              bg="bg-transparent"
+              title={data.landingPage.scoreTitle}
+              description={data.landingPage.scoreDesc}
+              footer=""
+              headAlign=""
+            >
               <ImageComponent imageUrl={data.landingPage.scoreImg} imageAlt={data.landingPage.scoreTitle} width={1000} height={1000} />
             </LayoutPrimary>
-            <FinalCta id="dapat-bonus" title="Ayo tingkatkan penjualan bisnis anda dan dapatkan bonusnya." headAlign={false} bg={landingPageStyle.bg1} />
+            <FinalCta
+              id="dapat-bonus"
+              title="Ayo tingkatkan penjualan bisnis anda dan dapatkan bonusnya."
+              headAlign={false}
+              bg={landingPageStyle.bg1}
+            />
             <CanvasCursor />
           </Content>
         </main>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import LayoutFullBlock from "../global/layoutFullBlock";
 import Content from "../global/content";
-import Loading from "../global/loading";
+import Loading from "../global/loadingProcess";
 import { FaArrowRight } from "react-icons/fa6";
 import landingPageStyle from "./landingPage.module.css";
 import FinalCta from "../global/finalCta";

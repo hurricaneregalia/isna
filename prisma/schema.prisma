@@ -145,8 +145,9 @@ model MetaData {
   index       Boolean           @default(false)
   follow      Boolean           @default(false)
   service     ServicesListItem? @relation(fields: [serviceId], references: [id])
-  landingPage LandingPage?      @relation(fields: [serviceId], references: [id])
+  landingPage LandingPage?      @relation(fields: [pageId], references: [id])
   serviceId   Int?              @unique
+  pageId      Int?              @unique
   createDate  DateTime          @default(now())
   updateDate  DateTime          @updatedAt
 }

@@ -50,7 +50,7 @@ export async function generateMetadata({ params }) {
     keywords: [service.title, meta?.keywords],
     author: meta?.author,
     siteUrl: `${BASE_URL}/services/package/${params.slug}`,
-    baseUrl: service.siteIdentities.siteUrl,
+    metadataBase: new URL(service.siteIdentities.siteUrl),
     siteName: service.siteIdentities.siteName,
     ogImage: meta?.ogImage,
     category: meta?.category,

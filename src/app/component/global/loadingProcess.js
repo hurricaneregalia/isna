@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { FaCoins } from "react-icons/fa6";
 
-export default function Loading() {
+export default function LoadingProcess() {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {

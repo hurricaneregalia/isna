@@ -1,7 +1,7 @@
 "use client";
 import { fetchServices, fetchServicesCategory } from "@/app/firebase/readData";
 import React, { useEffect, useState } from "react";
-import Loading from "../global/loading";
+import Loading from "../global/loadingProcess";
 import BtnLinkPrimary from "../global/btnLinkPrimary";
 import { FaArrowRight, FaCheck, FaRegStar, FaRegStarHalfStroke, FaStar, FaXmark } from "react-icons/fa6";
 import { PiCheckFatFill } from "react-icons/pi";

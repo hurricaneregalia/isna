@@ -1,13 +1,13 @@
 "use client";
 import React, { useEffect } from "react";
 import Footer from "./footer";
-import Loading from "./loading";
+import Loading from "./loadingProcess";
 import Navigation2 from "./navigation2";
 import Aos from "aos";
 import "../../../../node_modules/aos/dist/aos.css";
 import landingPageStyle from "../landingPage/landingPage.module.css";
 
-export default function HeaderFooterSqlite({ children, copyright, siteName, footerText }) {
+export default function HeaderFooterSqlite({ children, siteName, footerText }) {
   useEffect(() => {
     Aos.init({
       easing: "ease-out-back",
