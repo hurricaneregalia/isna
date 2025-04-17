@@ -24,7 +24,7 @@ export default function Midtrans({ orderId, servicePrice, serviceId, serviceName
               url: serviceUrl,
             },
           ],
-          finish_redirect_url: baseUrl + "/payment-success",
+          finish_redirect_url: baseUrl + "/payment/success",
         }),
       });
 
@@ -41,15 +41,15 @@ export default function Midtrans({ orderId, servicePrice, serviceId, serviceName
         window.snap.pay(data.token, {
           onSuccess: (result) => {
             console.log("Success:", result);
-            window.location.href = baseUrl + "/payment-success?order_id=" + result.order_id;
+            window.location.href = baseUrl + "/payment/success?order_id=" + result.order_id;
           },
           onPending: (result) => {
             console.log("Pending:", result);
-            window.location.href = baseUrl + "/payment-pending?order_id=" + result.order_id;
+            window.location.href = baseUrl + "/payment/unsuccess?order_id=" + result.order_id;
           },
           onError: (result) => {
             console.log("Error:", result);
-            window.location.href = baseUrl + "/payment-error?order_id=" + result.order_id;
+            window.location.href = baseUrl + "/payment/error?order_id=" + result.order_id;
           },
         });
       } else {
