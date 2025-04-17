@@ -170,6 +170,7 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
                           pattern={item.type === "tel" ? "^\\+62[0-9]{9,12}$" : undefined}
                           minLength={item.type === "tel" ? 12 : undefined}
                           maxLength={item.type === "tel" ? 15 : undefined}
+                          min={item.type === "date" ? new Date(Date.now() + 86400000).toISOString().split("T")[0] : undefined}
                           title={item.type === "tel" ? "Masukkan nomor yang diawali dengan +62 dan diikuti 9–12 digit angka" : undefined}
                           className="input input-lg placeholder:capitalize w-full validator"
                           onChange={handleChange}
