@@ -9,7 +9,7 @@ export default function BtnLinkSecondary({ btnTxt, btnUrl, iconLeft, iconRight, 
   return (
     <Link
       href={btnUrl}
-      className={`btn border-amber-300 text-amber-300 bg-transparent hover:bg-green-500 hover:border-green-500 hover:text-green-50 rounded-full ${btnFullFx} ${btnStyle}`}
+      className={`btn border-amber-300 text-amber-300 shadow-none bg-transparent hover:bg-green-500 hover:border-green-500 hover:text-green-50 rounded-full ${btnFullFx} ${btnStyle}`}
     >
       {iconLeftFx}
       {btnTxt}

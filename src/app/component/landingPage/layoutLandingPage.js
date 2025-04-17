@@ -177,7 +177,7 @@ export default function LayoutLandingPage({ children }) {
           bg={`py-20 ${landingPageStyle.bg1}`}
           description={data.landingPage.cta1Desc}
           btn={2}
-          ctaTxt1="Order"
+          ctaTxt1="Buat Copywriting"
           ctaTxt2="Konsultasi"
           btnUrl1="#layanan"
           btnUrl2="#ok"

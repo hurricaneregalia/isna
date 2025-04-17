@@ -41,14 +41,26 @@ export default function CountdownMini({ targetDate, bonusPeriode }) {
   return (
     <div className="mt-10 text-center">
       <div className="flex justify-center">
-        <p className=" inline-block text-white mx-auto bg-red-700 px-2 rounded-md">
-          <span className=" flex items-center ">
-            <span className="">
-              {timeLeft.days ? timeLeft.days : 0} Hari lagi : {timeLeft.hours ? timeLeft.hours : 0} : {timeLeft.minutes ? timeLeft.minutes : 0} :{" "}
-            </span>
-            <span className="ml-1"> {timeLeft.seconds ? timeLeft.seconds : 0}</span>
+        <div className=" inline-block text-white mx-auto bg-red-700 p-3 py-2 rounded-md">
+          <span className=" flex items-center gap-4">
+            <p className="flex flex-col">
+              {timeLeft.days ? timeLeft.days : 0}
+              <span className="text-xs">Hari</span>
+            </p>
+            <p className="flex flex-col">
+              {timeLeft.hours ? timeLeft.hours : 0}
+              <span className="text-xs">Jam</span>
+            </p>
+            <p className="flex flex-col">
+              {timeLeft.minutes ? timeLeft.minutes : 0}
+              <span className="text-xs">Menit</span>
+            </p>
+            <p className="flex flex-col">
+              {timeLeft.seconds ? timeLeft.seconds : 0}
+              <span className="text-xs">Detik</span>
+            </p>
           </span>
-        </p>
+        </div>
       </div>
     </div>
   );

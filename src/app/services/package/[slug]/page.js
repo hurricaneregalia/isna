@@ -45,7 +45,7 @@ export async function generateMetadata({ params }) {
   const meta = service.metaData;
 
   return GenerateMetadata({
-    title: service.siteIdentities.siteName,
+    title: service.title,
     desc: `Layanan ${service.title} ${meta?.desc} Hanya di ${BASE_URL}/services/package/${params.slug}`,
     keywords: [service.title, meta?.keywords],
     author: meta?.author,
@@ -59,11 +59,11 @@ export async function generateMetadata({ params }) {
   });
 }
 
-// ✅ Komponen utama halaman
 export default async function ServicePackagePage({ params }) {
   const service = await getServiceBySlug(params.slug);
   if (!service) notFound();
   const categoryTitle = service.servicesCategories.find((cat) => cat.id === service.category)?.title;
+  const currentUrl = `${BASE_URL}/services/package/${params.slug}`;
 
   return (
     <HeaderFooterSqlite siteName={service.siteIdentities.siteName} footerText={service.siteIdentities.siteCopyright}>
@@ -99,6 +99,8 @@ export default async function ServicePackagePage({ params }) {
             serviceCategory={categoryTitle}
             sku={service.sku}
             waNumber={service.siteIdentities.contactPhone}
+            serviceUrl={currentUrl}
+            baseUrl={BASE_URL}
           />
         </div>
       </div>

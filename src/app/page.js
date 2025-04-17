@@ -1,7 +1,6 @@
 import dynamic from "next/dynamic";
 import HeaderFooterSqlite from "./component/global/headerFooterSqlite";
 import Loading from "./loading";
-
 const BASE_URL = process.env.NODE_ENV === "production" ? process.env.BASE_URL_PROD : process.env.NEXT_PUBLIC_BASE_URL;
 
 export async function generateMetadata() {
