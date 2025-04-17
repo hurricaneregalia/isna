@@ -8,7 +8,7 @@ export default function Hero({ title, description, btnTxt, bg }) {
 
   return (
     <div className="relative min-h-screen rounded-bl-3xl overflow-hidden">
-      <Image src={bg} alt={title} fill priority sizes="100vw" className="object-cover z-0" />
+      <Image src={bg} alt={title} fill priority={true} sizes="100vw" className="object-cover z-0" />
       <div className="absolute inset-0 bg-slate-900/80 z-10"></div>
       <div className="relative z-20 flex items-center justify-center text-neutral-content text-center min-h-screen">
         <div className="max-w-3xl px-4">

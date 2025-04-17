@@ -245,6 +245,7 @@ model RegisterForm {
   name        String
   type        String
   placeholder String
+  position    Int      @default(0)
   row         Int      @default(0)
   options     String? // JSON atau comma-separated value untuk radio/select
   required    Boolean  @default(false)

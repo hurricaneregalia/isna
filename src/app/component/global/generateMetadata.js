@@ -41,8 +41,6 @@ export async function GenerateMetadata({ title, desc, keywords, author, siteUrl,
       follow: follow,
       nocache: false,
     },
-    themeColor: "#ffffff",
-    colorScheme: "light",
     category: category,
   };
 }

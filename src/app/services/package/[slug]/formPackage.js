@@ -6,6 +6,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import WhatsappBtn from "@/app/component/global/whatsappBtn";
 
 export default function FormPackage({ listItem, serviceName, servicePrice, serviceCategory, waNumber, sku }) {
+  const LastId = Math.max(...listItem.map((item) => item.id));
   const [formData, setFormData] = useState({});
   const [orderId, setOrderId] = useState("");
 
@@ -27,9 +28,9 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
 
     setFormData((prev) => ({
       ...prev,
-      "14-nama-paket": serviceName,
-      "15-harga-paket": servicePrice,
-      "16-kategori": serviceCategory,
+      [`${LastId + 1}-nama-paket`]: serviceName,
+      [`${LastId + 2}-kategori`]: serviceCategory,
+      [`${LastId + 3}-harga-paket`]: servicePrice,
     }));
   }, [sku, serviceName, servicePrice, serviceCategory]);
 
@@ -176,10 +177,10 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
           waBtnText="checkout"
           waNumber={waNumber}
           waText={encodeURIComponent(
-            `Order ID: ${orderId}\n\n` +
+            `Order ID: ${orderId}, ` +
               Object.entries(
                 Object.fromEntries(
-                  Object.entries(formData).sort(([keyA, _a], [keyB, _b]) => {
+                  Object.entries(formData).sort(([keyA], [keyB]) => {
                     const numA = parseInt(keyA.split("-")[0], 10);
                     const numB = parseInt(keyB.split("-")[0], 10);
                     return numA - numB;
@@ -188,9 +189,30 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
               )
                 .map(([key, value]) => {
                   const label = key.replace(/^\d+-/, "").replace(/-/g, " ");
-                  return `${label}: ${value}`;
+                  let newValue = value;
+
+                  // Format currency
+                  if (key.toLowerCase().includes("price") || key.toLowerCase().includes("harga")) {
+                    const numericValue = parseInt(value.toString().replace(/\D/g, ""), 10);
+                    if (!isNaN(numericValue)) {
+                      newValue = numericValue.toLocaleString("id-ID");
+                    }
+                  }
+
+                  // Format tanggal
+                  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+                    const date = new Date(value);
+                    const formattedDate = date.toLocaleDateString("id-ID", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    });
+                    newValue = formattedDate;
+                  }
+
+                  return `${label}: ${newValue}`;
                 })
-                .join("\n")
+                .join(", ")
           )}
           forWa="btn-xl bg-green-500 hover:bg-green-600 capitalize text-green-100"
         />
