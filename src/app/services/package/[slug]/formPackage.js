@@ -3,12 +3,15 @@ import TextHeadingTitle from "@/app/component/global/textHeadingTitle";
 import React, { useEffect, useState } from "react";
 import { TiPencil } from "react-icons/ti";
 import { FaArrowRight } from "react-icons/fa6";
-import WhatsappBtn from "@/app/component/global/whatsappBtn";
+import { RiInformation2Line } from "react-icons/ri";
+import InfoPackage from "./infoPackage";
 
 export default function FormPackage({ listItem, serviceName, servicePrice, serviceCategory, waNumber, sku }) {
   const LastId = Math.max(...listItem.map((item) => item.id));
   const [formData, setFormData] = useState({});
   const [orderId, setOrderId] = useState("");
+
+  const formRef = React.useRef(null);
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
@@ -34,9 +37,59 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
     }));
   }, [sku, serviceName, servicePrice, serviceCategory]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = formRef.current;
+
+    // Validasi form
+    if (form && !form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // Redirect ke WhatsApp
+    const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(
+      `Order ID: ${orderId}, ` +
+        Object.entries(
+          Object.fromEntries(
+            Object.entries(formData).sort(([keyA], [keyB]) => {
+              const numA = parseInt(keyA.split("-")[0], 10);
+              const numB = parseInt(keyB.split("-")[0], 10);
+              return numA - numB;
+            })
+          )
+        )
+          .map(([key, value]) => {
+            const label = key.replace(/^\d+-/, "").replace(/-/g, " ");
+            let newValue = value;
+
+            if (key.toLowerCase().includes("price") || key.toLowerCase().includes("harga")) {
+              const numericValue = parseInt(value.toString().replace(/\D/g, ""), 10);
+              if (!isNaN(numericValue)) {
+                newValue = numericValue.toLocaleString("id-ID");
+              }
+            }
+
+            if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+              const date = new Date(value);
+              newValue = date.toLocaleDateString("id-ID", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              });
+            }
+
+            return `${label}: ${newValue}`;
+          })
+          .join(", ")
+    )}`;
+
+    window.open(waUrl, "_blank");
+  };
+
   return (
-    <form className="mb-20">
-      <div className="w-full grid grid-cols-1 gap-5 border border-base-300 lg:p-30 p-5 pt-10 rounded-bl-3xl">
+    <form className="mb-20" ref={formRef}>
+      <div className="w-full grid grid-cols-1 gap-5 border border-base-300 lg:p-30 sm:p-15 p-5 pt-10 rounded-bl-3xl">
         <TextHeadingTitle title="Isi data bisnis Anda" iconTitle={<TiPencil />} titleCase={2} h={3} cssStyle="mb-10" iconPosition="left" />
         {listItem.length > 0 ? (
           listItem.map((item) => {
@@ -131,91 +184,17 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
         ) : (
           <p>No item</p>
         )}
-        <div>
-          <TextHeadingTitle title="Informasi paket" iconTitle={<TiPencil />} titleCase={2} h={3} cssStyle="my-10" iconPosition="left" />
-        </div>
-        <div className=" flex flex-col gap-5">
-          <label className="floating-label w-full" htmlFor="15-nama-paket">
-            <input
-              id="15-nama-paket"
-              name="15-nama-paket"
-              type="text"
-              defaultValue={serviceName}
-              placeholder={serviceName}
-              className="input input-lg placeholder:capitalize w-full"
-              disabled
-            />
-            <span className="capitalize">Nama paket</span>
-          </label>
-          <label className="floating-label w-full" htmlFor="16-harga">
-            <input
-              id="16-harga"
-              name="16-harga"
-              type="number"
-              defaultValue={servicePrice}
-              placeholder={servicePrice}
-              className="input input-lg placeholder:capitalize w-full"
-              disabled
-            />
-            <span className="capitalize">harga paket</span>
-          </label>
-          <label className="floating-label w-full" htmlFor="17-kategori">
-            <input
-              id="17-kategori"
-              name="17-kategori"
-              type="text"
-              defaultValue={serviceCategory}
-              placeholder={serviceCategory}
-              className="input input-lg placeholder:capitalize w-full"
-              disabled
-            />
-            <span className="capitalize">kategori</span>
-          </label>
-        </div>
-        <hr className="my-5 opacity-0" />
-        <WhatsappBtn
-          waBtnText="checkout"
-          waNumber={waNumber}
-          waText={encodeURIComponent(
-            `Order ID: ${orderId}, ` +
-              Object.entries(
-                Object.fromEntries(
-                  Object.entries(formData).sort(([keyA], [keyB]) => {
-                    const numA = parseInt(keyA.split("-")[0], 10);
-                    const numB = parseInt(keyB.split("-")[0], 10);
-                    return numA - numB;
-                  })
-                )
-              )
-                .map(([key, value]) => {
-                  const label = key.replace(/^\d+-/, "").replace(/-/g, " ");
-                  let newValue = value;
-
-                  // Format currency
-                  if (key.toLowerCase().includes("price") || key.toLowerCase().includes("harga")) {
-                    const numericValue = parseInt(value.toString().replace(/\D/g, ""), 10);
-                    if (!isNaN(numericValue)) {
-                      newValue = numericValue.toLocaleString("id-ID");
-                    }
-                  }
-
-                  // Format tanggal
-                  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
-                    const date = new Date(value);
-                    const formattedDate = date.toLocaleDateString("id-ID", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    });
-                    newValue = formattedDate;
-                  }
-
-                  return `${label}: ${newValue}`;
-                })
-                .join(", ")
-          )}
-          forWa="btn-xl bg-green-500 hover:bg-green-600 capitalize text-green-100"
-        />
+        <InfoPackage iconTitle={<RiInformation2Line />} serviceName={serviceName} serviceCategory={serviceCategory} servicePrice={servicePrice} />
+      </div>
+      <div className="text-center">
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          name="sumbit"
+          className="-mt-7 border-0 items-center btn btn-xl rounded-full bg-amber-300  shadow-none hover:bg-amber-500 text-slate-900 capitalize "
+        >
+          checkout <FaArrowRight />
+        </button>
       </div>
     </form>
   );
