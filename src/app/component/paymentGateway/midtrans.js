@@ -24,7 +24,7 @@ export default function Midtrans({ orderId, servicePrice, serviceId, serviceName
               url: serviceUrl,
             },
           ],
-          finish_redirect_url: baseUrl + "/payment/success",
+          finish_redirect_url: `${baseUrl}/payment/success`,
         }),
       });
 
@@ -41,19 +41,14 @@ export default function Midtrans({ orderId, servicePrice, serviceId, serviceName
         window.snap.pay(data.token, {
           onSuccess: (result) => {
             console.log("Success:", result);
-            window.location.href = baseUrl + "/payment/success";
           },
           onPending: (result) => {
             console.log("Pending:", result);
-            window.location.href = baseUrl + "/payment/unsuccess";
           },
           onError: (result) => {
             console.log("Error:", result);
-            window.location.href = baseUrl + "/payment/error";
           },
         });
-      } else {
-        alert("Token pembayaran tidak tersedia.");
       }
     } catch (error) {
       console.error("Error saat handlePayment:", error);
