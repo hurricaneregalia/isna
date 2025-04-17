@@ -20,11 +20,7 @@ export async function POST(request) {
     credit_card: {
       secure: true,
     },
-    callbacks: {
-      finish: finish_redirect_url,
-    },
-    // ini yang Midtrans baca
-    finish_redirect_url: finish_redirect_url,
+    finish_redirect_url: body.finish_redirect_url,
   };
 
   try {
