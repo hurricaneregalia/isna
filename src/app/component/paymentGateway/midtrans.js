@@ -24,7 +24,7 @@ export default function Midtrans({ orderId, servicePrice, serviceId, serviceName
               url: serviceUrl,
             },
           ],
-          finish_redirect_url: baseUrl + "/payment/success",
+          finish_redirect_url: `${baseUrl}/payment/success`,
         }),
       });
 
