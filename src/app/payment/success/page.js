@@ -20,7 +20,7 @@ async function getSiteIdentity() {
   }
 }
 
-export default function PaymentSuccessPage() {
+export default function PaymentSuccessClient() {
   const params = useSearchParams();
   const [urlWithoutLongTime, setUrlWithoutLongTime] = useState("");
   const [siteIdentity, setSiteIdentity] = useState(null);
@@ -61,85 +61,6 @@ export default function PaymentSuccessPage() {
     const finalUrl = `${window.location.origin}${window.location.pathname}?${query.toString()}`;
     setUrlWithoutLongTime(finalUrl);
   }, []);
-
-  const [title, setTitle] = useState("INVOICE Pembelian Paket"); // Contoh judul
-  useEffect(() => {
-    const generateOgImage = (title) => {
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
-
-      // Tentukan ukuran gambar
-      canvas.width = 1200;
-      canvas.height = 630; // Ukuran standar untuk OG image
-
-      // Tentukan warna latar belakang dan teks
-      ctx.fillStyle = "#555555"; // Warna latar belakang
-      ctx.fillRect(0, 0, canvas.width, canvas.height); // Gambar latar belakang
-
-      // Tentukan gaya teks
-      ctx.fillStyle = "#FFFFFF"; // Warna teks
-      ctx.font = "bold 48px Arial"; // Ukuran font
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-
-      // Gambar teks (judul) di tengah gambar
-      ctx.fillText(title, canvas.width / 2, canvas.height / 2);
-
-      // Mengonversi canvas ke Data URL (gambar)
-      return canvas.toDataURL("image/png");
-    };
-
-    // Dapatkan gambar OG sebagai Data URL
-    const ogImageUrl = generateOgImage(title);
-
-    // Pastikan siteIdentity sudah terisi sebelum mengubah metadata
-    if (siteIdentity) {
-      const metadata = {
-        title: `${longTime ? "Proses pembayaran " : "INVOICE Pembayaran "} ${orderBy}`,
-        desc: `Invoice pembelian paket ${service} oleh ${orderBy}`,
-        keywords: [service],
-        author: siteIdentity.siteName || "Default Author", // Fallback ke default jika null
-        siteUrl: siteIdentity.siteUrl || "",
-        metadataBase: new URL(siteIdentity.siteUrl || "https://contohsitus.com"),
-        siteName: siteIdentity.siteName || "Default Site Name",
-        ogImage: ogImageUrl,
-        category: "copywriting",
-        index: "index", // atau 'noindex'
-        follow: "follow", // atau 'nofollow'
-      };
-
-      // Ubah <title>
-      document.title = metadata.title;
-
-      // Helper: fungsi bikin atau update tag
-      const upsertMetaTag = (name, content, attr = "name") => {
-        let tag = document.head.querySelector(`meta[${attr}="${name}"]`);
-        if (!tag) {
-          tag = document.createElement("meta");
-          tag.setAttribute(attr, name);
-          document.head.appendChild(tag);
-        }
-        tag.setAttribute("content", content);
-      };
-
-      // Set metadata biasa
-      upsertMetaTag("description", metadata.desc);
-      upsertMetaTag("keywords", metadata.keywords.join(", "));
-      upsertMetaTag("author", metadata.author);
-      upsertMetaTag("robots", `${metadata.index}, ${metadata.follow}`);
-
-      // Set Open Graph tags
-      upsertMetaTag("og:title", metadata.title, "property");
-      upsertMetaTag("og:description", metadata.desc, "property");
-      upsertMetaTag("og:image", metadata.ogImage, "property");
-      upsertMetaTag("og:url", metadata.siteUrl, "property");
-      upsertMetaTag("og:site_name", metadata.siteName, "property");
-      upsertMetaTag("og:type", "website", "property");
-
-      // (Optional) Set kategori kalau kamu pakai custom meta
-      upsertMetaTag("category", metadata.category);
-    }
-  }, [siteIdentity, orderBy, service, desc]);
 
   // ✅ Tambahkan pengecekan ini
   if (!siteIdentity) {
