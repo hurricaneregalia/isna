@@ -101,6 +101,9 @@ export default async function ServicePackagePage({ params }) {
             waNumber={service.siteIdentities.contactPhone}
             serviceUrl={currentUrl}
             baseUrl={BASE_URL}
+            siteName={service.siteIdentities.siteName}
+            siteLogo={service.siteIdentities.siteLogoUrl}
+            siteLogoAlt={service.siteIdentities.siteLogoUrlAlt ? service.siteIdentities.siteLogoUrlAlt : ""}
           />
         </div>
       </div>

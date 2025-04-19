@@ -5,7 +5,19 @@ import { TiPencil } from "react-icons/ti";
 import { FaArrowRight } from "react-icons/fa6";
 import Midtrans from "@/app/component/paymentGateway/midtrans";
 
-export default function FormPackage({ listItem, serviceName, servicePrice, serviceCategory, waNumber, sku, serviceUrl, baseUrl }) {
+export default function FormPackage({
+  listItem,
+  serviceName,
+  servicePrice,
+  serviceCategory,
+  waNumber,
+  sku,
+  serviceUrl,
+  baseUrl,
+  siteName,
+  siteLogo,
+  siteLogoAlt,
+}) {
   const servicePriceFx = servicePrice.toLocaleString("id-ID");
   const [textPreview, setTextPreview] = useState("");
   const LastId = Math.max(...listItem.map((item) => item.id));
@@ -219,6 +231,9 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
         waNumber={waNumber}
         longTime="4s"
         orderBy={orderBy}
+        siteName={siteName}
+        siteLogo={siteLogo}
+        siteLogoAlt={siteLogoAlt}
       />
     </>
   );
