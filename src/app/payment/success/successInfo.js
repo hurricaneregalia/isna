@@ -1,6 +1,7 @@
+import { FormatTanggal } from "@/app/component/global/formatTanggal";
 import React from "react";
 
-export default function SuccessInfo({ orderId, grossAmount, layanan }) {
+export default function SuccessInfo({ orderId, layanan, price, date, orderBy }) {
   return (
     <>
       <p>
@@ -10,8 +11,15 @@ export default function SuccessInfo({ orderId, grossAmount, layanan }) {
       <p>
         <strong>Layanan:</strong> {layanan}
       </p>
+
       <p>
-        <strong>Jumlah Bayar:</strong> Rp{grossAmount}
+        <strong>price:</strong> Rp. {price}
+      </p>
+      <p>
+        <strong>date:</strong> {FormatTanggal(date)}
+      </p>
+      <p>
+        <strong>order by:</strong> {orderBy}
       </p>
     </>
   );

@@ -12,19 +12,29 @@ export default function PaymentSuccessPage() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const orderId = params.get("order_id");
-  const grossAmount = params.get("gross_amount");
-  const layanan = params.get("layanan");
+  const transactionId = params.get("transaction_id");
+  const paymentType = params.get("payment_type");
+  const bank = params.get("bank");
+  const vaNumber = params.get("va_number");
+  const service = params.get("service");
   const desc = params.get("desc");
   const waNumber = params.get("waNumber");
   const longTime = params.get("longTime");
+  const price = params.get("price");
+  const date = params.get("date");
+  const orderBy = params.get("orderby");
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
 
     // Hapus longTime dari URL
+    query.delete("transaction_id");
     query.delete("longTime");
     query.delete("desc");
     query.delete("waNumber");
+    query.delete("payment_type");
+    query.delete("bank");
+    query.delete("va_number");
 
     // Bangun ulang URL tanpa longTime
     const finalUrl = `${window.location.origin}${window.location.pathname}?${query.toString()}`;
@@ -36,20 +46,18 @@ export default function PaymentSuccessPage() {
       <h1 className={`text-xl font-bold ${longTime ? null : "text-green-600"} mb-4`}>
         {longTime ? "Pembayaran sedang diproses" : "✅ Pembayaran Berhasil!"}
       </h1>
-      {longTime ? null : <SuccessInfo orderId={orderId} grossAmount={grossAmount.toLocaleString("id-ID")} layanan={layanan} />}
-      {urlWithoutLongTime !== "" ? (
-        <WhatsappBtn waText={desc + " " + urlWithoutLongTime} waBtnText="kirim" waNumber={waNumber} btnCenter={true} isInternalLink={false} />
-      ) : (
-        <p>Loading tombol WhatsApp...</p>
-      )}
+      {longTime ? null : <SuccessInfo orderId={orderId} layanan={service} price={price.toLocaleString("id-ID")} date={date} orderBy={orderBy} />}
+      {longTime ? (
+        <WhatsappBtn
+          waText={desc + "%0A%0AINVOICE%0A" + urlWithoutLongTime}
+          waBtnText="kirim"
+          waNumber={waNumber}
+          btnCenter={true}
+          isInternalLink={false}
+        />
+      ) : null}
 
       {longTime ? <p>long time: {longTime}</p> : null}
-      <p className="mt-4 text-sm text-gray-600">Terima kasih! Transaksi kamu berhasil diproses.</p>
-
-      <a href={desc} className="text-blue-600 underline mt-2 block">
-        Link yang sama tanpa longTime
-      </a>
-      <p>{urlWithoutLongTime}</p>
     </div>
   );
 }

@@ -12,6 +12,7 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
   const [formData, setFormData] = useState({});
   const [orderId, setOrderId] = useState("");
   const [charCount, setCharCount] = useState({});
+  const [orderBy, setOrderBy] = useState("");
 
   const formRef = React.useRef(null);
 
@@ -56,19 +57,14 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
     const productKeys = ["nama-paket", "kategori", "harga-paket"];
     const entryList = [];
 
-    // 1. Tambah orderId
     if (formData.orderId) {
       entryList.push(`orderId: ${formData.orderId}`);
     }
 
-    // 2. Tambah input user (selain orderId & productInfo)
     Object.entries(formData).forEach(([key, value]) => {
       if (key !== "orderId" && !productKeys.includes(key)) {
         const cleanKey = key.replace(/^\d+-/, "");
-
-        // 🔍 Cek apakah value cocok format tanggal YYYY-MM-DD
         const isDate = /^\d{4}-\d{2}-\d{2}$/.test(value);
-
         const formattedValue = isDate
           ? new Date(value).toLocaleDateString("id-ID", {
               day: "2-digit",
@@ -81,7 +77,6 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
       }
     });
 
-    // 3. Tambah productInfo di akhir
     productKeys.forEach((key) => {
       if (formData[key]) {
         entryList.push(`${key}: ${formData[key]}`);
@@ -89,6 +84,11 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
     });
 
     setTextPreview(entryList.join("\n"));
+
+    // ✅ Set orderBy dari nama lengkap jika tersedia
+    if (formData["1-nama-lengkap"]) {
+      setOrderBy(formData["1-nama-lengkap"]);
+    }
   }, [formData]);
 
   return (
@@ -110,7 +110,7 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
                   <label className="floating-label w-full" htmlFor={item.type === "radio" ? undefined : id}>
                     {/* TEXTAREA */}
                     {item.type === "textarea" ? (
-                      <label className="form-control floating-label w-full mt-5">
+                      <label className="form-control floating-label w-full mt-5 ">
                         <span className="capitalize mb-1">{item.name}</span>
                         <textarea
                           id={id}
@@ -130,7 +130,7 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
                       </label>
                     ) : item.type === "radio" && options.length > 0 ? (
                       <>
-                        <div className="flex flex-col gap-2 mb-5">
+                        <div className="flex flex-col gap-2 mb-5 border border-slate-400/50 p-3 rounded-md">
                           <span className="capitalize mb-1">
                             {label} {isRequired && <span className="text-red-500 text-2xl">*</span>}
                           </span>
@@ -215,9 +215,10 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
         serviceCategory={serviceCategory}
         serviceUrl={serviceUrl}
         baseUrl={baseUrl}
-        desc={`kirim pesan ini ${textPreview}`}
+        desc={`KIRIM PESAN INI%0A${textPreview}`}
         waNumber={waNumber}
         longTime="4s"
+        orderBy={orderBy}
       />
     </>
   );

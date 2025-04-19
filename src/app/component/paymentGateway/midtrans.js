@@ -13,6 +13,7 @@ export default function Midtrans({
   desc,
   waNumber,
   longTime,
+  orderBy,
 }) {
   const handlePayment = async () => {
     try {
@@ -57,14 +58,20 @@ export default function Midtrans({
             const redirectUrl =
               `${baseUrl}/payment/success?` +
               `&order_id=${result.order_id}` +
-              `&layanan=${serviceName}` +
-              `&gross_amount=${new Intl.NumberFormat("id-ID", {
+              `&transaction_id=${result.transaction_id}` +
+              `&service=${serviceName}` +
+              `&payment_type=${result.payment_type}` +
+              `&bank=${result.va_numbers?.[0]?.bank}` +
+              `&va_number=${result.va_numbers?.[0]?.va_number}` +
+              `&desc=${encodeURIComponent(desc)}` +
+              `&waNumber=${encodeURIComponent(waNumber)}` +
+              `&longTime=${longTime}` +
+              `&date=${encodeURIComponent(result.transaction_time)}` +
+              `&price=${new Intl.NumberFormat("id-ID", {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0,
               }).format(result.gross_amount)}` +
-              `&desc=${encodeURIComponent(desc)}` +
-              `&waNumber=${encodeURIComponent(waNumber)}` +
-              `&longTime=${longTime}`;
+              `&orderby=${orderBy}`;
             window.location.href = redirectUrl;
           },
           onPending: (result) => {

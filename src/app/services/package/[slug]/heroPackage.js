@@ -45,7 +45,6 @@ export default function HeroPackage({ img, imageAlt, listItem }) {
             setCurrentIndex(0);
             setIsOpen(true);
           }}
-          className="bg-blue-500"
         >
           <ImageComponent
             imageUrl={img}
