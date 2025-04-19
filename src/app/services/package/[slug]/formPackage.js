@@ -3,25 +3,36 @@ import TextHeadingTitle from "@/app/component/global/textHeadingTitle";
 import React, { useEffect, useState } from "react";
 import { TiPencil } from "react-icons/ti";
 import { FaArrowRight } from "react-icons/fa6";
-import { RiInformation2Line } from "react-icons/ri";
-import InfoPackage from "./infoPackage";
 import Midtrans from "@/app/component/paymentGateway/midtrans";
 
 export default function FormPackage({ listItem, serviceName, servicePrice, serviceCategory, waNumber, sku, serviceUrl, baseUrl }) {
+  const servicePriceFx = servicePrice.toLocaleString("id-ID");
+  const [textPreview, setTextPreview] = useState("");
   const LastId = Math.max(...listItem.map((item) => item.id));
   const [formData, setFormData] = useState({});
   const [orderId, setOrderId] = useState("");
+  const [charCount, setCharCount] = useState({});
 
   const formRef = React.useRef(null);
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
+
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "file" ? e.target.files[0]?.name : value, // ambil nama file
+      [name]: type === "file" ? e.target.files[0]?.name : value,
     }));
+
+    // Cek kalau textarea → hitung jumlah karakter
+    if (type === "textarea" || e.target.tagName === "TEXTAREA") {
+      setCharCount((prev) => ({
+        ...prev,
+        [name]: value.length,
+      }));
+    }
   };
 
+  // Buat orderId dan formData default
   useEffect(() => {
     const generateOrderId = () => {
       const datePart = new Date().toISOString().slice(0, 10).replace(/-/g, "");
@@ -29,65 +40,56 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
       return `${sku || "ORD"}-${datePart}-${randomPart}`;
     };
 
-    setOrderId(generateOrderId());
+    const newOrderId = generateOrderId();
+    setOrderId(newOrderId);
 
     setFormData((prev) => ({
       ...prev,
-      [`${LastId + 1}-nama-paket`]: serviceName,
-      [`${LastId + 2}-kategori`]: serviceCategory,
-      [`${LastId + 3}-harga-paket`]: servicePrice,
+      orderId: newOrderId,
+      "nama-paket": serviceName,
+      kategori: serviceCategory,
+      "harga-paket": servicePriceFx,
     }));
-  }, [sku, serviceName, servicePrice, serviceCategory]);
+  }, [sku, serviceName, servicePriceFx, serviceCategory]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = formRef.current;
+  useEffect(() => {
+    const productKeys = ["nama-paket", "kategori", "harga-paket"];
+    const entryList = [];
 
-    // Validasi form
-    if (form && !form.checkValidity()) {
-      form.reportValidity();
-      return;
+    // 1. Tambah orderId
+    if (formData.orderId) {
+      entryList.push(`orderId: ${formData.orderId}`);
     }
 
-    // Redirect ke WhatsApp
-    const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(
-      `Order ID: ${orderId}, ` +
-        Object.entries(
-          Object.fromEntries(
-            Object.entries(formData).sort(([keyA], [keyB]) => {
-              const numA = parseInt(keyA.split("-")[0], 10);
-              const numB = parseInt(keyB.split("-")[0], 10);
-              return numA - numB;
+    // 2. Tambah input user (selain orderId & productInfo)
+    Object.entries(formData).forEach(([key, value]) => {
+      if (key !== "orderId" && !productKeys.includes(key)) {
+        const cleanKey = key.replace(/^\d+-/, "");
+
+        // 🔍 Cek apakah value cocok format tanggal YYYY-MM-DD
+        const isDate = /^\d{4}-\d{2}-\d{2}$/.test(value);
+
+        const formattedValue = isDate
+          ? new Date(value).toLocaleDateString("id-ID", {
+              day: "2-digit",
+              month: "long",
+              year: "numeric",
             })
-          )
-        )
-          .map(([key, value]) => {
-            const label = key.replace(/^\d+-/, "").replace(/-/g, " ");
-            let newValue = value;
+          : value;
 
-            if (key.toLowerCase().includes("price") || key.toLowerCase().includes("harga")) {
-              const numericValue = parseInt(value.toString().replace(/\D/g, ""), 10);
-              if (!isNaN(numericValue)) {
-                newValue = numericValue.toLocaleString("id-ID");
-              }
-            }
+        entryList.push(`${cleanKey}: ${formattedValue}`);
+      }
+    });
 
-            if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
-              const date = new Date(value);
-              newValue = date.toLocaleDateString("id-ID", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              });
-            }
+    // 3. Tambah productInfo di akhir
+    productKeys.forEach((key) => {
+      if (formData[key]) {
+        entryList.push(`${key}: ${formData[key]}`);
+      }
+    });
 
-            return `${label}: ${newValue}`;
-          })
-          .join(", ")
-    )}`;
-
-    window.open(waUrl, "_blank");
-  };
+    setTextPreview(entryList.join("\n"));
+  }, [formData]);
 
   return (
     <>
@@ -108,7 +110,7 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
                   <label className="floating-label w-full" htmlFor={item.type === "radio" ? undefined : id}>
                     {/* TEXTAREA */}
                     {item.type === "textarea" ? (
-                      <label className="form-control floating-label w-full">
+                      <label className="form-control floating-label w-full mt-5">
                         <span className="capitalize mb-1">{item.name}</span>
                         <textarea
                           id={id}
@@ -118,12 +120,17 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
                           className="textarea textarea-lg placeholder:capitalize w-full"
                           rows={item.row || 3}
                           onChange={handleChange}
+                          maxLength={400}
                         ></textarea>
-                        {item.hint && <p className="text-sm text-gray-500 mt-1">{item.hint}</p>}
+                        {item.hint && (
+                          <p className={`text-sm mt-1 ${(charCount[id] || 0) >= (item.maxLength || 400) ? "text-red-500" : "text-gray-500"}`}>
+                            {item.hint} {charCount[id] || 0}/{item.maxLength || 400}
+                          </p>
+                        )}
                       </label>
                     ) : item.type === "radio" && options.length > 0 ? (
                       <>
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2 mb-5">
                           <span className="capitalize mb-1">
                             {label} {isRequired && <span className="text-red-500 text-2xl">*</span>}
                           </span>
@@ -131,7 +138,7 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
                             <label key={index} className="inline-flex items-center gap-2">
                               <input
                                 type="radio"
-                                name={id}
+                                name={item.name.replace(/\s+/g, "-").toLowerCase()}
                                 value={opt}
                                 required={isRequired}
                                 className="radio input validator"
@@ -188,20 +195,18 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
           ) : (
             <p>No item</p>
           )}
-          <InfoPackage iconTitle={<RiInformation2Line />} serviceName={serviceName} serviceCategory={serviceCategory} servicePrice={servicePrice} />
         </div>
         <div className="text-center">
           <button
             type="submit"
-            onClick={handleSubmit}
-            name="sumbit"
+            name="submit"
             className="-mt-7 border-0 items-center btn btn-xl rounded-full bg-amber-300  shadow-none hover:bg-amber-500 text-slate-900 capitalize "
           >
             checkout <FaArrowRight />
           </button>
         </div>
       </form>
-
+      <p>{textPreview}</p>
       <Midtrans
         orderId={orderId}
         servicePrice={servicePrice}
@@ -210,6 +215,9 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
         serviceCategory={serviceCategory}
         serviceUrl={serviceUrl}
         baseUrl={baseUrl}
+        desc={`kirim pesan ini ${textPreview}`}
+        waNumber={waNumber}
+        longTime="4s"
       />
     </>
   );

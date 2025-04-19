@@ -1,7 +1,19 @@
 "use client";
 import { useEffect } from "react";
 
-export default function Midtrans({ orderId, servicePrice, serviceId, serviceName, serviceCategory, serviceUrl, quantity = 1, baseUrl }) {
+export default function Midtrans({
+  orderId,
+  servicePrice,
+  serviceId,
+  serviceName,
+  serviceCategory,
+  serviceUrl,
+  quantity = 1,
+  baseUrl,
+  desc,
+  waNumber,
+  longTime,
+}) {
   const handlePayment = async () => {
     try {
       const res = await fetch("/api/transaction", {
@@ -41,6 +53,19 @@ export default function Midtrans({ orderId, servicePrice, serviceId, serviceName
         window.snap.pay(data.token, {
           onSuccess: (result) => {
             console.log("Success:", result);
+            console.log("Deskripsi:", desc);
+            const redirectUrl =
+              `${baseUrl}/payment/success?` +
+              `&order_id=${result.order_id}` +
+              `&layanan=${serviceName}` +
+              `&gross_amount=${new Intl.NumberFormat("id-ID", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+              }).format(result.gross_amount)}` +
+              `&desc=${encodeURIComponent(desc)}` +
+              `&waNumber=${encodeURIComponent(waNumber)}` +
+              `&longTime=${longTime}`;
+            window.location.href = redirectUrl;
           },
           onPending: (result) => {
             console.log("Pending:", result);
@@ -55,7 +80,6 @@ export default function Midtrans({ orderId, servicePrice, serviceId, serviceName
       alert("Terjadi kesalahan internal.");
     }
   };
-
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
