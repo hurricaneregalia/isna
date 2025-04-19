@@ -215,7 +215,7 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
         serviceCategory={serviceCategory}
         serviceUrl={serviceUrl}
         baseUrl={baseUrl}
-        desc={`KIRIM PESAN INI%0A${textPreview}`}
+        desc={textPreview}
         waNumber={waNumber}
         longTime="4s"
         orderBy={orderBy}

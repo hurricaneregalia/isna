@@ -27,7 +27,6 @@ export default function PaymentSuccessPage() {
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
 
-    // Hapus longTime dari URL
     query.delete("transaction_id");
     query.delete("longTime");
     query.delete("desc");
@@ -36,7 +35,6 @@ export default function PaymentSuccessPage() {
     query.delete("bank");
     query.delete("va_number");
 
-    // Bangun ulang URL tanpa longTime
     const finalUrl = `${window.location.origin}${window.location.pathname}?${query.toString()}`;
     setUrlWithoutLongTime(finalUrl);
   }, []);
@@ -49,7 +47,7 @@ export default function PaymentSuccessPage() {
       {longTime ? null : <SuccessInfo orderId={orderId} layanan={service} price={price.toLocaleString("id-ID")} date={date} orderBy={orderBy} />}
       {longTime ? (
         <WhatsappBtn
-          waText={encodeURIComponent(desc + "\nINVOICE\n\n" + urlWithoutLongTime)}
+          waText={"KIRIM PESAN INI\n" + desc + "\n" + "INVOICE\n" + urlWithoutLongTime}
           waBtnText="kirim"
           waNumber={waNumber}
           btnCenter={true}

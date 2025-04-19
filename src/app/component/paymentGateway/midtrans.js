@@ -63,7 +63,7 @@ export default function Midtrans({
               `&payment_type=${result.payment_type}` +
               `&bank=${result.va_numbers?.[0]?.bank}` +
               `&va_number=${result.va_numbers?.[0]?.va_number}` +
-              `&desc=${desc}` +
+              `&desc=${encodeURIComponent(desc)}` +
               `&waNumber=${encodeURIComponent(waNumber)}` +
               `&longTime=${longTime}` +
               `&date=${encodeURIComponent(result.transaction_time)}` +
