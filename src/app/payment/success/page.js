@@ -49,7 +49,7 @@ export default function PaymentSuccessPage() {
       {longTime ? null : <SuccessInfo orderId={orderId} layanan={service} price={price.toLocaleString("id-ID")} date={date} orderBy={orderBy} />}
       {longTime ? (
         <WhatsappBtn
-          waText={desc + "%0A%0AINVOICE%0A" + urlWithoutLongTime}
+          waText={encodeURIComponent(desc + "\nINVOICE\n\n" + urlWithoutLongTime)}
           waBtnText="kirim"
           waNumber={waNumber}
           btnCenter={true}
