@@ -65,7 +65,7 @@ export default function PaymentSuccessPage() {
                 longTime ? "text-slate-400 border-slate-400" : "text-green-500 border-green-500"
               }`}
             >
-              {longTime ? <div className=" ">5</div> : <IoMdCheckmark />}
+              {longTime ? <div className="ini-okeh-paling-tepat tanpa-metadata ">5</div> : <IoMdCheckmark />}
             </div>
             <div className="p-4 max-w-xl mx-auto rounded-md pb-0">
               <div className=" text-center mb-10 border rounded-xl py-5 border-dashed border-slate-400 z-2 relative ">
