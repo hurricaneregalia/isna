@@ -42,7 +42,7 @@ export default function PaymentSuccessPage() {
   }, []);
   return (
     <div className="min-h-full">
-      <div className="w-full h-full grid  place-items-center  px-6 py-24 sm:py-32 lg:px-8 ">
+      <div className="w-full h-full grid  place-items-center  p-6 sm:py-32 lg:px-8 ">
         <CanvasCursor />
         <div className="bg-base-100 sm:rounded-bl-4xl rounded-bl-3xl lg:w-10/12 sm:w-8/12 w-full lg:pb-0 sm:pb-10 pb-5 lg:grid-cols-2 grid-cols-1 grid overflow-hidden">
           <div className="lg:p-20 sm:p-10 p-5 bg-slate-900 sm:rounded-bl-4xl rounded-bl-3xl overflow-hidden ">
