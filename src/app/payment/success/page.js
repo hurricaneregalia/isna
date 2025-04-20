@@ -1,30 +1,17 @@
 "use client";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import CanvasCursor from "@/app/component/canvasCursor/CanvasCursor";
-import InvoiceBody from "./invoiceBody";
-import axios from "axios";
-import Loading from "@/app/loading";
-import InvoiceHead from "./invoiceHead";
 import WhatsappBtn from "@/app/component/global/whatsappBtn";
-import SuccessInfo from "./successInfo";
+import { FormatTanggal } from "@/app/component/global/formatTanggal";
+import CanvasCursor from "@/app/component/canvasCursor/CanvasCursor";
+import { IoMdCheckmark } from "react-icons/io";
+import CopyableText from "@/app/component/global/copyableText";
 
-const BASE_URL = process.env.NODE_ENV === "production" ? process.env.BASE_URL_PROD : process.env.NEXT_PUBLIC_BASE_URL;
-
-async function getSiteIdentity() {
-  try {
-    const res = await axios.get(`${BASE_URL}/api/siteidentity`);
-    return res.data.siteIdentities[0];
-  } catch (err) {
-    console.error("Failed to fetch site identity:", err);
-    return null;
-  }
-}
-
-export default function PaymentSuccessClient() {
+export default function PaymentSuccessPage() {
   const params = useSearchParams();
   const [urlWithoutLongTime, setUrlWithoutLongTime] = useState("");
-  const [siteIdentity, setSiteIdentity] = useState(null);
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
   const orderId = params.get("order_id");
   const transactionId = params.get("transaction_id");
@@ -40,15 +27,8 @@ export default function PaymentSuccessClient() {
   const orderBy = params.get("orderby");
 
   useEffect(() => {
-    console.log("BASE_URL:", BASE_URL); // debug
-    const fetchSiteIdentity = async () => {
-      const identity = await getSiteIdentity();
-      setSiteIdentity(identity);
-    };
-
-    fetchSiteIdentity();
-
     const query = new URLSearchParams(window.location.search);
+
     query.delete("transaction_id");
     query.delete("longTime");
     query.delete("desc");
@@ -57,75 +37,92 @@ export default function PaymentSuccessClient() {
     query.delete("bank");
     query.delete("va_number");
 
-    setUrlWithoutLongTime(`${window.location.origin}${window.location.pathname}?${query.toString()}`);
+    const finalUrl = `${window.location.origin}${window.location.pathname}?${query.toString()}`;
+    setUrlWithoutLongTime(finalUrl);
   }, []);
-
-  useEffect(() => {
-    if (!siteIdentity) return;
-
-    const metadata = [
-      // SEO Metadata
-      { name: "description", content: `INVOICE pembayaran ${service}` },
-      { name: "keywords", content: "invoice, copywriting, pembayaran, transaksi" },
-      { name: "author", content: siteIdentity.siteName || "Admin" },
-
-      // Open Graph (OG) Metadata
-      { property: "og:title", content: `${longTime ? "Proses pembayaran " : "INVOICE "} - ${orderBy}` },
-      { property: "og:description", content: `Terima kasih ${orderBy}, proses pembayaran layanan ${service} telah selesai.` },
-      { property: "og:image", content: `${BASE_URL}/images/payment/ogImage-invoice-success.webp` },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: urlWithoutLongTime },
-      { property: "og:site_name", content: siteIdentity.siteName },
-
-      // Twitter Card Metadata
-      { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: `${longTime ? "Proses pembayaran " : "INVOICE "} - ${orderBy}` },
-      { name: "twitter:description", content: `Terima kasih ${orderBy}, proses pembayaran layanan ${service} telah selesai.` },
-      { name: "twitter:image", content: `${BASE_URL}/images/payment/ogImage-invoice-success.webp` },
-
-      // Robots Meta Tag
-      { name: "robots", content: "index, follow" },
-
-      // Other Metadata
-      { name: "category", content: "Product" },
-      { name: "referrer", content: "no-referrer" }, // Untuk meningkatkan privasi dan keamanan
-    ];
-
-    metadata.forEach(({ name, property, content }) => {
-      const metaTag = document.querySelector(`meta[${name ? `name='${name}'` : `property='${property}'`}]`) || document.createElement("meta");
-      if (name) metaTag.setAttribute("name", name);
-      if (property) metaTag.setAttribute("property", property);
-      metaTag.setAttribute("content", content);
-      document.head.appendChild(metaTag);
-    });
-
-    const favicon = document.querySelector("link[rel='icon']") || document.createElement("link");
-    favicon.setAttribute("rel", "icon");
-    favicon.setAttribute("href", siteIdentity.siteFaviconUrl || "/favicon.ico");
-    document.head.appendChild(favicon);
-
-    document.title = `${longTime ? "Proses pembayaran " : "INVOICE "} - ${orderBy}`;
-  }, [siteIdentity]);
-
-  if (!siteIdentity) return <Loading />;
-
   return (
-    <div className="p-4 max-w-xl mx-auto bg-white shadow rounded-md">
-      <h1 className={`text-xl font-bold ${longTime ? null : "text-green-600"} mb-4`}>
-        {longTime ? "Pembayaran sedang diproses" : "✅ Pembayaran Berhasil!"}
-      </h1>
-      {longTime ? null : <SuccessInfo orderId={orderId} layanan={service} price={price.toLocaleString("id-ID")} date={date} orderBy={orderBy} />}
-      {longTime ? (
-        <WhatsappBtn
-          waText={"KIRIM PESAN INI\n" + desc + "\n" + "INVOICE\n" + urlWithoutLongTime}
-          waBtnText="kirim"
-          waNumber={waNumber}
-          btnCenter={true}
-          isInternalLink={false}
-        />
-      ) : null}
-      test
-      {longTime ? <p>long time: {longTime}</p> : null}
+    <div className="min-h-full">
+      <div className="w-full h-full grid  place-items-center  px-6 py-24 sm:py-32 lg:px-8 ">
+        <CanvasCursor />
+        <div className="bg-base-100 sm:rounded-bl-4xl rounded-bl-3xl lg:w-10/12 sm:w-8/12 w-full lg:pb-0 sm:pb-10 pb-5 lg:grid-cols-2 grid-cols-1 grid overflow-hidden">
+          <div className="lg:p-20 sm:p-10 p-5 bg-slate-900 sm:rounded-bl-4xl rounded-bl-3xl overflow-hidden ">
+            <div className="relative text-nowrap">
+              <p className="rotate-90 text-slate-800/70 origin-left text-9xl absolute uppercase lg:-ms-8 lg:-mt-38 sm:ms-2 sm:-mt-28 -mt-23 ms-5">
+                {longTime ? "PROSES PROSES" : "LUNAS LUNAS"}
+              </p>
+            </div>
+
+            <div className=" flex justify-between">
+              <p className="ps-4 text-slate-400 font-bold relative z-1">Brand Name</p>
+              <p>
+                <span className={`p-2 py-1 rounded-sm inline font-bold ${longTime ? "bg-amber-200 text-amber-600" : "bg-green-100 text-green-500"}`}>
+                  {longTime ? "Proses" : "LUNAS"}
+                </span>
+              </p>
+            </div>
+            <div
+              className={`text-8xl text-center flex justify-center items-center mx-auto rounded-full border-5 w-30 h-30 my-10 ${
+                longTime ? "text-slate-400 border-slate-400" : "text-green-500 border-green-500"
+              }`}
+            >
+              {longTime ? <div className=" ">5</div> : <IoMdCheckmark />}
+            </div>
+            <div className="p-4 max-w-xl mx-auto rounded-md pb-0">
+              <div className=" text-center mb-10 border rounded-xl py-5 border-dashed border-slate-400 z-2 relative ">
+                <h1 className={`text-4xl font-bold ${longTime ? "text-amber-300" : "text-green-500"} mb-4`}>Rp. {price}</h1>
+                <div className=" text-slate-400 ">
+                  <CopyableText orderId={orderId} cssStyle="bg-slate-700" />
+                  <p className=" text-xs">Waktu pembayaran: {longTime ? "Loading..." : FormatTanggal(date)}</p>
+                  <p className=" mt-3">{longTime ? "Pembayaran sedang diproses" : "✅ Pembayaran Berhasil!"}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="lg:px-20 sm:px-10 px-5 mt-5 flex flex-col">
+            <div className="p-4 mx-auto w-full">
+              <div className=" grid grid-cols-1 w-full">
+                <div className="flex justify-between py-4">
+                  <p>Order ID</p>
+                  <CopyableText orderId={orderId} cssStyle="bg-base-300" />
+                </div>
+                <div className="flex justify-between border-dashed border-slate-400 border-t py-4">
+                  <p>Waktu pembayaran</p>
+                  <p className="font-bold capitalize text-end">{longTime ? "Loading..." : FormatTanggal(date)}</p>
+                </div>
+                <div className="flex justify-between border-dashed border-slate-400 border-t py-4">
+                  <p>Klien</p>
+                  <p className="font-bold capitalize text-end">{orderBy}</p>
+                </div>
+                <div className="flex justify-between border-dashed border-slate-400 border-t py-4">
+                  <p>Layanan</p>
+                  <p className=" font-bold  text-end">{service}</p>
+                </div>
+                <div className="flex justify-between  border-dashed border-slate-400 border-t py-4">
+                  <p>Harga</p>
+                  <p className=" font-bold text-end">{price}</p>
+                </div>
+              </div>
+            </div>
+            <div className="w-full mt-auto lg:mb-20">
+              <p className="bg-base-200/70 p-4 rounded-xl">
+                {longTime
+                  ? "Pembayaran Anda sedang diproses. Jangan menutup aplikasi!"
+                  : "Terima kasih, pembayaran Anda telah selesai. Semoga Allah melimpahkan banyak berkah untuk bisnis Anda, aamiiin."}
+              </p>
+              {longTime ? (
+                <WhatsappBtn
+                  waText={"KIRIM PESAN INI\n" + desc + "\n\n" + "INVOICE\n" + urlWithoutLongTime}
+                  waBtnText="kirim"
+                  waNumber={waNumber}
+                  btnCenter={true}
+                  isInternalLink={false}
+                />
+              ) : null}
+              {longTime ? <p>long time: {longTime}</p> : null}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
