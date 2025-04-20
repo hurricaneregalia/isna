@@ -122,7 +122,6 @@ export default function PaymentSuccessClient() {
             orderId={orderId}
             date={date}
           />
-
           <InvoiceBody
             orderId={orderId}
             longTime={longTime}
