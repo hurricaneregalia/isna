@@ -2,6 +2,8 @@ import React from "react";
 import CanvasCursor from "../component/canvasCursor/CanvasCursor";
 import Link from "next/link";
 
+const BASE_URL = process.env.NODE_ENV === "production" ? process.env.BASE_URL_PROD : process.env.NEXT_PUBLIC_BASE_URL;
+
 export default async function MyApi() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/apilist`, { cache: "no-store" });
   const data = await res.json();
@@ -21,7 +23,7 @@ export default async function MyApi() {
                   <Link
                     key={item.id}
                     className="list-col-grow capitalize btn shadow-none bg-slate-300 hover:bg-amber-500 border-0 text-slate-500 hover:text-slate-900"
-                    href={`/api/${item.name}`}
+                    href={`${BASE_URL}/api/${item.name}`}
                   >
                     {item.name}
                   </Link>
