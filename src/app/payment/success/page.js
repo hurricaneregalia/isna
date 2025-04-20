@@ -108,31 +108,22 @@ export default function PaymentSuccessClient() {
   if (!siteIdentity) return <Loading />;
 
   return (
-    <div className="min-h-full">
-      <div className="w-full h-full grid place-items-center p-6 sm:py-32 lg:px-8">
-        <CanvasCursor />
-        <div className="bg-base-100 sm:rounded-bl-4xl rounded-bl-3xl lg:w-10/12 sm:w-8/12 w-full lg:pb-0 sm:pb-10 pb-5 lg:grid-cols-2 grid-cols-1 grid overflow-hidden">
-          <InvoiceHead
-            longTime={longTime}
-            siteLogo={siteIdentity.siteLogoUrl}
-            siteName={siteIdentity.siteName}
-            price={price}
-            orderId={orderId}
-            date={date}
-          />
-          <InvoiceBody
-            orderId={orderId}
-            longTime={longTime}
-            orderBy={orderBy}
-            service={service}
-            price={price}
-            desc={desc}
-            urlWithoutLongTime={urlWithoutLongTime}
-            waNumber={siteIdentity.contactPhone}
-            date={date}
-          />
-        </div>
-      </div>
+    <div className="p-4 max-w-xl mx-auto bg-white shadow rounded-md">
+      <h1 className={`text-xl font-bold ${longTime ? null : "text-green-600"} mb-4`}>
+        {longTime ? "Pembayaran sedang diproses" : "✅ Pembayaran Berhasil!"}
+      </h1>
+      {longTime ? null : <SuccessInfo orderId={orderId} layanan={service} price={price.toLocaleString("id-ID")} date={date} orderBy={orderBy} />}
+      {longTime ? (
+        <WhatsappBtn
+          waText={"KIRIM PESAN INI\n" + desc + "\n" + "INVOICE\n" + urlWithoutLongTime}
+          waBtnText="kirim"
+          waNumber={waNumber}
+          btnCenter={true}
+          isInternalLink={false}
+        />
+      ) : null}
+      test
+      {longTime ? <p>long time: {longTime}</p> : null}
     </div>
   );
 }
