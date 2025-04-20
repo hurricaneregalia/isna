@@ -8,6 +8,8 @@ import { IoMdCheckmark } from "react-icons/io";
 import CopyableText from "@/app/component/global/copyableText";
 import axios from "axios";
 import Loading from "./loading";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function PaymentSuccessPage() {
   const params = useSearchParams();
@@ -39,21 +41,38 @@ export default function PaymentSuccessPage() {
     const finalUrl = `${window.location.origin}${window.location.pathname}?${query.toString()}`;
     setUrlWithoutLongTime(finalUrl);
 
-    // Ambil data dari /api/siteidentity
     const fetchSiteData = async () => {
       try {
-        const res = await fetch("https://isnaa.vercel.app/api/siteidentity");
-        const data = await res.json();
-        if (data && data.siteIdentities && data.siteIdentities.length > 0) {
+        // Coba fetch dari API lokal terlebih dahulu
+        let res = await fetch("/api/siteidentity");
+        if (!res.ok) throw new Error("Local API failed");
+        let data = await res.json();
+
+        if (data?.siteIdentities?.length > 0) {
           setSiteData(data.siteIdentities[0]);
+        } else {
+          throw new Error("No siteIdentities found");
         }
       } catch (error) {
-        console.error("Gagal fetch site identity:", error);
+        console.warn("Fallback to remote site identity:", error.message);
+        try {
+          // Fallback ke URL remote jika lokal gagal
+          const res = await fetch("https://isnaa.vercel.app/api/siteidentity");
+          const data = await res.json();
+          if (data?.siteIdentities?.length > 0) {
+            setSiteData(data.siteIdentities[0]);
+          }
+        } catch (fallbackError) {
+          console.error("Gagal fetch dari URL fallback:", fallbackError);
+        }
       }
     };
 
     fetchSiteData();
   }, []);
+  if (!siteData) {
+    return <Loading />;
+  }
 
   return (
     <div className="min-h-full">
@@ -68,7 +87,12 @@ export default function PaymentSuccessPage() {
             </div>
 
             <div className=" flex justify-between">
-              <p className="ps-4 text-slate-400 font-bold relative z-1">{siteData?.siteName || "Brand Name"}</p>
+              <div className=" relative z-10">
+                <Link href="/" className="flex items-center gap-1">
+                  <Image src={siteData.siteLogoUrl} alt={`${siteData.siteName} logo`} width={20} height={20} className="w-5 h-auto" />
+                  <span className="font-bold capitalize hover:text-amber-300">{siteData.siteName}</span>
+                </Link>
+              </div>
               <p>
                 <span className={`p-2 py-1 rounded-sm inline font-bold ${longTime ? "bg-amber-200 text-amber-600" : "bg-green-100 text-green-500"}`}>
                   {longTime ? "Proses" : "LUNAS"}
@@ -128,7 +152,7 @@ export default function PaymentSuccessPage() {
                 <WhatsappBtn
                   waText={"KIRIM PESAN INI\n" + desc + "\n\n" + "INVOICE\n" + urlWithoutLongTime}
                   waBtnText="kirim"
-                  waNumber={waNumber}
+                  waNumber={siteData.contactPhone}
                   btnCenter={true}
                   isInternalLink={false}
                 />
