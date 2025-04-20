@@ -7,7 +7,7 @@ import { IoMdCheckmark } from "react-icons/io";
 
 export default function InvoiceHead({ longTime, siteLogo, siteName, price, orderId, date, counter }) {
   return (
-    <div className={`lg:p-20 sm:p-10 p-5 ${longTime ? "bg-slate-900 " : "bg-green-300 "} sm:rounded-bl-4xl rounded-bl-3xl overflow-hidden`}>
+    <div className="lg:p-20 sm:p-10 p-5 bg-slate-900 sm:rounded-bl-4xl rounded-bl-3xl overflow-hidden">
       <div className="relative text-nowrap">
         <p className="rotate-90 text-slate-800/70 origin-left text-9xl absolute uppercase ">{longTime ? "PROSES PROSES" : "LUNAS LUNAS"}</p>
       </div>
