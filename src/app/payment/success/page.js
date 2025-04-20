@@ -12,6 +12,8 @@ import Loading from "./loading";
 export default function PaymentSuccessPage() {
   const params = useSearchParams();
   const [urlWithoutLongTime, setUrlWithoutLongTime] = useState("");
+  const [siteData, setSiteData] = useState(null); // ← Tambah state untuk site identity
+
   const orderId = params.get("order_id");
   const transactionId = params.get("transaction_id");
   const paymentType = params.get("payment_type");
@@ -24,23 +26,8 @@ export default function PaymentSuccessPage() {
   const price = params.get("price");
   const date = params.get("date");
   const orderBy = params.get("orderby");
-  const [siteIdentity, setSiteIdentity] = useState(null);
 
   useEffect(() => {
-    const BASE_URL = process.env.NODE_ENV === "production" ? process.env.BASE_URL_PROD : process.env.NEXT_PUBLIC_BASE_URL;
-
-    const fetchSiteIdentity = async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/api/siteidentity`);
-        const firstIdentity = response.data?.siteIdentities?.[0];
-        setSiteIdentity(firstIdentity);
-      } catch (error) {
-        console.error("Gagal mengambil site identity:", error);
-      }
-    };
-
-    fetchSiteIdentity();
-
     const query = new URLSearchParams(window.location.search);
     query.delete("transaction_id");
     query.delete("longTime");
@@ -49,9 +36,23 @@ export default function PaymentSuccessPage() {
     query.delete("payment_type");
     query.delete("bank");
     query.delete("va_number");
-
     const finalUrl = `${window.location.origin}${window.location.pathname}?${query.toString()}`;
     setUrlWithoutLongTime(finalUrl);
+
+    // Ambil data dari /api/siteidentity
+    const fetchSiteData = async () => {
+      try {
+        const res = await fetch("/api/siteidentity");
+        const data = await res.json();
+        if (data && data.siteIdentities && data.siteIdentities.length > 0) {
+          setSiteData(data.siteIdentities[0]);
+        }
+      } catch (error) {
+        console.error("Gagal fetch site identity:", error);
+      }
+    };
+
+    fetchSiteData();
   }, []);
 
   return (
@@ -67,7 +68,7 @@ export default function PaymentSuccessPage() {
             </div>
 
             <div className=" flex justify-between">
-              <p className="ps-4 text-slate-400 font-bold relative z-1">{siteIdentity?.siteName || "Loading..."}</p>
+              <p className="ps-4 text-slate-400 font-bold relative z-1">{siteData?.siteName || "Brand Name"}</p>
               <p>
                 <span className={`p-2 py-1 rounded-sm inline font-bold ${longTime ? "bg-amber-200 text-amber-600" : "bg-green-100 text-green-500"}`}>
                   {longTime ? "Proses" : "LUNAS"}
