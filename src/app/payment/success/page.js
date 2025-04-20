@@ -42,7 +42,7 @@ export default function PaymentSuccessPage() {
     // Ambil data dari /api/siteidentity
     const fetchSiteData = async () => {
       try {
-        const res = await fetch("/api/siteidentity");
+        const res = await fetch("https://isnaa.verce.app/api/siteidentity");
         const data = await res.json();
         if (data && data.siteIdentities && data.siteIdentities.length > 0) {
           setSiteData(data.siteIdentities[0]);
