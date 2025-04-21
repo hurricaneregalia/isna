@@ -67,12 +67,12 @@ export default function Midtrans({
               `&desc=${encodeURIComponent(desc)}` +
               `&waNumber=${encodeURIComponent(waNumber)}` +
               `&longTime=${longTime}` +
-              `&sapaan=${sapaan}` +
               `&date=${encodeURIComponent(result.transaction_time)}` +
               `&price=${new Intl.NumberFormat("id-ID", {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0,
               }).format(result.gross_amount)}` +
+              `&sapaan=${sapaan}` +
               `&orderby=${orderBy}`;
             window.location.href = redirectUrl;
           },

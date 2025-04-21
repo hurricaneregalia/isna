@@ -3,9 +3,11 @@ import prisma from "@/app/database/prisma";
 export async function GET(request) {
   try {
     const siteIdentities = await prisma.siteIdentity.findMany();
+    const socialLinks = await prisma.socialLinks.findMany();
 
     const responseData = {
       siteIdentities,
+      socialLinks,
     };
 
     // Mengembalikan data dalam format JSON dengan pretty-print

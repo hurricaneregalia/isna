@@ -87,8 +87,8 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
     if (formData["1-nama-lengkap"]) {
       setOrderBy(formData["1-nama-lengkap"]);
     }
-    if (formData["20-sapaan"]) {
-      setSapaan(formData["20-sapaan"]);
+    if (formData["sapaan"]) {
+      setSapaan(formData["sapaan"]);
     }
   }, [formData]);
 

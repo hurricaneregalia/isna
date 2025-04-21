@@ -233,14 +233,6 @@ model LandingPage {
   updateDate          DateTime  @updatedAt
 }
 
-model SocialLinks {
-  id           Int            @id @default(autoincrement())
-  platform     String
-  url          String
-  userName     String
-  siteIdentity SiteIdentity[]
-}
-
 model RegisterForm {
   id          Int      @id @default(autoincrement())
   name        String
@@ -273,24 +265,34 @@ model FacebookPixel {
   updatedAt    DateTime @updatedAt // Waktu data terakhir diperbarui
 }
 
+model SocialLinks {
+  id               Int           @id @default(autoincrement())
+  platform         String?
+  url              String?
+  platformUsername String?
+  siteId           Int?          @default(1)
+  site             SiteIdentity? @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @default(now()) @updatedAt
+}
+
 model SiteIdentity {
-  id                 Int          @id @default(autoincrement())
-  contactAddress     String
-  contactEmail       String
-  contactPhone       String
-  siteCopyright      String
-  siteDescription    String
-  siteFaviconAltText String
-  siteFaviconUrl     String
-  siteLogoAlt        String
-  socialId           Int
-  socialLinks        SocialLinks? @relation(fields: [socialId], references: [id])
-  siteLogoUrl        String
-  siteName           String
-  siteUrl            String       @default("")
-  siteTagline        String
-  createdAt          DateTime     @default(now())
-  updatedAt          DateTime     @updatedAt
+  id                 Int           @id @default(autoincrement())
+  contactAddress     String?
+  contactEmail       String?
+  contactPhone       String?
+  siteCopyright      String?
+  siteDescription    String?
+  siteFaviconAltText String?
+  siteFaviconUrl     String?
+  siteLogoAltText    String?
+  siteLogoUrl        String?
+  siteName           String?
+  siteUrl            String?       @default("")
+  siteTagline        String?
+  socialLinks        SocialLinks[]
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @default(now()) @updatedAt
 }
 
 //npx prisma migrate dev

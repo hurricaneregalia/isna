@@ -195,10 +195,19 @@ export default function PaymentSuccessPage() {
             </div>
             <div className="w-full mt-auto lg:mb-20">
               <p className="bg-base-200/70 p-4 rounded-xl">
-                {longTime
-                  ? "Pembayaran Anda sedang diproses. Jangan menutup aplikasi!"
-                  : "Terima kasih, pembayaran Anda telah selesai. Semoga Allah melimpahkan banyak berkah untuk bisnis Anda, aamiiin."}
+                {longTime ? (
+                  "Pembayaran Anda sedang diproses. Jangan menutup aplikasi!"
+                ) : (
+                  <>
+                    Terima kasih, pembayaran Anda telah selesai. Semoga Allah melimpahkan banyak berkah untuk bisnis{" "}
+                    <span className=" capitalize">
+                      {sapaan} {orderBy}
+                    </span>
+                    , aamiiin 🤲.
+                  </>
+                )}
               </p>
+
               {longTime ? (
                 <WhatsappBtn
                   waText={"KIRIM PESAN INI\n" + desc + "\n\n" + "INVOICE\n" + urlWithoutLongTime}
