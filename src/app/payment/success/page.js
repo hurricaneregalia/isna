@@ -25,7 +25,7 @@ export async function generateMetadata({ searchParams }) {
 
   if (!siteData) return {};
 
-  const title = `${siteData.siteName} | ${service}`;
+  const title = `${siteData.siteName} | ${service ? service : ""}`;
 
   return {
     title,
@@ -36,7 +36,7 @@ export async function generateMetadata({ searchParams }) {
     openGraph: {
       title,
       description: "Terima kasih, proses pembayaran layanan Anda telah selesai.",
-      url,
+      url: `${baseUrl}/payment/success`,
       siteName: siteData.siteName,
       images: [ogImageUrl],
       type: "website",
@@ -174,7 +174,7 @@ export default async function PaymentSuccessPage({ searchParams }) {
                 <WhatsappBtn
                   waText={`KIRIM PESAN INI\n${desc}\n\nINVOICE\n${baseUrl}/payment/success?order_id=${order_id}&service=${encodeURIComponent(
                     service
-                  )}&price=${price}&date=${date}&sapaan=${sapaan}&orderby=${orderby}`}
+                  )}&price=${price}&date=${encodeURIComponent(date)}&sapaan=${sapaan}&orderby=${orderby}`}
                   waBtnText="kirim"
                   waNumber={siteData.contactPhone}
                   btnCenter={true}
