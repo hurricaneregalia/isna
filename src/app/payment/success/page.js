@@ -8,14 +8,15 @@ import CopyableText from "@/app/component/global/copyableText";
 import Loading from "./loading";
 
 export async function generateMetadata({ searchParams }) {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
   const { service, longTime, orderby, order_id } = searchParams;
 
-  const ogImageUrl = "https://isnaa.vercel.app/images/payment/ogImage-invoice-success.webp";
-  const url = `https://isnaa.vercel.app/payment/success?order_id=${order_id}`;
+  const ogImageUrl = `${baseUrl}/images/payment/ogImage-invoice-success.webp`;
+  const url = `${baseUrl}/payment/success?order_id=${order_id}`;
 
   let siteData;
   try {
-    const res = await fetch("https://isnaa.vercel.app/api/siteidentity", { cache: "no-store" });
+    const res = await fetch(`${baseUrl}/api/siteidentity`, { cache: "no-store" });
     const data = await res.json();
     siteData = data?.siteIdentities?.[0];
   } catch (e) {
@@ -24,14 +25,14 @@ export async function generateMetadata({ searchParams }) {
 
   if (!siteData) return {};
 
-  const title = `Isnaa Project | ${service}`;
+  const title = `${siteData.siteName} | ${service}`;
 
   return {
     title,
     description: `INVOICE pembayaran ${service}`,
     keywords: ["invoice", "copywriting", "pembayaran", "transaksi"],
     authors: [{ name: siteData.siteName || "Admin" }],
-    metadataBase: new URL("https://isnaa.vercel.app"),
+    metadataBase: new URL(baseUrl),
     openGraph: {
       title,
       description: "Terima kasih, proses pembayaran layanan Anda telah selesai.",
@@ -63,9 +64,11 @@ export async function generateMetadata({ searchParams }) {
 export default async function PaymentSuccessPage({ searchParams }) {
   const { order_id, transaction_id, payment_type, bank, va_number, service, desc, waNumber, longTime, price, date, orderby, sapaan } = searchParams;
 
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
   let siteData;
   try {
-    const res = await fetch("https://isnaa.vercel.app/api/siteidentity", { cache: "no-store" });
+    const res = await fetch(`${baseUrl}/api/siteidentity`, { cache: "no-store" });
     const data = await res.json();
     siteData = data?.siteIdentities?.[0];
   } catch (e) {
@@ -81,6 +84,7 @@ export default async function PaymentSuccessPage({ searchParams }) {
       <div className="w-full h-full grid place-items-center p-6 sm:py-32 lg:px-8">
         <CanvasCursor />
         <div className="bg-base-100 sm:rounded-bl-4xl rounded-bl-3xl lg:w-10/12 sm:w-8/12 w-full lg:pb-0 sm:pb-10 pb-5 lg:grid-cols-2 grid-cols-1 grid overflow-hidden">
+          {/* LEFT SIDE */}
           <div className="lg:p-20 sm:p-10 p-5 bg-slate-900 sm:rounded-bl-4xl rounded-bl-3xl overflow-hidden">
             <div className="relative text-nowrap">
               <p className="rotate-90 text-slate-800/70 origin-left text-9xl absolute uppercase lg:-ms-8 lg:-mt-38 sm:ms-2 sm:-mt-28 -mt-23 ms-5">
@@ -122,6 +126,7 @@ export default async function PaymentSuccessPage({ searchParams }) {
             </div>
           </div>
 
+          {/* RIGHT SIDE */}
           <div className="lg:px-20 sm:px-10 px-5 mt-5 flex flex-col">
             <div className="p-4 mx-auto w-full">
               <div className="grid grid-cols-1 w-full">
@@ -167,9 +172,9 @@ export default async function PaymentSuccessPage({ searchParams }) {
 
               {longTime && (
                 <WhatsappBtn
-                  waText={`KIRIM PESAN INI\n${desc}\n\nINVOICE\nhttps://isnaa.vercel.app/payment/success?order_id=${order_id}&service=${encodeURIComponent(
+                  waText={`KIRIM PESAN INI\n${desc}\n\nINVOICE\n${baseUrl}/payment/success?order_id=${order_id}&service=${encodeURIComponent(
                     service
-                  )}&price=${price}&sapaan=${sapaan}&orderby=${orderby}`}
+                  )}&price=${price}&date=${date}&sapaan=${sapaan}&orderby=${orderby}`}
                   waBtnText="kirim"
                   waNumber={siteData.contactPhone}
                   btnCenter={true}
