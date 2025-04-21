@@ -25,7 +25,7 @@ export async function generateMetadata({ searchParams }) {
 
   if (!siteData) return {};
 
-  const title = `${siteData.siteName} | ${service ? service : ""}`;
+  const title = `${siteData.siteName} ${service ? " | " + service : ""}`;
 
   return {
     title,
