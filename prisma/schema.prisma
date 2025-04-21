@@ -106,7 +106,7 @@ model SolutionListItem {
 model FeatureServicesListItem {
   id                 Int              @id @default(autoincrement())
   title              String
-  isActive           Boolean          @default(false) // Menambahkan default value
+  isActive           Boolean          @default(false)
   createDate         DateTime         @default(now())
   updateDate         DateTime         @updatedAt
   servicesListItemId Int
@@ -127,7 +127,7 @@ model ServicesListItem {
   isBest                  Boolean                   @default(false)
   category                Int                       @default(0)
   featureServicesListItem FeatureServicesListItem[]
-  servicesGalleryListItem ServicesGalleryListItem[] // Relasi one-to-many
+  servicesGalleryListItem ServicesGalleryListItem[]
   metaData                MetaData?
   createDate              DateTime                  @default(now())
   updateDate              DateTime                  @updatedAt
@@ -234,10 +234,11 @@ model LandingPage {
 }
 
 model SocialLinks {
-  id       Int    @id @default(autoincrement())
-  platform String
-  url      String
-  userName String
+  id           Int            @id @default(autoincrement())
+  platform     String
+  url          String
+  userName     String
+  siteIdentity SiteIdentity[]
 }
 
 model RegisterForm {
@@ -273,27 +274,23 @@ model FacebookPixel {
 }
 
 model SiteIdentity {
-  id                 Int    @id @default(autoincrement())
+  id                 Int          @id @default(autoincrement())
   contactAddress     String
   contactEmail       String
   contactPhone       String
-  seoCanonalUrl      String
-  seoMetaDescription String
-  seoMetaKeywords    String
-  seoMetaTitle       String
-  seoRobots          String
   siteCopyright      String
   siteDescription    String
   siteFaviconAltText String
   siteFaviconUrl     String
   siteLogoAlt        String
+  socialId           Int
+  socialLinks        SocialLinks? @relation(fields: [socialId], references: [id])
   siteLogoUrl        String
   siteName           String
-  siteUrl            String @default("")
-  baseUrl            String @default("")
-  siteOgImageAltText String
-  siteOgImageUrl     String
+  siteUrl            String       @default("")
   siteTagline        String
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
 }
 
 //npx prisma migrate dev
