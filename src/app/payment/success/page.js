@@ -25,7 +25,7 @@ export async function generateMetadata({ searchParams }) {
 
   if (!siteData) return {};
 
-  const title = `${siteData.siteName} ${service ? " | " + service : ""}`;
+  const title = `${siteData.siteName} | INVOICE  ${service ? service : ""}`;
 
   return {
     title,
@@ -79,6 +79,17 @@ export default async function PaymentSuccessPage({ searchParams }) {
     return <Loading />;
   }
 
+  const query = new URLSearchParams({
+    order_id,
+    date,
+    service,
+    price,
+    sapaan,
+    orderby,
+  }).toString();
+
+  const waText = `KIRIM PESAN INI\n${desc}\n\nINVOICE\n${baseUrl}/payment/success?${query}`;
+
   return (
     <div className="min-h-full">
       <div className="w-full h-full grid place-items-center p-6 sm:py-32 lg:px-8">
@@ -96,7 +107,7 @@ export default async function PaymentSuccessPage({ searchParams }) {
               <div className="relative z-10">
                 <Link href="/" className="flex items-center gap-1">
                   <Image src={siteData.siteLogoUrl} alt={`${siteData.siteName} logo`} width={20} height={20} className="w-5 h-5" />
-                  <span className="font-bold capitalize hover:text-amber-300">{siteData.siteName}</span>
+                  <span className="font-bold capitalize text-neutral-content hover:text-amber-300">{siteData.siteName}</span>
                 </Link>
               </div>
               <p>
@@ -170,17 +181,7 @@ export default async function PaymentSuccessPage({ searchParams }) {
                 )}
               </p>
 
-              {longTime && (
-                <WhatsappBtn
-                  waText={`KIRIM PESAN INI\n${desc}\n\nINVOICE\n${baseUrl}/payment/success?order_id=${order_id}&service=${encodeURIComponent(
-                    service
-                  )}&price=${price}&date=${encodeURIComponent(date)}&sapaan=${sapaan}&orderby=${orderby}`}
-                  waBtnText="kirim"
-                  waNumber={siteData.contactPhone}
-                  btnCenter={true}
-                  isInternalLink={false}
-                />
-              )}
+              {longTime && <WhatsappBtn waText={waText} waBtnText="kirim" waNumber={siteData.contactPhone} btnCenter={true} isInternalLink={false} />}
 
               {longTime ? <p>long time: {longTime}</p> : null}
             </div>
