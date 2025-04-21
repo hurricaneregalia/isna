@@ -24,7 +24,7 @@ export async function generateMetadata({ searchParams }) {
 
   if (!siteData) return {};
 
-  const title = `Isnaa Project | ${longTime ? "Proses pembayaran" : "INVOICE"} - ${orderby}`;
+  const title = `Isnaa Project | ${service}`;
 
   return {
     title,
@@ -34,7 +34,7 @@ export async function generateMetadata({ searchParams }) {
     metadataBase: new URL("https://isnaa.vercel.app"),
     openGraph: {
       title,
-      description: `Terima kasih ${orderby}, proses pembayaran layanan ${service} telah selesai.`,
+      description: "Terima kasih, proses pembayaran layanan Anda telah selesai.",
       url,
       siteName: siteData.siteName,
       images: [ogImageUrl],
@@ -43,7 +43,7 @@ export async function generateMetadata({ searchParams }) {
     twitter: {
       card: "summary_large_image",
       title,
-      description: `Terima kasih ${orderby}, proses pembayaran layanan ${service} telah selesai.`,
+      description: "Terima kasih, proses pembayaran layanan Anda telah selesai.",
       images: [ogImageUrl],
     },
     icons: {
@@ -167,13 +167,16 @@ export default async function PaymentSuccessPage({ searchParams }) {
 
               {longTime && (
                 <WhatsappBtn
-                  waText={`KIRIM PESAN INI\n${desc}\n\nINVOICE\nhttps://isnaa.vercel.app/payment/success?order_id=${order_id}&service=${service}&price=${price}&sapaan=${sapaan}&orderby=${orderby}`}
+                  waText={`KIRIM PESAN INI\n${desc}\n\nINVOICE\nhttps://isnaa.vercel.app/payment/success?order_id=${order_id}&service=${encodeURIComponent(
+                    service
+                  )}&price=${price}&sapaan=${sapaan}&orderby=${orderby}`}
                   waBtnText="kirim"
                   waNumber={siteData.contactPhone}
                   btnCenter={true}
                   isInternalLink={false}
                 />
               )}
+
               {longTime ? <p>long time: {longTime}</p> : null}
             </div>
           </div>
