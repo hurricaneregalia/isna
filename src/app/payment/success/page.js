@@ -6,7 +6,6 @@ import { FormatTanggal } from "@/app/component/global/formatTanggal";
 import CanvasCursor from "@/app/component/canvasCursor/CanvasCursor";
 import { IoMdCheckmark } from "react-icons/io";
 import CopyableText from "@/app/component/global/copyableText";
-import axios from "axios";
 import Loading from "./loading";
 import Link from "next/link";
 import Image from "next/image";
@@ -28,6 +27,9 @@ export default function PaymentSuccessPage() {
   const price = params.get("price");
   const date = params.get("date");
   const orderBy = params.get("orderby");
+  const sapaan = params.get("sapaan");
+
+  const ogImageUrl = "https://isnaa.vercel.app/images/payment/ogImage-invoice-success.webp";
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
@@ -70,10 +72,57 @@ export default function PaymentSuccessPage() {
 
     fetchSiteData();
   }, []);
+
+  useEffect(() => {
+    if (!siteData) return;
+
+    const metadata = [
+      // SEO Metadata
+      { name: "description", content: `INVOICE pembayaran ${service}` },
+      { name: "keywords", content: "invoice, copywriting, pembayaran, transaksi" },
+      { name: "author", content: siteData.siteName || "Admin" },
+
+      // Open Graph (OG) Metadata
+      { property: "og:title", content: `${longTime ? "Proses pembayaran " : "INVOICE "} - ${orderBy}` },
+      { property: "og:description", content: `Terima kasih ${orderBy}, proses pembayaran layanan ${service} telah selesai.` },
+      { property: "og:image", content: ogImageUrl },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: urlWithoutLongTime },
+      { property: "og:site_name", content: siteData.siteName },
+
+      // Twitter Card Metadata
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: `${longTime ? "Proses pembayaran " : "INVOICE "} - ${orderBy}` },
+      { name: "twitter:description", content: `Terima kasih ${orderBy}, proses pembayaran layanan ${service} telah selesai.` },
+      { name: "twitter:image", content: ogImageUrl },
+
+      // Robots Meta Tag
+      { name: "robots", content: "index, follow" },
+
+      // Other Metadata
+      { name: "category", content: "Product" },
+      { name: "referrer", content: "no-referrer" }, // Untuk meningkatkan privasi dan keamanan
+    ];
+
+    metadata.forEach(({ name, property, content }) => {
+      const metaTag = document.querySelector(`meta[${name ? `name='${name}'` : `property='${property}'`}]`) || document.createElement("meta");
+      if (name) metaTag.setAttribute("name", name);
+      if (property) metaTag.setAttribute("property", property);
+      metaTag.setAttribute("content", content);
+      document.head.appendChild(metaTag);
+    });
+
+    const favicon = document.querySelector("link[rel='icon']") || document.createElement("link");
+    favicon.setAttribute("rel", "icon");
+    favicon.setAttribute("href", siteData.siteFaviconUrl || "/favicon.ico");
+    document.head.appendChild(favicon);
+
+    document.title = `${longTime ? "Proses pembayaran " : "INVOICE "} - ${orderBy}`;
+  }, [siteData]);
+
   if (!siteData) {
     return <Loading />;
   }
-
   return (
     <div className="min-h-full">
       <div className="w-full h-full grid  place-items-center  p-6 sm:py-32 lg:px-8 ">
@@ -89,7 +138,7 @@ export default function PaymentSuccessPage() {
             <div className=" flex justify-between">
               <div className=" relative z-10">
                 <Link href="/" className="flex items-center gap-1">
-                  <Image src={siteData.siteLogoUrl} alt={`${siteData.siteName} logo`} width={20} height={20} className="w-5 h-auto" />
+                  <Image src={siteData.siteLogoUrl} alt={`${siteData.siteName} logo`} width={20} height={20} className="w-5 h-5" />
                   <span className="font-bold capitalize hover:text-amber-300">{siteData.siteName}</span>
                 </Link>
               </div>
@@ -130,7 +179,9 @@ export default function PaymentSuccessPage() {
                 </div>
                 <div className="flex justify-between border-dashed border-slate-400 border-t py-4">
                   <p>Klien</p>
-                  <p className="font-bold capitalize text-end">{orderBy}</p>
+                  <p className="font-bold capitalize text-end">
+                    {sapaan} {orderBy}
+                  </p>
                 </div>
                 <div className="flex justify-between border-dashed border-slate-400 border-t py-4">
                   <p>Layanan</p>

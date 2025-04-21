@@ -14,6 +14,7 @@ export default function Midtrans({
   waNumber,
   longTime,
   orderBy,
+  sapaan,
 }) {
   const handlePayment = async () => {
     try {
@@ -66,6 +67,7 @@ export default function Midtrans({
               `&desc=${encodeURIComponent(desc)}` +
               `&waNumber=${encodeURIComponent(waNumber)}` +
               `&longTime=${longTime}` +
+              `&sapaan=${sapaan}` +
               `&date=${encodeURIComponent(result.transaction_time)}` +
               `&price=${new Intl.NumberFormat("id-ID", {
                 minimumFractionDigits: 0,

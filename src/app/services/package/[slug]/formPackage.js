@@ -13,6 +13,7 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
   const [orderId, setOrderId] = useState("");
   const [charCount, setCharCount] = useState({});
   const [orderBy, setOrderBy] = useState("");
+  const [sapaan, setSapaan] = useState("");
 
   const formRef = React.useRef(null);
 
@@ -24,7 +25,6 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
       [name]: type === "file" ? e.target.files[0]?.name : value,
     }));
 
-    // Cek kalau textarea → hitung jumlah karakter
     if (type === "textarea" || e.target.tagName === "TEXTAREA") {
       setCharCount((prev) => ({
         ...prev,
@@ -33,7 +33,6 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
     }
   };
 
-  // Buat orderId dan formData default
   useEffect(() => {
     const generateOrderId = () => {
       const datePart = new Date().toISOString().slice(0, 10).replace(/-/g, "");
@@ -85,9 +84,11 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
 
     setTextPreview(entryList.join("\n"));
 
-    // ✅ Set orderBy dari nama lengkap jika tersedia
     if (formData["1-nama-lengkap"]) {
       setOrderBy(formData["1-nama-lengkap"]);
+    }
+    if (formData["20-sapaan"]) {
+      setSapaan(formData["20-sapaan"]);
     }
   }, [formData]);
 
@@ -219,6 +220,7 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
         waNumber={waNumber}
         longTime="4s"
         orderBy={orderBy}
+        sapaan={sapaan}
       />
     </>
   );
