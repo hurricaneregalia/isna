@@ -1,0 +1,58 @@
+{
+  "product": [
+    {
+      "id": "cm9s49e6f0003vldz95k9oiqc",
+      "sku": "QLNC",
+      "name": "Qolilan copy",
+      "slug": "qolilan-copy",
+      "description": "paket copywriting untuk landing page versi mini.",
+      "image": "/images/landingPage/services/service1.jpg",
+      "gallery": null,
+      "price": 199000,
+      "inStock": true,
+      "status": "ACTIVE",
+      "categoryId": "cm9s4567o0002vldz3c2mvv5h",
+      "keywords": ["copywriting", "landing page", "iklan digital", "bisnis online", "cuan"],
+      "quality": 2,
+      "isBest": false,
+      "createdAt": "2025-04-22T06:21:00.807Z",
+      "updatedAt": "2025-04-22T06:17:02.468Z"
+    },
+    {
+      "id": "cm9s49e6f0004vldz95k9oiqd",
+      "sku": "MTZC",
+      "name": "Mumtazan copy",
+      "slug": "mumtazan-copy",
+      "description": "paket copywriting untuk landing page versi pertengahan.",
+      "image": "/images/landingPage/services/service2.jpg",
+      "gallery": null,
+      "price": 275900,
+      "inStock": true,
+      "status": "ACTIVE",
+      "categoryId": "cm9s4567o0002vldz3c2mvv5h",
+      "keywords": ["copywriting", "landing page", "iklan digital", "bisnis online", "cuan"],
+      "quality": 3,
+      "isBest": false,
+      "createdAt": "2025-04-22T06:30:00.000Z",
+      "updatedAt": "2025-04-22T06:30:00.000Z"
+    },
+    {
+      "id": "cm9s49e6f0005vldz95k9oiqe",
+      "sku": "KLNC",
+      "name": "Kamilan copy",
+      "slug": "kamilan-copy",
+      "description": "paket copywriting untuk landing page versi lengkap.",
+      "image": "/images/landingPage/services/service4.jpg",
+      "gallery": null,
+      "price": 290000,
+      "inStock": true,
+      "status": "ACTIVE",
+      "categoryId": "cm9s4567o0002vldz3c2mvv5h",
+      "keywords": ["copywriting", "landing page", "iklan digital", "bisnis online", "cuan"],
+      "quality": 5,
+      "isBest": true,
+      "createdAt": "2025-04-22T06:30:00.000Z",
+      "updatedAt": "2025-04-22T06:30:00.000Z"
+    }
+  ]
+}

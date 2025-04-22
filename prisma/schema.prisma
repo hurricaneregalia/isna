@@ -13,15 +13,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Users {
-  id         Int      @id @default(autoincrement())
-  firstName  String
-  lastName   String
-  email      String
-  createDate DateTime @default(now())
-  updateDate DateTime @updatedAt
-}
-
 model BonusListItem {
   id         Int      @id @default(autoincrement())
   icon       String
@@ -266,35 +257,342 @@ model FacebookPixel {
 }
 
 model SocialLinks {
-  id               Int           @id @default(autoincrement())
+  id               String       @id @default(cuid())
   platform         String?
   url              String?
   platformUsername String?
-  siteId           Int?          @default(1)
-  site             SiteIdentity? @relation(fields: [siteId], references: [id], onDelete: Cascade)
-  createdAt        DateTime      @default(now())
-  updatedAt        DateTime      @default(now()) @updatedAt
+  identity         SiteIdentity @relation(fields: [identityId], references: [id])
+  identityId       String       @default("")
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @default(now()) @updatedAt
 }
 
 model SiteIdentity {
-  id                 Int           @id @default(autoincrement())
-  contactAddress     String?
-  contactEmail       String?
-  contactPhone       String?
-  siteCopyright      String?
-  siteDescription    String?
-  siteFaviconAltText String?
-  siteFaviconUrl     String?
-  siteLogoAltText    String?
-  siteLogoUrl        String?
-  siteName           String?
-  siteUrl            String?       @default("")
-  siteTagline        String?
-  socialLinks        SocialLinks[]
-  createdAt          DateTime      @default(now())
-  updatedAt          DateTime      @default(now()) @updatedAt
+  id          String        @id @default(cuid())
+  siteName    String
+  tagline     String?
+  logoUrl     String        @default("")
+  faviconUrl  String        @default("/favicon.ico")
+  email       String?
+  phone       String?
+  address     String?
+  socialLinks SocialLinks[]
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
 }
 
-//npx prisma migrate dev
+model Page {
+  id            String    @id @default(cuid())
+  slug          String    @unique
+  name          String
+  title         String
+  description   String?
+  keywords      Json? // <-- diubah dari String[]
+  ogTitle       String?
+  ogDescription String?
+  ogImage       String?
+  sections      Section[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Section {
+  id          String      @id @default(cuid())
+  page        Page        @relation(fields: [pageId], references: [id])
+  pageId      String
+  type        SectionType
+  title       String
+  subTitle    String?
+  description String?
+  image       String?
+  video       String?
+  icon        String?
+  order       Int // untuk pengurutan section
+  listItems   ListItem[]
+}
+
+model ListItem {
+  id          String       @id @default(cuid())
+  section     Section      @relation(fields: [sectionId], references: [id])
+  sectionId   String
+  type        ListItemType
+  title       String
+  description String?
+  icon        String?
+  entries     ListEntry[] // ganti items jadi relasi
+}
+
+model ListEntry {
+  id          String   @id @default(cuid())
+  listItem    ListItem @relation(fields: [listItemId], references: [id])
+  listItemId  String
+  title       String
+  description String? // hanya untuk DETAILED
+}
+
+enum SectionType {
+  NORMAL
+  HERO
+  IMAGE
+  VIDEO
+  LIST
+  CTA
+  CUSTOM
+}
+
+enum ListItemType {
+  BASIC // hanya title, icon, items
+  DETAILED // dengan description
+}
+
+model Product {
+  id            String                @id @default(cuid())
+  sku           String                @unique
+  name          String
+  slug          String                @unique
+  description   String?
+  image         String?
+  price         Float
+  inStock       Boolean               @default(true)
+  status        ProductStatus         @default(ACTIVE)
+  categoryId    String
+  keywords      Json?
+  quality       Int
+  isBest        Boolean               @default(false)
+  category      Category              @relation(fields: [categoryId], references: [id])
+  tags          Tag[]                 @relation("TagsOnProducts")
+  gallery       ProductGallery[]
+  benefits      ProductBenefit[] // Relasi ke Benefit (status aktif/tidak aktif)
+  benefitPoints ProductBenefitPoint[]
+  promotions    Promotion[]           @relation("ProductPromotions")
+  vouchers      Voucher[]             @relation("VoucherProducts") // ✅ Produk yang bisa pakai voucher ini
+  orders        Order[]               @relation("OrderProducts")
+  createdAt     DateTime              @default(now())
+  updatedAt     DateTime              @updatedAt
+}
+
+model Tag {
+  id       String    @id @default(cuid())
+  name     String
+  slug     String    @unique
+  products Product[] @relation("TagsOnProducts")
+}
+
+model Category {
+  id        String    @id @default(cuid())
+  name      String
+  slug      String    @unique
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+enum ProductStatus {
+  ACTIVE // Produk tersedia dan aktif
+  SUSPENDED // Produk dihentikan sementara
+  INACTIVE // Produk tidak tersedia
+}
+
+model Menu {
+  id        String   @id @default(cuid())
+  title     String
+  slug      String
+  type      MenuType
+  order     Int
+  icon      String?
+  parentId  String? // 👈 submenu akan isi ini
+  parent    Menu?    @relation("SubMenus", fields: [parentId], references: [id])
+  children  Menu[]   @relation("SubMenus")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum MenuType {
+  HEADER
+  FOOTER
+  SIDEBAR
+}
+
+model FooterInfo {
+  id    String         @id @default(cuid())
+  label String
+  value String
+  type  FooterInfoType // CONTACT, SOCIAL, LEGAL, etc
+  icon  String?
+  order Int
+}
+
+enum FooterInfoType {
+  CONTACT
+  SOCIAL
+  LEGAL
+  CUSTOM
+}
+
+model Benefit {
+  id          String           @id @default(cuid())
+  title       String // Misal: "Buku Panduan"
+  description String? // Penjelasan tambahan
+  icon        String? // Opsional, bisa URL atau nama icon
+  products    ProductBenefit[] // Relasi ke produk melalui ProductBenefit
+}
+
+model ProductGallery {
+  id        String   @id @default(cuid())
+  product   Product  @relation(fields: [productId], references: [id])
+  productId String
+  imageUrl  String // URL gambar produk
+  order     Int // Urutan gambar dalam galeri
+  createdAt DateTime @default(now())
+}
+
+model ProductBenefit {
+  id        String  @id @default(cuid())
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+  benefit   Benefit @relation(fields: [benefitId], references: [id])
+  benefitId String
+  isActive  Boolean @default(true) // Status aktif atau tidak aktif
+}
+
+model ProductBenefitPoint {
+  id        String  @id @default(cuid())
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+  text      String // manfaat yang ditampilkan
+  order     Int // untuk urutan tampilan
+  icon      String? // optional, jika ingin pakai icon/emoji
+}
+
+model Promotion {
+  id          String    @id @default(cuid())
+  name        String // nama promo
+  description String? // penjelasan promo
+  type        PromoType // diskon, bonus, dll
+  value       Float? // contoh: 10 (10%) atau 50000 (Rp50rb)
+  isActive    Boolean   @default(true)
+  startDate   DateTime
+  endDate     DateTime
+  products    Product[] @relation("ProductPromotions")
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+enum PromoType {
+  PERCENTAGE // Diskon persen (%)
+  FIXED // Potongan harga tetap (Rp)
+  BONUS_ITEM // Bonus item
+  FREE_SHIPPING // Gratis ongkir
+  CUSTOM // Bebas, bisa deskripsi sendiri
+}
+
+model Voucher {
+  id          String         @id @default(cuid())
+  code        String         @unique
+  description String?
+  type        PromoType
+  value       Float
+  usageLimit  Int?
+  usedCount   Int            @default(0)
+  isActive    Boolean        @default(true)
+  startDate   DateTime
+  endDate     DateTime
+  products    Product[]      @relation("VoucherProducts")
+  usages      VoucherUsage[] // ✅ ini tambahan penting!
+  orders      Order[]
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+}
+
+model VoucherUsage {
+  id        String   @id @default(cuid())
+  voucher   Voucher  @relation(fields: [voucherId], references: [id])
+  voucherId String
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  usedAt    DateTime @default(now())
+
+  @@unique([voucherId, userId]) // ✅ 1 user tidak bisa pakai voucher yang sama 2x
+}
+
+model User {
+  id            String         @id @default(cuid())
+  name          String?
+  email         String?        @unique
+  emailVerified DateTime?
+  image         String?
+  role          UserRole       @default(CUSTOMER)
+  orders        Order[]
+  accounts      Account[]
+  sessions      Session[]
+  vouchers      VoucherUsage[] // tetap bisa dipakai seperti biasa
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id])
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  expires      DateTime
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+enum UserRole {
+  CUSTOMER
+  ADMIN
+}
+
+model Order {
+  id         String      @id @default(cuid())
+  email      String // email pembeli (guest atau login)
+  name       String? // nama pembeli (optional)
+  user       User?       @relation(fields: [userId], references: [id])
+  userId     String?
+  products   Product[]   @relation("OrderProducts")
+  voucher    Voucher?    @relation(fields: [voucherId], references: [id])
+  voucherId  String?
+  totalPrice Float
+  status     OrderStatus @default(PENDING)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  SHIPPED
+  COMPLETED
+  CANCELLED
+}
+
+//npx prisma migrate dev   
 //npx prisma generate
 //npx prisma studio
