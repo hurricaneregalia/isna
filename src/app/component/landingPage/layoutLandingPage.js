@@ -182,7 +182,7 @@ export default function LayoutLandingPage({ children }) {
             imageAlt={section.title}
             iconRight={<FaArrowRight />}
           />
-        ))}{" "}
+        ))}
       {pageData.sections
         .filter((section) => section.id === "8")
         .map((section) => (
@@ -300,6 +300,7 @@ export default function LayoutLandingPage({ children }) {
                   ctaTxt2="Konsultasi"
                   btnUrl1="#layanan"
                   btnUrl2="#ok"
+                  mtTop="mt-0"
                 >
                   <CountdownMini targetDate={counter} />
                 </FinalCta>

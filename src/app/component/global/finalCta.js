@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 import BtnLinkSecondary from "./btnLinkSecondary";
 import { SiWhatsapp } from "react-icons/si";
 
-export default function FinalCta({ id, title, description, headAlign, bg, btn, ctaTxt1, ctaTxt2, children, btnUrl1, btnUrl2 }) {
+export default function FinalCta({ id, title, description, headAlign, bg, btn, ctaTxt1, ctaTxt2, children, btnUrl1, btnUrl2, mtTop }) {
   // Menangani background, memberikan nilai default jika bg tidak didefinisikan
   const textFx = bg === "" || bg === "bg-transparent" ? "" : "text-neutral-content";
 
@@ -20,9 +20,11 @@ export default function FinalCta({ id, title, description, headAlign, bg, btn, c
       </span>
     );
 
+  const marginTop = mtTop ? mtTop : "mt-4";
+
   return (
     <section id={id}>
-      <div className={`container w-full mt-4 rounded-bl-3xl ${bg || "bg-default"} px-10`}>
+      <div className={`container w-full ${marginTop} rounded-bl-3xl ${bg || "bg-default"} px-10`}>
         <div className={`sm:w-2/3 w-full ${headAlign ? "" : "mx-auto text-center"}`}>
           <p className="text-base font-semibold text-amber-300 capitalize" data-aos="fade-up">
             {id.replace(/-/g, " ")}
