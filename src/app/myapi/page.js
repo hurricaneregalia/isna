@@ -2,7 +2,7 @@ import React from "react";
 import CanvasCursor from "../component/canvasCursor/CanvasCursor";
 import Link from "next/link";
 
-const BASE_URL = process.env.NODE_ENV === "production" ? process.env.BASE_URL_PROD : process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export default async function MyApi() {
   const res = await fetch(`${BASE_URL}/api/apilist`, { cache: "no-store" });
