@@ -1,5 +1,4 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import RatingForm from "../component/ratingForm";
 
 const Logometer = () => {

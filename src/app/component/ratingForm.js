@@ -67,14 +67,23 @@ const RatingForm = () => {
             <label className="block font-semibold" htmlFor="brandName">
               Nama Brand
             </label>
-            <input type="text" value={brandName} onChange={(e) => setBrandName(e.target.value)} className="input input-bordered w-full" id="brandName" name="brandName" />
+            <input
+              type="text"
+              value={brandName}
+              onChange={(e) => setBrandName(e.target.value)}
+              className="input input-bordered w-full"
+              id="brandName"
+              name="brandName"
+            />
           </div>
 
           <label className="block font-semibold mb-2" htmlFor="fileInput">
             Pilih Logo
           </label>
           <div
-            className={`mb-4 p-6 border-2 border-dashed ${dragging ? "border-primary bg-gray-100" : "border-gray-300"} rounded-lg text-center cursor-pointer`}
+            className={`mb-4 p-6 border-2 border-dashed ${
+              dragging ? "border-primary bg-gray-100" : "border-gray-300"
+            } rounded-lg text-center cursor-pointer`}
             onDragOver={(e) => {
               e.preventDefault();
               setDragging(true);
@@ -97,7 +106,13 @@ const RatingForm = () => {
                 <label className="block font-bold capitalize" htmlFor={aspect.id}>
                   {aspect.name}
                 </label>
-                <span className={`ml-2 text-lg font-bold ${ratings[aspect.id] < 6.5 ? "text-red-500" : ratings[aspect.id] < 8.5 ? "text-orange-400" : "text-green-500"}`}>{ratings[aspect.id]}</span>
+                <span
+                  className={`ml-2 text-lg font-bold ${
+                    ratings[aspect.id] < 6.5 ? "text-red-500" : ratings[aspect.id] < 8.5 ? "text-orange-400" : "text-green-500"
+                  }`}
+                >
+                  {ratings[aspect.id]}
+                </span>
               </div>
               <div className="p-0 m-0 relative">
                 <div className=" absolute w-full inset-0 mt-1">
@@ -116,7 +131,7 @@ const RatingForm = () => {
                     step="1"
                     value={ratings[aspect.id]}
                     onChange={(e) => handleChange(aspect.id, e.target.value)}
-                    className="range range-xs range-primary "
+                    className="range range-xs w-full range-primary "
                   />
                 </div>
               </div>
@@ -138,7 +153,11 @@ const RatingForm = () => {
                 <p className=" capitalize font-bold">{brandName ? brandName : "Nama brand"}</p>
                 <div
                   className={`radial-progress border-4 mt-4 ${
-                    progress < 65 ? "bg-red-500 text-red-200 border-red-500" : progress < 90 ? "bg-orange-400 text-orange-200 border-orange-400" : "bg-green-500 text-green-200 border-green-500"
+                    progress < 65
+                      ? "bg-red-500 text-red-200 border-red-500"
+                      : progress < 90
+                      ? "bg-orange-400 text-orange-200 border-orange-400"
+                      : "bg-green-500 text-green-200 border-green-500"
                   }`}
                   style={{ "--value": progress, "--thickness": "5px" }}
                   role="progressbar"
@@ -153,14 +172,24 @@ const RatingForm = () => {
           {aspects.slice(0, 4).map((aspect, index, array) => (
             <div key={aspect.id} className={`py-5 ${index !== array.length - 1 ? "border-b" : ""}`}>
               <div className="flex">
-                <p className={`mr-2 mt-1 ${ratings[aspect.id] < 6.5 ? "text-red-500" : ratings[aspect.id] < 8.5 ? "text-orange-400" : "text-green-500"}`}>
+                <p
+                  className={`mr-2 mt-1 ${
+                    ratings[aspect.id] < 6.5 ? "text-red-500" : ratings[aspect.id] < 8.5 ? "text-orange-400" : "text-green-500"
+                  }`}
+                >
                   {ratings[aspect.id] < 6.5 ? <FaExclamationTriangle /> : ratings[aspect.id] < 8.5 ? <FaCircle /> : <FaCheckCircle />}
                 </p>
                 <div>
                   <p className="font-bold capitalize">
                     {aspect.name} {ratings[aspect.id]}
                   </p>
-                  <p>{ratings[aspect.id] < 6.5 ? constants[aspect.name + "Bad"] : ratings[aspect.id] < 8.5 ? constants[aspect.name + "Std"] : constants[aspect.name + "Good"]}</p>
+                  <p>
+                    {ratings[aspect.id] < 6.5
+                      ? constants[aspect.name + "Bad"]
+                      : ratings[aspect.id] < 8.5
+                      ? constants[aspect.name + "Std"]
+                      : constants[aspect.name + "Good"]}
+                  </p>
                 </div>
               </div>
               {ratings[aspect.id] < 6.5 ? (
@@ -197,15 +226,33 @@ const RatingForm = () => {
             <p className="mb-4 font-bold">Ukuran media cetak</p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 rounded-xl overflow-hidde">
               <div className="flex flex-col items-center text-center py-5 bg-gray-100">
-                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className={`${logoMeterCss.wMm5} h-auto mb-3 sm:mb-0`} />
+                <Image
+                  src={logo ? logo : imagePlaceholder}
+                  alt="Uploaded Logo"
+                  width={100}
+                  height={100}
+                  className={`${logoMeterCss.wMm5} h-auto mb-3 sm:mb-0`}
+                />
                 <p className="mt-auto">Lebar 5mm</p>
               </div>
               <div className="flex flex-col items-center text-center py-5 bg-gray-100">
-                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className={`${logoMeterCss.wCm1} h-auto mb-3 sm:mb-0`} />
+                <Image
+                  src={logo ? logo : imagePlaceholder}
+                  alt="Uploaded Logo"
+                  width={100}
+                  height={100}
+                  className={`${logoMeterCss.wCm1} h-auto mb-3 sm:mb-0`}
+                />
                 <p className="mt-auto">Lebar 10mm</p>
               </div>
               <div className="flex flex-col items-center text-center py-5 bg-gray-100 w-full">
-                <Image src={logo ? logo : imagePlaceholder} alt="Uploaded Logo" width={100} height={100} className={`${logoMeterCss.wCm2} h-auto mb-3 sm:mb-0`} />
+                <Image
+                  src={logo ? logo : imagePlaceholder}
+                  alt="Uploaded Logo"
+                  width={100}
+                  height={100}
+                  className={`${logoMeterCss.wCm2} h-auto mb-3 sm:mb-0`}
+                />
                 <p className="mt-auto">Lebar 20mm</p>
               </div>
             </div>
@@ -213,14 +260,24 @@ const RatingForm = () => {
           {aspects.slice(5, 9).map((aspect, index, array) => (
             <div key={aspect.id} className={`py-5 ${index !== array.length - 1 ? "border-b" : ""}`}>
               <div className="flex">
-                <p className={`mr-2 mt-1 ${ratings[aspect.id] < 6.5 ? "text-red-500" : ratings[aspect.id] < 8.5 ? "text-orange-400" : "text-green-500"}`}>
+                <p
+                  className={`mr-2 mt-1 ${
+                    ratings[aspect.id] < 6.5 ? "text-red-500" : ratings[aspect.id] < 8.5 ? "text-orange-400" : "text-green-500"
+                  }`}
+                >
                   {ratings[aspect.id] < 6.5 ? <FaExclamationTriangle /> : ratings[aspect.id] < 8.5 ? <FaCircle /> : <FaCheckCircle />}
                 </p>
                 <div>
                   <p className="font-bold capitalize">
                     {aspect.name} {ratings[aspect.id]}
                   </p>
-                  <p>{ratings[aspect.id] < 6.5 ? constants[aspect.name + "Bad"] : ratings[aspect.id] < 8.5 ? constants[aspect.name + "Std"] : constants[aspect.name + "Good"]}</p>
+                  <p>
+                    {ratings[aspect.id] < 6.5
+                      ? constants[aspect.name + "Bad"]
+                      : ratings[aspect.id] < 8.5
+                      ? constants[aspect.name + "Std"]
+                      : constants[aspect.name + "Good"]}
+                  </p>
                 </div>
               </div>
               {ratings[aspect.id] < 6.5 ? (
