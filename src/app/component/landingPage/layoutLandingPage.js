@@ -21,7 +21,7 @@ import CountdownMini from "./countdownMini";
 import Grid2List from "./grid2List";
 import Banner from "./banner";
 
-const BASE_URL = process.env.NODE_ENV === "production" ? process.env.BASE_URL_PROD : process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export default function LayoutLandingPage({ children }) {
   const [pageData, setPageData] = useState(null);
