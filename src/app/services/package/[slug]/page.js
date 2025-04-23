@@ -4,7 +4,7 @@ import HeroPackage from "./heroPackage";
 import HeaderPackage from "./headerPackage";
 import FormPackage from "./formPackage";
 
-const BASE_URL = process.env.NODE_ENV === "production" ? process.env.BASE_URL_PROD : process.env.NEXT_PUBLIC_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export async function generateMetadata({ params }) {
   const res = await fetch(`${BASE_URL}/api/product/${params.slug}`);
