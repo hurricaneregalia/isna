@@ -1,4 +1,4 @@
-"use client";
+("use client");
 import React, { useEffect, useState } from "react";
 import { FaCoins } from "react-icons/fa6";
 
@@ -6,14 +6,13 @@ export default function LoadingProcess() {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    // Mengambil tema dari localStorage
+    if (typeof window === "undefined") return; // ⛑ amanin agar hanya jalan di client
+
     const savedTheme = localStorage.getItem("theme") || "light";
     setTheme(savedTheme);
 
-    // Menerapkan tema ke document
     document.documentElement.setAttribute("data-theme", savedTheme);
 
-    // Mendengarkan perubahan tema
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.attributeName === "data-theme") {
