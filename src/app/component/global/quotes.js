@@ -10,9 +10,7 @@ export default function Quotes({ title, description, sanad, hadistNo }) {
         <blockquote className=" italic ">{description}</blockquote>
         <span className=" flex items-center my-5 gap-1 text-center justify-center">
           <FaCircleUser />
-          <p className=" font-bold text-lg">
-            HR. {sanad}, No. {hadistNo}
-          </p>
+          <p className=" font-bold text-lg">{sanad}</p>
         </span>
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function ListRowsDidapatkan({ listItem, border, iconStyle }) {
               </p>
               <div className="mb-3">
                 <p className="text-lg h3 bg-amber-300 px-2 text-slate-900 inline rounded-md ">{item.title}</p>
-                <p className="text-lg">{item.desc}</p>
+                <p className="text-lg">{item.description}</p>
               </div>
             </div>
           </div>

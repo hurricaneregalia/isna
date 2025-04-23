@@ -1,26 +1,35 @@
 import prisma from "@/app/database/prisma";
+import { NextResponse } from "next/server";
 
-export async function GET(request) {
+export async function GET() {
   try {
-    const product = await prisma.product.findMany();
-    const category = await prisma.category.findMany();
-
-    const responseData = {
-      product,
-      category,
-    };
-
-    // Mengembalikan data dalam format JSON dengan pretty-print
-    return new Response(JSON.stringify(responseData, null, 2), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
+    const products = await prisma.product.findMany({
+      include: {
+        category: true,
+        tags: true,
+        gallery: {
+          orderBy: { order: "asc" },
+        },
+        benefits: {
+          include: {
+            benefit: true,
+          },
+        },
+        benefitPoints: {
+          orderBy: { order: "asc" },
+        },
+        promotions: true,
+        vouchers: true,
+        orders: true,
       },
     });
-  } catch (error) {
-    console.error(error);
-    return new Response("Internal Server Error", {
-      status: 500,
+
+    return NextResponse.json({
+      success: true,
+      data: products,
     });
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return NextResponse.json({ success: false, message: "Failed to fetch products", error }, { status: 500 });
   }
 }

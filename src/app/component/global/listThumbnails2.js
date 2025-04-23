@@ -18,15 +18,15 @@ export default function ListThumbnails2({ listItem, border, iconStyle, bg }) {
           key={index}
           className="rounded-bl-3xl overflow-hidden"
           style={{
-            backgroundImage: `url(${item.img ? item.img : ""})`,
+            backgroundImage: `url(${item.image ? item.image : ""})`,
             backgroundPosition: "center center", // Menempatkan gambar di tengah
             backgroundSize: "cover",
           }}
           data-aos="fade-up"
         >
           <div className={`w-full ${borderFx}`}>
-            <div className="h-80 h-9/10">
-              <div className={`hero-overlay bg-opacity-80 p-5 ${bg}`}>
+            <div className="h-80 ">
+              <div className={`hero-overlay bg-opacity-80 p-5 ${bg} `}>
                 <p className="mb-5 text-3xl text-gray-50">
                   {item.icon === "LuNotepadText" ? (
                     <LuNotepadText />
@@ -49,7 +49,7 @@ export default function ListThumbnails2({ listItem, border, iconStyle, bg }) {
                     <TfiLayoutLineSolid />
                   </span>
                 </p>
-                <p className=" font-bold text-gray-50 md:w-2/3 sm:w-full w-3/5">{item.desc}</p>
+                <p className=" font-bold text-gray-50 md:w-2/3 sm:w-full w-3/5">{item.description}</p>
               </div>
             </div>
           </div>

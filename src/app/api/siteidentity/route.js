@@ -1,26 +1,25 @@
 import prisma from "@/app/database/prisma";
 
-export async function GET(request) {
+import { NextResponse } from "next/server";
+
+export async function GET() {
   try {
-    const siteIdentities = await prisma.siteIdentity.findMany();
-    const socialLinks = await prisma.socialLinks.findMany();
-
-    const responseData = {
-      siteIdentities,
-      socialLinks,
-    };
-
-    // Mengembalikan data dalam format JSON dengan pretty-print
-    return new Response(JSON.stringify(responseData, null, 2), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
+    const identity = await prisma.siteIdentity.findFirst({
+      include: {
+        socialLinks: true,
+      },
+      orderBy: {
+        createdAt: "desc",
       },
     });
+
+    if (!identity) {
+      return NextResponse.json({ error: "Site identity not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(identity);
   } catch (error) {
-    console.error(error);
-    return new Response("Internal Server Error", {
-      status: 500,
-    });
+    console.error("❌ Error fetching site identity:", error);
+    return NextResponse.json({ error: "Failed to fetch site identity" }, { status: 500 });
   }
 }

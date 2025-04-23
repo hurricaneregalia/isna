@@ -1,24 +1,32 @@
 import prisma from "@/app/database/prisma";
+import { NextResponse } from "next/server";
 
-export async function GET(request) {
+export async function GET() {
   try {
-    const users = await prisma.users.findMany();
-
-    const responseData = {
-      users,
-    };
-
-    // Mengembalikan data dalam format JSON dengan pretty-print
-    return new Response(JSON.stringify(responseData, null, 2), {
-      status: 200,
-      headers: {
-        "Content-Type": "application/json",
+    const users = await prisma.user.findMany({
+      include: {
+        orders: {
+          include: {
+            products: true,
+            voucher: true,
+          },
+        },
+        vouchers: {
+          include: {
+            voucher: true,
+          },
+        },
+        accounts: true,
+        sessions: true,
       },
     });
-  } catch (error) {
-    console.error(error);
-    return new Response("Internal Server Error", {
-      status: 500,
+
+    return NextResponse.json({
+      success: true,
+      data: users,
     });
+  } catch (error) {
+    console.error("❌ Error fetching users:", error);
+    return NextResponse.json({ success: false, message: "Failed to fetch users", error }, { status: 500 });
   }
 }

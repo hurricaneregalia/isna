@@ -1,7 +1,7 @@
 import React from "react";
 import ImageComponent from "../global/imageComponent";
 
-export default function Alur({ listItem, border, imageUrl, bg }) {
+export default function Alur({ listItem, border }) {
   const borderFx = border ? "border border-1" : "";
   return (
     <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
@@ -15,7 +15,7 @@ export default function Alur({ listItem, border, imageUrl, bg }) {
                 <p className="mb-20">{item.desc ? item.desc : item.description}</p>
               </div>
               <div className="">
-                <ImageComponent imageUrl={item.img} imageAlt={item.title} width="100%" priority={false} rounded-sm="no rounderefx" />
+                <ImageComponent imageUrl={item.image} imageAlt={item.title} width="100%" priority={false} rounded-sm="no rounderefx" />
               </div>
             </div>
           </div>

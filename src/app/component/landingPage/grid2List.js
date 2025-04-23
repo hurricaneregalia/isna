@@ -10,7 +10,7 @@ export default function Grid2List({ listItem, border }) {
           <div className={`bg-base-100 overflow-hidden rounded-bl-3xl w-full ${borderFx} flex lg:flex-row flex-col`}>
             <div className="h-full lg:w-1/3 w-full ">
               <ImageComponent
-                imageUrl={item.img}
+                imageUrl={item.image}
                 imageAlt={item.title}
                 width="100%"
                 priority={false}

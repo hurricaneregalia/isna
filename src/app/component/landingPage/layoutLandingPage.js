@@ -1,227 +1,312 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
 import axios from "axios";
-import LayoutFullBlock from "../global/layoutFullBlock";
+import React, { useEffect, useState } from "react";
 import Content from "../global/content";
-import Loading from "../global/loadingProcess";
-import { FaArrowRight } from "react-icons/fa6";
-import landingPageStyle from "./landingPage.module.css";
-import FinalCta from "../global/finalCta";
 import Hero from "./hero";
-import LayoutPrimary from "../global/layoutPrimary";
-import ServicesSqlite from "./servicesSqlite";
-import Grid2List from "./grid2List";
 import CanvasCursor from "../canvasCursor/CanvasCursor";
-import Hadist from "../global/hadist";
-import ListRowsDidapatkan from "../global/listRowsDidapatkan";
-import Alur from "./alur";
+import Loading from "@/app/loading";
+import LayoutFullBlock from "../global/layoutFullBlock";
+import { FaArrowRight } from "react-icons/fa6";
 import LayoutFullBlock2 from "../global/layoutFullBlock2";
 import ListThumbnails from "../global/listThumbnails";
+import landingPageStyle from "./landingPage.module.css";
+import Hadist from "../global/hadist";
+import ListRowsDidapatkan from "../global/listRowsDidapatkan";
 import ListThumbnails2 from "../global/listThumbnails2";
+import LayoutPrimary from "../global/layoutPrimary";
+import Services from "./services";
+import Alur from "./alur";
+import FinalCta from "../global/finalCta";
 import CountdownMini from "./countdownMini";
-import TextDescription from "../global/textDescription";
-import ImageComponent from "../global/imageComponent";
+import Grid2List from "./grid2List";
+import Banner from "./banner";
+
+const BASE_URL = process.env.NODE_ENV === "production" ? process.env.BASE_URL_PROD : process.env.NEXT_PUBLIC_BASE_URL;
 
 export default function LayoutLandingPage({ children }) {
-  const [data, setData] = useState({
-    landingPage: null,
-    interestList: [],
-    solutionList: [],
-    skillList: [],
-    servicesList: [],
-    hadistList: [],
-    featureServicesListItems: [],
-    bonusListItems: [],
-    didapatkanListItems: [],
-    benefitList: [],
-    alurList: [],
-    loading: true,
-    error: null,
-  });
-
-  // Fungsi untuk mengambil data
-  const fetchData = async () => {
-    try {
-      const response = await axios.get("/api/lokal");
-      setData({
-        landingPage: response.data.landingPage[0] || null,
-        interestList: response.data.interestListItems || [],
-        skillList: response.data.skillListItems || [],
-        solutionList: response.data.solutionListItems || [],
-        servicesList: response.data.servicesListItems || [],
-        hadistList: response.data.hadistListItem || [],
-        featureServicesListItems: response.data.featureServicesListItems || [],
-        bonusListItems: response.data.bonusListItems || [],
-        didapatkanList: response.data.didapatkanListItems || [],
-        benefitList: response.data.benefitListItem || [],
-        alurList: response.data.alurListItems || [],
-        loading: false,
-        error: null,
-      });
-    } catch (err) {
-      setData({
-        ...data,
-        loading: false,
-        error: err.message || "Terjadi kesalahan",
-      });
-    }
-  };
+  const [pageData, setPageData] = useState(null);
+  const [productData, setProductData] = useState(null); // untuk product
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetchData();
+    const fetchPage = axios.get(`${BASE_URL}/api/page`);
+    const fetchProduct = axios.get(`${BASE_URL}/api/product`);
+
+    Promise.all([fetchPage, fetchProduct])
+      .then(([pageRes, productRes]) => {
+        setPageData(pageRes.data[0]); // asumsinya tetap satu elemen
+        setProductData(productRes.data.data); // ambil langsung array dari "data"
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setError("Gagal mengambil data");
+        setLoading(false);
+      });
   }, []);
 
-  // Menangani kondisi loading dan error
-  if (data.loading) return <Loading />;
-  if (data.error) return <p>Terjadi kesalahan: {data.error}</p>;
-  if (!data.landingPage) return <p>Data belum tersedia</p>;
+  if (loading) return <Loading />;
+  if (error) return <p>{error}</p>;
+
+  // Bentuk ulang data agar sesuai dengan props Services
+  const listItem = productData.map((product) => ({
+    id: product.id,
+    slug: product.slug,
+    title: product.name,
+    price: product.price,
+    isBest: product.isBest,
+    quality: product.quality || 0,
+  }));
+
+  const subListItem = productData.flatMap((product) =>
+    product.benefits.map((benefit) => ({
+      id: benefit.id,
+      servicesListItemId: product.id,
+      title: benefit.benefit.title,
+      isActive: benefit.isActive,
+    }))
+  );
+
+  const counter = "2025-04-23T23:59:59Z";
 
   return (
     <Content>
-      <Hero
-        bg="/images/landingPage/hero/bgHero2.webp"
-        title={data.landingPage.heroTitle}
-        description={data.landingPage.heroDesc}
-        btnTxt={data.landingPage.heroBtnTxt}
-      />
-
-      <LayoutFullBlock
-        id="fakta"
-        bg="bg-transparent"
-        title={data.landingPage.interestTitle}
-        textBody={data.landingPage.interestDesc}
-        btnTxt=""
-        btnUrl="#solusi"
-        imageUrl={data.landingPage.cta1Img}
-        imageAlt={data.landingPage.cta1Title}
-        iconRight={<FaArrowRight />}
-      />
-
-      <LayoutFullBlock2
-        id="fenomena"
-        bg=""
-        title={data.landingPage.interestListTitle}
-        description=""
-        list={<ListThumbnails listItem={data.interestList} />}
-        btnTxt={null}
-        btnUrl="#solusi"
-        imageUrl={data.landingPage.cta1Img}
-        imageAlt={data.landingPage.cta1Title}
-        iconRight={<FaArrowRight />}
-        reverse={true}
-        roundedBrand={false}
-      />
-
-      <LayoutFullBlock
-        id="solusi"
-        bg={landingPageStyle.bg1}
-        title={data.landingPage.solutionTitle}
-        textBody={data.landingPage.solutionDesc}
-        btnTxt={null}
-        btnUrl="#solusi"
-        imageUrl={data.landingPage.cta1Img}
-        imageAlt={data.landingPage.cta1Title}
-        iconRight={<FaArrowRight />}
-      />
-      <Hadist listItem={data.hadistList} bg="bg-transparent" />
-      <LayoutFullBlock
-        id="sungguh-sungguh "
-        bg={landingPageStyle.bg1}
-        title={data.landingPage.benefitListTitle}
-        description=""
-        list={null}
-        btnTxt={null}
-        btnUrl="#sungguh"
-        imageUrl={data.landingPage.cta1Img}
-        imageAlt={data.landingPage.cta1Title}
-        iconRight={<FaArrowRight />}
-        reverse={true}
-        footer={<ListThumbnails2 listItem={data.benefitList} bg={landingPageStyle.patternKalmaanaDark} />}
-      />
-
-      <LayoutFullBlock
-        id="manfaat"
-        bg="bg-transparent"
-        title={data.landingPage.manfaatTitle}
-        textBody={data.landingPage.manfaatDesc}
-        btnTxt={null}
-        btnUrl="#solusi"
-        imageUrl={data.landingPage.cta1Img}
-        imageAlt={data.landingPage.cta1Title}
-        iconRight={<FaArrowRight />}
-      />
-      <LayoutFullBlock
-        id="penting"
-        bg="bg-transparent"
-        title={data.landingPage.didapatkanTitle}
-        description=""
-        list={<ListRowsDidapatkan listItem={data.didapatkanList} iconStyle="good" />}
-        btnTxt={null}
-        btnUrl="#sungguh"
-        imageUrl={data.landingPage.cta1Img}
-        imageAlt={data.landingPage.cta1Title}
-        iconRight={<FaArrowRight />}
-        reverse={true}
-      />
-      <LayoutPrimary id="layanan" bg={landingPageStyle.bg1} title={data.landingPage.servicesTitle}>
-        <ServicesSqlite listItem={data.servicesList} subListItem={data.featureServicesListItems} />
-      </LayoutPrimary>
-
-      <LayoutPrimary id="alur" bg="bg-transparent" title="Proses Persuasive Copywriting Mendapatkan Penjualan.">
-        <Alur listItem={data.alurList} imageUrl={data.landingPage.cta1Img} bg={landingPageStyle.pattern1} />
-        <FinalCta
-          id="keinginan"
-          ctaTxt="Order Copywriting"
-          title={data.landingPage.cta1Title}
-          headAlign={false}
-          bg={`py-20 ${landingPageStyle.bg1}`}
-          description={data.landingPage.cta1Desc}
-          btn={2}
-          ctaTxt1="Buat Copywriting"
-          ctaTxt2="Konsultasi"
-          btnUrl1="#layanan"
-          btnUrl2="#ok"
-        >
-          <CountdownMini targetDate={new Date(data.landingPage.bonusCounter)} bonusPeriode={data.landingPage.bonusCounter} />
-        </FinalCta>
-      </LayoutPrimary>
-      <LayoutPrimary id="bonus" bg="bg-transparent" title={data.landingPage.bonusTitle} iconTitle="🔥">
-        <Grid2List listItem={data.bonusListItems} />
-        <div className={`mt-4 text-lg mx-auto bg-base-300 overflow-hidden w-full rounded-bl-3xl ${landingPageStyle.bg2}`}>
-          <div className="containerSec flex flex-col md:flex-row gap-3 overflow-hidden bg-amber-300/80 text-slate-900 ">
-            <div className="sec1 w-full lg:w-1/2 p-10">
-              <TextDescription title="Pengelolaan lebih mudah!" description={data.landingPage.bonusDesc} />
-            </div>
-            <div className="sec2 w-full lg:w-1/2 sm:pt-10 p-0 flex justify-center" data-aos="fade-up">
-              <ImageComponent
-                imageUrl="/images/landingPage/infinity-gauntlet.webp"
-                imageAlt="easy way"
-                width="100px"
-                priority={false}
-                rounded=" none"
-              />
-            </div>
-          </div>
-        </div>
-
-        <FinalCta
-          id="claim-bonus"
-          ctaTxt="Order Copywriting"
-          title={data.landingPage.cta2Title}
-          headAlign={false}
-          bg={`py-20 ${landingPageStyle.bg1}`}
-          description={data.landingPage.cta2Desc}
-          btn={1}
-          ctaTxt1="Dapatkan Bonus"
-          ctaTxt2="Konsultasi"
-          btnUrl1="#layanan"
-          btnUrl2="#ok"
-        >
-          <CountdownMini targetDate={new Date(data.landingPage.bonusCounter)} bonusPeriode={data.landingPage.bonusCounter} />
-        </FinalCta>
-      </LayoutPrimary>
+      <Hero bg="/images/landingPage/hero/bgHero2.webp" title={pageData.title} description={pageData.description} btnTxt="Solusi" />
+      {pageData.sections
+        .filter((section) => section.id === "2")
+        .map((section) => (
+          <LayoutFullBlock
+            key={section.id}
+            id="fakta"
+            bg="bg-transparent"
+            title={section.title}
+            textBody={section.description}
+            btnTxt=""
+            btnUrl="#solusi"
+            imageUrl={section.image}
+            imageAlt={section.title}
+            iconRight={<FaArrowRight />}
+          />
+        ))}
+      {pageData.sections
+        .filter((section) => section.id === "3")
+        .map((section) => (
+          <LayoutFullBlock2
+            key={section.id}
+            id="fenomena"
+            bg=""
+            title={section.title}
+            textBody={section.description}
+            list={section.listItems.map((listItem) => (
+              <ListThumbnails key={listItem.id} listItem={listItem.entries} />
+            ))}
+            btnTxt={null}
+            btnUrl="#solusi"
+            imageUrl={section.image}
+            imageAlt={section.title}
+            iconRight={<FaArrowRight />}
+            reverse={true}
+            roundedBrand={false}
+          />
+        ))}
+      {pageData.sections
+        .filter((section) => section.id === "4")
+        .map((section) => (
+          <LayoutFullBlock
+            key={section.id}
+            id="solusi"
+            bg={landingPageStyle.bg1}
+            title={section.title}
+            textBody={section.description}
+            btnTxt=""
+            btnUrl="#solusi"
+            imageUrl={section.image}
+            imageAlt={section.title}
+            iconRight={<FaArrowRight />}
+          />
+        ))}
+      {pageData?.sections &&
+        pageData.sections
+          .filter((section) => section.id === "5")
+          .map((section) => (
+            <Hadist
+              key={section.id}
+              image={section.image}
+              listItem={[
+                {
+                  title: section.title,
+                  description: section.description,
+                  subTitle: section.subTitle,
+                  additionalText: section.additionalText,
+                },
+              ]}
+              bg="bg-transparent"
+            />
+          ))}
+      {pageData.sections
+        .filter((section) => section.id === "6")
+        .map((section) => (
+          <React.Fragment key={section.id}>
+            <LayoutFullBlock
+              id="sungguh-sungguh"
+              bg={landingPageStyle.bg1}
+              title={section.title}
+              textBody={section.description}
+              btnTxt={null}
+              btnUrl="#solusi"
+              imageUrl={section.image}
+              imageAlt={section.title}
+              iconRight={<FaArrowRight />}
+              reverse={true}
+              roundedBrand={false}
+              footer={section.listItems.map((listItem) => (
+                <ListThumbnails2 key={listItem.id} listItem={listItem.entries} />
+              ))}
+            />
+          </React.Fragment>
+        ))}
+      {pageData.sections
+        .filter((section) => section.id === "7")
+        .map((section) => (
+          <LayoutFullBlock
+            key={section.id}
+            id="manfaat"
+            bg="bg-transparent"
+            title={section.title}
+            textBody={section.description}
+            btnTxt=""
+            btnUrl="#solusi"
+            imageUrl={section.image}
+            imageAlt={section.title}
+            iconRight={<FaArrowRight />}
+          />
+        ))}{" "}
+      {pageData.sections
+        .filter((section) => section.id === "8")
+        .map((section) => (
+          <LayoutFullBlock
+            key={section.id}
+            id="penting"
+            bg="bg-transparent"
+            title={section.title}
+            textBody={section.description}
+            list={section.listItems.map((listItem) => (
+              <ListRowsDidapatkan key={listItem.id} listItem={listItem.entries} />
+            ))}
+            btnTxt=""
+            btnUrl="#solusi"
+            imageUrl={section.image}
+            imageAlt={section.title}
+            iconRight={<FaArrowRight />}
+            reverse={true}
+          />
+        ))}
+      {pageData.sections
+        .filter((section) => section.id === "9")
+        .map((section) => (
+          <LayoutPrimary
+            key={section.id}
+            id="layanan"
+            bg={landingPageStyle.bg1}
+            title={section.title}
+            textBody={section.description}
+            btnTxt=""
+            btnUrl="#solusi"
+            imageUrl={section.image}
+            imageAlt={section.title}
+          >
+            <Services listItem={listItem} subListItem={subListItem} />
+          </LayoutPrimary>
+        ))}
+      {pageData.sections
+        .filter((section) => section.id === "10")
+        .map((section) => (
+          <LayoutPrimary
+            key={section.id}
+            id="alur"
+            bg="bg-transparent"
+            title={section.title}
+            textBody={section.description}
+            btnTxt=""
+            btnUrl="#solusi"
+            imageUrl={section.image}
+            imageAlt={section.title}
+          >
+            {section.listItems.map((listItem) => (
+              <div key={listItem.id}>
+                <Alur listItem={listItem.entries} bg={landingPageStyle.pattern1} />
+                {pageData.sections
+                  .filter((section) => section.id === "11")
+                  .map((section) => (
+                    <FinalCta
+                      key={section.id}
+                      id="keinginan"
+                      ctaTxt="Order Copywriting"
+                      title={section.title}
+                      description={section.description}
+                      headAlign={false}
+                      bg={`py-20 ${landingPageStyle.bg1}`}
+                      btn={2}
+                      ctaTxt1="Buat Copywriting"
+                      ctaTxt2="Konsultasi"
+                      btnUrl1="#layanan"
+                      btnUrl2="#ok"
+                    >
+                      <CountdownMini targetDate={counter} />
+                    </FinalCta>
+                  ))}
+              </div>
+            ))}
+          </LayoutPrimary>
+        ))}
+      {pageData.sections
+        .filter((section) => section.id === "12")
+        .map((section) => (
+          <LayoutPrimary
+            key={section.id}
+            id="bonus"
+            bg="bg-transparent"
+            iconTitle="🔥"
+            title={section.title}
+            textBody={section.description}
+            btnTxt=""
+            btnUrl="#solusi"
+            imageUrl={section.image}
+            imageAlt={section.title}
+          >
+            {section.listItems.map((listItem) => (
+              <Grid2List key={listItem.id} listItem={listItem.entries} />
+            ))}
+            {pageData.sections
+              .filter((section) => section.id === "13")
+              .map((section) => (
+                <Banner key={section.id} title={section.title} description={section.description} image={section.image} bg={landingPageStyle.bg2} />
+              ))}
+            {pageData.sections
+              .filter((section) => section.id === "14")
+              .map((section) => (
+                <FinalCta
+                  key={section.id}
+                  id="claim-bonus"
+                  ctaTxt="Order Copywriting"
+                  title={section.title}
+                  headAlign={false}
+                  bg={`py-20 ${landingPageStyle.bg1}`}
+                  description={section.description}
+                  btn={1}
+                  ctaTxt1="Dapatkan Bonus"
+                  ctaTxt2="Konsultasi"
+                  btnUrl1="#layanan"
+                  btnUrl2="#ok"
+                >
+                  <CountdownMini targetDate={counter} />
+                </FinalCta>
+              ))}
+          </LayoutPrimary>
+        ))}
       <CanvasCursor />
     </Content>
-    // add env to vercel
   );
 }
