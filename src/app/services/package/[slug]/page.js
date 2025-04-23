@@ -13,6 +13,43 @@ export async function generateMetadata({ params }) {
   return {
     title: data.name,
     description: data.description,
+    keywords: Array.isArray(data.keywords) ? data.keywords.join(", ") : "",
+    authors: [{ name: data.name }],
+    applicationName: data.name,
+    generator: "Next.js",
+    metadataBase: new URL(BASE_URL),
+    alternates: {
+      canonical: BASE_URL,
+    },
+    openGraph: {
+      title: data.name,
+      description: data.description,
+      url: BASE_URL,
+      siteName: data.name,
+      images: [
+        {
+          url: `${BASE_URL}${data.image}`,
+          width: 1200,
+          height: 630,
+          alt: data.name,
+        },
+      ],
+      locale: "id_ID",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: data.name,
+      description: data.description,
+      creator: data.name,
+      images: [`${BASE_URL}${data.image}`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+    },
+    category: "Business",
   };
 }
 

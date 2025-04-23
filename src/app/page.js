@@ -1,6 +1,5 @@
 import axios from "axios";
 import HeaderFooterSqlite from "./component/global/headerFooterSqlite";
-import Loading from "./loading";
 import LayoutLandingPage from "./component/landingPage/layoutLandingPage";
 
 const BASE_URL = process.env.NODE_ENV === "production" ? process.env.BASE_URL_PROD : process.env.NEXT_PUBLIC_BASE_URL;
@@ -13,7 +12,7 @@ export async function generateMetadata() {
     return {
       title: data.siteName,
       description: data.description,
-      keywords: data.keywords.join(", "),
+      keywords: Array.isArray(data.keywords) ? data.keywords.join(", ") : "",
       authors: [{ name: data.siteName }],
       applicationName: data.siteName,
       generator: "Next.js",
