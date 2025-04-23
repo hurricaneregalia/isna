@@ -1,4 +1,4 @@
-("use client");
+"use client";
 import React, { useEffect, useState } from "react";
 import { FaCoins } from "react-icons/fa6";
 
