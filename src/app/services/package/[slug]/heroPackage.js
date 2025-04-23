@@ -28,7 +28,7 @@ export default function HeroPackage({ img, imageAlt, listItem }) {
       ],
     },
     ...listItem.map((item) => ({
-      src: item.img,
+      src: item.imageUrl,
       alt: item.title,
       width: 1200,
       height: 800,
@@ -68,8 +68,8 @@ export default function HeroPackage({ img, imageAlt, listItem }) {
               }}
             >
               <ImageComponent
-                imageUrl={item.img}
-                imageAlt={item.title}
+                imageUrl={item.imageUrl}
+                imageAlt={item.title || imageAlt + index + 1}
                 width="100%"
                 priority={true}
                 rounded="noround"

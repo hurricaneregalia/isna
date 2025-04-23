@@ -95,7 +95,7 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
   return (
     <>
       <form className="mb-20" ref={formRef}>
-        <div className="w-full grid grid-cols-1 gap-5 border border-base-300 lg:p-30 sm:p-15 p-5 pt-10 rounded-bl-3xl">
+        <div className="w-full grid grid-cols-1 gap-5 bg-base-100 lg:p-30 sm:p-15 p-5 pt-10 rounded-bl-3xl">
           <TextHeadingTitle title="Isi data bisnis Anda" iconTitle={<TiPencil />} titleCase={2} h={3} cssStyle="mb-10" iconPosition="left" />
           {listItem.length > 0 ? (
             listItem.map((item) => {

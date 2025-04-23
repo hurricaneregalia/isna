@@ -18,8 +18,8 @@ export async function generateMetadata({ searchParams }) {
   try {
     const res = await fetch(`${baseUrl}/api/siteidentity`, { cache: "no-store" });
     const data = await res.json();
-    siteData = data;
     console.log("site identity response:", data);
+    siteData = data;
   } catch (e) {
     console.error("Failed to fetch site identity:", e);
   }
@@ -71,7 +71,7 @@ export default async function PaymentSuccessPage({ searchParams }) {
   try {
     const res = await fetch(`${baseUrl}/api/siteidentity`, { cache: "no-store" });
     const data = await res.json();
-    siteData = data;
+    siteData = data?.siteIdentities?.[0];
   } catch (e) {
     console.error("Failed to fetch site identity:", e);
   }
