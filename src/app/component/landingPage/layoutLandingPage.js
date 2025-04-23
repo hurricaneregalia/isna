@@ -68,7 +68,7 @@ export default function LayoutLandingPage({ children }) {
     }))
   );
 
-  const counter = "2025-04-23T23:59:59Z";
+  const counter = "2025-04-29T23:59:59Z";
 
   return (
     <Content>
@@ -147,24 +147,23 @@ export default function LayoutLandingPage({ children }) {
       {pageData.sections
         .filter((section) => section.id === "6")
         .map((section) => (
-          <React.Fragment key={section.id}>
-            <LayoutFullBlock
-              id="sungguh-sungguh"
-              bg={landingPageStyle.bg1}
-              title={section.title}
-              textBody={section.description}
-              btnTxt={null}
-              btnUrl="#solusi"
-              imageUrl={section.image}
-              imageAlt={section.title}
-              iconRight={<FaArrowRight />}
-              reverse={true}
-              roundedBrand={false}
-              footer={section.listItems.map((listItem) => (
-                <ListThumbnails2 key={listItem.id} listItem={listItem.entries} />
-              ))}
-            />
-          </React.Fragment>
+          <LayoutFullBlock
+            key={section.id}
+            id="sungguh-sungguh"
+            bg={landingPageStyle.bg1}
+            title={section.title}
+            textBody={section.description}
+            btnTxt={null}
+            btnUrl="#solusi"
+            imageUrl={section.image}
+            imageAlt={section.title}
+            iconRight={<FaArrowRight />}
+            reverse={true}
+            roundedBrand={false}
+            footer={section.listItems.map((listItem) => (
+              <ListThumbnails2 key={listItem.id} listItem={listItem.entries} />
+            ))}
+          />
         ))}
       {pageData.sections
         .filter((section) => section.id === "7")
@@ -306,7 +305,6 @@ export default function LayoutLandingPage({ children }) {
               ))}
           </LayoutPrimary>
         ))}
-      <CanvasCursor />
     </Content>
   );
 }
