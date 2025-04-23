@@ -4,6 +4,9 @@ import prisma from "@/app/database/prisma";
 export async function GET(req, { params }) {
   const { slug } = params;
 
+  // Logging slug untuk debugging
+  console.log("🔍 Fetching product with slug:", slug);
+
   try {
     const product = await prisma.product.findUnique({
       where: { slug },

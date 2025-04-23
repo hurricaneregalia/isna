@@ -60,7 +60,14 @@ export default async function ProductDetailPage({ params }) {
     fetch(`${BASE_URL}/api/registerform`, { cache: "no-store" }),
   ]);
 
-  if (!productRes.ok) return <div>Produk tidak ditemukan.</div>;
+  if (!productRes.ok) {
+    const error = await productRes.text();
+    return (
+      <div>
+        Produk tidak ditemukan. {`${BASE_URL}/api/product/${params.slug}`} Error: {error}
+      </div>
+    );
+  }
   if (!siteRes.ok) return <div>Gagal mengambil info situs.</div>;
   if (!registerFormRes.ok) return <div>Gagal mengambil data form pendaftaran.</div>;
 
