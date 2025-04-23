@@ -20,10 +20,8 @@ export default function HeaderFooterSqlite({ children, siteName, footerText }) {
     }, 5000);
   }, []);
 
-  // Menangani kondisi loading dan error
-  if (siteName.loading) return <Loading />;
-  if (siteName.error) return <p>Terjadi kesalahan: {siteName.error}</p>;
   if (!siteName) return <Loading />;
+
   return (
     <>
       <div className="flex flex-col min-h-screen">
