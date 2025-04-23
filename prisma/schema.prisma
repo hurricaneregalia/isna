@@ -260,7 +260,10 @@ model SiteIdentity {
   id          String        @id @default(cuid())
   siteName    String
   tagline     String?
+  description String?
+  keywords    Json?
   logoUrl     String        @default("")
+  ogImage     String?
   faviconUrl  String        @default("/favicon.ico")
   email       String?
   phone       String?
