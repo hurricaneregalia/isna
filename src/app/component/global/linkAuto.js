@@ -49,7 +49,7 @@ const LinkAuto = ({ longTime, waNo, linkTarget }) => {
 
   if (!waNo) return null;
 
-  return <>{secondsLeft}</>;
+  return <span className=" text-amber-300">{secondsLeft}</span>;
 };
 
 export default LinkAuto;

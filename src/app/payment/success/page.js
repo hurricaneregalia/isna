@@ -135,11 +135,11 @@ export default async function PaymentSuccessPage({ searchParams }) {
 
               <div className="p-4 max-w-xl mx-auto rounded-md pb-0">
                 <div className="text-center mb-10 border rounded-xl py-5 border-dashed border-slate-400 z-2 relative">
-                  <h1 className={`text-4xl font-bold ${longTime ? "text-amber-300" : "text-green-500"} mb-4`}>Rp. {price}</h1>
+                  <h1 className={`text-4xl font-bold ${longTime ? "text-slate-400" : "text-green-500"} mb-4`}>Rp. {price}</h1>
                   <div className="text-slate-400">
                     <CopyableText orderId={order_id} cssStyle="bg-slate-700" />
                     <p className="text-xs">Waktu pembayaran: {longTime ? "Loading..." : FormatTanggal(date)}</p>
-                    <p className="mt-3">{longTime ? "Pembayaran sedang diproses" : "✅ Pembayaran Berhasil!"}</p>
+                    <p className="mt-3">{longTime ? "INVOICE Anda sedang diproses" : "✅ Pembayaran Berhasil!"}</p>
                   </div>
                 </div>
               </div>
@@ -177,7 +177,7 @@ export default async function PaymentSuccessPage({ searchParams }) {
               <div className="w-full mt-auto lg:mb-20">
                 <p className="bg-base-200/70 p-4 rounded-xl">
                   {longTime ? (
-                    "Pembayaran Anda sedang diproses. Jangan menutup aplikasi!"
+                    "INVOICE Anda sedang diproses. Jangan menutup aplikasi!"
                   ) : (
                     <>
                       Terima kasih, pembayaran Anda telah selesai. Semoga Allah melimpahkan banyak berkah untuk bisnis{" "}
