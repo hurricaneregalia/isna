@@ -24,9 +24,9 @@ const parseTime = (timeStr) => {
   }
 };
 
-const LinkAuto = ({ longTime, waNo, linkTarget, invoice }) => {
-  const encodedMessage = encodeURIComponent(linkTarget || "");
-  const whatsappUrl = `https://wa.me/${waNo}?text=${encodedMessage}${invoice}`;
+const LinkAuto = ({ longTime, waNo, linkTarget }) => {
+  const encodedMessage = encodeURIComponent(linkTarget);
+  const whatsappUrl = `https://wa.me/${waNo}?text=${encodedMessage}`;
   const router = useRouter();
   const initialTime = parseTime(longTime);
   const [secondsLeft, setSecondsLeft] = useState(initialTime);
@@ -49,13 +49,7 @@ const LinkAuto = ({ longTime, waNo, linkTarget, invoice }) => {
 
   if (!waNo) return null;
 
-  return (
-    <div>
-      <p>
-        Redirecting in {secondsLeft} second{secondsLeft !== 1 && "s"}...
-      </p>
-    </div>
-  );
+  return <>{secondsLeft}</>;
 };
 
 export default LinkAuto;

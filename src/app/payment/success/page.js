@@ -1,11 +1,11 @@
 import { IoMdCheckmark } from "react-icons/io";
 import Image from "next/image";
 import Link from "next/link";
-import WhatsappBtn from "@/app/component/global/whatsappBtn";
 import { FormatTanggal } from "@/app/component/global/formatTanggal";
 import CanvasCursor from "@/app/component/canvasCursor/CanvasCursor";
 import CopyableText from "@/app/component/global/copyableText";
 import Loading from "./loading";
+import LinkAuto from "@/app/component/global/linkAuto";
 
 export async function generateMetadata({ searchParams }) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
@@ -19,7 +19,6 @@ export async function generateMetadata({ searchParams }) {
     const res = await fetch(`${baseUrl}/api/siteidentity`, { cache: "no-store" });
     const data = await res.json();
     siteData = data;
-    console.log("site identity response:", data);
   } catch (e) {
     console.error("Failed to fetch site identity:", e);
   }
@@ -123,7 +122,13 @@ export default async function PaymentSuccessPage({ searchParams }) {
                 longTime ? "text-slate-400 border-slate-400" : "text-green-500 border-green-500"
               }`}
             >
-              {longTime ? <div className="ini-okeh-paling-tepat tanpa-metadata">5</div> : <IoMdCheckmark />}
+              {longTime ? (
+                <div className="ini-okeh-paling-tepat tanpa-metadata">
+                  <LinkAuto longTime={longTime} waNo={siteData.phone} linkTarget={waText} />
+                </div>
+              ) : (
+                <IoMdCheckmark />
+              )}
             </div>
 
             <div className="p-4 max-w-xl mx-auto rounded-md pb-0">
@@ -181,10 +186,6 @@ export default async function PaymentSuccessPage({ searchParams }) {
                   </>
                 )}
               </p>
-
-              {longTime && <WhatsappBtn waText={waText} waBtnText="kirim" waNumber={siteData.phone} btnCenter={true} isInternalLink={false} />}
-
-              {longTime ? <p>long time: {longTime}</p> : null}
             </div>
           </div>
         </div>
