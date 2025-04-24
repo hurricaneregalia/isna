@@ -305,6 +305,7 @@ export default function LayoutLandingPage({ children }) {
               ))}
           </LayoutPrimary>
         ))}
+      <CanvasCursor />
     </Content>
   );
 }

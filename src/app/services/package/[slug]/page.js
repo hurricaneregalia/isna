@@ -3,6 +3,7 @@ import React from "react";
 import HeroPackage from "./heroPackage";
 import HeaderPackage from "./headerPackage";
 import FormPackage from "./formPackage";
+import CanvasCursor from "@/app/component/canvasCursor/CanvasCursor";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -104,30 +105,33 @@ export default async function ProductDetailPage({ params }) {
     const currentUrl = `${BASE_URL}/services/package/${params.slug}`;
 
     return (
-      <HeaderFooterSqlite siteName={site.siteName} footerText={site.phone}>
-        <div>
-          <HeroPackage img={data.image} imageAlt={data.name} listItem={data.gallery} />
-          <HeaderPackage title={data.name} quality={data.quality} price={data.price} categoryTitle={data.category.name} />
-        </div>
-        <div className="sm:px-13 px-5 lg:w-2/3 w-full mx-auto">
-          <FormPackage
-            listItem={registerForm.registerForms}
-            serviceName={data.name}
-            servicePrice={data.price}
-            serviceCategory={data.category.name}
-            sku={data.sku}
-            waNumber={site.phone}
-            serviceUrl={currentUrl}
-            baseUrl={BASE_URL}
-            siteName={site.siteName}
-            siteLogo={site.siteLogoUrl}
-            siteLogoAlt={site.siteName}
-          />
-        </div>
-      </HeaderFooterSqlite>
+      <>
+        <HeaderFooterSqlite siteName={site.siteName} footerText={site.phone}>
+          <div>
+            <HeroPackage img={data.image} imageAlt={data.name} listItem={data.gallery} />
+            <HeaderPackage title={data.name} quality={data.quality} price={data.price} categoryTitle={data.category.name} />
+          </div>
+          <div className="sm:px-13 px-5 lg:w-2/3 w-full mx-auto">
+            <FormPackage
+              listItem={registerForm.registerForms}
+              serviceName={data.name}
+              servicePrice={data.price}
+              serviceCategory={data.category.name}
+              sku={data.sku}
+              waNumber={site.phone}
+              serviceUrl={currentUrl}
+              baseUrl={BASE_URL}
+              siteName={site.siteName}
+              siteLogo={site.siteLogoUrl}
+              siteLogoAlt={site.siteName}
+            />
+          </div>
+        </HeaderFooterSqlite>
+        <CanvasCursor />
+      </>
     );
   } catch (error) {
     console.error("Terjadi kesalahan saat mengambil data:", error);
-    return <div>Terjadi kesalahan, harap coba lagi nanti.</div>;
+    return <div>Terjadi kesalahan, coba beberapa saat lagi.</div>;
   }
 }
