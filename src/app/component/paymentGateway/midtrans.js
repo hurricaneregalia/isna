@@ -15,6 +15,8 @@ export default function Midtrans({
   longTime,
   orderBy,
   sapaan,
+  btnText,
+  icon,
 }) {
   const handlePayment = async () => {
     try {
@@ -98,9 +100,12 @@ export default function Midtrans({
 
   return (
     <>
-      <h1>Pembayaran Midtrans</h1>
-      <button onClick={handlePayment} className="btn btn-primary" id="pembayaran">
-        Bayar Sekarang
+      <button
+        onClick={handlePayment}
+        className="mx-auto border-0 flex gap-2 items-center btn btn-xl rounded-full bg-amber-300  shadow-none hover:bg-amber-500 text-slate-900 capitalize"
+        id="pembayaran"
+      >
+        {btnText} {icon}
       </button>
     </>
   );

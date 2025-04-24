@@ -94,8 +94,8 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
 
   return (
     <>
-      <form className="mb-20" ref={formRef}>
-        <div className="w-full grid grid-cols-1 gap-5 bg-base-100 lg:p-30 sm:p-15 p-5 pt-10 rounded-bl-3xl">
+      <form ref={formRef}>
+        <div className="w-full grid grid-cols-1 gap-5 bg-base-100 lg:p-30 sm:p-15 p-5 pt-10">
           <TextHeadingTitle title="Isi data bisnis Anda" iconTitle={<TiPencil />} titleCase={2} h={3} cssStyle="mb-10" iconPosition="left" />
           {listItem.length > 0 ? (
             listItem.map((item) => {
@@ -176,8 +176,8 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
                           required={isRequired}
                           defaultValue={item.type === "tel" ? "+62" : undefined}
                           pattern={item.type === "tel" ? "^\\+62[0-9]{9,12}$" : undefined}
-                          minLength={item.type === "tel" ? 12 : undefined}
-                          maxLength={item.type === "tel" ? 15 : undefined}
+                          minLength={item.type === "tel" ? 13 : undefined}
+                          maxLength={item.type === "tel" ? 14 : undefined}
                           min={item.type === "date" ? new Date(Date.now() + 86400000).toISOString().split("T")[0] : undefined}
                           title={item.type === "tel" ? "Masukkan nomor yang diawali dengan +62 dan diikuti 9–12 digit angka" : undefined}
                           className="input input-lg placeholder:capitalize w-full validator"
@@ -197,31 +197,25 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
             <p>No item</p>
           )}
         </div>
-        <div className="text-center">
-          <button
-            type="submit"
-            name="submit"
-            className="-mt-7 border-0 items-center btn btn-xl rounded-full bg-amber-300  shadow-none hover:bg-amber-500 text-slate-900 capitalize "
-          >
-            checkout <FaArrowRight />
-          </button>
-        </div>
       </form>
-      <p>{textPreview}</p>
-      <Midtrans
-        orderId={orderId}
-        servicePrice={servicePrice}
-        serviceId={sku}
-        serviceName={serviceName}
-        serviceCategory={serviceCategory}
-        serviceUrl={serviceUrl}
-        baseUrl={baseUrl}
-        desc={textPreview}
-        waNumber={waNumber}
-        longTime="4s"
-        orderBy={orderBy}
-        sapaan={sapaan}
-      />
+      <div className="w-full mx-auto text-center bg-base-100 lg:pb-30 pb-15 rounded-bl-3xl mb-30">
+        <Midtrans
+          orderId={orderId}
+          servicePrice={servicePrice}
+          serviceId={sku}
+          serviceName={serviceName}
+          serviceCategory={serviceCategory}
+          serviceUrl={serviceUrl}
+          baseUrl={baseUrl}
+          desc={textPreview}
+          waNumber={waNumber}
+          longTime="4s"
+          orderBy={orderBy}
+          sapaan={sapaan}
+          btnText="Checkout"
+          icon={<FaArrowRight />}
+        />
+      </div>
     </>
   );
 }
