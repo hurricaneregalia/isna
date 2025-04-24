@@ -8,15 +8,26 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export async function generateMetadata({ params }) {
   const allProductsRes = await fetch(`${BASE_URL}/api/product`);
-  const allProducts = await allProductsRes.json();
-  const data = allProducts.find((product) => product.slug === params.slug);
+  const response = await allProductsRes.json();
+  const allProducts = response.data;
 
-  if (!data) {
+  if (!Array.isArray(allProducts)) {
+    return {
+      title: "Data produk tidak valid",
+      description: "Data dari API tidak sesuai format.",
+    };
+  }
+
+  const filtered = allProducts.filter((product) => product.slug === params.slug);
+
+  if (filtered.length === 0) {
     return {
       title: "Produk tidak ditemukan",
       description: "Produk yang Anda cari tidak tersedia.",
     };
   }
+
+  const data = filtered[0];
 
   return {
     title: data.name,
@@ -63,52 +74,35 @@ export async function generateMetadata({ params }) {
 
 export default async function ProductDetailPage({ params }) {
   try {
-    // Menjalankan beberapa request secara paralel
     const [allProductsRes, siteRes, registerFormRes] = await Promise.all([
       fetch(`${BASE_URL}/api/product`, { cache: "no-store" }),
       fetch(`${BASE_URL}/api/siteidentity`, { cache: "no-store" }),
       fetch(`${BASE_URL}/api/registerform`, { cache: "no-store" }),
     ]);
 
-    // Cek apakah semua request berhasil
-    if (!allProductsRes.ok) {
-      const error = await allProductsRes.text();
-      return (
-        <div>
-          Produk tidak ditemukan. {`${BASE_URL}/api/product`} Error: {error}
-        </div>
-      );
+    if (!allProductsRes.ok || !siteRes.ok || !registerFormRes.ok) {
+      return <div>Terjadi kesalahan saat mengambil data.</div>;
     }
-    if (!siteRes.ok) return <div>Gagal mengambil info situs.</div>;
-    if (!registerFormRes.ok) return <div>Gagal mengambil data form pendaftaran.</div>;
 
-    // Mengambil data produk dari API
-    const allProducts = await allProductsRes.json();
+    const response = await allProductsRes.json();
+    const allProducts = response.data;
 
-    // Log untuk memeriksa tipe data dan struktur allProducts
-    console.log("allProducts:", allProducts);
-
-    // Pastikan allProducts adalah array sebelum menggunakan find
     if (!Array.isArray(allProducts)) {
       return <div>Data produk tidak valid. Harap coba lagi nanti.</div>;
     }
 
-    // Cari produk berdasarkan slug
-    const data = allProducts.find((product) => product.slug === params.slug);
+    const filtered = allProducts.filter((product) => product.slug === params.slug);
 
-    // Jika produk tidak ditemukan
-    if (!data) {
-      return <div>Produk dengan slug {params.slug} tidak ditemukan.</div>;
+    if (filtered.length === 0) {
+      return <div>Produk dengan slug "{params.slug}" tidak ditemukan.</div>;
     }
 
-    // Mengambil data untuk site dan form pendaftaran
+    const data = filtered[0];
     const site = await siteRes.json();
     const registerForm = await registerFormRes.json();
 
-    // Membuat URL untuk halaman produk saat ini
     const currentUrl = `${BASE_URL}/services/package/${params.slug}`;
 
-    // Mengembalikan tampilan halaman produk dengan data yang ditemukan
     return (
       <HeaderFooterSqlite siteName={site.siteName} footerText={site.phone}>
         <div>
@@ -133,7 +127,6 @@ export default async function ProductDetailPage({ params }) {
       </HeaderFooterSqlite>
     );
   } catch (error) {
-    // Tangani kesalahan secara global
     console.error("Terjadi kesalahan saat mengambil data:", error);
     return <div>Terjadi kesalahan, harap coba lagi nanti.</div>;
   }
