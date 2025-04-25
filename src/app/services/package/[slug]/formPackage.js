@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { TiPencil } from "react-icons/ti";
 import { FaArrowRight } from "react-icons/fa6";
 import Midtrans from "@/app/component/paymentGateway/midtrans";
+import ProsesPembayaran from "@/app/component/global/prosesPembayaran";
 
 export default function FormPackage({ listItem, serviceName, servicePrice, serviceCategory, waNumber, sku, serviceUrl, baseUrl }) {
   const servicePriceFx = servicePrice.toLocaleString("id-ID");
@@ -14,8 +15,9 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
   const [charCount, setCharCount] = useState({});
   const [orderBy, setOrderBy] = useState("");
   const [sapaan, setSapaan] = useState("");
-
+  const midtransRef = React.useRef(null);
   const formRef = React.useRef(null);
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
@@ -92,10 +94,25 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
     }
   }, [formData]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = formRef.current;
+
+    if (form && form.checkValidity()) {
+      form.reportValidity(); // opsional
+      setIsProcessingPayment(true); // 👉 Tampilkan overlay
+      midtransRef.current?.handlePayment();
+    } else {
+      form.reportValidity();
+    }
+  };
+
   return (
     <>
-      <form ref={formRef}>
-        <div className="w-full grid grid-cols-1 gap-5 bg-base-100 lg:p-30 sm:p-15 p-5 pt-10">
+      {isProcessingPayment && <ProsesPembayaran />}
+
+      <form ref={formRef} onSubmit={handleSubmit}>
+        <div className="w-full rounded-bl-3xl  mb-30 grid grid-cols-1 gap-5 bg-base-100 lg:p-30 sm:p-15 p-5 pt-10">
           <TextHeadingTitle title="Isi data bisnis Anda" iconTitle={<TiPencil />} titleCase={2} h={3} cssStyle="mb-10" iconPosition="left" />
           {listItem.length > 0 ? (
             listItem.map((item) => {
@@ -196,26 +213,35 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
           ) : (
             <p>No item</p>
           )}
+          <div className="text-center pt-15 sm:pb-0 pb-10 ">
+            <button
+              id="submit"
+              type="submit"
+              name="submit"
+              className="border-0 items-center btn btn-xl rounded-full bg-amber-300  shadow-none hover:bg-amber-500 text-slate-900 capitalize "
+            >
+              checkout <FaArrowRight />
+            </button>
+          </div>
         </div>
       </form>
-      <div className="w-full mx-auto text-center bg-base-100 lg:pb-30 pb-15 rounded-bl-3xl mb-30">
-        <Midtrans
-          orderId={orderId}
-          servicePrice={servicePrice}
-          serviceId={sku}
-          serviceName={serviceName}
-          serviceCategory={serviceCategory}
-          serviceUrl={serviceUrl}
-          baseUrl={baseUrl}
-          desc={textPreview}
-          waNumber={waNumber}
-          longTime="4s"
-          orderBy={orderBy}
-          sapaan={sapaan}
-          btnText="Checkout"
-          icon={<FaArrowRight />}
-        />
-      </div>
+      <Midtrans
+        ref={midtransRef}
+        orderId={orderId}
+        servicePrice={servicePrice}
+        serviceId={sku}
+        serviceName={serviceName}
+        serviceCategory={serviceCategory}
+        serviceUrl={serviceUrl}
+        baseUrl={baseUrl}
+        desc={textPreview}
+        waNumber={waNumber}
+        longTime="4s"
+        orderBy={orderBy}
+        sapaan={sapaan}
+        btnText="Checkout"
+        icon={<FaArrowRight />}
+      />
     </>
   );
 }

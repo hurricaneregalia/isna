@@ -1,23 +1,33 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, forwardRef, useImperativeHandle } from "react";
 
-export default function Midtrans({
-  orderId,
-  servicePrice,
-  serviceId,
-  serviceName,
-  serviceCategory,
-  serviceUrl,
-  quantity = 1,
-  baseUrl,
-  desc,
-  waNumber,
-  longTime,
-  orderBy,
-  sapaan,
-  btnText,
-  icon,
-}) {
+const Midtrans = forwardRef(function Midtrans(
+  {
+    orderId,
+    servicePrice,
+    serviceId,
+    serviceName,
+    serviceCategory,
+    serviceUrl,
+    quantity = 1,
+    baseUrl,
+    desc,
+    waNumber,
+    longTime,
+    orderBy,
+    sapaan,
+    btnText,
+    icon,
+  },
+  ref
+) {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
+    script.setAttribute("data-client-key", process.env.NEXT_PUBLIC_MIDTRANS_CLIENT_KEY);
+    document.body.appendChild(script);
+  }, []);
+
   const handlePayment = async () => {
     try {
       const res = await fetch("/api/transaction", {
@@ -56,8 +66,6 @@ export default function Midtrans({
       if (window.snap && data.token) {
         window.snap.pay(data.token, {
           onSuccess: (result) => {
-            console.log("Success:", result);
-            console.log("Deskripsi:", desc);
             const redirectUrl =
               `${baseUrl}/payment/success?` +
               `&order_id=${result.order_id}` +
@@ -70,10 +78,7 @@ export default function Midtrans({
               `&waNumber=${encodeURIComponent(waNumber)}` +
               `&longTime=${longTime}` +
               `&date=${encodeURIComponent(result.transaction_time)}` +
-              `&price=${new Intl.NumberFormat("id-ID", {
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0,
-              }).format(result.gross_amount)}` +
+              `&price=${new Intl.NumberFormat("id-ID").format(result.gross_amount)}` +
               `&sapaan=${sapaan}` +
               `&orderby=${orderBy}`;
             window.location.href = redirectUrl;
@@ -91,22 +96,13 @@ export default function Midtrans({
       alert("Terjadi kesalahan internal.");
     }
   };
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://app.sandbox.midtrans.com/snap/snap.js";
-    script.setAttribute("data-client-key", process.env.NEXT_PUBLIC_MIDTRANS_CLIENT_KEY);
-    document.body.appendChild(script);
-  }, []);
 
-  return (
-    <>
-      <button
-        onClick={handlePayment}
-        className="mx-auto border-0 flex gap-2 items-center btn btn-xl rounded-full bg-amber-300  shadow-none hover:bg-amber-500 text-slate-900 capitalize"
-        id="pembayaran"
-      >
-        {btnText} {icon}
-      </button>
-    </>
-  );
-}
+  // 👇 expose handlePayment ke parent
+  useImperativeHandle(ref, () => ({
+    handlePayment,
+  }));
+
+  return null; // tombolnya dihapus
+});
+
+export default Midtrans;
