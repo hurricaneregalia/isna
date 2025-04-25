@@ -127,7 +127,6 @@ export default async function ProductDetailPage({ params }) {
             />
           </div>
         </HeaderFooterSqlite>
-        <CanvasCursor />
       </>
     );
   } catch (error) {

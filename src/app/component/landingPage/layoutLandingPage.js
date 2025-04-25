@@ -3,7 +3,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Content from "../global/content";
 import Hero from "./hero";
-import CanvasCursor from "../canvasCursor/CanvasCursor";
 import Loading from "@/app/loading";
 import LayoutFullBlock from "../global/layoutFullBlock";
 import { FaArrowRight } from "react-icons/fa6";
@@ -305,7 +304,6 @@ export default function LayoutLandingPage({ children }) {
               ))}
           </LayoutPrimary>
         ))}
-      <CanvasCursor />
     </Content>
   );
 }
