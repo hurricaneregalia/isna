@@ -74,6 +74,7 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function ProductDetailPage({ params }) {
+  const currentYear = new Date().getFullYear();
   try {
     const [allProductsRes, siteRes, registerFormRes] = await Promise.all([
       fetch(`${BASE_URL}/api/product`, { cache: "no-store" }),
@@ -106,7 +107,7 @@ export default async function ProductDetailPage({ params }) {
 
     return (
       <>
-        <HeaderFooterSqlite siteName={site.siteName} footerText={site.phone}>
+        <HeaderFooterSqlite siteName={site.siteName} footerText={currentYear}>
           <div>
             <HeroPackage img={data.image} imageAlt={data.name} listItem={data.gallery} />
             <HeaderPackage title={data.name} quality={data.quality} price={data.price} categoryTitle={data.category.name} />

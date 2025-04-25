@@ -43,7 +43,6 @@ export default function HeaderFooterSqlite({ children, siteName, footerText }) {
             <ShareLink />
           </Modal>
         </div>
-
         <CanvasCursor />
       </div>
     </>
