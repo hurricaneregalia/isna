@@ -103,7 +103,7 @@ export default async function HomePage() {
   return (
     <HeaderFooterSqlite siteName={siteData.siteName} footerText={currentYear}>
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <LayoutLandingPage />
+        <LayoutLandingPage waNo={siteData.phone} />
       </main>
     </HeaderFooterSqlite>
   );

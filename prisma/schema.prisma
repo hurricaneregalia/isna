@@ -276,18 +276,38 @@ model VoucherUsage {
 }
 
 model User {
-  id            String         @id @default(cuid())
+  id            String          @id @default(cuid())
+  firstName     String?
+  lastName      String?
   name          String?
-  email         String?        @unique
+  userName      String?
+  email         String          @unique
+  password      String          @default("$2b$10$3Ej03NYQNLkjNREoINw7NOcnYhvz1V7lPXoZdpMEnkiHxN4Cq9WhO")
   emailVerified DateTime?
   image         String?
-  role          UserRole       @default(CUSTOMER)
+  role          UserRole        @default(CUSTOMER)
   orders        Order[]
   accounts      Account[]
   sessions      Session[]
   vouchers      VoucherUsage[]
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
+  Authenticator Authenticator[]
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+}
+
+model Authenticator {
+  credentialID         String  @unique
+  userId               String
+  providerAccountId    String
+  credentialPublicKey  String
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@id([userId, credentialID])
 }
 
 model Order {
@@ -359,7 +379,7 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-  user              User    @relation(fields: [userId], references: [id])
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -368,8 +388,10 @@ model Session {
   id           String   @id @default(cuid())
   sessionToken String   @unique
   userId       String
-  user         User     @relation(fields: [userId], references: [id])
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   expires      DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 model VerificationToken {

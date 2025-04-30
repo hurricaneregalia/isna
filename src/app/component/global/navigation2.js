@@ -28,8 +28,8 @@ export default function Navigation2({ siteName, bg }) {
           <div className="relative flex h-16 items-center justify-between">
             <div className="flex items-center sm:block px-4 sm:px-0">
               <div className="flex shrink-0 items-center">
-                <Link href="/" className="flex items-center">
-                  <Image src={logo2} alt="logo" width={20} height={20} className="w-5 h-5 me-1" />
+                <Link href="/" className="flex items-center gap-1">
+                  <Image src={logo2} alt="logo" width={20} height={20} className="w-5 h-5" />
                   <span className="font-bold capitalize hover:text-amber-300">{siteName}</span>
                 </Link>
               </div>

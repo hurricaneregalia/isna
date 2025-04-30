@@ -39,7 +39,7 @@ export default function LayoutFullBlock({
   return (
     <section className={`py-20 ${bgFx} rounded-bl-3xl`} id={id}>
       <div className="container lg:w-8/12 px-8 mx-auto">
-        <div className={`flex gap-20 ${reverseFx}`}>
+        <div className={`flex gap-20 ${reverseFx} items-center`}>
           <div className="w-full" data-aos="fade-up">
             <p className="font-semibold text-amber-300 capitalize">{id.replace(/-/g, " ")}</p>
             <div className={`${textFx} grid grid-1 gap-5`}>

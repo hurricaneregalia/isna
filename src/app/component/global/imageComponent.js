@@ -12,7 +12,7 @@ export default function ImageComponent({ imageUrl, imageAlt, width, height, prio
       alt={imageAlt}
       width={0}
       height={0}
-      priority={priority}
+      priority={priority ? priority : false}
       sizes="(max-width: 100%) 100vw, 50vw"
       style={{ width: widthFx, height: heightFx }}
       className={`${roundedFX} ${cssStyle ? cssStyle : null}`}

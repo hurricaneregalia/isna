@@ -13,32 +13,32 @@
 }
 .bg1 {
   background-image: url("/images/landingPage/bgShine.webp");
-  /* background-attachment: fixed; */
   background-size: cover;
   background-position: center;
 }
 .bg2 {
   background-image: url("/images/landingPage/hero/bgHero.webp");
-  /* background-attachment: fixed; */
+  background-size: cover;
+  background-position: center;
+}
+.bannerBg1 {
+  background-image: url("/images/uploads/pages/banner-bg.webp");
   background-size: cover;
   background-position: center;
 }
 .pattern1 {
   background-image: url("/images/landingPage/pattern-01.svg");
-  /* background-attachment: fixed; */
   background-repeat: repeat;
   background-size: 75px;
 }
 .patternKalmaanaDark {
   background-image: url("/images/siteIdentity/pattern-kalamanacopy_dark.svg");
-  /* background-attachment: fixed; */
   background-repeat: repeat;
   background-size: 150px;
 }
 
 .patternKalmaanaLight {
   background-image: url("/images/siteIdentity/pattern-kalamanacopy_light.svg");
-  /* background-attachment: fixed; */
   background-repeat: repeat;
   background-size: 150px;
 }

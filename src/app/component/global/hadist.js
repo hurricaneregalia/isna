@@ -9,19 +9,11 @@ export default function Hadist({ listItem, bg, image }) {
       <div className="p-10 container lg:w-1/2 px-8 mx-auto">
         {listItem.map((item, index) => (
           <div className="w-full " key={index} data-aos="fade-up">
-            <div className=" bg-base-100 px-5 py-10 w-full relative text-center">
+            <div className=" rounded-bl-3xl  bg-base-100 px-5 py-10 w-full relative text-center">
               <BiSolidQuoteLeft className="absolute top-0 left-3 text-5xl -mt-6 text-slate-300" />
               <Quotes title={item.title} description={item.description} sanad={item.subTitle} />
               <p className=" font-bold mt-5 "></p>
-              <BiSolidQuoteRight className="absolute bottom-0 right-3 text-5xl -mb-6  text-slate-300" />
-            </div>
-            <div className="mt-10 text-lg mx-auto flex gap-5 items-center  bg-base-100 rounded-bl-3xl p-4" data-aos="fade-up">
-              <div className=" bg-base-200 p-1 rounded-full">
-                <ImageComponent imageUrl={image} imageAlt="easy way" width="100%" priority={false} rounded=" none" cssStyle="rounded-full" />
-              </div>
-              <div className="">
-                <p>{item.additionalText}</p>
-              </div>
+              <BiSolidQuoteRight className="absolute bottom-0 right-3 text-5xl -mb-6  text-slate-300 z-10" />
             </div>
           </div>
         ))}

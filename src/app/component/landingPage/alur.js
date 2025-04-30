@@ -15,7 +15,7 @@ export default function Alur({ listItem, border }) {
                 <p className="mb-20">{item.desc ? item.desc : item.description}</p>
               </div>
               <div className="">
-                <ImageComponent imageUrl={item.image} imageAlt={item.title} width="100%" priority={false} rounded-sm="no rounderefx" />
+                <ImageComponent imageUrl={item.image} imageAlt={item.title} width="100%" priority={false} rounded="none" />
               </div>
             </div>
           </div>

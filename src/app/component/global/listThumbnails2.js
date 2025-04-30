@@ -25,8 +25,8 @@ export default function ListThumbnails2({ listItem, border, iconStyle, bg }) {
           data-aos="fade-up"
         >
           <div className={`w-full ${borderFx}`}>
-            <div className="h-80 ">
-              <div className={`hero-overlay bg-opacity-80 p-5 ${bg} `}>
+            <div className="sm:h-80 h-auto ">
+              <div className={`hero-overlay bg-opacity-80 p-5 pb-10 ${bg} `}>
                 <p className="mb-5 text-3xl text-gray-50">
                   {item.icon === "LuNotepadText" ? (
                     <LuNotepadText />
@@ -49,7 +49,7 @@ export default function ListThumbnails2({ listItem, border, iconStyle, bg }) {
                     <TfiLayoutLineSolid />
                   </span>
                 </p>
-                <p className=" font-bold text-gray-50 md:w-2/3 sm:w-full w-3/5">{item.description}</p>
+                <p className=" font-bold text-gray-50 md:w-2/3 w-full">{item.description}</p>
               </div>
             </div>
           </div>

@@ -19,10 +19,11 @@ import FinalCta from "../global/finalCta";
 import CountdownMini from "./countdownMini";
 import Grid2List from "./grid2List";
 import Banner from "./banner";
+import CarouselStart from "../global/carouselStart";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-export default function LayoutLandingPage({ children }) {
+export default function LayoutLandingPage({ children, waNo }) {
   const [pageData, setPageData] = useState(null);
   const [productData, setProductData] = useState(null); // untuk product
   const [loading, setLoading] = useState(true);
@@ -94,7 +95,7 @@ export default function LayoutLandingPage({ children }) {
           <LayoutFullBlock2
             key={section.id}
             id="fenomena"
-            bg=""
+            bg="bg-transparent"
             title={section.title}
             textBody={section.description}
             list={section.listItems.map((listItem) => (
@@ -106,9 +107,10 @@ export default function LayoutLandingPage({ children }) {
             imageAlt={section.title}
             iconRight={<FaArrowRight />}
             reverse={true}
-            roundedBrand={false}
+            roundedBrand="none"
           />
         ))}
+
       {pageData.sections
         .filter((section) => section.id === "4")
         .map((section) => (
@@ -148,7 +150,7 @@ export default function LayoutLandingPage({ children }) {
         .map((section) => (
           <LayoutFullBlock
             key={section.id}
-            id="sungguh-sungguh"
+            id="serius"
             bg={landingPageStyle.bg1}
             title={section.title}
             textBody={section.description}
@@ -249,7 +251,7 @@ export default function LayoutLandingPage({ children }) {
                       ctaTxt1="Buat Copywriting"
                       ctaTxt2="Konsultasi"
                       btnUrl1="#layanan"
-                      btnUrl2="#ok"
+                      btnUrl2={`https://wa.me/${waNo}?text=saya%20mau%20konsultasi`}
                     >
                       <CountdownMini targetDate={counter} />
                     </FinalCta>
@@ -279,7 +281,13 @@ export default function LayoutLandingPage({ children }) {
             {pageData.sections
               .filter((section) => section.id === "13")
               .map((section) => (
-                <Banner key={section.id} title={section.title} description={section.description} image={section.image} bg={landingPageStyle.bg2} />
+                <Banner
+                  key={section.id}
+                  title={section.title}
+                  description={section.description}
+                  image={section.image}
+                  bg={landingPageStyle.bannerBg1}
+                />
               ))}
             {pageData.sections
               .filter((section) => section.id === "14")
@@ -290,7 +298,7 @@ export default function LayoutLandingPage({ children }) {
                   ctaTxt="Order Copywriting"
                   title={section.title}
                   headAlign={false}
-                  bg={`py-20 ${landingPageStyle.bg1}`}
+                  bg={`py-20 bg-slate-900`}
                   description={section.description}
                   btn={1}
                   ctaTxt1="Dapatkan Bonus"
