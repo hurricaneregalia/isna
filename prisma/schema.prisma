@@ -150,6 +150,7 @@ model Product {
   bestFor       String?
   image         String?
   price         Float
+  proccessTime  Int?
   inStock       Boolean               @default(true)
   status        ProductStatus         @default(ACTIVE)
   categoryId    String

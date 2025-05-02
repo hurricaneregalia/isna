@@ -54,6 +54,7 @@ export default function LayoutLandingPage({ children, waNo }) {
     title: product.name,
     price: product.price,
     isBest: product.isBest,
+    proccessTime: product.proccessTime,
     bestFor: product.bestFor,
     quality: product.quality || 0,
   }));

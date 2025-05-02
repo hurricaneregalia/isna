@@ -2,6 +2,7 @@ import React from "react";
 import BtnLinkPrimary from "../global/btnLinkPrimary";
 import { FaArrowRight, FaCheck, FaStar, FaXmark } from "react-icons/fa6";
 import { PiSealCheckFill } from "react-icons/pi";
+import { IoMdTime } from "react-icons/io";
 
 export default function Services({ listItem, subListItem }) {
   return (
@@ -61,6 +62,14 @@ export default function Services({ listItem, subListItem }) {
                         ) : (
                           <p>No feature services available</p>
                         )}
+                        <hr className="my-8 border border-dashed" />
+                        <div className="mb-5 opacity-50 flex items-center gap-1">
+                          <IoMdTime />
+                          <p>
+                            <span>Proses pembuatan</span>
+                            <span className="font-bold"> {item.proccessTime}</span> <span>hari kerja</span>
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
