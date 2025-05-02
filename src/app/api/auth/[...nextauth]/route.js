@@ -1,1 +1,3 @@
-import { handlers } from "@/app/lib/auth"; // Perhatikan perubahan pathnya
+import { handlers } from "@/app/lib/auth";
+
+export const { GET, POST } = handlers;
