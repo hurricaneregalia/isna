@@ -6,8 +6,6 @@ import Hero from "./hero";
 import Loading from "@/app/loading";
 import LayoutFullBlock from "../global/layoutFullBlock";
 import { FaArrowRight } from "react-icons/fa6";
-import LayoutFullBlock2 from "../global/layoutFullBlock2";
-import ListThumbnails from "../global/listThumbnails";
 import landingPageStyle from "./landingPage.module.css";
 import Hadist from "../global/hadist";
 import ListRowsDidapatkan from "../global/listRowsDidapatkan";
@@ -19,7 +17,7 @@ import FinalCta from "../global/finalCta";
 import CountdownMini from "./countdownMini";
 import Grid2List from "./grid2List";
 import Banner from "./banner";
-import CarouselStart from "../global/carouselStart";
+import { RiCloseCircleFill } from "react-icons/ri";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -56,6 +54,7 @@ export default function LayoutLandingPage({ children, waNo }) {
     title: product.name,
     price: product.price,
     isBest: product.isBest,
+    bestFor: product.bestFor,
     quality: product.quality || 0,
   }));
 
@@ -68,7 +67,7 @@ export default function LayoutLandingPage({ children, waNo }) {
     }))
   );
 
-  const counter = "2025-04-29T23:59:59Z";
+  const counter = "2025-05-29T23:59:59Z";
 
   return (
     <Content>
@@ -87,30 +86,31 @@ export default function LayoutLandingPage({ children, waNo }) {
             imageUrl={section.image}
             imageAlt={section.title}
             iconRight={<FaArrowRight />}
+            idColor="yes"
           />
         ))}
+
       {pageData.sections
         .filter((section) => section.id === "3")
         .map((section) => (
-          <LayoutFullBlock2
+          <LayoutFullBlock
             key={section.id}
             id="fenomena"
             bg="bg-transparent"
             title={section.title}
             textBody={section.description}
             list={section.listItems.map((listItem) => (
-              <ListThumbnails key={listItem.id} listItem={listItem.entries} />
+              <ListRowsDidapatkan key={listItem.id} listItem={listItem.entries} icon={<RiCloseCircleFill className=" text-2xl" />} />
             ))}
-            btnTxt={null}
+            btnTxt=""
             btnUrl="#solusi"
             imageUrl={section.image}
             imageAlt={section.title}
             iconRight={<FaArrowRight />}
             reverse={true}
-            roundedBrand="none"
+            idColor="yes"
           />
         ))}
-
       {pageData.sections
         .filter((section) => section.id === "4")
         .map((section) => (
@@ -180,6 +180,7 @@ export default function LayoutLandingPage({ children, waNo }) {
             imageUrl={section.image}
             imageAlt={section.title}
             iconRight={<FaArrowRight />}
+            idColor="yes"
           />
         ))}
       {pageData.sections
@@ -200,6 +201,7 @@ export default function LayoutLandingPage({ children, waNo }) {
             imageAlt={section.title}
             iconRight={<FaArrowRight />}
             reverse={true}
+            idColor="yes"
           />
         ))}
       {pageData.sections
@@ -232,6 +234,7 @@ export default function LayoutLandingPage({ children, waNo }) {
             btnUrl="#solusi"
             imageUrl={section.image}
             imageAlt={section.title}
+            idColor="yes"
           >
             {section.listItems.map((listItem) => (
               <div key={listItem.id}>
@@ -274,21 +277,12 @@ export default function LayoutLandingPage({ children, waNo }) {
             btnUrl="#solusi"
             imageUrl={section.image}
             imageAlt={section.title}
+            idColor="yes"
           >
             {section.listItems.map((listItem) => (
               <Grid2List key={listItem.id} listItem={listItem.entries} />
             ))}
-            {pageData.sections
-              .filter((section) => section.id === "13")
-              .map((section) => (
-                <Banner
-                  key={section.id}
-                  title={section.title}
-                  description={section.description}
-                  image={section.image}
-                  bg={landingPageStyle.bannerBg1}
-                />
-              ))}
+
             {pageData.sections
               .filter((section) => section.id === "14")
               .map((section) => (
@@ -298,14 +292,14 @@ export default function LayoutLandingPage({ children, waNo }) {
                   ctaTxt="Order Copywriting"
                   title={section.title}
                   headAlign={false}
-                  bg={`py-20 bg-slate-900`}
+                  bg={`py-20 bg-slate-900 ${landingPageStyle.bg1}`}
                   description={section.description}
                   btn={1}
                   ctaTxt1="Dapatkan Bonus"
                   ctaTxt2="Konsultasi"
                   btnUrl1="#layanan"
                   btnUrl2="#ok"
-                  mtTop="mt-0"
+                  mtTop="mt-20"
                 >
                   <CountdownMini targetDate={counter} />
                 </FinalCta>

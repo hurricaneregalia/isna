@@ -1,7 +1,7 @@
 import React from "react";
 import BtnLinkPrimary from "../global/btnLinkPrimary";
-import { FaArrowRight, FaCheck, FaRegStar, FaRegStarHalfStroke, FaStar, FaXmark } from "react-icons/fa6";
-import { PiCheckFatFill } from "react-icons/pi";
+import { FaArrowRight, FaCheck, FaStar, FaXmark } from "react-icons/fa6";
+import { PiSealCheckFill } from "react-icons/pi";
 
 export default function Services({ listItem, subListItem }) {
   return (
@@ -29,13 +29,30 @@ export default function Services({ listItem, subListItem }) {
                         </div>
                         <p className="font-normal">{item.title}</p>
                         <p className="text-3xl font-bold my-2">{item.price.toLocaleString("id-ID")}</p>
+                        <p className="font-normal flex items-center gap-1">
+                          <PiSealCheckFill className="text-success" /> {item.bestFor}
+                        </p>
+                        <div className="card-actions w-full mx-auto mt-5">
+                          <BtnLinkPrimary
+                            btnUrl={`/services/package/${item.slug}`} // Menggunakan item.id untuk URL dinamis
+                            btnTxt="Pilih"
+                            btnFull={true}
+                            iconRight={<FaArrowRight />}
+                            btnStyle={item.isBest ? "shadow-amber-200/50" : ""}
+                            btnCustom={
+                              item.isBest === false
+                                ? "border-1 border-amber-300 text-amber-300 hover:border-amber-500 bg-transparent hover:bg-amber-500"
+                                : ""
+                            }
+                          />
+                        </div>
                       </div>
 
                       <div className="space-y-2 my-5 px-8">
                         {list.length > 0 ? (
                           <ul className="space-y-2">
                             {list.map((service) => (
-                              <li key={service.id} className="flex items-center gap-2">
+                              <li key={service.id} className="flex items-center gap-1">
                                 {service.isActive === true ? <FaCheck className="text-green-500" /> : <FaXmark className="text-red-500" />}
                                 <span className={service.isActive === true ? "" : "opacity-50 line-through"}>{service.title}</span>
                               </li>
@@ -44,16 +61,6 @@ export default function Services({ listItem, subListItem }) {
                         ) : (
                           <p>No feature services available</p>
                         )}
-                      </div>
-
-                      <div className="card-actions justify-end mt-auto p-8 pt-0">
-                        <BtnLinkPrimary
-                          btnUrl={`/services/package/${item.slug}`} // Menggunakan item.id untuk URL dinamis
-                          btnTxt="Pilih"
-                          btnFull={true}
-                          iconRight={<FaArrowRight />}
-                          btnStyle={`${item.isBest ? "shadow-lg shadow-amber-200/50" : ""}`}
-                        />
                       </div>
                     </div>
                   </div>

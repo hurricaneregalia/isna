@@ -16,7 +16,7 @@ export default function ListThumbnails2({ listItem, border, iconStyle, bg }) {
       {listItem.map((item, index) => (
         <div
           key={index}
-          className="rounded-bl-3xl overflow-hidden"
+          className="rounded-bl-3xl overflow-hidden border border-slate-500"
           style={{
             backgroundImage: `url(${item.image ? item.image : ""})`,
             backgroundPosition: "center center", // Menempatkan gambar di tengah

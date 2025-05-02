@@ -147,6 +147,7 @@ model Product {
   name          String
   slug          String                @unique
   description   String?
+  bestFor       String?
   image         String?
   price         Float
   inStock       Boolean               @default(true)
@@ -200,10 +201,10 @@ model ProductGallery {
 
 model Benefit {
   id          String           @id @default(cuid())
-  title       String // Misal: "Buku Panduan"
-  description String? // Penjelasan tambahan
-  icon        String? // Opsional, bisa URL atau nama icon
-  products    ProductBenefit[] // Relasi ke produk melalui ProductBenefit
+  title       String
+  description String?
+  icon        String?
+  products    ProductBenefit[]
 }
 
 model ProductBenefit {
@@ -212,7 +213,8 @@ model ProductBenefit {
   productId String
   benefit   Benefit @relation(fields: [benefitId], references: [id])
   benefitId String
-  isActive  Boolean @default(true) // Status aktif atau tidak aktif
+  isActive  Boolean @default(true)
+  order     Int     @default(0)
 }
 
 model ProductBenefitPoint {

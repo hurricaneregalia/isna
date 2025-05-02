@@ -11,6 +11,7 @@ export async function GET() {
           orderBy: { order: "asc" },
         },
         benefits: {
+          orderBy: { order: "asc" },
           include: {
             benefit: true,
           },

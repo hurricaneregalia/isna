@@ -19,6 +19,7 @@ export default function Navigation2({ siteName, bg }) {
     { name: "Bonus", href: "/#bonus", key: "bonus" },
     { name: "My Api", href: "/myapi", key: "myapi" },
     { name: "Login", href: "/login", key: "login" },
+    { name: "Template", href: "/template", key: "template" },
   ];
 
   return (

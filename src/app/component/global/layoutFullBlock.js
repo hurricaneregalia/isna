@@ -7,6 +7,7 @@ import TextBody from "./textBody";
 export default function LayoutFullBlock({
   children,
   id,
+  idColor,
   title,
   description,
   footer,
@@ -35,13 +36,14 @@ export default function LayoutFullBlock({
   const listFx = list ? <div className="mt-6">{list}</div> : null;
   const textBodyFx = textBody ? <TextBody description={textBody} /> : null;
   const footerFx = footer ? <div className="">{footer}</div> : null;
+  const textIdFx = idColor ? "text-slate-500" : "text-amber-300";
 
   return (
     <section className={`py-20 ${bgFx} rounded-bl-3xl`} id={id}>
       <div className="container lg:w-8/12 px-8 mx-auto">
         <div className={`flex gap-20 ${reverseFx} items-center`}>
           <div className="w-full" data-aos="fade-up">
-            <p className="font-semibold text-amber-300 capitalize">{id.replace(/-/g, " ")}</p>
+            <p className={`font-semibold capitalize ${textIdFx}`}>{id.replace(/-/g, " ")}</p>
             <div className={`${textFx} grid grid-1 gap-5`}>
               <TextHeadingTitle title={title} iconTitle={null} titleCase={2} h={2} />
               {textBodyFx}
