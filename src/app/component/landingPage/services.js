@@ -62,7 +62,7 @@ export default function Services({ listItem, subListItem }) {
                         ) : (
                           <p>No feature services available</p>
                         )}
-                        <hr className="my-8 border border-dashed" />
+                        <hr className="my-8 border-b-base-content border-dashed" />
                         <div className="mb-5 opacity-50 flex items-center gap-1">
                           <IoMdTime />
                           <p>

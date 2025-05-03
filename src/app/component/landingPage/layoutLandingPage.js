@@ -283,29 +283,29 @@ export default function LayoutLandingPage({ children, waNo }) {
             {section.listItems.map((listItem) => (
               <Grid2List key={listItem.id} listItem={listItem.entries} />
             ))}
-
-            {pageData.sections
-              .filter((section) => section.id === "14")
-              .map((section) => (
-                <FinalCta
-                  key={section.id}
-                  id="claim-bonus"
-                  ctaTxt="Order Copywriting"
-                  title={section.title}
-                  headAlign={false}
-                  bg={`py-20 bg-slate-900 ${landingPageStyle.bg1}`}
-                  description={section.description}
-                  btn={1}
-                  ctaTxt1="Dapatkan Bonus"
-                  ctaTxt2="Konsultasi"
-                  btnUrl1="#layanan"
-                  btnUrl2="#ok"
-                  mtTop="mt-20"
-                >
-                  <CountdownMini targetDate={counter} />
-                </FinalCta>
-              ))}
           </LayoutPrimary>
+        ))}
+      {pageData.sections
+        .filter((section) => section.id === "14")
+        .map((section) => (
+          <FinalCta
+            key={section.id}
+            id="claim-bonusku"
+            ctaTxt="Order Copywriting"
+            title={section.title}
+            headAlign={false}
+            bg={`py-20 bg-slate-900 ${landingPageStyle.bg1}`}
+            description={section.description}
+            btn={1}
+            ctaTxt1="Dapatkan Bonus"
+            ctaTxt2="Konsultasi"
+            btnUrl1="#layanan"
+            btnUrl2="#ok"
+            mtTop="mt-20"
+            rounded="none"
+          >
+            <CountdownMini targetDate={counter} />
+          </FinalCta>
         ))}
     </Content>
   );

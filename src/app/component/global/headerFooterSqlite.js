@@ -31,14 +31,14 @@ export default function HeaderFooterSqlite({ children, siteName, footerText }) {
       <div className="relative min-h-screen flex flex-col">
         <Navigation2 siteName={siteName} bg={landingPageStyle.bg1} />
         {children}
-        <Footer footerText={footerText} siteName={siteName} />
+        <Footer footerText={footerText} siteName={siteName} bg="bg-slate-900 text-slate-600" />
         <div className="fixed bottom-4 right-4">
           <Modal
             modalId="shareBtn"
             header="Bagikan halaman ini."
             btnTxt={<TbLocationShare />}
             icon={<TbLocationShare />}
-            btnStyle="rounded-full h-10 w-10 p-0 shadow-lg bg-base-50 hover:bg-amber-300 text-base-content hover:text-slate-900 text-xl "
+            btnStyle="rounded-full border border-base-content h-10 w-10 p-0 shadow-lg bg-base-50 hover:bg-amber-300 text-base-content hover:text-slate-900 text-xl "
           >
             <ShareLink />
           </Modal>

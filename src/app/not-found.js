@@ -22,7 +22,7 @@ export default function NotFound() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}/api/siteidentity`);
+        const res = await axios.get(`${BASE_URL}/api/internal/siteidentity`);
         setSiteData(res.data);
       } catch (err) {
         console.error("Failed to fetch site identity:", err);
@@ -54,7 +54,7 @@ export default function NotFound() {
             </p>
             <div className="mt-10 flex items-center justify-center gap-3">
               <button
-                className="px-5 text-sm font-semibold shadow-xs btn bg-amber-300 hover:bg-amber-500 border-0 text-slate-900 rounded-full"
+                className="px-5 text-sm font-semibold shadow-none btn bg-amber-300 hover:bg-amber-500 border-0 text-slate-900 rounded-full"
                 onClick={back}
               >
                 <FaArrowLeft /> Back

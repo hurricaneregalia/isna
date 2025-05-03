@@ -1,8 +1,9 @@
 import React from "react";
 
-export default function Footer({ footerText, siteName }) {
+export default function Footer({ footerText, siteName, bg }) {
+  const bgFx = bg ? bg : "bg-base-300";
   return (
-    <footer className="bg-base-300 text-base-content py-4 mt-auto text-center">
+    <footer className={`${bgFx} py-4 mt-auto text-center`}>
       &copy; {footerText} {siteName} - All rights reserved.
     </footer>
   );

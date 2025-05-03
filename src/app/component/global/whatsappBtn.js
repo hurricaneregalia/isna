@@ -24,7 +24,7 @@ export default function WhatsappBtn({ waText, waBtnText, waNumber, forWa, btnCen
   ) : (
     <a
       href={`https://wa.me/${waNumber}?text=${encodedText}`}
-      className={`btn rounded-full w-fit ${forWaFx} ${btnCenterFx}`}
+      className={`btn rounded-full w-fit ${forWaFx} ${btnCenterFx} shadow-none`}
       target="_blank"
       rel="noopener noreferrer"
     >

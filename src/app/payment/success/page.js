@@ -8,15 +8,17 @@ import Loading from "./loading";
 import LinkAuto from "@/app/component/global/linkAuto";
 
 export async function generateMetadata({ searchParams }) {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
   const { service, longTime, orderby, order_id } = searchParams;
 
-  const ogImageUrl = `${baseUrl}/images/payment/ogImage-invoice-success.webp`;
-  const url = `${baseUrl}/payment/success?order_id=${order_id}`;
-
+  const ogImageUrl = `${BASE_URL}/images/payment/ogImage-invoice-success.webp`;
+  const url = `${BASE_URL}/payment/success?order_id=${order_id}`;
+  const headers = {
+    Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
+  };
   let siteData;
   try {
-    const res = await fetch(`${baseUrl}/api/siteidentity`, { cache: "no-store" });
+    const res = await fetch(`${BASE_URL}/api/siteidentity`, { cache: "no-store", headers });
     const data = await res.json();
     siteData = data;
   } catch (e) {
@@ -32,11 +34,11 @@ export async function generateMetadata({ searchParams }) {
     description: `INVOICE pembayaran ${service}`,
     keywords: ["invoice", "copywriting", "pembayaran", "transaksi"],
     authors: [{ name: siteData.siteName || "Admin" }],
-    metadataBase: new URL(baseUrl),
+    metadataBase: new URL(BASE_URL),
     openGraph: {
       title,
       description: "Terima kasih, proses pembayaran layanan Anda telah selesai.",
-      url: `${baseUrl}/payment/success`,
+      url: `${BASE_URL}/payment/success`,
       siteName: siteData.siteName,
       images: [ogImageUrl],
       type: "website",
@@ -64,11 +66,13 @@ export async function generateMetadata({ searchParams }) {
 export default async function PaymentSuccessPage({ searchParams }) {
   const { order_id, transaction_id, payment_type, bank, va_number, service, desc, waNumber, longTime, price, date, orderby, sapaan } = searchParams;
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+  const headers = {
+    Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
+  };
   let siteData;
   try {
-    const res = await fetch(`${baseUrl}/api/siteidentity`, { cache: "no-store" });
+    const res = await fetch(`${BASE_URL}/api/siteidentity`, { cache: "no-store", headers });
     const data = await res.json();
     siteData = data;
   } catch (e) {
@@ -88,7 +92,7 @@ export default async function PaymentSuccessPage({ searchParams }) {
     orderby,
   }).toString();
 
-  const waText = `KIRIM PESAN INI\n${desc}\n\nINVOICE\n${baseUrl}/payment/success?${query}`;
+  const waText = `KIRIM PESAN INI\n${desc}\n\nINVOICE\n${BASE_URL}/payment/success?${query}`;
 
   return (
     <>

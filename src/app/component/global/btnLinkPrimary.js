@@ -7,7 +7,7 @@ export default function BtnLinkPrimary({ btnTxt, btnUrl, iconLeft, shadow, iconR
   const iconRightFx = iconRight ? <span className={animateFx}>{iconRight}</span> : "";
   const btnFullFx = btnFull ? "w-full" : "";
   const shadowFx = shadow ? shadow : "shadow-none";
-  const btnCustomFx = btnCustom ? btnCustom : "bg-amber-300 ";
+  const btnCustomFx = btnCustom ? btnCustom : "bg-amber-300 text-slate-900";
   return (
     <Link
       href={btnUrl}

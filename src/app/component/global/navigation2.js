@@ -17,8 +17,9 @@ export default function Navigation2({ siteName, bg }) {
     { name: "Solusi", href: "/#solusi", key: "solusi" },
     { name: "Layanan", href: "/#layanan", key: "layanan" },
     { name: "Bonus", href: "/#bonus", key: "bonus" },
+    { name: "Logo review", href: "/logometer", key: "logometer" },
     { name: "My Api", href: "/myapi", key: "myapi" },
-    { name: "Login", href: "/login", key: "login" },
+    { name: "NotFound", href: "/huntuband", key: "huntuband" },
     { name: "Template", href: "/template", key: "template" },
   ];
 
@@ -54,9 +55,8 @@ export default function Navigation2({ siteName, bg }) {
               </div>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <Notif textColor="text-slate-400 hover:text-amber-300" />
               <ThemeSwitch textColor="text-slate-400 hover:text-amber-300" />
-              <Profile userPhoto={userPhoto} />
+
               <DisclosureButton
                 className="group relative inline-flex items-center justify-center rounded-md p-2 text-slate-400 sm:hidden"
                 aria-expanded="false" // Menambahkan aria-expanded untuk tombol menu

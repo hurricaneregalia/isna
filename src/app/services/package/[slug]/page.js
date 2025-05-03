@@ -74,11 +74,15 @@ export async function generateMetadata({ params }) {
 
 export default async function ProductDetailPage({ params }) {
   const currentYear = new Date().getFullYear();
+  const headers = {
+    Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
+  };
+
   try {
     const [allProductsRes, siteRes, registerFormRes] = await Promise.all([
-      fetch(`${BASE_URL}/api/product`, { cache: "no-store" }),
-      fetch(`${BASE_URL}/api/siteidentity`, { cache: "no-store" }),
-      fetch(`${BASE_URL}/api/registerform`, { cache: "no-store" }),
+      fetch(`${BASE_URL}/api/product`, { cache: "no-store", headers }),
+      fetch(`${BASE_URL}/api/siteidentity`, { cache: "no-store", headers }),
+      fetch(`${BASE_URL}/api/registerform`, { cache: "no-store", headers }),
     ]);
 
     if (!allProductsRes.ok || !siteRes.ok || !registerFormRes.ok) {

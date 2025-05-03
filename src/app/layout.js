@@ -16,7 +16,7 @@ const geistMono = localFont({
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="min-h-screen bg-base-200 text-base-content patternKalmaanaLight">
+      <body className="min-h-screen bg-base-200 text-base-content">
         <WebVitals />
         {children}
       </body>
