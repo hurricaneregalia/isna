@@ -6,7 +6,11 @@ const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export async function generateMetadata() {
   try {
-    const res = await fetch(`${BASE_URL}/api/siteidentity`);
+    const res = await fetch(`${BASE_URL}/api/siteidentity`, {
+      headers: {
+        Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
+      },
+    });
     const data = await res.json();
 
     return {
@@ -93,7 +97,11 @@ export default async function HomePage() {
   let siteData = null;
   const currentYear = new Date().getFullYear();
   try {
-    const res = await axios.get(`${BASE_URL}/api/siteidentity`);
+    const res = await axios.get(`${BASE_URL}/api/siteidentity`, {
+      headers: {
+        Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
+      },
+    });
     siteData = res.data;
   } catch (error) {
     console.error("Failed to fetch site identity:", error);

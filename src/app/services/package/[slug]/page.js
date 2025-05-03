@@ -3,7 +3,6 @@ import React from "react";
 import HeroPackage from "./heroPackage";
 import HeaderPackage from "./headerPackage";
 import FormPackage from "./formPackage";
-import CanvasCursor from "@/app/component/canvasCursor/CanvasCursor";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
