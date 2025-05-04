@@ -4,14 +4,20 @@ import LayoutLandingPage from "./component/landingPage/layoutLandingPage";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
+// Buat instance axios dengan konfigurasi default
+const axiosInstance = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
+  },
+  timeout: 5000, // opsional: timeout 5 detik
+});
+
+// Metadata (untuk SEO / Head)
 export async function generateMetadata() {
   try {
-    const res = await fetch(`${BASE_URL}/api/siteidentity`, {
-      headers: {
-        Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
-      },
-    });
-    const data = await res.json();
+    const res = await axiosInstance.get("/api/siteidentity");
+    const data = res.data;
 
     return {
       title: data.siteName,
@@ -93,15 +99,13 @@ export async function generateMetadata() {
   }
 }
 
+// Komponen halaman utama
 export default async function HomePage() {
   let siteData = null;
   const currentYear = new Date().getFullYear();
+
   try {
-    const res = await axios.get(`${BASE_URL}/api/siteidentity`, {
-      headers: {
-        Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
-      },
-    });
+    const res = await axiosInstance.get("/api/siteidentity");
     siteData = res.data;
   } catch (error) {
     console.error("Failed to fetch site identity:", error);

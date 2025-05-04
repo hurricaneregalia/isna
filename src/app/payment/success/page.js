@@ -6,6 +6,7 @@ import CanvasCursor from "@/app/component/canvasCursor/CanvasCursor";
 import CopyableText from "@/app/component/global/copyableText";
 import Loading from "./loading";
 import LinkAuto from "@/app/component/global/linkAuto";
+import axios from "axios";
 
 export async function generateMetadata({ searchParams }) {
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -16,13 +17,13 @@ export async function generateMetadata({ searchParams }) {
   const headers = {
     Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
   };
+
   let siteData;
   try {
-    const res = await fetch(`${BASE_URL}/api/siteidentity`, { cache: "no-store", headers });
-    const data = await res.json();
-    siteData = data;
+    const res = await axios.get(`${BASE_URL}/api/siteidentity`, { headers });
+    siteData = res.data;
   } catch (e) {
-    console.error("Failed to fetch site identity:", e);
+    console.error("❌ Failed to fetch site identity (metadata):", e.message);
   }
 
   if (!siteData) return {};
@@ -38,7 +39,7 @@ export async function generateMetadata({ searchParams }) {
     openGraph: {
       title,
       description: "Terima kasih, proses pembayaran layanan Anda telah selesai.",
-      url: `${BASE_URL}/payment/success`,
+      url: url,
       siteName: siteData.siteName,
       images: [ogImageUrl],
       type: "website",
@@ -70,13 +71,13 @@ export default async function PaymentSuccessPage({ searchParams }) {
   const headers = {
     Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
   };
+
   let siteData;
   try {
-    const res = await fetch(`${BASE_URL}/api/siteidentity`, { cache: "no-store", headers });
-    const data = await res.json();
-    siteData = data;
+    const res = await axios.get(`${BASE_URL}/api/siteidentity`, { headers });
+    siteData = res.data;
   } catch (e) {
-    console.error("Failed to fetch site identity:", e);
+    console.error("❌ Failed to fetch site identity (page):", e.message);
   }
 
   if (!siteData) {

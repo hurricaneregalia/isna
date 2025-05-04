@@ -1,41 +1,33 @@
-"use client";
-import { useRouter } from "next/navigation";
 import { GiGroundbreaker } from "react-icons/gi";
-import { FaArrowLeft } from "react-icons/fa6";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import WhatsappBtn from "./component/global/whatsappBtn";
 import Head from "next/head";
+import WhatsappBtn from "./component/global/whatsappBtn";
 import CanvasCursor from "./component/canvasCursor/CanvasCursor";
+import BackButton from "./component/global/backButton";
+import axios from "axios";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-export default function NotFound() {
-  const router = useRouter();
-  const [siteData, setSiteData] = useState(null);
-  const [error, setError] = useState(null);
+async function getSiteData() {
+  try {
+    const res = await axios.get(`${BASE_URL}/api/internal/siteidentity`, {
+      headers: {
+        Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
+      },
+    });
 
-  const back = () => {
-    router.back();
-  };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`${BASE_URL}/api/internal/siteidentity`);
-        setSiteData(res.data);
-      } catch (err) {
-        console.error("Failed to fetch site identity:", err);
-        setError("Gagal memuat data.");
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  if (error) {
-    return <div>{error}</div>;
+    return res.data;
+  } catch (error) {
+    if (error.response) {
+      console.error("❌ Failed to fetch site identity", error.response.status);
+    } else {
+      console.error("❌ Axios error:", error.message);
+    }
+    return null;
   }
+}
+
+export default async function NotFoundPage() {
+  const siteData = await getSiteData();
 
   return (
     <>
@@ -53,13 +45,8 @@ export default function NotFound() {
               Maaf, kami tidak menemukan halaman yang anda cari.
             </p>
             <div className="mt-10 flex items-center justify-center gap-3">
-              <button
-                className="px-5 text-sm font-semibold shadow-none btn bg-amber-300 hover:bg-amber-500 border-0 text-slate-900 rounded-full"
-                onClick={back}
-              >
-                <FaArrowLeft /> Back
-              </button>
-              <WhatsappBtn waBtnText="" waNumber={siteData?.phone || "Loading..."} waText="" forWa={true} />
+              <BackButton />
+              <WhatsappBtn waBtnText="" waNumber={siteData?.phone || "Nomor tidak tersedia"} waText="" forWa={true} />
             </div>
           </div>
         </div>
