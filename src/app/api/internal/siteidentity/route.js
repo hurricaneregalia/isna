@@ -1,22 +1,24 @@
+import prisma from "@/app/database/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/siteidentity`, {
-      headers: {
-        Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
+    const identity = await prisma.siteIdentity.findFirst({
+      include: {
+        socialLinks: true,
       },
-      cache: "no-store", // opsional, jika ingin memaksa fresh data
+      orderBy: {
+        createdAt: "desc",
+      },
     });
 
-    if (!res.ok) {
-      return NextResponse.json({ error: "Failed to fetch site identity" }, { status: res.status });
+    if (!identity) {
+      return NextResponse.json({ error: "Site identity not found" }, { status: 404 });
     }
 
-    const data = await res.json();
-    return NextResponse.json(data);
+    return NextResponse.json(identity);
   } catch (error) {
-    console.error("❌ Internal proxy error:", error);
+    console.error("❌ Failed to fetch site identity (internal):", error);
     return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
 }

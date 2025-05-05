@@ -2,16 +2,19 @@ import prisma from "@/app/database/prisma";
 import { NextResponse } from "next/server";
 
 export async function GET(request) {
-  // Ambil Authorization header
-  const authHeader = request.headers.get("authorization");
-  const token = authHeader?.replace("Bearer ", "");
-
-  // Validasi token
-  if (token !== process.env.ULTRA_TOKEN) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
   try {
+    // ✅ Validasi token terlebih dahulu
+    const authHeader = request.headers.get("authorization");
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return NextResponse.json({ error: "Unauthorized - token missing" }, { status: 401 });
+    }
+
+    const token = authHeader.replace("Bearer ", "").trim();
+    if (token !== process.env.ULTRA_TOKEN) {
+      return NextResponse.json({ error: "Unauthorized - token invalid" }, { status: 401 });
+    }
+
+    // ✅ Akses database hanya jika token valid
     const identity = await prisma.siteIdentity.findFirst({
       include: {
         socialLinks: true,
