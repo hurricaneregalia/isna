@@ -14,13 +14,11 @@ export async function generateMetadata({ searchParams }) {
 
   const ogImageUrl = `${BASE_URL}/images/payment/ogImage-invoice-success.webp`;
   const url = `${BASE_URL}/payment/success?order_id=${order_id}`;
-  const headers = {
-    Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
-  };
 
   let siteData;
   try {
-    const res = await axios.get(`${BASE_URL}/api/siteidentity`, { headers });
+    const res = await axios.get(`${BASE_URL}/api/siteidentity`);
+
     siteData = res.data;
   } catch (e) {
     console.error("❌ Failed to fetch site identity (metadata):", e.message);
@@ -74,7 +72,7 @@ export default async function PaymentSuccessPage({ searchParams }) {
 
   let siteData;
   try {
-    const res = await axios.get(`${BASE_URL}/api/siteidentity`, { headers });
+    const res = await axios.get(`${BASE_URL}/api/siteidentity`);
     siteData = res.data;
   } catch (e) {
     console.error("❌ Failed to fetch site identity (page):", e.message);

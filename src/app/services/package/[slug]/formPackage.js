@@ -98,9 +98,50 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
     e.preventDefault();
     const form = formRef.current;
 
+    const missingFields = listItem.filter((item) => {
+      if (!item.required) return false;
+
+      const id = `${item.id}-${item.name}`.replace(/\s+/g, "-");
+      const input = form.elements[id];
+
+      if (item.type === "radio") {
+        const radioName = item.name.replace(/\s+/g, "-").toLowerCase();
+        const checked = form.querySelector(`input[name="${radioName}"]:checked`);
+        return !checked;
+      }
+
+      if (item.type === "file") {
+        return !input || input.files.length === 0;
+      }
+
+      return !input || !input.value.trim();
+    });
+
+    if (missingFields.length > 0) {
+      const firstMissing = missingFields[0];
+      const id = `${firstMissing.id}-${firstMissing.name}`.replace(/\s+/g, "-");
+
+      // Scroll dan fokus ke field pertama yang kosong
+      if (firstMissing.type === "radio") {
+        const radioName = firstMissing.name.replace(/\s+/g, "-").toLowerCase();
+        const radioGroup = form.querySelector(`input[name="${radioName}"]`)?.closest(".flex");
+        radioGroup?.scrollIntoView({ behavior: "smooth", block: "center" });
+      } else {
+        const input = form.elements[id];
+        if (input) {
+          input.scrollIntoView({ behavior: "smooth", block: "center" });
+          input.focus({ preventScroll: true });
+        }
+      }
+
+      // Tetap tampilkan alert
+      alert("Ada data wajib yang belum diisi:\n" + missingFields.map((f) => `- ${f.name}`).join("\n"));
+      return;
+    }
+
     if (form && form.checkValidity()) {
-      form.reportValidity(); // opsional
-      setIsProcessingPayment(true); // 👉 Tampilkan overlay
+      form.reportValidity();
+      setIsProcessingPayment(true);
       midtransRef.current?.handlePayment();
     } else {
       form.reportValidity();

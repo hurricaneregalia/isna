@@ -82,16 +82,13 @@ export async function generateMetadata({ params }) {
 
 export default async function ProductDetailPage({ params }) {
   const currentYear = new Date().getFullYear();
-  const headers = {
-    Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
-  };
 
   try {
     // Mengambil data produk, identitas situs, dan formulir pendaftaran
     const [allProductsRes, siteRes, registerFormRes] = await Promise.all([
-      axios.get(`${BASE_URL}/api/product`, { headers }),
-      axios.get(`${BASE_URL}/api/siteidentity`, { headers }),
-      axios.get(`${BASE_URL}/api/registerform`, { headers }),
+      axios.get(`${BASE_URL}/api/product`),
+      axios.get(`${BASE_URL}/api/siteidentity`),
+      axios.get(`${BASE_URL}/api/registerform`),
     ]);
 
     const allProducts = allProductsRes.data.data;
