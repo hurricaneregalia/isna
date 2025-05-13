@@ -7,7 +7,8 @@ import axios from "axios";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(props) {
+  const params = await props.params;
   try {
     const allProductsRes = await axios.get(`${BASE_URL}/api/product`);
     const allProducts = allProductsRes.data.data;
@@ -80,7 +81,8 @@ export async function generateMetadata({ params }) {
   }
 }
 
-export default async function ProductDetailPage({ params }) {
+export default async function ProductDetailPage(props) {
+  const params = await props.params;
   const currentYear = new Date().getFullYear();
 
   try {

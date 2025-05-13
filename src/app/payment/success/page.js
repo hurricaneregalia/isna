@@ -8,7 +8,8 @@ import Loading from "./loading";
 import LinkAuto from "@/app/component/global/linkAuto";
 import axios from "axios";
 
-export async function generateMetadata({ searchParams }) {
+export async function generateMetadata(props) {
+  const searchParams = await props.searchParams;
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
   const { service, longTime, orderby, order_id } = searchParams;
 
@@ -62,7 +63,8 @@ export async function generateMetadata({ searchParams }) {
   };
 }
 
-export default async function PaymentSuccessPage({ searchParams }) {
+export default async function PaymentSuccessPage(props) {
+  const searchParams = await props.searchParams;
   const { order_id, transaction_id, payment_type, bank, va_number, service, desc, waNumber, longTime, price, date, orderby, sapaan } = searchParams;
 
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
