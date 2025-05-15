@@ -1,58 +1,44 @@
+// src/app/services/package/[slug]/page.js
 import HeaderFooterSqlite from "@/app/component/global/headerFooterSqlite";
 import React from "react";
 import HeroPackage from "./heroPackage";
 import HeaderPackage from "./headerPackage";
 import FormPackage from "./formPackage";
-import axios from "axios";
+import prisma from "@/app/database/prisma";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-export async function generateMetadata(props) {
-  const params = await props.params;
+// ✅ Fungsi Metadata dinamis (Next.js 15: params harus di-await)
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+
   try {
-    const allProductsRes = await axios.get(`${BASE_URL}/api/product`);
-    const allProducts = allProductsRes.data.data;
+    const product = await prisma.product.findUnique({
+      where: { slug },
+    });
 
-    if (!Array.isArray(allProducts)) {
-      return {
-        title: "Data produk tidak valid",
-        description: "Data dari API tidak sesuai format.",
-      };
-    }
-
-    const filtered = allProducts.filter((product) => product.slug === params.slug);
-
-    if (filtered.length === 0) {
+    if (!product) {
       return {
         title: "Produk tidak ditemukan",
-        description: "Produk yang Anda cari tidak tersedia.",
+        description: "Produk ini tidak tersedia.",
       };
     }
 
-    const data = filtered[0];
-
     return {
-      title: data.name,
-      description: data.description,
-      keywords: Array.isArray(data.keywords) ? data.keywords.join(", ") : "",
-      authors: [{ name: data.name }],
-      applicationName: data.name,
-      generator: "Next.js",
-      metadataBase: new URL(BASE_URL),
-      alternates: {
-        canonical: BASE_URL,
-      },
+      title: product.name,
+      description: product.description ?? "",
+      keywords: Array.isArray(product.keywords) ? product.keywords.join(", ") : "",
       openGraph: {
-        title: data.name,
-        description: data.description,
-        url: BASE_URL,
-        siteName: data.name,
+        title: product.name,
+        description: product.description ?? "",
+        url: `${BASE_URL}/services/package/${slug}`,
+        siteName: product.name,
         images: [
           {
-            url: `${BASE_URL}${data.image}`,
+            url: `${BASE_URL}${product.image}`,
             width: 1200,
             height: 630,
-            alt: data.name,
+            alt: product.name,
           },
         ],
         locale: "id_ID",
@@ -60,81 +46,69 @@ export async function generateMetadata(props) {
       },
       twitter: {
         card: "summary_large_image",
-        title: data.name,
-        description: data.description,
-        creator: data.name,
-        images: [`${BASE_URL}${data.image}`],
+        title: product.name,
+        description: product.description ?? "",
+        images: [`${BASE_URL}${product.image}`],
       },
-      robots: {
-        index: true,
-        follow: true,
-        nocache: false,
-      },
-      category: "Business",
     };
-  } catch (error) {
-    console.error("Terjadi kesalahan saat mengambil data untuk metadata:", error);
+  } catch (err) {
+    console.error("Gagal membuat metadata:", err);
     return {
       title: "Terjadi kesalahan",
-      description: "Tidak dapat mengambil data produk.",
+      description: "Tidak dapat mengambil metadata produk.",
     };
   }
 }
 
-export default async function ProductDetailPage(props) {
-  const params = await props.params;
+// ✅ Halaman produk detail
+export default async function ProductDetailPage({ params }) {
+  const { slug } = await params;
   const currentYear = new Date().getFullYear();
 
   try {
-    // Mengambil data produk, identitas situs, dan formulir pendaftaran
-    const [allProductsRes, siteRes, registerFormRes] = await Promise.all([
-      axios.get(`${BASE_URL}/api/product`),
-      axios.get(`${BASE_URL}/api/siteidentity`),
-      axios.get(`${BASE_URL}/api/registerform`),
-    ]);
+    const product = await prisma.product.findUnique({
+      where: { slug },
+      include: {
+        category: true,
+        gallery: true,
+      },
+    });
 
-    const allProducts = allProductsRes.data.data;
-
-    if (!Array.isArray(allProducts)) {
-      return <div>Data produk tidak valid. Harap coba lagi nanti.</div>;
+    if (!product) {
+      return <div>Produk dengan slug "{slug}" tidak ditemukan.</div>;
     }
 
-    const filtered = allProducts.filter((product) => product.slug === params.slug);
+    const site = await prisma.siteIdentity.findFirst();
 
-    if (filtered.length === 0) {
-      return <div>Produk dengan slug "{params.slug}" tidak ditemukan.</div>;
-    }
+    const registerForm = await prisma.registerForm.findMany({
+      where: { isActive: true },
+      orderBy: { position: "asc" },
+    });
 
-    const data = filtered[0];
-    const site = siteRes.data;
-    const registerForm = registerFormRes.data;
-
-    const currentUrl = `${BASE_URL}/services/package/${params.slug}`;
+    const currentUrl = `${BASE_URL}/services/package/${slug}`;
 
     return (
-      <>
-        <HeaderFooterSqlite siteName={site.siteName} footerText={currentYear}>
-          <div>
-            <HeroPackage img={data.image} imageAlt={data.name} listItem={data.gallery} />
-            <HeaderPackage title={data.name} quality={data.quality} price={data.price} categoryTitle={data.category.name} />
-          </div>
-          <div className="sm:px-13 px-5 lg:w-2/3 w-full mx-auto">
-            <FormPackage
-              listItem={registerForm.registerForms}
-              serviceName={data.name}
-              servicePrice={data.price}
-              serviceCategory={data.category.name}
-              sku={data.sku}
-              waNumber={site.phone}
-              serviceUrl={currentUrl}
-              baseUrl={BASE_URL}
-              siteName={site.siteName}
-              siteLogo={site.siteLogoUrl}
-              siteLogoAlt={site.siteName}
-            />
-          </div>
-        </HeaderFooterSqlite>
-      </>
+      <HeaderFooterSqlite siteName={site.siteName} footerText={currentYear}>
+        <div>
+          <HeroPackage img={product.image} imageAlt={product.name} listItem={product.gallery} />
+          <HeaderPackage title={product.name} quality={product.quality} price={product.price} categoryTitle={product.category.name} />
+        </div>
+        <div className="sm:px-13 px-5 lg:w-2/3 w-full mx-auto">
+          <FormPackage
+            listItem={registerForm}
+            serviceName={product.name}
+            servicePrice={product.price}
+            serviceCategory={product.category.name}
+            sku={product.sku}
+            waNumber={site.phone}
+            serviceUrl={currentUrl}
+            baseUrl={BASE_URL}
+            siteName={site.siteName}
+            siteLogo={site.logoUrl}
+            siteLogoAlt={site.siteName}
+          />
+        </div>
+      </HeaderFooterSqlite>
     );
   } catch (error) {
     console.error("Terjadi kesalahan saat mengambil data:", error);

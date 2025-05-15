@@ -1,13 +1,16 @@
-import axios from "axios";
 import HeaderFooterSqlite from "./component/global/headerFooterSqlite";
 import LayoutLandingPage from "./component/landingPage/layoutLandingPage";
+import prisma from "./database/prisma";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export async function generateMetadata() {
   try {
-    const res = await axios.get(`${BASE_URL}/api/siteidentity`);
-    const data = res.data;
+    const data = await prisma.siteIdentity.findFirst({
+      include: {
+        socialLinks: true,
+      },
+    });
 
     return {
       title: data.siteName,
@@ -90,22 +93,19 @@ export async function generateMetadata() {
 }
 
 export default async function HomePage() {
-  let siteData = null;
   const currentYear = new Date().getFullYear();
 
   try {
-    const res = await axios.get(`${BASE_URL}/api/siteidentity`);
-    siteData = res.data;
+    const siteData = await prisma.siteIdentity.findFirst();
+    return (
+      <HeaderFooterSqlite siteName={siteData.siteName} footerText={currentYear}>
+        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+          <LayoutLandingPage waNo={siteData.phone} />
+        </main>
+      </HeaderFooterSqlite>
+    );
   } catch (error) {
     console.error("Failed to fetch site identity:", error);
     return <div>Gagal memuat data.</div>;
   }
-
-  return (
-    <HeaderFooterSqlite siteName={siteData.siteName} footerText={currentYear}>
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <LayoutLandingPage waNo={siteData.phone} />
-      </main>
-    </HeaderFooterSqlite>
-  );
 }

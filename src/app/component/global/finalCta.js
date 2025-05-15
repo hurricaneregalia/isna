@@ -5,15 +5,30 @@ import { FaArrowRight } from "react-icons/fa";
 import BtnLinkSecondary from "./btnLinkSecondary";
 import { SiWhatsapp } from "react-icons/si";
 
-export default function FinalCta({ id, title, description, headAlign, bg, btn, ctaTxt1, ctaTxt2, children, btnUrl1, btnUrl2, mtTop, rounded }) {
+export default function FinalCta({
+  id,
+  title,
+  description,
+  headAlign,
+  bg,
+  btn,
+  ctaTxt1,
+  ctaTxt2,
+  children,
+  btnUrl1,
+  btnUrl2,
+  mtTop,
+  rounded,
+  btnStyle,
+}) {
   const textFx = bg === "" || bg === "bg-transparent" ? "" : "text-neutral-content";
   const btnFX =
     btn === 1 ? (
-      <BtnLinkPrimary btnUrl={btnUrl1} btnTxt={ctaTxt1} btnFull={false} iconRight={<FaArrowRight />} btnStyle="" />
+      <BtnLinkPrimary btnUrl={btnUrl1} btnTxt={ctaTxt1} btnFull={false} iconRight={<FaArrowRight />} btnStyle={btnStyle} />
     ) : (
       <span className="flex flex-col sm:flex-row gap-3 justify-center">
-        <BtnLinkSecondary btnUrl={btnUrl2} btnTxt={ctaTxt2} btnFull={false} iconRight={<SiWhatsapp />} btnStyle="" />
-        <BtnLinkPrimary btnUrl={btnUrl1} btnTxt={ctaTxt1} btnFull={false} iconRight={<FaArrowRight />} btnStyle="" />
+        <BtnLinkSecondary btnUrl={btnUrl2} btnTxt={ctaTxt2} btnFull={false} iconRight={<SiWhatsapp />} btnStyle={btnStyle} />
+        <BtnLinkPrimary btnUrl={btnUrl1} btnTxt={ctaTxt1} btnFull={false} iconRight={<FaArrowRight />} btnStyle={btnStyle} />
       </span>
     );
   const roundedFX = rounded ? rounded : "rounded-bl-3xl";

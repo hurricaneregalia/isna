@@ -1,3 +1,4 @@
+// src/app/component/landingPage/layoutLandingPage.js
 "use client";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -16,7 +17,6 @@ import Alur from "./alur";
 import FinalCta from "../global/finalCta";
 import CountdownMini from "./countdownMini";
 import Grid2List from "./grid2List";
-import Banner from "./banner";
 import { RiCloseCircleFill } from "react-icons/ri";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
@@ -303,6 +303,7 @@ export default function LayoutLandingPage({ children, waNo }) {
             btnUrl2="#ok"
             mtTop="mt-20"
             rounded="none"
+            btnStyle="animate-bounce"
           >
             <CountdownMini targetDate={counter} />
           </FinalCta>
