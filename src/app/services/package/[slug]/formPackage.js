@@ -222,7 +222,7 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
                         <span className="capitalize">
                           {label} {isRequired && <span className="text-red-500 text-2xl">*</span>}
                         </span>
-                        <p className="validator-hint">{item.hintFalse || item.hintTrue}huntu</p>
+                        <p className="validator-hint">{item.hintFalse || item.hintTrue}</p>
                       </>
                     ) : (
                       <>
