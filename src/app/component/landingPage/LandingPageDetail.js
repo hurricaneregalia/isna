@@ -1,3 +1,4 @@
+// src/app/component/landingpage/LandingPageDetail.js
 import Image from "next/image";
 
 export default function LandingPageDetail({ landingPage }) {
