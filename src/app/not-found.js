@@ -3,25 +3,14 @@ import Head from "next/head";
 import WhatsappBtn from "./component/global/whatsappBtn";
 import CanvasCursor from "./component/canvasCursor/CanvasCursor";
 import BackButton from "./component/global/backButton";
-import axios from "axios";
-
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+import { prisma } from "./lib/prisma";
 
 async function getSiteData() {
   try {
-    const res = await axios.get(`${BASE_URL}/api/internal/siteidentity`, {
-      headers: {
-        Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
-      },
-    });
-
-    return res.data;
+    const siteData = await prisma.siteIdentity.findFirst(); // Ambil data pertama dari tabel siteIdentity
+    return siteData;
   } catch (error) {
-    if (error.response) {
-      console.error("❌ Failed to fetch site identity", error.response.status);
-    } else {
-      console.error("❌ Axios error:", error.message);
-    }
+    console.error("❌ Prisma error:", error.message);
     return null;
   }
 }

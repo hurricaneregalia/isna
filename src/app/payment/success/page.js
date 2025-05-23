@@ -6,21 +6,20 @@ import CanvasCursor from "@/app/component/canvasCursor/CanvasCursor";
 import CopyableText from "@/app/component/global/copyableText";
 import Loading from "./loading";
 import LinkAuto from "@/app/component/global/linkAuto";
-import axios from "axios";
+import { prisma } from "@/app/lib/prisma";
 
 export async function generateMetadata(props) {
   const searchParams = await props.searchParams;
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
   const { service, longTime, orderby, order_id } = searchParams;
 
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
   const ogImageUrl = `${BASE_URL}/images/payment/ogImage-invoice-success.webp`;
   const url = `${BASE_URL}/payment/success?order_id=${order_id}`;
 
   let siteData;
   try {
-    const res = await axios.get(`${BASE_URL}/api/siteidentity`);
-
-    siteData = res.data;
+    // Query site data from the database using Prisma
+    siteData = await prisma.siteIdentity.findFirst();
   } catch (e) {
     console.error("❌ Failed to fetch site identity (metadata):", e.message);
   }
@@ -68,14 +67,11 @@ export default async function PaymentSuccessPage(props) {
   const { order_id, transaction_id, payment_type, bank, va_number, service, desc, waNumber, longTime, price, date, orderby, sapaan } = searchParams;
 
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-  const headers = {
-    Authorization: `Bearer ${process.env.ULTRA_TOKEN}`,
-  };
 
   let siteData;
   try {
-    const res = await axios.get(`${BASE_URL}/api/siteidentity`);
-    siteData = res.data;
+    // Query site data from the database using Prisma
+    siteData = await prisma.siteIdentity.findFirst();
   } catch (e) {
     console.error("❌ Failed to fetch site identity (page):", e.message);
   }
