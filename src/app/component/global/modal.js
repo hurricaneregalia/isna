@@ -13,7 +13,7 @@ export default function Modal({ children, modalId, header, btnTxt, btnStyle, ico
       </button>
 
       <dialog id={modalId} className="modal ">
-        <div className="modal-box overflow-visible rounded-none rounded-bl-3xl text-center">
+        <div className="modal-box overflow-visible rounded-none rounded-bl-3xl text-center patternKalmaanaLight">
           <form method="dialog">
             {/* if there is a button in form, it will close the modal */}
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>

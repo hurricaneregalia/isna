@@ -7,7 +7,7 @@ export default function Grid2List({ listItem, border }) {
     <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
       {listItem.map((item, index) => (
         <div className="col-span-1 flex justify-stretch" key={index} data-aos="fade-up">
-          <div className={`bg-base-100 overflow-hidden rounded-bl-3xl w-full ${borderFx} flex lg:flex-row flex-col`}>
+          <div className={`bg-base-100 overflow-hidden rounded-bl-3xl shadow-lg w-full ${borderFx} flex lg:flex-row flex-col`}>
             <div className="h-full lg:w-1/3 w-full ">
               <ImageComponent
                 imageUrl={item.image}

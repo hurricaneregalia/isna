@@ -4,7 +4,7 @@ import React from "react";
 import HeroPackage from "./heroPackage";
 import HeaderPackage from "./headerPackage";
 import FormPackage from "./formPackage";
-import prisma from "@/app/database/prisma";
+import { prisma } from "@/app/lib/prisma";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 

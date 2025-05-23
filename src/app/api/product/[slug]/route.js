@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import prisma from "@/app/database/prisma";
+import { prisma } from "@/app/lib/prisma";
 
 export async function GET(req, props) {
   const params = await props.params;

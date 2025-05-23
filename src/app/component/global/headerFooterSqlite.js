@@ -1,50 +1,23 @@
-"use client";
-import React, { useEffect } from "react";
+// src/app/component/global/HeaderFooterSqlite.jsx
 import Footer from "./footer";
 import Navigation2 from "./navigation2";
-import Aos from "aos";
-import "../../../../node_modules/aos/dist/aos.css";
-import landingPageStyle from "../landingPage/landingPage.module.css";
+import landingPageStyle from "../home/landingPage.module.css";
 import Loading from "@/app/loading";
-import Modal from "./modal";
-import { TbLocationShare } from "react-icons/tb";
-import ShareLink from "./shareLink";
-import CanvasCursor from "../canvasCursor/CanvasCursor";
+import { prisma } from "@/app/lib/prisma";
+import HeaderFooterClient from "./HeaderFooterClient";
 
-export default function HeaderFooterSqlite({ children, siteName, footerText }) {
-  useEffect(() => {
-    Aos.init({
-      easing: "ease-out-back",
-      duration: 1000,
-    });
+export default async function HeaderFooterSqlite({ children }) {
+  const siteData = await prisma.siteIdentity.findFirst();
 
-    // Menunda AOS refresh
-    setTimeout(() => {
-      Aos.refresh();
-    }, 5000);
-  }, []);
+  if (!siteData) return <Loading />;
 
-  if (!siteName) return <Loading />;
-
+  const currentYear = new Date().getFullYear();
   return (
-    <>
-      <div className="relative min-h-screen flex flex-col">
-        <Navigation2 siteName={siteName} bg={landingPageStyle.bg1} />
-        {children}
-        <Footer footerText={footerText} siteName={siteName} bg="bg-slate-900 text-slate-600" />
-        <div className="fixed bottom-4 right-4">
-          <Modal
-            modalId="shareBtn"
-            header="Bagikan halaman ini."
-            btnTxt={<TbLocationShare />}
-            icon={<TbLocationShare />}
-            btnStyle="rounded-full border border-base-content h-10 w-10 p-0 shadow-lg bg-base-50 hover:bg-amber-300 text-base-content hover:text-slate-900 text-xl "
-          >
-            <ShareLink />
-          </Modal>
-        </div>
-        <CanvasCursor />
-      </div>
-    </>
+    <div className="relative min-h-screen flex flex-col">
+      <Navigation2 siteName={siteData.siteName} bg={landingPageStyle.bg1} logo={siteData.logoUrl} />
+      {children}
+      <Footer footerText={currentYear} siteName={siteData.siteName} bg="bg-slate-900 text-slate-600" />
+      <HeaderFooterClient />
+    </div>
   );
 }

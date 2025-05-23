@@ -1,6 +1,7 @@
 import HeaderFooterSqlite from "./component/global/headerFooterSqlite";
-import LayoutLandingPage from "./component/landingPage/layoutLandingPage";
-import prisma from "./database/prisma";
+import LayoutLandingPage from "./component/home/layoutLandingPage";
+import FacebookPixelClient from "./component/marketingTools/FacebookPixelClient";
+import { prisma } from "./lib/prisma";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -93,12 +94,12 @@ export async function generateMetadata() {
 }
 
 export default async function HomePage() {
-  const currentYear = new Date().getFullYear();
-
   try {
     const siteData = await prisma.siteIdentity.findFirst();
+    const pixelId = 323140113784755;
     return (
-      <HeaderFooterSqlite siteName={siteData.siteName} footerText={currentYear}>
+      <HeaderFooterSqlite>
+        <FacebookPixelClient pixelId={pixelId} />
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
           <LayoutLandingPage waNo={siteData.phone} />
         </main>

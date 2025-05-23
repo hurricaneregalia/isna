@@ -1,27 +1,29 @@
+// src/app/component/landingPage/services.js
 import React from "react";
 import BtnLinkPrimary from "../global/btnLinkPrimary";
 import { FaArrowRight, FaCheck, FaStar, FaXmark } from "react-icons/fa6";
 import { PiSealCheckFill } from "react-icons/pi";
 import { IoMdTime } from "react-icons/io";
 
-export default function Services({ listItem, subListItem }) {
+export default function Services({ listItem, subListItem, onlyCategory }) {
+  const filteredItems = listItem?.filter((item) => (onlyCategory ? item.categorySlug === onlyCategory : true));
   return (
-    <div className="text-base-content">
+    <div className="text-base-content pb-20">
       <div className="w-full">
         <div className="container mx-auto">
           <div className="grid gap-4 md:grid-cols-3">
-            {listItem && listItem.length > 0 ? (
-              listItem.map((item, index) => {
+            {filteredItems && filteredItems.length > 0 ? (
+              filteredItems.map((item) => {
                 const list = subListItem.filter((service) => service.servicesListItemId === item.id);
                 return (
                   <div
-                    key={index}
+                    key={item.id}
                     className={`bg-base-100 rounded-none rounded-bl-3xl ${
                       item.isBest ? "border border-amber-300 shadow-xl shadow-amber-300/50" : ""
                     }`}
                     data-aos="fade-up"
                   >
-                    <div className="card-body p-0 flex  h-full">
+                    <div className="card-body p-0 flex h-full">
                       <div className="bg-gray-900 text-gray-300 rounded-bl-3xl p-8 overflow-hidden">
                         <div className="text-2xl mb-5 flex gap-1 text-amber-300">
                           {Array.from({ length: item.quality }, (_, index) => (
@@ -35,7 +37,7 @@ export default function Services({ listItem, subListItem }) {
                         </p>
                         <div className="card-actions w-full mx-auto mt-5">
                           <BtnLinkPrimary
-                            btnUrl={`/services/package/${item.slug}`} // Menggunakan item.id untuk URL dinamis
+                            btnUrl={`/services/package/${item.slug}`}
                             btnTxt="Pilih"
                             btnFull={true}
                             iconRight={<FaArrowRight />}
@@ -54,15 +56,17 @@ export default function Services({ listItem, subListItem }) {
                           <ul className="space-y-2">
                             {list.map((service) => (
                               <li key={service.id} className="flex items-center gap-1">
-                                {service.isActive === true ? <FaCheck className="text-green-500" /> : <FaXmark className="text-red-500" />}
-                                <span className={service.isActive === true ? "" : "opacity-50 line-through"}>{service.title}</span>
+                                {service.isActive ? <FaCheck className="text-green-500" /> : <FaXmark className="text-red-500" />}
+                                <span className={service.isActive ? "" : "opacity-50 line-through"}>{service.title}</span>
                               </li>
                             ))}
                           </ul>
                         ) : (
                           <p>No feature services available</p>
                         )}
+
                         <hr className="my-8 border-b-base-content border-dashed" />
+
                         <div className="mb-5 opacity-50 flex items-center gap-1">
                           <IoMdTime />
                           <p>
@@ -76,7 +80,7 @@ export default function Services({ listItem, subListItem }) {
                 );
               })
             ) : (
-              <p>No items available</p>
+              <p className="col-span-full text-center text-gray-500">Tidak ada layanan dalam kategori ini.</p>
             )}
           </div>
         </div>

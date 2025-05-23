@@ -1,3 +1,4 @@
+// src/app/component/landingPage/hero.js
 import React from "react";
 import BtnLinkPrimary from "../global/btnLinkPrimary";
 import { FaArrowRight } from "react-icons/fa6";

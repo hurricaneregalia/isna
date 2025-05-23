@@ -79,7 +79,7 @@ model Page {
   name          String
   title         String
   description   String?
-  keywords      Json? // <-- diubah dari String[]
+  keywords      Json?
   ogTitle       String?
   ogDescription String?
   ogImage       String?
@@ -413,6 +413,42 @@ enum OrderStatus {
   CANCELLED
 }
 
+model LandingPage {
+  id              String          @id @default(uuid())
+  name            String
+  slug            String          @unique
+  description     String
+  image           String
+  lpFor           LpFor[]         @relation("LandingPageLpFor")
+  lpContentTypes  LpContentType[] @relation("LandingPageLpContentType")
+  lpDesignStyle   LpDesignStyle?  @relation(fields: [lpDesignStyleId], references: [id])
+  lpDesignStyleId String?
+  marketingTools  String?
+  isActive        Boolean         @default(true)
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+}
+
+model LpFor {
+  id           String        @id @default(uuid())
+  description  String?
+  landingPages LandingPage[] @relation("LandingPageLpFor")
+}
+
+model LpContentType {
+  id           String        @id @default(uuid())
+  type         String // e.g., "text", "image", "video", "form"
+  landingPages LandingPage[] @relation("LandingPageLpContentType")
+}
+
+model LpDesignStyle {
+  id          String        @id @default(uuid())
+  name        String        @unique
+  description String
+  templates   LandingPage[]
+}
+
 //npx prisma migrate dev   
 //npx prisma generate
 //npx prisma studio
+//node prisma/seed.js

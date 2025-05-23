@@ -1,26 +1,25 @@
+// src/app/component/global/navigation2.js
 import React from "react";
 import ThemeSwitch from "./themeSwitch";
 import Link from "next/link";
-import logo2 from "../../../../public/images/siteIdentity/logo2.svg";
-import userPhoto from "../../../../public/images/user/default/userphoto.jpg";
 import Image from "next/image";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { FaXmark } from "react-icons/fa6";
 import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from "@headlessui/react";
-import Profile from "./profile";
-import Notif from "./notif";
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-export default function Navigation2({ siteName, bg }) {
+export default function Navigation2({ siteName, bg, logo }) {
   const navMenu = [
     { name: "Home", href: "/", key: "home" },
     { name: "Fakta", href: "/#fakta", key: "fakta" },
     { name: "Solusi", href: "/#solusi", key: "solusi" },
     { name: "Layanan", href: "/#layanan", key: "layanan" },
+    { name: "Product", href: BASE_URL + "/product", key: "product" },
     { name: "Bonus", href: "/#bonus", key: "bonus" },
     { name: "Logo review", href: "/logometer", key: "logometer" },
     { name: "My Api", href: "/myapi", key: "myapi" },
     { name: "NotFound", href: "/huntuband", key: "huntuband" },
-    { name: "Template", href: "/template", key: "template" },
+    { name: "Landing Page", href: "/landingpage", key: "landingpage" },
   ];
 
   return (
@@ -31,7 +30,7 @@ export default function Navigation2({ siteName, bg }) {
             <div className="flex items-center sm:block px-4 sm:px-0">
               <div className="flex shrink-0 items-center">
                 <Link href="/" className="flex items-center gap-1">
-                  <Image src={logo2} alt="logo" width={20} height={20} className="w-5 h-5" />
+                  <Image src={logo} alt="logo" width={20} height={20} className="w-5 h-5" />
                   <span className="font-bold capitalize hover:text-amber-300">{siteName}</span>
                 </Link>
               </div>

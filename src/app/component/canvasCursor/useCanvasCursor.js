@@ -1,3 +1,5 @@
+// src/app/component/canvasCursor/useCanvasCursor.js
+"use client";
 import { useEffect } from "react";
 const useCanvasCursor = () => {
   function n(e) {
@@ -39,7 +41,12 @@ const useCanvasCursor = () => {
       t.vy += (pos.y - t.y) * e;
       for (var n, i = 0, a = this.nodes.length; i < a; i++)
         (t = this.nodes[i]),
-          0 < i && ((n = this.nodes[i - 1]), (t.vx += (n.x - t.x) * e), (t.vy += (n.y - t.y) * e), (t.vx += n.vx * E.dampening), (t.vy += n.vy * E.dampening)),
+          0 < i &&
+            ((n = this.nodes[i - 1]),
+            (t.vx += (n.x - t.x) * e),
+            (t.vy += (n.y - t.y) * e),
+            (t.vx += n.vx * E.dampening),
+            (t.vy += n.vy * E.dampening)),
           (t.vx *= this.friction),
           (t.vy *= this.friction),
           (t.x += t.vx),
