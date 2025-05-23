@@ -1,6 +1,6 @@
 // src/app/product/[slug]/page.js
 import HeaderFooterSqlite from "@/app/component/global/headerFooterSqlite";
-import LandingPageDetail from "@/app/component/landingpage/LandingPageDetail";
+import LandingPageDetail from "@/app/component/landingPage/LandingPageDetail";
 import { prisma } from "@/app/lib/prisma";
 import { notFound } from "next/navigation";
 
