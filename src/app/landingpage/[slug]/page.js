@@ -5,13 +5,12 @@ import { prisma } from "@/app/lib/prisma";
 import { notFound } from "next/navigation";
 
 export default async function ProductPage({ params }) {
-  const { slug } = await params;
+  const { slug } = params;
 
-  const landingPage = await prisma.landingPage.findUnique({
-    where: { slug },
+  const landingPage = await prisma.landingPage.findFirst({
     where: {
-      slug: slug, // Pastikan slug yang dicari adalah milik landing page yang sesuai
-      isActive: true, // Pastikan landing page yang ditemukan aktif
+      slug,
+      isActive: true,
     },
     include: {
       lpFor: true,
@@ -20,7 +19,7 @@ export default async function ProductPage({ params }) {
     },
   });
 
-  if (!landingPage) return notFound(); // Menangani kasus jika tidak ada landing page aktif ditemukan
+  if (!landingPage) return notFound();
 
   return (
     <HeaderFooterSqlite>
