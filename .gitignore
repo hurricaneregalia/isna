@@ -38,4 +38,4 @@ yarn-error.log*
 next-env.d.ts
 
 # Ignore specific file
-/src/app/lib/prisma/libquery_engine-darwin-arm64.dylib.node
+/src/app/lib/prisma/
