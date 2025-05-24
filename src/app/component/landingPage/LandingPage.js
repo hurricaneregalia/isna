@@ -62,7 +62,7 @@ export default async function LandingPage() {
               </div>
               <div>
                 <Link href={"/landingpage/" + page.slug} className="btn btn-md rounded-full btn-primary w-full">
-                  Detail
+                  Detail {"/landingpage/" + page.slug}
                 </Link>
               </div>
             </div>
