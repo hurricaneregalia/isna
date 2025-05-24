@@ -1,6 +1,6 @@
 import HeaderFooterSqlite from "./component/global/headerFooterSqlite";
-import LayoutLandingPage from "./component/home/layoutLandingPage";
 import myPrisma from "./lib/myPrisma";
+
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export async function generateMetadata() {
@@ -106,9 +106,7 @@ export default async function HomePage() {
     const pixelId = 123;
     return (
       <HeaderFooterSqlite>
-        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-          <LayoutLandingPage waNo={siteData.phone} />
-        </main>
+        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">testing</main>
       </HeaderFooterSqlite>
     );
   } catch (error) {
