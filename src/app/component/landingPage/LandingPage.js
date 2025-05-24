@@ -1,10 +1,10 @@
 // src/app/component/landingpage/LandingPage.js
-import { prisma } from "@/app/lib/prisma";
+import { myPrisma } from "@/app/lib/myPrisma";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function LandingPage() {
-  const landingPages = await prisma.landingPage.findMany({
+  const landingPages = await myPrisma.landingPage.findMany({
     where: {
       isActive: true, // Filter untuk hanya mengambil landing page yang aktif
     },

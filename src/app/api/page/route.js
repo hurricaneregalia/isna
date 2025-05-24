@@ -1,11 +1,11 @@
 // src/app/api/page/route.js
 
-import { prisma } from "@/app/lib/prisma";
+import { myPrisma } from "@/app/lib/myPrisma";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const pages = await prisma.page.findMany({
+    const pages = await myPrisma.page.findMany({
       include: {
         sections: {
           orderBy: { order: "asc" },

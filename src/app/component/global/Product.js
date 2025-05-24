@@ -1,5 +1,5 @@
 // src/app/component/global/Product.js
-import { prisma } from "@/app/lib/prisma";
+import { myPrisma } from "@/app/lib/myPrisma";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -10,7 +10,7 @@ export default async function Product({ categorySlug, limit }) {
 
   if (categorySlug) {
     // Query produk berdasarkan kategori slug
-    products = await prisma.product.findMany({
+    products = await myPrisma.product.findMany({
       where: {
         category: {
           slug: categorySlug,
@@ -29,7 +29,7 @@ export default async function Product({ categorySlug, limit }) {
     });
   } else {
     // Query semua produk aktif
-    products = await prisma.product.findMany({
+    products = await myPrisma.product.findMany({
       where: {
         status: "ACTIVE",
       },

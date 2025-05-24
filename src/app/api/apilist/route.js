@@ -1,8 +1,8 @@
-import { prisma } from "@/app/lib/prisma";
+import { myPrisma } from "@/app/lib/myPrisma";
 
 export async function GET(request) {
   try {
-    const apilists = await prisma.apiList.findMany();
+    const apilists = await myPrisma.apiList.findMany();
 
     const responseData = {
       apilists,

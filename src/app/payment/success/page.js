@@ -6,7 +6,7 @@ import CanvasCursor from "@/app/component/canvasCursor/CanvasCursor";
 import CopyableText from "@/app/component/global/copyableText";
 import Loading from "./loading";
 import LinkAuto from "@/app/component/global/linkAuto";
-import { prisma } from "@/app/lib/prisma";
+import { myPrisma } from "@/app/lib/myPrisma";
 
 export async function generateMetadata(props) {
   const searchParams = await props.searchParams;
@@ -19,7 +19,7 @@ export async function generateMetadata(props) {
   let siteData;
   try {
     // Query site data from the database using Prisma
-    siteData = await prisma.siteIdentity.findFirst();
+    siteData = await myPrisma.siteIdentity.findFirst();
   } catch (e) {
     console.error("❌ Failed to fetch site identity (metadata):", e.message);
   }
@@ -71,7 +71,7 @@ export default async function PaymentSuccessPage(props) {
   let siteData;
   try {
     // Query site data from the database using Prisma
-    siteData = await prisma.siteIdentity.findFirst();
+    siteData = await myPrisma.siteIdentity.findFirst();
   } catch (e) {
     console.error("❌ Failed to fetch site identity (page):", e.message);
   }

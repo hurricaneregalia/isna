@@ -1,9 +1,9 @@
-import { prisma } from "@/app/lib/prisma";
+import { myPrisma } from "@/app/lib/myPrisma";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const users = await prisma.user.findMany({
+    const users = await myPrisma.user.findMany({
       include: {
         orders: {
           include: {

@@ -2,13 +2,13 @@
 import React from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { prisma } from "@/app/lib/prisma";
 import HeaderFooterSqlite from "@/app/component/global/headerFooterSqlite";
+import { myPrisma } from "@/app/lib/myPrisma";
 
 export default async function ProductDetailPage({ params }) {
   const { slug } = await params;
 
-  const product = await prisma.product.findUnique({
+  const product = await myPrisma.product.findUnique({
     where: { slug },
     include: {
       category: true,

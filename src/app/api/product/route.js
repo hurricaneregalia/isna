@@ -1,10 +1,10 @@
 // src/app/api/product/route.js
-import { prisma } from "@/app/lib/prisma";
+import { myPrisma } from "@/app/lib/myPrisma";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const products = await prisma.product.findMany({
+    const products = await myPrisma.product.findMany({
       include: {
         category: true,
         tags: true,

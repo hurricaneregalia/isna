@@ -1,17 +1,20 @@
 import HeaderFooterSqlite from "./component/global/headerFooterSqlite";
 import LayoutLandingPage from "./component/home/layoutLandingPage";
 import FacebookPixelClient from "./component/marketingTools/FacebookPixelClient";
-import { prisma } from "./lib/prisma";
-
+import { myPrisma } from "./lib/myPrisma";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export async function generateMetadata() {
   try {
-    const data = await prisma.siteIdentity.findFirst({
+    const data = await myPrisma.siteIdentity.findFirst({
       include: {
         socialLinks: true,
       },
     });
+
+    if (!data) {
+      throw new Error("Site identity not found");
+    }
 
     return {
       title: data.siteName,
@@ -95,8 +98,13 @@ export async function generateMetadata() {
 
 export default async function HomePage() {
   try {
-    const siteData = await prisma.siteIdentity.findFirst();
-    const pixelId = 323140113784755;
+    const siteData = await myPrisma.siteIdentity.findFirst();
+
+    if (!siteData) {
+      throw new Error("Site identity not found");
+    }
+
+    const pixelId = 123;
     return (
       <HeaderFooterSqlite>
         <FacebookPixelClient pixelId={pixelId} />

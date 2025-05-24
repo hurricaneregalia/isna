@@ -1,9 +1,9 @@
-import { prisma } from "@/app/lib/prisma";
+import { myPrisma } from "@/app/lib/myPrisma";
 import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const identity = await prisma.siteIdentity.findFirst({
+    const identity = await myPrisma.siteIdentity.findFirst({
       include: {
         socialLinks: true,
       },

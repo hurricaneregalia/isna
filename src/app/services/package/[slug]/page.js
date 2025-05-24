@@ -4,7 +4,7 @@ import React from "react";
 import HeroPackage from "./heroPackage";
 import HeaderPackage from "./headerPackage";
 import FormPackage from "./formPackage";
-import { prisma } from "@/app/lib/prisma";
+import { myPrisma } from "@/app/lib/myPrisma";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
 
   try {
-    const product = await prisma.product.findUnique({
+    const product = await myPrisma.product.findUnique({
       where: { slug },
     });
 
@@ -66,7 +66,7 @@ export default async function ProductDetailPage({ params }) {
   const currentYear = new Date().getFullYear();
 
   try {
-    const product = await prisma.product.findUnique({
+    const product = await myPrisma.product.findUnique({
       where: { slug },
       include: {
         category: true,
@@ -78,9 +78,9 @@ export default async function ProductDetailPage({ params }) {
       return <div>Produk dengan slug "{slug}" tidak ditemukan.</div>;
     }
 
-    const site = await prisma.siteIdentity.findFirst();
+    const site = await myPrisma.siteIdentity.findFirst();
 
-    const registerForm = await prisma.registerForm.findMany({
+    const registerForm = await myPrisma.registerForm.findMany({
       where: { isActive: true },
       orderBy: { position: "asc" },
     });

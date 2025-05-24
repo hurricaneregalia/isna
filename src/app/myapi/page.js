@@ -2,13 +2,13 @@
 import React from "react";
 import CanvasCursor from "../component/canvasCursor/CanvasCursor";
 import Link from "next/link";
-import { prisma } from "../lib/prisma";
+import { myPrisma } from "../lib/myPrisma";
 
 export default async function MyApi() {
   // Query data directly using Prisma
   let items = [];
   try {
-    items = await prisma.apiList.findMany(); // Query API list from database
+    items = await myPrisma.apiList.findMany(); // Query API list from database
   } catch (e) {
     console.error("❌ Error fetching data from database:", e.message);
   }

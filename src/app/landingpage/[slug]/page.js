@@ -1,13 +1,13 @@
 // src/app/product/[slug]/page.js
 import HeaderFooterSqlite from "@/app/component/global/headerFooterSqlite";
 import LandingPageDetail from "@/app/component/landingPage/LandingPageDetail";
-import { prisma } from "@/app/lib/prisma";
+import { myPrisma } from "@/app/lib/myPrisma";
 import { notFound } from "next/navigation";
 
 export default async function ProductPage({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
 
-  const landingPage = await prisma.landingPage.findFirst({
+  const landingPage = await myPrisma.landingPage.findFirst({
     where: {
       slug,
       isActive: true,
