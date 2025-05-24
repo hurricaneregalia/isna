@@ -6,7 +6,7 @@ import CanvasCursor from "@/app/component/canvasCursor/CanvasCursor";
 import CopyableText from "@/app/component/global/copyableText";
 import Loading from "./loading";
 import LinkAuto from "@/app/component/global/linkAuto";
-import { myPrisma } from "@/app/lib/myPrisma";
+import myPrisma from "@/app/lib/myPrisma";
 
 export async function generateMetadata(props) {
   const searchParams = await props.searchParams;

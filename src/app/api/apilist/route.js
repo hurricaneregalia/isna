@@ -1,4 +1,4 @@
-import { myPrisma } from "@/app/lib/myPrisma";
+import myPrisma from "@/app/lib/myPrisma";
 
 export async function GET(request) {
   try {

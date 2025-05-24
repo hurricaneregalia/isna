@@ -1,6 +1,6 @@
 // src/app/api/product/route.js
 
-import { myPrisma } from "@/app/lib/myPrisma";
+import myPrisma from "@/app/lib/myPrisma";
 import { NextResponse } from "next/server";
 
 export async function GET() {

@@ -1,5 +1,5 @@
 // src/app/component/landingpage/LandingPage.js
-import { myPrisma } from "@/app/lib/myPrisma";
+import myPrisma from "@/app/lib/myPrisma";
 import Image from "next/image";
 import Link from "next/link";
 

@@ -4,7 +4,7 @@ import Navigation2 from "./navigation2";
 import landingPageStyle from "../home/landingPage.module.css";
 import Loading from "@/app/loading";
 import HeaderFooterClient from "./HeaderFooterClient";
-import { myPrisma } from "@/app/lib/myPrisma";
+import myPrisma from "@/app/lib/myPrisma";
 
 export default async function HeaderFooterSqlite({ children }) {
   const siteData = await myPrisma.siteIdentity.findFirst();

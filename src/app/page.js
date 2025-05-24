@@ -1,6 +1,6 @@
 import HeaderFooterSqlite from "./component/global/headerFooterSqlite";
 import LayoutLandingPage from "./component/home/layoutLandingPage";
-import { myPrisma } from "./lib/myPrisma";
+import myPrisma from "./lib/myPrisma";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export async function generateMetadata() {

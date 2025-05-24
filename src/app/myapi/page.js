@@ -2,7 +2,7 @@
 import React from "react";
 import CanvasCursor from "../component/canvasCursor/CanvasCursor";
 import Link from "next/link";
-import { myPrisma } from "../lib/myPrisma";
+import myPrisma from "../lib/myPrisma";
 
 export default async function MyApi() {
   // Query data directly using Prisma

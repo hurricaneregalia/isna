@@ -1,5 +1,5 @@
 // src/app/api/landingpage/route.js
-import { myPrisma } from "@/app/lib/myPrisma";
+import myPrisma from "@/app/lib/myPrisma";
 import { NextResponse } from "next/server";
 
 // Handler untuk GET request
