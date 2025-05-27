@@ -6,7 +6,21 @@ import CanvasCursor from "@/app/component/canvasCursor/CanvasCursor";
 import CopyableText from "@/app/component/global/copyableText";
 import Loading from "./loading";
 import LinkAuto from "@/app/component/global/linkAuto";
-import myPrisma from "@/app/lib/prisma";
+import fs from "fs/promises";
+import path from "path";
+
+// Fungsi untuk membaca site identity dari file JSON
+async function getSiteData() {
+  try {
+    const filePath = path.join(process.cwd(), "src/app/api/datajs/siteidentity/data.json");
+    const file = await fs.readFile(filePath, "utf-8");
+    const data = JSON.parse(file);
+    return data?.[0] || null;
+  } catch (e) {
+    console.error("❌ Gagal membaca site identity dari file:", e.message);
+    return null;
+  }
+}
 
 export async function generateMetadata(props) {
   const searchParams = await props.searchParams;
@@ -16,14 +30,7 @@ export async function generateMetadata(props) {
   const ogImageUrl = `${BASE_URL}/images/payment/ogImage-invoice-success.webp`;
   const url = `${BASE_URL}/payment/success?order_id=${order_id}`;
 
-  let siteData;
-  try {
-    // Query site data from the database using Prisma
-    siteData = await myPrisma.siteIdentity.findFirst();
-  } catch (e) {
-    console.error("❌ Failed to fetch site identity (metadata):", e.message);
-  }
-
+  const siteData = await getSiteData();
   if (!siteData) return {};
 
   const title = `${siteData.siteName} | INVOICE  ${service ? service : ""}`;
@@ -37,7 +44,7 @@ export async function generateMetadata(props) {
     openGraph: {
       title,
       description: "Terima kasih, proses pembayaran layanan Anda telah selesai.",
-      url: url,
+      url,
       siteName: siteData.siteName,
       images: [ogImageUrl],
       type: "website",
@@ -67,14 +74,7 @@ export default async function PaymentSuccessPage(props) {
   const { order_id, transaction_id, payment_type, bank, va_number, service, desc, waNumber, longTime, price, date, orderby, sapaan } = searchParams;
 
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
-  let siteData;
-  try {
-    // Query site data from the database using Prisma
-    siteData = await myPrisma.siteIdentity.findFirst();
-  } catch (e) {
-    console.error("❌ Failed to fetch site identity (page):", e.message);
-  }
+  const siteData = await getSiteData();
 
   if (!siteData) {
     return <Loading />;
