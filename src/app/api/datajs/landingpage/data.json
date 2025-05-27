@@ -1,0 +1,388 @@
+[
+  {
+    "id": "c89a5aee-99c1-433b-8045-e0be13bfe3b4",
+    "name": "nurbaz",
+    "slug": "nurbaz",
+    "description": "lorem",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "lpDesignStyleId": "3c1e712c-d927-40e9-a387-19445db1f9f6",
+    "marketingTools": null,
+    "isActive": false,
+    "createdAt": "2025-05-20T11:53:41.201Z",
+    "updatedAt": "2025-05-21T10:35:21.006Z",
+    "lpFor": [
+      {
+        "id": "bf678104-5603-4612-9e57-b6f580f62e65",
+        "description": "menjual jasa profesional."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
+        "type": "text"
+      },
+      {
+        "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
+        "type": "image"
+      },
+      {
+        "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
+        "type": "slider"
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "3c1e712c-d927-40e9-a387-19445db1f9f6",
+      "name": "Creative",
+      "description": "Warna berani, layout tidak biasa, cocok untuk seniman, kreator, agensi kreatif."
+    }
+  },
+  {
+    "id": "b9d20756-aa9b-4fb2-a4aa-da4ccab73171",
+    "name": "halvora",
+    "slug": "halvora",
+    "description": "oremo",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "lpDesignStyleId": "83a977c3-b839-4a31-8b8d-1ec1021ce1ca",
+    "marketingTools": null,
+    "isActive": true,
+    "createdAt": "2025-05-20T11:54:43.503Z",
+    "updatedAt": "2025-05-21T00:46:22.030Z",
+    "lpFor": [
+      {
+        "id": "8ebc59b4-e8ba-4922-a539-53f50be8670a",
+        "description": "pendaftaran acara."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
+        "type": "text"
+      },
+      {
+        "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
+        "type": "image"
+      },
+      {
+        "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
+        "type": "youtube video"
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "83a977c3-b839-4a31-8b8d-1ec1021ce1ca",
+      "name": "Professional",
+      "description": "Tampilan formal dan tegas, cocok untuk B2B, legal, konsultan."
+    }
+  },
+  {
+    "id": "125284a3-eb7d-4a67-927d-ecd0171fb0f7",
+    "name": "baizan",
+    "slug": "baizan",
+    "description": "lorm",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "lpDesignStyleId": "d092b505-85e3-4e5b-af93-7482947d0745",
+    "marketingTools": null,
+    "isActive": false,
+    "createdAt": "2025-05-21T00:13:36.319Z",
+    "updatedAt": "2025-05-21T10:35:21.006Z",
+    "lpFor": [
+      {
+        "id": "19bc1619-0e65-493e-a8b0-677e2aa08ffb",
+        "description": "reservasi."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "1c39504e-f456-4a1c-9ec7-823df7ec78ff",
+        "type": "form"
+      },
+      {
+        "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
+        "type": "text"
+      },
+      {
+        "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
+        "type": "image"
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "d092b505-85e3-4e5b-af93-7482947d0745",
+      "name": "Elegant",
+      "description": "Desain mewah, serif font, cocok untuk wedding, produk eksklusif, fashion."
+    }
+  },
+  {
+    "id": "48ba6b69-ba90-4826-b880-bd47f6fda1d6",
+    "name": "rihala",
+    "slug": "rihala",
+    "description": "olore",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "lpDesignStyleId": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
+    "marketingTools": null,
+    "isActive": true,
+    "createdAt": "2025-05-21T00:13:36.319Z",
+    "updatedAt": "2025-05-21T00:46:22.030Z",
+    "lpFor": [
+      {
+        "id": "443c4e89-3266-4e10-a525-cce367a968b8",
+        "description": "pendaftaran kursus."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
+        "type": "text"
+      },
+      {
+        "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
+        "type": "youtube video"
+      },
+      {
+        "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
+        "type": "slider"
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
+      "name": "Playful",
+      "description": "Banyak warna cerah, ikon lucu, cocok untuk anak-anak, game, hiburan."
+    }
+  },
+  {
+    "id": "24248d7e-71ff-4a95-89c1-fb09bab90917",
+    "name": "zaffra",
+    "slug": "zaffra",
+    "description": "ipsumd",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "lpDesignStyleId": "816d0a80-83f9-427b-8996-d1948a544a77",
+    "marketingTools": null,
+    "isActive": false,
+    "createdAt": "2025-05-21T00:13:36.319Z",
+    "updatedAt": "2025-05-21T10:35:21.006Z",
+    "lpFor": [
+      {
+        "id": "6181a3bb-66b9-49d3-85c0-c24010420fcc",
+        "description": "affiliate."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
+        "type": "text"
+      },
+      {
+        "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
+        "type": "image"
+      },
+      {
+        "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
+        "type": "youtube video"
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "816d0a80-83f9-427b-8996-d1948a544a77",
+      "name": "Bold",
+      "description": "Teks besar, warna kontras, CTA mencolok, cocok untuk promosi agresif."
+    }
+  },
+  {
+    "id": "cadacc02-6ec7-4803-8f02-50ee6e07e121",
+    "name": "mirka",
+    "slug": "mirka",
+    "description": "lirema",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "lpDesignStyleId": "d092b505-85e3-4e5b-af93-7482947d0745",
+    "marketingTools": null,
+    "isActive": true,
+    "createdAt": "2025-05-21T00:13:36.319Z",
+    "updatedAt": "2025-05-21T00:46:22.030Z",
+    "lpFor": [
+      {
+        "id": "bf678104-5603-4612-9e57-b6f580f62e65",
+        "description": "menjual jasa profesional."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
+        "type": "text"
+      },
+      {
+        "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
+        "type": "image"
+      },
+      {
+        "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
+        "type": "slider"
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "d092b505-85e3-4e5b-af93-7482947d0745",
+      "name": "Elegant",
+      "description": "Desain mewah, serif font, cocok untuk wedding, produk eksklusif, fashion."
+    }
+  },
+  {
+    "id": "ae017f96-cf22-4b0a-b263-3f39c18a1b25",
+    "name": "safna",
+    "slug": "safna",
+    "description": "gargantusa",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "lpDesignStyleId": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
+    "marketingTools": null,
+    "isActive": false,
+    "createdAt": "2025-05-21T00:13:36.319Z",
+    "updatedAt": "2025-05-21T10:35:21.006Z",
+    "lpFor": [
+      {
+        "id": "775ca147-bed8-4535-a2f8-924437ec3919",
+        "description": "download aplikasi."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "1c39504e-f456-4a1c-9ec7-823df7ec78ff",
+        "type": "form"
+      },
+      {
+        "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
+        "type": "text"
+      },
+      {
+        "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
+        "type": "image"
+      },
+      {
+        "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
+        "type": "youtube video"
+      },
+      {
+        "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
+        "type": "slider"
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
+      "name": "Playful",
+      "description": "Banyak warna cerah, ikon lucu, cocok untuk anak-anak, game, hiburan."
+    }
+  },
+  {
+    "id": "7ab43589-6863-4314-b628-70a31aa79a4f",
+    "name": "zemira",
+    "slug": "zemira",
+    "description": "sitamet",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "lpDesignStyleId": "3c1e712c-d927-40e9-a387-19445db1f9f6",
+    "marketingTools": null,
+    "isActive": false,
+    "createdAt": "2025-05-21T00:13:36.319Z",
+    "updatedAt": "2025-05-21T10:35:21.006Z",
+    "lpFor": [
+      {
+        "id": "6c37855a-8169-4309-ab73-da56fccb0b83",
+        "description": "mengumpulkan prospek."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
+        "type": "text"
+      },
+      {
+        "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
+        "type": "image"
+      },
+      {
+        "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
+        "type": "slider"
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "3c1e712c-d927-40e9-a387-19445db1f9f6",
+      "name": "Creative",
+      "description": "Warna berani, layout tidak biasa, cocok untuk seniman, kreator, agensi kreatif."
+    }
+  },
+  {
+    "id": "c7f76905-2f18-4f5b-8443-fc1b0958d80c",
+    "name": "hyzaa",
+    "slug": "hyzaa",
+    "description": "amef",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "lpDesignStyleId": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
+    "marketingTools": null,
+    "isActive": false,
+    "createdAt": "2025-05-21T00:13:36.319Z",
+    "updatedAt": "2025-05-21T10:35:21.006Z",
+    "lpFor": [
+      {
+        "id": "b793484f-c8d2-4f9f-b40a-10f0410801b0",
+        "description": "toko online."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
+        "type": "text"
+      },
+      {
+        "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
+        "type": "image"
+      },
+      {
+        "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
+        "type": "youtube video"
+      },
+      {
+        "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
+        "type": "slider"
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
+      "name": "Playful",
+      "description": "Banyak warna cerah, ikon lucu, cocok untuk anak-anak, game, hiburan."
+    }
+  },
+  {
+    "id": "c7d37435-824f-4de7-94bb-f4c919d0ef6a",
+    "name": "kanzar",
+    "slug": "kanzar",
+    "description": "editpsing",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "lpDesignStyleId": "dc6d1827-0b89-4c82-8d9d-21f551850ed9",
+    "marketingTools": null,
+    "isActive": false,
+    "createdAt": "2025-05-21T00:13:36.319Z",
+    "updatedAt": "2025-05-21T10:35:21.006Z",
+    "lpFor": [
+      {
+        "id": "b793484f-c8d2-4f9f-b40a-10f0410801b0",
+        "description": "toko online."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
+        "type": "text"
+      },
+      {
+        "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
+        "type": "image"
+      },
+      {
+        "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
+        "type": "youtube video"
+      },
+      {
+        "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
+        "type": "slider"
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "dc6d1827-0b89-4c82-8d9d-21f551850ed9",
+      "name": "Minimalist",
+      "description": "Warna netral, sedikit elemen visual, layout sederhana, cocok untuk personal branding."
+    }
+  }
+]

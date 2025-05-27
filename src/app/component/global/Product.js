@@ -1,5 +1,5 @@
 // src/app/component/global/Product.js
-import myPrisma from "@/app/lib/myPrisma";
+import myPrisma from "@/app/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";

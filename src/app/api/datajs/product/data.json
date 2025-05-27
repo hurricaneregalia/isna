@@ -1,0 +1,976 @@
+[
+  {
+    "id": "cm9s49e6f0003vldz95k9oiqc",
+    "sku": "QLNC",
+    "name": "Qolilan copy",
+    "slug": "qolilan-copy",
+    "description": "paket copywriting untuk landing page versi mini.",
+    "bestFor": "Untuk memulai bisnis online",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "price": 199000,
+    "proccessTime": 2,
+    "inStock": true,
+    "status": "ACTIVE",
+    "categoryId": "cm9s4567o0002vldz3c2mvv5h",
+    "keywords": [
+      "copywriting",
+      "landing page",
+      "iklan digital",
+      "bisnis online",
+      "cuan"
+    ],
+    "quality": 2,
+    "isBest": false,
+    "createdAt": "2025-04-22T06:21:00.807Z",
+    "updatedAt": "2025-05-02T07:48:14.382Z",
+    "category": {
+      "id": "cm9s4567o0002vldz3c2mvv5h",
+      "name": "landing page copywriting",
+      "slug": "landing-page-copywriting",
+      "createdAt": "2025-04-22T06:17:43.861Z",
+      "updatedAt": "2025-05-19T09:53:15.054Z"
+    },
+    "tags": [
+      {
+        "id": "cm9s50l0m0009vldzrdnr8rpv",
+        "name": "landing page",
+        "slug": "landing-page"
+      },
+      {
+        "id": "cm9s547g0000avldzuwxqvvq5",
+        "name": "copywriting",
+        "slug": "copywriting"
+      },
+      {
+        "id": "cm9s547g0000bvldz9zz2k8y5",
+        "name": "ads",
+        "slug": "ads"
+      },
+      {
+        "id": "cm9s54eou000cvldzsw7hmq8o",
+        "name": "iklan",
+        "slug": "iklan"
+      },
+      {
+        "id": "cm9s55k3s000dvldzdg47ndz5",
+        "name": "produk digital",
+        "slug": "produk-digital"
+      },
+      {
+        "id": "cm9s567pq000evldzneyqxuol",
+        "name": "jual kursus",
+        "slug": "jual-kursus"
+      },
+      {
+        "id": "cm9s573p0000fvldz0dan5ixl",
+        "name": "online shop",
+        "slug": "online-shop"
+      },
+      {
+        "id": "cm9s57nzz000gvldzw46ltxq9",
+        "name": "online shop mini",
+        "slug": "online-shop-mini"
+      },
+      {
+        "id": "cm9s58tpe000hvldzghnvl2wp",
+        "name": "osm",
+        "slug": "osm"
+      },
+      {
+        "id": "cm9s59v9q000ivldzf3e7pkj7",
+        "name": "facebook ads",
+        "slug": "facebook-ads"
+      }
+    ],
+    "gallery": [
+      {
+        "id": "cm9s7up1q000svlhrsnv8qf91",
+        "productId": "cm9s49e6f0003vldz95k9oiqc",
+        "imageUrl": "/images/uploads/products/qolilan-copy/gallery-1.jpg",
+        "order": 0,
+        "createdAt": "2025-04-22T08:01:33.518Z"
+      },
+      {
+        "id": "cm9tse15r0000vlhskns3gwnw",
+        "productId": "cm9s49e6f0003vldz95k9oiqc",
+        "imageUrl": "/images/uploads/products/qolilan-copy/gallery-2.jpg",
+        "order": 0,
+        "createdAt": "2025-04-23T10:24:14.176Z"
+      },
+      {
+        "id": "cm9tse15u0001vlhsqy3an8ut",
+        "productId": "cm9s49e6f0003vldz95k9oiqc",
+        "imageUrl": "/images/uploads/products/qolilan-copy/gallery-3.jpg",
+        "order": 0,
+        "createdAt": "2025-04-23T10:24:14.176Z"
+      },
+      {
+        "id": "cm9tse15u0002vlhsrptxdhrt",
+        "productId": "cm9s49e6f0003vldz95k9oiqc",
+        "imageUrl": "/images/uploads/products/qolilan-copy/gallery-4.jpg",
+        "order": 0,
+        "createdAt": "2025-04-23T10:24:14.176Z"
+      }
+    ],
+    "benefits": [
+      {
+        "id": "cm9s65l6o0001vlhrvm235zry",
+        "productId": "cm9s49e6f0003vldz95k9oiqc",
+        "benefitId": "10",
+        "isActive": true,
+        "order": 1,
+        "benefit": {
+          "id": "10",
+          "title": "1 set copywriting",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s6664a0002vlhrshrlxtza",
+        "productId": "cm9s49e6f0003vldz95k9oiqc",
+        "benefitId": "20",
+        "isActive": true,
+        "order": 2,
+        "benefit": {
+          "id": "20",
+          "title": "SEO/ SEM friendly",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s68ar90003vlhrzxqpergp",
+        "productId": "cm9s49e6f0003vldz95k9oiqc",
+        "benefitId": "25",
+        "isActive": true,
+        "order": 3,
+        "benefit": {
+          "id": "25",
+          "title": "Static landing page (LP)",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s68ar90004vlhrgtbsc58g",
+        "productId": "cm9s49e6f0003vldz95k9oiqc",
+        "benefitId": "40",
+        "isActive": false,
+        "order": 5,
+        "benefit": {
+          "id": "40",
+          "title": "Analisis produk",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s68ara0005vlhr3ac9gb05",
+        "productId": "cm9s49e6f0003vldz95k9oiqc",
+        "benefitId": "50",
+        "isActive": false,
+        "order": 6,
+        "benefit": {
+          "id": "50",
+          "title": "Analisis target pasar",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s68ara0006vlhrhw43d63l",
+        "productId": "cm9s49e6f0003vldz95k9oiqc",
+        "benefitId": "60",
+        "isActive": false,
+        "order": 7,
+        "benefit": {
+          "id": "60",
+          "title": "Consumer insight",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s68ara0007vlhrvym5va7v",
+        "productId": "cm9s49e6f0003vldz95k9oiqc",
+        "benefitId": "70",
+        "isActive": false,
+        "order": 8,
+        "benefit": {
+          "id": "70",
+          "title": "Branding tips",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cma647svr0000vlj2osk6pw2j",
+        "productId": "cm9s49e6f0003vldz95k9oiqc",
+        "benefitId": "30",
+        "isActive": true,
+        "order": 4,
+        "benefit": {
+          "id": "30",
+          "title": "LP di kelola admin",
+          "description": null,
+          "icon": null
+        }
+      }
+    ],
+    "benefitPoints": [
+      {
+        "id": "cm9s6qbyp000mvlhrcfi6it1i",
+        "productId": "cm9s49e6f0003vldz95k9oiqc",
+        "text": "menarik konsumen",
+        "order": 0,
+        "icon": null
+      }
+    ],
+    "promotions": [],
+    "vouchers": []
+  },
+  {
+    "id": "cm9s49e6f0004vldz95k9oiqd",
+    "sku": "MTZC",
+    "name": "Mumtazan copy",
+    "slug": "mumtazan-copy",
+    "description": "paket copywriting untuk landing page versi pertengahan.",
+    "bestFor": "Untuk mengembangkan bisnis online",
+    "image": "/images/uploads/products/mumtazan-copy/main.jpg",
+    "price": 275900,
+    "proccessTime": 3,
+    "inStock": true,
+    "status": "ACTIVE",
+    "categoryId": "cm9s4567o0002vldz3c2mvv5h",
+    "keywords": [
+      "copywriting",
+      "landing page",
+      "iklan digital",
+      "bisnis online",
+      "cuan"
+    ],
+    "quality": 3,
+    "isBest": false,
+    "createdAt": "2025-04-22T06:30:00.000Z",
+    "updatedAt": "2025-05-02T07:48:14.382Z",
+    "category": {
+      "id": "cm9s4567o0002vldz3c2mvv5h",
+      "name": "landing page copywriting",
+      "slug": "landing-page-copywriting",
+      "createdAt": "2025-04-22T06:17:43.861Z",
+      "updatedAt": "2025-05-19T09:53:15.054Z"
+    },
+    "tags": [
+      {
+        "id": "cm9s50l0m0009vldzrdnr8rpv",
+        "name": "landing page",
+        "slug": "landing-page"
+      },
+      {
+        "id": "cm9s547g0000avldzuwxqvvq5",
+        "name": "copywriting",
+        "slug": "copywriting"
+      },
+      {
+        "id": "cm9s547g0000bvldz9zz2k8y5",
+        "name": "ads",
+        "slug": "ads"
+      },
+      {
+        "id": "cm9s54eou000cvldzsw7hmq8o",
+        "name": "iklan",
+        "slug": "iklan"
+      },
+      {
+        "id": "cm9s55k3s000dvldzdg47ndz5",
+        "name": "produk digital",
+        "slug": "produk-digital"
+      },
+      {
+        "id": "cm9s567pq000evldzneyqxuol",
+        "name": "jual kursus",
+        "slug": "jual-kursus"
+      },
+      {
+        "id": "cm9s573p0000fvldz0dan5ixl",
+        "name": "online shop",
+        "slug": "online-shop"
+      },
+      {
+        "id": "cm9s57nzz000gvldzw46ltxq9",
+        "name": "online shop mini",
+        "slug": "online-shop-mini"
+      },
+      {
+        "id": "cm9s58tpe000hvldzghnvl2wp",
+        "name": "osm",
+        "slug": "osm"
+      },
+      {
+        "id": "cm9s59v9q000ivldzf3e7pkj7",
+        "name": "facebook ads",
+        "slug": "facebook-ads"
+      }
+    ],
+    "gallery": [
+      {
+        "id": "cm9s7w1q0000tvlhrzk5r1xup",
+        "productId": "cm9s49e6f0004vldz95k9oiqd",
+        "imageUrl": "/images/uploads/products/mumtazan-copy/gallery-1.jpg",
+        "order": 0,
+        "createdAt": "2025-04-22T08:02:36.600Z"
+      },
+      {
+        "id": "cm9tse15u0003vlhsiaahpa6n",
+        "productId": "cm9s49e6f0004vldz95k9oiqd",
+        "imageUrl": "/images/uploads/products/mumtazan-copy/gallery-2.jpg",
+        "order": 0,
+        "createdAt": "2025-04-23T10:24:14.176Z"
+      },
+      {
+        "id": "cm9tse15v0004vlhsbdt09pdt",
+        "productId": "cm9s49e6f0004vldz95k9oiqd",
+        "imageUrl": "/images/uploads/products/mumtazan-copy/gallery-3.jpg",
+        "order": 0,
+        "createdAt": "2025-04-23T10:24:14.176Z"
+      },
+      {
+        "id": "cm9tse15v0005vlhsk31c6n9t",
+        "productId": "cm9s49e6f0004vldz95k9oiqd",
+        "imageUrl": "/images/uploads/products/mumtazan-copy/gallery-4.jpg",
+        "order": 0,
+        "createdAt": "2025-04-23T10:24:14.176Z"
+      }
+    ],
+    "benefits": [
+      {
+        "id": "cm9s6ep3u0008vlhrvnq4vhnc",
+        "productId": "cm9s49e6f0004vldz95k9oiqd",
+        "benefitId": "10",
+        "isActive": true,
+        "order": 10,
+        "benefit": {
+          "id": "10",
+          "title": "1 set copywriting",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s6g8880009vlhr6lq2mu4q",
+        "productId": "cm9s49e6f0004vldz95k9oiqd",
+        "benefitId": "20",
+        "isActive": true,
+        "order": 20,
+        "benefit": {
+          "id": "20",
+          "title": "SEO/ SEM friendly",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s6g889000avlhr367s79ak",
+        "productId": "cm9s49e6f0004vldz95k9oiqd",
+        "benefitId": "25",
+        "isActive": true,
+        "order": 30,
+        "benefit": {
+          "id": "25",
+          "title": "Static landing page (LP)",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s6g889000bvlhra8f7bnad",
+        "productId": "cm9s49e6f0004vldz95k9oiqd",
+        "benefitId": "40",
+        "isActive": true,
+        "order": 50,
+        "benefit": {
+          "id": "40",
+          "title": "Analisis produk",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s6g889000cvlhren4f5b41",
+        "productId": "cm9s49e6f0004vldz95k9oiqd",
+        "benefitId": "50",
+        "isActive": false,
+        "order": 60,
+        "benefit": {
+          "id": "50",
+          "title": "Analisis target pasar",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s6g88a000dvlhrgqi4881g",
+        "productId": "cm9s49e6f0004vldz95k9oiqd",
+        "benefitId": "60",
+        "isActive": false,
+        "order": 70,
+        "benefit": {
+          "id": "60",
+          "title": "Consumer insight",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s6gj7j000evlhr6rh9xgx7",
+        "productId": "cm9s49e6f0004vldz95k9oiqd",
+        "benefitId": "70",
+        "isActive": false,
+        "order": 80,
+        "benefit": {
+          "id": "70",
+          "title": "Branding tips",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cma647svs0001vlj2i9pnsc2b",
+        "productId": "cm9s49e6f0004vldz95k9oiqd",
+        "benefitId": "30",
+        "isActive": true,
+        "order": 40,
+        "benefit": {
+          "id": "30",
+          "title": "LP di kelola admin",
+          "description": null,
+          "icon": null
+        }
+      }
+    ],
+    "benefitPoints": [
+      {
+        "id": "cm9s6r4gh000nvlhryqs434hu",
+        "productId": "cm9s49e6f0004vldz95k9oiqd",
+        "text": "menarik konsumen",
+        "order": 0,
+        "icon": null
+      }
+    ],
+    "promotions": [],
+    "vouchers": []
+  },
+  {
+    "id": "cm9s49e6f0005vldz95k9oiqe",
+    "sku": "KLNC",
+    "name": "Kamilan copy",
+    "slug": "kamilan-copy",
+    "description": "paket copywriting untuk landing page versi lengkap.",
+    "bestFor": "Untuk branding bisnis online",
+    "image": "/images/uploads/products/kamilan-copy/main.jpg",
+    "price": 290000,
+    "proccessTime": 6,
+    "inStock": true,
+    "status": "ACTIVE",
+    "categoryId": "cm9s4567o0002vldz3c2mvv5h",
+    "keywords": [
+      "copywriting",
+      "landing page",
+      "iklan digital",
+      "bisnis online",
+      "cuan"
+    ],
+    "quality": 5,
+    "isBest": true,
+    "createdAt": "2025-04-22T06:30:00.000Z",
+    "updatedAt": "2025-05-02T07:48:14.382Z",
+    "category": {
+      "id": "cm9s4567o0002vldz3c2mvv5h",
+      "name": "landing page copywriting",
+      "slug": "landing-page-copywriting",
+      "createdAt": "2025-04-22T06:17:43.861Z",
+      "updatedAt": "2025-05-19T09:53:15.054Z"
+    },
+    "tags": [
+      {
+        "id": "cm9s50l0m0009vldzrdnr8rpv",
+        "name": "landing page",
+        "slug": "landing-page"
+      },
+      {
+        "id": "cm9s547g0000avldzuwxqvvq5",
+        "name": "copywriting",
+        "slug": "copywriting"
+      },
+      {
+        "id": "cm9s547g0000bvldz9zz2k8y5",
+        "name": "ads",
+        "slug": "ads"
+      },
+      {
+        "id": "cm9s54eou000cvldzsw7hmq8o",
+        "name": "iklan",
+        "slug": "iklan"
+      },
+      {
+        "id": "cm9s55k3s000dvldzdg47ndz5",
+        "name": "produk digital",
+        "slug": "produk-digital"
+      },
+      {
+        "id": "cm9s567pq000evldzneyqxuol",
+        "name": "jual kursus",
+        "slug": "jual-kursus"
+      },
+      {
+        "id": "cm9s573p0000fvldz0dan5ixl",
+        "name": "online shop",
+        "slug": "online-shop"
+      },
+      {
+        "id": "cm9s57nzz000gvldzw46ltxq9",
+        "name": "online shop mini",
+        "slug": "online-shop-mini"
+      },
+      {
+        "id": "cm9s58tpe000hvldzghnvl2wp",
+        "name": "osm",
+        "slug": "osm"
+      },
+      {
+        "id": "cm9s59v9q000ivldzf3e7pkj7",
+        "name": "facebook ads",
+        "slug": "facebook-ads"
+      }
+    ],
+    "gallery": [
+      {
+        "id": "cm9s7w1q0000uvlhr59vs499r",
+        "productId": "cm9s49e6f0005vldz95k9oiqe",
+        "imageUrl": "/images/uploads/products/kamilan-copy/gallery-1.jpg",
+        "order": 0,
+        "createdAt": "2025-04-22T08:02:36.600Z"
+      },
+      {
+        "id": "cm9tse15v0006vlhs30q2qrkb",
+        "productId": "cm9s49e6f0005vldz95k9oiqe",
+        "imageUrl": "/images/uploads/products/kamilan-copy/gallery-2.jpg",
+        "order": 0,
+        "createdAt": "2025-04-23T10:24:14.176Z"
+      },
+      {
+        "id": "cm9tse15w0007vlhssclfvmc3",
+        "productId": "cm9s49e6f0005vldz95k9oiqe",
+        "imageUrl": "/images/uploads/products/kamilan-copy/gallery-3.jpg",
+        "order": 0,
+        "createdAt": "2025-04-23T10:24:14.176Z"
+      },
+      {
+        "id": "cm9tse15w0008vlhsybi2zc3k",
+        "productId": "cm9s49e6f0005vldz95k9oiqe",
+        "imageUrl": "/images/uploads/products/kamilan-copy/gallery-4.jpg",
+        "order": 0,
+        "createdAt": "2025-04-23T10:24:14.176Z"
+      }
+    ],
+    "benefits": [
+      {
+        "id": "cm9s6ihwy000fvlhr5rqtw1t5",
+        "productId": "cm9s49e6f0005vldz95k9oiqe",
+        "benefitId": "10",
+        "isActive": true,
+        "order": 100,
+        "benefit": {
+          "id": "10",
+          "title": "1 set copywriting",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s6ihwz000gvlhr8sv1ocek",
+        "productId": "cm9s49e6f0005vldz95k9oiqe",
+        "benefitId": "20",
+        "isActive": true,
+        "order": 200,
+        "benefit": {
+          "id": "20",
+          "title": "SEO/ SEM friendly",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s6ihwz000hvlhrbm6lqlhu",
+        "productId": "cm9s49e6f0005vldz95k9oiqe",
+        "benefitId": "25",
+        "isActive": true,
+        "order": 300,
+        "benefit": {
+          "id": "25",
+          "title": "Static landing page (LP)",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s6ihwz000ivlhrt2qs3j6k",
+        "productId": "cm9s49e6f0005vldz95k9oiqe",
+        "benefitId": "40",
+        "isActive": true,
+        "order": 500,
+        "benefit": {
+          "id": "40",
+          "title": "Analisis produk",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s6ihwz000jvlhrzn70ptup",
+        "productId": "cm9s49e6f0005vldz95k9oiqe",
+        "benefitId": "50",
+        "isActive": true,
+        "order": 600,
+        "benefit": {
+          "id": "50",
+          "title": "Analisis target pasar",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s6ihx0000kvlhrblp117l3",
+        "productId": "cm9s49e6f0005vldz95k9oiqe",
+        "benefitId": "60",
+        "isActive": true,
+        "order": 700,
+        "benefit": {
+          "id": "60",
+          "title": "Consumer insight",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cm9s6ihx0000lvlhrdodumaqu",
+        "productId": "cm9s49e6f0005vldz95k9oiqe",
+        "benefitId": "70",
+        "isActive": true,
+        "order": 800,
+        "benefit": {
+          "id": "70",
+          "title": "Branding tips",
+          "description": null,
+          "icon": null
+        }
+      },
+      {
+        "id": "cma647svs0002vlj21b4g6ban",
+        "productId": "cm9s49e6f0005vldz95k9oiqe",
+        "benefitId": "30",
+        "isActive": true,
+        "order": 400,
+        "benefit": {
+          "id": "30",
+          "title": "LP di kelola admin",
+          "description": null,
+          "icon": null
+        }
+      }
+    ],
+    "benefitPoints": [
+      {
+        "id": "cm9s6uei9000rvlhrpa9p9dwh",
+        "productId": "cm9s49e6f0005vldz95k9oiqe",
+        "text": "punya bahan branding",
+        "order": 0,
+        "icon": null
+      }
+    ],
+    "promotions": [],
+    "vouchers": []
+  },
+  {
+    "id": "cmauwzyro0006vltz2rj02x6m",
+    "sku": "TGNC",
+    "name": "Tagline copy",
+    "slug": "tagline-copy",
+    "description": "desc lorem",
+    "bestFor": "best for",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "price": 500000,
+    "proccessTime": 1,
+    "inStock": true,
+    "status": "ACTIVE",
+    "categoryId": "cmauwqbzj0000vltz71tpiqeb",
+    "keywords": [
+      "copywriting",
+      "tagline",
+      "selogan",
+      "bisnis",
+      "identitas"
+    ],
+    "quality": 4,
+    "isBest": false,
+    "createdAt": "2025-05-19T10:00:44.484Z",
+    "updatedAt": "2025-05-19T09:54:28.112Z",
+    "category": {
+      "id": "cmauwqbzj0000vltz71tpiqeb",
+      "name": "Tagline Copywriting",
+      "slug": "tagline-copywriting",
+      "createdAt": "2025-05-19T09:53:15.054Z",
+      "updatedAt": "2025-05-19T09:34:14.314Z"
+    },
+    "tags": [
+      {
+        "id": "cm9s547g0000avldzuwxqvvq5",
+        "name": "copywriting",
+        "slug": "copywriting"
+      },
+      {
+        "id": "cm9s547g0000bvldz9zz2k8y5",
+        "name": "ads",
+        "slug": "ads"
+      },
+      {
+        "id": "cm9s55k3s000dvldzdg47ndz5",
+        "name": "produk digital",
+        "slug": "produk-digital"
+      },
+      {
+        "id": "cm9s573p0000fvldz0dan5ixl",
+        "name": "online shop",
+        "slug": "online-shop"
+      },
+      {
+        "id": "cm9s57nzz000gvldzw46ltxq9",
+        "name": "online shop mini",
+        "slug": "online-shop-mini"
+      },
+      {
+        "id": "cm9s58tpe000hvldzghnvl2wp",
+        "name": "osm",
+        "slug": "osm"
+      }
+    ],
+    "gallery": [],
+    "benefits": [],
+    "benefitPoints": [
+      {
+        "id": "cm9s6uei8000ovlhr7vx7dw84",
+        "productId": "cmauwzyro0006vltz2rj02x6m",
+        "text": "produk mudah dikenali",
+        "order": 0,
+        "icon": null
+      },
+      {
+        "id": "cm9s6uei8000pvlhr1wajagl4",
+        "productId": "cmauwzyro0006vltz2rj02x6m",
+        "text": "menarik konsumen",
+        "order": 0,
+        "icon": null
+      },
+      {
+        "id": "cm9s6uei8000qvlhrxob1bc9a",
+        "productId": "cmauwzyro0006vltz2rj02x6m",
+        "text": "produk mudah dikenali",
+        "order": 0,
+        "icon": null
+      }
+    ],
+    "promotions": [],
+    "vouchers": []
+  },
+  {
+    "id": "cmauxgc46000cvltz2xseb9cl",
+    "sku": "wew",
+    "name": "Excelen profile",
+    "slug": "sdsd",
+    "description": "s",
+    "bestFor": "f",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "price": 200000,
+    "proccessTime": 3,
+    "inStock": true,
+    "status": "ACTIVE",
+    "categoryId": "cmauwqbzn0004vltzo9cr06gh",
+    "keywords": [
+      "copywriting",
+      "landing page",
+      "iklan digital",
+      "bisnis online",
+      "cuan"
+    ],
+    "quality": 3,
+    "isBest": false,
+    "createdAt": "2025-05-19T10:13:28.278Z",
+    "updatedAt": "2025-05-19T10:05:04.828Z",
+    "category": {
+      "id": "cmauwqbzn0004vltzo9cr06gh",
+      "name": "Company Profile Copywriting",
+      "slug": "company-profile-copywriting",
+      "createdAt": "2025-05-19T09:53:15.054Z",
+      "updatedAt": "2025-05-19T09:46:55.554Z"
+    },
+    "tags": [],
+    "gallery": [],
+    "benefits": [],
+    "benefitPoints": [],
+    "promotions": [],
+    "vouchers": []
+  },
+  {
+    "id": "cmauxgc47000dvltzrprfb7gm",
+    "sku": "essfs",
+    "name": "Ads Force",
+    "slug": "xxvx",
+    "description": "d",
+    "bestFor": "w",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "price": 30000,
+    "proccessTime": 3,
+    "inStock": true,
+    "status": "ACTIVE",
+    "categoryId": "cmauwqbzn0005vltzxq2ritga",
+    "keywords": [
+      "copywriting",
+      "landing page",
+      "iklan digital",
+      "bisnis online",
+      "cuan"
+    ],
+    "quality": 4,
+    "isBest": false,
+    "createdAt": "2025-05-19T10:13:28.278Z",
+    "updatedAt": "2025-05-19T10:05:28.745Z",
+    "category": {
+      "id": "cmauwqbzn0005vltzxq2ritga",
+      "name": "Facebook Ads Copywriting",
+      "slug": "facebook-ads-copywriting",
+      "createdAt": "2025-05-19T09:53:15.054Z",
+      "updatedAt": "2025-05-19T09:50:58.197Z"
+    },
+    "tags": [],
+    "gallery": [],
+    "benefits": [],
+    "benefitPoints": [],
+    "promotions": [],
+    "vouchers": []
+  },
+  {
+    "id": "cmauxgc47000evltzezjgxn1a",
+    "sku": "sfsfsff",
+    "name": "Web page texting",
+    "slug": "xvxvx",
+    "description": "d",
+    "bestFor": "f",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "price": 344000,
+    "proccessTime": 3,
+    "inStock": true,
+    "status": "ACTIVE",
+    "categoryId": "cmauwqbzn0003vltzr6jjnwkx",
+    "keywords": [
+      "copywriting",
+      "landing page",
+      "iklan digital",
+      "bisnis online",
+      "cuan"
+    ],
+    "quality": 2,
+    "isBest": false,
+    "createdAt": "2025-05-19T10:13:28.278Z",
+    "updatedAt": "2025-05-19T10:05:04.212Z",
+    "category": {
+      "id": "cmauwqbzn0003vltzr6jjnwkx",
+      "name": "Website Page Copywriting",
+      "slug": "website-page-copywriting",
+      "createdAt": "2025-05-19T09:53:15.054Z",
+      "updatedAt": "2025-05-19T09:46:55.359Z"
+    },
+    "tags": [],
+    "gallery": [],
+    "benefits": [],
+    "benefitPoints": [],
+    "promotions": [],
+    "vouchers": []
+  },
+  {
+    "id": "cmauxgc48000fvltz84lz4abw",
+    "sku": "cvcc",
+    "name": "email hero",
+    "slug": "vxxxds",
+    "description": "f",
+    "bestFor": "fw",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "price": 434300,
+    "proccessTime": 3,
+    "inStock": true,
+    "status": "ACTIVE",
+    "categoryId": "cmauwqbzn0002vltzffmu1o7g",
+    "keywords": [
+      "copywriting",
+      "landing page",
+      "iklan digital",
+      "bisnis online",
+      "cuan"
+    ],
+    "quality": 5,
+    "isBest": false,
+    "createdAt": "2025-05-19T10:13:28.278Z",
+    "updatedAt": "2025-05-19T10:05:03.514Z",
+    "category": {
+      "id": "cmauwqbzn0002vltzffmu1o7g",
+      "name": "Email Marketing Copywriting",
+      "slug": "email-marketing-copywriting",
+      "createdAt": "2025-05-19T09:53:15.054Z",
+      "updatedAt": "2025-05-19T09:46:55.342Z"
+    },
+    "tags": [],
+    "gallery": [],
+    "benefits": [],
+    "benefitPoints": [],
+    "promotions": [],
+    "vouchers": []
+  },
+  {
+    "id": "cmauxgc49000gvltzxtkhdqia",
+    "sku": "cvcv",
+    "name": "seo insting",
+    "slug": "dsdsd",
+    "description": "g",
+    "bestFor": "sds",
+    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "price": 355545445,
+    "proccessTime": 25,
+    "inStock": true,
+    "status": "ACTIVE",
+    "categoryId": "cmauwqbzn0001vltz9hrxfkz5",
+    "keywords": [
+      "copywriting",
+      "landing page",
+      "iklan digital",
+      "bisnis online",
+      "cuan"
+    ],
+    "quality": 3,
+    "isBest": false,
+    "createdAt": "2025-05-19T10:13:28.278Z",
+    "updatedAt": "2025-05-19T10:05:02.837Z",
+    "category": {
+      "id": "cmauwqbzn0001vltz9hrxfkz5",
+      "name": "SEO Copywriting",
+      "slug": "seo-copywriting",
+      "createdAt": "2025-05-19T09:53:15.054Z",
+      "updatedAt": "2025-05-19T09:46:35.572Z"
+    },
+    "tags": [],
+    "gallery": [],
+    "benefits": [],
+    "benefitPoints": [],
+    "promotions": [],
+    "vouchers": []
+  }
+]

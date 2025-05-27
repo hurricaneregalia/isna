@@ -1,7 +1,7 @@
 // src/app/product/[slug]/page.js
 import HeaderFooterSqlite from "@/app/component/global/headerFooterSqlite";
 import LandingPageDetail from "@/app/component/landingPage/LandingPageDetail";
-import myPrisma from "@/app/lib/myPrisma";
+import myPrisma from "@/app/lib/prisma";
 import { notFound } from "next/navigation";
 
 export default async function ProductPage({ params }) {

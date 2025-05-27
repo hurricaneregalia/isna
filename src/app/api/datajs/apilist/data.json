@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "siteName": "isnaa project",
+    "tagline": "sehari lebih baik",
+    "description": "Banyak orang mengira bisnis online itu mudah, cukup posting foto dan omzet langsung mengalir. Benarkah demikian?",
+    "keywords": [
+      "landing page copywriting",
+      "copywriting",
+      "bisnis",
+      "jualan",
+      "online shop mini"
+    ],
+    "logoUrl": "/images/uploads/site-identity/logo-light.svg",
+    "ogImage": "/images/uploads/pages/og-image.webp",
+    "faviconUrl": "/favicon.ico",
+    "email": "supermail@fameyail.com",
+    "phone": "6282127902505",
+    "address": "banjar jawa barat",
+    "createdAt": "2025-04-21T01:51:54.629Z",
+    "updatedAt": "2025-05-20T07:22:26.049Z"
+  }
+]

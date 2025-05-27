@@ -28,8 +28,8 @@ export default function LayoutLandingPage({ children, waNo }) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPage = axios.get(`${BASE_URL}/api/page`);
-    const fetchProduct = axios.get(`${BASE_URL}/api/product`);
+    const fetchPage = axios.get(`${BASE_URL}/api/prismapage`);
+    const fetchProduct = axios.get(`${BASE_URL}/api/prismaproduct`);
 
     Promise.all([fetchPage, fetchProduct])
       .then(([pageRes, productRes]) => {

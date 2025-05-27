@@ -1,0 +1,565 @@
+[
+  {
+    "id": "cm9u1mx7u0009vzhs5ymu3xjt",
+    "slug": "/home",
+    "name": "home",
+    "title": "Inilah alasan mengapa 7 dari 10 pebisnis online gagal menjual produk branded. Apakah kamu juga?",
+    "description": "Banyak orang mengira bisnis online itu mudah, cukup posting foto dan omzet langsung mengalir. Benarkah demikian?",
+    "keywords": [
+      "landing page copywriting",
+      "copywriting",
+      "bisnis",
+      "jualan",
+      "online shop mini"
+    ],
+    "ogTitle": "isnaa project",
+    "ogDescription": "Banyak orang mengira bisnis online itu mudah, cukup posting foto dan omzet langsung mengalir. Benarkah demikian?",
+    "ogImage": "/images/uploads/pages/og-image.webp",
+    "createdAt": "2025-04-22T08:41:18.508Z",
+    "updatedAt": "2025-05-19T04:26:46.006Z",
+    "sections": [
+      {
+        "id": "2",
+        "name": "sec 1 interest",
+        "pageId": "cm9u1mx7u0009vzhs5ymu3xjt",
+        "type": "NORMAL",
+        "title": "Yang Sebenarnya Terjadi",
+        "subTitle": null,
+        "description": "Banyak pebisnis online gagal menjual produk branded meskipun sudah beriklan. Mereka tidak menyadari, bahwa masalahnya bukan pada produk atau harga, tapi cara berkomunikasi yang salah dengan calon pelanggan.",
+        "additionalText": null,
+        "image": "/images/uploads/pages/section-1.webp",
+        "video": null,
+        "icon": null,
+        "order": 1,
+        "listItems": []
+      },
+      {
+        "id": "3",
+        "name": "sec 2 interest 2",
+        "pageId": "cm9u1mx7u0009vzhs5ymu3xjt",
+        "type": "LIST",
+        "title": "Kesalahan Umum yang Sering Dilakukan",
+        "subTitle": null,
+        "description": null,
+        "additionalText": null,
+        "image": "/images/uploads/pages/section-2.webp",
+        "video": null,
+        "icon": null,
+        "order": 2,
+        "listItems": [
+          {
+            "id": "2",
+            "sectionId": "3",
+            "type": "DETAILED",
+            "title": "sec 2",
+            "description": null,
+            "entries": [
+              {
+                "id": "cm9sb2wap0002vljs39kysiat",
+                "listItemId": "2",
+                "title": "Pesan",
+                "price": null,
+                "description": "Pesan promosi yang tidak menarik",
+                "icon": null,
+                "image": "/images/uploads/pages/entry-1.webp"
+              },
+              {
+                "id": "cm9sb4rw60003vljsz12vqap7",
+                "listItemId": "2",
+                "title": "Target",
+                "price": null,
+                "description": "Tidak tahu target pasar yang tepat",
+                "icon": null,
+                "image": "/images/uploads/pages/entry-2.webp"
+              },
+              {
+                "id": "cm9sb4rw60004vljs8itaotp1",
+                "listItemId": "2",
+                "title": "Kebutuhan",
+                "price": null,
+                "description": "Tidak tahu kebutuhan target pasar",
+                "icon": null,
+                "image": "/images/uploads/pages/entry-3.webp"
+              },
+              {
+                "id": "cm9sb4rw70005vljs4m7a3zbk",
+                "listItemId": "2",
+                "title": "Keunggulan",
+                "price": null,
+                "description": "Tidak tahu keunggulan produk",
+                "icon": null,
+                "image": "/images/uploads/pages/entry-4.webp"
+              },
+              {
+                "id": "cm9sb4rw70006vljs15uts3xi",
+                "listItemId": "2",
+                "title": "Perang",
+                "price": null,
+                "description": "Terjebak dalam perang harga",
+                "icon": null,
+                "image": "/images/uploads/pages/entry-5.webp"
+              },
+              {
+                "id": "cm9sb4rw70007vljs5lsb55m7",
+                "listItemId": "2",
+                "title": "Iklan",
+                "price": null,
+                "description": "Beriklan tanpa strategi yang jelas",
+                "icon": null,
+                "image": "/images/uploads/pages/entry-6.webp"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "4",
+        "name": "sec 3 desire 1 solusi",
+        "pageId": "cm9u1mx7u0009vzhs5ymu3xjt",
+        "type": "NORMAL",
+        "title": "Persuasive Copywriting",
+        "subTitle": null,
+        "description": "Persuasive copywriting adalah strategi komunikasi yang mampu menawarkan produk branded secara lebih efektif kepada target pasar.",
+        "additionalText": null,
+        "image": "/images/uploads/pages/section-3.webp",
+        "video": null,
+        "icon": null,
+        "order": 3,
+        "listItems": []
+      },
+      {
+        "id": "5",
+        "name": "sec 4 desire 2 hadist",
+        "pageId": "cm9u1mx7u0009vzhs5ymu3xjt",
+        "type": "NORMAL",
+        "title": "Strategi yang Disukai Allah dan berdampak pada bisnis online.",
+        "subTitle": "HR. Thabrani, No. 901",
+        "description": "Sesungguhnya Allah mencintai seorang hamba yang jika bekerja, ia bersungguh-sungguh dalam pekerjaannya.",
+        "additionalText": "Pebisnis Muslim yang sukses tahu bahwa usaha harus dibarengi strategi yang benar dan dilakukan dengan sungguh-sungguh.",
+        "image": "/images/uploads/pages/for-hadist.webp",
+        "video": null,
+        "icon": null,
+        "order": 4,
+        "listItems": []
+      },
+      {
+        "id": "6",
+        "name": "sec 5 desire 3 bantuan",
+        "pageId": "cm9u1mx7u0009vzhs5ymu3xjt",
+        "type": "LIST",
+        "title": "Bersungguh-sungguh dengan Persuasive copywriting membantu Anda untuk:",
+        "subTitle": null,
+        "description": null,
+        "additionalText": null,
+        "image": "/images/uploads/pages/section-5.webp",
+        "video": null,
+        "icon": null,
+        "order": 5,
+        "listItems": [
+          {
+            "id": "3",
+            "sectionId": "6",
+            "type": "DETAILED",
+            "title": "sec 5",
+            "description": null,
+            "entries": [
+              {
+                "id": "cm9scl74z0000vluj35adhh2w",
+                "listItemId": "3",
+                "title": "Membuat pesan promosi",
+                "price": null,
+                "description": "Mendapatkan pesan promosi yang dapat menggugah minat pembelian",
+                "icon": "LuNotepadText",
+                "image": null
+              },
+              {
+                "id": "cm9scpcdp0001vlujhw9lxq28",
+                "listItemId": "3",
+                "title": "Menentukan target pasar",
+                "price": null,
+                "description": "Mendapatkan informasi target pasar yang bermanfaat",
+                "icon": "BiTargetLock",
+                "image": null
+              },
+              {
+                "id": "cm9scpcdp0002vlujafj4vwi2",
+                "listItemId": "3",
+                "title": "Mengidintifikasi kebutuhan",
+                "price": null,
+                "description": "Mendapatkan informasi hal-hal yang dibutuhkan target pasar",
+                "icon": "AiOutlineProduct",
+                "image": null
+              },
+              {
+                "id": "cm9scpcdp0003vluj7exf87vm",
+                "listItemId": "3",
+                "title": "Mengidentifikasi keunggulan",
+                "price": null,
+                "description": "Mendapatkan informasi tentang keunggulan-keunggulan produk",
+                "icon": "GiStarFormation",
+                "image": null
+              },
+              {
+                "id": "cm9scpcdp0004vlujgp1aa8zm",
+                "listItemId": "3",
+                "title": "Menghindari perang harga",
+                "price": null,
+                "description": "Membuat bisnis jadi lebih menguntungkan",
+                "icon": "FaAd",
+                "image": null
+              },
+              {
+                "id": "cm9scpcdq0005vlujnuox96ml",
+                "listItemId": "3",
+                "title": "Membuat iklan",
+                "price": null,
+                "description": "Membuat performa iklan jadi lebih efektif",
+                "icon": "LiaMoneyBillWaveSolid",
+                "image": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "name": "sec 6 desire 4 benefit",
+        "pageId": "cm9u1mx7u0009vzhs5ymu3xjt",
+        "type": "NORMAL",
+        "title": "Manfaat yang Dirasakan dari Persuasive Copywriting",
+        "subTitle": null,
+        "description": "Banyak brand produk Muslim yang awalnya sepi pelanggan, tapi setelah menerapkan teknik persuasive copywriting yang tepat, penjualan mereka meningkat, bahkan tanpa harus banting harga.",
+        "additionalText": null,
+        "image": "/images/uploads/pages/section-6.webp",
+        "video": null,
+        "icon": null,
+        "order": 6,
+        "listItems": []
+      },
+      {
+        "id": "8",
+        "name": "sec 7 desire 5 dibutuhkan",
+        "pageId": "cm9u1mx7u0009vzhs5ymu3xjt",
+        "type": "LIST",
+        "title": "Komponen yang dibutuhkan untuk menjual produk branded",
+        "subTitle": null,
+        "description": null,
+        "additionalText": null,
+        "image": "/images/uploads/pages/section-7.webp",
+        "video": null,
+        "icon": null,
+        "order": 7,
+        "listItems": [
+          {
+            "id": "4",
+            "sectionId": "8",
+            "type": "DETAILED",
+            "title": "sec 7",
+            "description": null,
+            "entries": [
+              {
+                "id": "cm9sd31ew0009vlujnzkq9we1",
+                "listItemId": "4",
+                "title": "Analisa Target Pasar",
+                "price": null,
+                "description": "Untuk menentukan orang yang benar-benar membutuhkan produk Anda.",
+                "icon": null,
+                "image": null
+              },
+              {
+                "id": "cm9sd7ccx000avlujbuy2x6td",
+                "listItemId": "4",
+                "title": "Analisa Produk",
+                "price": null,
+                "description": "Untuk menemukan keunggulan produk agar lebih menonjol.",
+                "icon": null,
+                "image": null
+              },
+              {
+                "id": "cm9sd7ccy000bvluj7ouplbll",
+                "listItemId": "4",
+                "title": "Consumer Insight",
+                "price": null,
+                "description": "Untuk mengetahui hal apa saja yang diminati target pasar.",
+                "icon": null,
+                "image": null
+              },
+              {
+                "id": "cm9sd7ccy000cvlujs0ndxwcl",
+                "listItemId": "4",
+                "title": "Persuasive Copywriting",
+                "price": null,
+                "description": "Pesan promosi yang dirancang sesuai dengan produk dan target pasar.",
+                "icon": null,
+                "image": null
+              },
+              {
+                "id": "cm9sd7ccy000dvluj82vec9y7",
+                "listItemId": "4",
+                "title": "Branding",
+                "price": null,
+                "description": "Untuk membangun citra bisnis yang lebih profesional.",
+                "icon": null,
+                "image": null
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "name": "sec 8 desire 6 product",
+        "pageId": "cm9u1mx7u0009vzhs5ymu3xjt",
+        "type": "NORMAL",
+        "title": "Paket Persuasive Copywriting",
+        "subTitle": null,
+        "description": null,
+        "additionalText": null,
+        "image": null,
+        "video": null,
+        "icon": null,
+        "order": 8,
+        "listItems": []
+      },
+      {
+        "id": "10",
+        "name": "sec 9 desire 7",
+        "pageId": "cm9u1mx7u0009vzhs5ymu3xjt",
+        "type": "LIST",
+        "title": "Proses Persuasive Copywriting Mendapatkan Penjualan.",
+        "subTitle": null,
+        "description": null,
+        "additionalText": null,
+        "image": null,
+        "video": null,
+        "icon": null,
+        "order": 9,
+        "listItems": [
+          {
+            "id": "5",
+            "sectionId": "10",
+            "type": "DETAILED",
+            "title": "sec 9",
+            "description": null,
+            "entries": [
+              {
+                "id": "cm9sdqf6y000hvluj9r1j6gif",
+                "listItemId": "5",
+                "title": "Membuat Copywriting",
+                "price": null,
+                "description": "Persuasive copywriting ini akan mempengaruhi target pasar sehingga mereka akan terdorong untuk membeli produk.",
+                "icon": null,
+                "image": "/images/uploads/pages/alur-1.png"
+              },
+              {
+                "id": "cm9sdtfko000ivlujcs1wpm2r",
+                "listItemId": "5",
+                "title": "Menarik Perhatian",
+                "price": null,
+                "description": "Menarik perhatian target audience menggunakan konten sosial media atau iklan yang dilengkapi persuasive copywriting.",
+                "icon": null,
+                "image": "/images/uploads/pages/alur-2.png"
+              },
+              {
+                "id": "cm9sdtfkp000jvlujtdt9tjow",
+                "listItemId": "5",
+                "title": "Landing Page",
+                "price": null,
+                "description": "Target pasar membuka landing page produk yang Anda jual, yang telah dilengkapi persuasive copywriting.",
+                "icon": null,
+                "image": "/images/uploads/pages/alur-3.png"
+              },
+              {
+                "id": "cm9sdtfkq000kvlujbcw1hs0a",
+                "listItemId": "5",
+                "title": "Pembelian Produk",
+                "price": null,
+                "description": "Produk anda terjual tanpa harus melakukan banting harga, sehingga akan lebih menguntungkan.",
+                "icon": null,
+                "image": "/images/uploads/pages/alur-4.png"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "11",
+        "name": "sec 10 cta",
+        "pageId": "cm9u1mx7u0009vzhs5ymu3xjt",
+        "type": "CTA",
+        "title": "Ingin bertahan tanpa penjualan? Atau ingin menjual banyak produk?",
+        "subTitle": "Klik tombol di bawah ini sebelum pesaing Anda melakukannya!",
+        "description": null,
+        "additionalText": null,
+        "image": null,
+        "video": null,
+        "icon": null,
+        "order": 10,
+        "listItems": []
+      },
+      {
+        "id": "12",
+        "name": "sec 11 penawaran 1 bonus",
+        "pageId": "cm9u1mx7u0009vzhs5ymu3xjt",
+        "type": "LIST",
+        "title": "Bonus Eksklusif",
+        "subTitle": null,
+        "description": null,
+        "additionalText": null,
+        "image": null,
+        "video": null,
+        "icon": null,
+        "order": 11,
+        "listItems": [
+          {
+            "id": "6",
+            "sectionId": "12",
+            "type": "DETAILED",
+            "title": "sec 11",
+            "description": null,
+            "entries": [
+              {
+                "id": "cm9sexj0g000ovluj4qg721j4",
+                "listItemId": "6",
+                "title": "Landing Page Profesional",
+                "price": 315000,
+                "description": "Halaman penjualan khusus untuk meningkatkan konversi.",
+                "icon": null,
+                "image": "/images/uploads/pages/bonus-1.jpg"
+              },
+              {
+                "id": "cm9sf1f3c000pvlujqwjhhkmq",
+                "listItemId": "6",
+                "title": "Subdomain",
+                "price": 100000,
+                "description": "Agar bisnis lebih kredibel, profesional, dan mudah diakses.",
+                "icon": null,
+                "image": "/images/uploads/pages/bonus-2.jpg"
+              },
+              {
+                "id": "cm9sf1f3c000qvluj1e0nd7xf",
+                "listItemId": "6",
+                "title": "Review Logo Bisnis",
+                "price": 550000,
+                "description": "Evaluasi kelebihan dan kekurangan desain logo untuk branding yang lebih kuat.",
+                "icon": null,
+                "image": "/images/uploads/pages/bonus-3.jpg"
+              },
+              {
+                "id": "cm9sf1f3c000rvlujlm6bggw4",
+                "listItemId": "6",
+                "title": "Customer Support",
+                "price": 200000,
+                "description": "Dukungan untuk mengisi data landing page, integrasi sosial media, iklan dan lain-lain.",
+                "icon": null,
+                "image": "/images/uploads/pages/bonus-4.jpg"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "13",
+        "name": "sec 12 benefit",
+        "pageId": "cm9u1mx7u0009vzhs5ymu3xjt",
+        "type": "NORMAL",
+        "title": "Landing page di kelola admin",
+        "subTitle": null,
+        "description": "Seluruh konten landing page akan dikelola oleh admin. Ini akan membuat bisnis Anda berjalan lebih mudah. Anda tinggal fokus jualan!",
+        "additionalText": null,
+        "image": "/images/uploads/pages/section-12.webp",
+        "video": null,
+        "icon": null,
+        "order": 12,
+        "listItems": [
+          {
+            "id": "7",
+            "sectionId": "13",
+            "type": "DETAILED",
+            "title": "sec 12",
+            "description": null,
+            "entries": [
+              {
+                "id": "cm9sf8rbo000uvlujdjwb408p",
+                "listItemId": "7",
+                "title": "sec 12",
+                "price": null,
+                "description": null,
+                "icon": null,
+                "image": "/images/uploads/pages/bonus-1.webp"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "14",
+        "name": "sec 13 cta 2",
+        "pageId": "cm9u1mx7u0009vzhs5ymu3xjt",
+        "type": "CTA",
+        "title": "Dapatkan bonus eksklusif sekarang!",
+        "subTitle": null,
+        "description": "Klik tombol di bawah sebelum waktu Anda berakhir.",
+        "additionalText": null,
+        "image": "/images/uploads/pages/section-13.webp",
+        "video": null,
+        "icon": null,
+        "order": 13,
+        "listItems": []
+      },
+      {
+        "id": "1",
+        "name": "hero attention",
+        "pageId": "cm9u1mx7u0009vzhs5ymu3xjt",
+        "type": "HERO",
+        "title": "Inilah alasan mengapa 7 dari 10 pebisnis online gagal menjual produk branded. Apakah kamu juga?",
+        "subTitle": null,
+        "description": "Banyak orang mengira bisnis online itu mudah, cukup posting foto dan omzet langsung mengalir. Benarkah demikian?",
+        "additionalText": null,
+        "image": "/images/uploads/pages/hero.webp",
+        "video": null,
+        "icon": null,
+        "order": 0,
+        "listItems": [
+          {
+            "id": "1",
+            "sectionId": "1",
+            "type": "BASIC",
+            "title": "hero",
+            "description": null,
+            "entries": [
+              {
+                "id": "cm9sfwyr2000yvluj7r4ck09h",
+                "listItemId": "1",
+                "title": "hero",
+                "price": null,
+                "description": null,
+                "icon": null,
+                "image": "/images/uploads/pages/hero-mobile.webp"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cm9u1mx7u0009vlhs5ymu3xjt",
+    "slug": "/payment/success",
+    "name": "payment success",
+    "title": "payment success",
+    "description": "Terima kasih, proses pembayaran Anda telah selesai.",
+    "keywords": [
+      "invoice",
+      "copywriting",
+      "pembayaran",
+      "transaksi"
+    ],
+    "ogTitle": "Payment Success",
+    "ogDescription": null,
+    "ogImage": "/images/uploads/payment/og-image.webp",
+    "createdAt": "2025-04-23T14:43:05.514Z",
+    "updatedAt": "2025-04-23T14:38:24.096Z",
+    "sections": []
+  }
+]

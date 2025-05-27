@@ -8,7 +8,8 @@
     "prisma:generate": "prisma generate",
     "build": "npm run prisma:generate && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export:data": "node scripts/exportData.js"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.9.0",

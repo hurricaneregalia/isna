@@ -1,11 +1,11 @@
-import myPrisma from "@/app/lib/myPrisma";
+import myPrisma from "@/app/lib/prisma";
 
 export async function GET(request) {
   try {
-    const registerForms = await myPrisma.registerForm.findMany();
+    const apilists = await myPrisma.apiList.findMany();
 
     const responseData = {
-      registerForms,
+      apilists,
     };
 
     // Mengembalikan data dalam format JSON dengan pretty-print

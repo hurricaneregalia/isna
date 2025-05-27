@@ -453,3 +453,4 @@ model LpDesignStyle {
 //npx prisma generate
 //npx prisma studio
 //node prisma/seed.js
+//npm run export:data

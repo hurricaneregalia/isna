@@ -19,22 +19,20 @@ import CountdownMini from "./countdownMini";
 import Grid2List from "./grid2List";
 import { RiCloseCircleFill } from "react-icons/ri";
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
-
 export default function LayoutLandingPage({ children, waNo }) {
   const [pageData, setPageData] = useState(null);
-  const [productData, setProductData] = useState(null); // untuk product
+  const [productData, setProductData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchPage = axios.get(`${BASE_URL}/api/page`);
-    const fetchProduct = axios.get(`${BASE_URL}/api/product`);
+    const fetchPage = axios.get("/api/datajs/page");
+    const fetchProduct = axios.get("/api/datajs/product");
 
     Promise.all([fetchPage, fetchProduct])
       .then(([pageRes, productRes]) => {
-        setPageData(pageRes.data[0]); // asumsinya tetap satu elemen
-        setProductData(productRes.data.data); // ambil langsung array dari "data"
+        setPageData(Array.isArray(pageRes.data) ? pageRes.data[0] : null);
+        setProductData(productRes.data); // asumsi JSON berupa array langsung
         setLoading(false);
       })
       .catch((err) => {
@@ -48,27 +46,32 @@ export default function LayoutLandingPage({ children, waNo }) {
   if (error) return <p>{error}</p>;
 
   // Bentuk ulang data agar sesuai dengan props Services
-  const listItem = productData.map((product) => ({
-    id: product.id,
-    slug: product.slug,
-    title: product.name,
-    price: product.price,
-    isBest: product.isBest,
-    proccessTime: product.proccessTime,
-    bestFor: product.bestFor,
-    quality: product.quality || 0,
-    categorySlug: product.category?.slug || null, // ← ini ditambahkan
-    categoryName: product.category?.name || null, // ← opsional
-  }));
+  const listItem = Array.isArray(productData)
+    ? productData
+        .filter((product) => product.category?.slug === "landing-page-copywriting")
+        .map((product) => ({
+          id: product.id,
+          slug: product.slug,
+          title: product.name,
+          price: product.price,
+          isBest: product.isBest,
+          proccessTime: product.proccessTime,
+          bestFor: product.bestFor,
+          quality: product.quality || 0,
+        }))
+    : [];
 
-  const subListItem = productData.flatMap((product) =>
-    product.benefits.map((benefit) => ({
-      id: benefit.id,
-      servicesListItemId: product.id,
-      title: benefit.benefit.title,
-      isActive: benefit.isActive,
-    }))
-  );
+  const subListItem = Array.isArray(productData)
+    ? productData.flatMap(
+        (product) =>
+          product.benefits?.map((benefit) => ({
+            id: benefit.id,
+            servicesListItemId: product.id,
+            title: benefit.benefit?.title || "",
+            isActive: benefit.isActive,
+          })) || []
+      )
+    : [];
 
   const counter = "2025-05-29T23:59:59Z";
 
@@ -221,7 +224,7 @@ export default function LayoutLandingPage({ children, waNo }) {
             imageUrl={section.image}
             imageAlt={section.title}
           >
-            <Services listItem={listItem} subListItem={subListItem} onlyCategory="landing-page-copywriting" />
+            <Services listItem={listItem} subListItem={subListItem} />
           </LayoutPrimary>
         ))}
       {pageData.sections
@@ -292,7 +295,7 @@ export default function LayoutLandingPage({ children, waNo }) {
         .map((section) => (
           <FinalCta
             key={section.id}
-            id="claim-bonus"
+            id="claim-bonusku"
             ctaTxt="Order Copywriting"
             title={section.title}
             headAlign={false}

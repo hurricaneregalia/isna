@@ -4,7 +4,7 @@ import Head from "next/head";
 import WhatsappBtn from "./component/global/whatsappBtn";
 import CanvasCursor from "./component/canvasCursor/CanvasCursor";
 import BackButton from "./component/global/backButton";
-import myPrisma from "./lib/myPrisma";
+import myPrisma from "./lib/prisma";
 
 async function getSiteData() {
   try {

@@ -2,7 +2,7 @@
 import React from "react";
 import CanvasCursor from "../component/canvasCursor/CanvasCursor";
 import Link from "next/link";
-import myPrisma from "../lib/myPrisma";
+import myPrisma from "../lib/prisma";
 
 export default async function MyApi() {
   // Query data directly using Prisma
@@ -18,8 +18,8 @@ export default async function MyApi() {
       <main className="min-h-full h-screen notFoundBg">
         <div className="w-full h-full grid place-items-center bg-slate-900/80 px-6 py-24 sm:py-32 lg:px-8">
           <CanvasCursor />
-          <div className="flex flex-col items-center justify-center gap-3">
-            <div className="flex gap-2">
+          <div className="flex flex-col items-center justify-center gap-3 w-1/2">
+            <div className=" space-x-2 space-y-2 text-center">
               {items.length > 0 ? (
                 items.map((item) => (
                   <Link

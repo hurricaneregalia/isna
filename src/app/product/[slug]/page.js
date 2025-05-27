@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import HeaderFooterSqlite from "@/app/component/global/headerFooterSqlite";
-import myPrisma from "@/app/lib/myPrisma";
+import myPrisma from "@/app/lib/prisma";
 
 export default async function ProductDetailPage({ params }) {
   const { slug } = await params;

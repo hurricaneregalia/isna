@@ -1,24 +1,20 @@
-// app/page.js
-
-import fs from "fs/promises";
-import path from "path";
 import HeaderFooterSqlite from "./component/global/headerFooterSqlite";
 import LayoutLandingPage from "./component/home/layoutLandingPage";
+import myPrisma from "./lib/prisma";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-async function loadSiteIdentity() {
-  const filePath = path.join(process.cwd(), "src/app/api/datajs/siteidentity/data.json");
-  const file = await fs.readFile(filePath, "utf-8");
-  const data = JSON.parse(file);
-  return data?.[0] || null;
-}
-
 export async function generateMetadata() {
   try {
-    const data = await loadSiteIdentity();
+    const data = await myPrisma.siteIdentity.findFirst({
+      include: {
+        socialLinks: true,
+      },
+    });
 
-    if (!data) throw new Error("Site identity not found");
+    if (!data) {
+      throw new Error("Site identity not found");
+    }
 
     return {
       title: data.siteName,
@@ -51,7 +47,7 @@ export async function generateMetadata() {
         card: "summary_large_image",
         title: data.siteName,
         description: data.description,
-        creator: data.socialLinks?.find((s) => s.platform === "twitter")?.platformUsername || "@kalamanacopy",
+        creator: data.socialLinks.find((s) => s.platform === "twitter")?.platformUsername || "@kalamanacopy",
         images: [`${BASE_URL}${data.ogImage}`],
       },
       robots: {
@@ -102,9 +98,11 @@ export async function generateMetadata() {
 
 export default async function HomePage() {
   try {
-    const siteData = await loadSiteIdentity();
+    const siteData = await myPrisma.siteIdentity.findFirst();
 
-    if (!siteData) throw new Error("Site identity not found");
+    if (!siteData) {
+      throw new Error("Site identity not found");
+    }
 
     const pixelId = 123;
     return (
