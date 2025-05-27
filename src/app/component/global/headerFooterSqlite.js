@@ -4,10 +4,25 @@ import Navigation2 from "./navigation2";
 import landingPageStyle from "../home/landingPage.module.css";
 import Loading from "@/app/loading";
 import HeaderFooterClient from "./HeaderFooterClient";
-import myPrisma from "@/app/lib/prisma";
+
+import fs from "fs/promises";
+import path from "path";
+
+// Fungsi util untuk baca file JSON
+async function getSiteIdentityFromFile() {
+  try {
+    const filePath = path.join(process.cwd(), "src/app/api/datajs/siteidentity/data.json");
+    const file = await fs.readFile(filePath, "utf-8");
+    const data = JSON.parse(file);
+    return data?.[0] || null;
+  } catch (error) {
+    console.error("❌ Gagal membaca siteidentity dari file:", error.message);
+    return null;
+  }
+}
 
 export default async function HeaderFooterSqlite({ children }) {
-  const siteData = await myPrisma.siteIdentity.findFirst();
+  const siteData = await getSiteIdentityFromFile();
 
   if (!siteData) return <Loading />;
 
