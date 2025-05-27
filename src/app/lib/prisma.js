@@ -1,5 +1,6 @@
 // src/app/lib/prisma.js
-import { PrismaClient } from "../generated/prisma/client/index.js";
+
+import { PrismaClient } from "../generated/prisma/client/edge";
 
 let prisma;
 
