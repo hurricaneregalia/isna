@@ -1,23 +1,22 @@
 // src/app/product/[slug]/page.js
 import HeaderFooterSqlite from "@/app/component/global/headerFooterSqlite";
 import LandingPageDetail from "@/app/component/landingPage/LandingPageDetail";
-import myPrisma from "@/app/lib/prisma";
 import { notFound } from "next/navigation";
+import fs from "fs/promises";
+import path from "path";
+
+async function loadLandingPages() {
+  const filePath = path.join(process.cwd(), "src/app/api/datajs/landingpage/data.json");
+  const file = await fs.readFile(filePath, "utf-8");
+  return JSON.parse(file);
+}
 
 export default async function ProductPage({ params }) {
-  const { slug } = await params;
+  const { slug } = params;
 
-  const landingPage = await myPrisma.landingPage.findFirst({
-    where: {
-      slug,
-      isActive: true,
-    },
-    include: {
-      lpFor: true,
-      lpContentTypes: true,
-      lpDesignStyle: true,
-    },
-  });
+  const landingPages = await loadLandingPages();
+
+  const landingPage = landingPages.find((item) => item.slug === slug && item.isActive);
 
   if (!landingPage) return notFound();
 

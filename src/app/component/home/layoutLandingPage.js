@@ -62,15 +62,18 @@ export default function LayoutLandingPage({ children, waNo }) {
     : [];
 
   const subListItem = Array.isArray(productData)
-    ? productData.flatMap(
-        (product) =>
-          product.benefits?.map((benefit) => ({
+    ? productData
+        .flatMap((product) =>
+          (product.benefits || []).map((benefit) => ({
             id: benefit.id,
             servicesListItemId: product.id,
             title: benefit.benefit?.title || "",
             isActive: benefit.isActive,
-          })) || []
-      )
+            order: benefit.order ?? 0, // ambil dari ProductBenefit.order
+          }))
+        )
+        .sort((a, b) => a.order - b.order)
+        .map(({ order, ...rest }) => rest) // hilangkan 'order' dari hasil akhir kalau tidak perlu
     : [];
 
   const counter = "2025-05-29T23:59:59Z";
