@@ -1,4 +1,3 @@
-// src/app/services/package/[slug]/page.js
 import HeaderFooterSqlite from "@/app/component/global/headerFooterSqlite";
 import React from "react";
 import HeroPackage from "./heroPackage";
@@ -14,6 +13,19 @@ async function fetchData(endpoint) {
     throw new Error(`Gagal mengambil data dari ${endpoint}`);
   }
   return res.json();
+}
+
+// ✅ Tambahan: generateStaticParams untuk pre-render halaman berdasarkan slug
+export async function generateStaticParams() {
+  try {
+    const products = await fetchData("/api/datajs/product");
+    return products.map((product) => ({
+      slug: product.slug,
+    }));
+  } catch (error) {
+    console.error("Gagal membuat static params:", error);
+    return [];
+  }
 }
 
 // Fungsi Metadata dinamis
