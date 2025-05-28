@@ -3,6 +3,7 @@ import React from "react";
 import HeroPackage from "./heroPackage";
 import HeaderPackage from "./headerPackage";
 import FormPackage from "./formPackage";
+import HeroPackageSingle from "./heroPackageSIngle";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -104,7 +105,7 @@ export default async function ProductDetailPage({ params }) {
     return (
       <HeaderFooterSqlite siteName={site.siteName} footerText={currentYear}>
         <div>
-          <HeroPackage img={product.image} imageAlt={product.name} listItem={product.gallery} />
+          <HeroPackageSingle img={product.image} imageAlt={product.name} listItem={product.gallery} />
           <HeaderPackage
             title={product.name}
             quality={product.quality}

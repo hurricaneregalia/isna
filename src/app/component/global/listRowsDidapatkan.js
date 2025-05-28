@@ -4,8 +4,8 @@ import { FaCircleCheck } from "react-icons/fa6";
 export default function ListRowsDidapatkan({ listItem, border, icon }) {
   const borderFx = border ? "border border-1" : "";
   const iconFx = icon ? icon : <FaCircleCheck className="text-2xl" />;
-  const bgText = icon ? "bg-red-500 text-base-100" : "bg-amber-300 text-slate-900 ";
-  const iconColorFx = icon ? "text-red-500" : "";
+  const bgText = icon ? "bg-red-400 text-base-100" : "bg-amber-300 text-slate-900 ";
+  const iconColorFx = icon ? "text-red-400" : "";
   return (
     <ul>
       {listItem.map((item, index) => (

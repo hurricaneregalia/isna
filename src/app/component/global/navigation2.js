@@ -27,7 +27,7 @@ export default function Navigation2({ siteName, bg, logo }) {
       <Disclosure as="nav" className="bg-slate-900 text-slate-400 ">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
-            <div className="flex items-center sm:block px-4 sm:px-0">
+            <div className="flex items-center md:block px-4 sm:px-0">
               <div className="flex shrink-0 items-center">
                 <Link href="/" className="flex items-center gap-1">
                   <Image src={logo} alt="logo" width={20} height={20} className="w-5 h-5" />
@@ -36,7 +36,7 @@ export default function Navigation2({ siteName, bg, logo }) {
               </div>
             </div>
             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start" id="desktopNav">
-              <div className="hidden sm:ml-6 sm:block w-full">
+              <div className="hidden sm:ml-6 md:block w-full">
                 <div className="flex flex-row-reverse">
                   <div className="space-x-4">
                     {navMenu.map((item) => (
@@ -77,7 +77,7 @@ export default function Navigation2({ siteName, bg, logo }) {
           leaveFrom="transform translate-y-0 opacity-100"
           leaveTo="transform -translate-y-2 opacity-0"
         >
-          <DisclosurePanel id="mobile-menu" className="sm:hidden">
+          <DisclosurePanel id="mobile-menu" className="md:hidden">
             <div className="relative">
               <div className="absolute space-y-1 p-2  bg-slate-900 rounded-bl-3xl w-full">
                 <div className="px-4">
