@@ -1,8 +1,11 @@
+// src/app/component/marketingTools/FacebookPixelClient.js
 "use client";
 
 import { useEffect } from "react";
 
-const FacebookPixelClient = ({ pixelId }) => {
+const FacebookPixelClient = () => {
+  const pixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID;
+
   useEffect(() => {
     if (!pixelId) return;
 
@@ -32,7 +35,6 @@ const FacebookPixelClient = ({ pixelId }) => {
 
   return (
     <>
-      {/* Fallback untuk pengguna yang tidak mengaktifkan JS */}
       <noscript>
         <img height="1" width="1" style={{ display: "none" }} src={`https://www.facebook.com/tr?id=${pixelId}&ev=PageView&noscript=1`} alt="" />
       </noscript>
