@@ -8,6 +8,7 @@ import Loading from "./loading";
 import LinkAuto from "@/app/component/global/linkAuto";
 import fs from "fs/promises";
 import path from "path";
+import FacebookPixelServer from "@/app/component/marketingTools/FacebookPixelServer";
 
 // Fungsi untuk membaca site identity dari file JSON
 async function getSiteData() {
@@ -73,6 +74,10 @@ export default async function PaymentSuccessPage(props) {
   const searchParams = await props.searchParams;
   const { order_id, transaction_id, payment_type, bank, va_number, service, desc, waNumber, longTime, price, date, orderby, sapaan } = searchParams;
 
+  // 🔍 DEBUG: Cek harga yang dikirim
+  console.log("💰 price raw:", price);
+  console.log("💰 Number(price):", Number(price.replace(/\./g, "")));
+
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
   const siteData = await getSiteData();
 
@@ -93,6 +98,26 @@ export default async function PaymentSuccessPage(props) {
 
   return (
     <>
+      {/* ✅ Facebook Pixel Event Tracking (Server-side) */}
+      {!longTime && (
+        <>
+          <FacebookPixelServer
+            eventName="Purchase"
+            customData={{
+              content_name: service,
+              content_ids: [order_id],
+              content_type: "product",
+              value: Number(price.replace(/\./g, "")),
+
+              currency: "IDR",
+              num_items: 1,
+              payment_method: payment_type,
+            }}
+            testEventCode="TEST46543"
+          />
+        </>
+      )}
+
       <div className="min-h-full">
         <div className="w-full h-full grid place-items-center p-6 sm:py-32 lg:px-8">
           <div className="bg-base-100 sm:rounded-bl-4xl rounded-bl-3xl lg:w-10/12 sm:w-8/12 w-full lg:pb-0 sm:pb-10 pb-5 lg:grid-cols-2 grid-cols-1 grid overflow-hidden">

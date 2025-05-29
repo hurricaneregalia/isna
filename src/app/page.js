@@ -4,6 +4,8 @@ import fs from "fs/promises";
 import path from "path";
 import HeaderFooterSqlite from "./component/global/headerFooterSqlite";
 import LayoutLandingPage from "./component/home/layoutLandingPage";
+import FacebookPixelServer from "./component/marketingTools/FacebookPixelServer";
+import { headers } from "next/headers";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -101,6 +103,10 @@ export async function generateMetadata() {
 }
 
 export default async function HomePage() {
+  const requestHeaders = await headers();
+  const referrer = requestHeaders.get("referer") || null;
+  const userAgent = requestHeaders.get("user-agent") || null;
+
   try {
     const siteData = await loadSiteIdentity();
 
@@ -109,6 +115,7 @@ export default async function HomePage() {
     const pixelId = 123;
     return (
       <HeaderFooterSqlite>
+        <FacebookPixelServer testEventCode="TEST46543" />
         <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
           <LayoutLandingPage waNo={siteData.phone} />
         </main>

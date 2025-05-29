@@ -1,9 +1,10 @@
+// src/app/services/package/[slug]/page.js
 import HeaderFooterSqlite from "@/app/component/global/headerFooterSqlite";
 import React from "react";
-import HeroPackage from "./heroPackage";
 import HeaderPackage from "./headerPackage";
 import FormPackage from "./formPackage";
 import HeroPackageSingle from "./heroPackageSIngle";
+import FacebookPixelServer from "@/app/component/marketingTools/FacebookPixelServer";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -104,6 +105,15 @@ export default async function ProductDetailPage({ params }) {
 
     return (
       <HeaderFooterSqlite siteName={site.siteName} footerText={currentYear}>
+        <FacebookPixelServer
+          eventName="ViewContent"
+          customData={{
+            content_name: product.name,
+            content_ids: [product.sku],
+            content_type: "product",
+          }}
+          testEventCode="TEST46543"
+        />
         <div>
           <HeroPackageSingle img={product.image} imageAlt={product.name} listItem={product.gallery} />
           <HeaderPackage
