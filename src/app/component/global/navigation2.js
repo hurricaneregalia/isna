@@ -6,6 +6,7 @@ import Image from "next/image";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { FaXmark } from "react-icons/fa6";
 import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from "@headlessui/react";
+import FacebookPixelClient from "../marketingTools/FacebookPixelClient";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export default function Navigation2({ siteName, bg, logo }) {
@@ -21,9 +22,10 @@ export default function Navigation2({ siteName, bg, logo }) {
     { name: "NotFound", href: "/huntuband", key: "huntuband" },
     { name: "Landing Page", href: "/landingpage", key: "landingpage" },
   ];
-
+  const pixelId = 323140113784755;
   return (
     <div className={`${bg} sticky top-0 z-10`}>
+      <FacebookPixelClient pixelId={pixelId} />
       <Disclosure as="nav" className="bg-slate-900 text-slate-400 ">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex h-16 items-center justify-between">
