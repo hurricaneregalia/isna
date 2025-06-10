@@ -59,7 +59,7 @@ export default async function LandingPage() {
               </div>
               <div>
                 <Link href={`/bonus/${page.slug}`} className="btn btn-md rounded-full btn-primary w-full">
-                  Detail
+                  Lihat Demo
                 </Link>
               </div>
             </div>

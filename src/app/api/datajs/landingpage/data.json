@@ -5,11 +5,12 @@
     "slug": "nurbaz",
     "description": "lorem",
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "component": "Nurbaz",
     "lpDesignStyleId": "3c1e712c-d927-40e9-a387-19445db1f9f6",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-20T11:53:41.201Z",
-    "updatedAt": "2025-05-21T10:35:21.006Z",
+    "updatedAt": "2025-06-10T06:16:33.007Z",
     "lpFor": [
       {
         "id": "bf678104-5603-4612-9e57-b6f580f62e65",
@@ -42,11 +43,12 @@
     "slug": "halvora",
     "description": "oremo",
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "component": "Halvora",
     "lpDesignStyleId": "83a977c3-b839-4a31-8b8d-1ec1021ce1ca",
     "marketingTools": null,
     "isActive": true,
     "createdAt": "2025-05-20T11:54:43.503Z",
-    "updatedAt": "2025-05-21T00:46:22.030Z",
+    "updatedAt": "2025-06-10T06:16:33.007Z",
     "lpFor": [
       {
         "id": "8ebc59b4-e8ba-4922-a539-53f50be8670a",
@@ -79,11 +81,12 @@
     "slug": "baizan",
     "description": "lorm",
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "component": "Baizan",
     "lpDesignStyleId": "d092b505-85e3-4e5b-af93-7482947d0745",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-05-21T10:35:21.006Z",
+    "updatedAt": "2025-06-10T06:16:33.007Z",
     "lpFor": [
       {
         "id": "19bc1619-0e65-493e-a8b0-677e2aa08ffb",
@@ -116,11 +119,12 @@
     "slug": "rihala",
     "description": "olore",
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "component": "Rihala",
     "lpDesignStyleId": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
     "marketingTools": null,
     "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-05-21T00:46:22.030Z",
+    "updatedAt": "2025-06-10T06:16:33.007Z",
     "lpFor": [
       {
         "id": "443c4e89-3266-4e10-a525-cce367a968b8",
@@ -153,11 +157,12 @@
     "slug": "zaffra",
     "description": "ipsumd",
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "component": "Zaffra",
     "lpDesignStyleId": "816d0a80-83f9-427b-8996-d1948a544a77",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-05-21T10:35:21.006Z",
+    "updatedAt": "2025-06-10T06:16:33.007Z",
     "lpFor": [
       {
         "id": "6181a3bb-66b9-49d3-85c0-c24010420fcc",
@@ -190,11 +195,12 @@
     "slug": "mirka",
     "description": "lirema",
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "component": "Mirka",
     "lpDesignStyleId": "d092b505-85e3-4e5b-af93-7482947d0745",
     "marketingTools": null,
     "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-05-21T00:46:22.030Z",
+    "updatedAt": "2025-06-10T06:16:33.007Z",
     "lpFor": [
       {
         "id": "bf678104-5603-4612-9e57-b6f580f62e65",
@@ -227,11 +233,12 @@
     "slug": "safna",
     "description": "gargantusa",
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "component": "Safna",
     "lpDesignStyleId": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-05-21T10:35:21.006Z",
+    "updatedAt": "2025-06-10T06:16:33.007Z",
     "lpFor": [
       {
         "id": "775ca147-bed8-4535-a2f8-924437ec3919",
@@ -272,11 +279,12 @@
     "slug": "zemira",
     "description": "sitamet",
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "component": "Zemira",
     "lpDesignStyleId": "3c1e712c-d927-40e9-a387-19445db1f9f6",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-05-21T10:35:21.006Z",
+    "updatedAt": "2025-06-10T06:16:33.007Z",
     "lpFor": [
       {
         "id": "6c37855a-8169-4309-ab73-da56fccb0b83",
@@ -309,11 +317,12 @@
     "slug": "hyzaa",
     "description": "amef",
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "component": "Hyzaa",
     "lpDesignStyleId": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-05-21T10:35:21.006Z",
+    "updatedAt": "2025-06-10T06:16:33.007Z",
     "lpFor": [
       {
         "id": "b793484f-c8d2-4f9f-b40a-10f0410801b0",
@@ -350,11 +359,12 @@
     "slug": "kanzar",
     "description": "editpsing",
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "component": "Kanzar",
     "lpDesignStyleId": "dc6d1827-0b89-4c82-8d9d-21f551850ed9",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-05-21T10:35:21.006Z",
+    "updatedAt": "2025-06-10T06:16:33.007Z",
     "lpFor": [
       {
         "id": "b793484f-c8d2-4f9f-b40a-10f0410801b0",

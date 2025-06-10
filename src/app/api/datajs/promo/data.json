@@ -7,9 +7,9 @@
     "value": 0.1,
     "isActive": true,
     "startDate": "2025-06-01T23:59:59.000Z",
-    "endDate": "2025-06-02T23:59:59.000Z",
+    "endDate": "2025-06-29T23:59:59.000Z",
     "createdAt": "2025-06-04T02:40:12.176Z",
-    "updatedAt": "2025-06-09T07:30:47.330Z",
+    "updatedAt": "2025-06-09T07:34:19.219Z",
     "products": [
       {
         "id": "cm9s49e6f0003vldz95k9oiqc",
@@ -24,7 +24,13 @@
         "inStock": true,
         "status": "ACTIVE",
         "categoryId": "cm9s4567o0002vldz3c2mvv5h",
-        "keywords": ["copywriting", "landing page", "iklan digital", "bisnis online", "cuan"],
+        "keywords": [
+          "copywriting",
+          "landing page",
+          "iklan digital",
+          "bisnis online",
+          "cuan"
+        ],
         "quality": 2,
         "isBest": false,
         "createdAt": "2025-04-22T06:21:00.807Z",
@@ -43,7 +49,13 @@
         "inStock": true,
         "status": "ACTIVE",
         "categoryId": "cm9s4567o0002vldz3c2mvv5h",
-        "keywords": ["copywriting", "landing page", "iklan digital", "bisnis online", "cuan"],
+        "keywords": [
+          "copywriting",
+          "landing page",
+          "iklan digital",
+          "bisnis online",
+          "cuan"
+        ],
         "quality": 3,
         "isBest": false,
         "createdAt": "2025-04-22T06:30:00.000Z",
@@ -62,7 +74,13 @@
         "inStock": true,
         "status": "ACTIVE",
         "categoryId": "cm9s4567o0002vldz3c2mvv5h",
-        "keywords": ["copywriting", "landing page", "iklan digital", "bisnis online", "cuan"],
+        "keywords": [
+          "copywriting",
+          "landing page",
+          "iklan digital",
+          "bisnis online",
+          "cuan"
+        ],
         "quality": 5,
         "isBest": true,
         "createdAt": "2025-04-22T06:30:00.000Z",

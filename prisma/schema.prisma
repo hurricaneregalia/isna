@@ -420,6 +420,7 @@ model LandingPage {
   slug            String          @unique
   description     String
   image           String
+  component       String?
   lpFor           LpFor[]         @relation("LandingPageLpFor")
   lpContentTypes  LpContentType[] @relation("LandingPageLpContentType")
   lpDesignStyle   LpDesignStyle?  @relation(fields: [lpDesignStyleId], references: [id])
