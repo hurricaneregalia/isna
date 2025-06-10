@@ -1,14 +1,40 @@
+// middleware.js
 import { NextResponse } from "next/server";
 
-export function middleware(request) {
-  const response = NextResponse.next();
+export async function middleware(request) {
+  const { pathname } = request.nextUrl;
 
-  // Cache-Control headers
-  response.headers.set("Cache-Control", "public, max-age=31536000, immutable");
+  // Cek hanya URL yang mengarah ke /bonus atau turunannya
+  if (pathname.startsWith("/bonus")) {
+    try {
+      const res = await fetch(`${request.nextUrl.origin}/api/promo-status`, {
+        // Agar tidak menggunakan cache
+        headers: {
+          "cache-control": "no-cache",
+        },
+      });
 
-  return response;
+      const data = await res.json();
+
+      if (!data.isActive) {
+        const url = request.nextUrl.clone();
+        url.pathname = "/redirected";
+        url.searchParams.set("reason", "expired");
+        return NextResponse.redirect(url);
+      }
+    } catch (e) {
+      console.error("❌ Middleware fetch error:", e.message);
+
+      const url = request.nextUrl.clone();
+      url.pathname = "/redirected";
+      url.searchParams.set("reason", "expired");
+      return NextResponse.redirect(url);
+    }
+  }
+
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/static/:path*", "/_next/static/:path*", "/images/:path*"],
+  matcher: ["/bonus/:path*", "/bonus"], // Tangani semua path /bonus dan turunannya
 };

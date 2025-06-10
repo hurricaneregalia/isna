@@ -1,6 +1,6 @@
 // src/app/product/[slug]/page.js
 import HeaderFooterSqlite from "@/app/component/global/headerFooterSqlite";
-import LandingPageDetail from "@/app/component/landingPage/LandingPageDetail";
+import LandingPageDetail from "@/app/bonus/LandingPageDetail";
 import { notFound } from "next/navigation";
 import fs from "fs/promises";
 import path from "path";
@@ -12,7 +12,7 @@ async function loadLandingPages() {
 }
 
 export default async function ProductPage({ params }) {
-  const { slug } = params;
+  const { slug } = await params;
 
   const landingPages = await loadLandingPages();
 

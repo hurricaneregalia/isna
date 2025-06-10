@@ -76,8 +76,6 @@ export default function LayoutLandingPage({ children, waNo }) {
         .map(({ order, ...rest }) => rest) // hilangkan 'order' dari hasil akhir kalau tidak perlu
     : [];
 
-  const counter = "2025-05-29T23:59:59Z";
-
   return (
     <Content>
       <Hero bg="/images/landingPage/hero/bgHero2.webp" title={pageData.title} description={pageData.description} btnTxt="Solusi" />
@@ -265,7 +263,7 @@ export default function LayoutLandingPage({ children, waNo }) {
                       btnUrl1="#layanan"
                       btnUrl2={`https://wa.me/${waNo}?text=saya%20mau%20konsultasi`}
                     >
-                      <CountdownMini targetDate={counter} />
+                      <CountdownMini />
                     </FinalCta>
                   ))}
               </div>
@@ -313,7 +311,7 @@ export default function LayoutLandingPage({ children, waNo }) {
             rounded="none"
             btnStyle="animate-bounce"
           >
-            <CountdownMini targetDate={counter} />
+            <CountdownMini />
           </FinalCta>
         ))}
     </Content>

@@ -4,7 +4,7 @@
     "sku": "QLNC",
     "name": "Qolilan copy",
     "slug": "qolilan-copy",
-    "description": "paket copywriting untuk landing page versi mini.",
+    "description": "Paket copywriting untuk landing page versi mini.",
     "bestFor": "Untuk memulai bisnis online",
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
     "price": 199000,
@@ -22,7 +22,7 @@
     "quality": 2,
     "isBest": false,
     "createdAt": "2025-04-22T06:21:00.807Z",
-    "updatedAt": "2025-05-02T07:48:14.382Z",
+    "updatedAt": "2025-06-02T06:50:06.757Z",
     "category": {
       "id": "cm9s4567o0002vldz3c2mvv5h",
       "name": "landing page copywriting",
@@ -227,7 +227,20 @@
         "icon": null
       }
     ],
-    "promotions": [],
+    "promotions": [
+      {
+        "id": "cmbhcb24w0000vl9io1w81s7i",
+        "name": "my promo 1",
+        "description": "promo lorem ipsum 30 hari",
+        "type": "PERCENTAGE",
+        "value": 0.1,
+        "isActive": true,
+        "startDate": "2025-06-01T23:59:59.000Z",
+        "endDate": "2025-06-04T23:59:59.000Z",
+        "createdAt": "2025-06-04T02:40:12.176Z",
+        "updatedAt": "2025-06-09T07:30:47.330Z"
+      }
+    ],
     "vouchers": []
   },
   {
@@ -235,7 +248,7 @@
     "sku": "MTZC",
     "name": "Mumtazan copy",
     "slug": "mumtazan-copy",
-    "description": "paket copywriting untuk landing page versi pertengahan.",
+    "description": "Paket copywriting untuk landing page versi pertengahan.",
     "bestFor": "Untuk mengembangkan bisnis online",
     "image": "/images/uploads/products/mumtazan-copy/main.jpg",
     "price": 275900,
@@ -253,7 +266,7 @@
     "quality": 3,
     "isBest": false,
     "createdAt": "2025-04-22T06:30:00.000Z",
-    "updatedAt": "2025-05-02T07:48:14.382Z",
+    "updatedAt": "2025-06-02T06:50:06.757Z",
     "category": {
       "id": "cm9s4567o0002vldz3c2mvv5h",
       "name": "landing page copywriting",
@@ -458,7 +471,20 @@
         "icon": null
       }
     ],
-    "promotions": [],
+    "promotions": [
+      {
+        "id": "cmbhcb24w0000vl9io1w81s7i",
+        "name": "my promo 1",
+        "description": "promo lorem ipsum 30 hari",
+        "type": "PERCENTAGE",
+        "value": 0.1,
+        "isActive": true,
+        "startDate": "2025-06-01T23:59:59.000Z",
+        "endDate": "2025-06-04T23:59:59.000Z",
+        "createdAt": "2025-06-04T02:40:12.176Z",
+        "updatedAt": "2025-06-09T07:30:47.330Z"
+      }
+    ],
     "vouchers": []
   },
   {
@@ -466,7 +492,7 @@
     "sku": "KLNC",
     "name": "Kamilan copy",
     "slug": "kamilan-copy",
-    "description": "paket copywriting untuk landing page versi lengkap.",
+    "description": "Paket copywriting untuk landing page versi lengkap.",
     "bestFor": "Untuk branding bisnis online",
     "image": "/images/uploads/products/kamilan-copy/main.jpg",
     "price": 290000,
@@ -484,7 +510,7 @@
     "quality": 5,
     "isBest": true,
     "createdAt": "2025-04-22T06:30:00.000Z",
-    "updatedAt": "2025-05-02T07:48:14.382Z",
+    "updatedAt": "2025-06-02T06:50:06.757Z",
     "category": {
       "id": "cm9s4567o0002vldz3c2mvv5h",
       "name": "landing page copywriting",
@@ -689,7 +715,20 @@
         "icon": null
       }
     ],
-    "promotions": [],
+    "promotions": [
+      {
+        "id": "cmbhcb24w0000vl9io1w81s7i",
+        "name": "my promo 1",
+        "description": "promo lorem ipsum 30 hari",
+        "type": "PERCENTAGE",
+        "value": 0.1,
+        "isActive": true,
+        "startDate": "2025-06-01T23:59:59.000Z",
+        "endDate": "2025-06-04T23:59:59.000Z",
+        "createdAt": "2025-06-04T02:40:12.176Z",
+        "updatedAt": "2025-06-09T07:30:47.330Z"
+      }
+    ],
     "vouchers": []
   },
   {

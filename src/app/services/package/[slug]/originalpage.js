@@ -5,7 +5,6 @@ import HeaderPackage from "./headerPackage";
 import FormPackage from "./formPackage";
 import HeroPackageSingle from "./heroPackageSIngle";
 import FacebookPixelServer from "@/app/component/marketingTools/FacebookPixelServer";
-import ListBenefitsDetail from "./ListBenefitsDetail";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -116,21 +115,15 @@ export default async function ProductDetailPage({ params }) {
           testEventCode="TEST46543"
         />
         <div>
-          <HeroPackageSingle img={product.image} imageAlt={product.name} listItem={product.gallery}>
-            <HeaderPackage
-              title={product.name}
-              quality={product.quality}
-              price={product.price}
-              categoryTitle={product.category?.name || "Tanpa kategori"}
-              description={product.description}
-              bestFor={product.bestFor}
-              proccessTime={product.proccessTime}
-              listTags={product.tags}
-              listItem={product.benefits}
-            />
-          </HeroPackageSingle>
+          <HeroPackageSingle img={product.image} imageAlt={product.name} listItem={product.gallery} />
+          <HeaderPackage
+            title={product.name}
+            quality={product.quality}
+            price={product.price}
+            categoryTitle={product.category?.name || "Tanpa kategori"}
+          />
         </div>
-        <div className="lg:w-7/12 w-full mx-auto mt-10">
+        <div className="sm:px-13 px-5 lg:w-2/3 w-full mx-auto">
           <FormPackage
             listItem={registerForm}
             serviceName={product.name}

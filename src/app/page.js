@@ -112,7 +112,6 @@ export default async function HomePage() {
 
     if (!siteData) throw new Error("Site identity not found");
 
-    const pixelId = 123;
     return (
       <HeaderFooterSqlite>
         <FacebookPixelServer testEventCode="TEST46543" />

@@ -32,9 +32,11 @@ export default function Services({ listItem, subListItem, onlyCategory }) {
                         </div>
                         <p className="font-normal">{item.title}</p>
                         <p className="text-3xl font-bold my-2">{item.price.toLocaleString("id-ID")}</p>
-                        <p className="font-normal flex items-center gap-1">
-                          <PiSealCheckFill className="text-success" /> {item.bestFor}
+                        <p className="font-normal flex items-start gap-1">
+                          <PiSealCheckFill className="text-success mt-1 flex-shrink-0" />
+                          <span>{item.bestFor}</span>
                         </p>
+
                         <div className="card-actions w-full mx-auto mt-5">
                           <BtnLinkPrimary
                             btnUrl={`/services/package/${item.slug}`}
@@ -67,11 +69,11 @@ export default function Services({ listItem, subListItem, onlyCategory }) {
 
                         <hr className="my-8 border-b-base-content border-dashed" />
 
-                        <div className="mb-5 opacity-50 flex items-center gap-1">
-                          <IoMdTime />
+                        <div className="mb-5 opacity-50 items-start flex gap-1">
+                          <IoMdTime className="mt-1 flex-shrink-0" />
                           <p>
                             <span>Proses pembuatan</span>
-                            <span className="font-bold"> {item.proccessTime}</span> <span>hari kerja</span>
+                            <span className="font-bold"> {item.proccessTime}</span> <span>hari kerja.</span>
                           </p>
                         </div>
                       </div>

@@ -1,22 +1,19 @@
-// src/app/landingpage/[slug]/page.js
-import myPrisma from "@/app/lib/prisma";
+// src/app/component/landingPage/LandingPage.js
+import fs from "fs";
+import path from "path";
 import Image from "next/image";
 import Link from "next/link";
 
+// Fungsi bantu untuk membaca file JSON secara sinkron
+function getLandingPages() {
+  const filePath = path.join(process.cwd(), "src/app/api/datajs/landingpage/data.json");
+  const jsonData = fs.readFileSync(filePath, "utf-8");
+  const data = JSON.parse(jsonData);
+  return data;
+}
+
 export default async function LandingPage() {
-  const landingPages = await myPrisma.landingPage.findMany({
-    where: {
-      isActive: true, // Filter untuk hanya mengambil landing page yang aktif
-    },
-    include: {
-      lpFor: true,
-      lpContentTypes: true,
-      lpDesignStyle: true,
-    },
-    orderBy: {
-      createdAt: "desc", // Urutkan berdasarkan tanggal pembuatan terbaru
-    },
-  });
+  const landingPages = getLandingPages().filter((page) => page.isActive);
 
   if (!landingPages || landingPages.length === 0) {
     return (
@@ -43,7 +40,7 @@ export default async function LandingPage() {
 
               <div className="mt-4">
                 <h3 className="font-semibold">Cocok untuk:</h3>
-                <ul className="list-disc list-inside text-sm text-gray-700">
+                <ul className="list-disc list-inside text-sm opacity-75 ">
                   {page.lpFor.map((item) => (
                     <li key={item.id}>{item.description || "(tidak ada deskripsi)"}</li>
                   ))}
@@ -61,8 +58,8 @@ export default async function LandingPage() {
                 </div>
               </div>
               <div>
-                <Link href={"/landingpage/" + page.slug} className="btn btn-md rounded-full btn-primary w-full">
-                  Detail {"/landingpage/" + page.slug}
+                <Link href={`/bonus/${page.slug}`} className="btn btn-md rounded-full btn-primary w-full">
+                  Detail
                 </Link>
               </div>
             </div>

@@ -1,3 +1,4 @@
+// src/app/payment/success/page.js
 import { IoMdCheckmark } from "react-icons/io";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,6 +10,8 @@ import LinkAuto from "@/app/component/global/linkAuto";
 import fs from "fs/promises";
 import path from "path";
 import FacebookPixelServer from "@/app/component/marketingTools/FacebookPixelServer";
+import CountdownMini from "@/app/component/home/countdownMini";
+import CountdownMiniBonus from "@/app/component/home/countdownMiniBonus";
 
 // Fungsi untuk membaca site identity dari file JSON
 async function getSiteData() {
@@ -74,10 +77,6 @@ export default async function PaymentSuccessPage(props) {
   const searchParams = await props.searchParams;
   const { order_id, transaction_id, payment_type, bank, va_number, service, desc, waNumber, longTime, price, date, orderby, sapaan } = searchParams;
 
-  // 🔍 DEBUG: Cek harga yang dikirim
-  console.log("💰 price raw:", price);
-  console.log("💰 Number(price):", Number(price.replace(/\./g, "")));
-
   const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
   const siteData = await getSiteData();
 
@@ -99,23 +98,21 @@ export default async function PaymentSuccessPage(props) {
   return (
     <>
       {/* ✅ Facebook Pixel Event Tracking (Server-side) */}
-      {!longTime && (
-        <>
-          <FacebookPixelServer
-            eventName="Purchase"
-            customData={{
-              content_name: service,
-              content_ids: [order_id],
-              content_type: "product",
-              value: Number(price.replace(/\./g, "")),
+      {longTime && (
+        <FacebookPixelServer
+          eventName="Purchase"
+          customData={{
+            content_name: service,
+            content_ids: [order_id],
+            content_type: "product",
+            value: Number(price.replace(/\./g, "")),
 
-              currency: "IDR",
-              num_items: 1,
-              payment_method: payment_type,
-            }}
-            testEventCode="TEST46543"
-          />
-        </>
+            currency: "IDR",
+            num_items: 1,
+            payment_method: payment_type,
+          }}
+          testEventCode="TEST46543"
+        />
       )}
 
       <div className="min-h-full">
@@ -214,6 +211,9 @@ export default async function PaymentSuccessPage(props) {
                     </>
                   )}
                 </p>
+                <div className=" text-center mt-5">
+                  <CountdownMiniBonus />
+                </div>
               </div>
             </div>
           </div>

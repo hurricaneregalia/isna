@@ -153,7 +153,7 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
       {isProcessingPayment && <ProsesPembayaran />}
 
       <form ref={formRef} onSubmit={handleSubmit}>
-        <div className="w-full rounded-bl-3xl  mb-30 grid grid-cols-1 gap-5 bg-base-100 lg:p-30 sm:p-15 p-5 pt-10">
+        <div className="w-full rounded-bl-3xl mb-30 grid grid-cols-1 gap-5 bg-base-100 lg:p-30 sm:p-15 p-5 pt-10">
           <TextHeadingTitle title="Isi data bisnis Anda" iconTitle={<TiPencil />} titleCase={2} h={3} cssStyle="mb-10" iconPosition="left" />
           {listItem.length > 0 ? (
             listItem.map((item) => {

@@ -100,6 +100,19 @@ async function exportUsers() {
   await writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
   console.log("✅ Data User berhasil diekspor ke user/data.json");
 }
+// Ekspor Promotions
+async function exportPromotions() {
+  const data = await prisma.promotion.findMany({
+    include: {
+      products: true,
+    },
+  });
+
+  const filePath = join(process.cwd(), "src/app/api/datajs/promo/data.json");
+
+  await writeFile(filePath, JSON.stringify(data, null, 2), "utf-8");
+  console.log("✅ Data Promotion berhasil diekspor ke promotion/data.json");
+}
 
 // Eksekusi semua ekspor
 async function main() {
@@ -109,6 +122,7 @@ async function main() {
   await exportProducts();
   await exportRegisterForms();
   await exportUsers();
+  await exportPromotions();
 }
 
 main()
@@ -117,3 +131,4 @@ main()
     process.exit(1);
   })
   .finally(() => prisma.$disconnect());
+// node scripts/exportData.js

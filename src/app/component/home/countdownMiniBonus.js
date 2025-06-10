@@ -1,8 +1,10 @@
+// src/app/component/home/countdownMiniBonus.js
 "use client";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Link from "next/link";
 
-export default function CountdownMini({ cssStyle }) {
+export default function CountdownMiniBonus({ cssStyle }) {
   const [promo, setPromo] = useState(null);
   const [targetDate, setTargetDate] = useState(null);
   const [countdown, setCountdown] = useState({
@@ -14,7 +16,7 @@ export default function CountdownMini({ cssStyle }) {
   useEffect(() => {
     async function fetchPromo() {
       try {
-        const res = await axios.get("/api/datajs/promo"); // API route
+        const res = await axios.get("/api/datajs/promo");
         setPromo(res.data);
         setTargetDate(res.data?.endDate);
       } catch (error) {
@@ -31,7 +33,7 @@ export default function CountdownMini({ cssStyle }) {
 
     const convertToWIB = (date) => {
       const utcDate = new Date(date);
-      utcDate.setHours(utcDate.getHours() - 7); // UTC -> WIB
+      utcDate.setHours(utcDate.getHours() - 7);
       return utcDate;
     };
 
@@ -63,29 +65,38 @@ export default function CountdownMini({ cssStyle }) {
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  // Handle loading state
   if (!promo) return null;
 
   const { timeLeft, isFinished } = countdown;
 
   return (
-    <div className={`text-center ${cssStyle || "mt-10"}`}>
-      <div className="flex justify-center">
-        <div className="inline-block text-white mx-auto p-3 py-2 rounded-md">
-          <span className="flex items-center justify-center gap-3">
-            {["days", "hours", "minutes", "seconds"].map((key) => (
-              <p key={key} className="flex flex-col bg-red-700 rounded-sm h-15 w-10 items-center justify-center">
-                {timeLeft[key] ?? 0}
-                <span className="text-xs opacity-75">
-                  {key === "days" ? "Hari" : key === "hours" ? "Jam" : key === "minutes" ? "Menit" : "Detik"}
-                </span>
-              </p>
-            ))}
-          </span>
-          {/* Selesai */}
-          {isFinished && <p className="mt-4 text-red-700 bg-red-200 p-1 rounded-sm">Periode promo sudah berakhir</p>}
+    <>
+      {!isFinished && (
+        <div className={`text-center ${cssStyle || "mt-10"}`}>
+          <Link
+            href="/bonus"
+            className="animate-bounce btn btn-lg border-0 items-center rounded-full bg-amber-300 shadow-none hover:bg-amber-500 text-slate-900 capitalize mb-4"
+          >
+            Claim Bonus
+          </Link>
+
+          {/* Countdown display */}
+          <div className="flex justify-center">
+            <div className="inline-block text-white mx-auto p-3 py-2 rounded-md">
+              <span className="flex items-center justify-center gap-3">
+                {["days", "hours", "minutes", "seconds"].map((key) => (
+                  <p key={key} className="flex flex-col bg-red-700 rounded-sm h-15 w-10 items-center justify-center">
+                    {timeLeft[key] ?? 0}
+                    <span className="text-xs opacity-75">
+                      {key === "days" ? "Hari" : key === "hours" ? "Jam" : key === "minutes" ? "Menit" : "Detik"}
+                    </span>
+                  </p>
+                ))}
+              </span>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 }

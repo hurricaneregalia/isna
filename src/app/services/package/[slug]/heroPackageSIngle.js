@@ -9,7 +9,7 @@ import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 
-export default function HeroPackage({ img, imageAlt, listItem }) {
+export default function HeroPackage({ img, imageAlt, listItem, children }) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -30,8 +30,8 @@ export default function HeroPackage({ img, imageAlt, listItem }) {
   ];
 
   return (
-    <div className="lg:p-20 sm:p-10 p-5 bg-slate-900 sm:rounded-bl-4xl rounded-bl-3xl">
-      <div className="lg:rounded-bl-3xl rounded-bl-xl grid grid-cols-1 lg:w-2/3 mx-auto w-full overflow-hidden">
+    <div className="sm:p-15 p-5 bg-slate-900 sm:rounded-bl-4xl rounded-bl-3xl patternKalmaanaDark">
+      <div className="lg:rounded-bl-3xl rounded-bl-xl grid grid-cols-1 lg:w-8/12 mx-auto w-full overflow-hidden">
         <button
           id="bigImage"
           type="button"
@@ -50,6 +50,7 @@ export default function HeroPackage({ img, imageAlt, listItem }) {
             cssStyle="cursor-pointer object-cover h-full w-auto"
           />
         </button>
+        <div>{children}</div>
       </div>
 
       <Lightbox
