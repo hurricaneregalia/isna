@@ -2,11 +2,11 @@
 import { IoMdClose } from "react-icons/io";
 import Image from "next/image";
 import Link from "next/link";
-import { FormatTanggal } from "@/app/component/global/formatTanggal";
 import CanvasCursor from "@/app/component/canvasCursor/CanvasCursor";
 import fs from "fs/promises";
 import path from "path";
 import Loading from "@/app/loading";
+import { formatTanggal } from "@/app/component/global/formatTanggal";
 
 // Fungsi untuk membaca site identity dari file JSON
 async function getSiteData() {
@@ -107,7 +107,7 @@ export default async function PaymentErrorPage() {
                   </div>
                   <div className="flex justify-between border-dashed border-red-400 border-t py-4">
                     <p>Tanggal</p>
-                    <p className="font-bold text-end">{FormatTanggal(new Date().toISOString())}</p>
+                    <p className="font-bold text-end">{formatTanggal(new Date().toISOString())}</p>
                   </div>
                 </div>
               </div>
