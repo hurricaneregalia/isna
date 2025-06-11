@@ -8,7 +8,7 @@ export default function Modal({ children, modalId, header, btnTxt, btnStyle, ico
 
   return (
     <div>
-      <button className={`btn ${btnStyle}`} onClick={openModal}>
+      <button className={`btn ${btnStyle}`} onClick={openModal} name="shareBtn">
         {btnTxt}
       </button>
 

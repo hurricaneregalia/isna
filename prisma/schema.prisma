@@ -231,6 +231,7 @@ model ProductBenefitPoint {
 model Promotion {
   id          String    @id @default(cuid())
   name        String // nama promo
+  slug        String?
   description String? // penjelasan promo
   type        PromoType // diskon, bonus, dll
   value       Float? // contoh: 10 (10%) atau 50000 (Rp50rb)

@@ -2,7 +2,6 @@
 import fs from "fs";
 import path from "path";
 import Image from "next/image";
-import Link from "next/link";
 import { formatTanggal } from "../component/global/formatTanggal";
 import { MdEditNote } from "react-icons/md";
 import { FaCheck, FaPalette, FaWhatsapp } from "react-icons/fa6";

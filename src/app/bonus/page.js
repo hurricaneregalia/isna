@@ -37,9 +37,9 @@ export default async function BonusPage() {
   return (
     <>
       <HeroBonus>
-        <div className=" text-center">
+        <div className=" text-center py-15">
           <h1 className="text-3xl font-bold text-amber-500 mb-4">🎉 Claim Bonus!</h1>
-          <p className="text-lg text-white opacity-75 mb-6">Pilih satu yang cocok dengan bisnis Anda.</p>
+          <p className="text-lg text-white opacity-75">Pilih satu yang cocok dengan bisnis Anda.</p>
         </div>
       </HeroBonus>
       <LandingPage />

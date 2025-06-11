@@ -45,7 +45,7 @@ export default function Navigation2({ siteName, bg, logo }) {
                         aria-current={item.current ? "page" : undefined}
                         className="text-slate-400 hover:text-amber-300"
                       >
-                        <DisclosureButton as="span">{item.name}</DisclosureButton>
+                        <DisclosureButton as="button">{item.name}</DisclosureButton>
                       </Link>
                     ))}
                   </div>
