@@ -2,7 +2,6 @@
 import { IoMdCheckmark } from "react-icons/io";
 import Image from "next/image";
 import Link from "next/link";
-import { FormatTanggal } from "@/app/component/global/formatTanggal";
 import CanvasCursor from "@/app/component/canvasCursor/CanvasCursor";
 import CopyableText from "@/app/component/global/copyableText";
 import Loading from "./loading";
@@ -12,6 +11,7 @@ import path from "path";
 import FacebookPixelServer from "@/app/component/marketingTools/FacebookPixelServer";
 import CountdownMini from "@/app/component/home/countdownMini";
 import CountdownMiniBonus from "@/app/component/home/countdownMiniBonus";
+import { formatTanggalLengkap } from "@/app/component/global/formatTanggal";
 
 // Fungsi untuk membaca site identity dari file JSON
 async function getSiteData() {
@@ -161,7 +161,7 @@ export default async function PaymentSuccessPage(props) {
                   <h1 className={`text-4xl font-bold ${longTime ? "text-slate-400" : "text-green-500"} mb-4`}>Rp. {price}</h1>
                   <div className="text-slate-400">
                     <CopyableText orderId={order_id} cssStyle="bg-slate-700" />
-                    <p className="text-xs">Waktu pembayaran: {longTime ? "Loading..." : FormatTanggal(date)}</p>
+                    <p className="text-xs">Waktu pembayaran: {longTime ? "Loading..." : formatTanggalLengkap(date)}</p>
                     <p className="mt-3">{longTime ? "INVOICE Anda sedang diproses" : "✅ Pembayaran Berhasil!"}</p>
                   </div>
                 </div>
@@ -178,7 +178,7 @@ export default async function PaymentSuccessPage(props) {
                   </div>
                   <div className="flex justify-between border-dashed border-slate-400 border-t py-4">
                     <p>Waktu pembayaran</p>
-                    <p className="font-bold capitalize text-end">{longTime ? "Loading..." : FormatTanggal(date)}</p>
+                    <p className="font-bold capitalize text-end">{longTime ? "Loading..." : formatTanggalLengkap(date)}</p>
                   </div>
                   <div className="flex justify-between border-dashed border-slate-400 border-t py-4">
                     <p>Klien</p>
