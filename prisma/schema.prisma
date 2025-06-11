@@ -425,6 +425,7 @@ model LandingPage {
   lpContentTypes  LpContentType[] @relation("LandingPageLpContentType")
   lpDesignStyle   LpDesignStyle?  @relation(fields: [lpDesignStyleId], references: [id])
   lpDesignStyleId String?
+  ctas            Cta[]           @relation("LandingCta")
   marketingTools  String?
   isActive        Boolean         @default(true)
   createdAt       DateTime        @default(now())
@@ -437,9 +438,15 @@ model LpFor {
   landingPages LandingPage[] @relation("LandingPageLpFor")
 }
 
+model Cta {
+  id           String        @id @default(uuid())
+  description  String
+  landingPages LandingPage[] @relation("LandingCta")
+}
+
 model LpContentType {
   id           String        @id @default(uuid())
-  type         String // e.g., "text", "image", "video", "form"
+  type         String
   landingPages LandingPage[] @relation("LandingPageLpContentType")
 }
 

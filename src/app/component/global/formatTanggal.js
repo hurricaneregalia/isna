@@ -1,8 +1,18 @@
-export function FormatTanggal(dateString) {
-  const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+// src/app/component/global/formatTanggal.js
 
+const months = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+
+export function formatTanggal(dateString) {
   const date = new Date(dateString);
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = months[date.getMonth()];
+  const year = date.getFullYear();
 
+  return `${day} ${month} ${year}`;
+}
+
+export function formatTanggalLengkap(dateString) {
+  const date = new Date(dateString);
   const day = String(date.getDate()).padStart(2, "0");
   const month = months[date.getMonth()];
   const year = date.getFullYear();

@@ -35,7 +35,8 @@
       "id": "3c1e712c-d927-40e9-a387-19445db1f9f6",
       "name": "Creative",
       "description": "Warna berani, layout tidak biasa, cocok untuk seniman, kreator, agensi kreatif."
-    }
+    },
+    "ctas": []
   },
   {
     "id": "b9d20756-aa9b-4fb2-a4aa-da4ccab73171",
@@ -51,29 +52,39 @@
     "updatedAt": "2025-06-10T06:16:33.007Z",
     "lpFor": [
       {
-        "id": "8ebc59b4-e8ba-4922-a539-53f50be8670a",
-        "description": "pendaftaran acara."
+        "id": "6181a3bb-66b9-49d3-85c0-c24010420fcc",
+        "description": "affiliate marketing."
+      },
+      {
+        "id": "d771bf51-bc98-4db8-81a1-661db4e53587",
+        "description": "menjual 1 produk"
+      },
+      {
+        "id": "ecbfa549-0b21-414e-a1bf-982243a69c90",
+        "description": "menjual produk branded."
       }
     ],
     "lpContentTypes": [
       {
-        "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
-        "type": "text"
+        "id": "397d9d29-87dd-4ae7-917d-d5bcc853cf1a",
+        "type": "hero image"
       },
       {
-        "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
-        "type": "image"
-      },
-      {
-        "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
-        "type": "youtube video"
+        "id": "5098707b-91bc-4628-b077-1a98e65b5cd1",
+        "type": "testimoni teks"
       }
     ],
     "lpDesignStyle": {
       "id": "83a977c3-b839-4a31-8b8d-1ec1021ce1ca",
       "name": "Professional",
       "description": "Tampilan formal dan tegas, cocok untuk B2B, legal, konsultan."
-    }
+    },
+    "ctas": [
+      {
+        "id": "8977b9b4-4a77-4e96-8daf-70add3b92575",
+        "description": "whatsapp"
+      }
+    ]
   },
   {
     "id": "125284a3-eb7d-4a67-927d-ecd0171fb0f7",
@@ -111,7 +122,8 @@
       "id": "d092b505-85e3-4e5b-af93-7482947d0745",
       "name": "Elegant",
       "description": "Desain mewah, serif font, cocok untuk wedding, produk eksklusif, fashion."
-    }
+    },
+    "ctas": []
   },
   {
     "id": "48ba6b69-ba90-4826-b880-bd47f6fda1d6",
@@ -149,7 +161,8 @@
       "id": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
       "name": "Playful",
       "description": "Banyak warna cerah, ikon lucu, cocok untuk anak-anak, game, hiburan."
-    }
+    },
+    "ctas": []
   },
   {
     "id": "24248d7e-71ff-4a95-89c1-fb09bab90917",
@@ -166,7 +179,7 @@
     "lpFor": [
       {
         "id": "6181a3bb-66b9-49d3-85c0-c24010420fcc",
-        "description": "affiliate."
+        "description": "affiliate marketing."
       }
     ],
     "lpContentTypes": [
@@ -187,7 +200,8 @@
       "id": "816d0a80-83f9-427b-8996-d1948a544a77",
       "name": "Bold",
       "description": "Teks besar, warna kontras, CTA mencolok, cocok untuk promosi agresif."
-    }
+    },
+    "ctas": []
   },
   {
     "id": "cadacc02-6ec7-4803-8f02-50ee6e07e121",
@@ -225,7 +239,8 @@
       "id": "d092b505-85e3-4e5b-af93-7482947d0745",
       "name": "Elegant",
       "description": "Desain mewah, serif font, cocok untuk wedding, produk eksklusif, fashion."
-    }
+    },
+    "ctas": []
   },
   {
     "id": "ae017f96-cf22-4b0a-b263-3f39c18a1b25",
@@ -271,7 +286,8 @@
       "id": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
       "name": "Playful",
       "description": "Banyak warna cerah, ikon lucu, cocok untuk anak-anak, game, hiburan."
-    }
+    },
+    "ctas": []
   },
   {
     "id": "7ab43589-6863-4314-b628-70a31aa79a4f",
@@ -309,7 +325,8 @@
       "id": "3c1e712c-d927-40e9-a387-19445db1f9f6",
       "name": "Creative",
       "description": "Warna berani, layout tidak biasa, cocok untuk seniman, kreator, agensi kreatif."
-    }
+    },
+    "ctas": []
   },
   {
     "id": "c7f76905-2f18-4f5b-8443-fc1b0958d80c",
@@ -351,7 +368,8 @@
       "id": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
       "name": "Playful",
       "description": "Banyak warna cerah, ikon lucu, cocok untuk anak-anak, game, hiburan."
-    }
+    },
+    "ctas": []
   },
   {
     "id": "c7d37435-824f-4de7-94bb-f4c919d0ef6a",
@@ -393,6 +411,7 @@
       "id": "dc6d1827-0b89-4c82-8d9d-21f551850ed9",
       "name": "Minimalist",
       "description": "Warna netral, sedikit elemen visual, layout sederhana, cocok untuk personal branding."
-    }
+    },
+    "ctas": []
   }
 ]

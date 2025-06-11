@@ -19,6 +19,7 @@ async function exportLandingPages() {
       lpFor: true,
       lpContentTypes: true,
       lpDesignStyle: true,
+      ctas: true,
     },
   });
 

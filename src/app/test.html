@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Landing Page Fashion Premium</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        margin: 0;
+        padding: 2rem;
+        background-color: #f5f7fb;
+        display: flex;
+        justify-content: center;
+      }
+
+      .card {
+        max-width: 720px;
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        padding: 2.5rem;
+      }
+
+      .image-container {
+        text-align: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .image-container img {
+        max-width: 100%;
+        border-radius: 12px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      .features {
+        margin-top: 1.5rem;
+      }
+
+      .features li {
+        margin-bottom: 0.7rem;
+        list-style: none;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .features li::before {
+        content: "✔️";
+        position: absolute;
+        left: 0;
+        color: #2ecc71;
+      }
+
+      .highlight {
+        font-weight: 600;
+        margin-top: 1.5rem;
+        color: #2d2d2d;
+      }
+
+      .cta {
+        margin-top: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .cta a {
+        text-decoration: none;
+        padding: 0.9rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: 0.3s ease;
+      }
+
+      .cta .primary {
+        background-color: #0077cc;
+        color: #fff;
+      }
+
+      .cta .primary:hover {
+        background-color: #005fa3;
+      }
+
+      .cta .secondary {
+        background-color: #eaeaea;
+        color: #333;
+      }
+
+      .cta .secondary:hover {
+        background-color: #d5d5d5;
+      }
+
+      .testimonial {
+        margin-top: 2rem;
+        background-color: #f0f4f9;
+        border-left: 4px solid #0077cc;
+        padding: 1rem 1.2rem;
+        font-style: italic;
+        color: #333;
+      }
+
+      .tagline {
+        margin-top: 2rem;
+        font-style: italic;
+        color: #777;
+        text-align: center;
+      }
+
+      @media (max-width: 600px) {
+        .card {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="image-container">
+        <img src="https://m.media-amazon.com/images/I/51t3jnd1lUL._AC_SL1001_.jpg" alt="Mockup Landing Page" />
+      </div>
+
+      <h1>Landing Page Premium - Toko Online Fashion</h1>
+      <p>Didesain khusus untuk menarik perhatian, meningkatkan konversi, dan memperkuat citra profesional brand fashion Anda.</p>
+
+      <ul class="features">
+        <li>Desain modern & responsif (mobile-friendly)</li>
+        <li>Section promo, testimoni, dan brand story</li>
+        <li>Integrasi CTA ke WhatsApp, e-commerce, atau formulir</li>
+        <li>SEO optimized & fast-loading</li>
+      </ul>
+
+      <p class="highlight">📌 Ideal untuk: UMKM fashion, reseller, dropshipper, hingga brand lokal.</p>
+      <p class="highlight">🚀 Siap pakai – tinggal ganti konten, langsung live!</p>
+
+      <div class="cta">
+        <a href="https://wa.me/6281234567890" target="_blank" class="primary">💬 Chat WhatsApp</a>
+        <a href="#" class="secondary">🖥️ Lihat Demo</a>
+        <a href="#" class="secondary">📄 Minta Penawaran</a>
+      </div>
+
+      <div class="testimonial">
+        “Setelah pakai landing page ini, penjualan naik 3x lipat hanya dalam seminggu! Desainnya clean, pelanggan langsung percaya.”
+        <br />— <strong>@butikmodis</strong>
+      </div>
+
+      <p class="tagline">Desain stylish. Performa maksimal. Konversi optimal.</p>
+    </div>
+  </body>
+</html>
