@@ -1,3 +1,4 @@
+// src/app/component/global/modal.js
 "use client";
 import React from "react";
 
@@ -8,7 +9,7 @@ export default function Modal({ children, modalId, header, btnTxt, btnStyle, ico
 
   return (
     <div>
-      <button className={`btn ${btnStyle}`} onClick={openModal} aria-labelledby="share-label">
+      <button id="share-label" className={`btn ${btnStyle}`} onClick={openModal} aria-labelledby="share-label">
         {btnTxt}
       </button>
 
