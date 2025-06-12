@@ -28,7 +28,7 @@ export default function HeaderFooterClient() {
         <Modal
           modalId="shareBtn"
           header="Bagikan halaman ini."
-          btnTxt={<TbLocationShare />}
+          btnTxt={<TbLocationShare aria-label="share label icon" />}
           icon={<TbLocationShare />}
           btnStyle="rounded-full border border-base-content h-10 w-10 p-0 shadow-lg bg-base-50 hover:bg-amber-300 text-base-content hover:text-slate-900 text-xl "
         >

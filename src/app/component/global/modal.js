@@ -9,7 +9,7 @@ export default function Modal({ children, modalId, header, btnTxt, btnStyle, ico
 
   return (
     <div>
-      <button id="share-label" className={`btn ${btnStyle}`} onClick={openModal} aria-labelledby="share-label">
+      <button className={`btn ${btnStyle}`} onClick={openModal} aria-label="share-label">
         {btnTxt}
       </button>
 
