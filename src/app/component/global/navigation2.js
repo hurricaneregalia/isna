@@ -15,7 +15,7 @@ export default function Navigation2({ siteName, bg, logo }) {
     { name: "Solusi", href: "/#solusi", key: "solusi" },
     { name: "Layanan", href: "/#layanan", key: "layanan" },
     { name: "Product", href: BASE_URL + "/product", key: "product" },
-    { name: "Bonus", href: "/#bonus", key: "bonus" },
+    { name: "Bonus", href: "/bonus", key: "bonus" },
     { name: "Logo review", href: "/logometer", key: "logometer" },
     { name: "My Api", href: "/myapi", key: "myapi" },
     { name: "NotFound", href: "/huntuband", key: "huntuband" },

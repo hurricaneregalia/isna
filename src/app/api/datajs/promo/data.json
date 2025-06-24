@@ -2,6 +2,7 @@
   {
     "id": "cmbhcb24w0000vl9io1w81s7i",
     "name": "my promo 1",
+    "slug": "my-promo-1",
     "description": "promo lorem ipsum 30 hari",
     "type": "PERCENTAGE",
     "value": 0.1,
@@ -9,7 +10,7 @@
     "startDate": "2025-06-01T23:59:59.000Z",
     "endDate": "2025-06-29T23:59:59.000Z",
     "createdAt": "2025-06-04T02:40:12.176Z",
-    "updatedAt": "2025-06-09T07:34:19.219Z",
+    "updatedAt": "2025-06-11T05:54:23.606Z",
     "products": [
       {
         "id": "cm9s49e6f0003vldz95k9oiqc",

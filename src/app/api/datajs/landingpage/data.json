@@ -8,9 +8,9 @@
     "component": "Nurbaz",
     "lpDesignStyleId": "3c1e712c-d927-40e9-a387-19445db1f9f6",
     "marketingTools": null,
-    "isActive": false,
+    "isActive": true,
     "createdAt": "2025-05-20T11:53:41.201Z",
-    "updatedAt": "2025-06-10T06:16:33.007Z",
+    "updatedAt": "2025-06-18T15:03:24.865Z",
     "lpFor": [
       {
         "id": "bf678104-5603-4612-9e57-b6f580f62e65",
@@ -20,15 +20,18 @@
     "lpContentTypes": [
       {
         "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
-        "type": "text"
+        "type": "text",
+        "order": 14
       },
       {
         "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
-        "type": "image"
+        "type": "image",
+        "order": 12
       },
       {
         "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
-        "type": "slider"
+        "type": "slider",
+        "order": 13
       }
     ],
     "lpDesignStyle": {
@@ -56,10 +59,6 @@
         "description": "affiliate marketing."
       },
       {
-        "id": "d771bf51-bc98-4db8-81a1-661db4e53587",
-        "description": "menjual 1 produk"
-      },
-      {
         "id": "ecbfa549-0b21-414e-a1bf-982243a69c90",
         "description": "menjual produk branded."
       }
@@ -67,11 +66,23 @@
     "lpContentTypes": [
       {
         "id": "397d9d29-87dd-4ae7-917d-d5bcc853cf1a",
-        "type": "hero image"
+        "type": "hero image",
+        "order": 2
       },
       {
         "id": "5098707b-91bc-4628-b077-1a98e65b5cd1",
-        "type": "testimoni teks"
+        "type": "testimoni teks",
+        "order": 6
+      },
+      {
+        "id": "60a0b2e3-ca35-42cf-97db-1933950650db",
+        "type": "CTA whatsapp",
+        "order": 110
+      },
+      {
+        "id": "d2adaf07-56ce-446d-825f-a94de84dde88",
+        "type": "responsive",
+        "order": 90
       }
     ],
     "lpDesignStyle": {
@@ -95,9 +106,9 @@
     "component": "Baizan",
     "lpDesignStyleId": "d092b505-85e3-4e5b-af93-7482947d0745",
     "marketingTools": null,
-    "isActive": false,
+    "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-10T06:16:33.007Z",
+    "updatedAt": "2025-06-15T07:20:03.460Z",
     "lpFor": [
       {
         "id": "19bc1619-0e65-493e-a8b0-677e2aa08ffb",
@@ -107,15 +118,18 @@
     "lpContentTypes": [
       {
         "id": "1c39504e-f456-4a1c-9ec7-823df7ec78ff",
-        "type": "form"
+        "type": "form",
+        "order": 11
       },
       {
         "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
-        "type": "text"
+        "type": "text",
+        "order": 14
       },
       {
         "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
-        "type": "image"
+        "type": "image",
+        "order": 12
       }
     ],
     "lpDesignStyle": {
@@ -146,15 +160,18 @@
     "lpContentTypes": [
       {
         "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
-        "type": "text"
+        "type": "text",
+        "order": 14
       },
       {
         "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
-        "type": "youtube video"
+        "type": "youtube video",
+        "order": 15
       },
       {
         "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
-        "type": "slider"
+        "type": "slider",
+        "order": 13
       }
     ],
     "lpDesignStyle": {
@@ -173,9 +190,9 @@
     "component": "Zaffra",
     "lpDesignStyleId": "816d0a80-83f9-427b-8996-d1948a544a77",
     "marketingTools": null,
-    "isActive": false,
+    "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-10T06:16:33.007Z",
+    "updatedAt": "2025-06-16T03:50:51.494Z",
     "lpFor": [
       {
         "id": "6181a3bb-66b9-49d3-85c0-c24010420fcc",
@@ -185,15 +202,18 @@
     "lpContentTypes": [
       {
         "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
-        "type": "text"
+        "type": "text",
+        "order": 14
       },
       {
         "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
-        "type": "image"
+        "type": "image",
+        "order": 12
       },
       {
         "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
-        "type": "youtube video"
+        "type": "youtube video",
+        "order": 15
       }
     ],
     "lpDesignStyle": {
@@ -224,15 +244,18 @@
     "lpContentTypes": [
       {
         "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
-        "type": "text"
+        "type": "text",
+        "order": 14
       },
       {
         "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
-        "type": "image"
+        "type": "image",
+        "order": 12
       },
       {
         "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
-        "type": "slider"
+        "type": "slider",
+        "order": 13
       }
     ],
     "lpDesignStyle": {
@@ -251,9 +274,9 @@
     "component": "Safna",
     "lpDesignStyleId": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
     "marketingTools": null,
-    "isActive": false,
+    "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-10T06:16:33.007Z",
+    "updatedAt": "2025-06-18T04:51:49.435Z",
     "lpFor": [
       {
         "id": "775ca147-bed8-4535-a2f8-924437ec3919",
@@ -263,23 +286,28 @@
     "lpContentTypes": [
       {
         "id": "1c39504e-f456-4a1c-9ec7-823df7ec78ff",
-        "type": "form"
+        "type": "form",
+        "order": 11
       },
       {
         "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
-        "type": "text"
+        "type": "text",
+        "order": 14
       },
       {
         "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
-        "type": "image"
+        "type": "image",
+        "order": 12
       },
       {
         "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
-        "type": "youtube video"
+        "type": "youtube video",
+        "order": 15
       },
       {
         "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
-        "type": "slider"
+        "type": "slider",
+        "order": 13
       }
     ],
     "lpDesignStyle": {
@@ -298,9 +326,9 @@
     "component": "Zemira",
     "lpDesignStyleId": "3c1e712c-d927-40e9-a387-19445db1f9f6",
     "marketingTools": null,
-    "isActive": false,
+    "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-10T06:16:33.007Z",
+    "updatedAt": "2025-06-17T03:07:01.429Z",
     "lpFor": [
       {
         "id": "6c37855a-8169-4309-ab73-da56fccb0b83",
@@ -310,15 +338,18 @@
     "lpContentTypes": [
       {
         "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
-        "type": "text"
+        "type": "text",
+        "order": 14
       },
       {
         "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
-        "type": "image"
+        "type": "image",
+        "order": 12
       },
       {
         "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
-        "type": "slider"
+        "type": "slider",
+        "order": 13
       }
     ],
     "lpDesignStyle": {
@@ -337,9 +368,9 @@
     "component": "Hyzaa",
     "lpDesignStyleId": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
     "marketingTools": null,
-    "isActive": false,
+    "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-10T06:16:33.007Z",
+    "updatedAt": "2025-06-18T15:03:24.865Z",
     "lpFor": [
       {
         "id": "b793484f-c8d2-4f9f-b40a-10f0410801b0",
@@ -349,19 +380,23 @@
     "lpContentTypes": [
       {
         "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
-        "type": "text"
+        "type": "text",
+        "order": 14
       },
       {
         "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
-        "type": "image"
+        "type": "image",
+        "order": 12
       },
       {
         "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
-        "type": "youtube video"
+        "type": "youtube video",
+        "order": 15
       },
       {
         "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
-        "type": "slider"
+        "type": "slider",
+        "order": 13
       }
     ],
     "lpDesignStyle": {
@@ -380,31 +415,39 @@
     "component": "Kanzar",
     "lpDesignStyleId": "dc6d1827-0b89-4c82-8d9d-21f551850ed9",
     "marketingTools": null,
-    "isActive": false,
+    "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-10T06:16:33.007Z",
+    "updatedAt": "2025-06-14T09:57:31.073Z",
     "lpFor": [
       {
-        "id": "b793484f-c8d2-4f9f-b40a-10f0410801b0",
-        "description": "toko online."
+        "id": "443c4e89-3266-4e10-a525-cce367a968b8",
+        "description": "pendaftaran kursus."
+      },
+      {
+        "id": "6c37855a-8169-4309-ab73-da56fccb0b83",
+        "description": "mengumpulkan prospek."
       }
     ],
     "lpContentTypes": [
       {
         "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
-        "type": "text"
+        "type": "text",
+        "order": 14
       },
       {
         "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
-        "type": "image"
+        "type": "image",
+        "order": 12
       },
       {
-        "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
-        "type": "youtube video"
+        "id": "d2adaf07-56ce-446d-825f-a94de84dde88",
+        "type": "responsive",
+        "order": 90
       },
       {
         "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
-        "type": "slider"
+        "type": "slider",
+        "order": 13
       }
     ],
     "lpDesignStyle": {
@@ -412,6 +455,11 @@
       "name": "Minimalist",
       "description": "Warna netral, sedikit elemen visual, layout sederhana, cocok untuk personal branding."
     },
-    "ctas": []
+    "ctas": [
+      {
+        "id": "8977b9b4-4a77-4e96-8daf-70add3b92575",
+        "description": "whatsapp"
+      }
+    ]
   }
 ]

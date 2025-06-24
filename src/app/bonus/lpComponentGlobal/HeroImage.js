@@ -1,7 +1,7 @@
 import React from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import Image from "next/image";
-import BtnLinkPrimary from "@/app/component/global/btnLinkPrimary";
+import BtnLinkPrim from "./btnLinkPrim";
 
 export default function HeroIma({
   title = "Bangun Bisnis Online Anda Lebih Cepat",
@@ -9,7 +9,7 @@ export default function HeroIma({
   btnTxt = "Read More",
   bg = "/images/uploads/products/qolilan-copy/main.jpg",
 }) {
-  const btnFX = btnTxt ? <BtnLinkPrimary btnTxt={btnTxt} btnUrl="#layanan" iconRight={<FaArrowRight />} animate={true} /> : "";
+  const btnFX = btnTxt ? <BtnLinkPrim btnTxt={btnTxt} btnUrl="#layanan" iconRight={<FaArrowRight />} animate={true} /> : "";
 
   return (
     <div className="relative min-h-screen overflow-hidden">

@@ -448,6 +448,7 @@ model Cta {
 model LpContentType {
   id           String        @id @default(uuid())
   type         String
+  order        Int?
   landingPages LandingPage[] @relation("LandingPageLpContentType")
 }
 
