@@ -171,7 +171,7 @@ const data = {
 
   penutup: {
     title: "Siap Memulai Petualangan Nyaman Anda?",
-    highlights: ["✓ Free ongkir Jabodetabek", "✓ Garansi kepuasan 30 hari", "✓ Konsultasi gaya gratis", "✓ Bahan premium berkelanjutan"],
+    highlights: ["Free ongkir Jabodetabek", "Garansi kepuasan 30 hari", "Konsultasi gaya gratis", "Bahan premium berkelanjutan"],
     cta: "Pesan Sekarang",
     image: "/images/templateLandingPageBonus/Zaffra/images/photo-1491553895911-0055eca6402d.jpg",
   },
@@ -212,8 +212,10 @@ export default function SepatuSnicker() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {data.edukasi.points.map((point, index) => (
-              <div key={index} className="bg-base-200 p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="text-2xl mb-4">{point.icon}</div>
+              <div key={index} className="bg-base-200 p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow" data-aos="fade-up">
+                <div className="text-2xl mb-4" data-aos="flip-up">
+                  {point.icon}
+                </div>
                 <h3 className="text-xl font-semibold mb-3">{point.title}</h3>
                 <p className="opacity-75">{point.description}</p>
               </div>
@@ -226,17 +228,21 @@ export default function SepatuSnicker() {
       <section className="py-20">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="md:w-1/2">
+            <div className="md:w-1/2" data-aos="flip-left">
               <Image src={data.tentang.image} alt="Proses pembuatan sepatu" width={600} height={400} className="rounded-xl shadow-lg" />
             </div>
 
             <div className="md:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">{data.tentang.title}</h2>
-              <p className="mb-8 leading-relaxed opacity-75">{data.tentang.story}</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">
+                {data.tentang.title}
+              </h2>
+              <p className="mb-8 leading-relaxed opacity-75" data-aos="fade-up">
+                {data.tentang.story}
+              </p>
 
               <ul className="space-y-3">
                 {data.tentang.usp.map((item, index) => (
-                  <li key={index} className="flex items-start">
+                  <li key={index} className="flex items-start" data-aos="fade-up">
                     <FaCheck className="text-green-500 mt-1 mr-3 flex-shrink-0" />
                     <span className=" opacity-75">{item}</span>
                   </li>
@@ -254,7 +260,11 @@ export default function SepatuSnicker() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {data.galeri.products.map((product, index) => (
-              <div key={index} className="group bg-base-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+              <div
+                key={index}
+                className="group bg-base-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+                data-aos="flip-left"
+              >
                 <div className="relative h-64 overflow-hidden">
                   <Image
                     src={product.image}
@@ -288,6 +298,7 @@ export default function SepatuSnicker() {
               <div
                 key={index}
                 className={`bg-base-200 p-8 rounded-xl shadow-sm border ${review.badge ? "border-amber-300 relative" : "border-base-content/15"}`}
+                data-aos="fade-up"
               >
                 {review.badge && (
                   <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-amber-500 px-4 py-1 rounded-full text-sm font-medium">
@@ -328,7 +339,7 @@ export default function SepatuSnicker() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {data.pemesanan.steps.map((step, index) => (
-              <div key={index} className="text-center bg-base-200 p-5 rounded-xl">
+              <div key={index} className="text-center bg-base-200 p-5 rounded-xl" data-aos="fade-up">
                 <div className="w-20 h-20 rounded-full bg-amber-500 text-white text-3xl font-bold flex items-center justify-center mx-auto mb-6">
                   {step.step}
                 </div>
@@ -347,7 +358,7 @@ export default function SepatuSnicker() {
 
           <div className="space-y-2">
             {data.faq.items.map((item, index) => (
-              <div key={index} className="collapse collapse-arrow bg-base-100 border border-base-300 rounded-xl">
+              <div key={index} className="collapse collapse-arrow bg-base-100 border border-base-300 rounded-xl" data-aos="fade-up">
                 {/* name harus sama agar berfungsi sebagai radio group */}
                 <input type="radio" name="my-accordion-2" defaultChecked={index === 0} />
                 <div className="collapse-title font-semibold">{item.question}</div>
@@ -372,7 +383,8 @@ export default function SepatuSnicker() {
 
           <ul className="flex flex-wrap justify-center gap-6 mb-12">
             {data.penutup.highlights.map((item, index) => (
-              <li key={index} className="bg-white/10 backdrop-blur-sm text-white px-5 py-3 rounded-full">
+              <li key={index} className="bg-white/10 backdrop-blur-sm text-white px-5 py-3 rounded-full flex justify-start" data-aos="flip-left">
+                <FaCheck className="text-green-500 mt-1 mr-3 flex-shrink-0" />
                 {item}
               </li>
             ))}
@@ -380,7 +392,7 @@ export default function SepatuSnicker() {
 
           <a
             href="#"
-            className="inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-4 px-12 rounded-full text-lg transition-all duration-300 transform hover:scale-105"
+            className="animate-bounce inline-block bg-amber-500 hover:bg-amber-600 text-white font-bold py-4 px-12 rounded-full text-lg transition-all duration-300 transform hover:scale-105"
           >
             {data.penutup.cta}
           </a>
