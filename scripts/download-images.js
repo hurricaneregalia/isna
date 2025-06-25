@@ -7,36 +7,27 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Paste data objekmu di sini (atau import dari file lain)
-const data = {
+// === DATA BARU ===
+const LANDING_DATA = {
   hero: {
-    backgroundImage: "https://images.unsplash.com/photo-1600269452121-4f2416e55c28",
-    // ... (saya hanya contohkan bagian ini)
+    imageUrl: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=80",
   },
-  tentang: {
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+  problem: {
+    imageUrl: "https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1304&auto=format&fit=crop",
   },
-  galeri: {
-    products: [
-      { image: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77" },
-      { image: "https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa" },
-      { image: "https://images.unsplash.com/photo-1549289524-06cf883b6e3a" },
-      { image: "https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb" },
+  solution: {
+    gallery: [
+      "https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1539874754764-5a96559165b0?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1611944212129-29977ae1398c?auto=format&fit=crop&w=800&q=80",
     ],
   },
-  testimoni: {
-    reviews: [
-      { image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde" },
-      { image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e" },
-      { image: "https://images.unsplash.com/photo-1560250097-0b93528c311a" },
-    ],
-  },
-  penutup: {
-    image: "https://images.unsplash.com/photo-1491553895911-0055eca6402d",
+  cta: {
+    imageUrl: "https://images.unsplash.com/photo-1601924638867-3a6de6b7a500?auto=format&fit=crop&w=1200&q=80",
   },
 };
 
-// Fungsi untuk ekstrak semua URL dari object secara rekursif
+// === EKSTRAK URL ===
 function extractUrls(obj) {
   let urls = [];
 
@@ -56,7 +47,7 @@ function extractUrls(obj) {
   return urls;
 }
 
-// Download function using https module
+// === FUNGSI DOWNLOAD ===
 function downloadImage(url, dest) {
   return new Promise((resolve, reject) => {
     const file = fs.createWriteStream(dest);
@@ -77,11 +68,11 @@ function downloadImage(url, dest) {
   });
 }
 
+// === MAIN ===
 async function main() {
-  const urls = extractUrls(data);
+  const urls = extractUrls(LANDING_DATA);
   console.log(`Ditemukan ${urls.length} URL gambar.`);
 
-  // Buat folder images kalau belum ada
   const dir = "./images";
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);

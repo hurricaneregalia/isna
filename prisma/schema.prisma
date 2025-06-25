@@ -464,3 +464,4 @@ model LpDesignStyle {
 //npx prisma studio
 //node prisma/seed.js
 //npm run export:data
+//node scripts/download-images.js
