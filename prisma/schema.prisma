@@ -417,11 +417,14 @@ enum OrderStatus {
 
 model LandingPage {
   id              String          @id @default(uuid())
-  name            String
+  name            String // siteName
   slug            String          @unique
   description     String
+  keywords        String? // simpan array sebagai JSON string
+  ogImage         String? // NEW: untuk open graph
   image           String
   component       String?
+  socialLinks     SocialLink[]    @relation("LandingPageSocialLinks") // NEW
   lpFor           LpFor[]         @relation("LandingPageLpFor")
   lpContentTypes  LpContentType[] @relation("LandingPageLpContentType")
   lpDesignStyle   LpDesignStyle?  @relation(fields: [lpDesignStyleId], references: [id])
@@ -457,6 +460,15 @@ model LpDesignStyle {
   name        String        @unique
   description String
   templates   LandingPage[]
+}
+
+model SocialLink {
+  id               String       @id @default(uuid())
+  platform         String
+  url              String?
+  platformUsername String?
+  landingPage      LandingPage? @relation("LandingPageSocialLinks", fields: [landingPageId], references: [id])
+  landingPageId    String?
 }
 
 //npx prisma migrate dev   

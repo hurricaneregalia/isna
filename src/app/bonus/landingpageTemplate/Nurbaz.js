@@ -19,10 +19,14 @@ import {
   FiFacebook,
   FiTwitter,
 } from "react-icons/fi";
-import Link from "next/link";
 import { FaStar } from "react-icons/fa6";
 import NurbazCountdownTimer from "./NurbazCountdownTimer";
 import LandingPageWaLink from "./LandingPageWaLink";
+
+import fs from "fs/promises";
+import path from "path";
+
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const playfair = Playfair_Display_SC({
   subsets: ["latin"],
@@ -36,8 +40,42 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
+async function getSiteIdentityFromFile() {
+  try {
+    const filePath = path.join(process.cwd(), "src/app/api/datajs/siteidentity/data.json");
+    const file = await fs.readFile(filePath, "utf-8");
+    const data = JSON.parse(file);
+    return data?.[0] || null;
+  } catch (error) {
+    console.error("❌ Gagal membaca siteidentity dari file:", error.message);
+    return null;
+  }
+}
+
 // Data constant for content management
 const LANDING_DATA = {
+  metadata: {
+    siteName: "Nurbaz",
+    description: "Jam tangan premium untuk profesional yang menghargai presisi dan gaya",
+    keywords: ["jam tangan premium", "aksesori pria", "fashion profesional", "signature collection", "watch Indonesia"],
+    ogImage: "/images/templateLandingPageBonus/Nurbaz/images/photo-1523275335684-37898b6baf30.jpg",
+    socialLinks: [
+      {
+        platform: "instagram",
+        url: "https://instagram.com/horizontime",
+        platformUsername: "@horizontime",
+      },
+      {
+        platform: "facebook",
+        url: "https://facebook.com/horizontime",
+      },
+      {
+        platform: "twitter",
+        url: "https://twitter.com/horizontime",
+        platformUsername: "@horizontime",
+      },
+    ],
+  },
   hero: {
     title: "Elevate Your Professional Presence",
     subtitle: "Jam tangan yang menjadi statement kesuksesan pria modern",
@@ -189,7 +227,10 @@ const LANDING_DATA = {
   },
 };
 
-export default function Nurbaz() {
+export default async function Nurbaz() {
+  const siteData = await getSiteIdentityFromFile();
+
+  if (!siteData) return <Loading />;
   return (
     <div className={`${montserrat.className} text-gray-800 overflow-hidden`}>
       {/* ===== HERO SECTION ===== */}
@@ -262,7 +303,6 @@ export default function Nurbaz() {
               <h2 className={`${playfair.className} text-4xl font-bold mb-8`} data-aos="fade-up">
                 {LANDING_DATA.problem.title}
               </h2>
-
               <div className="space-y-6">
                 {LANDING_DATA.problem.points.map((point, index) => (
                   <div key={index} className="flex items-start" data-aos="fade-up">
@@ -275,7 +315,6 @@ export default function Nurbaz() {
                   </div>
                 ))}
               </div>
-
               <div className="mt-10 p-6 bg-base-200 text-base-content rounded-xl shadow-sm border-l-4 border-yellow-500" data-aos="fade-up">
                 <p className="font-medium">
                   <span className="text-yellow-500 font-bold">Faktanya:</span> 78% eksekutif menganggap jam tangan sebagai indikator keseriusan
@@ -364,7 +403,7 @@ export default function Nurbaz() {
             </div>
 
             <LandingPageWaLink
-              whatsappNumber={LANDING_DATA.cta.whatsappNumber}
+              whatsappNumber={siteData.phone}
               whatsappText={LANDING_DATA.cta.whatsappText}
               linkText={LANDING_DATA.offer.cta}
               id="mainButton"
@@ -451,12 +490,12 @@ export default function Nurbaz() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center relative" data-aos="fade-up">
-              <div className="relative bg-yellow-500 animate-ping hover:bg-yellow-600 w-fit mx-auto text-black font-bold py-4 px-12 rounded-full text-lg transition-all transform hover:scale-105 shadow-yellow-lg">
+              <div className="relative bg-gradient-to-r from-transparent via-yellow-500 to-transparent w-fit mx-auto text-yellow-500 animate-ping font-bold py-4 px-5 transition-all transform hover:scale-105 shadow-yellow-lg">
                 {LANDING_DATA.cta.mainButton}
               </div>
 
               <LandingPageWaLink
-                whatsappNumber={LANDING_DATA.cta.whatsappNumber}
+                whatsappNumber={siteData.phone}
                 whatsappText={LANDING_DATA.cta.whatsappText}
                 linkText={LANDING_DATA.cta.mainButton}
                 id="mainButton2"
