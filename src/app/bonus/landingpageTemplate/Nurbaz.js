@@ -1,8 +1,8 @@
-// src/app/landingpage/jam-tangan/page.js
-"use client";
+// src/app/bonus/landingpageTemplate/Nurbaz.js
+
 import Image from "next/image";
 import { Montserrat, Playfair_Display_SC } from "next/font/google";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   FiCheck,
   FiClock,
@@ -12,8 +12,6 @@ import {
   FiShoppingCart,
   FiTruck,
   FiMessageCircle,
-  FiChevronDown,
-  FiChevronUp,
   FiMail,
   FiPhone,
   FiMapPin,
@@ -21,6 +19,10 @@ import {
   FiFacebook,
   FiTwitter,
 } from "react-icons/fi";
+import Link from "next/link";
+import { FaStar } from "react-icons/fa6";
+import NurbazCountdownTimer from "./NurbazCountdownTimer";
+import LandingPageWaLink from "./LandingPageWaLink";
 
 const playfair = Playfair_Display_SC({
   subsets: ["latin"],
@@ -110,6 +112,8 @@ const LANDING_DATA = {
     subtitle: "Diskon 25% + Bonus Eksklusif akan berakhir dalam:",
     mainButton: "Ambil Promo",
     secondaryButton: "Beli",
+    whatsappNumber: "6282127902505",
+    whatsappText: "claim bonus ini",
     imageUrl: "/images/templateLandingPageBonus/Nurbaz/images/photo-1601924638867-3a6de6b7a500.jpg",
   },
   faq: {
@@ -177,7 +181,7 @@ const LANDING_DATA = {
       {
         name: "Rudi H.",
         location: "Surabaya",
-        quote: "Pertama pakai langsung jatuh cinta. Sekarang punya 3 warna berbeda untuk berbagai gaya.",
+        quote: "Pertama pakai langsung jatuh cinta. Sekarang punya 3 warna berbeda.",
         image: "/images/templateLandingPageBonus/Zaffra/images/photo-1560250097-0b93528c311a.jpg",
         rating: 4,
       },
@@ -185,65 +189,7 @@ const LANDING_DATA = {
   },
 };
 
-const CountdownTimer = ({ targetTime }) => {
-  const [timeLeft, setTimeLeft] = useState({
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const difference = targetTime - now;
-
-      if (difference <= 0) {
-        clearInterval(timer);
-        return;
-      }
-
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-      setTimeLeft({ hours, minutes, seconds });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [targetTime]);
-  return (
-    <div className="flex justify-center gap-4">
-      {Object.entries(timeLeft).map(([unit, value]) => (
-        <div key={unit} className="flex flex-col items-center">
-          <div className="w-20 h-20 bg-gray-800 text-white rounded-lg flex items-center justify-center text-2xl font-bold">
-            {value.toString().padStart(2, "0")}
-          </div>
-          <span className="mt-2 text-sm uppercase opacity-75">{unit}</span>
-        </div>
-      ))}
-    </div>
-  );
-};
-const FAQItem = ({ question, answer }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="border-b border-gray-200 py-6">
-      <button className="flex justify-between items-center w-full text-left group" onClick={() => setIsOpen(!isOpen)}>
-        <h3 className="text-lg font-medium text-gray-900 group-hover:text-yellow-600 transition-colors">{question}</h3>
-        <span className="ml-4 text-yellow-500">{isOpen ? <FiChevronUp size={20} /> : <FiChevronDown size={20} />}</span>
-      </button>
-
-      {isOpen && (
-        <div className="mt-4 pr-8">
-          <p className="text-gray-600">{answer}</p>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default function JamTanganLanding() {
+export default function Nurbaz() {
   return (
     <div className={`${montserrat.className} text-gray-800 overflow-hidden`}>
       {/* ===== HERO SECTION ===== */}
@@ -417,17 +363,14 @@ export default function JamTanganLanding() {
               </div>
             </div>
 
-            <div className="mb-12" data-aos="fade-up">
-              <h3 className="text-xl mb-4">Promo Berakhir Dalam:</h3>
-              <CountdownTimer targetTime={LANDING_DATA.offer.countdownTarget} />
-            </div>
-
-            <button
+            <LandingPageWaLink
+              whatsappNumber={LANDING_DATA.cta.whatsappNumber}
+              whatsappText={LANDING_DATA.cta.whatsappText}
+              linkText={LANDING_DATA.offer.cta}
+              id="mainButton"
               className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-4 px-12 rounded-full text-lg transition-all transform hover:scale-105 shadow-yellow-lg"
-              data-aos="fade-up"
-            >
-              {LANDING_DATA.offer.cta}
-            </button>
+              dataAos="fade-up"
+            />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
@@ -435,15 +378,13 @@ export default function JamTanganLanding() {
               <div key={index} className="bg-gray-800 rounded-lg px-5 py-10 flex flex-col items-center text-white" data-aos="fade-up">
                 <img src={item.image} alt={item.name} className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-dashed p-1" />
                 <p className="text-sm font-semibold text-center">{item.name}</p>
-                <p className="text-xs text-center italic mt-1">"{item.quote}"</p>
-                <div className="flex text-yellow-500 mt-2">
+                <p className="text-xs text-center italic mt-1 opacity-75">"{item.quote}"</p>
+                <div className="flex text-yellow-500 gap-1 mt-2">
                   {[...Array(item.rating)].map((_, starIndex) => (
-                    <svg key={starIndex} className="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-                    </svg>
+                    <FaStar key={starIndex} className="w-4 h-4" />
                   ))}
                 </div>
-                {item.badge && <span className="mt-2 text-xs bg-yellow-500 text-black px-2 py-1 rounded-full">{item.badge}</span>}
+                {item.badge && <span className="mt-2 text-xs border border-yellow-500 text-yellow-500 px-2 py-1 rounded-full">{item.badge}</span>}
               </div>
             ))}
           </div>
@@ -506,20 +447,21 @@ export default function JamTanganLanding() {
             </div>
 
             <div className="mb-12" data-aos="fade-up">
-              <CountdownTimer targetTime={LANDING_DATA.offer.countdownTarget} />
+              <NurbazCountdownTimer targetTime={LANDING_DATA.offer.countdownTarget} />
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center relative" data-aos="fade-up">
-              <button className="relative bg-yellow-500 animate-ping hover:bg-yellow-600 w-fit mx-auto text-black font-bold py-4 px-12 rounded-full text-lg transition-all transform hover:scale-105 shadow-yellow-lg">
+              <div className="relative bg-yellow-500 animate-ping hover:bg-yellow-600 w-fit mx-auto text-black font-bold py-4 px-12 rounded-full text-lg transition-all transform hover:scale-105 shadow-yellow-lg">
                 {LANDING_DATA.cta.mainButton}
-              </button>
+              </div>
 
-              <button
-                id="mainButton"
+              <LandingPageWaLink
+                whatsappNumber={LANDING_DATA.cta.whatsappNumber}
+                whatsappText={LANDING_DATA.cta.whatsappText}
+                linkText={LANDING_DATA.cta.mainButton}
+                id="mainButton2"
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ring-0 bg-yellow-500 hover:bg-yellow-600 w-fit text-black font-bold py-4 px-5 rounded-full text-lg transition-all transform hover:scale-105 shadow-yellow-lg"
-              >
-                {LANDING_DATA.cta.mainButton}
-              </button>
+              />
             </div>
 
             <div className="inline-block mt-20" data-aos="fade-up">
