@@ -58,7 +58,7 @@ const LANDING_DATA = {
     siteName: "Nurbaz",
     description: "Jam tangan premium untuk profesional yang menghargai presisi dan gaya",
     keywords: ["jam tangan premium", "aksesori pria", "fashion profesional", "signature collection", "watch Indonesia"],
-    ogImage: "/images/templateLandingPageBonus/Nurbaz/images/photo-1523275335684-37898b6baf30.jpg",
+    ogImage: "/images/templateLandingPageBonus/Nurbaz/images/paul-cuoco-CO2vOhPqlrM-unsplash.jpg",
     socialLinks: [
       {
         platform: "instagram",
@@ -80,15 +80,15 @@ const LANDING_DATA = {
     title: "Elevate Your Professional Presence",
     subtitle: "Jam tangan yang menjadi statement kesuksesan pria modern",
     cta: "Dapatkan Penawaran Eksklusif",
-    imageUrl: "/images/templateLandingPageBonus/Nurbaz/images/photo-1523275335684-37898b6baf30.jpg",
+    imageUrl: "/images/templateLandingPageBonus/Nurbaz/images/paul-cuoco-CO2vOhPqlrM-unsplash.jpg",
     overlayText: "Hanya 12 unit tersisa",
   },
   problem: {
     title: "Tampilan Biasa Tak Lagi Cukup di Dunia Kompetitif",
     points: [
-      "Aksesori menentukan first impression meeting penting",
-      "Jam tangan murah mengurangi kesan profesional",
-      "Investasi penampilan = investasi karier",
+      "Aksesori menentukan first impression meeting penting.",
+      "Jam tangan premium menambah kesan profesional.",
+      "Investasi penampilan = investasi karier.",
     ],
     imageUrl: "/images/templateLandingPageBonus/Nurbaz/images/photo-1622434641406-a158123450f9.jpg",
   },
@@ -113,8 +113,8 @@ const LANDING_DATA = {
     ],
     gallery: [
       "/images/templateLandingPageBonus/Nurbaz/images/photo-1542496658-e33a6d0d50f6.jpg",
-      "/images/templateLandingPageBonus/Nurbaz/images/photo-1539874754764-5a96559165b0.jpg",
-      "/images/templateLandingPageBonus/Nurbaz/images/photo-1611944212129-29977ae1398c.jpg",
+      "/images/templateLandingPageBonus/Nurbaz/images/studio-crevettes-ADvixEYm5qE-unsplash.jpg",
+      "/images/templateLandingPageBonus/Nurbaz/images/djordje_jovicic-l1mVJnG7a84-unsplash.jpg",
     ],
   },
   offer: {
@@ -152,18 +152,18 @@ const LANDING_DATA = {
     secondaryButton: "Beli",
     whatsappNumber: "6282127902505",
     whatsappText: "claim bonus ini",
-    imageUrl: "/images/templateLandingPageBonus/Nurbaz/images/photo-1601924638867-3a6de6b7a500.jpg",
+    imageUrl: "/images/templateLandingPageBonus/Nurbaz/images/alvaro-bernal-RgIKRYhmG2k-unsplash.jpg",
   },
   faq: {
     title: "Pertanyaan yang Sering Diajukan",
     items: [
       {
-        question: "Bagaimana metode pembayaran yang tersedia?",
+        question: "Metode pembayaran apa saja yang tersedia?",
         answer:
           "Kami menerima berbagai metode pembayaran termasuk transfer bank (BCA, Mandiri, BRI), kartu kredit (Visa, Mastercard), dan e-wallet (OVO, Gopay, Dana).",
       },
       {
-        question: "Apa kebijakan pengembalian produk?",
+        question: "Bagaimana cara pengembalian produk yang cacat?",
         answer:
           "Anda dapat mengembalikan produk dalam 30 hari jika terdapat cacat produksi. Produk harus dalam kondisi baru dengan segel dan kemasan asli. Kami akan mengganti produk baru atau mengembalikan uang sepenuhnya.",
       },
@@ -354,7 +354,7 @@ export default async function Nurbaz() {
             {LANDING_DATA.solution.gallery.map((img, index) => (
               <div
                 key={index}
-                className="relative aspect-square rounded-2xl overflow-hidden shadow-lg transform transition hover:-translate-y-2"
+                className="relative aspect-square rounded-2xl overflow-hidden shadow-lg transform transition duration-500 hover:-translate-y-2"
                 data-aos="flip-left"
               >
                 <Image
@@ -466,18 +466,10 @@ export default async function Nurbaz() {
       </section>
 
       {/* ===== BIG CTA SECTION ===== */}
-      <section className="relative py-32">
+      <section className="relative py-32 bg-[url(/images/templateLandingPageBonus/Nurbaz/images/alvaro-bernal-RgIKRYhmG2k-unsplash.jpg)] bg-cover bg-center bg-fixed">
         <div className="absolute inset-0">
-          <Image
-            src={LANDING_DATA.cta.imageUrl}
-            alt="Professional man wearing watch"
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            quality={100}
-          />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50"></div>
         </div>
-
         <div className="container mx-auto px-4 relative text-white">
           <div className="max-w-3xl mx-auto text-center">
             <div data-aos="fade-zoom-in">
@@ -490,10 +482,9 @@ export default async function Nurbaz() {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center relative" data-aos="fade-up">
-              <div className="relative bg-gradient-to-r from-transparent via-yellow-500 to-transparent w-fit mx-auto text-yellow-500 animate-ping font-bold py-4 px-5 transition-all transform hover:scale-105 shadow-yellow-lg">
+              <div className="relative bg-yellow-500 rounded-full w-fit mx-auto text-yellow-500 animate-ping font-bold py-4 px-5 transition-all transform hover:scale-105 shadow-yellow-lg">
                 {LANDING_DATA.cta.mainButton}
               </div>
-
               <LandingPageWaLink
                 whatsappNumber={siteData.phone}
                 whatsappText={LANDING_DATA.cta.whatsappText}
@@ -507,7 +498,7 @@ export default async function Nurbaz() {
               <div className="flex items-center">
                 <div className="ml-4 text-center">
                   <p className="font-bold">Garansi Kepuasan 100%</p>
-                  <p className="text-sm text-gray-300">Uang kembali jika tidak puas dalam 30 hari</p>
+                  <p className="text-sm text-gray-300">Uang kembali jika produk rusak dalam 30 hari</p>
                 </div>
               </div>
             </div>
@@ -518,9 +509,7 @@ export default async function Nurbaz() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className={`${playfair.className} text-4xl font-bold mb-6`}>{LANDING_DATA.faq.title}</h2>
-            <p className="text-base-content/70 max-w-2xl mx-auto">
-              Temukan jawaban untuk pertanyaan umum seputar produk, pembelian, dan garansi kami
-            </p>
+            <p className="text-base-content/70 max-w-2xl mx-auto">Temukan jawaban untuk pertanyaan seputar produk, pembelian, dan garansi.</p>
           </div>
 
           <div className="max-w-3xl mx-auto">
