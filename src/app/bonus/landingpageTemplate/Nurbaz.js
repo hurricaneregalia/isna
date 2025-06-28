@@ -121,7 +121,7 @@ const LANDING_DATA = {
     title: "Penawaran Perdana Eksklusif",
     discount: "25%",
     badge: "HANYA UNTUK 50 PEMBELI PERTAMA",
-    features: ["Jam tangan premium Signature Collection", "Leather watch case senilai Rp 1.2 juta", "Gratis konsultasi gaya personal"],
+    features: ["Jam tangan premium Signature Collection", "Leather watch premium case produksi itali", "Gratis konsultasi gaya personal"],
     countdownTarget: new Date().getTime() + 48 * 60 * 60 * 1000, // 48 hours from now
     cta: "Dapatkan Sekarang",
   },
@@ -155,7 +155,7 @@ const LANDING_DATA = {
     imageUrl: "/images/templateLandingPageBonus/Nurbaz/images/alvaro-bernal-RgIKRYhmG2k-unsplash.jpg",
   },
   faq: {
-    title: "Pertanyaan yang Sering Diajukan",
+    title: "Pertanyaan Konsumen",
     items: [
       {
         question: "Metode pembayaran apa saja yang tersedia?",
@@ -163,7 +163,7 @@ const LANDING_DATA = {
           "Kami menerima berbagai metode pembayaran termasuk transfer bank (BCA, Mandiri, BRI), kartu kredit (Visa, Mastercard), dan e-wallet (OVO, Gopay, Dana).",
       },
       {
-        question: "Bagaimana cara pengembalian produk yang cacat?",
+        question: "Bagaimana cara pengembalian, jika ada produk yang cacat?",
         answer:
           "Anda dapat mengembalikan produk dalam 30 hari jika terdapat cacat produksi. Produk harus dalam kondisi baru dengan segel dan kemasan asli. Kami akan mengganti produk baru atau mengembalikan uang sepenuhnya.",
       },
@@ -204,7 +204,7 @@ const LANDING_DATA = {
       {
         name: "Budi K.",
         location: "Jakarta",
-        quote: "Setelah pakai SepatuSnicker, sepatu lain jadi terasa kurang nyaman. Worth every penny!",
+        quote: "Bukan cuma penunjuk waktu aja, tapi aksesories yang terlihat sangat keren. Kualitasnya sangat bagus! Recomended!",
         image: "/images/templateLandingPageBonus/Zaffra/images/photo-1535713875002-d1d0cf377fde.jpg",
         rating: 5,
         badge: "Favorit",
@@ -212,14 +212,14 @@ const LANDING_DATA = {
       {
         name: "Siti M.",
         location: "Bandung",
-        quote: "Desainnya stylish tapi tetap nyaman dipakai jalan seharian. Bahannya juga awet!",
+        quote: "Detailnya luar biasa, mulai dari tali kulit sampai gerakan jarumnya. Benar-benar simbol kemewahan yang layak dimiliki.",
         image: "/images/templateLandingPageBonus/Zaffra/images/photo-1607746882042-944635dfe10e.jpg",
         rating: 5,
       },
       {
         name: "Rudi H.",
         location: "Surabaya",
-        quote: "Pertama pakai langsung jatuh cinta. Sekarang punya 3 warna berbeda.",
+        quote: "Begitu melihat jam ini langsung terpikat. Sekarang saya koleksi 3 model berbeda. Semuanya memuaskan!",
         image: "/images/templateLandingPageBonus/Zaffra/images/photo-1560250097-0b93528c311a.jpg",
         rating: 4,
       },

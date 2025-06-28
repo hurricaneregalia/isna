@@ -3,6 +3,7 @@ import HeaderFooterSqlite from "@/app/component/global/headerFooterSqlite";
 import { notFound } from "next/navigation";
 import fs from "fs/promises";
 import path from "path";
+import HeaderFooterLandingPageOnly from "./HeaderFooterLandingPageOnly";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -97,7 +98,9 @@ export default async function ProductPage({ params }) {
 
   return (
     <HeaderFooterSqlite>
-      <TemplateComponent landingPage={landingPage} />
+      <HeaderFooterLandingPageOnly siteName={landingPage.name}>
+        <TemplateComponent landingPage={landingPage} />
+      </HeaderFooterLandingPageOnly>
     </HeaderFooterSqlite>
   );
 }

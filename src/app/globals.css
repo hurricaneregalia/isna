@@ -1,9 +1,6 @@
 @import "tailwindcss";
-@plugin "daisyui";
-
-@theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+@plugin "daisyui" {
+  themes: all;
 }
 
 /*
