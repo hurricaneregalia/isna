@@ -3,22 +3,7 @@
 import Image from "next/image";
 import { Montserrat, Playfair_Display_SC } from "next/font/google";
 import React from "react";
-import {
-  FiCheck,
-  FiClock,
-  FiDroplet,
-  FiAward,
-  FiGift,
-  FiShoppingCart,
-  FiTruck,
-  FiMessageCircle,
-  FiMail,
-  FiPhone,
-  FiMapPin,
-  FiInstagram,
-  FiFacebook,
-  FiTwitter,
-} from "react-icons/fi";
+import { FiCheck, FiClock, FiDroplet, FiAward, FiGift, FiShoppingCart, FiTruck, FiMessageCircle, FiMail, FiPhone, FiMapPin, FiInstagram, FiFacebook, FiTwitter } from "react-icons/fi";
 import { FaStar } from "react-icons/fa6";
 import NurbazCountdownTimer from "./NurbazCountdownTimer";
 import LandingPageWaLink from "./LandingPageWaLink";
@@ -85,11 +70,7 @@ const LANDING_DATA = {
   },
   problem: {
     title: "Tampilan Biasa Tak Lagi Cukup di Dunia Kompetitif",
-    points: [
-      "Aksesori menentukan first impression meeting penting.",
-      "Jam tangan premium menambah kesan profesional.",
-      "Investasi penampilan = investasi karier.",
-    ],
+    points: ["Aksesori menentukan first impression meeting penting.", "Jam tangan premium menambah kesan profesional.", "Investasi penampilan = investasi karier."],
     imageUrl: "/images/templateLandingPageBonus/Nurbaz/images/photo-1622434641406-a158123450f9.jpg",
   },
   solution: {
@@ -159,8 +140,7 @@ const LANDING_DATA = {
     items: [
       {
         question: "Metode pembayaran apa saja yang tersedia?",
-        answer:
-          "Kami menerima berbagai metode pembayaran termasuk transfer bank (BCA, Mandiri, BRI), kartu kredit (Visa, Mastercard), dan e-wallet (OVO, Gopay, Dana).",
+        answer: "Kami menerima berbagai metode pembayaran termasuk transfer bank (BCA, Mandiri, BRI), kartu kredit (Visa, Mastercard), dan e-wallet (OVO, Gopay, Dana).",
       },
       {
         question: "Bagaimana cara pengembalian, jika ada produk yang cacat?",
@@ -169,13 +149,11 @@ const LANDING_DATA = {
       },
       {
         question: "Berapa lama baterai bertahan?",
-        answer:
-          "Jam tangan kami menggunakan baterai premium dengan masa pakai hingga 5 tahun. Kami menyediakan layanan penggantian baterai gratis selama 2 tahun pertama.",
+        answer: "Jam tangan kami menggunakan baterai premium dengan masa pakai hingga 5 tahun. Kami menyediakan layanan penggantian baterai gratis selama 2 tahun pertama.",
       },
       {
         question: "Apakah produk ini memiliki garansi?",
-        answer:
-          "Ya, semua produk dilengkapi dengan garansi resmi 3 tahun untuk mekanisme dan 1 tahun untuk komponen elektronik. Garansi mencakup perbaikan dan penggantian komponen.",
+        answer: "Ya, semua produk dilengkapi dengan garansi resmi 3 tahun untuk mekanisme dan 1 tahun untuk komponen elektronik. Garansi mencakup perbaikan dan penggantian komponen.",
       },
     ],
   },
@@ -281,13 +259,16 @@ export default async function Nurbaz() {
                   height={900}
                 />
               </div>
-              <div
-                className="bg-base-300 absolute -bottom-6 -right-6 text-base-content p-6 rounded-xl shadow-lg max-w-xs border border-base-300"
-                data-aos="fade-left"
-              >
+              <div className="bg-base-200 absolute -bottom-6 -right-6 text-base-content p-6 rounded-xl shadow-lg max-w-xs border border-base-300" data-aos="fade-left">
                 <div className="flex items-center">
-                  <div className="bg-base-200 border-2 border-dashed border-base-300 rounded-xl w-16 h-16 overflow-hidden">
-                    <Image src={LANDING_DATA.testimoni.reviews[0].image} alt={LANDING_DATA.testimoni.reviews[0].name} width={60} height={60} />
+                  <div className=" rounded-xl w-16 h-16 overflow-hidden">
+                    <Image
+                      src={LANDING_DATA.testimoni.reviews[0].image}
+                      alt={LANDING_DATA.testimoni.reviews[0].name}
+                      width={60}
+                      height={60}
+                      className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-dashed border-primary p-1"
+                    />
                   </div>
                   <div className="ml-4">
                     <p className="font-bold">{LANDING_DATA.testimoni.reviews[0].name}</p>
@@ -315,10 +296,9 @@ export default async function Nurbaz() {
                   </div>
                 ))}
               </div>
-              <div className="mt-10 p-6 bg-base-200 text-base-content rounded-xl shadow-sm border-l-4 border-yellow-500" data-aos="fade-up">
+              <div className="mt-10 p-6 rounded-xl border-1 border-neutral" data-aos="fade-up">
                 <p className="font-medium">
-                  <span className="text-yellow-500 font-bold">Faktanya:</span> 78% eksekutif menganggap jam tangan sebagai indikator keseriusan
-                  profesional
+                  <span className="text-warning font-bold">Faktanya:</span> 78% eksekutif menganggap jam tangan sebagai indikator keseriusan profesional
                 </p>
               </div>
             </div>
@@ -337,11 +317,7 @@ export default async function Nurbaz() {
           {/* Feature Grid */}
           <div className="grid md:grid-cols-3 gap-5 mb-10">
             {LANDING_DATA.solution.features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-base-100 text-base-content p-8 rounded-xl transition-all hover:shadow-lg hover:border-yellow-400/20 border border-base-300"
-                data-aos="fade-left"
-              >
+              <div key={index} className="bg-base-100 text-base-content p-8 rounded-xl transition-all hover:shadow-lg hover:border-yellow-400/20 border border-base-300" data-aos="fade-left">
                 <div className="mb-5 text-yellow-400">{feature.icon}</div>
                 <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
                 <p className="opacity-75">{feature.description}</p>
@@ -352,11 +328,7 @@ export default async function Nurbaz() {
           {/* Gallery */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {LANDING_DATA.solution.gallery.map((img, index) => (
-              <div
-                key={index}
-                className="relative aspect-square rounded-2xl overflow-hidden shadow-lg transform transition duration-500 hover:-translate-y-2"
-                data-aos="flip-left"
-              >
+              <div key={index} className="relative aspect-square rounded-2xl overflow-hidden shadow-lg transform transition duration-500 hover:-translate-y-2" data-aos="flip-left">
                 <Image
                   src={img}
                   alt={`Premium watch detail ${index + 1}`}
@@ -411,19 +383,23 @@ export default async function Nurbaz() {
               dataAos="fade-up"
             />
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+        </div>
+      </section>
+      <section id="testimoni" className="py-20 bg-base-200">
+        <div className="container mx-auto px-4">
+          <h2 className={`${playfair.className} text-4xl font-bold mb-6 text-center`}>Testimoni</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {LANDING_DATA.testimoni.reviews.map((item, index) => (
-              <div key={index} className="bg-gray-800 rounded-lg px-5 py-10 flex flex-col items-center text-white" data-aos="fade-up">
-                <img src={item.image} alt={item.name} className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-dashed p-1" />
+              <div key={index} className="bg-base-100 px-5 py-10 flex flex-col items-center text-base-content rounded-xl shadow-md h-full border border-base-300" data-aos="fade-up">
+                <img src={item.image} alt={item.name} className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-dashed border-primary p-1" />
                 <p className="text-sm font-semibold text-center">{item.name}</p>
                 <p className="text-xs text-center italic mt-1 opacity-75">"{item.quote}"</p>
-                <div className="flex text-yellow-500 gap-1 mt-2">
+                <div className="flex text-warning gap-1 my-5">
                   {[...Array(item.rating)].map((_, starIndex) => (
                     <FaStar key={starIndex} className="w-4 h-4" />
                   ))}
                 </div>
-                {item.badge && <span className="mt-2 text-xs border border-yellow-500 text-yellow-500 px-2 py-1 rounded-full">{item.badge}</span>}
+                {item.badge && <span className="mt-2 text-xs border border-neutral text-neutral px-2 py-1 rounded-full">{item.badge}</span>}
               </div>
             ))}
           </div>
@@ -431,7 +407,7 @@ export default async function Nurbaz() {
       </section>
 
       {/* ===== HOW IT WORKS SECTION ===== */}
-      <section className="py-20 bg-base-300 text-base-content transition-colors duration-300">
+      <section className="py-20 bg-base-200 text-base-content transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h2 className={`${playfair.className} text-4xl font-bold mb-6`}>{LANDING_DATA.process.title}</h2>

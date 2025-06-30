@@ -19,7 +19,7 @@ export default function LandingPageWaLink({ whatsappNumber, whatsappText, linkTe
   const href = `https://wa.me/${whatsappNumber}?text=${fullMessage}`;
 
   return (
-    <Link href={href} target="_blank" rel="noopener noreferrer" id={id} className={className} data-aos={dataAos ? dataAos : null}>
+    <Link href={href} rel="noopener noreferrer" id={id} className={className} data-aos={dataAos ? dataAos : null}>
       {linkText}
     </Link>
   );

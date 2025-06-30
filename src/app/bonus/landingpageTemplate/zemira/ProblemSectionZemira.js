@@ -8,8 +8,7 @@ export default function ProblemSectionZemira() {
       tag: "Tantangan Profesional",
       title: "Hambatan Dalam Mewujudkan Rumah Ideal",
       highlight: "Untuk Profesional Modern",
-      description:
-        "Sebagai individu sukses, rumah Anda seharusnya menjadi cerminan pencapaian dan sumber kenyamanan. Namun beberapa kendala sering muncul:",
+      description: "Sebagai individu sukses, rumah Anda seharusnya menjadi cerminan pencapaian dan sumber kenyamanan. Namun beberapa kendala sering muncul:",
     },
     problems: [
       {
@@ -46,7 +45,7 @@ export default function ProblemSectionZemira() {
         <div className="mb-16 lg:mb-0 lg:grid lg:grid-cols-2 lg:gap-16 items-center">
           {/* Image Section */}
           <div className="relative mb-10 lg:mb-0">
-            <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[16/9]">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl aspect-[16/9]" data-aos="flip-left">
               <Image src={content.image.url} alt={content.image.alt} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" priority />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
@@ -54,18 +53,22 @@ export default function ProblemSectionZemira() {
 
           {/* Header Text */}
           <div className="text-center lg:text-left">
-            <span className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-sm font-semibold mb-4">{content.header.tag}</span>
-            <h2 className="text-4xl font-bold text-base-content mb-4 leading-snug">
+            <span className="w-fit px-4 bg-primary/10 text-primary btn cursor-text shadow-none border-none mb-3" data-aos="fade-up">
+              {content.header.tag}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-playfair font-bold text-base-content mb-6" data-aos="fade-left">
               {content.header.title} <span className="text-primary block md:inline">{content.header.highlight}</span>
             </h2>
-            <p className="text-base text-base-content/80 max-w-xl mx-auto lg:mx-0">{content.header.description}</p>
+            <p className="text-lg opacity-75 max-w-xl mx-auto lg:mx-0" data-aos="fade-left">
+              {content.header.description}
+            </p>
           </div>
         </div>
 
         {/* Problems Grid */}
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {content.problems.map((problem, index) => (
-            <div key={index} className="bg-base-100 rounded-2xl p-6 border border-base-300/50 shadow-lg transition-all duration-300 hover:shadow-xl">
+            <div key={index} className="bg-base-100 rounded-2xl p-6 border border-base-300/50 shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up">
               <div className="flex flex-col h-full">
                 <div className="bg-primary/10 w-12 h-12 rounded-lg flex items-center justify-center mb-4 text-primary">{problem.icon}</div>
                 <h3 className="text-lg font-semibold text-base-content mb-2">{problem.title}</h3>

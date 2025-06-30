@@ -236,10 +236,10 @@
         "type": "PERCENTAGE",
         "value": 0.1,
         "isActive": true,
-        "startDate": "2025-06-01T23:59:59.000Z",
-        "endDate": "2025-06-29T23:59:59.000Z",
+        "startDate": "2025-06-30T23:59:59.000Z",
+        "endDate": "2025-07-29T23:59:59.000Z",
         "createdAt": "2025-06-04T02:40:12.176Z",
-        "updatedAt": "2025-06-11T05:54:23.606Z"
+        "updatedAt": "2025-06-30T01:54:53.839Z"
       }
     ],
     "vouchers": []
@@ -481,10 +481,10 @@
         "type": "PERCENTAGE",
         "value": 0.1,
         "isActive": true,
-        "startDate": "2025-06-01T23:59:59.000Z",
-        "endDate": "2025-06-29T23:59:59.000Z",
+        "startDate": "2025-06-30T23:59:59.000Z",
+        "endDate": "2025-07-29T23:59:59.000Z",
         "createdAt": "2025-06-04T02:40:12.176Z",
-        "updatedAt": "2025-06-11T05:54:23.606Z"
+        "updatedAt": "2025-06-30T01:54:53.839Z"
       }
     ],
     "vouchers": []
@@ -726,10 +726,10 @@
         "type": "PERCENTAGE",
         "value": 0.1,
         "isActive": true,
-        "startDate": "2025-06-01T23:59:59.000Z",
-        "endDate": "2025-06-29T23:59:59.000Z",
+        "startDate": "2025-06-30T23:59:59.000Z",
+        "endDate": "2025-07-29T23:59:59.000Z",
         "createdAt": "2025-06-04T02:40:12.176Z",
-        "updatedAt": "2025-06-11T05:54:23.606Z"
+        "updatedAt": "2025-06-30T01:54:53.839Z"
       }
     ],
     "vouchers": []

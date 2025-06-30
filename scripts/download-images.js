@@ -1,51 +1,16 @@
 // scripts/download-images.js
+
 import https from "https";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
+// Konversi __filename dan __dirname untuk ES Module
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// === DATA BARU ===
-const LANDING_DATA = {
-  hero: {
-    imageUrl: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1200&q=80",
-  },
-  problem: {
-    imageUrl: "https://images.unsplash.com/photo-1622434641406-a158123450f9?q=80&w=1304&auto=format&fit=crop",
-  },
-  solution: {
-    gallery: [
-      "https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1539874754764-5a96559165b0?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1611944212129-29977ae1398c?auto=format&fit=crop&w=800&q=80",
-    ],
-  },
-  cta: {
-    imageUrl: "https://images.unsplash.com/photo-1601924638867-3a6de6b7a500?auto=format&fit=crop&w=1200&q=80",
-  },
-};
-
-// === EKSTRAK URL ===
-function extractUrls(obj) {
-  let urls = [];
-
-  function recurse(o) {
-    if (typeof o === "string") {
-      if (o.startsWith("http") && (o.includes(".jpg") || o.includes(".png") || o.includes("images.unsplash.com"))) {
-        urls.push(o);
-      }
-    } else if (Array.isArray(o)) {
-      o.forEach((item) => recurse(item));
-    } else if (typeof o === "object" && o !== null) {
-      Object.values(o).forEach((value) => recurse(value));
-    }
-  }
-
-  recurse(obj);
-  return urls;
-}
+// === DATA GAMBAR ===
+const imageUrl = ["https://images.unsplash.com/photo-1606744888344-493238951221?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"];
 
 // === FUNGSI DOWNLOAD ===
 function downloadImage(url, dest) {
@@ -54,12 +19,15 @@ function downloadImage(url, dest) {
     https
       .get(url, (res) => {
         if (res.statusCode !== 200) {
-          reject(new Error(`Failed to get '${url}' (${res.statusCode})`));
+          reject(new Error(`Gagal mengakses '${url}' (${res.statusCode})`));
           return;
         }
         res.pipe(file);
         file.on("finish", () => {
           file.close(resolve);
+        });
+        file.on("error", (err) => {
+          fs.unlink(dest, () => reject(err));
         });
       })
       .on("error", (err) => {
@@ -70,27 +38,35 @@ function downloadImage(url, dest) {
 
 // === MAIN ===
 async function main() {
-  const urls = extractUrls(LANDING_DATA);
+  const urls = imageUrl;
   console.log(`Ditemukan ${urls.length} URL gambar.`);
 
-  const dir = "./images";
+  const dir = path.join(__dirname, "images");
   if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir);
   }
 
   for (const url of urls) {
-    const baseName = path.basename(url.split("?")[0]);
-    const filename = baseName.includes(".") ? baseName : baseName + ".jpg";
-    const filepath = path.join(dir, filename);
+    const fileNameWithoutExt = path.basename(url.split("?")[0], path.extname(url.split("?")[0]));
+    const finalFileName = `${fileNameWithoutExt}.jpg`;
+    const filepath = path.join(dir, finalFileName);
+
+    // Cek apakah file sudah ada
+    if (fs.existsSync(filepath)) {
+      console.log(`Lewati (sudah ada): ${finalFileName}`);
+      continue;
+    }
 
     try {
-      console.log(`Downloading ${url} ...`);
+      console.log(`Downloading: ${url}`);
       await downloadImage(url, filepath);
-      console.log(`Selesai: ${filename}`);
+      console.log(`Selesai simpan: ${finalFileName}`);
     } catch (err) {
-      console.error(`Error download ${url}:`, err.message);
+      console.error(`Gagal download ${url}: ${err.message}`);
     }
   }
+
+  console.log("✅ Semua download selesai.");
 }
 
 main();

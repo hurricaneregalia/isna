@@ -3,8 +3,8 @@
     "id": "c89a5aee-99c1-433b-8045-e0be13bfe3b4",
     "name": "nurbaz",
     "slug": "nurbaz",
-    "description": "Jual template landing page untuk jualan produk branded. Cocok untuk fashion, aksesoris, dan produk high-end lainnya.",
-    "keywords": "landingpage, facebook ads, bisnis, jualan, jualan produk, jualan produk fisik, jual produk branded, branded, brand",
+    "description": "Template landing page untuk produk branded, dengan desain responsif dan elegan. Siap bantu tingkatkan penjualan fashion & produk premium Anda.",
+    "keywords": "template landing page produk branded, landing page elegan dan responsif, landing page fashion premium, jual template landing page",
     "ogImage": null,
     "image": "/images/templateLandingPageBonus/Nurbaz/images/paul-cuoco-CO2vOhPqlrM-unsplash.jpg",
     "component": "Nurbaz",
@@ -12,7 +12,7 @@
     "marketingTools": null,
     "isActive": true,
     "createdAt": "2025-05-20T11:53:41.201Z",
-    "updatedAt": "2025-06-27T02:56:36.134Z",
+    "updatedAt": "2025-06-27T03:09:41.474Z",
     "lpFor": [
       {
         "id": "ecbfa549-0b21-414e-a1bf-982243a69c90",
@@ -219,19 +219,29 @@
     ],
     "lpContentTypes": [
       {
-        "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
-        "type": "text",
-        "order": 14
+        "id": "1c39504e-f456-4a1c-9ec7-823df7ec78ff",
+        "type": "form",
+        "order": 11
       },
       {
-        "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
-        "type": "youtube video",
-        "order": 15
+        "id": "397d9d29-87dd-4ae7-917d-d5bcc853cf1a",
+        "type": "hero image",
+        "order": 2
       },
       {
-        "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
-        "type": "slider",
-        "order": 13
+        "id": "5098707b-91bc-4628-b077-1a98e65b5cd1",
+        "type": "testimoni teks",
+        "order": 6
+      },
+      {
+        "id": "822dbbf4-eda5-4fa5-9d37-a97da91712d3",
+        "type": "product list",
+        "order": 9
+      },
+      {
+        "id": "d2adaf07-56ce-446d-825f-a94de84dde88",
+        "type": "responsive",
+        "order": 90
       }
     ],
     "lpDesignStyle": {
@@ -389,18 +399,18 @@
   },
   {
     "id": "7ab43589-6863-4314-b628-70a31aa79a4f",
-    "name": "zemira",
+    "name": "zemira canvas",
     "slug": "zemira",
-    "description": "sitamet",
-    "keywords": null,
+    "description": "Template landing page profesional dengan desain elegan dan responsif. Tingkatkan penjualan jasa Anda lebih efektif!",
+    "keywords": "landing page jasa, landing page profesional, jual jasa online, jasa profesional, template landing page untuk jasa profesional, desain landing page untuk jasa, landing page untuk meningkatkan penjualan, cara jual jasa lewat landing page, beli template landing page profesional, template landing page siap meningkatkan penjualan, desain landing page untuk freelance dan agensi",
     "ogImage": null,
-    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "image": "/images/templateLandingPageBonus/Zemira/images/photo-1606744888344-493238951221.jpg",
     "component": "Zemira",
     "lpDesignStyleId": "3c1e712c-d927-40e9-a387-19445db1f9f6",
     "marketingTools": null,
     "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-17T03:07:01.429Z",
+    "updatedAt": "2025-06-30T02:28:03.590Z",
     "lpFor": [
       {
         "id": "6c37855a-8169-4309-ab73-da56fccb0b83",

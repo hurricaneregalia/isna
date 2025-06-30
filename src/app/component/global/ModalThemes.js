@@ -12,14 +12,11 @@ export default function ModalThemes({ title, children, btnTxt, id }) {
 
   return (
     <>
-      <button
-        className="bg-transparent border border-base-100/40 btn flex justify-center items-center text-base-100 cursor-pointer w-10 h-10 p-0 text-xl"
-        onClick={openModal}
-      >
+      <button className="bg-transparent border border-base-100/40 btn flex justify-center shadow-none items-center text-base-100 cursor-pointer w-10 h-10 p-0 text-xl" onClick={openModal}>
         {btnTxt}
       </button>
 
-      <dialog id={id} ref={dialogRef} className="modal">
+      <dialog id={id} ref={dialogRef} className="modal ">
         <div className="modal-box">
           <h3 className="font-bold text-lg">{title}</h3>
           <form method="dialog">

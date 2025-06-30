@@ -111,6 +111,7 @@ export function SolutionShowcaseZemira() {
               <div className="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mb-6 text-blue-500">
                 <FiTrendingUp size={32} />
               </div>
+
               <h3 className="text-2xl font-bold">Efisiensi Ruang</h3>
               <div className="relative h-30 w-full rounded-xl my-5 overflow-hidden shadow-xl">
                 <Image
@@ -179,9 +180,9 @@ export function SolutionShowcaseZemira() {
 
         {/* Closing CTA */}
         <div className="mt-16 text-center">
-          <p className="text-xl mb-8 max-w-2xl mx-auto text-base-content/80">
-            "Rumah dan kantor bukan sekadar tempat, tapi <span className="font-bold text-primary">ekstensi kepribadian</span> dan{" "}
-            <span className="font-bold text-primary">katalis kesuksesan</span> Anda"
+          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-75">
+            "Rumah dan kantor bukan sekadar tempat, tapi <span className="font-bold text-primary">ekstensi kepribadian</span> dan <span className="font-bold text-primary">katalis kesuksesan</span>{" "}
+            Anda"
           </p>
           <button className="btn btn-primary btn-lg group">Lihat Paket</button>
         </div>

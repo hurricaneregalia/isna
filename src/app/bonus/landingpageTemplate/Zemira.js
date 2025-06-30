@@ -6,19 +6,20 @@ import WorkProcessZemira from "./zemira/WorkProcessZemira";
 import TestimonialsZemira from "./zemira/TestimonialsZemira";
 import SpecialOfferZemira from "./zemira/SpecialOfferZemira";
 import FAQSectionZemira from "./zemira/FAQSectionZemira";
-import FooterZemira from "./zemira/FooterZemira";
+import GallerySectionZemira from "./zemira/GallerySectionZemira";
 
 export default function Zemira() {
   return (
     <>
       <HeroSectionZemira />
       <ProblemSectionZemira />
-      <SolutionSectionZemira />
+      <SolutionSectionZemira>
+        <GallerySectionZemira />
+      </SolutionSectionZemira>
       <WorkProcessZemira />
       <TestimonialsZemira />
       <SpecialOfferZemira />
       <FAQSectionZemira />
-      <FooterZemira />
     </>
   );
 }

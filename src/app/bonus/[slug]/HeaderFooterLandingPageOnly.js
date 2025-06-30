@@ -28,7 +28,7 @@ export default function HeaderFooterLandingPageOnly({ siteName, children }) {
 
       {/* Footer */}
       <footer className="w-full text-center py-5 bg-base-200">
-        <span className=" opacity-50">footer {siteName}</span>
+        <span className=" opacity-50">{siteName}</span>
       </footer>
     </div>
   );

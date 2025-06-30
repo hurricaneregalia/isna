@@ -85,7 +85,7 @@ export function PortfolioDataZemira() {
           <h2 className="text-4xl font-bold mb-4">
             Portofolio <span className="text-primary">Eksklusif</span>
           </h2>
-          <p className="text-xl text-base-content/80 max-w-2xl mx-auto">Lihat transformasi ruangan yang kami kerjakan untuk klien profesional</p>
+          <p className="text-xl opacity-75 max-w-2xl mx-auto">Lihat transformasi ruangan yang kami kerjakan untuk klien profesional</p>
         </div>
 
         {/* Filter Controls */}
@@ -97,11 +97,7 @@ export function PortfolioDataZemira() {
 
           <div className="flex flex-wrap justify-center gap-2">
             {portfolioData.filters.map((filter) => (
-              <button
-                key={filter.id}
-                onClick={() => setActiveFilter(filter.id)}
-                className={`btn btn-sm ${activeFilter === filter.id ? "btn-primary" : "btn-ghost"}`}
-              >
+              <button key={filter.id} onClick={() => setActiveFilter(filter.id)} className={`btn btn-sm ${activeFilter === filter.id ? "btn-primary" : "btn-ghost"}`}>
                 {filter.label}
               </button>
             ))}
@@ -122,11 +118,7 @@ export function PortfolioDataZemira() {
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="card bg-base-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
-              onClick={() => setSelectedProject(project)}
-            >
+            <div key={project.id} className="card bg-base-200 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer" onClick={() => setSelectedProject(project)}>
               <figure className="relative h-64">
                 <Image src={project.image} alt={project.title} fill className="object-cover" />
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">

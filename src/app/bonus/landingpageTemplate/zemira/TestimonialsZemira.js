@@ -1,7 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+// Tambahan import icon media sosial
+import { FaInstagram, FaFacebookF, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import { HiStar, HiChevronLeft, HiChevronRight, HiOutlineOfficeBuilding, HiOutlineBriefcase } from "react-icons/hi";
+import { FaAmazon, FaApple, FaFacebook, FaGoogle, FaSpotify, FaWindows, FaWordpress } from "react-icons/fa6";
 
 export default function TestimonialsZemira() {
   const testimonials = [
@@ -9,8 +12,7 @@ export default function TestimonialsZemira() {
       name: "dr. Anindita Putri, Sp.KJ",
       profession: "Psikiater",
       company: "RS Premier Bintaro",
-      quote:
-        "Sebagai dokter yang sibuk, saya tidak punya waktu untuk desain rumah. Tim ini memahami kebutuhan keluarga saya dan menciptakan ruang penyembuhan di rumah yang sempurna.",
+      quote: "Sebagai dokter yang sibuk, saya tidak punya waktu untuk desain rumah. Tim ini memahami kebutuhan keluarga saya dan menciptakan ruang penyembuhan di rumah yang sempurna.",
       rating: 5,
       photo: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
@@ -26,8 +28,7 @@ export default function TestimonialsZemira() {
       name: "Dian Sastrowardoyo",
       profession: "CEO",
       company: "Surya Teknologi Group",
-      quote:
-        "Investasi terbaik untuk keluarga saya. Setiap sudut rumah bercerita tentang kepribadian kami. Tim profesional yang sangat memahami selera high-end.",
+      quote: "Investasi terbaik untuk keluarga saya. Setiap sudut rumah bercerita tentang kepribadian kami. Tim profesional yang sangat memahami selera high-end.",
       rating: 5,
       photo: "https://images.pexels.com/photos/712521/pexels-photo-712521.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
@@ -35,8 +36,7 @@ export default function TestimonialsZemira() {
       name: "Prof. Dr. H. Ahmad Fauzi, M.Eng",
       profession: "Dosen & Konsultan",
       company: "Universitas Indonesia",
-      quote:
-        "Desain home office saya sekarang menjadi ruang produktivitas sekaligus inspirasi. Material premium yang digunakan benar-benar terasa kualitasnya.",
+      quote: "Desain home office saya sekarang menjadi ruang produktivitas sekaligus inspirasi. Material premium yang digunakan benar-benar terasa kualitasnya.",
       rating: 5,
       photo: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=600",
     },
@@ -54,20 +54,22 @@ export default function TestimonialsZemira() {
 
   // Render rating stars
   const renderStars = (rating) => {
-    return [...Array(5)].map((_, i) => (
-      <HiStar key={i} className={`h-5 w-5 ${i < rating ? "text-yellow-400 fill-current" : "text-base-content/20"}`} />
-    ));
+    return [...Array(5)].map((_, i) => <HiStar key={i} className={`h-5 w-5 ${i < rating ? "text-yellow-400 fill-current" : "text-base-content/20"}`} />);
   };
 
   return (
     <section id="testimonial" className="py-16 md:py-24 bg-base-200">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full mb-4">Apa Kata Klien</span>
-          <h2 className="text-3xl md:text-4xl font-playfair font-bold text-base-content mb-6">
+          <span className="w-fit px-4 bg-primary/10 text-primary btn cursor-text shadow-none border-none mb-3" data-aos="fade-up">
+            Apa Kata Klien
+          </span>
+          <h2 className="text-3xl md:text-4xl font-playfair font-bold text-base-content mb-6" data-aos="fade-up">
             Kepercayaan dari <span className="text-primary">Profesional Terkemuka</span>
           </h2>
-          <p className="text-lg text-base-content/80">Mereka yang telah mempercayakan desain rumah impian pada tim ahli kami</p>
+          <p className="text-lg opacity-75" data-aos="fade-up">
+            Mereka yang telah mempercayakan desain rumah impian pada tim ahli kami
+          </p>
         </div>
 
         {/* Testimonial Carousel */}
@@ -92,17 +94,11 @@ export default function TestimonialsZemira() {
           {/* Testimonial Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Main Testimonial */}
-            <div className="bg-base-100 rounded-2xl p-8 shadow-xl border border-base-300/30">
+            <div className="bg-base-100 rounded-2xl p-8 shadow-xl border border-base-300/30" data-aos="fade-up">
               <div className="flex items-start mb-6">
                 <div className="relative mr-6">
                   <div className="w-20 h-20 rounded-full overflow-hidden border-4 border-primary/10">
-                    <Image
-                      src={testimonials[currentIndex].photo}
-                      alt={testimonials[currentIndex].name}
-                      width={80}
-                      height={80}
-                      className="object-cover"
-                    />
+                    <Image src={testimonials[currentIndex].photo} alt={testimonials[currentIndex].name} width={80} height={80} className="object-cover" />
                   </div>
                   <div className="absolute -bottom-2 -right-2 bg-primary text-base-100 rounded-full w-10 h-10 flex items-center justify-center">
                     <span className="font-bold">{testimonials[currentIndex].rating}.0</span>
@@ -111,11 +107,11 @@ export default function TestimonialsZemira() {
 
                 <div>
                   <h3 className="text-xl font-semibold text-base-content">{testimonials[currentIndex].name}</h3>
-                  <div className="flex items-center mt-1 mb-2">
+                  <div className="flex items-center mt-1 mb-2 text-xs">
                     <HiOutlineBriefcase className="text-primary mr-2" />
-                    <span className="text-base-content/80">{testimonials[currentIndex].profession}</span>
+                    <span className="opacity-75 ">{testimonials[currentIndex].profession}</span>
                   </div>
-                  <div className="flex items-center">
+                  <div className="flex items-center text-xs">
                     <HiOutlineOfficeBuilding className="text-primary mr-2" />
                     <span className="text-base-content/70">{testimonials[currentIndex].company}</span>
                   </div>
@@ -123,13 +119,13 @@ export default function TestimonialsZemira() {
               </div>
 
               <div className="pl-2 border-l-4 border-primary/50">
-                <p className="text-lg italic text-base-content/90 mb-6">"{testimonials[currentIndex].quote}"</p>
+                <p className="text-lg italic opacity-75 mb-6">"{testimonials[currentIndex].quote}"</p>
                 <div className="flex">{renderStars(testimonials[currentIndex].rating)}</div>
               </div>
             </div>
 
             {/* Secondary Testimonials */}
-            <div className="grid grid-cols-1 gap-6">
+            <div className="grid grid-cols-1 gap-6" data-aos="fade-up">
               {testimonials
                 .filter((_, i) => i !== currentIndex)
                 .slice(0, 2)
@@ -144,30 +140,31 @@ export default function TestimonialsZemira() {
                         <div className="flex mt-1">{renderStars(testimonial.rating)}</div>
                       </div>
                     </div>
-                    <p className="text-base-content/80 line-clamp-3">"{testimonial.quote}"</p>
+                    <p className="opacity-75 line-clamp-3">"{testimonial.quote}"</p>
                   </div>
                 ))}
             </div>
           </div>
         </div>
 
-        {/* Trust Badges */}
-        <div className="mt-20 bg-base-100 rounded-2xl p-8 shadow-lg">
-          <h3 className="text-center text-xl md:text-2xl font-playfair font-semibold text-base-content mb-8">
-            Dipercaya oleh Institusi dan Asosiasi Terkemuka
-          </h3>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+        {/* Trust Badges Section */}
+        <div className="mt-20 bg-base-100 rounded-2xl p-6 md:p-8 shadow-lg" data-aos="fade-up">
+          <h3 className="text-center text-2xl md:text-3xl font-playfair font-bold text-base-content mb-10">Klien Kami yang Luar Biasa</h3>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 gap-6 md:gap-8">
             {[
-              { name: "HDII", label: "Asosiasi Desainer Interior Indonesia" },
-              { name: "IIDA", label: "International Interior Design Association" },
-              { name: "Forbes", label: "Featured in Forbes Indonesia" },
-              { name: "ArchDaily", label: "Featured in ArchDaily" },
-            ].map((org, i) => (
-              <div key={i} className="flex flex-col items-center">
-                <div className="bg-base-200 w-20 h-20 rounded-full flex items-center justify-center mb-3">
-                  <span className="font-bold text-lg text-primary">{org.name}</span>
-                </div>
-                <span className="text-sm text-center text-base-content/70">{org.label}</span>
+              { icon: <FaGoogle className="w-8 h-8" />, label: "Google" },
+              { icon: <FaWindows className="w-8 h-8" />, label: "Microsoft" },
+              { icon: <FaWordpress className="w-8 h-8" />, label: "WordPress" },
+              { icon: <FaYoutube className="w-8 h-8" />, label: "YouTube" },
+              { icon: <FaApple className="w-8 h-8" />, label: "Apple" },
+              { icon: <FaAmazon className="w-8 h-8" />, label: "Amazon" },
+              { icon: <FaFacebook className="w-8 h-8" />, label: "Facebook" },
+              { icon: <FaSpotify className="w-8 h-8" />, label: "Spotify" },
+            ].map((media, i) => (
+              <div key={i} className="flex flex-col items-center justify-center p-4 transition-all duration-300 hover:scale-105 hover:bg-primary/10 bg-base-200 rounded-xl group">
+                <div className="bg-base-200 w-20 h-20 rounded-full flex items-center justify-center mb-3 transition-colors group-hover:bg-primary group-hover:text-primary-content">{media.icon}</div>
+                <span className="text-sm font-medium text-base-content/80 transition-colors group-hover:text-base-content">{media.label}</span>
               </div>
             ))}
           </div>

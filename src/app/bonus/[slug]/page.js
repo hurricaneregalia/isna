@@ -57,9 +57,7 @@ export async function generateMetadata({ params }) {
         card: "summary_large_image",
         title: landingPage.name,
         description: landingPage.description,
-        creator: Array.isArray(landingPage.socialLinks)
-          ? landingPage.socialLinks.find((s) => s.platform === "twitter")?.platformUsername || "@kalamanacopy"
-          : "@kalamanacopy",
+        creator: Array.isArray(landingPage.socialLinks) ? landingPage.socialLinks.find((s) => s.platform === "twitter")?.platformUsername || "@kalamanacopy" : "@kalamanacopy",
         images: landingPage.image ? [`${BASE_URL}${landingPage.image}`] : [],
       },
       robots: {

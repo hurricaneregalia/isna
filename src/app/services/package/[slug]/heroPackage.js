@@ -17,8 +17,8 @@ export default function HeroPackage({ img, imageAlt, listItem }) {
     {
       src: img,
       alt: imageAlt,
-      width: 3840,
-      height: 2560,
+      width: 1920,
+      height: 1280,
       srcSet: [
         { src: img, width: 320, height: 213 },
         { src: img, width: 640, height: 427 },
@@ -46,14 +46,7 @@ export default function HeroPackage({ img, imageAlt, listItem }) {
             setIsOpen(true);
           }}
         >
-          <ImageComponent
-            imageUrl={img}
-            imageAlt={imageAlt}
-            width="100%"
-            priority={true}
-            rounded="noround"
-            cssStyle="cursor-pointer object-cover h-full w-auto"
-          />
+          <ImageComponent imageUrl={img} imageAlt={imageAlt} width="100%" priority={true} rounded="noround" cssStyle="cursor-pointer object-cover h-full w-auto" />
         </button>
 
         <div className="galler grid md:grid-cols-2 grid-cols-4 md:gap-3 gap-1">
@@ -80,13 +73,7 @@ export default function HeroPackage({ img, imageAlt, listItem }) {
         </div>
       </div>
 
-      <Lightbox
-        open={isOpen}
-        close={() => setIsOpen(false)}
-        slides={slides}
-        index={currentIndex}
-        plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
-      />
+      <Lightbox open={isOpen} close={() => setIsOpen(false)} slides={slides} index={currentIndex} plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]} />
     </div>
   );
 }
