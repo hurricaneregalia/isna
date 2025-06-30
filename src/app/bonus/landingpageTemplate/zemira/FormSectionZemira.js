@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { HiOutlineGift } from "react-icons/hi";
 
-export default function FormSectionZemira({ offerContent, waNumber }) {
+export default function FormSectionZemira({ offerContent, waNumber, secId }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,20 +31,16 @@ export default function FormSectionZemira({ offerContent, waNumber }) {
 
     // Format pesan
     const waMessage = `
-Halo, saya ingin mendaftar melalui formulir.
-
 🧑 Nama: ${name}
 📧 Email: ${email}
 📱 No. WhatsApp: ${phone}
 🏠 Jenis Properti: ${propertyType}
 📝 Pesan Tambahan: ${message || "-"}
-  `;
+`.trim();
 
-    // Encode untuk URL
-    const encodedMessage = encodeURIComponent(waMessage.trim());
-
-    // Bangun URL WhatsApp
+    const encodedMessage = encodeURIComponent(waMessage);
     const waUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+
     window.location.href = waUrl;
 
     // Reset form & tampilkan notifikasi sukses
@@ -62,10 +58,10 @@ Halo, saya ingin mendaftar melalui formulir.
   };
 
   return (
-    <div className="lg:w-1/2 bg-base-100 rounded-2xl p-8 shadow-xl" data-aos="fade-up" id="formPendaftaran">
+    <div className="lg:w-1/2 bg-base-100 card p-8 shadow-xl" data-aos="fade-up" id={secId}>
       {isSubmitted ? (
         <div className="text-center py-12">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
+          <div className="inline-flex items-center justify-center w-16 h-16 card bg-primary/10 mb-6">
             <HiOutlineGift className="h-8 w-8 text-primary" />
           </div>
           <h3 className="text-2xl font-playfair font-bold opacity-75 mb-4">{offerContent.successTitle}</h3>
@@ -80,7 +76,7 @@ Halo, saya ingin mendaftar melalui formulir.
             <div className="space-y-5">
               <div>
                 <label htmlFor="name" className="block text-base-content font-medium mb-2">
-                  Nama Lengkap
+                  Nama Lengkap <span className="text-error text-xl">*</span>
                 </label>
                 <input
                   type="text"
@@ -91,14 +87,14 @@ Halo, saya ingin mendaftar melalui formulir.
                   onChange={handleChange}
                   required
                   placeholder="Anindita Putri"
-                  className="w-full input input-lg bg-base-200 border border-base-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full input input-lg bg-base-200 border border-base-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label htmlFor="email" className="block text-base-content font-medium mb-2">
-                    Email
+                    Email <span className="text-error text-xl">*</span>
                   </label>
                   <input
                     type="email"
@@ -109,13 +105,13 @@ Halo, saya ingin mendaftar melalui formulir.
                     onChange={handleChange}
                     required
                     placeholder="anda@perusahaan.com"
-                    className="w-full input input-lg bg-base-200 border border-base-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full input input-lg bg-base-200 border border-base-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="phone" className="block text-base-content font-medium mb-2">
-                    Nomor WhatsApp
+                    Nomor WhatsApp <span className="text-error text-xl">*</span>
                   </label>
                   <input
                     type="tel"
@@ -126,14 +122,14 @@ Halo, saya ingin mendaftar melalui formulir.
                     onChange={handleChange}
                     required
                     placeholder="6281234567890"
-                    className="w-full input input-lg bg-base-200 border border-base-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                    className="w-full input input-lg bg-base-200 border border-base-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 </div>
               </div>
 
               <div>
                 <label htmlFor="propertyType" className="block text-base-content font-medium mb-2">
-                  Jenis Properti
+                  Jenis Properti <span className="text-error text-xl">*</span>
                 </label>
                 <select
                   id="propertyType"
@@ -141,7 +137,7 @@ Halo, saya ingin mendaftar melalui formulir.
                   value={formData.propertyType}
                   onChange={handleChange}
                   required
-                  className="select select-lg w-full bg-base-200 border border-base-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="select select-lg w-full bg-base-200 border border-base-300 input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 >
                   <option value="">Pilih jenis properti</option>
                   <option value="rumah">Rumah Tinggal</option>
@@ -162,7 +158,7 @@ Halo, saya ingin mendaftar melalui formulir.
                   onChange={handleChange}
                   rows="3"
                   placeholder="Deskripsi singkat kebutuhan Anda"
-                  className="w-full textarea textarea-lg bg-base-200 border border-base-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                  className="w-full textarea textarea-lg bg-base-200 border border-base-300 input focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                 ></textarea>
               </div>
 

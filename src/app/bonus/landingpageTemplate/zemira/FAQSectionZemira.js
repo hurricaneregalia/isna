@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useState, useRef } from "react";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 
-export default function FAQSectionZemira() {
+export default function FAQSectionZemira({ secId, data, secIdTarget }) {
   const [activeIndex, setActiveIndex] = useState(null);
   const contentRefs = useRef([]);
 
@@ -14,6 +14,8 @@ export default function FAQSectionZemira() {
     heading: "Pertanyaan yang Sering Diajukan oleh",
     subtitle: "Klien Profesional",
     description: "Temukan jawaban atas pertanyaan umum seputar layanan desain interior premium kami",
+    ctaTitle: "Mau dapat diskon?",
+    ctaSubTile: "Isi formulir untuk mendapatkan diskonya sekarang juga!",
     items: [
       {
         question: "Berapa kisaran biaya jasa desain interior profesional?",
@@ -49,31 +51,31 @@ export default function FAQSectionZemira() {
   };
 
   return (
-    <section id="faq" className="py-16 md:py-24 bg-base-100">
+    <section id={secId} className="py-16 md:py-24 bg-base-100">
       <div className="container max-w-6xl mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="w-fit px-4 bg-primary/10 text-primary btn cursor-text shadow-none border-none mb-3" data-aos="fade-up">
-            Informasi Penting
+          <span className="w-fit px-4 py-2 bg-primary/10 text-primary text-xs card mx-auto mb-3 capitalize" data-aos="fade-up">
+            {secId.replace(/-/g, " ")}
           </span>
           <h2 className="text-3xl md:text-4xl font-playfair font-bold text-base-content mb-6" data-aos="fade-up">
-            {faq.heading}
-            <span className="text-primary"> {faq.subtitle}</span>
+            {data.heading}
+            <span className="text-primary"> {data.subtitle}</span>
           </h2>
           <p className="text-lg opacity-75" data-aos="fade-up">
-            {faq.description}
+            {data.description}
           </p>
         </div>
 
         {/* FAQ Items dengan Animasi */}
         <div className="max-w-4xl mx-auto">
-          {faq.items.map((faqItem, index) => (
+          {data.items.map((faqItem, index) => (
             <div
               key={index}
-              className={`border border-base-300 rounded-xl mb-4 overflow-hidden transition-all duration-300 ${
+              className={`border border-base-300 card mb-4 overflow-hidden transition-all duration-300 ${
                 activeIndex === index ? "bg-base-100 shadow-lg border-primary/30" : "bg-base-100 hover:bg-base-200"
               }`}
             >
-              <button className="w-full flex justify-between items-center p-6 text-left" onClick={() => toggleFAQ(index)} aria-expanded={activeIndex === index}>
+              <button className="w-full flex justify-between items-center cursor-pointer p-6 text-left" onClick={() => toggleFAQ(index)} aria-expanded={activeIndex === index}>
                 <h3 className="text-lg md:text-xl font-semibold text-base-content">{faqItem.question}</h3>
                 <span className="ml-4 text-primary transition-transform duration-300">
                   {activeIndex === index ? <HiChevronUp className="h-6 w-6 transform rotate-180" /> : <HiChevronDown className="h-6 w-6" />}
@@ -98,15 +100,15 @@ export default function FAQSectionZemira() {
           ))}
         </div>
         {/* CTA Bottom */}
-        <div className="mt-16 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl p-8 md:p-10 border border-primary/20" data-aos="fade-up">
+        <div className="mt-16 bg-gradient-to-r from-primary/10 to-secondary/10 card p-8 md:p-10 border border-primary/20" data-aos="fade-up">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="md:w-2/3  text-center sm:text-left">
-              <h3 className="text-2xl md:text-3xl font-playfair font-bold text-base-content mb-3">Mau dapat diskon?</h3>
-              <p className="text-lg opacity-75">Isi formulir untuk mendapatkan diskonya sekarang juga!</p>
+              <h3 className="text-2xl md:text-3xl font-playfair font-bold text-primary mb-3">{data.ctaTitle}</h3>
+              <p className="text-lg opacity-75">{data.ctaSubTile}</p>
             </div>
             <div className="md:w-1/3 flex justify-center md:justify-end">
               <Link
-                href="#formPendaftaran"
+                href={secIdTarget}
                 rel="noopener noreferrer"
                 className="w-fit btn btn-primary btn-lg px-10 mx-auto font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
               >
