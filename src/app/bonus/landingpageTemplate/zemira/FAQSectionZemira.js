@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { HiChevronDown, HiChevronUp } from "react-icons/hi";
 
 export default function FAQSectionZemira() {
@@ -50,7 +50,7 @@ export default function FAQSectionZemira() {
 
   return (
     <section id="faq" className="py-16 md:py-24 bg-base-100">
-      <div className="container mx-auto px-4">
+      <div className="container max-w-6xl mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="w-fit px-4 bg-primary/10 text-primary btn cursor-text shadow-none border-none mb-3" data-aos="fade-up">
             Informasi Penting

@@ -1,6 +1,21 @@
 import React from "react";
 import { HiOutlineGift, HiOutlineClock, HiOutlineShieldCheck } from "react-icons/hi";
 import FormSectionZemira from "./FormSectionZemira";
+import Loading from "../loading";
+import fs from "fs/promises";
+import path from "path";
+
+async function getSiteIdentityFromFile() {
+  try {
+    const filePath = path.join(process.cwd(), "src/app/api/datajs/siteidentity/data.json");
+    const file = await fs.readFile(filePath, "utf-8");
+    const data = JSON.parse(file);
+    return data?.[0] || null;
+  } catch (error) {
+    console.error("❌ Gagal membaca siteidentity dari file:", error.message);
+    return null;
+  }
+}
 
 const offerContent = {
   badgeLabel: "Promo Spesial",
@@ -13,8 +28,8 @@ const offerContent = {
   quotaInfo: "Hanya tersisa 8 slot dari 20 kuota penawaran spesial",
   privacyTitle: "Privasi Terjamin",
   privacySubtitle: "Data Anda aman dan hanya digunakan untuk layanan premium",
-  successTitle: "Terima Kasih Atas Minat Anda!",
-  successMessage: "Penawaran spesial telah dikirim ke email Anda. Tim konsultan kami akan menghubungi Anda dalam 1x24 jam.",
+  successTitle: "Pendaftaran Anda sedang di proses!",
+  successMessage: "Kami akan segera menghubungi Anda melalu pesan Whatsapp.",
   submitButton: "Kirim",
   submitAnother: "Kirim Pesan Lain",
   formTitle: "Dapatkan Diskon 15%",
@@ -24,10 +39,13 @@ const offerContent = {
 
 const listIcons = [HiOutlineGift, HiOutlineClock, HiOutlineShieldCheck];
 
-export default function SpecialOfferZemira() {
+export default async function SpecialOfferZemira() {
+  const siteData = await getSiteIdentityFromFile();
+
+  if (!siteData) return <Loading />;
   return (
     <section id="penawaran" className="py-16 md:py-24 bg-gradient-to-br from-base-200 to-base-300">
-      <div className="container mx-auto px-4">
+      <div className="container max-w-6xl mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           {/* Konten Penawaran */}
           <div className="lg:w-1/2">
@@ -76,7 +94,7 @@ export default function SpecialOfferZemira() {
             </div>
 
             {/* Badge Privasi */}
-            <div className="mt-8 flex items-center justify-center lg:justify-start" data-aos="fade-up">
+            <div className="mt-8 flex items-center justify-center" data-aos="fade-up">
               <div className="bg-base-100 p-4 rounded-xl shadow-lg flex items-center">
                 <HiOutlineShieldCheck className="h-8 w-8 text-primary mr-3" />
                 <div>
@@ -86,9 +104,8 @@ export default function SpecialOfferZemira() {
               </div>
             </div>
           </div>
-
           {/* Form yang sudah dipisahkan */}
-          <FormSectionZemira offerContent={offerContent} />
+          <FormSectionZemira offerContent={offerContent} waNumber={siteData.phone} />
         </div>
       </div>
     </section>

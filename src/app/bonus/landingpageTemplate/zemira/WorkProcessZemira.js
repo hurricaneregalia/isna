@@ -40,7 +40,7 @@ export default function WorkProcessZemira() {
 
   return (
     <section id="proses" className="py-16 md:py-24 bg-base-100">
-      <div className="container mx-auto px-4">
+      <div className="container  mx-auto max-w-6xl px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="w-fit px-4 bg-primary/10 text-primary btn cursor-text shadow-none border-none mb-3" data-aos="fade-up">
             Tanpa Ribet

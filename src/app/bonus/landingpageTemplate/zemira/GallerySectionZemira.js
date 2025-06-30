@@ -76,10 +76,17 @@ export default function GallerySectionZemira() {
                 setCurrentIndex(index);
                 setIsOpen(true);
               }}
-              className="relative group overflow-hidden rounded-xl transition-all duration-500 hover:-translate-y-2"
+              className="relative group overflow-hidden rounded-xl transition-all duration-500 ease-in-out hover:-translate-y-2"
               data-aos="fade-up"
             >
-              <ImageComponent rounded="none" imageUrl={item.src} imageAlt={`${item.title} – ${item.subtitle}`} width="100%" priority={true} cssStyle="cursor-pointer object-cover h-full w-auto" />
+              <ImageComponent
+                rounded="none"
+                imageUrl={item.src}
+                imageAlt={`${item.title} – ${item.subtitle}`}
+                width="100%"
+                priority={false}
+                cssStyle="cursor-pointer object-cover h-full w-auto transform transition-transform duration-500 group-hover:scale-105"
+              />
               {/* Overlay saat hover */}
               <div className="absolute inset-0 bg-neutral/75 cursor-pointer flex flex-col justify-center items-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out p-4 text-center">
                 <h3 className="font-semibold">{item.title}</h3>

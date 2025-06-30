@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { HiOutlineGift } from "react-icons/hi";
 
-export default function FormSectionZemira({ offerContent }) {
+export default function FormSectionZemira({ offerContent, waNumber }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,9 +20,35 @@ export default function FormSectionZemira({ offerContent }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setIsSubmitted(true);
 
+    const { name, email, phone, propertyType, message } = formData;
+
+    // Validasi semua isian terisi (kecuali message yang opsional)
+    if (!name || !email || !phone || !propertyType) {
+      alert("Mohon lengkapi semua data terlebih dahulu.");
+      return;
+    }
+
+    // Format pesan
+    const waMessage = `
+Halo, saya ingin mendaftar melalui formulir.
+
+🧑 Nama: ${name}
+📧 Email: ${email}
+📱 No. WhatsApp: ${phone}
+🏠 Jenis Properti: ${propertyType}
+📝 Pesan Tambahan: ${message || "-"}
+  `;
+
+    // Encode untuk URL
+    const encodedMessage = encodeURIComponent(waMessage.trim());
+
+    // Bangun URL WhatsApp
+    const waUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;
+    window.location.href = waUrl;
+
+    // Reset form & tampilkan notifikasi sukses
+    setIsSubmitted(true);
     setTimeout(() => {
       setFormData({
         name: "",
@@ -44,9 +70,6 @@ export default function FormSectionZemira({ offerContent }) {
           </div>
           <h3 className="text-2xl font-playfair font-bold opacity-75 mb-4">{offerContent.successTitle}</h3>
           <p className="text-lg opacity-75 mb-6">{offerContent.successMessage}</p>
-          <button onClick={() => setIsSubmitted(false)} className="btn btn-primary">
-            {offerContent.submitAnother}
-          </button>
         </div>
       ) : (
         <>

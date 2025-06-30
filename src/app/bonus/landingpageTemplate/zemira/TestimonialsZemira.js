@@ -59,7 +59,7 @@ export default function TestimonialsZemira() {
 
   return (
     <section id="testimonial" className="py-16 md:py-24 bg-base-200">
-      <div className="container mx-auto px-4">
+      <div className="container max-w-6xl mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="w-fit px-4 bg-primary/10 text-primary btn cursor-text shadow-none border-none mb-3" data-aos="fade-up">
             Apa Kata Klien
@@ -77,7 +77,7 @@ export default function TestimonialsZemira() {
           {/* Navigation Arrows */}
           <button
             onClick={prevTestimonial}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-8 z-10 bg-base-100 rounded-full p-3 shadow-lg hover:bg-primary hover:text-base-100 transition-all"
+            className="absolute left-8 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-8 z-10 bg-primary/20 rounded-full p-3 shadow-lg hover:bg-primary hover:text-base-100 transition-all"
             aria-label="Previous testimonial"
           >
             <HiChevronLeft className="h-6 w-6" />
@@ -85,7 +85,7 @@ export default function TestimonialsZemira() {
 
           <button
             onClick={nextTestimonial}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-8 z-10 bg-base-100 rounded-full p-3 shadow-lg hover:bg-primary hover:text-base-100 transition-all"
+            className="absolute right-8 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-8 z-10 bg-primary/20 rounded-full p-3 shadow-lg hover:bg-primary hover:text-base-100 transition-all"
             aria-label="Next testimonial"
           >
             <HiChevronRight className="h-6 w-6" />

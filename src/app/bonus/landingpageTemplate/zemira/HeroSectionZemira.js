@@ -23,7 +23,7 @@ export default function HeroSectionZemira() {
       </div>
 
       {/* Konten Utama */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-24">
+      <div className="container mx-auto px-4 max-w-6xl relative z-10 py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
             <div className="px-4 btn py-2 mb-6 bg-base-100/30 backdrop-blur-sm border-none shadow-none cursor-text">
