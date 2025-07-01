@@ -6,13 +6,14 @@
     "description": "Template landing page untuk produk branded, dengan desain responsif dan elegan. Siap bantu tingkatkan penjualan fashion & produk premium Anda.",
     "keywords": "template landing page produk branded, landing page elegan dan responsif, landing page fashion premium, jual template landing page",
     "ogImage": null,
+    "themeId": 2,
     "image": "/images/templateLandingPageBonus/Nurbaz/images/paul-cuoco-CO2vOhPqlrM-unsplash.jpg",
     "component": "Nurbaz",
     "lpDesignStyleId": "3c1e712c-d927-40e9-a387-19445db1f9f6",
     "marketingTools": null,
     "isActive": true,
     "createdAt": "2025-05-20T11:53:41.201Z",
-    "updatedAt": "2025-06-27T03:09:41.474Z",
+    "updatedAt": "2025-07-01T03:04:36.622Z",
     "lpFor": [
       {
         "id": "ecbfa549-0b21-414e-a1bf-982243a69c90",
@@ -91,7 +92,14 @@
         "platformUsername": "@kalamanacopy",
         "landingPageId": "c89a5aee-99c1-433b-8045-e0be13bfe3b4"
       }
-    ]
+    ],
+    "theme": {
+      "id": 2,
+      "name": "dark",
+      "description": "Tema gelap dengan tampilan modern dan elegan.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
   },
   {
     "id": "b9d20756-aa9b-4fb2-a4aa-da4ccab73171",
@@ -100,13 +108,14 @@
     "description": "oremo",
     "keywords": null,
     "ogImage": null,
+    "themeId": 2,
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
     "component": "Halvora",
     "lpDesignStyleId": "83a977c3-b839-4a31-8b8d-1ec1021ce1ca",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-20T11:54:43.503Z",
-    "updatedAt": "2025-06-30T16:17:29.803Z",
+    "updatedAt": "2025-07-01T01:31:24.602Z",
     "lpFor": [
       {
         "id": "6181a3bb-66b9-49d3-85c0-c24010420fcc",
@@ -150,7 +159,14 @@
         "description": "whatsapp"
       }
     ],
-    "socialLinks": []
+    "socialLinks": [],
+    "theme": {
+      "id": 2,
+      "name": "dark",
+      "description": "Tema gelap dengan tampilan modern dan elegan.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
   },
   {
     "id": "125284a3-eb7d-4a67-927d-ecd0171fb0f7",
@@ -159,13 +175,14 @@
     "description": "lorm",
     "keywords": "landingpage, facebook ads, bisnis, jualan, jualan produk, jualan produk fisik, jualan produk digital",
     "ogImage": null,
+    "themeId": 2,
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
     "component": "Baizan",
     "lpDesignStyleId": "d092b505-85e3-4e5b-af93-7482947d0745",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-30T16:17:29.803Z",
+    "updatedAt": "2025-07-01T01:31:24.602Z",
     "lpFor": [
       {
         "id": "19bc1619-0e65-493e-a8b0-677e2aa08ffb",
@@ -195,7 +212,14 @@
       "description": "Desain mewah, serif font, cocok untuk wedding, produk eksklusif, fashion."
     },
     "ctas": [],
-    "socialLinks": []
+    "socialLinks": [],
+    "theme": {
+      "id": 2,
+      "name": "dark",
+      "description": "Tema gelap dengan tampilan modern dan elegan.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
   },
   {
     "id": "48ba6b69-ba90-4826-b880-bd47f6fda1d6",
@@ -204,13 +228,14 @@
     "description": "olore",
     "keywords": null,
     "ogImage": null,
+    "themeId": 2,
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
     "component": "Rihala",
     "lpDesignStyleId": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-30T16:17:29.803Z",
+    "updatedAt": "2025-07-01T01:31:24.602Z",
     "lpFor": [
       {
         "id": "443c4e89-3266-4e10-a525-cce367a968b8",
@@ -250,7 +275,14 @@
       "description": "Banyak warna cerah, ikon lucu, cocok untuk anak-anak, game, hiburan."
     },
     "ctas": [],
-    "socialLinks": []
+    "socialLinks": [],
+    "theme": {
+      "id": 2,
+      "name": "dark",
+      "description": "Tema gelap dengan tampilan modern dan elegan.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
   },
   {
     "id": "24248d7e-71ff-4a95-89c1-fb09bab90917",
@@ -259,13 +291,14 @@
     "description": "ipsumd",
     "keywords": null,
     "ogImage": null,
+    "themeId": 1,
     "image": "/images/templateLandingPageBonus/Zaffra/images/photo-1600269452121-4f2416e55c28.jpg",
     "component": "Zaffra",
     "lpDesignStyleId": "816d0a80-83f9-427b-8996-d1948a544a77",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-30T16:17:29.803Z",
+    "updatedAt": "2025-07-01T01:31:24.602Z",
     "lpFor": [
       {
         "id": "6181a3bb-66b9-49d3-85c0-c24010420fcc",
@@ -295,7 +328,14 @@
       "description": "Teks besar, warna kontras, CTA mencolok, cocok untuk promosi agresif."
     },
     "ctas": [],
-    "socialLinks": []
+    "socialLinks": [],
+    "theme": {
+      "id": 1,
+      "name": "light",
+      "description": "Tema terang dan bersih cocok untuk presentasi formal.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
   },
   {
     "id": "cadacc02-6ec7-4803-8f02-50ee6e07e121",
@@ -304,13 +344,14 @@
     "description": "lirema",
     "keywords": null,
     "ogImage": null,
+    "themeId": 2,
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
     "component": "Mirka",
     "lpDesignStyleId": "d092b505-85e3-4e5b-af93-7482947d0745",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-30T16:17:29.803Z",
+    "updatedAt": "2025-07-01T01:31:28.648Z",
     "lpFor": [
       {
         "id": "bf678104-5603-4612-9e57-b6f580f62e65",
@@ -340,7 +381,14 @@
       "description": "Desain mewah, serif font, cocok untuk wedding, produk eksklusif, fashion."
     },
     "ctas": [],
-    "socialLinks": []
+    "socialLinks": [],
+    "theme": {
+      "id": 2,
+      "name": "dark",
+      "description": "Tema gelap dengan tampilan modern dan elegan.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
   },
   {
     "id": "ae017f96-cf22-4b0a-b263-3f39c18a1b25",
@@ -349,13 +397,14 @@
     "description": "gargantusa",
     "keywords": null,
     "ogImage": null,
+    "themeId": 1,
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
     "component": "Safna",
     "lpDesignStyleId": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-30T16:17:29.803Z",
+    "updatedAt": "2025-07-01T01:31:24.602Z",
     "lpFor": [
       {
         "id": "775ca147-bed8-4535-a2f8-924437ec3919",
@@ -395,7 +444,14 @@
       "description": "Banyak warna cerah, ikon lucu, cocok untuk anak-anak, game, hiburan."
     },
     "ctas": [],
-    "socialLinks": []
+    "socialLinks": [],
+    "theme": {
+      "id": 1,
+      "name": "light",
+      "description": "Tema terang dan bersih cocok untuk presentasi formal.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
   },
   {
     "id": "7ab43589-6863-4314-b628-70a31aa79a4f",
@@ -404,13 +460,14 @@
     "description": "Template landing page profesional dengan desain elegan dan responsif. Tingkatkan penjualan jasa Anda lebih efektif!",
     "keywords": "landing page jasa, landing page profesional, jual jasa online, jasa profesional, template landing page untuk jasa profesional, desain landing page untuk jasa, landing page untuk meningkatkan penjualan, cara jual jasa lewat landing page, beli template landing page profesional, template landing page siap meningkatkan penjualan, desain landing page untuk freelance dan agensi",
     "ogImage": null,
+    "themeId": 29,
     "image": "/images/templateLandingPageBonus/Zemira/images/photo-1606744888344-493238951221.jpg",
     "component": "Zemira",
     "lpDesignStyleId": "3c1e712c-d927-40e9-a387-19445db1f9f6",
     "marketingTools": null,
     "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-30T02:28:03.590Z",
+    "updatedAt": "2025-07-01T01:55:29.124Z",
     "lpFor": [
       {
         "id": "6c37855a-8169-4309-ab73-da56fccb0b83",
@@ -460,7 +517,14 @@
       "description": "Warna berani, layout tidak biasa, cocok untuk seniman, kreator, agensi kreatif."
     },
     "ctas": [],
-    "socialLinks": []
+    "socialLinks": [],
+    "theme": {
+      "id": 29,
+      "name": "winter",
+      "description": "Nuansa putih dan biru seperti musim dingin.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
   },
   {
     "id": "c7f76905-2f18-4f5b-8443-fc1b0958d80c",
@@ -469,13 +533,14 @@
     "description": "amef",
     "keywords": null,
     "ogImage": null,
+    "themeId": 1,
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
     "component": "Hyzaa",
     "lpDesignStyleId": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-30T16:17:29.803Z",
+    "updatedAt": "2025-07-01T01:31:24.602Z",
     "lpFor": [
       {
         "id": "b793484f-c8d2-4f9f-b40a-10f0410801b0",
@@ -510,7 +575,14 @@
       "description": "Banyak warna cerah, ikon lucu, cocok untuk anak-anak, game, hiburan."
     },
     "ctas": [],
-    "socialLinks": []
+    "socialLinks": [],
+    "theme": {
+      "id": 1,
+      "name": "light",
+      "description": "Tema terang dan bersih cocok untuk presentasi formal.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
   },
   {
     "id": "c7d37435-824f-4de7-94bb-f4c919d0ef6a",
@@ -519,13 +591,14 @@
     "description": "editpsing",
     "keywords": null,
     "ogImage": null,
+    "themeId": 1,
     "image": "/images/uploads/products/qolilan-copy/main.jpg",
     "component": "Kanzar",
     "lpDesignStyleId": "dc6d1827-0b89-4c82-8d9d-21f551850ed9",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-06-30T16:17:29.803Z",
+    "updatedAt": "2025-07-01T01:31:24.602Z",
     "lpFor": [
       {
         "id": "443c4e89-3266-4e10-a525-cce367a968b8",
@@ -569,6 +642,13 @@
         "description": "whatsapp"
       }
     ],
-    "socialLinks": []
+    "socialLinks": [],
+    "theme": {
+      "id": 1,
+      "name": "light",
+      "description": "Tema terang dan bersih cocok untuk presentasi formal.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
   }
 ]

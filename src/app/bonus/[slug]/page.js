@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import fs from "fs/promises";
 import path from "path";
 import HeaderFooterLandingPageOnly from "./HeaderFooterLandingPageOnly";
+import ThemeWrapper from "./ThemeWrapper";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -94,11 +95,16 @@ export default async function ProductPage({ params }) {
     return notFound();
   }
 
+  // Tema DaisyUI dari data
+  const theme = landingPage.theme?.name || "light";
+
   return (
-    <HeaderFooterSqlite>
-      <HeaderFooterLandingPageOnly siteName={landingPage.name}>
-        <TemplateComponent landingPage={landingPage} />
-      </HeaderFooterLandingPageOnly>
-    </HeaderFooterSqlite>
+    <ThemeWrapper defaultTheme={theme}>
+      <HeaderFooterSqlite>
+        <HeaderFooterLandingPageOnly siteName={landingPage.name}>
+          <TemplateComponent landingPage={landingPage} />
+        </HeaderFooterLandingPageOnly>
+      </HeaderFooterSqlite>
+    </ThemeWrapper>
   );
 }

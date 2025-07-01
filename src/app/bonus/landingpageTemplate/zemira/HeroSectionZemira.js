@@ -18,8 +18,8 @@ export default function HeroSectionZemira({ secId, data, secIdTarget }) {
         <div className="container mx-auto px-4 max-w-6xl relative z-10 py-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="px-4 btn py-2 mb-6 bg-base-100/30 border-none shadow-none cursor-text">
-                <span className="text-primary text-lg">✨ Premium Design Service</span>
+              <div className="px-4 card py-2 mb-6 bg-base-100/30 w-fit">
+                <span className="text-neutral-50 ">✨ Premium Design Service</span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight text-white">{data.headline}</h1>

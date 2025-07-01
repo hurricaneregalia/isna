@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { HiSparkles, HiLightningBolt, HiShieldCheck, HiUserCircle, HiPlus, HiMinus } from "react-icons/hi";
@@ -82,13 +83,22 @@ export default function SolutionSectionZemira({ children, secId, data, secIdTarg
           {children}
 
           {/* CTA Section */}
-          <div className="mt-16 text-center bg-gradient-to-r from-primary to-secondary card p-8 md:p-12 " data-aos="fade-up">
-            <h3 className="text-2xl md:text-3xl font-playfair font-bold text-base-100 mb-4 lg:w-7/12 sm:w-8/12 w-full mx-auto">{data.ctaTitle}</h3>
-            <p className="text-lg mb-8 text-base-100/75 lg:w-7/12 sm:w-8/12 w-full mx-auto">{data.ctaDesc}</p>
-            <Link href={secIdTarget} className="w-fit btn btn-neutral text-white btn-lg px-10 mx-auto font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-              {data.ctaButton}
-              <HiSparkles className="ml-2 animate-pulse" />
-            </Link>
+          <div className="relative mt-16 text-center overflow-hidden rounded-lg" data-aos="fade-up">
+            {/* Background Gambar */}
+            <Image src={data.ctaBackground} alt="CTA Background" fill style={{ objectFit: "cover" }} className=" mx-auto z-0" priority={false} />
+
+            {/* Overlay Gradient */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-90 z-10"></div>
+
+            {/* Konten CTA */}
+            <div className="relative z-20 p-8 md:p-12">
+              <h3 className="text-2xl md:text-3xl font-playfair font-bold text-base-100 mb-4 lg:w-7/12 sm:w-8/12 w-full mx-auto">{data.ctaTitle}</h3>
+              <p className="text-lg mb-8 text-base-100/75 lg:w-7/12 sm:w-8/12 w-full mx-auto">{data.ctaDesc}</p>
+              <Link href={secIdTarget} className="w-fit btn btn-neutral text-white btn-lg px-10 mx-auto font-bold shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                {data.ctaButton}
+                <HiSparkles className="ml-2 animate-pulse" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

@@ -1,29 +1,10 @@
 import React from "react";
 import { HiOutlineGift, HiOutlineShieldCheck } from "react-icons/hi";
 import FormSectionZemira from "./FormSectionZemira";
-import Loading from "../loading";
-import fs from "fs/promises";
-import path from "path";
 
-async function getSiteIdentityFromFile() {
-  try {
-    const filePath = path.join(process.cwd(), "src/app/api/datajs/siteidentity/data.json");
-    const file = await fs.readFile(filePath, "utf-8");
-    const data = JSON.parse(file);
-    return data?.[0] || null;
-  } catch (error) {
-    console.error("❌ Gagal membaca siteidentity dari file:", error.message);
-    return null;
-  }
-}
-
-export default async function SpecialOfferZemira({ secId, data = offerContent }) {
-  const siteData = await getSiteIdentityFromFile();
-
-  if (!siteData) return <Loading />;
-
+export default async function SpecialOfferZemira({ secId, data, waNumber }) {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-base-200 to-base-300">
+    <section className="py-16 md:py-24 bg-base-200">
       <div className="container max-w-6xl mx-auto px-4">
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           {/* Konten Penawaran */}
@@ -87,7 +68,7 @@ export default async function SpecialOfferZemira({ secId, data = offerContent })
           </div>
 
           {/* Form yang sudah dipisahkan */}
-          <FormSectionZemira offerContent={data} waNumber={siteData.phone} secId={secId} />
+          <FormSectionZemira offerContent={data} waNumber={waNumber} secId={secId} />
         </div>
       </div>
     </section>

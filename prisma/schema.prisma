@@ -422,6 +422,8 @@ model LandingPage {
   description     String
   keywords        String? // simpan array sebagai JSON string
   ogImage         String? // NEW: untuk open graph
+  themeId         Int? // foreign key (opsional, tergantung apakah wajib pilih theme)
+  theme           Theme?          @relation(fields: [themeId], references: [id])
   image           String
   component       String?
   socialLinks     SocialLink[]    @relation("LandingPageSocialLinks") // NEW
@@ -469,6 +471,15 @@ model SocialLink {
   platformUsername String?
   landingPage      LandingPage? @relation("LandingPageSocialLinks", fields: [landingPageId], references: [id])
   landingPageId    String?
+}
+
+model Theme {
+  id           Int           @id @default(autoincrement())
+  name         String
+  description  String?
+  landingPages LandingPage[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
 }
 
 //npx prisma migrate dev   

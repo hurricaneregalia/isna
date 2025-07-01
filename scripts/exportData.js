@@ -21,6 +21,7 @@ async function exportLandingPages() {
       lpDesignStyle: true,
       ctas: true,
       socialLinks: true,
+      theme: true,
     },
   });
 

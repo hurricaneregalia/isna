@@ -95,9 +95,9 @@ const LANDING_DATA = {
       },
     ],
     gallery: [
-      "/images/templateLandingPageBonus/Nurbaz/images/photo-1542496658-e33a6d0d50f6.jpg",
-      "/images/templateLandingPageBonus/Nurbaz/images/studio-crevettes-ADvixEYm5qE-unsplash.jpg",
-      "/images/templateLandingPageBonus/Nurbaz/images/djordje_jovicic-l1mVJnG7a84-unsplash.jpg",
+      "/images/templateLandingPageBonus/Nurbaz/images/domino-studio-p2WUEFGrAdA-unsplash.jpg",
+      "/images/templateLandingPageBonus/Nurbaz/images/bence-balla-schottner-Rm7Qbb1FyQM-unsplash.jpg",
+      "/images/templateLandingPageBonus/Nurbaz/images/pat-taylor-12V36G17IbQ-unsplash.jpg",
     ],
   },
   offer: {
@@ -495,7 +495,7 @@ export default async function Nurbaz() {
           <div className="max-w-3xl mx-auto">
             <div className="join join-vertical">
               {LANDING_DATA.faq.items.map((item, index) => (
-                <div className="collapse collapse-arrow join-item border border-base-300" key={index} data-aos="fade-up">
+                <div className="collapse collapse-arrow join-item border bg-base-100 border-base-300" key={index} data-aos="fade-up">
                   <input type="radio" name="faq-accordion" defaultChecked={index === 0} />
                   <div className="collapse-title font-semibold">{item.question}</div>
                   <div className="collapse-content text-sm opacity-75">{item.answer}</div>

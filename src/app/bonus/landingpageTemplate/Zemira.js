@@ -14,7 +14,6 @@ import {
   HiOutlineLightBulb,
   HiOutlineCube,
   HiOutlineHome,
-  HiOutlineCheckCircle,
   HiClock,
   HiLightBulb,
   HiCurrencyDollar,
@@ -23,22 +22,15 @@ import {
   HiLightningBolt,
   HiShieldCheck,
   HiUserCircle,
-  HiPlus,
-  HiMinus,
-  HiStar,
-  HiChevronLeft,
-  HiChevronRight,
-  HiOutlineOfficeBuilding,
-  HiOutlineBriefcase,
   HiOutlineGift,
   HiOutlineClock,
   HiOutlineShieldCheck,
 } from "react-icons/hi";
 
-export default function Zemira() {
+export default function Zemira({ siteData }) {
   const zemiraData = {
     heroData: {
-      headline: "Dipercaya Elite Jakarta dalam Menciptakan Interior Bernilai Investasi",
+      headline: "Banyak Orang Salah Saat Menata Rumahnya. Apakah Anda Salah Satunya?",
       subheadline: "Solusi desain interior premium, menciptakan tempat tinggal menjadi ruang hidup yang nyaman dan elegan",
       image: "/images/templateLandingPageBonus/Zemira/images/photo-1606744888344-493238951221.jpg",
       imageAlt: "Luxury Interior Design",
@@ -193,6 +185,7 @@ export default function Zemira() {
       ctaTitle: "Siap Mengubah Rumah Anda Menjadi Lebih Indah, Nyaman dan Berkelas?",
       ctaDesc: "Jadwalkan konsultasi gratis dengan desainer elite kami dan dapatkan konsep awal dalam 48 jam.",
       ctaButton: "Konsultasi",
+      ctaBackground: "/images/templateLandingPageBonus/Zemira/images/pexels-photo-271743.jpg",
     },
     howTo: {
       section: {
@@ -240,7 +233,7 @@ export default function Zemira() {
         title: "Bangun Tempat Tinggal dengan",
         highlight: "Jaminan dan Kualitas",
         description: "Kami memberikan revisi desain tanpa batas hingga Anda 100% puas. Tidak ada pembayaran penuh sebelum implementasi selesai dan disetujui.",
-        items: ["Material Premium", "Desain Eksklusif", "Tim Profesional", "Garansi 1 Tahun"],
+        items: ["Premium", "Eksklusif", "Profesional", "Garansi"],
       },
     },
     testimonyAndClient: {
@@ -342,7 +335,7 @@ export default function Zemira() {
       </SolutionSectionZemira>
       <WorkProcessZemira secId="praktis" data={zemiraData.howTo} />
       <TestimonialsZemira secId="testimoni" data={zemiraData.testimonyAndClient} />
-      <SpecialOfferZemira secId="formPendaftaran" data={zemiraData.offerContent} />
+      <SpecialOfferZemira secId="formPendaftaran" data={zemiraData.offerContent} waNumber={siteData.phone} />
       <FAQSectionZemira secId="informasi-penting" data={zemiraData.faq} secIdTarget="#formPendaftaran" />
     </>
   );
