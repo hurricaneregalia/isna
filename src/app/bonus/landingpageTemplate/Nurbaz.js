@@ -1,4 +1,4 @@
-// src/app/bonus/landingpageTemplate/Nurbaz.js
+// src/app/template/landingpageTemplate/Nurbaz.js
 
 import Image from "next/image";
 import { Montserrat, Playfair_Display_SC } from "next/font/google";
@@ -10,6 +10,8 @@ import LandingPageWaLink from "./LandingPageWaLink";
 
 import fs from "fs/promises";
 import path from "path";
+import Loading from "./loading";
+import Link from "next/link";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -107,7 +109,7 @@ const LANDING_DATA = {
     cta: "Dapatkan Sekarang",
   },
   process: {
-    title: "Mudah Memiliki Jam Tangan Premium",
+    title: "Cara Mudah Memiliki Jam Tangan Premium",
     steps: [
       {
         title: "Pesan Sekarang",
@@ -132,7 +134,7 @@ const LANDING_DATA = {
     mainButton: "Ambil Promo",
     secondaryButton: "Beli",
     whatsappNumber: "6282127902505",
-    whatsappText: "claim bonus ini",
+    whatsappText: "Saya mau beli landing page ini",
     imageUrl: "/images/templateLandingPageBonus/Nurbaz/images/alvaro-bernal-RgIKRYhmG2k-unsplash.jpg",
   },
   faq: {
@@ -225,7 +227,7 @@ export default async function Nurbaz() {
           <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
         </div>
 
-        <div className="container mx-auto px-4 relative text-white">
+        <div className="container mx-auto max-w-6xl px-4 relative text-white">
           <div className="max-w-2xl">
             <div className="mb-6">
               <span className="bg-yellow-400 text-black px-4 py-1 rounded-full text-sm font-medium">PREMIUM EDITION</span>
@@ -237,14 +239,16 @@ export default async function Nurbaz() {
 
         {/* Scrolling indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-8 h-14 rounded-3xl border-2 border-gray-300 flex justify-center">
-            <div className="w-2 h-2 bg-gray-300 rounded-full mt-2"></div>
-          </div>
+          <Link href="#tampilanBiasa">
+            <div className="w-8 h-14 rounded-3xl border-2 border-gray-300 flex justify-center cursor-pointer">
+              <div className="w-2 h-2 bg-gray-300 rounded-full mt-2"></div>
+            </div>
+          </Link>
         </div>
       </section>
 
       {/* ===== PROBLEM SECTION ===== */}
-      <section className="py-20 bg-base-100 text-base-content">
+      <section className="py-20 bg-base-100 text-base-content" id="tampilanBiasa">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             {/* Gambar dan testimoni */}
@@ -275,7 +279,7 @@ export default async function Nurbaz() {
                     <p className="text-sm opacity-75">{LANDING_DATA.testimoni.reviews[0].location}</p>
                   </div>
                 </div>
-                <p className="mt-3 italic opacity-75">"{LANDING_DATA.testimoni.reviews[0].quote}"</p>
+                <p className="mt-3 italic opacity-75">{LANDING_DATA.testimoni.reviews[0].quote}</p>
               </div>
             </div>
 
@@ -387,13 +391,13 @@ export default async function Nurbaz() {
       </section>
       <section id="testimoni" className="py-20 bg-base-200">
         <div className="container mx-auto px-4">
-          <h2 className={`${playfair.className} text-4xl font-bold mb-6 text-center`}>Testimoni</h2>
+          <h2 className={`${playfair.className} text-4xl font-bold mb-6 text-center text-base-content`}>Testimoni</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {LANDING_DATA.testimoni.reviews.map((item, index) => (
               <div key={index} className="bg-base-100 px-5 py-10 flex flex-col items-center text-base-content rounded-xl shadow-md h-full border border-base-300" data-aos="fade-up">
-                <img src={item.image} alt={item.name} className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-dashed border-primary p-1" />
+                <Image src={item.image} width={50} height={50} alt={item.name} className="w-16 h-16 rounded-full object-cover mb-3 border-2 border-dashed border-primary p-1" />
                 <p className="text-sm font-semibold text-center">{item.name}</p>
-                <p className="text-xs text-center italic mt-1 opacity-75">"{item.quote}"</p>
+                <p className="text-xs text-center italic mt-1 opacity-75">{item.quote}</p>
                 <div className="flex text-warning gap-1 my-5">
                   {[...Array(item.rating)].map((_, starIndex) => (
                     <FaStar key={starIndex} className="w-4 h-4" />
@@ -489,9 +493,9 @@ export default async function Nurbaz() {
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <div className="join join-vertical bg-base-100">
+            <div className="join join-vertical">
               {LANDING_DATA.faq.items.map((item, index) => (
-                <div className="collapse collapse-arrow join-item border border-base-300 bg-base-200" key={index} data-aos="fade-up">
+                <div className="collapse collapse-arrow join-item border border-base-300" key={index} data-aos="fade-up">
                   <input type="radio" name="faq-accordion" defaultChecked={index === 0} />
                   <div className="collapse-title font-semibold">{item.question}</div>
                   <div className="collapse-content text-sm opacity-75">{item.answer}</div>
@@ -501,11 +505,6 @@ export default async function Nurbaz() {
           </div>
         </div>
       </section>
-
-      {/* ===== FOOTER SECTION ===== */}
-      <footer className="bg-gray-900 text-neutral-400 text-center py-10">
-        <h3 className={`${playfair.className} text-2xl font-bold mb-4`}>{LANDING_DATA.footer.logo}</h3>
-      </footer>
     </div>
   );
 }

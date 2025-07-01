@@ -42,18 +42,26 @@ export default function ProblemSectionZemira({ secId, data }) {
     <section id={secId} className="py-20 bg-base-100">
       <div className="container mx-auto max-w-6xl px-4">
         {/* IMAGE on top (mobile), side (desktop) */}
-        <div className="mb-16 lg:mb-0 lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+        <div className=" mb-10 flex flex-col-reverse lg:grid lg:grid-cols-2 lg:gap-16 items-center overflow-hidden">
           {/* Image Section */}
-          <div className="relative mb-10 lg:mb-0">
-            <div className="relative card overflow-hidden shadow-xl aspect-[16/9]" data-aos="flip-left">
-              <Image src={data.image.url} alt={data.image.alt} fill className="object-cover rounded-[calc(var(--radius-box)-.5rem)]" sizes="(max-width: 1024px) 100vw, 50vw" priority />
+          <div className="relative" id="image">
+            <div className="relative card overflow-hidden shadow-xl aspect-[16/9] lg:mt-0 mt-10" data-aos="flip-left">
+              <Image
+                src={data.image.url}
+                alt={data.image.alt}
+                width={1000}
+                height={1000}
+                className="object-cover rounded-[calc(var(--radius-box)-.5rem)]"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                priority
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
             </div>
           </div>
 
           {/* Header Text */}
-          <div className="text-center lg:text-left">
-            <span className="w-fit px-4 py-2 bg-primary/10 text-primary text-xs card mb-3 capitalize " data-aos="fade-up">
+          <div className="text-center lg:text-left" id="header">
+            <span className="w-fit px-4 py-2 bg-primary/10 text-primary text-xs card mb-3 capitalize mx-auto lg:mx-0" data-aos="fade-up">
               {secId.replace(/-/g, " ")}
             </span>
             <h2 className="text-3xl md:text-4xl font-playfair font-bold text-base-content mb-6" data-aos="fade-left">
@@ -66,7 +74,7 @@ export default function ProblemSectionZemira({ secId, data }) {
         </div>
 
         {/* Problems Grid */}
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className=" grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {data.items.map((problem, index) => (
             <div key={index} className="bg-base-100 card p-6 border border-base-300/50 shadow-lg transition-all duration-300 hover:shadow-xl" data-aos="fade-up">
               <div className="flex flex-col h-full">
