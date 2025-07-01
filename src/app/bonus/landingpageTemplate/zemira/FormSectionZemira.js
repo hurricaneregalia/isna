@@ -45,23 +45,10 @@ export default function FormSectionZemira({ offerContent, waNumber, secId }) {
     const encodedMessage = encodeURIComponent(waMessage);
     const waUrl = `https://wa.me/${waNumber}?text=${encodedMessage}`;
 
-    // Simulasi delay sebelum redirect
     setTimeout(() => {
       window.location.href = waUrl;
-
-      setIsSubmitted(true);
-
-      setTimeout(() => {
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          propertyType: "",
-          message: "",
-        });
-        setIsSubmitted(false);
-      }, 5000);
-    }, 1000); // Delay 1 detik agar modal sempat terlihat
+      // ✅ Jangan lakukan apa-apa lagi setelah ini
+    }, 3000); // Modal tampil selama 3 detik dulu, bisa kamu ubah jadi 1000 kalau ingin lebih cepat
   };
 
   return (

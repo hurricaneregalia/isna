@@ -15,6 +15,18 @@ async function loadLandingPages() {
   return JSON.parse(file);
 }
 
+async function getSiteIdentityFromFile() {
+  try {
+    const filePath = path.join(process.cwd(), "src/app/api/datajs/siteidentity/data.json");
+    const file = await fs.readFile(filePath, "utf-8");
+    const data = JSON.parse(file);
+    return data?.[0] || null;
+  } catch (error) {
+    console.error("❌ Gagal membaca siteidentity dari file:", error.message);
+    return null;
+  }
+}
+
 // Metadata dinamis berdasarkan slug
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -80,6 +92,8 @@ export async function generateMetadata({ params }) {
 // Page utama
 export default async function ProductPage({ params }) {
   const { slug } = await params;
+  const siteData = await getSiteIdentityFromFile();
+  if (!siteData) return <Loading />;
 
   const landingPages = await loadLandingPages();
   const landingPage = landingPages.find((item) => item.slug === slug && item.isActive);
@@ -102,7 +116,7 @@ export default async function ProductPage({ params }) {
     <ThemeWrapper defaultTheme={theme}>
       <HeaderFooterSqlite>
         <HeaderFooterLandingPageOnly siteName={landingPage.name}>
-          <TemplateComponent landingPage={landingPage} />
+          <TemplateComponent landingPage={landingPage} siteData={siteData} />
         </HeaderFooterLandingPageOnly>
       </HeaderFooterSqlite>
     </ThemeWrapper>

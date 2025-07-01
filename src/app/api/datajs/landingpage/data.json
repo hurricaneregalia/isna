@@ -9,11 +9,11 @@
     "themeId": 2,
     "image": "/images/templateLandingPageBonus/Nurbaz/images/paul-cuoco-CO2vOhPqlrM-unsplash.jpg",
     "component": "Nurbaz",
-    "lpDesignStyleId": "3c1e712c-d927-40e9-a387-19445db1f9f6",
+    "lpDesignStyleId": "73396a5d-379e-40e4-b1b8-0eaeced9c5ec",
     "marketingTools": null,
     "isActive": true,
     "createdAt": "2025-05-20T11:53:41.201Z",
-    "updatedAt": "2025-07-01T03:04:36.622Z",
+    "updatedAt": "2025-07-01T06:13:21.615Z",
     "lpFor": [
       {
         "id": "ecbfa549-0b21-414e-a1bf-982243a69c90",
@@ -53,9 +53,9 @@
       }
     ],
     "lpDesignStyle": {
-      "id": "3c1e712c-d927-40e9-a387-19445db1f9f6",
-      "name": "Creative",
-      "description": "Warna berani, layout tidak biasa, cocok untuk seniman, kreator, agensi kreatif."
+      "id": "73396a5d-379e-40e4-b1b8-0eaeced9c5ec",
+      "name": "Dark",
+      "description": "Tema gelap, cocok untuk portfolio elegan, produk premium, atau komunitas developer."
     },
     "ctas": [
       {
@@ -463,11 +463,11 @@
     "themeId": 29,
     "image": "/images/templateLandingPageBonus/Zemira/images/photo-1606744888344-493238951221.jpg",
     "component": "Zemira",
-    "lpDesignStyleId": "3c1e712c-d927-40e9-a387-19445db1f9f6",
+    "lpDesignStyleId": "83a977c3-b839-4a31-8b8d-1ec1021ce1ca",
     "marketingTools": null,
     "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-07-01T01:55:29.124Z",
+    "updatedAt": "2025-07-01T06:13:21.615Z",
     "lpFor": [
       {
         "id": "6c37855a-8169-4309-ab73-da56fccb0b83",
@@ -512,9 +512,9 @@
       }
     ],
     "lpDesignStyle": {
-      "id": "3c1e712c-d927-40e9-a387-19445db1f9f6",
-      "name": "Creative",
-      "description": "Warna berani, layout tidak biasa, cocok untuk seniman, kreator, agensi kreatif."
+      "id": "83a977c3-b839-4a31-8b8d-1ec1021ce1ca",
+      "name": "Professional",
+      "description": "Tampilan formal dan tegas, cocok untuk B2B, legal, konsultan."
     },
     "ctas": [],
     "socialLinks": [],

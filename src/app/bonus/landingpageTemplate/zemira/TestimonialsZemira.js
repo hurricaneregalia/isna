@@ -119,7 +119,7 @@ export default function TestimonialsZemira({ secId, data }) {
         {/* Logo Kepercayaan */}
         {data.trustLogos && data.trustLogos.length > 0 && (
           <div className="mt-20 bg-base-100 card p-6 md:p-8 shadow-lg" data-aos="fade-up">
-            <h3 className="text-center text-2xl md:text-3xl font-playfair font-bold text-base-content mb-10">{data.trustTitle}</h3>
+            <h3 className="text-center text-2xl md:text-3xl font-playfair font-bold text-base-content mb-10">{data.meta.trustTitle}</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 md:gap-8">
               {data.trustLogos.map((media, i) => (
                 <div key={i} className="flex flex-col items-center justify-center p-4 hover:scale-105 transition-all duration-300 hover:bg-primary/10 bg-base-200 card group">
