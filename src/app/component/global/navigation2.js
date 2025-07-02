@@ -16,6 +16,7 @@ export default function Navigation2({ siteName, bg, logo }) {
     { name: "Layanan", href: "/#layanan", key: "layanan" },
     { name: "Product", href: BASE_URL + "/product", key: "product" },
     { name: "Bonus", href: "/bonus", key: "bonus" },
+    { name: "Draft", href: "/draft", key: "draft" },
     { name: "Logo review", href: "/logometer", key: "logometer" },
     { name: "My Api", href: "/myapi", key: "myapi" },
     { name: "NotFound", href: "/huntuband", key: "huntuband" },
@@ -39,12 +40,7 @@ export default function Navigation2({ siteName, bg, logo }) {
                 <div className="flex flex-row-reverse">
                   <div className="space-x-4">
                     {navMenu.map((item) => (
-                      <Link
-                        key={item.key}
-                        href={item.href}
-                        aria-current={item.current ? "page" : undefined}
-                        className="text-slate-400 hover:text-amber-300"
-                      >
+                      <Link key={item.key} href={item.href} aria-current={item.current ? "page" : undefined} className="text-slate-400 hover:text-amber-300">
                         <DisclosureButton as="button">{item.name}</DisclosureButton>
                       </Link>
                     ))}
@@ -82,10 +78,7 @@ export default function Navigation2({ siteName, bg, logo }) {
                 <div className="px-4">
                   {navMenu.map((item) => (
                     <Link key={item.key} href={item.href} className="">
-                      <DisclosureButton
-                        as="span"
-                        className="block rounded-md px-3 py-2 text-slate-400 font-medium hover:bg-base-200 transition-all duration-300 ease-in-out active:bg-base-200 mb-1"
-                      >
+                      <DisclosureButton as="span" className="block rounded-md px-3 py-2 text-slate-400 font-medium hover:bg-base-200 transition-all duration-300 ease-in-out active:bg-base-200 mb-1">
                         {item.name}
                       </DisclosureButton>
                     </Link>

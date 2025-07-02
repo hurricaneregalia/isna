@@ -172,28 +172,38 @@
     "id": "125284a3-eb7d-4a67-927d-ecd0171fb0f7",
     "name": "baizan",
     "slug": "baizan",
-    "description": "lorm",
-    "keywords": "landingpage, facebook ads, bisnis, jualan, jualan produk, jualan produk fisik, jualan produk digital",
+    "description": "Template landing page untuk produk kosmetik ternama, dengan desain responsif dan elegan. Siap bantu tingkatkan penjualan skin care & produk kosmetik Anda.",
+    "keywords": "Template landing page kosmetik, landing page skincare elegan, desain website kosmetik profesional, template website produk kecantikan, landing page kosmetik, website brand kecantikan, landing page beauty brand premium, promosi produk kecantikan, toko kosmetik online, website skincare modern",
     "ogImage": null,
     "themeId": 2,
-    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "image": "/images/templateLandingPageBonus/Baizan/photo-1597143722151-6c041d7b2901.jpg",
     "component": "Baizan",
     "lpDesignStyleId": "d092b505-85e3-4e5b-af93-7482947d0745",
     "marketingTools": null,
-    "isActive": false,
+    "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-07-01T01:31:24.602Z",
+    "updatedAt": "2025-07-02T16:19:47.708Z",
     "lpFor": [
       {
-        "id": "19bc1619-0e65-493e-a8b0-677e2aa08ffb",
-        "description": "reservasi."
+        "id": "ecbfa549-0b21-414e-a1bf-982243a69c90",
+        "description": "menjual produk branded."
       }
     ],
     "lpContentTypes": [
       {
-        "id": "1c39504e-f456-4a1c-9ec7-823df7ec78ff",
-        "type": "form",
-        "order": 11
+        "id": "397d9d29-87dd-4ae7-917d-d5bcc853cf1a",
+        "type": "hero image",
+        "order": 2
+      },
+      {
+        "id": "5098707b-91bc-4628-b077-1a98e65b5cd1",
+        "type": "testimoni teks",
+        "order": 6
+      },
+      {
+        "id": "60a0b2e3-ca35-42cf-97db-1933950650db",
+        "type": "CTA whatsapp",
+        "order": 110
       },
       {
         "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
@@ -204,6 +214,11 @@
         "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
         "type": "image",
         "order": 12
+      },
+      {
+        "id": "822dbbf4-eda5-4fa5-9d37-a97da91712d3",
+        "type": "product list",
+        "order": 9
       }
     ],
     "lpDesignStyle": {
@@ -211,7 +226,12 @@
       "name": "Elegant",
       "description": "Desain mewah, serif font, cocok untuk wedding, produk eksklusif, fashion."
     },
-    "ctas": [],
+    "ctas": [
+      {
+        "id": "8977b9b4-4a77-4e96-8daf-70add3b92575",
+        "description": "whatsapp"
+      }
+    ],
     "socialLinks": [],
     "theme": {
       "id": 2,
@@ -233,9 +253,9 @@
     "component": "Rihala",
     "lpDesignStyleId": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
     "marketingTools": null,
-    "isActive": false,
+    "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-07-01T01:31:24.602Z",
+    "updatedAt": "2025-07-01T08:22:44.508Z",
     "lpFor": [
       {
         "id": "443c4e89-3266-4e10-a525-cce367a968b8",

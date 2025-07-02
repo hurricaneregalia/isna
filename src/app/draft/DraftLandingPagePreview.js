@@ -1,10 +1,10 @@
-// src/app/bonus/LandingPage.js
+// src/app/draft/DraftLandingPagePreview.js
 import fs from "fs";
 import path from "path";
 import Image from "next/image";
 import { formatTanggal } from "../component/global/formatTanggal";
 import { MdEditNote } from "react-icons/md";
-import { FaCheck, FaPalette, FaWhatsapp } from "react-icons/fa6";
+import { FaCheck, FaPalette } from "react-icons/fa6";
 import BtnLinkPrimary from "../component/global/btnLinkPrimary";
 import { PiRadioButtonLight } from "react-icons/pi";
 
@@ -13,17 +13,16 @@ function getLandingPages() {
   const jsonData = fs.readFileSync(filePath, "utf-8");
   return JSON.parse(jsonData);
 }
-
-export default async function LandingPage() {
+export default async function DraftLandingPagePreview() {
   const landingPages = getLandingPages()
-    .filter((page) => page.isActive)
+    .filter((page) => !page.isActive)
     .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   if (!landingPages || landingPages.length === 0) {
     return (
       <div className="min-h-[50vh] flex items-center justify-center">
         <div className="text-center p-8 bg-base-200 rounded-xl max-w-md">
-          <p className="text-xl font-medium">Tidak ada data landing page aktif.</p>
+          <p className="text-xl font-medium">Semua landing page saat ini aktif.</p>
         </div>
       </div>
     );
@@ -66,7 +65,7 @@ export default async function LandingPage() {
                   {[...page.lpContentTypes]
                     .sort((a, b) => a.order - b.order)
                     .map((content) => (
-                      <span key={content.id} className="bg-base-300/40 rounded-sm px-2 py-0.5 text-xs opacity-75 ">
+                      <span key={content.id} className="bg-base-300 rounded-sm px-2 py-0.5 text-xs opacity-75 ">
                         {content.type}
                       </span>
                     ))}
@@ -74,7 +73,7 @@ export default async function LandingPage() {
               </div>
 
               <hr className="my-5" />
-              {/* 
+
               <div>
                 <h3 className="text-sm font-semibold mb-2">Marketing Tools</h3>
                 <ul className="space-y-2 text-sm capitalize">
@@ -92,7 +91,7 @@ export default async function LandingPage() {
                   </li>
                 </ul>
               </div>
-              <hr className="my-5" /> */}
+              <hr className="my-5" />
 
               <div className="mb-6">
                 <h3 className="text-sm font-semibold mb-2">Cocok Untuk</h3>
@@ -108,7 +107,7 @@ export default async function LandingPage() {
 
               {/* Button */}
               <div className="mt-auto pt-4">
-                <BtnLinkPrimary btnUrl={`/bonus/${page.slug}`} btnTxt="Lihat Demo" btnFull={true} className="group-hover:bg-primary/90 transition-colors" />
+                <BtnLinkPrimary btnUrl={`/draft/${page.slug}`} btnTxt="Lihat Demo" btnFull={true} className="group-hover:bg-primary/90 transition-colors" />
               </div>
             </div>
           </div>

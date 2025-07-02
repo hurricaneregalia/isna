@@ -26,8 +26,10 @@ import {
   HiOutlineClock,
   HiOutlineShieldCheck,
 } from "react-icons/hi";
+import HeaderLandingGlobal from "../[slug]/HeaderLandingGlobal";
+import FooterLandingPageOnly from "../[slug]/FooterLandingPageOnly";
 
-export default function Zemira({ siteData }) {
+export default function Zemira({ siteData, siteName }) {
   const zemiraData = {
     heroData: {
       headline: "Banyak Orang Salah Saat Menata Rumahnya. Apakah Anda Salah Satunya?",
@@ -325,9 +327,10 @@ export default function Zemira({ siteData }) {
       legalNote: "Dengan mengisi formulir, Anda menyetujui kebijakan privasi kami",
     },
   };
-
+  const widthSection = "max-w-6xl";
   return (
-    <>
+    <div className="relative">
+      <HeaderLandingGlobal siteName={siteName} widthNavbar={widthSection} />
       <HeroSectionZemira secId="hero" data={zemiraData.heroData} secIdTarget="#tantangan-profesi" />
       <ProblemSectionZemira secId="tantangan-profesi" data={zemiraData.problem} />
       <SolutionSectionZemira secId="solusi-tepat" data={zemiraData.text} secIdTarget="#formPendaftaran">
@@ -337,6 +340,7 @@ export default function Zemira({ siteData }) {
       <TestimonialsZemira secId="testimoni" data={zemiraData.testimonyAndClient} />
       <SpecialOfferZemira secId="formPendaftaran" data={zemiraData.offerContent} waNumber={siteData.phone} />
       <FAQSectionZemira secId="informasi-penting" data={zemiraData.faq} secIdTarget="#formPendaftaran" />
-    </>
+      <FooterLandingPageOnly siteName={siteName} />
+    </div>
   );
 }

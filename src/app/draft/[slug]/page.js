@@ -1,11 +1,11 @@
-// src/app/bonus/[slug]/page.js
-import HeaderFooterSqlite from "@/app/component/global/headerFooterSqlite";
+// src/app/draft/[slug]/page.js
+
 import { notFound } from "next/navigation";
 import fs from "fs/promises";
 import path from "path";
-import HeaderFooterLandingPageOnly from "./HeaderFooterLandingPageOnly";
-import ThemeWrapper from "./ThemeWrapper";
-
+import ThemeWrapper from "@/app/bonus/[slug]/ThemeWrapper";
+import HeaderFooterSqlite from "@/app/component/global/headerFooterSqlite";
+import HeaderFooterLandingPageOnly from "@/app/bonus/[slug]/HeaderFooterLandingPageOnly";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 // Fungsi membaca data JSON lokal
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }) {
 
   try {
     const landingPages = await loadLandingPages();
-    const landingPage = landingPages.find((item) => item.slug === slug && item.isActive);
+    const landingPage = landingPages.find((item) => item.slug === slug && !item.isActive);
 
     if (!landingPage) return {};
 
@@ -96,7 +96,7 @@ export default async function ProductPage({ params }) {
   if (!siteData) return <Loading />;
 
   const landingPages = await loadLandingPages();
-  const landingPage = landingPages.find((item) => item.slug === slug && item.isActive);
+  const landingPage = landingPages.find((item) => item.slug === slug && !item.isActive);
 
   if (!landingPage) return notFound();
 
