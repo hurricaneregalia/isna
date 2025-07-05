@@ -1,313 +1,262 @@
-// src/app/component/landingpage/TheWatchMen.js
-"use client";
-import React, { useState } from "react";
-import Image from "next/image";
-import { FaClock, FaCrown, FaShieldAlt, FaHeart, FaChevronDown, FaChevronUp, FaQuoteLeft, FaStar } from "react-icons/fa";
+import React from "react";
+import UiPreview from "./rihala/ui/UiPreview";
+import HeroSectionRihala from "./rihala/HeroSectionRihala";
+import ProblemSectionRihala from "./rihala/ProblemSectionRihala";
+import DesireSection1 from "./rihala/DesireSection1";
+import ProductSectionRihala from "./rihala/ProductSectionRihala";
+import BenefitSectionRihala from "./rihala/BenefitSectionRihala";
+import CTAsectionOneRihala from "./rihala/CTAsectionOneRihala";
+import HeaderLandingGlobal from "../[slug]/HeaderLandingGlobal";
+import TestimoniSectionRihala from "./rihala/TestimoniSectionRihala";
+import FAQSectionRihala from "./rihala/PercakapanSection";
+import FooterLandingPageOnly from "../[slug]/FooterLandingPageOnly";
+import TripSectionRihala from "./rihala/TripSectionRihala";
 
-// Data terstruktur untuk kemudahan maintain
-const data = {
-  attention: {
-    backgroundImage: "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg",
-    headline: "Ketepatan Waktu Adalah Bentuk Keanggunan",
-    ctaText: "Jelajahi Koleksi",
+const dataRihala = {
+  hero: {
+    title: "Jelajahi Alam Dengan Penuh Semangat",
+    subtitle: "Panduan pendakian dan perkemahan yang aman, mudah, serta penuh petualangan.",
+    aboveTitle: "Telusuri gunung Indonesia yang indah.",
+    backgroundImageUrl: "/images/templateLandingPageBonus/Rihala/images/photo-1464822759023-fed622ff2c3b.jpg",
   },
-  interest: {
-    title: "Mengapa Jam Tangan Lebih Dari Sekadar Aksesori?",
-    points: [
+  problem: {
+    title: "Pernah Punya Niat Naik Gunung Tapi Batal?",
+    subtitle: "Kami tahu persis ketakutan dan keraguanmu. Itulah kenapa kami menciptakan panduan pendakian ini. Masalah yang biasa ditemui:",
+    image: "/images/templateLandingPageBonus/Rihala/images/photo-1495558685573-aba7573d9c01?q=80&w=2296&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    painPoints: [
       {
-        icon: <FaClock className="text-amber-600" size={24} />,
-        title: "Ekspresi Gaya Pribadi",
-        description: "Setiap jam tangan mencerminkan kepribadian dan selera pemakainya",
+        icon: "<FaExclamationTriangle className='text-error text-2xl' />",
+        title: "Takut nyasar.",
+        text: "Tenang, kamu akan ditemani guide berpengalaman di tiap jalur.",
       },
       {
-        icon: <FaCrown className="text-amber-600" size={24} />,
-        title: "Simbol Prestasi",
-        description: "Penanda pencapaian penting dalam hidup",
+        icon: "<FaExclamationTriangle className='text-error text-2xl' />",
+        title: "Tidak punya perlengkapan.",
+        text: "Kami sediakan semua kebutuhan, kamu cukup bawa semangatmu.",
       },
       {
-        icon: <FaShieldAlt className="text-amber-600" size={24} />,
-        title: "Investasi Bernilai",
-        description: "Nilai yang terjaga bahkan meningkat seiring waktu",
-      },
-      {
-        icon: <FaHeart className="text-amber-600" size={24} />,
-        title: "Warisan Abadi",
-        description: "Dapat diwariskan lintas generasi sebagai kenangan berharga",
+        icon: "<FaExclamationTriangle className='text-error text-2xl' />",
+        title: "Belum punya pengalaman.",
+        text: "Semua dirancang dengan panduan yang mudah diikuti siapa pun.",
       },
     ],
   },
-  about: {
-    title: "Kisah Di Balik Setiap Detik",
-    story:
-      "Sejak 1920, kami menciptakan jam tangan yang bukan hanya menunjukkan waktu, tapi juga bercerita tentang perjalanan hidup. Setiap komponen dipilih dengan teliti, dirakit dengan penuh dedikasi oleh para master horologi berpengalaman.",
-    usp: [
-      "Mekanisme Swiss dengan akurasi ±2 detik/hari",
-      "Material titanium aerospace grade",
-      "Kaca safir anti gores 5x lebih kuat",
-      "Garansi internasional 5 tahun",
+  benefit: {
+    title: "Layanan Pemandu Pendakian Terbaik.",
+    subtitle: "Kami bukan sekadar pemandu gunung. Kami adalah mitra pendakianmu. Berikut alasan kenapa banyak pendaki memilih layanan kami:",
+    image: "/images/templateLandingPageBonus/Rihala/images/708392/pexels-photo-708392.jpg",
+    benefits: [
+      {
+        icon: "<IoMdCheckmarkCircleOutline className='text-primary text-2xl' />",
+        title: "Keamanan Terjamin",
+        text: "Dipandu oleh tim profesional bersertifikat dengan pengalaman lapangan bertahun-tahun.",
+      },
+      {
+        icon: "<IoMdCheckmarkCircleOutline className='text-primary text-2xl' />",
+        title: "Rute Ikonik & Eksklusif",
+        text: "Nikmati rute terbaik dengan pemandangan spektakuler yang hanya diketahui oleh guide lokal.",
+      },
+      {
+        icon: "<IoMdCheckmarkCircleOutline className='text-primary text-2xl' />",
+        title: "Pendampingan Total",
+        text: "Dari persiapan hingga turun gunung, kamu akan didampingi penuh tanpa perlu repot.",
+      },
     ],
-    image: "https://images.pexels.com/photos/277319/pexels-photo-277319.jpeg",
   },
-  products: [
-    {
-      name: "Heritage Classic",
-      type: "Automatic",
-      price: "Rp 8.999.000",
-      image: "https://images.pexels.com/photos/190819/pexels-photo-190819.jpeg",
-    },
-    {
-      name: "Chronograph Pro",
-      type: "Sport",
-      price: "Rp 12.500.000",
-      image: "https://images.pexels.com/photos/364822/rolex-watch-time-luxury-364822.jpeg",
-    },
-    {
-      name: "Elegance Series",
-      type: "Minimalist",
-      price: "Rp 6.750.000",
-      image: "https://images.pexels.com/photos/125779/pexels-photo-125779.jpeg",
-    },
-    {
-      name: "Diver's Master",
-      type: "Professional",
-      price: "Rp 15.250.000",
-      image: "https://images.pexels.com/photos/393047/pexels-photo-393047.jpeg",
-    },
-  ],
-  testimonials: [
-    {
-      name: "Budi Santoso",
-      city: "Jakarta",
-      quote: "Presisinya luar biasa, desainnya timeless. Sudah 2 tahun dipakai sehari-hari masih seperti baru.",
-      image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg",
-      featured: true,
-    },
-    {
-      name: "Ani Wijaya",
-      city: "Bandung",
-      quote: "Pelayanannya eksklusif! Pengiriman cepat dengan kemasan premium. Worth every penny.",
-      image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg",
-    },
-    {
-      name: "Rudi Hermawan",
-      city: "Surabaya",
-      quote: "Investasi terbaik untuk gaya dan fungsi. Akurasi waktu sempurna untuk profesional seperti saya.",
-      image: "https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg",
-    },
-  ],
-  orderSteps: [
-    { step: "Konsultasi", description: "Diskusi kebutuhan dengan ahli jam" },
-    { step: "Booking", description: "Pemesanan model yang diinginkan" },
-    { step: "DP 30%", description: "Pembayaran awal untuk proses produksi" },
-    { step: "Pengiriman", description: "Jam tangan dikirim setelah QC ketat" },
-  ],
-  faq: [
-    {
-      question: "Berapa lama garansi yang diberikan?",
-      answer: "Kami memberikan garansi internasional 5 tahun untuk mekanisme dan 2 tahun untuk baterai.",
-    },
-    { question: "Apakah bisa custom engrave?", answer: "Tentu, kami menyediakan jasa engrave gratis dengan pembelian di atas Rp 10 juta." },
-    {
-      question: "Bagaimana perawatan harian jam tangan?",
-      answer: "Gunakan kain lembut kering untuk membersihkan. Hindari kontak dengan bahan kimia dan medan magnet kuat.",
-    },
-    {
-      question: "Apakah tahan air untuk berenang?",
-      answer: "Semua koleksi kami memiliki ketahanan air minimal 100m, cocok untuk renang dan snorkeling.",
-    },
-    {
-      question: "Berapa lama pengiriman setelah pemesanan?",
-      answer: "Stok ready: 1-3 hari. Pre-order: maksimal 21 hari kerja dengan update progress reguler.",
-    },
-  ],
-  closing: {
-    title: "Waktunya Menemukan Bagian Dari Sejarah Anda",
-    description: "Setiap jam tangan kami adalah karya seni yang bercerita. Dengan garansi kepuasan 30 hari, Anda dapat yakin dengan pilihan Anda.",
-    ctaText: "Pesan Sekarang",
-    guarantee: "Garansi 30 Hari Kepuasan",
+  product: {
+    sectionTitle: "Paket Pendakian Gunung",
+    sectionSubtitle: "Paket terbaik untuk petualanganmu.",
+    sectionDescription: "Kami menyediakan berbagai pilihan paket jasa pemandu naik gunung, dari pendaki pemula hingga ekspedisi profesional.",
+    products: [
+      {
+        name: "Basic",
+        id: "tier-basic",
+        href: "#",
+        price: "Rp 500.000",
+        quota: "Hingga 5 orang",
+        description: "Paket hemat untuk pendaki pemula yang ingin menjajal pengalaman naik gunung.",
+        features: ["Pendakian 1 hari", "Pemandu berpengalaman", "Peralatan dasar (tenda, matras)", "Asuransi dasar"],
+        featured: false,
+      },
+      {
+        name: "Standard",
+        id: "tier-standard",
+        href: "#",
+        price: "Rp 1.200.000",
+        quota: "Hingga 10 orang",
+        description: "Paket lengkap dengan fasilitas tambahan untuk kenyamanan selama pendakian.",
+        features: ["Pendakian 2 hari 1 malam", "Pemandu + asisten", "Peralatan lengkap + sleeping bag", "Makan 3x sehari", "Asuransi standar"],
+        featured: false,
+      },
+      {
+        name: "Premium",
+        id: "tier-premium",
+        href: "#",
+        price: "Rp 2.500.000",
+        quota: "Hingga 20 orang",
+        description: "Paket eksklusif untuk ekspedisi dengan pelayanan premium dan keamanan maksimal.",
+        features: [
+          "Pendakian 3 hari 2 malam",
+          "Tim pemandu lengkap",
+          "Peralatan premium + jaket gunung",
+          "Dokumentasi profesional",
+          "Asuransi lengkap + evakuasi darurat",
+          "Transportasi PP dari kota terdekat",
+        ],
+        featured: true,
+      },
+    ],
+  },
+  documentation: {
+    title: "Destinasi Gunung di Indonesia",
+    description: "Jelajahi keindahan alam Indonesia melalui rute pendakian epik!",
+    photos: [
+      {
+        title: "Rinjani",
+        src: "/images/templateLandingPageBonus/Rihala/images/photo-1506744038136-46273834b3fb.jpg",
+        alt: "Puncak Gunung Rinjani dengan danau kawah",
+        jarakRute: "26 km",
+        waktuTempuh: "3 Hari",
+        className: "row-span-2",
+      },
+      {
+        title: "Batur",
+        src: "/images/templateLandingPageBonus/Rihala/images/2082949/pexels-photo-2082949.jpg",
+        alt: "Jalur pendakian Gunung Batur",
+        jarakRute: "4 km",
+        waktuTempuh: "1/2 Hari",
+        className: "",
+      },
+      {
+        title: "Prau",
+        src: "/images/templateLandingPageBonus/Rihala/images/photo-1435732960391-11053ee5e6b6.jpg",
+        alt: "Pendaki di Gunung Prau Dieng",
+        jarakRute: "6 km",
+        waktuTempuh: "1 Hari",
+        className: "col-span-2",
+      },
+      {
+        title: "Pangrango",
+        src: "/images/templateLandingPageBonus/Rihala/images/photo-1500534623283-312aade485b7.jpg",
+        alt: "Taman Nasional Gede Pangrango",
+        jarakRute: "18 km",
+        waktuTempuh: "2 Hari",
+        className: "",
+      },
+      {
+        title: "Ijen",
+        src: "/images/templateLandingPageBonus/Rihala/images/photo-1615729947596-a598e5de0ab3.jpg",
+        alt: "Kawah Ijen di malam hari",
+        jarakRute: "6 km",
+        waktuTempuh: "1 Hari",
+        className: "",
+      },
+      {
+        title: "Dieng",
+        src: "/images/templateLandingPageBonus/Rihala/images/photo-1490682143684-14369e18dce8.jpg",
+        alt: "Jalur pegunungan di Dataran Tinggi Dieng",
+        jarakRute: "2 km",
+        waktuTempuh: "1/2 Hari",
+        className: "",
+      },
+    ],
+  },
+  testimoni: {
+    title: "Testimoni Pendaki",
+    description: "Cerita pengalaman nyata bersama pemandu pendakian kami.",
+    testimoniItems: [
+      {
+        id: 1,
+        title: "Pendakian tak terlupakan di Semeru!",
+        date: "20 Juni 2025",
+        datetime: "2025-06-20",
+        category: { title: "Semeru", href: "#" },
+        image: "/images/templateLandingPageBonus/Rihala/testimoni/testimoni.png",
+        author: {
+          name: "Ayu Lestari",
+          role: "Pendaki Pemula",
+          href: "#",
+          imageUrl: "/images/templateLandingPageBonus/Rihala/testimoni/45.jpg",
+        },
+      },
+      {
+        id: 2,
+        title: "Ke Rinjani bareng tim terbaik!",
+        date: "12 Mei 2025",
+        datetime: "2025-05-12",
+        category: { title: "Rinjani", href: "#" },
+        image: "/images/templateLandingPageBonus/Rihala/testimoni/testimoni.png",
+        author: {
+          name: "Rizky Aditya",
+          role: "Traveler Enthusiast",
+          href: "#",
+          imageUrl: "/images/templateLandingPageBonus/Rihala/testimoni/32.jpg",
+        },
+      },
+      {
+        id: 3,
+        title: "Merbabu: nyaman dan seru",
+        date: "8 April 2025",
+        datetime: "2025-04-08",
+        category: { title: "Merbabu", href: "#" },
+        image: "/images/templateLandingPageBonus/Rihala/testimoni/testimoni.png",
+        author: {
+          name: "Dewi Wulandari",
+          role: "Solo Hiker",
+          href: "#",
+          imageUrl: "/images/templateLandingPageBonus/Rihala/testimoni/33.jpg",
+        },
+      },
+    ],
+  },
+  cta: {
+    title: "Siap Mendaki Gunung Bersama Teman Anda?",
+    description: "Dapatkan panduan lengkap untuk persiapan dan rute aman.",
+    backgroundImageUrl: "/images/templateLandingPageBonus/Rihala/images/premium_photo-1672115680958-54438df0ab82.jpg",
+  },
+  faq: {
+    title: "Pertanyaan Pelanggan",
+    description: "Temukan jawaban dari pertanyaan yang paling sering ditanyakan.",
+    faqItems: [
+      {
+        question: "Apa saja yang termasuk dalam paket pendakian?",
+        answer: "Paket pendakian mencakup guide profesional, porter, tenda, makan 3x sehari, tiket masuk, dan dokumentasi.",
+      },
+      {
+        question: "Apakah pemula bisa ikut pendakian?",
+        answer: "Tentu! Kami menyediakan jalur dan pendampingan khusus untuk pemula yang belum pernah mendaki sebelumnya.",
+      },
+      {
+        question: "Bagaimana jika cuaca buruk saat hari pendakian?",
+        answer: "Jika cuaca ekstrem, pendakian akan dijadwalkan ulang atau dibatalkan dengan pengembalian biaya sesuai ketentuan.",
+      },
+      {
+        question: "Apakah perlengkapan mendaki disediakan?",
+        answer: "Kami menyediakan perlengkapan dasar seperti tenda dan sleeping bag. Peralatan pribadi seperti sepatu dan jaket wajib dibawa sendiri.",
+      },
+      {
+        question: "Bagaimana cara melakukan pembayaran dan booking?",
+        answer: "Anda dapat booking melalui website kami dan melakukan pembayaran via transfer bank atau dompet digital.",
+      },
+    ],
   },
 };
 
-const TheWatchMen = () => {
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
-
-  const toggleFaq = (index) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
-  };
-
+export default function Rihala({ siteData, siteName }) {
   return (
-    <div className="min-h-screen bg-white">
-      {/* ATTENTION: Hero Section */}
-      <section className="relative h-screen flex items-end justify-center">
-        <div className="absolute inset-0 bg-black/60 z-10" />
-        <Image src={data.attention.backgroundImage} alt="Luxury Watch" fill className="object-cover" priority />
-        <div className="relative z-20 text-center pb-24 px-4">
-          <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-8">{data.attention.headline}</h1>
-          <button className="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105">
-            {data.attention.ctaText}
-          </button>
-        </div>
-      </section>
-
-      {/* INTEREST: Edukasi Section */}
-      <section className="py-20 bg-gray-50 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-center mb-16">{data.interest.title}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {data.interest.points.map((point, index) => (
-              <div key={index} className="text-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex justify-center mb-4">{point.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{point.title}</h3>
-                <p className="text-gray-600">{point.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DESIRE: About Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6 text-amber-800">{data.about.title}</h2>
-            <p className="text-lg text-gray-700 mb-8 leading-relaxed">{data.about.story}</p>
-            <ul className="space-y-3">
-              {data.about.usp.map((item, index) => (
-                <li key={index} className="flex items-start">
-                  <span className="text-amber-600 mr-2 mt-1">•</span>
-                  <span className="text-gray-800 font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="relative h-96 rounded-xl overflow-hidden shadow-lg">
-            <Image src={data.about.image} alt="Watch Craftsmanship" fill className="object-cover" />
-          </div>
-        </div>
-      </section>
-
-      {/* DESIRE: Product Gallery */}
-      <section className="py-20 bg-gray-50 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-center mb-4">Koleksi Signature</h2>
-          <p className="text-center text-gray-600 mb-16 max-w-2xl mx-auto">
-            Setiap model diciptakan dengan dedikasi untuk menghadirkan keanggunan abadi
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {data.products.map((product, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group"
-              >
-                <div className="relative h-64">
-                  <Image src={product.image} alt={product.name} fill className="object-cover group-hover:opacity-90 transition-opacity" />
-                </div>
-                <div className="p-6">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="font-bold text-lg">{product.name}</h3>
-                      <p className="text-gray-600 text-sm">{product.type}</p>
-                    </div>
-                    <span className="font-bold text-amber-700">{product.price}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* DESIRE: Testimonials */}
-      <section className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-center mb-16">Apa Kata Pelanggan Kami</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {data.testimonials.map((testimonial, index) => (
-              <div key={index} className={`bg-white rounded-xl p-6 shadow-md ${testimonial.featured ? "border-2 border-amber-500 relative" : ""}`}>
-                {testimonial.featured && (
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-amber-500 text-white px-4 py-1 rounded-full flex items-center">
-                    <FaStar className="mr-1" /> <span>Favorit</span>
-                  </div>
-                )}
-                <FaQuoteLeft className="text-amber-600 text-2xl mb-4 opacity-30" />
-                <p className="text-gray-700 italic mb-6">"{testimonial.quote}"</p>
-                <div className="flex items-center">
-                  <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
-                    <Image src={testimonial.image} alt={testimonial.name} fill className="object-cover" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold">{testimonial.name}</h4>
-                    <p className="text-gray-600 text-sm">{testimonial.city}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ACTION: Order Steps */}
-      <section className="py-20 bg-gradient-to-r from-amber-50 to-amber-100 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-center mb-4">Proses Pemesanan Mudah</h2>
-          <p className="text-center text-gray-700 mb-16 max-w-2xl mx-auto">Hanya 4 langkah sederhana untuk memiliki jam tangan impian Anda</p>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {data.orderSteps.map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="bg-white w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md text-amber-600 text-2xl font-bold">
-                  {index + 1}
-                </div>
-                <h3 className="font-bold text-lg mb-2">{step.step}</h3>
-                <p className="text-gray-700">{step.description}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-16">
-            <button className="bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-8 rounded-full transition duration-300">
-              Konsultasi Gratis
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* ACTION: FAQ */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold text-center mb-16">Pertanyaan Umum</h2>
-
-          <div className="space-y-4">
-            {data.faq.map((faq, index) => (
-              <div key={index} className="border-b border-gray-200 pb-4">
-                <button className="flex justify-between items-center w-full py-4 text-left font-medium text-lg" onClick={() => toggleFaq(index)}>
-                  <span>{faq.question}</span>
-                  {openFaqIndex === index ? <FaChevronUp /> : <FaChevronDown />}
-                </button>
-                {openFaqIndex === index && <div className="pb-4 text-gray-600 animate-fadeIn">{faq.answer}</div>}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ACTION: Closing CTA */}
-      <section className="relative py-28 px-4 text-center">
-        <div className="absolute inset-0 bg-black/70 z-10" />
-        <Image src="https://images.pexels.com/photos/1693653/pexels-photo-1693653.jpeg" alt="Closing Background" fill className="object-cover" />
-        <div className="relative z-20 max-w-3xl mx-auto">
-          <div className="inline-block bg-amber-500 text-white px-4 py-1 rounded-full mb-6">{data.closing.guarantee}</div>
-          <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-6">{data.closing.title}</h2>
-          <p className="text-xl text-amber-100 mb-10">{data.closing.description}</p>
-          <button className="bg-white text-amber-700 hover:bg-amber-50 font-bold py-4 px-12 rounded-full text-lg transition duration-300 transform hover:scale-105">
-            {data.closing.ctaText}
-          </button>
-        </div>
-      </section>
-    </div>
+    <>
+      <HeaderLandingGlobal siteName={siteName} />
+      <HeroSectionRihala data={dataRihala.hero} />
+      {/* <ProblemSectionRihala secId="problem" />
+      <DesireSection1 secId="Petualangan" />
+      <ProductSectionRihala secId="layanan" />
+      <BenefitSectionRihala secId="keuntungan" />
+      <TripSectionRihala secId="trip" />
+      <CTAsectionOneRihala secId="cta" waNumber={siteData.phone} />
+      <TestimoniSectionRihala secId="testimoni" />
+      <CTAsectionOneRihala secId="bonus" />
+      <FAQSectionRihala secId="hadiah" /> */}
+      <FooterLandingPageOnly siteName={siteName} textColor="text-base-100" />
+    </>
   );
-};
-
-export default TheWatchMen;
+}

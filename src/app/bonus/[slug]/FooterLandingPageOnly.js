@@ -5,7 +5,7 @@ export default function FooterLandingPageOnly({ siteName, bgColor, textColor }) 
   const textColorFx = textColor ? textColor : "text-base-content";
   return (
     <footer className={`w-full text-center py-5 ${bgColorFx} ${textColorFx}`}>
-      <span className=" opacity-50">{siteName}</span>
+      <span className=" opacity-50 capitalize">{siteName}</span>
     </footer>
   );
 }
