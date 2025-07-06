@@ -18,7 +18,7 @@ const dataRihala = {
     title: "Jelajahi Alam Dengan Penuh Semangat",
     subtitle: "Panduan pendakian dan perkemahan yang aman, mudah, serta penuh petualangan.",
     aboveTitle: "Telusuri gunung Indonesia yang indah.",
-    backgroundImageUrl: "/images/templateLandingPageBonus/Rihala/images/photo-1464822759023-fed622ff2c3b.jpg",
+    backgroundImageUrl: "/images/templateLandingPageBonus/Rihala/images/photo-1464822759023-fed622ff2c3b.webp",
   },
   problem: {
     title: "Pernah Punya Niat Naik Gunung Tapi Batal?",
