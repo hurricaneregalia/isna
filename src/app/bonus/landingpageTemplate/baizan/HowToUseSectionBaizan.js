@@ -21,7 +21,7 @@ export default function HowToUseSection({ widthSection, secId, data }) {
 
                 {/* Konten langkah */}
                 <div className="ml-2 bg-base-200 rounded-lg p-4 shadow">
-                  <h4 className="font-semibold text-primary">{step.title}</h4>
+                  <h3 className="font-semibold text-primary">{step.title}</h3>
                   <p className="text-sm text-base-content/80 mt-1">{step.description}</p>
                 </div>
               </li>
@@ -38,7 +38,7 @@ export default function HowToUseSection({ widthSection, secId, data }) {
             </div>
 
             <div className="absolute bottom-4 left-4 w-1/2">
-              <h4 className="text-lg font-bold text-white">Kulit Cerah Optimal</h4>
+              <h3 className="text-lg font-bold text-white">Kulit Cerah Optimal</h3>
               <p className="text-sm text-white/75">Dapatkan hasilnya dalam waktu singkat.</p>
             </div>
           </div>

@@ -245,38 +245,33 @@
     "id": "48ba6b69-ba90-4826-b880-bd47f6fda1d6",
     "name": "rihala",
     "slug": "rihala",
-    "description": "olore",
-    "keywords": null,
+    "description": "Template landing page untuk jasa pemandu pendakian gunung. Desain responsif & profesional, dirancang untuk menarik klien dan meningkatkan konversi.",
+    "keywords": "landing page jasa pemandu gunung, landing page pendakian, landing page pemandu pendakian, profesional jasa pendakian, website pendaki gunung, landing page tour guide gunung, jasa guide gunung profesional, landing page untuk pemandu wisata alam",
     "ogImage": null,
-    "themeId": 2,
-    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "themeId": 5,
+    "image": "/images/templateLandingPageBonus/Rihala/images/photo-1464822759023-fed622ff2c3b.jpg",
     "component": "Rihala",
-    "lpDesignStyleId": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
+    "lpDesignStyleId": "b37c54cb-0b0d-4810-965d-b0ab15f9dc38",
     "marketingTools": null,
-    "isActive": false,
+    "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-07-02T23:51:18.467Z",
+    "updatedAt": "2025-07-06T08:23:28.953Z",
     "lpFor": [
       {
-        "id": "443c4e89-3266-4e10-a525-cce367a968b8",
-        "description": "pendaftaran kursus."
+        "id": "bf678104-5603-4612-9e57-b6f580f62e65",
+        "description": "menjual jasa profesional."
       }
     ],
     "lpContentTypes": [
-      {
-        "id": "1c39504e-f456-4a1c-9ec7-823df7ec78ff",
-        "type": "form",
-        "order": 11
-      },
       {
         "id": "397d9d29-87dd-4ae7-917d-d5bcc853cf1a",
         "type": "hero image",
         "order": 2
       },
       {
-        "id": "5098707b-91bc-4628-b077-1a98e65b5cd1",
-        "type": "testimoni teks",
-        "order": 6
+        "id": "60a0b2e3-ca35-42cf-97db-1933950650db",
+        "type": "CTA whatsapp",
+        "order": 110
       },
       {
         "id": "822dbbf4-eda5-4fa5-9d37-a97da91712d3",
@@ -287,19 +282,29 @@
         "id": "d2adaf07-56ce-446d-825f-a94de84dde88",
         "type": "responsive",
         "order": 90
+      },
+      {
+        "id": "e15ca3e4-d5aa-414c-a2c2-a78f3f3b0077",
+        "type": "testimoni image",
+        "order": 8
       }
     ],
     "lpDesignStyle": {
-      "id": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
-      "name": "Playful",
-      "description": "Banyak warna cerah, ikon lucu, cocok untuk anak-anak, game, hiburan."
+      "id": "b37c54cb-0b0d-4810-965d-b0ab15f9dc38",
+      "name": "Modern",
+      "description": "Desain bersih, minimal, banyak white space, fokus pada UX dan kecepatan loading."
     },
-    "ctas": [],
+    "ctas": [
+      {
+        "id": "8977b9b4-4a77-4e96-8daf-70add3b92575",
+        "description": "whatsapp"
+      }
+    ],
     "socialLinks": [],
     "theme": {
-      "id": 2,
-      "name": "dark",
-      "description": "Tema gelap dengan tampilan modern dan elegan.",
+      "id": 5,
+      "name": "emerald",
+      "description": "Hijau zamrud yang segar dan profesional.",
       "createdAt": "2025-07-01T01:25:25.345Z",
       "updatedAt": "2025-07-01T01:25:25.345Z"
     }

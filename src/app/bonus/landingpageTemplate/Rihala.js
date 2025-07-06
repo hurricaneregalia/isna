@@ -1,8 +1,6 @@
 import React from "react";
-import UiPreview from "./rihala/ui/UiPreview";
 import HeroSectionRihala from "./rihala/HeroSectionRihala";
 import ProblemSectionRihala from "./rihala/ProblemSectionRihala";
-import DesireSection1 from "./rihala/DesireSection1";
 import ProductSectionRihala from "./rihala/ProductSectionRihala";
 import BenefitSectionRihala from "./rihala/BenefitSectionRihala";
 import CTAsectionOneRihala from "./rihala/CTAsectionOneRihala";
@@ -11,6 +9,9 @@ import TestimoniSectionRihala from "./rihala/TestimoniSectionRihala";
 import FAQSectionRihala from "./rihala/PercakapanSection";
 import FooterLandingPageOnly from "../[slug]/FooterLandingPageOnly";
 import TripSectionRihala from "./rihala/TripSectionRihala";
+import { FaExclamationTriangle } from "react-icons/fa";
+import DocumentationSectionRihala from "./rihala/DocumentationSectionRihala";
+import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
 const dataRihala = {
   hero: {
@@ -22,20 +23,20 @@ const dataRihala = {
   problem: {
     title: "Pernah Punya Niat Naik Gunung Tapi Batal?",
     subtitle: "Kami tahu persis ketakutan dan keraguanmu. Itulah kenapa kami menciptakan panduan pendakian ini. Masalah yang biasa ditemui:",
-    image: "/images/templateLandingPageBonus/Rihala/images/photo-1495558685573-aba7573d9c01?q=80&w=2296&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: "/images/templateLandingPageBonus/Rihala/images/photo-1495558685573-aba7573d9c01.jpg",
     painPoints: [
       {
-        icon: "<FaExclamationTriangle className='text-error text-2xl' />",
+        icon: <FaExclamationTriangle className="text-error text-2xl" />,
         title: "Takut nyasar.",
         text: "Tenang, kamu akan ditemani guide berpengalaman di tiap jalur.",
       },
       {
-        icon: "<FaExclamationTriangle className='text-error text-2xl' />",
+        icon: <FaExclamationTriangle className="text-error text-2xl" />,
         title: "Tidak punya perlengkapan.",
         text: "Kami sediakan semua kebutuhan, kamu cukup bawa semangatmu.",
       },
       {
-        icon: "<FaExclamationTriangle className='text-error text-2xl' />",
+        icon: <FaExclamationTriangle className="text-error text-2xl" />,
         title: "Belum punya pengalaman.",
         text: "Semua dirancang dengan panduan yang mudah diikuti siapa pun.",
       },
@@ -44,20 +45,20 @@ const dataRihala = {
   benefit: {
     title: "Layanan Pemandu Pendakian Terbaik.",
     subtitle: "Kami bukan sekadar pemandu gunung. Kami adalah mitra pendakianmu. Berikut alasan kenapa banyak pendaki memilih layanan kami:",
-    image: "/images/templateLandingPageBonus/Rihala/images/708392/pexels-photo-708392.jpg",
+    image: "/images/templateLandingPageBonus/Rihala/images/pexels-photo-708392.jpg",
     benefits: [
       {
-        icon: "<IoMdCheckmarkCircleOutline className='text-primary text-2xl' />",
+        icon: <IoMdCheckmarkCircleOutline className="text-primary text-2xl" />,
         title: "Keamanan Terjamin",
         text: "Dipandu oleh tim profesional bersertifikat dengan pengalaman lapangan bertahun-tahun.",
       },
       {
-        icon: "<IoMdCheckmarkCircleOutline className='text-primary text-2xl' />",
+        icon: <IoMdCheckmarkCircleOutline className="text-primary text-2xl" />,
         title: "Rute Ikonik & Eksklusif",
         text: "Nikmati rute terbaik dengan pemandangan spektakuler yang hanya diketahui oleh guide lokal.",
       },
       {
-        icon: "<IoMdCheckmarkCircleOutline className='text-primary text-2xl' />",
+        icon: <IoMdCheckmarkCircleOutline className="text-primary text-2xl" />,
         title: "Pendampingan Total",
         text: "Dari persiapan hingga turun gunung, kamu akan didampingi penuh tanpa perlu repot.",
       },
@@ -108,6 +109,47 @@ const dataRihala = {
     ],
   },
   documentation: {
+    title: "Dokumentasi penuh keceriaan",
+    photos: [
+      {
+        src: "/images/templateLandingPageBonus/Rihala/images/photo-1506744038136-46273834b3fb.jpg",
+        alt: "Pendaki di puncak gunung dengan latar belakang langit",
+        caption: "Summit Achievement",
+        className: "row-span-2",
+      },
+      {
+        src: "/images/templateLandingPageBonus/Rihala/images/pexels-photo-2309266.jpg",
+        alt: "Jalur pendakian lembah",
+        caption: "Mountain Trail View",
+        className: "",
+      },
+      {
+        src: "/images/templateLandingPageBonus/Rihala/images/photo-1504384308090-c894fdcc538d.jpg",
+        alt: "Tenda di ketinggian gunung",
+        caption: "High Altitude Camp",
+        className: "col-span-2",
+      },
+      {
+        src: "/images/templateLandingPageBonus/Rihala/images/photo-1500534623283-312aade485b7.jpg",
+        alt: "Pendaki menyeberangi batu besar",
+        caption: "Rock Crossing",
+        className: "",
+      },
+      {
+        src: "/images/templateLandingPageBonus/Rihala/images/premium_photo-1661883853185-165f5869e6d3.jpg",
+        alt: "Pendaki di tepi tebing",
+        caption: "Edge of the Cliff",
+        className: "",
+      },
+      {
+        src: "/images/templateLandingPageBonus/Rihala/images/photo-1469474968028-56623f02e42e.jpg",
+        alt: "Ridgeline saat matahari terbit",
+        caption: "Ridge Sunrise",
+        className: "",
+      },
+    ],
+  },
+  trip: {
     title: "Destinasi Gunung di Indonesia",
     description: "Jelajahi keindahan alam Indonesia melalui rute pendakian epik!",
     photos: [
@@ -121,7 +163,7 @@ const dataRihala = {
       },
       {
         title: "Batur",
-        src: "/images/templateLandingPageBonus/Rihala/images/2082949/pexels-photo-2082949.jpg",
+        src: "/images/templateLandingPageBonus/Rihala/images/pexels-photo-2082949.jpg",
         alt: "Jalur pendakian Gunung Batur",
         jarakRute: "4 km",
         waktuTempuh: "1/2 Hari",
@@ -209,10 +251,21 @@ const dataRihala = {
       },
     ],
   },
-  cta: {
+  cta1: {
     title: "Siap Mendaki Gunung Bersama Teman Anda?",
     description: "Dapatkan panduan lengkap untuk persiapan dan rute aman.",
     backgroundImageUrl: "/images/templateLandingPageBonus/Rihala/images/premium_photo-1672115680958-54438df0ab82.jpg",
+    whatsappText: "Saya ingin beli template ini.",
+    whatsappTextKonsultasi: "Saya ingin konsultasi.",
+    ctaNumber: 1,
+  },
+  cta2: {
+    title: "Bonus bekal makanan",
+    description: "Dapatkan bonus bekal makanan untuk 1 hari pertama.",
+    backgroundImageUrl: "/images/templateLandingPageBonus/Rihala/images/premium_photo-1672115680958-54438df0ab82.jpg",
+    whatsappText: "Saya ingin beli template ini.",
+    whatsappTextKonsultasi: "Saya ingin konsultasi.",
+    ctaNumber: 2,
   },
   faq: {
     title: "Pertanyaan Pelanggan",
@@ -247,15 +300,17 @@ export default function Rihala({ siteData, siteName }) {
     <>
       <HeaderLandingGlobal siteName={siteName} />
       <HeroSectionRihala data={dataRihala.hero} />
-      {/* <ProblemSectionRihala secId="problem" />
-      <DesireSection1 secId="Petualangan" />
-      <ProductSectionRihala secId="layanan" />
-      <BenefitSectionRihala secId="keuntungan" />
-      <TripSectionRihala secId="trip" />
-      <CTAsectionOneRihala secId="cta" waNumber={siteData.phone} />
-      <TestimoniSectionRihala secId="testimoni" />
-      <CTAsectionOneRihala secId="bonus" />
-      <FAQSectionRihala secId="hadiah" /> */}
+      <ProblemSectionRihala secId="problem" data={dataRihala.problem} />
+      <DocumentationSectionRihala secId="Petualangan" data={dataRihala.documentation} />
+      <ProductSectionRihala secId="layanan" data={dataRihala.product} />
+      <BenefitSectionRihala secId="keuntungan" data={dataRihala.benefit} />
+      <TripSectionRihala secId="trip" data={dataRihala.trip} />
+      <CTAsectionOneRihala secId="cta" whatsappNumber={siteData.phone} data={dataRihala.cta1} />
+      <TestimoniSectionRihala secId="testimoni" data={dataRihala.testimoni} />
+      <CTAsectionOneRihala secId="bonus" data={dataRihala.cta2} whatsappNumber={siteData.phone} />
+      <FAQSectionRihala secId="hadiah" data={dataRihala.faq} />
+      {/*
+       */}
       <FooterLandingPageOnly siteName={siteName} textColor="text-base-100" />
     </>
   );

@@ -12,7 +12,11 @@ export default function ModalThemes({ title, children, btnTxt, secId, borderColo
 
   return (
     <>
-      <button onClick={openModal} className={`bg-transparent border ${borderColor} btn flex justify-center shadow-none items-center ${textColor} cursor-pointer w-10 h-10 p-0 text-xl`}>
+      <button
+        onClick={openModal}
+        className={`bg-transparent border ${borderColor} btn flex justify-center shadow-none items-center ${textColor} cursor-pointer w-10 h-10 p-0 text-xl`}
+        aria-label="Open menu"
+      >
         {btnTxt}
       </button>
 

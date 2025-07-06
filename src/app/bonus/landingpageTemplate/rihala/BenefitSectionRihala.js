@@ -1,30 +1,6 @@
 import Image from "next/image";
-import { IoMdCheckmarkCircleOutline } from "react-icons/io";
 
-export default function BenefitSectionRihala({ secId }) {
-  const dataBenefit = {
-    title: "Layanan Pemandu Pendakian Terbaik.",
-    subtitle: "Kami bukan sekadar pemandu gunung. Kami adalah mitra pendakianmu. Berikut alasan kenapa banyak pendaki memilih layanan kami:",
-    image: "https://images.pexels.com/photos/708392/pexels-photo-708392.jpeg",
-    benefits: [
-      {
-        icon: <IoMdCheckmarkCircleOutline className="text-primary text-2xl" />,
-        title: "Keamanan Terjamin",
-        text: "Dipandu oleh tim profesional bersertifikat dengan pengalaman lapangan bertahun-tahun.",
-      },
-      {
-        icon: <IoMdCheckmarkCircleOutline className="text-primary text-2xl" />,
-        title: "Rute Ikonik & Eksklusif",
-        text: "Nikmati rute terbaik dengan pemandangan spektakuler yang hanya diketahui oleh guide lokal.",
-      },
-      {
-        icon: <IoMdCheckmarkCircleOutline className="text-primary text-2xl" />,
-        title: "Pendampingan Total",
-        text: "Dari persiapan hingga turun gunung, kamu akan didampingi penuh tanpa perlu repot.",
-      },
-    ],
-  };
-
+export default function BenefitSectionRihala({ secId, data }) {
   return (
     <div className="relative isolate overflow-hidden bg-base-100 px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0" id={secId}>
       {/* Background SVG */}
@@ -50,7 +26,7 @@ export default function BenefitSectionRihala({ secId }) {
             <div className="lg:max-w-lg">
               <p className="text-base font-semibold text-primary capitalize">{secId}</p>
               <h2 className="mt-2 text-4xl font-semibold tracking-tight text-base-content sm:text-5xl" data-aos="fade-up">
-                {dataBenefit.title}
+                {data.title}
               </h2>
             </div>
           </div>
@@ -58,7 +34,7 @@ export default function BenefitSectionRihala({ secId }) {
 
         {/* Image */}
         <div className="-mt-12 -ml-12 p-12 lg:sticky lg:top-4 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:overflow-hidden" data-aos="fade-left">
-          <Image alt={dataBenefit.title} src={dataBenefit.image} width={1000} height={800} className="w-3xl max-w-none rounded-xl bg-neutral shadow-xl ring-1 ring-base-300 sm:w-228" />
+          <Image alt={data.title} src={data.image} width={1000} height={800} className="w-3xl max-w-none rounded-xl bg-neutral shadow-xl ring-1 ring-base-300 sm:w-228" />
         </div>
 
         {/* Pain Points */}
@@ -66,10 +42,10 @@ export default function BenefitSectionRihala({ secId }) {
           <div className="lg:pr-4">
             <div className="max-w-xl lg:max-w-lg">
               <p className=" opacity-75" data-aos="fade-up">
-                {dataBenefit.subtitle}
+                {data.subtitle}
               </p>
               <ul role="list" className="mt-8 space-y-8">
-                {dataBenefit.benefits.map((item, index) => (
+                {data.benefits.map((item, index) => (
                   <li className="flex gap-x-3" key={index} data-aos="fade-up">
                     <span className="mt-1">{item.icon}</span>
                     <span className=" opacity-75">
