@@ -45,22 +45,29 @@ export default function PortfolioSectionMirka({ data, secId }) {
               </Transition.Child>
 
               {/* Modal Panel */}
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95 translate-y-4"
-                enterTo="opacity-100 scale-100 translate-y-0"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100 translate-y-0"
-                leaveTo="opacity-0 scale-95 translate-y-4"
-              >
-                <Dialog.Panel className="relative max-w-5xl w-full p-4 z-50">
-                  <button onClick={() => setSelectedImage(null)} className="btn btn-sm btn-circle absolute top-4 right-4 bg-white">
+              <div className="relative max-w-5xl w-full max-h-screen p-4 z-50 overflow-hidden">
+                {/* Close button (no animation) */}
+                {selectedImage && (
+                  <button onClick={() => setSelectedImage(null)} className="btn btn-sm btn-circle absolute top-4 right-4 bg-white z-50">
                     ✕
                   </button>
-                  {selectedImage && <Image src={selectedImage} alt="Preview" width={1600} height={1200} className="w-full h-auto shadow-lg" />}
-                </Dialog.Panel>
-              </Transition.Child>
+                )}
+
+                {/* Animated content only */}
+                <Transition.Child
+                  as={Fragment}
+                  enter="ease-out duration-300"
+                  enterFrom="opacity-0 scale-95 translate-y-4"
+                  enterTo="opacity-100 scale-100 translate-y-0"
+                  leave="ease-in duration-200"
+                  leaveFrom="opacity-100 scale-100 translate-y-0"
+                  leaveTo="opacity-0 scale-95 translate-y-4"
+                >
+                  <Dialog.Panel className="w-full h-full flex items-center justify-center">
+                    {selectedImage && <Image src={selectedImage} alt="Preview" width={1600} height={1200} className="min-h-screen w-auto object-contain shadow-lg" />}
+                  </Dialog.Panel>
+                </Transition.Child>
+              </div>
             </Dialog>
           </Transition>
         </SectionWrapper>

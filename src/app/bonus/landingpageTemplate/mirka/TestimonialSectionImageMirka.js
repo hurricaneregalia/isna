@@ -12,8 +12,11 @@ export default function TestimonialSectionImageMirka({ data, secId }) {
 
   return (
     <section className="sm:px-5 px-3" id={secId}>
-      <div className={`${bgCoosen} ${txtCoosen} p-5 py-32`}>
-        <Heading>{data.title}</Heading>
+      <div className={`${bgCoosen} ${txtCoosen} p-5 py-32 texce`}>
+        <div className="lg:w-6/12 w-full capitalize mx-auto text-center">
+          <Heading>{data.title}</Heading>
+          <hr className="lg:my-8 my-4 opacity-0" />
+        </div>
 
         {/* Carousel Scrollable: Thumbnails */}
         <div className="w-full overflow-x-auto">
@@ -23,14 +26,14 @@ export default function TestimonialSectionImageMirka({ data, secId }) {
                 <div className="relative flex flex-col h-full overflow-hidden w-full">
                   <Image
                     id="testimoniThumbnail"
-                    src={item.photo}
+                    src={item.images}
                     alt={item.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 700px"
                     className="object-cover absolute inset-0 z-0 cursor-pointer"
-                    onClick={() => setSelectedImage(item.photo)}
+                    onClick={() => setSelectedImage(item.images)}
                   />
-
+                  {item.images}
                   <div className={`relative mt-auto ${bgCoosen} p-4 rounded-tl-4xl`}>
                     <div className="flex gap-3">
                       <div className="mb-4">
@@ -83,7 +86,7 @@ export default function TestimonialSectionImageMirka({ data, secId }) {
               leaveTo="opacity-0 scale-95 translate-y-4"
             >
               <Dialog.Panel className="w-full h-full flex items-center justify-center">
-                {selectedImage && <Image src={selectedImage} alt="Preview" width={1600} height={1200} className="max-h-[90vh] w-auto object-contain shadow-lg" />}
+                {selectedImage && <Image src={selectedImage} alt="Preview" width={1600} height={1200} className="min-h-screen w-auto object-contain shadow-lg" />}
               </Dialog.Panel>
             </Transition.Child>
           </div>

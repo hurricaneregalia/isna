@@ -369,14 +369,14 @@
     "description": "lirema",
     "keywords": null,
     "ogImage": null,
-    "themeId": 2,
-    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "themeId": 1,
+    "image": "/images/templateLandingPageBonus/Mirka/images/pexels-photo-11904557.jpg",
     "component": "Mirka",
     "lpDesignStyleId": "d092b505-85e3-4e5b-af93-7482947d0745",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-07-01T01:31:28.648Z",
+    "updatedAt": "2025-07-16T18:50:10.271Z",
     "lpFor": [
       {
         "id": "bf678104-5603-4612-9e57-b6f580f62e65",
@@ -408,9 +408,9 @@
     "ctas": [],
     "socialLinks": [],
     "theme": {
-      "id": 2,
-      "name": "dark",
-      "description": "Tema gelap dengan tampilan modern dan elegan.",
+      "id": 1,
+      "name": "light",
+      "description": "Tema terang dan bersih cocok untuk presentasi formal.",
       "createdAt": "2025-07-01T01:25:25.345Z",
       "updatedAt": "2025-07-01T01:25:25.345Z"
     }

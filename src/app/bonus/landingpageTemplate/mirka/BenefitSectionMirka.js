@@ -7,9 +7,9 @@ export default function BenefitSectionMirka({ data, secId }) {
   return (
     <section className="sm:px-5 sm:pb-5 px-3 pb-3" id={secId}>
       <div className="bg-transparent lg:px-20 py-32">
-        <SectionWrapper css="sm:px-20 gap-20 space-y-10">
+        <SectionWrapper css="lg:px-20 sm:px-0 gap-20 space-y-10">
           {/* Judul */}
-          <div className="lg:w-6/12 w-full capitalize mx-auto text-center">
+          <div className="lg:w-6/12 sm:w-10/12 w-full capitalize mx-auto text-center">
             <Heading>{data.title}</Heading>
             <hr className="lg:my-8 my-4 opacity-0" />
           </div>

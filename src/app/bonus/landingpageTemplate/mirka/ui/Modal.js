@@ -76,7 +76,7 @@ export default function Modal({ title, btnCss, waNumber }) {
           </div>
         </div>
       )}
-      <button className={`btn ${btnCss} font-semibold tracking-wide`} onClick={() => setIsOpen(true)}>
+      <button className={`btn ${btnCss} font-semibold tracking-wide mt-auto`} onClick={() => setIsOpen(true)}>
         {title}
       </button>
 

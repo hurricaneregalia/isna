@@ -11,12 +11,16 @@ const __dirname = path.dirname(__filename);
 
 // === DATA GAMBAR ===
 const imageUrl = [
-  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
-  "https://images.pexels.com/photos/2309266/pexels-photo-2309266.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-  "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
-  "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=800&q=80",
-  "https://plus.unsplash.com/premium_photo-1661883853185-165f5869e6d3?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80",
+  "https://randomuser.me/api/portraits/women/44.jpg",
+  "https://randomuser.me/api/portraits/men/36.jpg",
+  "https://randomuser.me/api/portraits/women/68.jpg",
+  "https://randomuser.me/api/portraits/men/21.jpg",
+  "https://randomuser.me/api/portraits/women/25.jpg",
+  "https://randomuser.me/api/portraits/men/11.jpg",
+  "https://randomuser.me/api/portraits/women/18.jpg",
+  "https://randomuser.me/api/portraits/men/42.jpg",
+  "https://randomuser.me/api/portraits/women/81.jpg",
+  "https://randomuser.me/api/portraits/men/52.jpg",
 ];
 
 // === FUNGSI DOWNLOAD ===
