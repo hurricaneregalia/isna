@@ -23,8 +23,8 @@ export default function ProductSectionRihala({ secId, data }) {
           <div
             key={tier.id}
             className={classNames(
-              "rounded-box flex flex-col gap-5 p-8 shadow-md ring-1 transition duration-500 transform hover:scale-105 ",
-              tier.featured ? "bg-primary text-primary-content ring-primary" : "bg-base-200 ring-base-300"
+              "rounded-box flex flex-col gap-5 p-8 shadow-md ring-1 transform transition-transform duration-500 ease-in-out hover:scale-105",
+              tier.featured ? "bg-primary text-primary-content ring-primary" : "bg-base-200/20 ring-base-300/20"
             )}
             data-aos="fade-up"
           >
@@ -35,11 +35,11 @@ export default function ProductSectionRihala({ secId, data }) {
               <p className="flex items-baseline m-0">
                 <span className={classNames("text-4xl font-bold", tier.featured ? "text-white" : "text-base-content")}>{tier.price}</span>
               </p>
-              <p className={classNames("text-base text-end m-0", tier.featured ? "text-gray-300" : "text-base-content/75")}>{tier.quota}</p>
+              <p className={classNames("text-base m-0", tier.featured ? "text-white" : "text-base-content/75")}>{tier.quota}</p>
             </div>
             <hr className="my-1 opacity-0" />
-            <p className={classNames("text-sm", tier.featured ? "text-gray-200" : "text-base-content/75")}>{tier.description}</p>
-            <ul role="list" className={classNames("space-y-3 text-sm", tier.featured ? "text-gray-100" : "text-base-content/75")}>
+            <p className={classNames("text-sm", tier.featured ? "text-white" : "text-base-content/75")}>{tier.description}</p>
+            <ul role="list" className={classNames("space-y-3 text-sm", tier.featured ? "text-white" : "text-base-content/75")}>
               {tier.features.map((feature) => (
                 <li key={feature} className="flex gap-x-3 items-start" data-aos="fade-up">
                   <CheckIcon aria-hidden="true" className={classNames("h-5 w-5 flex-none", tier.featured ? "text-white" : "text-primary")} />

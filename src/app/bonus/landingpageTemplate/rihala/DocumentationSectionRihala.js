@@ -21,10 +21,7 @@ export default function DocumentationSectionRihala({ secId, data }) {
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
               />
-              <div
-                className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-neutral-900/70 to-transparent text-white text-sm sm:text-base px-4 py-5 transition-opacity duration-300 group-hover:opacity-0
-  "
-              >
+              <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-neutral-900/70 to-transparent text-white text-sm sm:text-base px-4 py-5 transition-opacity duration-300 group-hover:opacity-0">
                 {photo.caption}
               </div>
             </div>

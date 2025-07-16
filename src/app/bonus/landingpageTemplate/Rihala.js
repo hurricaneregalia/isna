@@ -6,12 +6,12 @@ import BenefitSectionRihala from "./rihala/BenefitSectionRihala";
 import CTAsectionOneRihala from "./rihala/CTAsectionOneRihala";
 import HeaderLandingGlobal from "../[slug]/HeaderLandingGlobal";
 import TestimoniSectionRihala from "./rihala/TestimoniSectionRihala";
-import FAQSectionRihala from "./rihala/PercakapanSection";
 import FooterLandingPageOnly from "../[slug]/FooterLandingPageOnly";
 import TripSectionRihala from "./rihala/TripSectionRihala";
 import { FaExclamationTriangle } from "react-icons/fa";
 import DocumentationSectionRihala from "./rihala/DocumentationSectionRihala";
 import { IoMdCheckmarkCircleOutline } from "react-icons/io";
+import FAQSectionRihala from "./rihala/FAQSectionRihala";
 
 const dataRihala = {
   hero: {

@@ -20,7 +20,7 @@ export default function TestimoniSectionRihala({ secId, data }) {
           {data.testimoniItems.map((item) => (
             <div
               key={item.id}
-              className="min-w-[85%] sm:min-w-[300px] snap-start card bg-base-200 shadow-md hover:shadow-xl transition duration-300 border border-base-content/10"
+              className="min-w-[85%] sm:min-w-[300px] snap-start card bg-base-200/20 shadow-md hover:shadow-xl transition duration-300 border border-base-content/10"
               data-aos="flip-left"
             >
               <figure>

@@ -1,3 +1,4 @@
+// src/app/utils/FormatRupiah.js
 export default function formatRupiah(value) {
   if (typeof value !== "number") {
     value = parseInt(value);
