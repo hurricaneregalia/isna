@@ -8,13 +8,13 @@ import Heading from "./ui/Heading";
 
 export default function PricingSectionMirka({ secId, waNumber, data }) {
   return (
-    <section className="sm:px-5 px-3" id={secId}>
+    <section id={secId}>
       <div className="bg-warning lg:px-20 sm:py-32 py-15">
         <SectionWrapper css="sm:px-20 gap-20 space-y-10">
           {/* Grid of Pricing Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
             {/* Pricing Card */}
-            {data.items.map((plan) => (
+            {data.item.map((plan) => (
               <div key={plan.id} className=" text-slate-900 flex flex-col text-left">
                 <Heading>{plan.name}</Heading>
                 <p className="text-2xl font-bold text-red-500 ">{formatRupiah(plan.price)}</p>
@@ -37,7 +37,7 @@ export default function PricingSectionMirka({ secId, waNumber, data }) {
             {/* Image Cards */}
             {data.imageCards.map((img) => (
               <div key={img.id} className={`overflow-hidden shadow-md ${img.id === "img-1" ? "hidden sm:block lg:block" : ""} ${img.id === "img-2" ? "hidden lg:block" : ""}`}>
-                <Image src={img.src} alt={img.alt} width={600} height={400} className="object-cover w-full h-full" />
+                <Image src={img.src} alt={img.alt} width={600} height={400} className=" card object-cover w-full h-full border-8 border-slate-100" />
               </div>
             ))}
           </div>

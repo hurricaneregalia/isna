@@ -1,17 +1,35 @@
 "use client";
 import Image from "next/image";
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
 import Heading from "./ui/Heading";
+import { useState } from "react";
+import Captions from "yet-another-react-lightbox/plugins/captions";
+import "yet-another-react-lightbox/plugins/captions.css";
 
 const bgCoosen = "bg-slate-800";
 const txtCoosen = "text-slate-200";
 
 export default function TestimonialSectionImageMirka({ data, secId }) {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const slides = data.item.map((item) => ({
+    src: item.images,
+    alt: item.name,
+    width: 1200,
+    height: 800,
+    title: item.name,
+    description: item.profession,
+  }));
 
   return (
-    <section className="sm:px-5 px-3" id={secId}>
+    <section id={secId}>
       <div className={`${bgCoosen} ${txtCoosen} p-5 py-32 texce`}>
         <div className="lg:w-6/12 w-full capitalize mx-auto text-center">
           <Heading>{data.title}</Heading>
@@ -21,18 +39,18 @@ export default function TestimonialSectionImageMirka({ data, secId }) {
         {/* Carousel Scrollable: Thumbnails */}
         <div className="w-full overflow-x-auto">
           <div className="carousel carousel-center space-x-4 w-max pb-10">
-            {data.items.map((item) => (
-              <div key={item.id} className="group carousel-item relative w-64 h-96 shrink-0 transition-all">
+            {data.item.map((item, index) => (
+              <button
+                type="button"
+                key={item.id}
+                className="group carousel-item relative w-64 h-96 shrink-0 transition-all"
+                onClick={() => {
+                  setCurrentIndex(index);
+                  setIsOpen(true);
+                }}
+              >
                 <div className="relative flex flex-col h-full overflow-hidden w-full">
-                  <Image
-                    id="testimoniThumbnail"
-                    src={item.images}
-                    alt={item.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 700px"
-                    className="object-cover absolute inset-0 z-0 cursor-pointer"
-                    onClick={() => setSelectedImage(item.images)}
-                  />
+                  <Image id="testimoniThumbnail" src={item.images} alt={item.name} fill sizes="(max-width: 768px) 100vw, 700px" className="object-cover absolute inset-0 z-0 cursor-pointer" />
                   {item.images}
                   <div className={`relative mt-auto ${bgCoosen} p-4 rounded-tl-4xl`}>
                     <div className="flex gap-3">
@@ -45,53 +63,20 @@ export default function TestimonialSectionImageMirka({ data, secId }) {
                           className="rounded-full border-2 mx-auto border-white shadow-md group-hover:scale-110 transition-transform duration-300"
                         />
                       </div>
-                      <div className={`${txtCoosen}`}>
+                      <div className={`${txtCoosen} text-start`}>
                         <h3 className="font-semibold ">{item.name}</h3>
                         <p className="text-sm opacity-75 ">{item.profession}</p>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Modal */}
-      <Transition appear show={!!selectedImage} as={Fragment}>
-        <Dialog as="div" className="fixed inset-0 z-50 flex items-center justify-center" onClose={() => setSelectedImage(null)}>
-          {/* Overlay */}
-          <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-200" leaveFrom="opacity-100" leaveTo="opacity-0">
-            <div className="fixed inset-0 bg-black bg-opacity-70" />
-          </Transition.Child>
-
-          {/* Modal Panel */}
-          <div className="relative max-w-5xl w-full max-h-screen p-4 z-50 overflow-hidden">
-            {/* Close button (no animation) */}
-            {selectedImage && (
-              <button onClick={() => setSelectedImage(null)} className="btn btn-sm btn-circle absolute top-4 right-4 bg-white z-50">
-                ✕
-              </button>
-            )}
-
-            {/* Animated content only */}
-            <Transition.Child
-              as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0 scale-95 translate-y-4"
-              enterTo="opacity-100 scale-100 translate-y-0"
-              leave="ease-in duration-200"
-              leaveFrom="opacity-100 scale-100 translate-y-0"
-              leaveTo="opacity-0 scale-95 translate-y-4"
-            >
-              <Dialog.Panel className="w-full h-full flex items-center justify-center">
-                {selectedImage && <Image src={selectedImage} alt="Preview" width={1600} height={1200} className="min-h-screen w-auto object-contain shadow-lg" />}
-              </Dialog.Panel>
-            </Transition.Child>
-          </div>
-        </Dialog>
-      </Transition>
+      <Lightbox open={isOpen} close={() => setIsOpen(false)} slides={slides} index={currentIndex} plugins={[Captions, Fullscreen, Slideshow, Thumbnails, Zoom]} />
     </section>
   );
 }

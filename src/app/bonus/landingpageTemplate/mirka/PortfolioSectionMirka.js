@@ -1,16 +1,33 @@
 "use client";
 
-import { useState, Fragment } from "react";
 import Image from "next/image";
-import { Dialog, Transition } from "@headlessui/react";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
 import SectionWrapper from "./ui/SectionWrapper";
 import Heading from "./ui/Heading";
+import { useState } from "react";
+import Captions from "yet-another-react-lightbox/plugins/captions";
+import "yet-another-react-lightbox/plugins/captions.css";
 
 export default function PortfolioSectionMirka({ data, secId }) {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const slides = data.item.map((item) => ({
+    src: item.imageUrl,
+    alt: item.artistName,
+    width: 1200,
+    height: 800,
+    title: `by ${item.artistName}`,
+  }));
 
   return (
-    <section className="sm:px-5 sm:pb-5 px-3 pb-3" id={secId}>
+    <section className="patternBg" id={secId}>
       <div className="bg-transparent lg:px-20 pb-32">
         <SectionWrapper css="sm:px-20 gap-20 space-y-10">
           {/* Judul */}
@@ -19,9 +36,18 @@ export default function PortfolioSectionMirka({ data, secId }) {
             <hr className="lg:my-8 my-4 opacity-0" />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 auto-rows-[200px] sm:gap-4 space-y-4 sm:space-y-0">
-            {data.item.map((photo) => (
-              <div key={photo.id} className={`relative overflow-hidden group cursor-pointer ${photo.className ?? ""}`} onClick={() => setSelectedImage(photo.imageUrl)} data-aos="fade-up">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 auto-rows-[200px] sm:gap-2 space-y-2 sm:space-y-0">
+            {data.item.map((photo, index) => (
+              <button
+                key={photo.id}
+                className={`relative overflow-hidden card group border-8 border-slate-100 shadow-lg cursor-pointer ${photo.className ?? ""}`}
+                onClick={() => {
+                  setCurrentIndex(index);
+                  setIsOpen(true);
+                }}
+                type="button"
+                data-aos="fade-up"
+              >
                 <Image
                   src={photo.imageUrl}
                   alt={photo.artistName}
@@ -29,47 +55,14 @@ export default function PortfolioSectionMirka({ data, secId }) {
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
                 />
-                <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900 to-transparent text-slate-200 text-sm p-4 pt-20  transition-opacity duration-300 group-hover:opacity-0">
+                <div className=" text-start absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900 to-transparent text-slate-200 text-sm p-4 pt-20  transition-opacity duration-300 group-hover:opacity-0">
                   By <span className="font-bold">{photo.artistName}</span>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
 
-          {/* Transition wrapper for modal */}
-          <Transition appear show={!!selectedImage} as={Fragment}>
-            <Dialog as="div" className="fixed inset-0 z-50 flex items-center justify-center" onClose={() => setSelectedImage(null)}>
-              {/* Overlay */}
-              <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-200" leaveFrom="opacity-100" leaveTo="opacity-0">
-                <div className="fixed inset-0 bg-black bg-opacity-70" />
-              </Transition.Child>
-
-              {/* Modal Panel */}
-              <div className="relative max-w-5xl w-full max-h-screen p-4 z-50 overflow-hidden">
-                {/* Close button (no animation) */}
-                {selectedImage && (
-                  <button onClick={() => setSelectedImage(null)} className="btn btn-sm btn-circle absolute top-4 right-4 bg-white z-50">
-                    ✕
-                  </button>
-                )}
-
-                {/* Animated content only */}
-                <Transition.Child
-                  as={Fragment}
-                  enter="ease-out duration-300"
-                  enterFrom="opacity-0 scale-95 translate-y-4"
-                  enterTo="opacity-100 scale-100 translate-y-0"
-                  leave="ease-in duration-200"
-                  leaveFrom="opacity-100 scale-100 translate-y-0"
-                  leaveTo="opacity-0 scale-95 translate-y-4"
-                >
-                  <Dialog.Panel className="w-full h-full flex items-center justify-center">
-                    {selectedImage && <Image src={selectedImage} alt="Preview" width={1600} height={1200} className="min-h-screen w-auto object-contain shadow-lg" />}
-                  </Dialog.Panel>
-                </Transition.Child>
-              </div>
-            </Dialog>
-          </Transition>
+          <Lightbox open={isOpen} close={() => setIsOpen(false)} slides={slides} index={currentIndex} plugins={[Fullscreen, Captions, Slideshow, Thumbnails, Zoom]} />
         </SectionWrapper>
       </div>
     </section>

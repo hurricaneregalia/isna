@@ -115,7 +115,7 @@ export default async function ProductPage({ params }) {
   return (
     <ThemeWrapper defaultTheme={theme}>
       <HeaderFooterSqlite>
-        <TemplateComponent landingPage={landingPage} siteData={siteData} siteName={landingPage.name} />
+        <TemplateComponent landingPage={landingPage} siteData={siteData} siteName={landingPage.name} activeTheme={theme} />
       </HeaderFooterSqlite>
     </ThemeWrapper>
   );

@@ -130,7 +130,7 @@ const dataMirka = {
 
   pricing: {
     title: "Pilih Paket Kursus Kami",
-    items: [
+    item: [
       {
         id: 1,
         name: "Kursus Fotografi Online",
@@ -155,7 +155,7 @@ const dataMirka = {
 
   testimonials: {
     title: "Testimoni",
-    items: [
+    item: [
       {
         id: 1,
         name: "Sarah Johnson",
@@ -278,26 +278,39 @@ const dataMirka = {
 
   callToAction: {
     title: "Siap Menguasai Kamera dan Membuat Foto Kamu Jadi Menakjubkan?",
-    subtitle: "Wujudkan impian fotografimu sekarang. Bergabunglah dengan kami dan mulai perjalanan kreatifmu hari ini!",
+    subtitle: "Wujudkan impian fotografimu sekarang. Bergabunglah dengan Frameium Square dan mulai perjalanan kreatifmu hari ini!",
     buttonText: "Mulai Kursus Sekarang",
     badgeText: "⭐ Sudah 5.200+ siswa bergabung",
     imageUrl: "/images/templateLandingPageBonus/Mirka/images/pexels-photo-11904557.jpg",
     imageAlt: "Fotografer sedang mengambil gambar",
   },
+  pattern: "/images/templateLandingPageBonus/Mirka/images/pattern/pattern-01.svg",
 };
 
-export default function Mirka({ siteData, siteName }) {
+export default function Mirka({ siteData, siteName, activeTheme }) {
   return (
     <>
-      <HeroSectionMirka data={dataMirka.hero} secId="hero" />
-      <ProblemSectionMirka data={dataMirka.problem} secId="problem" />
-      <SolutionSectionMirka data={dataMirka.solution} secId="solution" />
-      <BenefitSectionMirka data={dataMirka.benefit} secId="benefit" />
-      <PortfolioSectionMirka data={dataMirka.portfolio} secId="portfolio" />
-      <PricingSectionMirka data={dataMirka.pricing} secId="daftar" waNumber={siteData.phone} />
-      <TestimonialSectionImageMirka data={dataMirka.testimonials} secId="testimoni" />
-      <FAQSectionMirka data={dataMirka.faqSection} secId="faq" />
-      <CallToActionSectionMirka data={dataMirka.callToAction} secId="cta" siteName={siteName} />
+      <div className="card sm:p-5 p-3">
+        <HeroSectionMirka data={dataMirka.hero} secId="hero" siteName={siteName} />
+        <ProblemSectionMirka data={dataMirka.problem} secId="problem" />
+        <SolutionSectionMirka data={dataMirka.solution} secId="solution" />
+      </div>
+      <div
+        style={{
+          backgroundImage: `url(${dataMirka.pattern})`,
+          backgroundSize: "150px auto",
+        }}
+      >
+        <BenefitSectionMirka data={dataMirka.benefit} secId="benefit" />
+        <PortfolioSectionMirka data={dataMirka.portfolio} secId="portfolio" />
+      </div>
+
+      <div className="sm:p-5 p-3">
+        <PricingSectionMirka data={dataMirka.pricing} secId="daftar" waNumber={siteData.phone} />
+        <TestimonialSectionImageMirka data={dataMirka.testimonials} secId="testimoni" />
+        <FAQSectionMirka data={dataMirka.faqSection} secId="faq" />
+        <CallToActionSectionMirka data={dataMirka.callToAction} secId="cta" siteName={siteName} />
+      </div>
     </>
   );
 }

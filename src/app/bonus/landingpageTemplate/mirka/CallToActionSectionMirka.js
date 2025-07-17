@@ -4,7 +4,7 @@ import Heading from "./ui/Heading";
 
 export default function CallToActionSectionMirka({ siteName, data, secId }) {
   return (
-    <section className="sm:p-5 p-3 pt-0 sm:pt-0" id={secId}>
+    <section id={secId}>
       <div className="bg-cover bg-center" style={{ backgroundImage: `url(${data.imageUrl})`, backgroundAttachment: "fixed" }}>
         <div className="relative bg-gradient-to-b from-slate-900 to-slate-900/80 w-full min-h-screen flex flex-col justify-center items-center">
           <SectionWrapper css="sm:px-20">

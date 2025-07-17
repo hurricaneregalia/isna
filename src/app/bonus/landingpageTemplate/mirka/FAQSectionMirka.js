@@ -13,7 +13,7 @@ export default function FAQSectionMirka({ data, secId }) {
   };
 
   return (
-    <section className="sm:px-5 px-3" id={secId}>
+    <section id={secId}>
       <div className="bg-slate-900  lg:px-20 py-32">
         <SectionWrapper css="sm:px-20 space-y-10 container mx-auto px-4 sm:flex flex-col sm:flex-row-reverse gap-10">
           <div className="lg:w-4/12 sm:w-1/2 text-white sm:text-right text-center">
