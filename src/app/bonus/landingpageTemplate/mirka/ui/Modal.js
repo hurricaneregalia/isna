@@ -76,13 +76,13 @@ export default function Modal({ title, btnCss, waNumber }) {
           </div>
         </div>
       )}
-      <button className={`btn ${btnCss} font-semibold tracking-wide mt-auto`} onClick={() => setIsOpen(true)}>
+      <button className={`btn btn-lg ${btnCss} font-semibold tracking-wide mt-auto`} onClick={() => setIsOpen(true)}>
         {title}
       </button>
 
       {isOpen && (
-        <div className="text-black fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 transition-opacity animate-fadeIn">
-          <div ref={modalRef} className="bg-white dark:bg-base-100 p-6 rounded-lg shadow-xl w-full max-w-lg mx-3 relative animate-slideUp">
+        <div className="text-base-content fixed inset-0 z-50 flex items-center justify-center bg-base-200/90 transition-opacity animate-fadeIn">
+          <div ref={modalRef} className="bg-base-100 dark:bg-base-100 p-6 card shadow-xl w-full max-w-lg mx-3 relative animate-slideUp">
             <button className="absolute top-4 right-4 text-xl btn btn-square rounded-full font-bold text-gray-500 hover:text-red-500" onClick={() => setIsOpen(false)} aria-label="Close modal">
               <FaTimes />
             </button>
@@ -113,7 +113,7 @@ export default function Modal({ title, btnCss, waNumber }) {
               </div>
 
               <div className=" text-center">
-                <button type="submit" className="btn btn-warning w-full">
+                <button type="submit" className="btn btn-warning btn-lg w-full">
                   Kirim
                 </button>
               </div>

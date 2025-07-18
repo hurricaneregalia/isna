@@ -12,8 +12,8 @@ import { useState } from "react";
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import "yet-another-react-lightbox/plugins/captions.css";
 
-const bgCoosen = "bg-slate-800";
-const txtCoosen = "text-slate-200";
+const bgCoosen = "bg-base-200";
+const txtCoosen = "text-base-content";
 
 export default function TestimonialSectionImageMirka({ data, secId }) {
   const [isOpen, setIsOpen] = useState(false);

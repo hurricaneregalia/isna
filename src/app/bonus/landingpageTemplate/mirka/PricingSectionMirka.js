@@ -16,7 +16,7 @@ export default function PricingSectionMirka({ secId, waNumber, data }) {
             {/* Pricing Card */}
             {data.item.map((plan) => (
               <div key={plan.id} className=" text-slate-900 flex flex-col text-left">
-                <Heading>{plan.name}</Heading>
+                <Heading textColor="text-slate-900">{plan.name}</Heading>
                 <p className="text-2xl font-bold text-red-500 ">{formatRupiah(plan.price)}</p>
 
                 {/* Feature List */}

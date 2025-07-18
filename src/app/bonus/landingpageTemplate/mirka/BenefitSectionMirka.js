@@ -16,7 +16,7 @@ export default function BenefitSectionMirka({ data, secId }) {
 
           {/* Carousel Scrollable */}
           <div className="w-full overflow-x-auto pb-5">
-            <div className="carousel carousel-center space-x-4 w-max">
+            <div className="carousel carousel-center space-x-4 w-max pb-5">
               {data.item.map((item, index) => (
                 <div key={index} className="p-2 bg-white shadow-lg card " data-aos="flip-left">
                   <div id="wrapper" className="group card carousel-item relative w-64 h-95 overflow-hidden shrink-0 cursor-pointer">
@@ -24,7 +24,7 @@ export default function BenefitSectionMirka({ data, secId }) {
 
                     <div
                       id="bottom"
-                      className=" absolute w-full h-full bg-gradient-to-t from-slate-900 to-slate-900/80 font-bold text-slate-200 text-sm p-4 py-6 transition-all duration-500 ease-in-out group-hover:opacity-0"
+                      className=" absolute w-full h-full bg-gradient-to-t from-base-300 to-base-300/80 font-bold text-base-content/75 text-sm p-4 py-6 transition-all duration-500 ease-in-out group-hover:opacity-0"
                     >
                       <div id="info" className="h-full flex flex-col justify-between ">
                         <p className="text-3xl transition-all duration-500 ease-in-out group-hover:-translate-y-10 text-warning">0{index + 1}</p>

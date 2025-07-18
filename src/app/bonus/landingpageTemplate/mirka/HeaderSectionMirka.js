@@ -3,7 +3,7 @@ import ThemeChanger from "@/app/component/global/ThemeChanger";
 import React from "react";
 import { FaPalette } from "react-icons/fa6";
 
-export default function HeaderSectionMirka({ siteName, bgColor, textColor, widthNavbar }) {
+export default function HeaderSectionMirka({ siteName, bgColor, textColor, widthNavbar, btnThemeBorder }) {
   const bgColorFx = bgColor ? bgColor : "bg-primary";
   const textColorFx = textColor ? textColor : "text-base-content";
   return (
@@ -16,7 +16,7 @@ export default function HeaderSectionMirka({ siteName, bgColor, textColor, width
               <div className={`text-xl font-bold capitalize ${textColorFx}`}>{siteName}</div>
             </div>
             <div className="flex-none ">
-              <ModalThemes title="Pilih Tema" btnTxt={<FaPalette />} borderColor="border-white/75" textColor="text-white/75" modalId="theme-modal">
+              <ModalThemes title="Pilih Tema" btnTxt={<FaPalette />} borderColor={btnThemeBorder} textColor={textColor} modalId="theme-modal">
                 <ThemeChanger />
               </ModalThemes>
             </div>

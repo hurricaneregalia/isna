@@ -284,13 +284,13 @@ const dataMirka = {
     imageUrl: "/images/templateLandingPageBonus/Mirka/images/pexels-photo-11904557.jpg",
     imageAlt: "Fotografer sedang mengambil gambar",
   },
-  pattern: "/images/templateLandingPageBonus/Mirka/images/pattern/pattern-01.svg",
+  pattern: "/images/templateLandingPageBonus/Mirka/images/pattern/pattern-02.svg",
 };
 
 export default function Mirka({ siteData, siteName, activeTheme }) {
   return (
     <>
-      <div className="card sm:p-5 p-3">
+      <div className="card sm:p-5 p-3 bg-white">
         <HeroSectionMirka data={dataMirka.hero} secId="hero" siteName={siteName} />
         <ProblemSectionMirka data={dataMirka.problem} secId="problem" />
         <SolutionSectionMirka data={dataMirka.solution} secId="solution" />
@@ -305,7 +305,7 @@ export default function Mirka({ siteData, siteName, activeTheme }) {
         <PortfolioSectionMirka data={dataMirka.portfolio} secId="portfolio" />
       </div>
 
-      <div className="sm:p-5 p-3">
+      <div className="sm:p-5 p-3 bg-white">
         <PricingSectionMirka data={dataMirka.pricing} secId="daftar" waNumber={siteData.phone} />
         <TestimonialSectionImageMirka data={dataMirka.testimonials} secId="testimoni" />
         <FAQSectionMirka data={dataMirka.faqSection} secId="faq" />

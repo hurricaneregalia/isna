@@ -7,9 +7,9 @@ import Heading from "./ui/Heading";
 export default function ProblemSectionMirka({ data, secId }) {
   return (
     <section id={secId}>
-      <div className=" bg-slate-900  lg:px-20 py-32 ">
+      <div className=" bg-base-300  lg:px-20 py-32 ">
         <SectionWrapper css="sm:px-20 lg:flex flex-1 gap-20 space-y-10">
-          <div className="lg:w-4/12 w-full text-white">
+          <div className="lg:w-4/12 w-full text-base-content">
             <Heading>{data.title}</Heading>
             <hr className=" lg:my-8 my-4 opacity-0" />
             <BodyText>{data.description}</BodyText>
@@ -20,7 +20,7 @@ export default function ProblemSectionMirka({ data, secId }) {
         </SectionWrapper>
         <hr className=" my-16 opacity-0" />
         <SectionWrapper css="sm:px-20 lg:flex flex-1 gap-20 space-y-10">
-          <div className="lg:order-3 order-1 lg:w-4/12 w-full text-white" id="loopData">
+          <div className="lg:order-3 order-1 lg:w-4/12 w-full text-base-content" id="loopData">
             <Heading>{data.title2}</Heading>
             <hr className=" lg:my-8 my-4 opacity-0" />
             <div className="space-y-3 flex-1">
