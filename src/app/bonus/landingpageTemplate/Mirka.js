@@ -8,6 +8,7 @@ import TestimonialSectionImageMirka from "./mirka/TestimonialSectionImageMirka";
 import FAQSectionMirka from "./mirka/FAQSectionMirka";
 import CallToActionSectionMirka from "./mirka/CallToActionSectionMirka";
 import SolutionSectionMirka from "./mirka/SolutionSectionMirka";
+import ProblemSectionMirka2 from "./mirka/ProblemSectionMirka2";
 
 const dataMirka = {
   hero: {
@@ -290,9 +291,10 @@ const dataMirka = {
 export default function Mirka({ siteData, siteName, activeTheme }) {
   return (
     <>
-      <div className="card sm:p-5 p-3 bg-white">
+      <div className="card  bg-primary overflow-hidden space-y-32 sm:pb-20 pb-5 border-16 border-white">
         <HeroSectionMirka data={dataMirka.hero} secId="hero" siteName={siteName} />
         <ProblemSectionMirka data={dataMirka.problem} secId="problem" />
+        <ProblemSectionMirka2 data={dataMirka.problem} secId="problem2" />
       </div>
       <div
         className=" space-y-32 py-32"

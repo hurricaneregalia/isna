@@ -71,7 +71,7 @@ export default function Modal({ title, btnCss, waNumber }) {
       {isLoading && (
         <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black bg-opacity-70 text-white">
           <div className="flex flex-col items-center space-y-4">
-            <FaSpinner className="text-5xl animate-spin text-warning" />
+            <FaSpinner className="text-5xl animate-spin text-primary" />
             <div className="text-center animate-pulse text-lg font-medium">Pendaftaran sedang diproses...</div>
           </div>
         </div>
