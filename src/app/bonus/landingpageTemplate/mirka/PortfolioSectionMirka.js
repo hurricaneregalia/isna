@@ -28,7 +28,7 @@ export default function PortfolioSectionMirka({ data, secId }) {
 
   return (
     <section className="patternBg" id={secId}>
-      <div className="bg-transparent lg:px-20 pb-32">
+      <div className="bg-transparent lg:px-20">
         <SectionWrapper css="sm:px-20 gap-20 space-y-10">
           {/* Judul */}
           <div className="lg:w-6/12 w-full capitalize mx-auto text-center">
@@ -53,10 +53,10 @@ export default function PortfolioSectionMirka({ data, secId }) {
                   alt={photo.artistName}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
+                  className="object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110 group-active:scale-105 group-active:brightness-110"
                 />
-                <div className=" text-start absolute bottom-0 left-0 w-full bg-gradient-to-t from-base-300 to-transparent text-base-content text-sm p-4 pt-20  transition-opacity duration-300 group-hover:opacity-0">
-                  By <span className="font-bold">{photo.artistName}</span>
+                <div className="text-start absolute bottom-0 left-0 w-full bg-gradient-to-t from-primary to-transparent text-base-100 text-sm p-4 pt-20 transition-opacity duration-300 group-hover:opacity-0 group-active:opacity-0">
+                  By <span className="font-bold opacity-75">{photo.artistName}</span>
                 </div>
               </button>
             ))}

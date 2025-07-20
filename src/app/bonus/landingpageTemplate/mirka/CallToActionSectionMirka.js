@@ -6,7 +6,7 @@ export default function CallToActionSectionMirka({ siteName, data, secId }) {
   return (
     <section id={secId}>
       <div className="bg-cover bg-center" style={{ backgroundImage: `url(${data.imageUrl})`, backgroundAttachment: "fixed" }}>
-        <div className="relative bg-gradient-to-b from-base-300 to-base-300/80 w-full min-h-screen flex flex-col justify-center items-center">
+        <div className="relative bg-gradient-to-b from-base-100 to-base-100/50 w-full min-h-screen flex flex-col justify-center items-center">
           <SectionWrapper css="sm:px-20">
             <div className="w-full flex flex-col md:flex-row items-start justify-center">
               <div className="w-full lg:w-6/12 sm:w-10/12 text-base-content text-center">

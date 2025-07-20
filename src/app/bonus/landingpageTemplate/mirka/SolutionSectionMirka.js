@@ -7,10 +7,10 @@ import Heading from "./ui/Heading";
 export default function SolutionSectionMirka({ data, secId }) {
   return (
     <section id={secId}>
-      <div className=" bg-base-300  lg:px-20 sm:pb-32 pb-5 ">
+      <div className="  lg:px-20 pb-5 ">
         <SectionWrapper css="sm:px-20 lg:flex flex-1 gap-20 space-y-10">
-          <div className="lg:w-4/12 w-full text-white">
-            <Heading>{data.title}</Heading>
+          <div className="lg:w-4/12 w-full text-base-content">
+            <Heading textColor="no">{data.title}</Heading>
             <hr className=" lg:my-8 my-4 opacity-0" />
             <BodyText>{data.description}</BodyText>
           </div>

@@ -366,51 +366,71 @@
     "id": "cadacc02-6ec7-4803-8f02-50ee6e07e121",
     "name": "mirka",
     "slug": "mirka",
-    "description": "lirema",
-    "keywords": null,
+    "description": "Template landing page profesional untuk kursus fotografi online. Desain responsif & menarik, siap bantu meningkatkan pendaftaran kursus Anda.",
+    "keywords": "kursus fotografi online, landing page fotografi, belajar fotografi online, landing page kursus, kursus foto digital, pelatihan fotografi online",
     "ogImage": null,
-    "themeId": 1,
+    "themeId": 15,
     "image": "/images/templateLandingPageBonus/Mirka/images/pexels-photo-11904557.jpg",
     "component": "Mirka",
-    "lpDesignStyleId": "d092b505-85e3-4e5b-af93-7482947d0745",
+    "lpDesignStyleId": "b37c54cb-0b0d-4810-965d-b0ab15f9dc38",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-07-16T18:50:10.271Z",
+    "updatedAt": "2025-07-18T07:45:00.993Z",
     "lpFor": [
       {
-        "id": "bf678104-5603-4612-9e57-b6f580f62e65",
-        "description": "menjual jasa profesional."
+        "id": "443c4e89-3266-4e10-a525-cce367a968b8",
+        "description": "pendaftaran kursus."
       }
     ],
     "lpContentTypes": [
       {
-        "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
-        "type": "text",
-        "order": 14
+        "id": "1c39504e-f456-4a1c-9ec7-823df7ec78ff",
+        "type": "form",
+        "order": 11
       },
       {
-        "id": "70f8a47f-6d19-46f5-a90f-70fb492dda97",
-        "type": "image",
-        "order": 12
+        "id": "397d9d29-87dd-4ae7-917d-d5bcc853cf1a",
+        "type": "hero image",
+        "order": 2
       },
       {
-        "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
-        "type": "slider",
-        "order": 13
+        "id": "60a0b2e3-ca35-42cf-97db-1933950650db",
+        "type": "CTA whatsapp",
+        "order": 110
+      },
+      {
+        "id": "96e036b7-3c44-4971-9429-383597f5aceb",
+        "type": "single product",
+        "order": 10
+      },
+      {
+        "id": "d2adaf07-56ce-446d-825f-a94de84dde88",
+        "type": "responsive",
+        "order": 90
+      },
+      {
+        "id": "e15ca3e4-d5aa-414c-a2c2-a78f3f3b0077",
+        "type": "testimoni image",
+        "order": 8
       }
     ],
     "lpDesignStyle": {
-      "id": "d092b505-85e3-4e5b-af93-7482947d0745",
-      "name": "Elegant",
-      "description": "Desain mewah, serif font, cocok untuk wedding, produk eksklusif, fashion."
+      "id": "b37c54cb-0b0d-4810-965d-b0ab15f9dc38",
+      "name": "Modern",
+      "description": "Desain bersih, minimal, banyak white space, fokus pada UX dan kecepatan loading."
     },
-    "ctas": [],
+    "ctas": [
+      {
+        "id": "8977b9b4-4a77-4e96-8daf-70add3b92575",
+        "description": "whatsapp"
+      }
+    ],
     "socialLinks": [],
     "theme": {
-      "id": 1,
-      "name": "light",
-      "description": "Tema terang dan bersih cocok untuk presentasi formal.",
+      "id": 15,
+      "name": "lofi",
+      "description": "Tema chill dengan nuansa lembut dan tenang.",
       "createdAt": "2025-07-01T01:25:25.345Z",
       "updatedAt": "2025-07-01T01:25:25.345Z"
     }

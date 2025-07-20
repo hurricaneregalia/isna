@@ -54,16 +54,22 @@ export default function ThemeChanger() {
   };
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-h-[60vh] overflow-y-auto p-2">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 max-h-[60vh] overflow-y-auto">
       {themes.map((theme, index) => {
         const isActive = theme === activeTheme;
         return (
           <button
             key={theme}
             data-theme={theme}
-            className={`btn btn-sm justify-start text-left w-full capitalize ${isActive ? "btn-primary " : "btn-outline"}`}
+            className={`btn btn-sm justify-start px-2 text-left w-full capitalize ${isActive ? "btn-primary " : "btn-outline"}`}
             onClick={() => handleClick(theme)}
           >
+            <div className="grid shrink-0 grid-cols-2 gap-0.5 rounded-md p-1 shadow-sm bg-base-100">
+              <div className="size-1 rounded-full bg-base-content"></div>
+              <div className="size-1 rounded-full bg-primary"></div>
+              <div className="size-1 rounded-full bg-secondary"></div>
+              <div className="size-1 rounded-full bg-accent"></div>
+            </div>
             {index + 1}. {theme}
           </button>
         );
