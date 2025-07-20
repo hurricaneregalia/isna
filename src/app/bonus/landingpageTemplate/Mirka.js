@@ -131,6 +131,7 @@ const dataMirka = {
 
   pricing: {
     title: "Pilih Paket Kursus Kami",
+    background: "/images/templateLandingPageBonus/Mirka/images/pexels-photo-3680219.webp",
     item: [
       {
         id: 1,
@@ -291,7 +292,7 @@ const dataMirka = {
 export default function Mirka({ siteData, siteName, activeTheme }) {
   return (
     <>
-      <div className="card  bg-primary overflow-hidden space-y-32 sm:pb-20 pb-5 border-16 border-white">
+      <div className="card  bg-primary overflow-hidden space-y-32 sm:pb-20 pb-5 sm:border-16 border-8 border-white">
         <HeroSectionMirka data={dataMirka.hero} secId="hero" siteName={siteName} />
         <ProblemSectionMirka data={dataMirka.problem} secId="problem" />
         <ProblemSectionMirka2 data={dataMirka.problem} secId="problem2" />

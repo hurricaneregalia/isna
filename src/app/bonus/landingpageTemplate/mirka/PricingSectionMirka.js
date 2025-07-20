@@ -11,11 +11,11 @@ export default function PricingSectionMirka({ secId, waNumber, data }) {
     <section
       id={secId}
       style={{
-        backgroundImage: `url(${data.pattern})`,
-        backgroundSize: "150px auto",
+        backgroundImage: `url(${data.pricing.background})`,
+        backgroundSize: "100% auto",
       }}
     >
-      <div className="bg-gradient-to-t from-secondary via-secondary/80 to-secondary/80 lg:px-20 sm:py-32 py-15">
+      <div className="bg-gradient-to-t from-secondary to-secondary/50 lg:px-20 sm:py-32 py-15">
         <SectionWrapper css="sm:px-20 gap-20 space-y-10">
           {/* Grid of Pricing Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
