@@ -82,7 +82,7 @@ export default function Modal({ title, btnCss, waNumber }) {
 
       {isOpen && (
         <div className="text-base-content fixed inset-0 z-50 flex items-center justify-center bg-slate-900/90 transition-opacity animate-fadeIn">
-          <div ref={modalRef} className="bg-primary p-6 card shadow-xl w-full max-w-lg mx-3 relative animate-slideUp">
+          <div ref={modalRef} className="bg-base-100 p-6 card shadow-xl w-full max-w-lg mx-3 relative animate-slideUp">
             <button className="absolute top-4 right-4 text-xl btn btn-square rounded-full font-bold text-base-content hover:text-red-500" onClick={() => setIsOpen(false)} aria-label="Close modal">
               <FaTimes />
             </button>
@@ -113,7 +113,7 @@ export default function Modal({ title, btnCss, waNumber }) {
               </div>
 
               <div className=" text-center">
-                <button type="submit" className="btn btn-warning btn-lg w-full">
+                <button type="submit" className="btn btn-primary btn-lg w-full">
                   Kirim
                 </button>
               </div>

@@ -1,19 +1,19 @@
 import SectionWrapper from "./ui/SectionWrapper";
-import LinkButtonWarning from "./ui/LinkButtonWarning";
 import Heading from "./ui/Heading";
+import LinkButton from "./ui/LinkButton";
 
 export default function CallToActionSectionMirka({ siteName, data, secId }) {
   return (
     <section id={secId}>
       <div className="bg-cover bg-center" style={{ backgroundImage: `url(${data.imageUrl})`, backgroundAttachment: "fixed" }}>
-        <div className="relative bg-gradient-to-b from-base-100 to-base-100/50 w-full min-h-screen flex flex-col justify-center items-center">
+        <div className="relative bg-gradient-to-b from-base-100 via-base-100/80 to-base-100/80 w-full min-h-screen flex flex-col justify-center items-center">
           <SectionWrapper css="sm:px-20">
             <div className="w-full flex flex-col md:flex-row items-start justify-center">
               <div className="w-full lg:w-6/12 sm:w-10/12 text-base-content text-center">
-                <Heading>{data.title}</Heading>
+                <Heading textColor="text-primary">{data.title}</Heading>
                 <p className=" text-base-content mt-10 opacity-75">{data.subtitle}</p>
                 <hr className=" sm:my-8 my-10 opacity-0" />
-                <LinkButtonWarning href="#daftar">Gabung</LinkButtonWarning>
+                <LinkButton href="#daftar">Gabung</LinkButton>
               </div>
             </div>
           </SectionWrapper>

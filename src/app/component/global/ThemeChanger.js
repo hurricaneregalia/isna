@@ -38,6 +38,7 @@ const themes = [
   "caramellatte",
   "abyss",
   "silk",
+  "mirka",
 ];
 
 export default function ThemeChanger() {

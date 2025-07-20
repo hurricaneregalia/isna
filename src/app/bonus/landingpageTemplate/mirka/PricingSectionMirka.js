@@ -15,7 +15,7 @@ export default function PricingSectionMirka({ secId, waNumber, data }) {
         backgroundSize: "150px auto",
       }}
     >
-      <div className="bg-secondary/80 lg:px-20 sm:py-32 py-15">
+      <div className="bg-gradient-to-t from-secondary/90 to-neutral/70 lg:px-20 sm:py-32 py-15">
         <SectionWrapper css="sm:px-20 gap-20 space-y-10">
           {/* Grid of Pricing Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
@@ -23,7 +23,7 @@ export default function PricingSectionMirka({ secId, waNumber, data }) {
             {data.pricing.item.map((plan) => (
               <div key={plan.id} className=" text-base-100 flex flex-col text-left">
                 <Heading textColor="no">{plan.name}</Heading>
-                <p className="text-2xl font-bold text-red-500 ">{formatRupiah(plan.price)}</p>
+                <p className="text-2xl font-bold text-primary">{formatRupiah(plan.price)}</p>
 
                 {/* Feature List */}
                 <ul className="space-y-2 my-10">
@@ -36,13 +36,13 @@ export default function PricingSectionMirka({ secId, waNumber, data }) {
                 </ul>
 
                 {/* CTA Button */}
-                <Modal title={plan.buttonLabel} waNumber={waNumber} btnCss="btn-error bg-red-500 hover:bg-red-600 text-red-100" />
+                <Modal title={plan.buttonLabel} waNumber={waNumber} btnCss="btn-primary " />
               </div>
             ))}
 
             {/* Image Cards */}
             {data.pricing.imageCards.map((img) => (
-              <div key={img.id} className={`overflow-hidden shadow-md ${img.id === "img-1" ? "hidden sm:block lg:block" : ""} ${img.id === "img-2" ? "hidden lg:block" : ""}`}>
+              <div key={img.id} className={`overflow-hidden card shadow-md ${img.id === "img-1" ? "hidden sm:block lg:block" : ""} ${img.id === "img-2" ? "hidden lg:block" : ""}`}>
                 <Image src={img.src} alt={img.alt} width={600} height={400} className=" card object-cover w-full h-full border-8 border-slate-100" />
               </div>
             ))}

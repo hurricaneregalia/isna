@@ -369,14 +369,14 @@
     "description": "Template landing page profesional untuk kursus fotografi online. Desain responsif & menarik, siap bantu meningkatkan pendaftaran kursus Anda.",
     "keywords": "kursus fotografi online, landing page fotografi, belajar fotografi online, landing page kursus, kursus foto digital, pelatihan fotografi online",
     "ogImage": null,
-    "themeId": 15,
+    "themeId": 36,
     "image": "/images/templateLandingPageBonus/Mirka/images/pexels-photo-11904557.jpg",
     "component": "Mirka",
     "lpDesignStyleId": "b37c54cb-0b0d-4810-965d-b0ab15f9dc38",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-07-18T07:45:00.993Z",
+    "updatedAt": "2025-07-20T04:35:05.655Z",
     "lpFor": [
       {
         "id": "443c4e89-3266-4e10-a525-cce367a968b8",
@@ -428,11 +428,11 @@
     ],
     "socialLinks": [],
     "theme": {
-      "id": 15,
-      "name": "lofi",
-      "description": "Tema chill dengan nuansa lembut dan tenang.",
-      "createdAt": "2025-07-01T01:25:25.345Z",
-      "updatedAt": "2025-07-01T01:25:25.345Z"
+      "id": 36,
+      "name": "mirka",
+      "description": "Tema hangat yang menunjukan kesemangatan.",
+      "createdAt": "2025-07-20T04:34:51.485Z",
+      "updatedAt": "2025-07-20T04:32:55.659Z"
     }
   },
   {
