@@ -1,255 +1,269 @@
-// src/app/landingpage/TemplateOne.js
 import React from "react";
-import Image from "next/image";
-import { Inter, Montserrat } from "next/font/google";
+import HeroHyzaa from "./hyzaa/HeroHyzaa";
+import AudiencePainHyzaa from "./hyzaa/AudiencePainHyzaa";
+import ShowcaseHyzaa from "./hyzaa/ShowcaseHyzaa";
+import FiturHyzaa from "./hyzaa/FiturHyzaa";
+import TestimoniHyzaa from "./hyzaa/TestimoniHyzaa";
+import FiturKeunggulan from "./hyzaa/FiturKeunggulan";
+import CtaHyzaa from "./hyzaa/CTAHyzaa";
+import FAQHyzaa from "./hyzaa/FAQHyzaa";
+import FooterHyzaa from "./hyzaa/FooterHyzaa";
+import HeaderLandingGlobal from "../[slug]/HeaderLandingGlobal";
+import { BsExclamationCircle, BsCurrencyDollar } from "react-icons/bs";
+import { GiWeight } from "react-icons/gi";
+import { MdSpeed, MdBuild, MdSecurity, MdLocalShipping, MdSettings, MdFlightTakeoff, MdAttachMoney, MdThumbUp } from "react-icons/md";
+import { ShieldCheckIcon, BoltIcon, SparklesIcon } from "@heroicons/react/24/solid";
+import IdealHyzaa from "./hyzaa/IdealHyzaa";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["400", "500", "600", "700"],
-});
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  variable: "--font-montserrat",
-  weight: ["700", "800", "900"],
-});
-
-const data = {
-  hero: {
-    title: "Transformasi Digital untuk Masa Depan Bisnis Anda",
-    subtitle: "Solusi Inovatif yang Mengubah Cara Anda Bekerja",
-    image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200",
-    cta: "Pelajari Lebih Lanjut",
+const dataHyzaa = {
+  heroData: {
+    headline: "Aman & Nyaman, Bahkan di Pegunungan yang Paling Ekstrem",
+    subheadline: "Sepeda gunung yang dirancang untuk menaklukkan jalur terjal tanpa hambatan.",
+    imageUrl: "/images/templateLandingPageBonus/Hyzaa/images/pexels-photo-1659437.jpg",
   },
-  features: [
-    {
-      title: "Efisiensi Tanpa Batas",
-      description: "Optimalkan proses bisnis Anda dengan teknologi terkini yang mengurangi waktu kerja hingga 70%",
-      image: "https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?auto=format&fit=crop&w=800",
-    },
-    {
-      title: "Kolaborasi Real-time",
-      description: "Tim Anda dapat bekerja bersama secara mulus dari mana saja di seluruh dunia",
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800",
-    },
-    {
-      title: "Keamanan Terjamin",
-      description: "Sistem enkripsi tingkat militer melindungi data berharga bisnis Anda",
-      image: "https://images.unsplash.com/photo-1586769852836-bc069f19e1b6?auto=format&fit=crop&w=800",
-    },
-  ],
-  testimonials: [
-    {
-      quote: "Setelah menggunakan solusi ini, produktivitas tim kami meningkat drastis dalam waktu 2 minggu",
-      author: "Budi Santoso, CEO TechInnovate",
-    },
-    {
-      quote: "Transformasi digital yang kami alami benar-benar mengubah cara kami melayani pelanggan",
-      author: "Siti Rahayu, Direktur FinCorp",
-    },
-  ],
-  offer: {
-    title: "Mulai Perjalanan Transformasi Anda Hari Ini",
-    description: "Dapatkan konsultasi gratis dan demo produk eksklusif untuk 100 pendaftar pertama",
-    benefits: ["Analisis kebutuhan bisnis gratis", "Demo produk 1-on-1 dengan ahli", "Paket diskon 30% untuk implementasi"],
+
+  painData: {
+    label: "Masalah Umum Rider",
+    headline: "Ketika sepeda menjadi beban dalam petualangan",
+    pains: [
+      {
+        icon: <BsExclamationCircle />,
+        title: "Suspensi Cepat Rusak",
+        description: "Bebatuan terasa langsung ke tubuh. Suspensi tak lagi meredam setelah beberapa minggu.",
+      },
+      {
+        icon: <GiWeight />,
+        title: "Berat di Tanjakan",
+        description: "Rangka padat jadi beban. Tanjakan terasa dua kali lebih berat dari seharusnya.",
+      },
+      {
+        icon: <BsCurrencyDollar />,
+        title: "Harga Tak Sepadan",
+        description: "Fitur terbatas, cepat aus, dan tak mencerminkan harga premium yang dibayar.",
+      },
+    ],
   },
-  form: {
-    title: "Ambil Langkah Pertama Anda Sekarang",
-    subtitle: "Isi formulir untuk akses prioritas dan penawaran eksklusif",
+
+  idealData: {
+    label: "INILAH YANG SEHARUSNYA",
+    headline: "Exling Sport membantu kamu menaklukan jalur ekstrem",
+    description: "Bukan sekadar sepeda, tapi partner andalan di setiap tanjakan dan turunan. Stabil, ringan, dan siap hadapi medan paling liar.",
+    imageUrl: "/images/templateLandingPageBonus/Hyzaa/images/photo-1606087492572-424ebe0f2f61.jpg",
+    item: [
+      {
+        icon: <MdSettings className="text-primary" />,
+        title: "Suspensi Tangguh Anti-Rusak",
+        description: "Meredam hentakan ekstrem tanpa kehilangan kenyamanan di medan berat.",
+      },
+      {
+        icon: <MdFlightTakeoff className="text-primary" />,
+        title: "Ringan & Stabil",
+        description: "Material aerospace membuatnya ringan di tanjakan, dan tetap stabil saat menurun.",
+      },
+      {
+        icon: <MdAttachMoney className="text-primary" />,
+        title: "Sepadan dengan Investasi",
+        description: "Kualitas dan fitur yang layak untuk petualangan jangka panjang.",
+      },
+      {
+        icon: <MdThumbUp className="text-primary" />,
+        title: "Fokus pada Petualangan",
+        description: "Minim risiko teknis, jadi kamu bisa fokus menikmati setiap perjalanan.",
+      },
+    ],
+  },
+
+  productsData: {
+    label: "mountain bike",
+    headline: "Sepeda Gunung untuk Petualangan yang Sesungguhnya",
+    item: [
+      {
+        name: "Altura X7",
+        desc: "Untuk rider yang mencari kecepatan dan kelincahan di jalur ekstrem.",
+        price: 45000000,
+        image: "/images/templateLandingPageBonus/Hyzaa/images/mtb-1.jpeg",
+        altImage: "/images/templateLandingPageBonus/Hyzaa/images/alt-img-1.jpeg",
+      },
+      {
+        name: "Granite XTR",
+        desc: "Dirancang untuk medan berbatu dan tanjakan curam yang menantang.",
+        price: 42000000,
+        image: "/images/templateLandingPageBonus/Hyzaa/images/mtb-2.jpeg",
+        altImage: "/images/templateLandingPageBonus/Hyzaa/images/alt-img-2.jpeg",
+      },
+      {
+        name: "Velterra 5C",
+        desc: "Keseimbangan antara kontrol dan kecepatan dalam satu rangka.",
+        price: 48000000,
+        image: "/images/templateLandingPageBonus/Hyzaa/images/mtb-3.jpeg",
+        altImage: "/images/templateLandingPageBonus/Hyzaa/images/alt-img-3.jpeg",
+      },
+      {
+        name: "Orion Elite",
+        desc: "Tangguh di segala cuaca dan segala jalur.",
+        price: 50000000,
+        image: "/images/templateLandingPageBonus/Hyzaa/images/mtb-4.jpeg",
+        altImage: "/images/templateLandingPageBonus/Hyzaa/images/alt-img-4.jpeg",
+      },
+      {
+        name: "Zenith Pro",
+        desc: "Elegan, kokoh, dan siap menempuh jarak jauh.",
+        price: 55000000,
+        image: "/images/templateLandingPageBonus/Hyzaa/images/mtb-5.jpeg",
+        altImage: "/images/templateLandingPageBonus/Hyzaa/images/alt-img-5.jpeg",
+      },
+      {
+        name: "Strato V9",
+        desc: "Teknologi terbaru untuk kendali penuh di jalur ekstrem.",
+        price: 53000000,
+        image: "/images/templateLandingPageBonus/Hyzaa/images/mtb-6.jpeg",
+        altImage: "/images/templateLandingPageBonus/Hyzaa/images/alt-img-6.jpeg",
+      },
+    ],
+  },
+
+  fiturData: {
+    label: "FITUR UTAMA",
+    headline: "Membuat Petualangan Lebih Aman & Nyaman",
+    features: [
+      {
+        icon: <ShieldCheckIcon />,
+        title: "Durabilitas Ekstrem",
+        desc: "Rangka dan komponen tahan segala kondisi. Tak perlu ragu menembus jalur terberat.",
+      },
+      {
+        icon: <BoltIcon />,
+        title: "Performa Maksimal",
+        desc: "Transmisi presisi, suspensi adaptif, dan pengereman hidrolik untuk kontrol penuh.",
+      },
+      {
+        icon: <SparklesIcon />,
+        title: "Desain Premium",
+        desc: "Finishing matte dan desain futuristik menciptakan kesan eksklusif dan profesional.",
+      },
+    ],
+  },
+
+  fiturKeunggulan: {
+    label: "Keunggulan",
+    headline: "Keunggulan Sepeda Gunung Exling Sport",
+    imageUrl: "/images/templateLandingPageBonus/Hyzaa/images/keunggulan.png",
+    item: [
+      {
+        icon: <MdSpeed />,
+        title: "Performa Tinggi",
+        description: "Melibas tanjakan dan turunan ekstrem tanpa kehilangan kendali.",
+      },
+      {
+        icon: <MdBuild />,
+        title: "Material Berkualitas",
+        description: "Dipilih dari bahan terbaik untuk daya tahan dan bobot ringan.",
+      },
+      {
+        icon: <MdSecurity />,
+        title: "Garansi Resmi",
+        description: "Dukungan penuh dengan garansi 1 tahun dari pabrik.",
+      },
+      {
+        icon: <MdLocalShipping />,
+        title: "Pengiriman Cepat",
+        description: "Pesanan dikirim cepat dan aman ke seluruh Indonesia.",
+      },
+    ],
+  },
+
+  ctaData: {
+    label: "Ayo Berpetualang!",
+    headline: "Mulai Petualangan yang Tak Terbatas",
+    description: "Medan terbaik selalu menunggu untuk ditaklukkan. Tak perlu menunggu lagi, sekaranglah waktu yang tepat.",
+    imageUrl: "/images/templateLandingPageBonus/Hyzaa/images/pexels-photo-19131131.jpg",
+  },
+
+  testimoniData: {
+    label: "APA KATA MEREKA?",
+    headline: "Cerita dari Para Rider Profesional",
+    items: [
+      {
+        quote: "Medan curam biasanya bikin saya tegang, tapi sepedanya terasa stabil dan responsif. Jadi lebih fokus dan percaya diri.",
+        name: "Rizky Maulana",
+        role: "Atlet Downhill Nasional",
+        variant: "Altura X7",
+        image: "/images/templateLandingPageBonus/Hyzaa/images/testimoni/pexels-photo-91227.jpg",
+      },
+      {
+        quote: "Biasanya sepeda trail kelihatan keren tapi berat. Granite XTR ternyata lebih ringan dan kuat, cocok untuk rutinitas gowes saya.",
+        name: "Andhika Putra",
+        role: "Pekerja Kreatif & Cyclist",
+        variant: "Granite XTR",
+        image: "/images/templateLandingPageBonus/Hyzaa/images/testimoni/pexels-photo-220453.jpg",
+      },
+      {
+        quote: "Waktu bersepeda di wilayah Kalimantan, saya nggak khawatir soal kerusakan. Rasanya mantap di jalur basah maupun kering.",
+        name: "Laras Permata",
+        role: "Pemandu Wisata Alam",
+        variant: "Velterra 5C",
+        image: "/images/templateLandingPageBonus/Hyzaa/images/testimoni/pexels-photo-415829.jpg",
+      },
+      {
+        quote: "Sepda yang membuat saya merasa punya kontrol penuh, apalagi saat turun dengan cepat. Rasanya beda dari sepeda yang biasa saya pakai.",
+        name: "Bayu Santoso",
+        role: "Kompetitor Enduro",
+        variant: "Strato V9",
+        image: "/images/templateLandingPageBonus/Hyzaa/images/testimoni/pexels-photo-614810.jpg",
+      },
+    ],
+  },
+
+  faqData: {
+    label: "FAQ",
+    headline: "Pertanyaan Umum Seputar Sepeda Gunung",
+    items: [
+      {
+        question: "Apakah sepeda ini cocok untuk pemula?",
+        answer: "Ya. Sepeda kami dirancang untuk semua level, dari pemula hingga profesional.",
+      },
+      {
+        question: "Apakah tersedia garansi?",
+        answer: "Kami memberikan garansi resmi selama 1 tahun untuk kerusakan pabrik.",
+      },
+      {
+        question: "Bagaimana cara pemesanan dan pengiriman?",
+        answer: "Pemesanan langsung melalui website. Pengiriman 2–4 hari kerja menggunakan logistik terpercaya.",
+      },
+      {
+        question: "Apakah tersedia sistem cicilan?",
+        answer: "Tersedia. Kami bekerja sama dengan penyedia cicilan tanpa kartu kredit dan layanan paylater.",
+      },
+    ],
+  },
+
+  footerData: {
+    tagline: "Sepeda gunung premium untuk petualang sejati.",
+    credit: "Made with ❤️ in Indonesia.",
   },
 };
 
-const TemplateOne = () => {
+export default function Hyzaa({ siteData, siteName }) {
+  const paddingX = "lg:px-32 sm:px-16 px-5";
   return (
-    <div className={`${inter.variable} ${montserrat.variable} font-sans bg-white`}>
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <Image src={data.hero.image} alt="Background Hero" layout="fill" objectFit="cover" quality={100} priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10 text-center text-white">
-          <h1 className={`${montserrat.className} text-5xl md:text-7xl font-black mb-6 tracking-tight`}>{data.hero.title}</h1>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-10">{data.hero.subtitle}</p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105">
-            {data.hero.cta}
-          </button>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            {data.features.map((feature, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-                <div className="h-64 relative">
-                  <Image
-                    src={feature.image}
-                    alt={feature.title}
-                    layout="fill"
-                    objectFit="cover"
-                    className="transition-transform duration-500 hover:scale-105"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className={`${montserrat.className} text-2xl font-bold mb-3 text-gray-900`}>{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
-                </div>
-              </div>
-            ))}
+    <>
+      <HeaderLandingGlobal siteName={siteName} bgColor="bg-slate-900" widthNavbar="max-w-6xl" />
+      <HeroHyzaa targetId="#product" data={dataHyzaa.heroData} />
+      <div className="bg-primary lg:px-16 px-5">
+        <div className="bg-base-100 card overflow-hidden  max-w-6xl mx-auto ">
+          <div className="flex flex-col mt-5 lg:py-32 py-16 gap-y-32 bg-primary/5 ">
+            <AudiencePainHyzaa paddingX={paddingX} data={dataHyzaa.painData} />
+            <IdealHyzaa paddingX={paddingX} data={dataHyzaa.idealData} />
+            <ShowcaseHyzaa paddingX={paddingX} secId="product" waNumber={siteData.phone} data={dataHyzaa.productsData} />
+            <FiturHyzaa paddingX={paddingX} data={dataHyzaa.fiturData} />
+            <FiturKeunggulan paddingX={paddingX} data={dataHyzaa.fiturKeunggulan} />
+            <TestimoniHyzaa paddingX={paddingX} data={dataHyzaa.testimoniData} />
+            <CtaHyzaa paddingX={paddingX} targetId="#product" data={dataHyzaa.ctaData} />
+            <FAQHyzaa paddingX={paddingX} data={dataHyzaa.faqData} />
           </div>
         </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-900 to-indigo-900 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className={`${montserrat.className} text-4xl font-bold mb-16`}>Apa Kata Mereka yang Sudah Mencoba</h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-            {data.testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
-                <p className="text-xl italic mb-6">"{testimonial.quote}"</p>
-                <p className="font-bold">{testimonial.author}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Offer Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className={`${montserrat.className} text-4xl font-bold text-gray-900 mb-6`}>{data.offer.title}</h2>
-            <p className="text-xl text-gray-600 mb-10">{data.offer.description}</p>
-
-            <div className="flex flex-wrap justify-center gap-6">
-              {data.offer.benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center bg-blue-50 px-4 py-2 rounded-full">
-                  <svg className="w-5 h-5 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path
-                      fillRule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="font-medium">{benefit}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Registration Form */}
-      <section className="py-20 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
-            <div className="md:flex">
-              <div className="md:w-1/2 bg-gradient-to-br from-blue-600 to-indigo-700 p-8 text-white">
-                <h3 className={`${montserrat.className} text-3xl font-bold mb-4`}>{data.form.title}</h3>
-                <p className="text-lg opacity-90">{data.form.subtitle}</p>
-
-                <div className="mt-8 space-y-4">
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 bg-white/20 p-2 rounded-full">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                      </svg>
-                    </div>
-                    <p className="ml-4">Panduan implementasi khusus untuk kebutuhan bisnis Anda</p>
-                  </div>
-
-                  <div className="flex items-start">
-                    <div className="flex-shrink-0 bg-white/20 p-2 rounded-full">
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                      </svg>
-                    </div>
-                    <p className="ml-4">Akses ke tim ahli selama periode demo</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="md:w-1/2 p-8">
-                <form className="space-y-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                      Nama Lengkap
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Masukkan nama Anda"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                      Email Perusahaan
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="email@perusahaan.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                      Nomor Telepon
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="0812-XXXX-XXXX"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
-                      Nama Perusahaan
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="Perusahaan Anda"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    Dapatkan Akses Prioritas Sekarang
-                  </button>
-
-                  <p className="text-xs text-gray-500 mt-4">
-                    Dengan mengisi formulir, Anda menyetujui syarat dan ketentuan serta kebijakan privasi kami.
-                  </p>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-10 bg-gray-900 text-gray-400 text-center">
-        <div className="container mx-auto px-4">
-          <p>© {new Date().getFullYear()} Nama Perusahaan. Hak Cipta Dilindungi.</p>
-        </div>
-      </footer>
-    </div>
+        <FooterHyzaa siteName={siteName} data={dataHyzaa.footerData} />
+      </div>
+    </>
   );
-};
-
-export default TemplateOne;
+}

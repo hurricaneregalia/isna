@@ -11,16 +11,13 @@ const __dirname = path.dirname(__filename);
 
 // === DATA GAMBAR ===
 const imageUrl = [
-  "https://randomuser.me/api/portraits/women/44.jpg",
-  "https://randomuser.me/api/portraits/men/36.jpg",
-  "https://randomuser.me/api/portraits/women/68.jpg",
-  "https://randomuser.me/api/portraits/men/21.jpg",
-  "https://randomuser.me/api/portraits/women/25.jpg",
-  "https://randomuser.me/api/portraits/men/11.jpg",
-  "https://randomuser.me/api/portraits/women/18.jpg",
-  "https://randomuser.me/api/portraits/men/42.jpg",
-  "https://randomuser.me/api/portraits/women/81.jpg",
-  "https://randomuser.me/api/portraits/men/52.jpg",
+  "https://images.pexels.com/photos/1659437/pexels-photo-1659437.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+  "https://images.unsplash.com/photo-1606087492572-424ebe0f2f61?q=80&w=927&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/19131131/pexels-photo-19131131.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+  "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+  "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+  "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
 ];
 
 // === FUNGSI DOWNLOAD ===

@@ -374,9 +374,9 @@
     "component": "Mirka",
     "lpDesignStyleId": "b37c54cb-0b0d-4810-965d-b0ab15f9dc38",
     "marketingTools": null,
-    "isActive": false,
+    "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-07-20T04:35:05.655Z",
+    "updatedAt": "2025-07-20T07:36:59.768Z",
     "lpFor": [
       {
         "id": "443c4e89-3266-4e10-a525-cce367a968b8",
@@ -575,24 +575,52 @@
     "id": "c7f76905-2f18-4f5b-8443-fc1b0958d80c",
     "name": "hyzaa",
     "slug": "hyzaa",
-    "description": "amef",
-    "keywords": null,
+    "description": "Template landing page untuk toko sepeda gunung premium. Cocok untuk penjual sepeda, kendaraan brand high-end. Desain profesional, responsif, siap meningkatkan penjualan!",
+    "keywords": "template landing page toko sepeda, landing page sepeda, desain website toko sepeda gunung, template toko sepeda premium, landing page untuk bisnis sepeda, website penjual sepeda high end, landing page kendaraan outdoor, template website sepeda profesional, desain toko online sepeda gunung, landing page toko kendaraan, web sepeda premium, landing page sepeda konversi tinggi, desain UI untuk penjual sepeda, template website dealer sepeda gunung",
     "ogImage": null,
-    "themeId": 1,
-    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "themeId": 35,
+    "image": "/images/templateLandingPageBonus/Hyzaa/images/pexels-photo-1659437.jpg",
     "component": "Hyzaa",
-    "lpDesignStyleId": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
+    "lpDesignStyleId": "83a977c3-b839-4a31-8b8d-1ec1021ce1ca",
     "marketingTools": null,
     "isActive": false,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-07-01T01:31:24.602Z",
+    "updatedAt": "2025-07-22T14:04:15.209Z",
     "lpFor": [
+      {
+        "id": "6c37855a-8169-4309-ab73-da56fccb0b83",
+        "description": "mengumpulkan prospek."
+      },
       {
         "id": "b793484f-c8d2-4f9f-b40a-10f0410801b0",
         "description": "toko online."
+      },
+      {
+        "id": "ecbfa549-0b21-414e-a1bf-982243a69c90",
+        "description": "menjual produk branded."
       }
     ],
     "lpContentTypes": [
+      {
+        "id": "1c39504e-f456-4a1c-9ec7-823df7ec78ff",
+        "type": "form",
+        "order": 11
+      },
+      {
+        "id": "397d9d29-87dd-4ae7-917d-d5bcc853cf1a",
+        "type": "hero image",
+        "order": 2
+      },
+      {
+        "id": "5098707b-91bc-4628-b077-1a98e65b5cd1",
+        "type": "testimoni teks",
+        "order": 6
+      },
+      {
+        "id": "60a0b2e3-ca35-42cf-97db-1933950650db",
+        "type": "CTA whatsapp",
+        "order": 110
+      },
       {
         "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
         "type": "text",
@@ -604,27 +632,27 @@
         "order": 12
       },
       {
-        "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
-        "type": "youtube video",
-        "order": 15
+        "id": "822dbbf4-eda5-4fa5-9d37-a97da91712d3",
+        "type": "product list",
+        "order": 9
       },
       {
-        "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
-        "type": "slider",
-        "order": 13
+        "id": "d2adaf07-56ce-446d-825f-a94de84dde88",
+        "type": "responsive",
+        "order": 90
       }
     ],
     "lpDesignStyle": {
-      "id": "72d47c4b-e71e-4987-ad73-439c8ab0b4c3",
-      "name": "Playful",
-      "description": "Banyak warna cerah, ikon lucu, cocok untuk anak-anak, game, hiburan."
+      "id": "83a977c3-b839-4a31-8b8d-1ec1021ce1ca",
+      "name": "Professional",
+      "description": "Tampilan formal dan tegas, cocok untuk B2B, legal, konsultan."
     },
     "ctas": [],
     "socialLinks": [],
     "theme": {
-      "id": 1,
-      "name": "light",
-      "description": "Tema terang dan bersih cocok untuk presentasi formal.",
+      "id": 35,
+      "name": "silk",
+      "description": "Warna lembut dan halus seperti kain sutra.",
       "createdAt": "2025-07-01T01:25:25.345Z",
       "updatedAt": "2025-07-01T01:25:25.345Z"
     }

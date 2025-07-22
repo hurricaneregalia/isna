@@ -9,7 +9,7 @@ export default function HeaderLandingGlobal({ siteName, bgColor, textColor, widt
 
   return (
     <header className={`sticky top-0 z-50 ${bgColorFx}`}>
-      <div className={`container mx-auto ${widthNavbar} px-4`}>
+      <div className={`container mx-auto ${widthNavbar} lg:px-0 px-3`}>
         <nav className="navbar py-4">
           <div className="flex-1">
             <div className={`text-xl font-bold capitalize ${textColorFx}`}>{siteName}</div>
