@@ -6,7 +6,7 @@ import { FaQuoteLeft, FaQuoteRight } from "react-icons/fa6";
 
 export default function TestimoniHyzaa({ paddingX, data }) {
   return (
-    <section className={`bg-base-300/20  px-5 py-32 ${paddingX}`} id="testimoni-hyzaa">
+    <section className={`bg-base-300/50  px-5 py-32 ${paddingX}`} id="testimoni-hyzaa">
       <Wrapper>
         <HeaderSection label={data.label} headline={data.headline} />
 

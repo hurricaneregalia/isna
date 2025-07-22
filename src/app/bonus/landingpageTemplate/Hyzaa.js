@@ -25,6 +25,17 @@ const dataHyzaa = {
   painData: {
     label: "Masalah Umum Rider",
     headline: "Ketika sepeda menjadi beban dalam petualangan",
+    pegunungan: [
+      {
+        title: "Moab, Utah – Amerika",
+        description: "Jalur sepeda gunung yang sulit dilalui, medan terjal, bebatuan tajam dengan tanjakan curam, menantang semua raider sepeda gunung.",
+        imageUrl: "https://images.pexels.com/photos/28144483/pexels-photo-28144483.jpeg",
+      },
+    ],
+    rider: {
+      title: "Rider Lelah",
+      imageUrl: "/images/templateLandingPageBonus/Hyzaa/images/pain-1.png",
+    },
     pains: [
       {
         icon: <BsExclamationCircle />,
@@ -251,7 +262,7 @@ export default function Hyzaa({ siteData, siteName }) {
       <HeroHyzaa targetId="#product" data={dataHyzaa.heroData} />
       <div className="bg-primary lg:px-16 px-5">
         <div className="bg-base-100 card overflow-hidden  max-w-6xl mx-auto ">
-          <div className="flex flex-col mt-5 lg:py-32 py-16 gap-y-32 bg-primary/5 ">
+          <div className="flex flex-col lg:py-32 py-16 gap-y-32 bg-primary/5 ">
             <AudiencePainHyzaa paddingX={paddingX} data={dataHyzaa.painData} />
             <IdealHyzaa paddingX={paddingX} data={dataHyzaa.idealData} />
             <ShowcaseHyzaa paddingX={paddingX} secId="product" waNumber={siteData.phone} data={dataHyzaa.productsData} />

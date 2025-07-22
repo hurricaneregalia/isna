@@ -43,7 +43,7 @@ export default function FiturKeunggulan({ paddingX, data }) {
           <div className="relative w-full sm:h-full h-64">
             <Image src={data.imageUrl} alt="Fitur Sepeda" fill sizes="(max-width: 768px) 100vw, 700px" className="object-contain" data-aos="fade-right" />
           </div>
-          <div className="space-y-5 lg:pr-32 px-5">
+          <div className="space-y-5 lg:pr-32 sm:pr-16 px-5">
             {data.item.map((item, idx) => (
               <div key={idx} className=" bg-base-100 card px-5 py-3 shadow-lg shadow-primary/10" data-aos="fade-up" data-aos-delay={idx * 100}>
                 <div className="flex gap-5 items-center">
