@@ -3,6 +3,7 @@ import HeaderSection from "./ui/HeaderSection";
 import Title from "./ui/Title";
 import Bodytext from "./ui/Bodytext";
 import Image from "next/image";
+import { FaMountainSun } from "react-icons/fa6";
 
 export default function AudiencePainHyzaa({ paddingX, data }) {
   return (
@@ -12,23 +13,26 @@ export default function AudiencePainHyzaa({ paddingX, data }) {
         <div className="grid lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-2 mt-12">
           <div className="">
             {data.pegunungan.map((item, idx) => (
-              <div key={idx} className="text-start flex flex-col h-full">
-                <div className="card relative w-full aspect-square overflow-hidden shadow-lg" data-aos="flip-left">
+              <div key={idx} className="sm:text-start text-center flex flex-col h-full">
+                <div className="card relative w-full aspect-square overflow-hidden shadow-lg shadow-primary/10" data-aos="flip-left">
                   <Image src={item.imageUrl} alt={item.title} fill sizes="(max-width: 768px) 100vw, 700px" className="object-cover" />
                 </div>
-                <div className="lg:mt-auto mt-5">
-                  <Title text={item.title} />
+                <div className="mt-5">
+                  <div className=" flex gap-2 sm:justify-start justify-center">
+                    <FaMountainSun className="mt-1" />
+                    <Title text={item.title} />
+                  </div>
                   <Bodytext text={item.description} />
                 </div>
               </div>
             ))}
           </div>
           <div className="sm:h-auto w-full h-120 sm:py-0 py-10">
-            <div className=" relative sm:w-auto w-full h-full" data-aos="zoom-in">
+            <div className=" relative sm:w-auto w-full h-full">
               <Image src={data.rider.imageUrl} alt={data.rider.title} fill sizes="(max-width: 768px) 100vw, 700px" className="object-contain object-bottom" />
             </div>
           </div>
-          <div className="space-y-5 lg:col-span-1 sm:col-span-2 lg:mt-0 sm:mt-15 mt-5">
+          <div className="space-y-5 lg:col-span-1 sm:col-span-2 lg:mt-0 sm:mt-10 mt-5">
             {data.pains.map((item, idx) => (
               <div key={idx} className="bg-base-100 card overflow-hidden shadow-lg shadow-primary/10 px-5 py-3" data-aos="fade-up" data-aos-delay={idx * 100}>
                 <div className="flex gap-5 items-center">

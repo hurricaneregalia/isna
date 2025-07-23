@@ -43,7 +43,6 @@ export default function FormulirPemesananHyzaa({ selectedProduct, variants, waNu
     const hargaTotal = selectedProduct && formData.jumlah ? selectedProduct.price * formData.jumlah : 0;
 
     setTimeout(() => {
-      setLoading(false);
       document.getElementById("modal-pesan").close();
 
       const message = `
@@ -101,7 +100,7 @@ Saya ingin memesan sepeda ini.
         {loading ? (
           <div className="flex items-center justify-center py-10 flex-col gap-3">
             <FaSpinner className="animate-spin text-3xl text-primary" />
-            <p className="text-sm text-base-content/75 font-medium">Mengirim pesanan...</p>
+            <p className="text-sm text-base-content/75 font-medium">Pesanan sedang di proses...</p>
           </div>
         ) : (
           <form className="space-y-4" onSubmit={handleSubmit} autoComplete="on">
@@ -185,8 +184,8 @@ Saya ingin memesan sepeda ini.
                       <label
                         htmlFor={inputId}
                         className="card py-2 px-4 bg-primary/30 font-bold flex items-center justify-center cursor-pointer 
-                      peer-checked:bg-primary peer-hover:bg-secondary
-                      peer-hover:text-white peer-checked:text-lime-300 text-base-content transition-all"
+           peer-checked:bg-primary peer-hover:bg-secondary
+           peer-hover:text-white peer-checked:text-lime-300 text-base-content transition-all"
                       >
                         {val}
                       </label>

@@ -10,7 +10,7 @@ export default function IdealHyzaa({ paddingX, data }) {
     <section className={paddingX} id="ideal-section">
       <Wrapper>
         <HeaderSection label={data.label} headline={data.headline} />
-        <div className="mb-6 sm:w-7/12 w-full mx-auto ">
+        <div className="mb-6 sm:w-7/12 w-full mx-auto " data-aos="fade-up">
           <Bodytext text={data.description} />
         </div>
 

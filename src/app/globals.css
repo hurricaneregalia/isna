@@ -136,3 +136,18 @@
   height: 100% !important;
   display: block;
 }
+
+.huhuPattern {
+background: radial-gradient(circle, #d6d6d7 10%, transparent 11%),radial-gradient(circle at bottom left, #d6d6d7 5%, transparent 6%),radial-gradient(circle at bottom right, #d6d6d7 5%, transparent 6%),radial-gradient(circle at top left, #d6d6d7 5%, transparent 6%),radial-gradient(circle at top right, #d6d6d7 5%, transparent 6%);
+        background-size: 1em 1em;
+}
+
+.custom-radial {
+  background-image:
+    radial-gradient(circle, currentColor 10%, transparent 11%),
+    radial-gradient(circle at bottom left, currentColor 5%, transparent 6%),
+    radial-gradient(circle at bottom right, currentColor 5%, transparent 6%),
+    radial-gradient(circle at top left, currentColor 5%, transparent 6%),
+    radial-gradient(circle at top right, currentColor 5%, transparent 6%);
+}
+

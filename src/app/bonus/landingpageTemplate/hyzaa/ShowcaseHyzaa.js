@@ -53,8 +53,6 @@ export default function ShowcaseHyzaa({ secId, paddingX, waNumber, data }) {
           ))}
         </div>
       </Wrapper>
-
-      {/* Modal Pemesanan */}
       <FormulirPemesananHyzaa selectedProduct={selectedProduct} variants={data.item} waNumber={waNumber} />
     </section>
   );

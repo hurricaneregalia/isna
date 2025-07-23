@@ -28,7 +28,7 @@ const dataHyzaa = {
     pegunungan: [
       {
         title: "Moab, Utah – Amerika",
-        description: "Jalur sepeda gunung yang sulit dilalui, medan terjal, bebatuan tajam dengan tanjakan curam, menantang semua raider sepeda gunung.",
+        description: "Jalur pegunungan yang sulit dilalui, medan terjal, bebatuan tajam dengan tanjakan curam, menantang semua rider sepeda gunung dengan resiko yang besar.",
         imageUrl: "https://images.pexels.com/photos/28144483/pexels-photo-28144483.jpeg",
       },
     ],
@@ -58,7 +58,7 @@ const dataHyzaa = {
   idealData: {
     label: "INILAH YANG SEHARUSNYA",
     headline: "Exling Sport membantu kamu menaklukan jalur ekstrem",
-    description: "Bukan sekadar sepeda, tapi partner andalan di setiap tanjakan dan turunan. Stabil, ringan, dan siap hadapi medan paling liar.",
+    description: "Partner andalan yang siap menaklukan semua medan pegunungan. Stabil, ringan, dan siap hadapi medan yang paling liar.",
     imageUrl: "/images/templateLandingPageBonus/Hyzaa/images/photo-1606087492572-424ebe0f2f61.jpg",
     item: [
       {
@@ -261,8 +261,9 @@ export default function Hyzaa({ siteData, siteName }) {
       <HeaderLandingGlobal siteName={siteName} bgColor="bg-slate-900" widthNavbar="max-w-6xl" />
       <HeroHyzaa targetId="#product" data={dataHyzaa.heroData} />
       <div className="bg-primary lg:px-16 px-5">
-        <div className="bg-base-100 card overflow-hidden  max-w-6xl mx-auto ">
-          <div className="flex flex-col lg:py-32 py-16 gap-y-32 bg-primary/5 ">
+        <div className="bg-base-100 card overflow-hidden max-w-6xl mx-auto ">
+          <div className="flex flex-col lg:py-32 py-16 gap-y-32 bg-primary/5 relative">
+            <div className="custom-radial text-primary/10 bg-[length:1em_1em] absolute inset-0"></div>
             <AudiencePainHyzaa paddingX={paddingX} data={dataHyzaa.painData} />
             <IdealHyzaa paddingX={paddingX} data={dataHyzaa.idealData} />
             <ShowcaseHyzaa paddingX={paddingX} secId="product" waNumber={siteData.phone} data={dataHyzaa.productsData} />
