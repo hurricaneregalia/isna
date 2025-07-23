@@ -19,19 +19,16 @@ const dataHyzaa = {
   heroData: {
     headline: "Aman & Nyaman, Bahkan di Pegunungan yang Paling Ekstrem",
     subheadline: "Sepeda gunung yang dirancang untuk menaklukkan jalur terjal tanpa hambatan.",
-    imageUrl: "/images/templateLandingPageBonus/Hyzaa/images/pexels-photo-1659437.jpg",
+    imageUrl: "/images/templateLandingPageBonus/Hyzaa/images/pexels-photo-1659437.webp",
   },
-
   painData: {
     label: "Masalah Umum Rider",
     headline: "Ketika sepeda menjadi beban dalam petualangan",
-    pegunungan: [
-      {
-        title: "Moab, Utah – Amerika",
-        description: "Jalur pegunungan yang sulit dilalui, medan terjal, bebatuan tajam dengan tanjakan curam, menantang semua rider sepeda gunung dengan resiko yang besar.",
-        imageUrl: "https://images.pexels.com/photos/28144483/pexels-photo-28144483.jpeg",
-      },
-    ],
+    pegunungan: {
+      title: "Moab, Utah – Amerika",
+      description: "Jalur pegunungan yang sulit dilalui, medan terjal, bebatuan tajam dengan tanjakan curam, menantang semua rider sepeda gunung dengan resiko yang besar.",
+      imageUrl: "https://images.pexels.com/photos/28144483/pexels-photo-28144483.jpeg",
+    },
     rider: {
       title: "Rider Lelah",
       imageUrl: "/images/templateLandingPageBonus/Hyzaa/images/pain-1.png",
@@ -54,7 +51,6 @@ const dataHyzaa = {
       },
     ],
   },
-
   idealData: {
     label: "INILAH YANG SEHARUSNYA",
     headline: "Exling Sport membantu kamu menaklukan jalur ekstrem",
@@ -260,22 +256,15 @@ export default function Hyzaa({ siteData, siteName }) {
     <>
       <HeaderLandingGlobal siteName={siteName} bgColor="bg-slate-900" widthNavbar="max-w-6xl" />
       <HeroHyzaa targetId="#product" data={dataHyzaa.heroData} />
-      <div className="bg-primary lg:px-16 px-5">
-        <div className="bg-base-100 card overflow-hidden max-w-6xl mx-auto ">
-          <div className="flex flex-col lg:py-32 py-16 gap-y-32 bg-primary/5 relative">
-            <div className="custom-radial text-primary/10 bg-[length:1em_1em] absolute inset-0"></div>
-            <AudiencePainHyzaa paddingX={paddingX} data={dataHyzaa.painData} />
-            <IdealHyzaa paddingX={paddingX} data={dataHyzaa.idealData} />
-            <ShowcaseHyzaa paddingX={paddingX} secId="product" waNumber={siteData.phone} data={dataHyzaa.productsData} />
-            <FiturHyzaa paddingX={paddingX} data={dataHyzaa.fiturData} />
-            <FiturKeunggulan paddingX={paddingX} data={dataHyzaa.fiturKeunggulan} />
-            <TestimoniHyzaa paddingX={paddingX} data={dataHyzaa.testimoniData} />
-            <CtaHyzaa paddingX={paddingX} targetId="#product" data={dataHyzaa.ctaData} />
-            <FAQHyzaa paddingX={paddingX} data={dataHyzaa.faqData} />
-          </div>
-        </div>
-        <FooterHyzaa siteName={siteName} data={dataHyzaa.footerData} />
-      </div>
+      <AudiencePainHyzaa paddingX={paddingX} data={dataHyzaa.painData} />
+      <IdealHyzaa paddingX={paddingX} data={dataHyzaa.idealData} />
+      <ShowcaseHyzaa paddingX={paddingX} secId="product" waNumber={siteData.phone} data={dataHyzaa.productsData} />
+      <FiturHyzaa paddingX={paddingX} data={dataHyzaa.fiturData} />
+      <FiturKeunggulan paddingX={paddingX} data={dataHyzaa.fiturKeunggulan} />
+      <TestimoniHyzaa paddingX={paddingX} data={dataHyzaa.testimoniData} />
+      <CtaHyzaa paddingX={paddingX} targetId="#product" data={dataHyzaa.ctaData} />
+      <FAQHyzaa paddingX={paddingX} data={dataHyzaa.faqData} />
+      <FooterHyzaa siteName={siteName} data={dataHyzaa.footerData} />
     </>
   );
 }

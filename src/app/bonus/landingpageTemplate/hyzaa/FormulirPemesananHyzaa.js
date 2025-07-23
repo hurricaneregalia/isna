@@ -220,10 +220,10 @@ Saya ingin memesan sepeda ini.
             </label>
             <Divider my={10} />
             <div className="modal-action justify-between">
-              <button type="button" onClick={() => document.getElementById("modal-pesan").close()} className="btn btn-base-100">
+              <button type="button" onClick={() => document.getElementById("modal-pesan").close()} className="btn btn-base-100 shadow-primary/10 shadow-lg">
                 Batal
               </button>
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className="btn btn-primary shadow-primary/10 shadow-lg">
                 Buat Pesanan
               </button>
             </div>

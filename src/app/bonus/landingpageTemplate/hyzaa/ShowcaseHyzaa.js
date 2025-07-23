@@ -18,8 +18,8 @@ export default function ShowcaseHyzaa({ secId, paddingX, waNumber, data }) {
   };
 
   return (
-    <section className={paddingX} id={secId}>
-      <Wrapper>
+    <>
+      <Wrapper secId={secId}>
         <HeaderSection label={data.label} headline={data.headline} />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
           {data.item.map((p, i) => (
@@ -39,10 +39,10 @@ export default function ShowcaseHyzaa({ secId, paddingX, waNumber, data }) {
                   className="absolute object-cover top-0 left-0 w-full h-full transition-opacity duration-500 opacity-0 group-hover:opacity-100 group-active:opacity-100"
                 />
               </div>
-              <div className="p-4 text-base-content text-start flex flex-col h-50">
-                <HeadlineText h="h5" text={p.name} />
+              <div className="p-4 text-base-content text-start flex flex-col h-full">
+                <HeadlineText h="h4" text={p.name} />
                 <Bodytext text={p.desc} />
-                <div id="aligntToBottom" className="mt-auto">
+                <div className="mt-auto">
                   <p className="text-primary font-semibold">{formatRupiah(p.price)}</p>
                   <button onClick={() => openModalWithProduct(p)} className="btn btn-primary flex gap-1 mt-4 w-full">
                     Pilih <FaArrowRightLong />
@@ -54,6 +54,6 @@ export default function ShowcaseHyzaa({ secId, paddingX, waNumber, data }) {
         </div>
       </Wrapper>
       <FormulirPemesananHyzaa selectedProduct={selectedProduct} variants={data.item} waNumber={waNumber} />
-    </section>
+    </>
   );
 }
