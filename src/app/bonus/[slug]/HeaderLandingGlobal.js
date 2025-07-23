@@ -8,12 +8,10 @@ export default function HeaderLandingGlobal({ siteName, bgColor, textColor, widt
   const textColorFx = textColor || "text-base-100";
 
   return (
-    <header className={`sticky top-0 z-50 ${bgColorFx}`}>
-      <div className={`container mx-auto ${widthNavbar} lg:px-0 px-3`}>
-        <nav className="navbar py-4">
-          <div className="flex-1">
-            <div className={`text-xl font-bold capitalize ${textColorFx}`}>{siteName}</div>
-          </div>
+    <header className={`sticky top-0 z-50 lg:px-30 sm:px-15 px-5 ${bgColorFx} shadow-xl `}>
+      <div className={` mx-auto text-center py-5 ${widthNavbar}`}>
+        <nav className=" w-full mx-auto flex justify-between">
+          <div className={`text-xl font-bold capitalize ${textColorFx}`}>{siteName}</div>
           <div className="flex-none">
             <ModalThemes title="Pilih Tema" btnTxt={<FaPalette />} modalId="theme-modal" textColor={textColorFx} borderColor="border-base-100/40">
               <ThemeChanger />

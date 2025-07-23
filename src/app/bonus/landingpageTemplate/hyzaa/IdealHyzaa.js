@@ -5,11 +5,11 @@ import Bodytext from "./ui/Bodytext";
 import Title from "./ui/Title";
 import Image from "next/image";
 
-export default function IdealHyzaa({ paddingX, data }) {
+export default function IdealHyzaa({ data }) {
   return (
     <Wrapper>
       <HeaderSection label={data.label} headline={data.headline} />
-      <div className="mb-6 sm:w-7/12 w-full mx-auto " data-aos="fade-up">
+      <div className="mb-6 sm:w-7/12 w-full mx-auto">
         <Bodytext text={data.description} />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-8 items-center">

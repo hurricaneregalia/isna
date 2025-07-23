@@ -18,7 +18,7 @@ export default function CtaHyzaa({ targetId, data }) {
       >
         <div className=" bg-slate-900/90 text-white sm:p-32 p-5 py-16">
           <div className="lg:w-9/12 w-full mx-auto">
-            <HeaderSection label={data.label} headline={data.headline} headlineColor="text-lime-300" labelColor="text-white/75" />
+            <HeaderSection aos="fade-up" label={data.label} headline={data.headline} headlineColor="text-lime-300" labelColor="text-white/75" />
             <div className="space-y-5 text-center items-center sm:w-10/12 w-full mx-auto">
               <p className="text-lg opacity-75">{data.description}</p>
               <Divider my={8} />

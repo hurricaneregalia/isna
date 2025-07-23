@@ -254,7 +254,7 @@ export default function Hyzaa({ siteData, siteName }) {
   const paddingX = "lg:px-32 sm:px-16 px-5";
   return (
     <>
-      <HeaderLandingGlobal siteName={siteName} bgColor="bg-slate-900" widthNavbar="max-w-6xl" />
+      <HeaderLandingGlobal siteName={siteName} bgColor="bg-primary" widthNavbar="max-w-7xl" />
       <HeroHyzaa targetId="#product" data={dataHyzaa.heroData} />
       <AudiencePainHyzaa paddingX={paddingX} data={dataHyzaa.painData} />
       <IdealHyzaa paddingX={paddingX} data={dataHyzaa.idealData} />
