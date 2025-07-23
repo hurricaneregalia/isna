@@ -5,8 +5,8 @@ export default function HeadlineText({ h = "h1", text, className = "" }) {
   const headingStyles = {
     h1: "text-5xl",
     h2: "text-4xl",
-    h3: "text-3xl ",
-    h4: "text-xl",
+    h3: "text-xl ",
+    h4: "",
     h5: "",
     h6: "",
   };

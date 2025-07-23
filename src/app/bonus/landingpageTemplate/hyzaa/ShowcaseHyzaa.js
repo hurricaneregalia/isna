@@ -27,7 +27,6 @@ export default function ShowcaseHyzaa({ secId, paddingX, waNumber, data }) {
               key={i}
               className="group card cursor-pointer shadow-lg shadow-primary/10 hover:shadow-xl active:shadow-primary/30 hover:shadow-primary/30 active:shadow-xl transition-all duration-300 relative overflow-hidden bg-base-100"
               data-aos="fade-up"
-              data-aos-delay={i * 100}
             >
               <div className="w-full relative aspect-square">
                 <Image src={p.image} alt={p.name} fill sizes="(max-width: 768px) 100vw, 700px" className="object-cover transition-opacity duration-500 group-hover:opacity-0 group-active:opacity-0" />
@@ -40,7 +39,7 @@ export default function ShowcaseHyzaa({ secId, paddingX, waNumber, data }) {
                 />
               </div>
               <div className="p-4 text-base-content text-start flex flex-col h-full">
-                <HeadlineText h="h4" text={p.name} />
+                <HeadlineText h="h3" text={p.name} />
                 <Bodytext text={p.desc} />
                 <div className="mt-auto">
                   <p className="text-primary font-semibold">{formatRupiah(p.price)}</p>

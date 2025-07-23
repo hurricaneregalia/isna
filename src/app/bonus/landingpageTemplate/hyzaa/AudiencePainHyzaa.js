@@ -5,7 +5,7 @@ import Bodytext from "./ui/Bodytext";
 import Image from "next/image";
 import { FaMountainSun } from "react-icons/fa6";
 
-export default function AudiencePainHyzaa({ paddingX, data }) {
+export default function AudiencePainHyzaa({ data }) {
   const { pegunungan, rider, pains } = data;
 
   return (
@@ -36,7 +36,7 @@ export default function AudiencePainHyzaa({ paddingX, data }) {
         {/* pains tetap pakai loop karena array */}
         <div className="space-y-5 lg:col-span-1 sm:col-span-2 lg:mt-0 sm:mt-10 mt-5">
           {pains.map((item, idx) => (
-            <div key={idx} className="bg-base-100 card overflow-hidden shadow-lg shadow-primary/10 px-5 py-3" data-aos="fade-up" data-aos-delay={idx * 100}>
+            <div key={idx} className="bg-base-100 card overflow-hidden shadow-lg shadow-primary/10 px-5 py-3" data-aos="fade-up">
               <div className="flex gap-5 items-center">
                 <div className="text-4xl text-error">{item.icon}</div>
                 <div className="text-start">

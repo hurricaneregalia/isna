@@ -18,7 +18,7 @@ export default function IdealHyzaa({ paddingX, data }) {
         </div>
         <div className="space-y-5">
           {data.item.map((item, idx) => (
-            <div key={idx} className="bg-base-100 card overflow-hidden shadow-lg shadow-primary/10 px-5 py-3" data-aos="fade-up" data-aos-delay={idx * 100}>
+            <div key={idx} className="bg-base-100 card overflow-hidden shadow-lg shadow-primary/10 px-5 py-3" data-aos="fade-up">
               <div className="flex gap-5 items-center">
                 <div className="text-4xl">{item.icon}</div>
                 <div className="text-start">

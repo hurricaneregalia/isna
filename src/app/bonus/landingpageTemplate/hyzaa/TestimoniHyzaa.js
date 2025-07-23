@@ -10,7 +10,7 @@ export default function TestimoniHyzaa({ data }) {
       <HeaderSection label={data.label} headline={data.headline} />
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {data.items.map((item, idx) => (
-          <div key={item.id || item.name || idx} className="bg-base-100 card shadow-lg p-5 h-full flex flex-col" data-aos="fade-up" data-aos-delay={idx * 100}>
+          <div key={item.id || item.name || idx} className="bg-base-100 card shadow-lg p-5 h-full flex flex-col" data-aos="fade-up">
             <div className="flex items-start gap-4 h-full">
               <div className="w-16 h-16 relative flex-shrink-0 overflow-hidden rounded-full">
                 <Image src={item.image} alt={item.name} fill sizes="(max-width: 768px) 100vw, 700px" className="object-cover" priority={idx < 2} />

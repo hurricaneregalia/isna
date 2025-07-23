@@ -16,7 +16,7 @@ export default function FiturKeunggulan({ paddingX, data }) {
         <div className="space-y-5 lg:pr-32 sm:pr-16 px-5">
           {data.item && data.item.length > 0 ? (
             data.item.map((item, idx) => (
-              <div key={item.title} className="bg-base-100 card px-5 py-3 shadow-lg shadow-primary/10" data-aos="fade-up" data-aos-delay={idx * 100}>
+              <div key={item.title} className="bg-base-100 card px-5 py-3 shadow-lg shadow-primary/10" data-aos="fade-up">
                 <div className="flex gap-5 items-center">
                   <div className="text-4xl text-primary flex-shrink-0" aria-hidden="true">
                     {item.icon}
