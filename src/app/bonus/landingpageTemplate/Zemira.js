@@ -33,7 +33,7 @@ const zemiraData = {
   heroData: {
     headline: "Banyak Orang Salah Saat Menata Rumahnya. Apakah Anda Salah Satunya?",
     subheadline: "Solusi desain interior premium, menciptakan tempat tinggal menjadi ruang hidup yang nyaman dan elegan",
-    image: "/images/templateLandingPageBonus/Zemira/images/photo-1606744888344-493238951221.jpg",
+    image: "/images/templateLandingPageBonus/Zemira/images/photo-1606744888344-493238951221.webp",
     imageAlt: "Luxury Interior Design",
   },
   faq: {

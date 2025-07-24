@@ -207,7 +207,7 @@ export default async function Nurbaz({ siteData, siteName }) {
               alt="Professional man wearing premium watch"
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              priority
+              priority={true}
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
@@ -225,7 +225,7 @@ export default async function Nurbaz({ siteData, siteName }) {
 
           {/* Scrolling indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <Link href="#tampilanBiasa">
+            <Link href="#tampilanBiasa" aria-label="Scroll ke tampilan biasa">
               <div className="w-8 h-14 rounded-3xl border-2 border-gray-300 flex justify-center cursor-pointer">
                 <div className="w-2 h-2 bg-gray-300 rounded-full mt-2"></div>
               </div>
@@ -472,22 +472,20 @@ export default async function Nurbaz({ siteData, siteName }) {
           </div>
         </section>
         <section className="py-20 bg-base-100 text-base-content transition-colors duration-300">
-          <div className={`container mx-auto px-4 ${widthSection}`}>
-            <div className="max-w-4xl mx-auto text-center mb-16">
-              <h2 className={`${playfair.className} text-4xl font-bold mb-6`}>{LANDING_DATA.faq.title}</h2>
-              <p className="text-base-content/70 max-w-2xl mx-auto">Temukan jawaban untuk pertanyaan seputar produk, pembelian, dan garansi.</p>
-            </div>
-
-            <div className="max-w-3xl mx-auto">
-              <div className="join join-vertical">
-                {LANDING_DATA.faq.items.map((item, index) => (
+          <div className="max-w-3xl mx-auto">
+            <div className="join join-vertical">
+              {LANDING_DATA.faq.items.map((item, index) => {
+                const questionId = `faq-question-${index}`;
+                return (
                   <div className="collapse collapse-arrow join-item border bg-base-100 border-base-300" key={index} data-aos="fade-up">
-                    <input type="radio" name="faq-accordion" defaultChecked={index === 0} />
-                    <div className="collapse-title font-semibold">{item.question}</div>
+                    <input type="radio" name="faq-accordion" defaultChecked={index === 0} aria-labelledby={questionId} />
+                    <div className="collapse-title font-semibold" id={questionId}>
+                      {item.question}
+                    </div>
                     <div className="collapse-content text-sm opacity-75">{item.answer}</div>
                   </div>
-                ))}
-              </div>
+                );
+              })}
             </div>
           </div>
         </section>
