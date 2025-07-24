@@ -39,7 +39,7 @@ export default function TestimonialSectionBaizan({ widthSection, secId, data }) 
                 <div className="text-xl mt-2 flex justify-center opacity-25 gap-2">
                   <FaQuoteLeft /> <FaQuoteRight />
                 </div>
-                <p className="testimonialText mt-2 text-sm text-base-content/80 italic">"{person.testimonial}"</p>
+                <p className="testimonialText mt-2 text-sm text-base-content/80 italic">{person.testimonial}</p>
               </div>
             </div>
           ))}

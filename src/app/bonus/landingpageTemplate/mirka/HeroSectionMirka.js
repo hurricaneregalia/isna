@@ -27,7 +27,7 @@ export default function HeroSectionMirka({ data, secId, siteName }) {
               <hr className="my-10 opacity-0" />
               <div id="heroButton">
                 <LinkButton linkType="secondary" href="#daftar">
-                  Gabung
+                  Lorem Ipsum
                 </LinkButton>
               </div>
             </div>

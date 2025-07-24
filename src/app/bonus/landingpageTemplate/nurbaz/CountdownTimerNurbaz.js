@@ -1,8 +1,7 @@
 "use client";
+import React, { useEffect, useState } from "react";
 
-import React, { useState, useEffect } from "react";
-
-const NurbazCountdownTimer = ({ targetTime }) => {
+export default function CountdownTimerNurbaz({ targetTime }) {
   const [timeLeft, setTimeLeft] = useState({
     hours: 0,
     minutes: 0,
@@ -33,14 +32,10 @@ const NurbazCountdownTimer = ({ targetTime }) => {
     <div className="flex justify-center gap-4">
       {Object.entries(timeLeft).map(([unit, value]) => (
         <div key={unit} className="flex flex-col items-center">
-          <div className="w-20 h-20 bg-gray-800 text-white rounded-lg flex items-center justify-center text-2xl font-bold">
-            {value.toString().padStart(2, "0")}
-          </div>
+          <div className="w-20 h-20 bg-gray-800 text-white rounded-lg flex items-center justify-center text-2xl font-bold">{value.toString().padStart(2, "0")}</div>
           <span className="mt-2 text-sm uppercase opacity-75">{unit}</span>
         </div>
       ))}
     </div>
   );
-};
-
-export default NurbazCountdownTimer;
+}

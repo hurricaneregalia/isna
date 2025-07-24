@@ -20,34 +20,34 @@ export default function Baizan({ siteName, siteData }) {
   const dataBaizan = {
     heroSection: {
       backgroundImageUrl: "/images/templateLandingPageBonus/Baizan/photo-1597143722151-6c041d7b2901.jpg",
-      headline: "Dapatkan Kulit Sehat, Cantik Alami",
-      subHeadline: "Perawatan kulit yang dirancang khusus untuk kamu.",
+      headline: "lorem ipsum dolor sit amet",
+      subHeadline: "consectetur adipiscing elit sed do eiusmod tempor",
     },
 
     problemSection: {
       secId: "problem",
-      title: "Kulit Kusam dan Noda Hitam pada Wajah",
-      description: "Banyak wanita menghadapi masalah kulit yang mengganggu kepercayaan diri. Terpapar polusi, stress, dan sinar matahari setiap hari membuat kulit terlihat lelah dan kusam.",
+      title: "sed ut perspiciatis unde omnis",
+      description: "nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos.",
       painPoints: [
         {
           icon: <FaSadTear className="text-error text-2xl" />,
-          title: "Kulit Kusam & Tidak Bercahaya",
-          description: "Kulit tampak gelap, tidak segar, dan tidak merata warnanya.",
+          title: "doloremque laudantium totam",
+          description: "ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.",
         },
         {
           icon: <FaClock className="text-warning text-2xl" />,
-          title: "Perawatan yang Butuh Waktu Lama",
-          description: "Hasil tak terlihat meski sudah mencoba berbagai produk mahal.",
+          title: "temporibus autem quibusdam",
+          description: "neque porro quisquam est qui dolorem ipsum quia dolor sit amet.",
         },
         {
           icon: <FaTimesCircle className="text-accent text-2xl" />,
-          title: "Bingung Pilih Produk yang Aman",
-          description: "Takut salah pilih yang justru memperparah kondisi kulit.",
+          title: "ut enim ad minima veniam",
+          description: "quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
         },
       ],
       image: {
         src: "/images/templateLandingPageBonus/Baizan/pexels-photo-32387948.jpg",
-        alt: "Wajah wanita terlihat kusam dan lelah",
+        alt: "lorem ipsum dolor sit amet",
         width: 600,
         height: 800,
       },
@@ -55,25 +55,25 @@ export default function Baizan({ siteName, siteData }) {
 
     benefitSection: {
       secId: "manfaat",
-      title: "Solusinya adalah MONARA?",
-      description: "MONARA dirancang khusus untuk wanita Indonesia yang ingin tampil cerah alami, aman, dan percaya diri setiap hari.",
+      title: "nisi ut aliquid ex ea commodi",
+      description: "ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam nisi ut aliquid.",
       benefitList: [
         {
           icon: <FaLeaf className="text-success text-2xl" />,
-          text: "Bahan alami yang aman untuk semua jenis kulit",
+          text: "excepteur sint occaecat cupidatat non proident",
         },
         {
           icon: <FaStar className="text-warning text-2xl" />,
-          text: "Teruji klinis dengan hasil nyata dalam 7 hari",
+          text: "sed ut perspiciatis unde omnis iste natus",
         },
         {
           icon: <FaCheckCircle className="text-primary text-2xl" />,
-          text: "Tidak lengket, mudah meresap, dan ringan dipakai",
+          text: "ullamco laboris nisi ut aliquip ex ea commodo",
         },
       ],
       image: {
         src: "/images/templateLandingPageBonus/Baizan/pexels-photo-32807764.jpg",
-        alt: "Wanita bahagia dengan kulit cerah alami",
+        alt: "dolor sit amet consectetur",
         width: 600,
         height: 800,
       },
@@ -81,13 +81,13 @@ export default function Baizan({ siteName, siteData }) {
 
     productHighlightSection: {
       secId: "produk-unggulan",
-      title: "Produk Unggulan MONARA",
-      shortDescription: "Dipercaya oleh ribuan wanita Indonesia untuk merawat kulit agar tampak cerah alami dan bersinar setiap hari.",
+      title: "productus clarus est",
+      shortDescription: "neque porro quisquam est qui dolorem ipsum quia dolor sit amet",
       products: [
         {
           image: "/images/templateLandingPageBonus/Baizan/pexels-photo-6635813.jpg",
           imageUse: "/images/templateLandingPageBonus/Baizan/pexels-photo-1029896.jpg",
-          title: "MONARA Brightening Serum 30ml",
+          title: "lorem serum 30ml",
           price: 189000,
           rating: 4.5,
           discountValue: 15,
@@ -95,7 +95,7 @@ export default function Baizan({ siteName, siteData }) {
         {
           image: "/images/templateLandingPageBonus/Baizan/pexels-photo-3735649.jpg",
           imageUse: "/images/templateLandingPageBonus/Baizan/pexels-photo-6156587.jpg",
-          title: "MONARA Night Glow Cream 50ml",
+          title: "dolor cream 50ml",
           price: 209000,
           rating: 4.7,
           discountValue: 10,
@@ -103,7 +103,7 @@ export default function Baizan({ siteName, siteData }) {
         {
           image: "/images/templateLandingPageBonus/Baizan/pexels-photo-4202325.jpg",
           imageUse: "/images/templateLandingPageBonus/Baizan/pexels-photo-7064230.jpg",
-          title: "MONARA Day Radiance Lotion 50ml",
+          title: "amet lotion 50ml",
           price: 175000,
           rating: 4.3,
           discountValue: 20,
@@ -113,13 +113,13 @@ export default function Baizan({ siteName, siteData }) {
 
     productSection: {
       secId: "daftar-produk-baizan",
-      title: "Produk Terbaik MONARA",
-      shortDescription: "Pilihan terbaik untuk perawatan kulit cerah alami, diformulasikan khusus untuk wanita Indonesia.",
+      title: "productorum elenchus",
+      shortDescription: "praesentium voluptatum deleniti atque corrupti quos dolores",
       products: [
         {
           image: "/images/templateLandingPageBonus/Baizan/pexels-photo-6635813.jpg",
           imageUse: "/images/templateLandingPageBonus/Baizan/pexels-photo-1029896.jpg",
-          title: "Brightening Serum 30ml",
+          title: "lorem serum 30ml",
           price: 189000,
           rating: 4.5,
           discountValue: 15,
@@ -127,7 +127,7 @@ export default function Baizan({ siteName, siteData }) {
         {
           image: "/images/templateLandingPageBonus/Baizan/pexels-photo-3735649.jpg",
           imageUse: "/images/templateLandingPageBonus/Baizan/pexels-photo-973405.jpg",
-          title: "Night Glow Cream 50ml",
+          title: "dolor cream 50ml",
           price: 209000,
           rating: 4.7,
           discountValue: "",
@@ -135,7 +135,7 @@ export default function Baizan({ siteName, siteData }) {
         {
           image: "/images/templateLandingPageBonus/Baizan/pexels-photo-4202325.jpg",
           imageUse: "/images/templateLandingPageBonus/Baizan/pexels-photo-7064230.jpg",
-          title: "Day Radiance Lotion 50ml",
+          title: "amet lotion 50ml",
           price: 175000,
           rating: 4.3,
           discountValue: 20,
@@ -143,40 +143,8 @@ export default function Baizan({ siteName, siteData }) {
         {
           image: "/images/templateLandingPageBonus/Baizan/pexels-photo-4051915.jpg",
           imageUse: "/images/templateLandingPageBonus/Baizan/pexels-photo-4148860.jpg",
-          title: "Vitamin C Booster 20ml",
+          title: "vitamin booster 20ml",
           price: 149000,
-          rating: 4.6,
-          discountValue: "",
-        },
-        {
-          image: "/images/templateLandingPageBonus/Baizan/pexels-photo-461428.jpg",
-          imageUse: "/images/templateLandingPageBonus/Baizan/pexels-photo-374713.jpg",
-          title: "Hydrating Toner 100ml",
-          price: 99000,
-          rating: 4.4,
-          discountValue: 8,
-        },
-        {
-          image: "/images/templateLandingPageBonus/Baizan/pexels-photo-2720447.jpg",
-          imageUse: "/images/templateLandingPageBonus/Baizan/pexels-photo-3148935.jpg",
-          title: "Soothing Gel 50ml",
-          price: 129000,
-          rating: 4.2,
-          discountValue: "",
-        },
-        {
-          image: "/images/templateLandingPageBonus/Baizan/pexels-photo-3321416.jpg",
-          imageUse: "/images/templateLandingPageBonus/Baizan/pexels-photo-3775122.jpg",
-          title: "Peeling Serum 30ml",
-          price: 169000,
-          rating: 4.5,
-          discountValue: 14,
-        },
-        {
-          image: "/images/templateLandingPageBonus/Baizan/pexels-photo-530963.jpg",
-          imageUse: "/images/templateLandingPageBonus/Baizan/pexels-photo-3775123.jpg",
-          title: "Brightening Mask 25g",
-          price: 79000,
           rating: 4.6,
           discountValue: "",
         },
@@ -184,90 +152,90 @@ export default function Baizan({ siteName, siteData }) {
     },
 
     testimonialSection: {
-      title: "Apa Kata Mereka?",
-      description: "Testimoni pelanggan kami yang puas dengan produk MONARA.",
+      title: "testimonia clientium",
+      description: "testimonia ficta a clientibus felicibus",
       items: [
         {
-          name: "Rina Andini",
+          name: "lucia valeria",
           image: "/images/templateLandingPageBonus/Baizan/pexels-photo-415829.jpg",
           rating: 5,
-          testimonial: "Benar-benar mengubah kulitku jadi lebih cerah alami.",
+          testimonial: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         },
         {
-          name: "Putri Anjani",
+          name: "marina julia",
           image: "/images/templateLandingPageBonus/Baizan/pexels-photo-733872.jpg",
           rating: 4,
-          testimonial: "Aku suka teksturnya ringan dan cepat menyerap di kulit.",
+          testimonial: "pellentesque habitant morbi tristique senectus et netus.",
         },
         {
-          name: "Nadya Larasati",
+          name: "nora faustina",
           image: "/images/templateLandingPageBonus/Baizan/pexels-photo-1130626.jpg",
           rating: 5,
-          testimonial: "Dalam seminggu kulitku terlihat jauh lebih glowing!",
+          testimonial: "maecenas non laoreet odio. fusce lobortis porttitor purus.",
         },
       ],
     },
 
     howToUseSection: {
-      title: "Cara Menggunakan MONARA",
-      description: "Ikuti langkah-langkah mudah berikut untuk hasil maksimal dalam merawat kulit Anda.",
+      title: "modus utendi",
+      description: "sequere gradus simplices ad usum efficacem",
       image: "/images/templateLandingPageBonus/Baizan/pexels-photo-415829.jpg",
       steps: [
         {
-          title: "Bersihkan Wajah",
-          description: "Gunakan pembersih wajah yang lembut sebelum aplikasi.",
+          title: "faciem purga",
+          description: "lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         },
         {
-          title: "Aplikasikan Serum",
-          description: "Teteskan serum ke wajah dan pijat lembut.",
+          title: "serum adhibe",
+          description: "sed do eiusmod tempor incididunt ut labore et dolore.",
         },
         {
-          title: "Gunakan Krim Malam",
-          description: "Gunakan secara merata sebelum tidur.",
+          title: "cremam nocturnam utere",
+          description: "etiam mattis mauris sit amet massa sollicitudin varius.",
         },
       ],
     },
-    bonusSection: [{ label: "E-Book Eksklusif" }, { label: "Konsultasi Skincare Gratis" }, { label: "Free Ongkir Seluruh Indonesia" }, { label: "Gift Box Menarik" }],
+
+    bonusSection: [{ label: "e-book fictum" }, { label: "consilium gratuitum" }, { label: "expeditio libera" }, { label: "arca doni elegantis" }],
 
     CTASection: {
-      title: "Kulit Cerah Alami Bukan Lagi Mimpi",
-      subtitle: "Yuk mulai transformasi kulitmu sekarang juga dengan MONARA.",
+      title: "vestibulum ante ipsum primis",
+      subtitle: "sed ut perspiciatis unde omnis iste natus error",
       backgroundImage: "/images/templateLandingPageBonus/Baizan/pexels-photo-948873.jpg",
     },
 
     CTASectionSeconday: {
-      title: "Saatnya Tampil Lebih Percaya Diri",
-      subtitle: "Mulai perjalanan perawatan kulitmu hari ini bersama MONARA.",
+      title: "vivamus suscipit tortor eget",
+      subtitle: "in hac habitasse platea dictumst",
       backgroundImage: "/images/templateLandingPageBonus/Baizan/pexels-photo-948873.jpg",
     },
 
     faqSection: {
-      headline: "Pertanyaan Konsumen",
-      subtitle: "Temukan jawaban atas pertanyaan Anda tentang Monara Serum",
+      headline: "quaestiones frequentes",
+      subtitle: "responsa ad interrogationes communes",
       items: [
         {
-          question: "Apakah Monara Serum aman untuk kulit sensitif?",
-          answer:
-            "Ya, produk kami diformulasikan khusus untuk semua jenis kulit termasuk sensitif. Kandungan 97% bahan alami dan bebas dari merkuri, hydroquinone, serta paraben membuatnya aman untuk penggunaan jangka panjang.",
+          question: "estne serum hoc tutum pro pelle sensitiva?",
+          answer: "ita vero. formulatio est naturalis et sine substantiis nocivis.",
         },
         {
-          question: "Berapa lama hasil terlihat setelah pemakaian?",
-          answer: "Kebanyakan pelanggan melaporkan perubahan positif dalam 14 hari pemakaian rutin. Untuk hasil optimal, kami rekomendasikan pemakaian selama 28 hari penuh.",
+          question: "quam cito effectus apparebit?",
+          answer: "mutatio videri potest post usum cottidianum per 14 dies.",
         },
         {
-          question: "Bagaimana cara menyimpan serum ini?",
-          answer: "Simpan di tempat sejuk dan kering, hindari paparan sinar matahari langsung. Setelah dibuka, sebaiknya digunakan dalam 6 bulan.",
+          question: "quomodo serum condi debeo?",
+          answer: "serva in loco frigido et sicco, longe a sole directo.",
         },
         {
-          question: "Bisa digunakan bersama produk skincare lain?",
-          answer: "Bisa! Monara Serum cocok dipadukan dengan rangkaian skincare Anda. Untuk hasil terbaik, aplikasikan setelah toner dan sebelum moisturizer.",
+          question: "possumne uti cum aliis productis?",
+          answer: "certe. serum compatitur cum plerisque curis cutis.",
         },
         {
-          question: "Metode pembayaran apa saja yang tersedia?",
-          answer: "Kami menerima transfer bank (BCA, Mandiri, BRI), e-wallet (OVO, Dana, ShopeePay), dan COD (khusus Jabodetabek).",
+          question: "quae sunt optiones solutionis?",
+          answer: "accipimus translationes, e-wallet, et mercedem ad traditionem.",
         },
       ],
-      contactInfo: "Masih ada pertanyaan? Hubungi kami di WhatsApp: 0812-3456-7890",
+      contactInfo: "habesne alias quaestiones? mitte nuntium ad WhatsApp: 0812-3456-7890",
     },
   };
 

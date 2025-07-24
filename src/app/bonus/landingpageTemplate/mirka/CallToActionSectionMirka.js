@@ -13,7 +13,7 @@ export default function CallToActionSectionMirka({ siteName, data, secId }) {
                 <Heading textColor="text-primary">{data.title}</Heading>
                 <p className=" text-base-content mt-10 opacity-75">{data.subtitle}</p>
                 <hr className=" sm:my-8 my-10 opacity-0" />
-                <LinkButton href="#daftar">Gabung</LinkButton>
+                <LinkButton href="#daftar">Lorem Ipsum</LinkButton>
               </div>
             </div>
           </SectionWrapper>
