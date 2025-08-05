@@ -8,9 +8,9 @@
     "value": 0.1,
     "isActive": true,
     "startDate": "2025-06-30T23:59:59.000Z",
-    "endDate": "2025-07-29T23:59:59.000Z",
+    "endDate": "2025-10-29T23:59:59.000Z",
     "createdAt": "2025-06-04T02:40:12.176Z",
-    "updatedAt": "2025-06-30T01:54:53.839Z",
+    "updatedAt": "2025-08-02T07:28:18.015Z",
     "products": [
       {
         "id": "cm9s49e6f0003vldz95k9oiqc",
@@ -43,7 +43,7 @@
         "name": "Mumtazan copy",
         "slug": "mumtazan-copy",
         "description": "Paket copywriting untuk landing page versi pertengahan.",
-        "bestFor": "Untuk mengembangkan bisnis online",
+        "bestFor": "Untuk kembangkan bisnis online",
         "image": "/images/uploads/products/mumtazan-copy/main.jpg",
         "price": 275900,
         "proccessTime": 3,
@@ -60,7 +60,7 @@
         "quality": 3,
         "isBest": false,
         "createdAt": "2025-04-22T06:30:00.000Z",
-        "updatedAt": "2025-06-02T06:50:06.757Z"
+        "updatedAt": "2025-08-04T06:19:50.049Z"
       },
       {
         "id": "cm9s49e6f0005vldz95k9oiqe",

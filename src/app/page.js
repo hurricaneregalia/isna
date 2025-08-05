@@ -1,5 +1,3 @@
-// app/page.js
-
 import fs from "fs/promises";
 import path from "path";
 import HeaderFooterSqlite from "./component/global/headerFooterSqlite";
@@ -115,7 +113,7 @@ export default async function HomePage() {
     return (
       <HeaderFooterSqlite>
         <FacebookPixelServer testEventCode="TEST46543" />
-        <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+        <main>
           <LayoutLandingPage waNo={siteData.phone} />
         </main>
       </HeaderFooterSqlite>
