@@ -211,9 +211,9 @@ export default async function PaymentSuccessPage(props) {
                     </>
                   )}
                 </p>
-                <div className=" text-center mt-5">
+               {longTime ? null:<div className=" text-center mt-5">
                   <CountdownMiniBonus />
-                </div>
+                </div> }
               </div>
             </div>
           </div>

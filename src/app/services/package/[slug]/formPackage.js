@@ -1,40 +1,25 @@
 "use client";
-import TextHeadingTitle from "@/app/component/global/textHeadingTitle";
-import React, { useEffect, useState } from "react";
-import { TiPencil } from "react-icons/ti";
+import React, { useEffect, useState, useRef } from "react";
 import { FaArrowRight } from "react-icons/fa6";
 import Midtrans from "@/app/component/paymentGateway/midtrans";
 import ProsesPembayaran from "@/app/component/global/prosesPembayaran";
+import FormField from "./components/FormField";
+import FormHeader from "./components/FormHeader";
 
 export default function FormPackage({ listItem, serviceName, servicePrice, serviceCategory, waNumber, sku, serviceUrl, baseUrl }) {
   const servicePriceFx = servicePrice.toLocaleString("id-ID");
   const [textPreview, setTextPreview] = useState("");
-  const LastId = Math.max(...listItem.map((item) => item.id));
   const [formData, setFormData] = useState({});
   const [orderId, setOrderId] = useState("");
   const [charCount, setCharCount] = useState({});
   const [orderBy, setOrderBy] = useState("");
   const [sapaan, setSapaan] = useState("");
-  const midtransRef = React.useRef(null);
-  const formRef = React.useRef(null);
   const [isProcessingPayment, setIsProcessingPayment] = useState(false);
+  
+  const midtransRef = useRef(null);
+  const formRef = useRef(null);
 
-  const handleChange = (e) => {
-    const { name, value, type } = e.target;
-
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "file" ? e.target.files[0]?.name : value,
-    }));
-
-    if (type === "textarea" || e.target.tagName === "TEXTAREA") {
-      setCharCount((prev) => ({
-        ...prev,
-        [name]: value.length,
-      }));
-    }
-  };
-
+  // Initialize Order ID and Base Data
   useEffect(() => {
     const generateOrderId = () => {
       const datePart = new Date().toISOString().slice(0, 10).replace(/-/g, "");
@@ -45,33 +30,56 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
     const newOrderId = generateOrderId();
     setOrderId(newOrderId);
 
+    const initialData = {};
+    listItem.forEach((item) => {
+      if (item.type === "tel") {
+        const id = `${item.id}-${item.name}`.replace(/\s+/g, "-");
+        initialData[id] = "+62";
+      }
+    });
+
     setFormData((prev) => ({
       ...prev,
+      ...initialData,
       orderId: newOrderId,
       "nama-paket": serviceName,
       kategori: serviceCategory,
       "harga-paket": servicePriceFx,
     }));
-  }, [sku, serviceName, servicePriceFx, serviceCategory]);
+  }, [sku, serviceName, servicePriceFx, serviceCategory, listItem]);
 
+  // Handle Input Changes
+  const handleChange = (e) => {
+    const { name, value, type, files } = e.target;
+    
+    const finalValue = type === "file" ? files[0]?.name : value;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: finalValue,
+    }));
+
+    if (type === "textarea" || e.target.tagName === "TEXTAREA") {
+      setCharCount((prev) => ({
+        ...prev,
+        [name]: value.length,
+      }));
+    }
+  };
+
+  // Generate Text Preview for WhatsApp/Midtrans
   useEffect(() => {
     const productKeys = ["nama-paket", "kategori", "harga-paket"];
     const entryList = [];
 
-    if (formData.orderId) {
-      entryList.push(`orderId: ${formData.orderId}`);
-    }
+    if (formData.orderId) entryList.push(`orderId: ${formData.orderId}`);
 
     Object.entries(formData).forEach(([key, value]) => {
       if (key !== "orderId" && !productKeys.includes(key)) {
         const cleanKey = key.replace(/^\d+-/, "");
         const isDate = /^\d{4}-\d{2}-\d{2}$/.test(value);
         const formattedValue = isDate
-          ? new Date(value).toLocaleDateString("id-ID", {
-              day: "2-digit",
-              month: "long",
-              year: "numeric",
-            })
+          ? new Date(value).toLocaleDateString("id-ID", { day: "2-digit", month: "long", year: "numeric" })
           : value;
 
         entryList.push(`${cleanKey}: ${formattedValue}`);
@@ -79,41 +87,36 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
     });
 
     productKeys.forEach((key) => {
-      if (formData[key]) {
-        entryList.push(`${key}: ${formData[key]}`);
-      }
+      if (formData[key]) entryList.push(`${key}: ${formData[key]}`);
     });
 
     setTextPreview(entryList.join("\n"));
 
-    if (formData["1-nama-lengkap"]) {
-      setOrderBy(formData["1-nama-lengkap"]);
-    }
-    if (formData["sapaan"]) {
-      setSapaan(formData["sapaan"]);
-    }
+    if (formData["1-nama-lengkap"]) setOrderBy(formData["1-nama-lengkap"]);
+    if (formData["sapaan"]) setSapaan(formData["sapaan"]);
+    
   }, [formData]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = formRef.current;
+    if (!form) return;
 
+    // Custom Validation
     const missingFields = listItem.filter((item) => {
       if (!item.required) return false;
 
       const id = `${item.id}-${item.name}`.replace(/\s+/g, "-");
-      const input = form.elements[id];
-
+      
       if (item.type === "radio") {
         const radioName = item.name.replace(/\s+/g, "-").toLowerCase();
         const checked = form.querySelector(`input[name="${radioName}"]:checked`);
         return !checked;
       }
-
-      if (item.type === "file") {
-        return !input || input.files.length === 0;
-      }
-
+      
+      const input = form.elements[id];
+      if (item.type === "file") return !input || input.files.length === 0;
+      
       return !input || !input.value.trim();
     });
 
@@ -121,10 +124,9 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
       const firstMissing = missingFields[0];
       const id = `${firstMissing.id}-${firstMissing.name}`.replace(/\s+/g, "-");
 
-      // Scroll dan fokus ke field pertama yang kosong
       if (firstMissing.type === "radio") {
         const radioName = firstMissing.name.replace(/\s+/g, "-").toLowerCase();
-        const radioGroup = form.querySelector(`input[name="${radioName}"]`)?.closest(".flex");
+        const radioGroup = form.querySelector(`input[name="${radioName}"]`)?.closest(".form-control");
         radioGroup?.scrollIntoView({ behavior: "smooth", block: "center" });
       } else {
         const input = form.elements[id];
@@ -133,14 +135,12 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
           input.focus({ preventScroll: true });
         }
       }
-
-      // Tetap tampilkan alert
-      alert("Ada data wajib yang belum diisi:\n" + missingFields.map((f) => `- ${f.name}`).join("\n"));
+      
+      alert("Mohon lengkapi data wajib berikut:\n" + missingFields.map((f) => `- ${f.name}`).join("\n"));
       return;
     }
 
-    if (form && form.checkValidity()) {
-      form.reportValidity();
+    if (form.checkValidity()) {
       setIsProcessingPayment(true);
       midtransRef.current?.handlePayment();
     } else {
@@ -152,120 +152,59 @@ export default function FormPackage({ listItem, serviceName, servicePrice, servi
     <>
       {isProcessingPayment && <ProsesPembayaran />}
 
-      <form ref={formRef} onSubmit={handleSubmit}>
-        <div className="w-full rounded-bl-3xl mb-30 grid grid-cols-1 gap-5 bg-base-100 lg:p-30 sm:p-15 p-5 pt-10">
-          <TextHeadingTitle title="Isi data bisnis Anda" iconTitle={<TiPencil />} titleCase={2} h={3} cssStyle="mb-10" iconPosition="left" />
-          {listItem.length > 0 ? (
-            listItem.map((item) => {
-              const id = `${item.id}-${item.name}`.replace(/\s+/g, "-");
-              const label = item.name;
-              const basePlaceholder = item.placeholder || item.name;
-              const placeholder = item.required ? `${basePlaceholder} *` : basePlaceholder;
-              const options = item.options?.split(",").map((opt) => opt.trim()) || [];
-              const isRequired = item.required;
+      <div className="w-full max-w-4xl mx-auto mb-20">
+        <form ref={formRef} onSubmit={handleSubmit} className="bg-base-100 rounded-bl-3xl border border-base-200 overflow-hidden">
+          
+          <FormHeader serviceName={serviceName} />
 
-              return (
-                <div key={item.id} className="w-full">
-                  <label className="floating-label w-full" htmlFor={item.type === "radio" ? undefined : id}>
-                    {/* TEXTAREA */}
-                    {item.type === "textarea" ? (
-                      <label className="form-control floating-label w-full mt-5 ">
-                        <span className="capitalize mb-1">{item.name}</span>
-                        <textarea
-                          id={id}
-                          name={id}
-                          placeholder={placeholder}
-                          required={isRequired}
-                          className="textarea textarea-lg placeholder:capitalize w-full"
-                          rows={item.row || 3}
-                          onChange={handleChange}
-                          maxLength={400}
-                        ></textarea>
-                        {item.hint && (
-                          <p className={`text-sm mt-1 ${(charCount[id] || 0) >= (item.maxLength || 400) ? "text-red-500" : "text-gray-500"}`}>
-                            {item.hint} {charCount[id] || 0}/{item.maxLength || 400}
-                          </p>
-                        )}
-                      </label>
-                    ) : item.type === "radio" && options.length > 0 ? (
-                      <>
-                        <div className="flex flex-col gap-2 mb-5 border border-slate-400/50 p-3 rounded-md">
-                          <span className="capitalize mb-1">
-                            {label} {isRequired && <span className="text-red-500 text-2xl">*</span>}
-                          </span>
-                          {options.map((opt, index) => (
-                            <label key={index} className="inline-flex items-center gap-2">
-                              <input
-                                type="radio"
-                                name={item.name.replace(/\s+/g, "-").toLowerCase()}
-                                value={opt}
-                                required={isRequired}
-                                className="radio input validator"
-                                onChange={handleChange}
-                              />
-                              <span className="capitalize">{opt}</span>
-                            </label>
-                          ))}
-                        </div>
-                        {item.hint && <p className="text-sm text-gray-500 mt-1">{item.hint}</p>}
-                      </>
-                    ) : item.type === "file" ? (
-                      <>
-                        <input
-                          id={id}
-                          name={id}
-                          type="file"
-                          required={isRequired}
-                          className="file-input input validator file-input-bordered file-input-lg w-full"
-                          onChange={handleChange}
-                        />
-                        <span className="capitalize">
-                          {label} {isRequired && <span className="text-red-500 text-2xl">*</span>}
-                        </span>
-                        <p className="validator-hint">{item.hintFalse || item.hintTrue}</p>
-                      </>
-                    ) : (
-                      <>
-                        <input
-                          id={id}
-                          name={id}
-                          type={item.type}
-                          placeholder={placeholder}
-                          required={isRequired}
-                          defaultValue={item.type === "tel" ? "+62" : undefined}
-                          pattern={item.type === "tel" ? "^\\+62[0-9]{9,12}$" : undefined}
-                          minLength={item.type === "tel" ? 13 : undefined}
-                          maxLength={item.type === "tel" ? 14 : undefined}
-                          min={item.type === "date" ? new Date(Date.now() + 86400000).toISOString().split("T")[0] : undefined}
-                          title={item.type === "tel" ? "Masukkan nomor yang diawali dengan +62 dan diikuti 9–12 digit angka" : undefined}
-                          className="input input-lg placeholder:capitalize w-full validator"
-                          onChange={handleChange}
-                        />
-                        <span className="capitalize">
-                          {label} {isRequired && <span className="text-red-500 text-2xl">*</span>}
-                        </span>
-                        <p className="validator-hint">{item.hintFalse || item.hintTrue}</p>
-                      </>
-                    )}
-                  </label>
-                </div>
-              );
-            })
-          ) : (
-            <p>No item</p>
-          )}
-          <div className="text-center pt-15 sm:pb-0 pb-10 ">
-            <button
-              id="submit"
-              type="submit"
-              name="submit"
-              className="border-0 items-center btn btn-xl rounded-full bg-amber-300  shadow-none hover:bg-amber-500 text-slate-900 capitalize "
-            >
-              checkout <FaArrowRight />
-            </button>
+          <div className="p-6 sm:p-10 space-y-6">
+            {listItem.length > 0 ? (
+              <div className="grid grid-cols-1 gap-6">
+                {listItem.map((item) => {
+                   const id = `${item.id}-${item.name}`.replace(/\s+/g, "-");
+                   const radioName = item.type === "radio" ? item.name.replace(/\s+/g, "-").toLowerCase() : undefined;
+                   
+                   let val = "";
+                   if (item.type === "radio") {
+                     val = formData[radioName] || "";
+                   } else if (item.type !== "file") {
+                     val = formData[id] || "";
+                   }
+
+                   return (
+                     <FormField 
+                       key={item.id} 
+                       item={item} 
+                       value={val}
+                       onChange={handleChange}
+                       charCount={charCount[id]}
+                     />
+                   );
+                })}
+              </div>
+            ) : (
+              <div className="text-center py-10 text-gray-400">
+                <p>Tidak ada form yang perlu diisi.</p>
+              </div>
+            )}
+
+            <div className="divider my-8"></div>
+
+            <div className="flex flex-col items-center justify-center gap-4">
+               <button
+                id="submit"
+                type="submit"
+                name="submit"
+                className="btn btn-primary btn-lg rounded-full px-12 text-lg shadow-lg hover:shadow-primary/30 transition-all duration-300 group"
+              >
+                Lanjut Pembayaran 
+                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
+
       <Midtrans
         ref={midtransRef}
         orderId={orderId}

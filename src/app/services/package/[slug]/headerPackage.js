@@ -1,63 +1,98 @@
 import React from "react";
 import { FaCheck, FaStar, FaXmark } from "react-icons/fa6";
 import { PiSealCheckFill } from "react-icons/pi";
-import { MdAccessTime } from "react-icons/md";
+import { MdAccessTime, MdCategory } from "react-icons/md";
 import ListTagsDetail from "./ListTagsDetail";
 
 export default function HeaderPackage({ title, quality, price, categoryTitle, description, bestFor, proccessTime, listTags, children, listItem }) {
   const sortedList = [...listItem].sort((a, b) => a.order - b.order);
+
   return (
-    <div className="rounded-bl-3xl w-full mx-auto sm:mt-30 mt-10">
-      <div className=" ">
-        <div className="text-neutral-content lg:w-11/12 w-full mx-auto">
-          <div className="flex w-full">
-            <div className="w-1/2 overflow-hidden">
-              <h1 className="text-xl font-bold">{title}</h1>
-            </div>
-            <div className="w-1/2 ">
-              <p className="flex justify-end text-lg sm:text-2xl gap-1 text-amber-300">
+    <div className="w-full mx-auto mt-6 sm:mt-10 text-neutral-content">
+      {/* Main Content Container */}
+      <div className="flex flex-col gap-6">
+        {/* Title and Rating Section */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b border-white/10 pb-6">
+          <div className="w-full md:w-2/3">
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-3 text-white">{title}</h1>
+            <div className="flex items-center gap-3 text-amber-400 text-lg">
+              <div className="flex gap-1">
                 {Array.from({ length: quality }, (_, index) => (
                   <FaStar key={index} />
                 ))}
-              </p>
+              </div>
+              <span className="text-sm text-gray-400 font-medium">({quality}/5 Quality Score)</span>
             </div>
           </div>
-          <div className="my-5">
-            <p className=" opacity-75 flex gap-1">
-              <PiSealCheckFill className="text-success mt-1" /> {bestFor}
-            </p>
-            <p className=" opacity-75 flex gap-1">
-              <PiSealCheckFill className="text-success mt-1" /> {categoryTitle}
-            </p>
-            <p className=" opacity-75 flex gap-1">
-              <MdAccessTime className=" text-success mt-1" /> Proses {proccessTime} hari kerja.
-            </p>
+
+          {/* Price Section */}
+          <div className="w-full md:w-1/3 text-left md:text-right">
+            <h2 className="text-3xl sm:text-4xl font-bold text-amber-500">
+              <span className="text-lg font-normal text-gray-300 mr-1">Rp.</span>
+              {price.toLocaleString("id-ID")}
+            </h2>
           </div>
-          <div className=" flex flex-col sm:w-1/2 w-full gap-2">
-            <div className="flex flex-col gap-2">
-              <p className=" opacity-75 flex gap-1 bg-slate-800 rounded-lg p-3 py-2">
+        </div>
+
+        {/* Description & Tags */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-4">
+          <div className="lg:col-span-2 space-y-8">
+            <div>
+              {/* Metadata Badges */}
+              <div className="grid grid-cols-1 gap-3">
+                <div className="badge badge-lg badge-outline gap-2 p-4 text-sm border-white/20 text-gray-200">
+                  <PiSealCheckFill className="text-success text-lg" />
+                  <span>
+                    Cocok: <span className="font-semibold text-white">{bestFor}</span>
+                  </span>
+                </div>
+                <div className="badge badge-lg badge-outline gap-2 p-4 text-sm border-white/20 text-gray-200">
+                  <MdCategory className="text-info text-lg" />
+                  <span>
+                    Kategori: <span className="font-semibold text-white">{categoryTitle}</span>
+                  </span>
+                </div>
+                <div className="badge badge-lg badge-outline gap-2 p-4 text-sm border-white/20 text-gray-200">
+                  <MdAccessTime className="text-warning text-lg" />
+                  <span>
+                    Proses: <span className="font-semibold text-white">{proccessTime} days</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="border border-white/30 rounded-bl-3xl sm:p-5 p-3 text-white grid gap-3">
+              <h3 className=" font-bold">Deskripsi</h3>
+              <p className=" opacity-70">
                 {title} adalah {description}
               </p>
+            </div>
+
+            <div>
+              <h3 className="text-white">Tags</h3>
               <ListTagsDetail listTags={listTags} />
             </div>
           </div>
-          <div className=" mt-10">
-            <ul className="space-y-2">
-              {sortedList.map((item, index) => (
-                <li key={index} className="flex items-center gap-1">
-                  {item.isActive ? <FaCheck className="text-green-500" /> : <FaXmark className="text-red-500" />}
-                  <span className={item.isActive ? "" : "opacity-50 line-through"}>{item.benefit.title}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="mt-10 sm:text-end text-start">
-            <h2 className=" text-xl font-bold">Rp. {price.toLocaleString("id-ID")}</h2>
+          {/* Benefits List */}
+          <div className="lg:col-span-1">
+            <div className=" border-white/30 rounded-bl-3xl sm:p-5 p-3 border h-full">
+              <h3 className="text-lg font-bold mb-6 text-white">Yang didapatkan</h3>
+              <ul className="space-y-4">
+                {sortedList.map((item, index) => (
+                  <li key={index} className="flex items-start gap-3 group">
+                    <div className={`mt-1 p-1.5 rounded-full flex-shrink-0 ${item.isActive ? "bg-green-500/20 text-green-400" : "bg-red-500/10 text-red-400"}`}>
+                      {item.isActive ? <FaCheck className="text-xs" /> : <FaXmark className="text-xs" />}
+                    </div>
+                    <span className={`text-sm sm:text-base leading-snug ${item.isActive ? "text-gray-200" : "text-gray-500 line-through decoration-gray-600"}`}>{item.benefit.title}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-      <div>{children}</div>
+
+      {/* Children Content */}
+      <div className="mt-8">{children}</div>
     </div>
   );
 }

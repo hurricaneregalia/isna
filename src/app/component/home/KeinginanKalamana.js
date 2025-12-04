@@ -21,7 +21,7 @@ export default function KeinginanKalamana({ secId, linkTarget1, waNumber, data }
             </div>
             <div className=" flex sm:flex-row flex-col gap-5">
               <LinkBtnOutlineWhatsapp phoneNumber={waNumber} message={data.pesanWa} linkText="Konsultasi" icon={<FaWhatsapp />} />
-              <LinkBtnPrimary href={linkTarget1} linkText="keuntungan" icon={<FaArrowRight />} />
+              <LinkBtnPrimary href={linkTarget1} linkText="naikan omzet" icon={<FaArrowRight />} />
             </div>
           </div>
         </div>

@@ -112,7 +112,7 @@ export default async function HomePage() {
 
     return (
       <HeaderFooterSqlite>
-        <FacebookPixelServer testEventCode="TEST46543" />
+        <FacebookPixelServer testEventCode="TEST53289" />
         <main>
           <LayoutLandingPage waNo={siteData.phone} />
         </main>

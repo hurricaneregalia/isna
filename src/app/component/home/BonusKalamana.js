@@ -6,7 +6,15 @@ import ListItemBonus from "./ui/ListItemBonus";
 import BonusIcon from "./ui/BonusIcon";
 import Bodytext from "./ui/BodyText";
 
-export default function BonusKalamana({ secId, data }) {
+export default function BonusKalamana({ secId, data, totalBonus }) {
+  const descriptionFX = (
+    <>
+      {data.description1}
+      <span className="font-bold"> Rp. {totalBonus.toLocaleString("id-ID")} </span>
+      {data.description2}
+    </>
+  );
+
   return (
     <Wrapper>
       <div className="flex flex-col-reverse sm:flex-row gap-10 items-center ">
@@ -15,7 +23,7 @@ export default function BonusKalamana({ secId, data }) {
             <IdSection secId={secId ? secId : "id-belum-di-set"} />
             <BonusIcon icon="🔥" />
             <Title text={data.title} h={2} css="text-3xl" />
-            <Bodytext text={data.description} />
+            <Bodytext text={descriptionFX} />
           </div>
           <ListItemBonus data={data.item} />
         </div>

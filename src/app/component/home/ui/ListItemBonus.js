@@ -4,7 +4,7 @@ import ImageStyle from "./ImageStyle";
 export default function ListItemBonus({ data, border }) {
   const borderFx = border ? "border border-1" : "";
   return (
-    <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
+    <div className="grid sm:grid-cols-2 grid-cols-1 gap-3">
       {data.map((item, index) => (
         <div className="col-span-1 flex justify-stretch" key={index} data-aos="fade-up">
           <div className={`bg-base-100 overflow-hidden rounded-bl-3xl  w-full ${borderFx} flex lg:flex-row flex-col`}>

@@ -11,7 +11,7 @@ const filteredProducts = productData.filter((product) => product.category?.name 
 
 export default function ServicesJson() {
   return (
-    <div id="productWrapper" className="grid gap-5 sm:grid-cols-3 w-full">
+    <div id="productWrapper" className="grid gap-3 sm:grid-cols-3 w-full">
       {filteredProducts.map((product) => (
         <div key={product.id} id={product.id} className={`bg-base-100 rounded-bl-3xl ${product.isBest === true ? "border border-amber-300 shadow-xl shadow-amber-300/50" : ""}`} data-aos="fade-up">
           <div className="card-body p-0 flex h-full">

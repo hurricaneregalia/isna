@@ -12,7 +12,7 @@ export default function ListItemThumbnail({ data, listFor }) {
                   {item.icon}
                   <p className=" opacity-10">0{index + 1}</p>
                 </div>
-                <p className="text-2xl mb-3 font-bold text-amber-300 flex gap-2">{item.title}</p>
+                <p className="text-xl mb-3 font-bold text-amber-300 flex gap-2">{item.title}</p>
                 <p className=" text-white/75 w-full">{item.description}</p>
               </div>
             </div>

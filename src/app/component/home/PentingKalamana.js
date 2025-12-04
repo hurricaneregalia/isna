@@ -8,18 +8,28 @@ import Bodytext from "./ui/BodyText";
 
 export default function PentingKalamana({ secId, data }) {
   return (
-    <Wrapper>
-      <div className="flex flex-col-reverse sm:flex-row gap-10 items-center mb-10">
-        <div id="image" className=" sm:w-6/12 w-full">
-          <ImageStyle src={data.image} alt={data.title} objcetPos="object-left" />
+    <Wrapper secId={secId}>
+      {/* TOP SECTION */}
+      <div className="flex flex-col-reverse sm:flex-row items-center  gap-10 sm:gap-16">
+        {/* IMAGE */}
+        <div id="image" className="sm:w-6/12 w-full flex justify-center sm:justify-start">
+          <div className="w-full">
+            <ImageStyle src={data.image} alt={data.title} objcetPos="object-left" />
+          </div>
         </div>
-        <div id="text" className=" sm:w-6/12 w-full space-y-5 ">
-          <IdSection secId={secId ? secId : "id-belum-di-set"} />
-          <Title text={data.title} h={2} css="text-3xl" />
-          <Bodytext text={data.description} />
+
+        {/* TEXT */}
+        <div id="text" className="sm:w-6/12 w-full space-y-6 sm:space-y-8">
+          <IdSection secId={secId || "id-belum-di-set"} />
+          <Title text={data.title} h={2} css="text-3xl sm:text-4xl" />
+          <Bodytext text={data.description} css="text-base-content" />
         </div>
       </div>
-      <ListItem2 data={data.item} />
+
+      {/* LIST SECTION */}
+      <div className="mt-10 sm:mt-14">
+        <ListItem2 data={data.item} />
+      </div>
     </Wrapper>
   );
 }

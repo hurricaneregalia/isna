@@ -121,7 +121,7 @@
         "order": 1,
         "benefit": {
           "id": "10",
-          "title": "1 set copywriting",
+          "title": "Satu set copywriting",
           "description": null,
           "icon": null
         }
@@ -236,10 +236,10 @@
         "type": "PERCENTAGE",
         "value": 0.1,
         "isActive": true,
-        "startDate": "2025-06-30T23:59:59.000Z",
-        "endDate": "2025-10-29T23:59:59.000Z",
+        "startDate": "2025-11-21T23:59:59.000Z",
+        "endDate": "2025-12-29T23:59:59.000Z",
         "createdAt": "2025-06-04T02:40:12.176Z",
-        "updatedAt": "2025-08-02T07:28:18.015Z"
+        "updatedAt": "2025-11-27T23:17:48.132Z"
       }
     ],
     "vouchers": []
@@ -366,7 +366,7 @@
         "order": 10,
         "benefit": {
           "id": "10",
-          "title": "1 set copywriting",
+          "title": "Satu set copywriting",
           "description": null,
           "icon": null
         }
@@ -481,10 +481,10 @@
         "type": "PERCENTAGE",
         "value": 0.1,
         "isActive": true,
-        "startDate": "2025-06-30T23:59:59.000Z",
-        "endDate": "2025-10-29T23:59:59.000Z",
+        "startDate": "2025-11-21T23:59:59.000Z",
+        "endDate": "2025-12-29T23:59:59.000Z",
         "createdAt": "2025-06-04T02:40:12.176Z",
-        "updatedAt": "2025-08-02T07:28:18.015Z"
+        "updatedAt": "2025-11-27T23:17:48.132Z"
       }
     ],
     "vouchers": []
@@ -611,7 +611,7 @@
         "order": 100,
         "benefit": {
           "id": "10",
-          "title": "1 set copywriting",
+          "title": "Satu set copywriting",
           "description": null,
           "icon": null
         }
@@ -726,10 +726,10 @@
         "type": "PERCENTAGE",
         "value": 0.1,
         "isActive": true,
-        "startDate": "2025-06-30T23:59:59.000Z",
-        "endDate": "2025-10-29T23:59:59.000Z",
+        "startDate": "2025-11-21T23:59:59.000Z",
+        "endDate": "2025-12-29T23:59:59.000Z",
         "createdAt": "2025-06-04T02:40:12.176Z",
-        "updatedAt": "2025-08-02T07:28:18.015Z"
+        "updatedAt": "2025-11-27T23:17:48.132Z"
       }
     ],
     "vouchers": []

@@ -8,7 +8,7 @@ export default function ListTagsDetail({ listTags }) {
       {listTags.map((item, index) => (
         <span
           key={index}
-          className="opacity-75 btn btn-sm btn-outline bg-transparent hover:bg-amber-300 shadow-none max-w-full truncate transition-colors duration-300 ease-in-out"
+          className="badge badge-lg badge-outline gap-2 p-4 text-sm border-white/20 text-gray-200 hover:bg-amber-300 hover:text-black shadow-none max-w-full truncate transition-colors duration-300 ease-in-out"
         >
           #{item.slug}
         </span>

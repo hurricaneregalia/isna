@@ -76,14 +76,12 @@ export default function CountdownMini({ cssStyle }) {
             {["days", "hours", "minutes", "seconds"].map((key) => (
               <p key={key} className="flex flex-col bg-red-700 rounded-sm h-15 w-10 items-center justify-center">
                 {timeLeft[key] ?? 0}
-                <span className="text-xs opacity-75">
-                  {key === "days" ? "Hari" : key === "hours" ? "Jam" : key === "minutes" ? "Menit" : "Detik"}
-                </span>
+                <span className="text-xs opacity-75">{key === "days" ? "Hari" : key === "hours" ? "Jam" : key === "minutes" ? "Menit" : "Detik"}</span>
               </p>
             ))}
           </span>
           {/* Selesai */}
-          {isFinished && <p className="mt-4 text-red-700 bg-red-200 p-1 rounded-sm">Periode promo sudah berakhir</p>}
+          {isFinished && <p className="mt-4 text-red-700 bg-red-200 p-1 px-4 rounded-sm">Periode promo sudah berakhir</p>}
         </div>
       </div>
     </div>

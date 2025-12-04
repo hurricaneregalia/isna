@@ -72,14 +72,7 @@ export default function CountdownMiniBonus({ cssStyle }) {
   return (
     <>
       {!isFinished && (
-        <div className={`text-center ${cssStyle || "mt-10"}`}>
-          <Link
-            href="/bonus"
-            className="animate-bounce btn btn-lg border-0 items-center rounded-full bg-amber-300 shadow-none hover:bg-amber-500 text-slate-900 capitalize mb-4"
-          >
-            Claim Bonus
-          </Link>
-
+        <div className={`text-center space-y-5 ${cssStyle || "mt-10"}`}>        
           {/* Countdown display */}
           <div className="flex justify-center">
             <div className="inline-block text-white mx-auto p-3 py-2 rounded-md">
@@ -95,6 +88,13 @@ export default function CountdownMiniBonus({ cssStyle }) {
               </span>
             </div>
           </div>
+            <Link
+            href="/bonus"
+            className="animate-bounce btn btn-lg border-0 items-center rounded-full bg-amber-300 shadow-none hover:bg-amber-500 text-slate-900 capitalize mb-4"
+          >
+            Claim Bonus
+          </Link>
+
         </div>
       )}
     </>

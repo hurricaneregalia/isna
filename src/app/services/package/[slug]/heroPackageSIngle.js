@@ -41,25 +41,12 @@ export default function HeroPackageSingle({ img, imageAlt, listItem, children })
             setIsOpen(true);
           }}
         >
-          <ImageComponent
-            imageUrl={img}
-            imageAlt={imageAlt}
-            width="100%"
-            priority={true}
-            rounded="noround"
-            cssStyle="cursor-pointer object-cover h-full w-auto"
-          />
+          <ImageComponent imageUrl={img} imageAlt={imageAlt} width="100%" priority={true} rounded="noround" cssStyle="cursor-pointer object-cover w-full h-auto " />
         </button>
         <div>{children}</div>
       </div>
 
-      <Lightbox
-        open={isOpen}
-        close={() => setIsOpen(false)}
-        slides={slides}
-        index={currentIndex}
-        plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]}
-      />
+      <Lightbox open={isOpen} close={() => setIsOpen(false)} slides={slides} index={currentIndex} plugins={[Fullscreen, Slideshow, Thumbnails, Zoom]} />
     </div>
   );
 }
