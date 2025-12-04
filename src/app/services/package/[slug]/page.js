@@ -6,22 +6,27 @@ import FormPackage from "./formPackage";
 import HeroPackageSingle from "./heroPackageSIngle";
 import FacebookPixelServer from "@/app/component/marketingTools/FacebookPixelServer";
 import ListBenefitsDetail from "./ListBenefitsDetail";
+import fs from "fs/promises";
+import path from "path";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-// Fungsi fetch data dari endpoint
-async function fetchData(endpoint) {
-  const res = await fetch(`${BASE_URL}${endpoint}`, { cache: "no-store" });
-  if (!res.ok) {
-    throw new Error(`Gagal mengambil data dari ${endpoint}`);
+// Helper to read JSON files directly
+async function readJsonFile(folderName) {
+  try {
+    const filePath = path.join(process.cwd(), "src/app/api/datajs", folderName, "data.json");
+    const fileContent = await fs.readFile(filePath, "utf-8");
+    return JSON.parse(fileContent);
+  } catch (error) {
+    console.error(`Gagal membaca file ${folderName}:`, error);
+    return [];
   }
-  return res.json();
 }
 
 // ✅ Tambahan: generateStaticParams untuk pre-render halaman berdasarkan slug
 export async function generateStaticParams() {
   try {
-    const products = await fetchData("/api/datajs/product");
+    const products = await readJsonFile("product");
     return products.map((product) => ({
       slug: product.slug,
     }));
@@ -36,7 +41,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
 
   try {
-    const products = await fetchData("/api/datajs/product");
+    const products = await readJsonFile("product");
     const product = products.find((p) => p.slug === slug);
 
     if (!product) {
@@ -89,9 +94,9 @@ export default async function ProductDetailPage({ params }) {
 
   try {
     const [products, siteData, formData] = await Promise.all([
-      fetchData("/api/datajs/product"),
-      fetchData("/api/datajs/siteidentity"),
-      fetchData("/api/datajs/registerform"),
+      readJsonFile("product"),
+      readJsonFile("siteidentity"),
+      readJsonFile("registerform"),
     ]);
 
     const product = products.find((p) => p.slug === slug);

@@ -10,7 +10,7 @@ import path from "path";
 // Fungsi untuk membaca siteIdentity.json secara dinamis
 async function getSiteData() {
   try {
-    const filePath = path.join(process.cwd(), "src/app/api/datajs/siteIdentity/data.json");
+    const filePath = path.join(process.cwd(), "src/app/api/datajs/siteidentity/data.json");
     const file = await fs.readFile(filePath, "utf-8");
     const data = JSON.parse(file);
 
