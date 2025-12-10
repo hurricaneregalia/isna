@@ -715,42 +715,5 @@
       "createdAt": "2025-07-01T01:25:25.345Z",
       "updatedAt": "2025-07-01T01:25:25.345Z"
     }
-  },
-  {
-    "id": "e6ae3d79-b720-400f-8b53-96a7bf2e1bd1",
-    "name": "thevoyd",
-    "slug": "thevoyd",
-    "description": "",
-    "keywords": null,
-    "ogImage": null,
-    "themeId": 1,
-    "image": "/images/templateLandingPageBonus/Mirka/images/pexels-photo-11904557.jpg",
-    "component": null,
-    "lpDesignStyleId": "1b12fb47-5f38-4f24-a055-ba3f4660cd1e",
-    "marketingTools": null,
-    "isActive": false,
-    "createdAt": "2025-08-07T16:21:32.532Z",
-    "updatedAt": "2025-11-28T01:35:00.807Z",
-    "lpFor": [
-      {
-        "id": "d771bf51-bc98-4db8-81a1-661db4e53587",
-        "description": "menjual 1 produk."
-      }
-    ],
-    "lpContentTypes": [],
-    "lpDesignStyle": {
-      "id": "1b12fb47-5f38-4f24-a055-ba3f4660cd1e",
-      "name": "Retro",
-      "description": "Gaya desain klasik (80-90an), cocok untuk niche tertentu seperti café retro, fashion vintage."
-    },
-    "ctas": [],
-    "socialLinks": [],
-    "theme": {
-      "id": 1,
-      "name": "light",
-      "description": "Tema terang dan bersih cocok untuk presentasi formal.",
-      "createdAt": "2025-07-01T01:25:25.345Z",
-      "updatedAt": "2025-07-01T01:25:25.345Z"
-    }
   }
 ]
