@@ -14,18 +14,21 @@ const KanzarHero = ({ data }) => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90" />
 
       {/* Content */}
-      <div className="relative container mx-auto sm:w-6/12 w-full px-6 text-center text-white">
+      <div className="relative container mx-auto lg:w-6/12 w-full px-6 text-center text-white">
         <div data-aos="fade-up" data-aos-duration="1000">
           {/* Basmalah Calligraphy */}
           <div className="font-arabic text-3xl md:text-5xl text-warning mb-8 drop-shadow-lg opacity-90" data-aos="fade-down" data-aos-delay="200">
             بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
           </div>
 
-          <h2 className="text-warning font-serif italic text-xl md:text-2xl mb-4 tracking-wider uppercase">Premium & Halal Selection</h2>
-          <h1 className="font-serif text-7xl  font-bold mb-6 leading-tight text-shadow">{title}</h1>
+          <h2 className="text-warning font-serif italic text-lg md:text-2xl mb-4 tracking-wider uppercase">Premium & Halal Selection</h2>
+          <h1 className="font-serif sm:text-7xl text-4xl font-bold mb-6 leading-tight text-shadow">{title}</h1>
           <p className="font-sans text-lg md:text-xl text-stone-200/70 mb-10 max-w-2xl mx-auto leading-relaxed">{subtitle}</p>
 
-          <Link href="#product" className="btn btn-primary btn-lg font-bold tracking-widest transition-all duration-300 transform hover:scale-105 shadow-lg shadow-primary/30 border border-primary/30">
+          <Link
+            href="#product"
+            className="btn card w-fit mx-auto btn-accent btn-lg font-bold tracking-widest transition-all duration-300 transform hover:scale-105 shadow-lg shadow-accent/30 border border-primary/30"
+          >
             {ctaText}
           </Link>
         </div>

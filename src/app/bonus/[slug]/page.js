@@ -40,7 +40,7 @@ export async function generateMetadata({ params }) {
 
     return {
       title: landingPage.name,
-      description: landingPage.description,
+      description: landingPage.name + ", " + landingPage.description,
       keywords: landingPage.keywords,
       authors: "kalamanacopy",
       applicationName: landingPage.name,

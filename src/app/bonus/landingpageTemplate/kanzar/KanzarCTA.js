@@ -14,9 +14,11 @@ export default function KanzarCTA({ onOrder, secId = "calltoaction", data }) {
           <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight">{title}</h2>
           <p className="text-xl text-white/70 mb-10 max-w-3xl mx-auto">{subtitle}</p>
 
-          <button onClick={onOrder} className="btn btn-lg btn-warning group font-bold tracking-widest transition-all duration-300 shadow-2xl flex items-center justify-center gap-3 mx-auto">
-            <FaWhatsapp className="w-6 h-6" />
-            <span>{buttonText}</span>
+          <button onClick={onOrder} className="btn card btn-lg btn-warning group font-bold tracking-widest transition-all duration-300 shadow-2xl mx-auto">
+            <span className="flex items-center justify-center gap-3 ">
+              <FaWhatsapp className="w-6 h-6" />
+              <span>{buttonText}</span>
+            </span>
           </button>
         </div>
       </div>

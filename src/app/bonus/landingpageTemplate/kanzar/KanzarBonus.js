@@ -88,9 +88,11 @@ export default function KanzarBonus({ onOrder, secId = "bonus", data }) {
                   <KanzarCountDown />
                 </div>
 
-                <button onClick={onOrder} className="btn btn-lg btn-primary items-center gap-3 font-boldtransition-all duration-300 shadow-lg shadow-primary/20 group">
-                  <Gift className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-                  {buttonText}
+                <button onClick={onOrder} className="btn card btn-lg btn-accent font-bold transition-all duration-300 shadow-lg shadow-accent/20 group">
+                  <span className="items-center gap-3 flex justify-center">
+                    <Gift className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+                    {buttonText}
+                  </span>
                 </button>
               </div>
             </div>

@@ -78,7 +78,10 @@ const KanzarProduct = ({ onOrder, secId = "product", data }) => {
 
                   <p className="text-base-content/70 leading-relaxed grow text-lg">{product.description}</p>
                   {/* Product Card Button */}
-                  <button onClick={() => onOrder(product.name)} className="btn btn-lg btn-primary font-bold shadow-md hover:shadow-lg transition-all duration-300 mt-auto border border-primary/50">
+                  <button
+                    onClick={() => onOrder(product.name)}
+                    className="card btn btn-lg btn-primary font-bold shadow-md hover:shadow-lg transition-all duration-300 mt-auto border border-primary/50"
+                  >
                     Pesan Sekarang
                   </button>
                 </div>

@@ -113,7 +113,13 @@ export default function KanzarOrderForm({ onCancel, initialProduct, data }) {
                 <label htmlFor="productName" className="block text-xs uppercase tracking-widest mb-2 text-left font-bold">
                   Pilih Produk
                 </label>
-                <select value={productName} name="productName" id="productName" onChange={(e) => setProductName(e.target.value)} className="select">
+                <select
+                  value={productName}
+                  name="productName"
+                  id="productName"
+                  onChange={(e) => setProductName(e.target.value)}
+                  className=" card w-full p-2 focus:outline-none focus:border-base-300  transition-colors"
+                >
                   {data.product.products.map((p) => (
                     <option key={p.id} value={p.name} className="bg-base-100">
                       {p.name}
@@ -155,7 +161,7 @@ export default function KanzarOrderForm({ onCancel, initialProduct, data }) {
                       <button
                         type="button"
                         onClick={handleDecrement}
-                        className="aspect-square shadow-none w-fit shrink-0 btn btn-primary flex items-center justify-center hover:text-white transition-colors"
+                        className="aspect-square card shadow-none w-fit shrink-0 btn btn-primary flex items-center justify-center hover:text-white transition-colors"
                       >
                         -
                       </button>
@@ -171,7 +177,7 @@ export default function KanzarOrderForm({ onCancel, initialProduct, data }) {
                       <button
                         type="button"
                         onClick={handleIncrement}
-                        className="aspect-square shadow-none w-fit shrink-0 btn btn-primary flex items-center justify-center hover:text-white transition-colors"
+                        className="aspect-square card shadow-none w-fit shrink-0 btn btn-primary flex items-center justify-center hover:text-white transition-colors"
                       >
                         +
                       </button>
@@ -245,7 +251,7 @@ export default function KanzarOrderForm({ onCancel, initialProduct, data }) {
             value={customerInfo.address}
             onChange={handleInfoChange}
             placeholder="Jalan, No. Rumah, Kecamatan, Kota..."
-            className="w-full bg-base-200 border border-base-300 input px-4 py-3 focus:outline-none focus:border-primary transition-colors "
+            className=" textarea w-full bg-base-200 border border-base-300 input px-4 py-3 focus:outline-none focus:border-primary transition-colors "
           />
         </div>
 
@@ -261,17 +267,16 @@ export default function KanzarOrderForm({ onCancel, initialProduct, data }) {
             value={customerInfo.notes}
             onChange={handleInfoChange}
             placeholder="Contoh: Titip di pos satpam..."
-            className="w-full bg-base-200 border border-base-300 input px-4 py-3 focus:outline-none focus:border-primary transition-colors"
+            className=" textarea w-full bg-base-200 border border-base-300 input px-4 py-3 focus:outline-none focus:border-primary transition-colors"
           />
         </div>
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          className="w-full font-bold py-4 btn btn-lg btn-primary shadow-lg hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-3 text-lg group mt-10"
-        >
-          <FaWhatsapp className="w-6 h-6" />
-          <span>Kirim Pesanan</span>
+        <button type="submit" className="w-full font-bold py-4 btn btn-lg btn-primary card shadow-lg hover:shadow-primary/30 transition-all duration-300 text-lg group mt-10">
+          <span className="flex items-center justify-center gap-3 ">
+            <FaWhatsapp className="w-6 h-6" />
+            <span>Kirim Pesanan</span>
+          </span>
         </button>
       </form>
     </div>
