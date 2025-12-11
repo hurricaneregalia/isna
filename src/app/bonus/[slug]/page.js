@@ -6,6 +6,7 @@ import path from "path";
 import HeaderFooterLandingPageOnly from "./HeaderFooterLandingPageOnly";
 import ThemeWrapper from "./ThemeWrapper";
 
+import Loading from "@/app/loading";
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 // Fungsi membaca data JSON lokal
@@ -101,9 +102,44 @@ export default async function ProductPage({ params }) {
   if (!landingPage) return notFound();
 
   // Import dinamis komponen berdasarkan nama
+  if (!landingPage.component) return notFound();
+
   let TemplateComponent;
   try {
-    TemplateComponent = (await import(`@/app/bonus/landingpageTemplate/${landingPage.component}`)).default;
+    switch (landingPage.component) {
+      case "Nurbaz":
+        TemplateComponent = (await import("@/app/bonus/landingpageTemplate/Nurbaz")).default;
+        break;
+      case "Halvora":
+        TemplateComponent = (await import("@/app/bonus/landingpageTemplate/Halvora")).default;
+        break;
+      case "Baizan":
+        TemplateComponent = (await import("@/app/bonus/landingpageTemplate/Baizan")).default;
+        break;
+      case "Rihala":
+        TemplateComponent = (await import("@/app/bonus/landingpageTemplate/Rihala")).default;
+        break;
+      case "Zaffra":
+        TemplateComponent = (await import("@/app/bonus/landingpageTemplate/Zaffra")).default;
+        break;
+      case "Mirka":
+        TemplateComponent = (await import("@/app/bonus/landingpageTemplate/Mirka")).default;
+        break;
+      case "Safna":
+        TemplateComponent = (await import("@/app/bonus/landingpageTemplate/Safna")).default;
+        break;
+      case "Zemira":
+        TemplateComponent = (await import("@/app/bonus/landingpageTemplate/Zemira")).default;
+        break;
+      case "Hyzaa":
+        TemplateComponent = (await import("@/app/bonus/landingpageTemplate/Hyzaa")).default;
+        break;
+      case "Kanzar":
+        TemplateComponent = (await import("@/app/bonus/landingpageTemplate/Kanzar")).default;
+        break;
+      default:
+        throw new Error(`Component ${landingPage.component} not found`);
+    }
   } catch (err) {
     console.error("❌ Gagal memuat template:", err);
     return notFound();

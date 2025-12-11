@@ -293,7 +293,7 @@ const dataMirka = {
 export default function Mirka({ siteData, siteName, activeTheme }) {
   return (
     <>
-      <div className="card  bg-primary overflow-hidden space-y-32 sm:pb-20 pb-5 sm:border-16 border-8 border-white">
+      <div className="card bg-slate-900 overflow-hidden space-y-32 sm:pb-20 pb-5 sm:border-16 border-8 border-white">
         <HeroSectionMirka data={dataMirka.hero} secId="hero" siteName={siteName} />
         <ProblemSectionMirka data={dataMirka.problem} secId="problem" />
         <ProblemSectionMirka2 data={dataMirka.problem} secId="problem2" />

@@ -653,28 +653,44 @@
     "id": "c7d37435-824f-4de7-94bb-f4c919d0ef6a",
     "name": "kanzar",
     "slug": "kanzar",
-    "description": "editpsing",
-    "keywords": null,
+    "description": "Template landing page khusus untuk menjual berbagai macam takjil Ramadhan. Membantu meningkatkan konversi, meningkatkan kepercayaan, tampilan responsif, dan alur pemesanan yang lebih efektif.",
+    "keywords": "takjil ramadhan, template landing page, jual takjil online, landing page penjualan, template ramadhan, landing page makanan, halaman pemesanan online",
     "ogImage": null,
-    "themeId": 1,
-    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "themeId": 33,
+    "image": "/images/templateLandingPageBonus/Kanzar/images/bg/bg-10.png",
     "component": "Kanzar",
-    "lpDesignStyleId": "dc6d1827-0b89-4c82-8d9d-21f551850ed9",
+    "lpDesignStyleId": "816d0a80-83f9-427b-8996-d1948a544a77",
     "marketingTools": null,
-    "isActive": false,
+    "isActive": true,
     "createdAt": "2025-05-21T00:13:36.319Z",
-    "updatedAt": "2025-07-01T01:31:24.602Z",
+    "updatedAt": "2025-12-11T03:29:39.317Z",
     "lpFor": [
       {
-        "id": "443c4e89-3266-4e10-a525-cce367a968b8",
-        "description": "pendaftaran kursus."
-      },
-      {
-        "id": "6c37855a-8169-4309-ab73-da56fccb0b83",
-        "description": "mengumpulkan prospek."
+        "id": "ecbfa549-0b21-414e-a1bf-982243a69c90",
+        "description": "menjual produk branded."
       }
     ],
     "lpContentTypes": [
+      {
+        "id": "1c39504e-f456-4a1c-9ec7-823df7ec78ff",
+        "type": "form",
+        "order": 11
+      },
+      {
+        "id": "397d9d29-87dd-4ae7-917d-d5bcc853cf1a",
+        "type": "hero image",
+        "order": 2
+      },
+      {
+        "id": "5098707b-91bc-4628-b077-1a98e65b5cd1",
+        "type": "testimoni teks",
+        "order": 6
+      },
+      {
+        "id": "60a0b2e3-ca35-42cf-97db-1933950650db",
+        "type": "CTA whatsapp",
+        "order": 110
+      },
       {
         "id": "649f9dc6-6d7e-4edb-917b-cc8e18779677",
         "type": "text",
@@ -686,20 +702,20 @@
         "order": 12
       },
       {
+        "id": "822dbbf4-eda5-4fa5-9d37-a97da91712d3",
+        "type": "product list",
+        "order": 9
+      },
+      {
         "id": "d2adaf07-56ce-446d-825f-a94de84dde88",
         "type": "responsive",
         "order": 90
-      },
-      {
-        "id": "ea6951d6-ba26-463d-b971-0ac8bace093f",
-        "type": "slider",
-        "order": 13
       }
     ],
     "lpDesignStyle": {
-      "id": "dc6d1827-0b89-4c82-8d9d-21f551850ed9",
-      "name": "Minimalist",
-      "description": "Warna netral, sedikit elemen visual, layout sederhana, cocok untuk personal branding."
+      "id": "816d0a80-83f9-427b-8996-d1948a544a77",
+      "name": "Bold",
+      "description": "Teks besar, warna kontras, CTA mencolok, cocok untuk promosi agresif."
     },
     "ctas": [
       {
@@ -709,9 +725,9 @@
     ],
     "socialLinks": [],
     "theme": {
-      "id": 1,
-      "name": "light",
-      "description": "Tema terang dan bersih cocok untuk presentasi formal.",
+      "id": 33,
+      "name": "caramellatte",
+      "description": "Warna lembut seperti kopi karamel.",
       "createdAt": "2025-07-01T01:25:25.345Z",
       "updatedAt": "2025-07-01T01:25:25.345Z"
     }

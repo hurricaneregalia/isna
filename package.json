@@ -15,7 +15,7 @@
     "@auth/prisma-adapter": "^2.9.0",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
-    "@next/third-parties": "^15.1.8",
+    "@next/third-parties": "^16.0.0",
     "@prisma/client": "^6.8.2",
     "aos": "^2.3.4",
     "axios": "^1.7.9",
@@ -46,7 +46,7 @@
     "@types/react": "19.1.4",
     "daisyui": "^5.0.43",
     "eslint": "^8",
-    "eslint-config-next": "15.3.2",
+    "eslint-config-next": "^16.0.0",
     "postcss": "^8",
     "prisma": "^6.8.2",
     "tailwindcss": "^4.1.3"

@@ -11,7 +11,6 @@ const KanzarHero = ({ data }) => {
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed bg-scroll transform scale-105" style={{ backgroundImage: `url(${backgroundImage})` }} />
       {/* Islamic Pattern Overlay */}
       <div className="absolute inset-0 bg-black/60 " />
-      <div className="absolute inset-0 opacity-30 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] mix-blend-overlay" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90" />
 
       {/* Content */}

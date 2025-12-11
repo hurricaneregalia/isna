@@ -245,7 +245,7 @@ export default function KanzarOrderForm({ onCancel, initialProduct, data }) {
             value={customerInfo.address}
             onChange={handleInfoChange}
             placeholder="Jalan, No. Rumah, Kecamatan, Kota..."
-            className="w-full bg-base-200 border border-base-300 input px-4 py-3 focus:outline-none focus:border-primary transition-colors resize-none"
+            className="w-full bg-base-200 border border-base-300 input px-4 py-3 focus:outline-none focus:border-primary transition-colors "
           />
         </div>
 
@@ -261,7 +261,7 @@ export default function KanzarOrderForm({ onCancel, initialProduct, data }) {
             value={customerInfo.notes}
             onChange={handleInfoChange}
             placeholder="Contoh: Titip di pos satpam..."
-            className="w-full bg-base-200 border border-base-300 input px-4 py-3 focus:outline-none focus:border-primary transition-colors resize-none"
+            className="w-full bg-base-200 border border-base-300 input px-4 py-3 focus:outline-none focus:border-primary transition-colors"
           />
         </div>
 
