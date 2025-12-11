@@ -51,7 +51,7 @@ export async function generateMetadata({ params }) {
       },
       openGraph: {
         title: landingPage.name,
-        description: landingPage.description,
+        description: landingPage.name + ", " + landingPage.description,
         url: `${BASE_URL}/bonus/${slug}`,
         siteName: landingPage.name,
         images: landingPage.image
@@ -70,7 +70,7 @@ export async function generateMetadata({ params }) {
       twitter: {
         card: "summary_large_image",
         title: landingPage.name,
-        description: landingPage.description,
+        description: landingPage.name + ", " + landingPage.description,
         creator: Array.isArray(landingPage.socialLinks) ? landingPage.socialLinks.find((s) => s.platform === "twitter")?.platformUsername || "@kalamanacopy" : "@kalamanacopy",
         images: landingPage.image ? [`${BASE_URL}${landingPage.image}`] : [],
       },
