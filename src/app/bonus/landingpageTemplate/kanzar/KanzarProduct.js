@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import MySVG from "./MySVG";
 
 const KanzarProduct = ({ onOrder, secId = "product", data }) => {
   const { title, subtitle, products, border } = data.product;
