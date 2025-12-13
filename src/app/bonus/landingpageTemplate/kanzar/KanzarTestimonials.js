@@ -3,7 +3,7 @@ import { Quote } from "lucide-react";
 import Image from "next/image";
 
 export default function KanzarTestimonials({ secId = "testimonials", data }) {
-  const { title, subtitle, reviews } = data.testimonials;
+  const { title, subtitle, reviews, ornament } = data.testimonials;
   const patternUrl = "https://cdn-icons-png.flaticon.com/512/14456/14456745.png";
 
   return (
@@ -19,8 +19,12 @@ export default function KanzarTestimonials({ secId = "testimonials", data }) {
         }}
       />
 
-      {/* Background Texture Overlay - Arabesque */}
-      <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')]"></div>
+      <div className="absolute top-0 right-10 origin-top swing z-1">
+        <Image src={ornament} alt="ornament" width={50} height={262.033} className="w-[25px] lg:w-[50px] h-auto" />
+      </div>
+      <div className="absolute top-0 left-10 origin-top swing z-1">
+        <Image src={ornament} alt="ornament" width={50} height={262.033} className="w-[25px] lg:w-[50px] h-auto" />
+      </div>
 
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 to-transparent"></div>

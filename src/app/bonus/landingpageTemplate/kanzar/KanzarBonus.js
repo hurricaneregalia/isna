@@ -4,45 +4,16 @@ import Image from "next/image";
 import KanzarCountDown from "./KanzarCountdown";
 
 export default function KanzarBonus({ onOrder, secId = "bonus", data }) {
-  const { title, subtitle, offer, description, buttonText, images } = data.bonus;
+  const { title, subtitle, offer, description, buttonText, images, ornament } = data.bonus;
 
   return (
     <section id={secId} className="py-20 bg-slate-900 relative overflow-hidden">
       {/* Hanging Lantern (Fanoos) Ornament */}
-      <div id="ornament" className="absolute top-0 right-10 hidden md:block origin-top swing">
-        <svg width="80" height="200" viewBox="0 0 100 250" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-[0_10px_20px_rgba(212,165,35,0.3)]">
-          {/* Rope */}
-          <line x1="50" y1="0" x2="50" y2="50" stroke="#D4A523" strokeWidth="2" />
-          {/* Lantern Body */}
-          <path d="M50 50 L30 70 L30 150 L50 170 L70 150 L70 70 Z" fill="rgba(0,0,0,0.5)" stroke="#D4A523" strokeWidth="2" />
-          <path d="M30 70 L70 70" stroke="#D4A523" strokeWidth="1" />
-          <path d="M30 150 L70 150" stroke="#D4A523" strokeWidth="1" />
-          {/* Inner Light */}
-          <circle cx="50" cy="110" r="10" fill="#F9F1D8" className="animate-pulse" opacity="0.8">
-            <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite" />
-          </circle>
-          {/* Bottom Tassel */}
-          <path d="M50 170 L50 220" stroke="#D4A523" strokeWidth="2" strokeDasharray="4 2" />
-          <circle cx="50" cy="225" r="5" fill="#D4A523" />
-        </svg>
+      <div className="absolute top-0 right-10 origin-top swing z-1">
+        <Image src={ornament} alt="ornament" width={50} height={262.033} className="w-[25px] lg:w-[50px] h-auto" />
       </div>
-
-      <div className="absolute top-0 left-10 hidden md:block origin-top swing">
-        <svg width="80" height="200" viewBox="0 0 100 250" fill="none" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-[0_10px_20px_rgba(212,165,35,0.3)]">
-          {/* Rope */}
-          <line x1="50" y1="0" x2="50" y2="50" stroke="#D4A523" strokeWidth="2" />
-          {/* Lantern Body */}
-          <path d="M50 50 L30 70 L30 150 L50 170 L70 150 L70 70 Z" fill="rgba(0,0,0,0.5)" stroke="#D4A523" strokeWidth="2" />
-          <path d="M30 70 L70 70" stroke="#D4A523" strokeWidth="1" />
-          <path d="M30 150 L70 150" stroke="#D4A523" strokeWidth="1" />
-          {/* Inner Light */}
-          <circle cx="50" cy="110" r="10" fill="#F9F1D8" className="animate-pulse" opacity="0.8">
-            <animate attributeName="opacity" values="0.8;0.4;0.8" dur="2s" repeatCount="indefinite" />
-          </circle>
-          {/* Bottom Tassel */}
-          <path d="M50 170 L50 220" stroke="#D4A523" strokeWidth="2" strokeDasharray="4 2" />
-          <circle cx="50" cy="225" r="5" fill="#D4A523" />
-        </svg>
+      <div className="absolute top-0 left-10 origin-top swing z-1">
+        <Image src={ornament} alt="ornament" width={50} height={262.033} className="w-[25px] lg:w-[50px] h-auto" />
       </div>
       <div className="container mx-auto px-6 relative">
         <div className="space-y-10 bg-gradient-to-br from-white/5 to-white/0 border border-warning/20 card p-8 md:p-12 shadow-2xl overflow-hidden">

@@ -3,6 +3,8 @@ import { FaInstagram } from "react-icons/fa6";
 import { Crown, Leaf, Gift } from "lucide-react";
 
 const bgGlobal = "/images/templateLandingPageBonus/Kanzar/images/bg/islamic-polygon.svg";
+const ornamenturl = "/images/templateLandingPageBonus/Kanzar/images/lantern-01.svg";
+const borderurl = "/images/templateLandingPageBonus/Kanzar/images/border-01.svg";
 export const db = {
   brand: {
     name: "ROYAL DATES",
@@ -20,6 +22,7 @@ export const db = {
     subtitle: "Nikmati keaslian Sunnah dengan Royal Dates. Kurma premium pilihan terbaik untuk momen Ibadah dan kesehatan keluarga Anda.",
     ctaText: "Pesan Sekarang",
     backgroundImage: "/images/templateLandingPageBonus/Kanzar/images/bg/bg-10.png", // Dark market stall vibe
+    border: borderurl,
   },
   about: {
     // AIDA: Interest
@@ -55,6 +58,7 @@ export const db = {
     // AIDA: Desire (Product visualization)
     title: "KOLEKSI SUNNAH",
     subtitle: "Pilihan terbaik untuk menemani ibadah puasa dan menjaga kesehatan keluarga.",
+    border: borderurl,
     products: [
       {
         id: 1,
@@ -105,6 +109,7 @@ export const db = {
       "/images/templateLandingPageBonus/Kanzar/images/bonus/bonus-3.png",
       "/images/templateLandingPageBonus/Kanzar/images/bonus/bonus-4.png",
     ],
+    ornament: ornamenturl,
   },
   trust: {
     items: [
@@ -132,6 +137,7 @@ export const db = {
     // AIDA: Desire (Social Proof)
     title: "TESTIMONI SAHABAT",
     subtitle: "Ribuan keluarga muslim telah merasakan kenikmatan Royal Dates.",
+    ornament: ornamenturl,
     reviews: [
       {
         id: 1,
