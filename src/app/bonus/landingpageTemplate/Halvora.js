@@ -14,7 +14,7 @@ import HalvoraFooter from "./halvora/components/HalvoraFooter";
 
 export default function Halvora() {
   return (
-    <div className="min-h-screen font-sans bg-base-100 text-base-content overflow-x-hidden">
+    <div className="min-h-screen font-sans bg-white text-stone-700 overflow-x-hidden selection:bg-emerald-200">
       <HalvoraNavbar data={HalvoraData} />
       
       <main>

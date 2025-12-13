@@ -2,11 +2,8 @@ import React from "react";
 
 export default function HalvoraHeadline({ text, className = "", ...props }) {
   return (
-    <h1
-      className={`text-4xl md:text-5xl font-bold text-base-content ${className}`}
-      {...props}
-    >
+    <h2 className={`text-4xl md:text-5xl font-bold text-emerald-950 font-serif leading-tight ${className}`}>
       {text}
-    </h1>
+    </h2>
   );
 }

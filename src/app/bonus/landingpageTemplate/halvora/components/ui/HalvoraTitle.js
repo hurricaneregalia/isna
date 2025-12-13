@@ -2,11 +2,11 @@ import React from "react";
 
 export default function HalvoraTitle({ text, className = "", ...props }) {
   return (
-    <h3
-      className={`text-xl font-bold uppercase tracking-wide text-primary ${className}`}
+    <h4
+      className={`text-sm md:text-base font-bold uppercase tracking-widest text-emerald-700 mb-2 ${className}`}
       {...props}
     >
       {text}
-    </h3>
+    </h4>
   );
 }

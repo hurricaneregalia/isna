@@ -35,29 +35,29 @@ export default function HalvoraCountdown({ targetDate, className = "" }) {
 
   return (
     <div className={`grid grid-cols-4 gap-2 md:flex md:gap-4 justify-center text-center ${className}`}>
-      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content w-full md:w-auto min-w-[50px] md:min-w-[70px] items-center justify-center">
-        <span className="countdown font-mono text-xl md:text-4xl">
+      <div className="flex flex-col p-2 bg-emerald-50 border border-emerald-100 rounded-xl text-emerald-900 w-full md:w-auto min-w-[50px] md:min-w-[70px] items-center justify-center shadow-sm">
+        <span className="countdown font-mono text-xl md:text-4xl text-emerald-700">
           <span style={{ "--value": timeLeft.hari || 0 }}></span>
         </span>
-        <span className="text-[10px] md:text-xs">Hari</span>
+        <span className="text-[10px] md:text-xs uppercase tracking-wide mt-1">Hari</span>
       </div>
-      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content w-full md:w-auto min-w-[50px] md:min-w-[70px] items-center justify-center">
-        <span className="countdown font-mono text-xl md:text-4xl">
+      <div className="flex flex-col p-2 bg-emerald-50 border border-emerald-100 rounded-xl text-emerald-900 w-full md:w-auto min-w-[50px] md:min-w-[70px] items-center justify-center shadow-sm">
+        <span className="countdown font-mono text-xl md:text-4xl text-emerald-700">
           <span style={{ "--value": timeLeft.jam || 0 }}></span>
         </span>
-        <span className="text-[10px] md:text-xs">Jam</span>
+        <span className="text-[10px] md:text-xs uppercase tracking-wide mt-1">Jam</span>
       </div>
-      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content w-full md:w-auto min-w-[50px] md:min-w-[70px] items-center justify-center">
-        <span className="countdown font-mono text-xl md:text-4xl">
+      <div className="flex flex-col p-2 bg-emerald-50 border border-emerald-100 rounded-xl text-emerald-900 w-full md:w-auto min-w-[50px] md:min-w-[70px] items-center justify-center shadow-sm">
+        <span className="countdown font-mono text-xl md:text-4xl text-emerald-700">
           <span style={{ "--value": timeLeft.menit || 0 }}></span>
         </span>
-        <span className="text-[10px] md:text-xs">Menit</span>
+        <span className="text-[10px] md:text-xs uppercase tracking-wide mt-1">Menit</span>
       </div>
-      <div className="flex flex-col p-2 bg-neutral rounded-box text-neutral-content w-full md:w-auto min-w-[50px] md:min-w-[70px] items-center justify-center">
-        <span className="countdown font-mono text-xl md:text-4xl">
+      <div className="flex flex-col p-2 bg-emerald-50 border border-emerald-100 rounded-xl text-emerald-900 w-full md:w-auto min-w-[50px] md:min-w-[70px] items-center justify-center shadow-sm">
+        <span className="countdown font-mono text-xl md:text-4xl text-emerald-700">
           <span style={{ "--value": timeLeft.detik || 0 }}></span>
         </span>
-        <span className="text-[10px] md:text-xs">Detik</span>
+        <span className="text-[10px] md:text-xs uppercase tracking-wide mt-1">Detik</span>
       </div>
     </div>
   );
