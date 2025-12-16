@@ -3,18 +3,31 @@ import HalvoraHeadline from "./ui/HalvoraHeadline";
 import HalvoraCountdown from "./ui/HalvoraCountdown";
 import HalvoraAccentButton from "./ui/HalvoraAccentButton";
 import HalvoraImage from "./ui/HalvoraImage";
+import Image from "next/image";
 
 export default function HalvoraBonus({ data, secId }) {
-  const { title, offerTitle, description, icon, image, buttonText, targetDate } = data.bonus;
+  const { title, offerTitle, description, icon, image, ornament, targetDate, pattern } = data.bonus;
 
   return (
-    <section id={secId} className="py-20 bg-gradient-to-r from-[#D48F8F] to-[#d69e9e] relative overflow-hidden">
+    <section id={secId} className="bg-gradient-to-r from-[#D48F8F] to-[#d69e9e] relative overflow-hidden">
+      <div
+        className="absolute w-full  h-full z-2 bg-size-[auto_50px] opacity-10 bg-center "
+        style={{
+          backgroundImage: `url(${pattern})`,
+        }}
+      ></div>
+      <div className="absolute top-0 right-10 origin-top swing z-4">
+        <Image src={ornament} alt="ornament" width={50} height={262.033} className="w-[25px] lg:w-[50px] h-auto" style={{ height: "auto" }} />
+      </div>
+      <div className="absolute top-0 left-10 origin-top swing z-4">
+        <Image src={ornament} alt="ornament" width={50} height={262.033} className="w-[25px] lg:w-[50px] h-auto" style={{ height: "auto" }} />
+      </div>
       {/* Decorative circles */}
       <div className="absolute -top-40 -right-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-40 -left-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
 
-      <div className="container mx-auto px-6 relative lg:w-8/12 w-full">
-        <div className="flex flex-col sm:flex-row sm:py-25 py-10 items-center justify-between gap-12 bg-[#6B4423]/5 p-10 rounded-[2.5rem] border border-white/30 shadow-2xl ring-1 ring-white/20">
+      <div className="container mx-auto px-6 relative lg:w-8/12 w-full z-3 my-24">
+        <div className="flex flex-col sm:flex-row sm:py-25 py-10 items-center bg-gradient-to-r from-[#D48F8F] to-[#d69e9e] justify-between gap-12 bg-[#6B4423]/5 p-10 rounded-[2.5rem] border border-white/30 shadow-2xl ring-1 ring-white/20">
           {/* Left Side: Content & Countdown */}
           <div className="w-full space-y-8">
             <div className=" grid sm:grid-cols-2 grid-cols-1 gap-4">

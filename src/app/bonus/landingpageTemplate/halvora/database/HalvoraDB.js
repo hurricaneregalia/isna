@@ -13,6 +13,10 @@ const product3 = "/images/templateLandingPageBonus/Halvora/product/gamis-3.jpg";
 const testimonial1 = "/images/templateLandingPageBonus/Halvora/section/sec-testimonials-avatar-1.jpg";
 const testimonial2 = "/images/templateLandingPageBonus/Halvora/section/sec-testimonials-avatar-2.jpg";
 const testimonial3 = "/images/templateLandingPageBonus/Halvora/section/sec-testimonials-avatar-3.jpg";
+const ornament1 = "/images/templateLandingPageBonus/Halvora/section/flower-01.svg";
+const ornament2 = "/images/templateLandingPageBonus/Halvora/ornament/lantern-2-01.svg";
+const border1 = "/images/templateLandingPageBonus/Halvora/ornament/border-2-01.svg";
+const pattern = "/images/templateLandingPageBonus/Halvora/ornament/border-3-01.svg";
 
 export const HalvoraData = {
   brand: {
@@ -43,6 +47,8 @@ export const HalvoraData = {
       "Kami menggunakan bahan-bahan premium pilihan yang adem, jatuh, dan tidak menerawang. Setiap jahitan dikerjakan oleh tangan-tangan ahli untuk memastikan kualitas terbaik sampai ke tangan Anda.",
     ],
     image: aboutImg,
+    ornament: ornament1,
+    ornament2: ornament2,
     features: [
       { id: 1, text: "Bahan Premium Adem" },
       { id: 2, text: "Jahitan Butik Rapi" },
@@ -53,6 +59,7 @@ export const HalvoraData = {
   products: {
     title: "KOLEKSI TERBARU",
     subtitle: "Pilihan favorit pelanggan kami musim ini",
+    ornament: ornament1,
     items: [
       {
         id: 1,
@@ -84,6 +91,7 @@ export const HalvoraData = {
     ],
   },
   trust: {
+    border: border1,
     items: [
       {
         id: 1,
@@ -140,6 +148,8 @@ export const HalvoraData = {
     image: "/images/templateLandingPageBonus/Halvora/section/sec-bonus.png", // Gift box image
     buttonText: "Klaim Bonus Sekarang",
     targetDate: new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000), // 2 days from now
+    ornament: ornament2,
+    pattern: pattern,
   },
   cta: {
     title: "Siap Tampil Anggun?",
@@ -150,6 +160,7 @@ export const HalvoraData = {
   bestFor: {
     title: "Cocok Untuk Berbagai Momen",
     subtitle: "Tampil anggun dan percaya diri di setiap kesempatan istimewa Anda.",
+    border: border1,
     items: [
       {
         id: 1,

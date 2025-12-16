@@ -68,7 +68,7 @@ export default function HalvoraNavbar({ data }) {
         </div>
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden absolute top-full left-0 w-full h-screen bg-[#FFF5EA]/90 flex flex-col p-6 border-t border-[#D48F8F]/20 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+          className={`lg:hidden absolute top-full left-0 w-full h-screen bg-[#FFF5EA]/95 flex flex-col p-6 border-t border-[#D48F8F]/20 transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] ${
             isOpen ? "opacity-100 pointer-events-auto translate-y-0" : "opacity-0 pointer-events-none -translate-y-4"
           }`}
         >
@@ -86,7 +86,7 @@ export default function HalvoraNavbar({ data }) {
                 {item.label}
               </a>
             ))}
-            <HalvoraSecondaryButton className="w-full mt-8 py-4 text-lg">Contact Us</HalvoraSecondaryButton>
+            <HalvoraSecondaryButton className="w-fit mx-auto mt-8 py-4 text-lg">Contact Us</HalvoraSecondaryButton>
           </div>
         </div>
       </nav>
