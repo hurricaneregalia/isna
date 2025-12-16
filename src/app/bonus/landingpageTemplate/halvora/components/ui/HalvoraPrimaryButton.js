@@ -2,9 +2,9 @@ import React from "react";
 
 export default function HalvoraPrimaryButton({ children, onClick, className = "", ...props }) {
   return (
-    <button
+    <button 
       onClick={onClick}
-      className={`btn bg-emerald-800 hover:bg-emerald-900 text-white border-none rounded-full px-8 shadow-sm hover:shadow-md transition-all duration-300 ${className}`}
+      className={`btn bg-[#D48F8F] hover:bg-[#c07d7d] text-white border-none rounded-full px-8 shadow-sm hover:shadow-md transition-all duration-300 ${className}`}
       {...props}
     >
       {children}

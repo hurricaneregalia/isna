@@ -3,7 +3,7 @@ import React from "react";
 export default function HalvoraTitle({ text, className = "", ...props }) {
   return (
     <h4
-      className={`text-sm md:text-base font-bold uppercase tracking-widest text-emerald-700 mb-2 ${className}`}
+      className={`text-sm md:text-base font-bold uppercase tracking-widest text-[#D48F8F] mb-2 ${className}`}
       {...props}
     >
       {text}

@@ -1,5 +1,6 @@
 /* src/app/globals.css */
 @import "tailwindcss";
+
 @plugin "daisyui" {
   themes: all;
 }
@@ -48,6 +49,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -80,30 +82,43 @@
     font-family: Arial, Helvetica, sans-serif;
   }
 }
+
 .status-dot {
   height: 10px;
   width: 10px;
 }
+
 .smallIcons {
   font-size: 8px;
 }
 
 @keyframes beat-fade-zoom {
   0% {
-    transform: scale(1); /* Ukuran normal */
-    opacity: 0.2; /* Opasitas penuh */
+    transform: scale(1);
+    /* Ukuran normal */
+    opacity: 0.2;
+    /* Opasitas penuh */
   }
+
   33% {
-    transform: scale(1.2); /* Memperbesar */
-    opacity: 1; /* Mengurangi opasitas */
+    transform: scale(1.2);
+    /* Memperbesar */
+    opacity: 1;
+    /* Mengurangi opasitas */
   }
+
   66% {
-    transform: scale(1); /* Kembali ke ukuran normal */
-    opacity: 0.2; /* Opasitas penuh */
+    transform: scale(1);
+    /* Kembali ke ukuran normal */
+    opacity: 0.2;
+    /* Opasitas penuh */
   }
+
   100% {
-    transform: scale(1.2); /* Memperbesar lagi */
-    opacity: 1; /* Mengurangi opasitas lagi */
+    transform: scale(1.2);
+    /* Memperbesar lagi */
+    opacity: 1;
+    /* Mengurangi opasitas lagi */
   }
 }
 
@@ -125,12 +140,14 @@
   background-repeat: repeat;
   background-size: 100px;
 }
+
 .notFoundBg {
   background-image: url("/images/landingPage/not-found.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
+
 .yt-wrapper iframe {
   width: 100% !important;
   height: 100% !important;
@@ -138,8 +155,8 @@
 }
 
 .huhuPattern {
-background: radial-gradient(circle, #d6d6d7 10%, transparent 11%),radial-gradient(circle at bottom left, #d6d6d7 5%, transparent 6%),radial-gradient(circle at bottom right, #d6d6d7 5%, transparent 6%),radial-gradient(circle at top left, #d6d6d7 5%, transparent 6%),radial-gradient(circle at top right, #d6d6d7 5%, transparent 6%);
-        background-size: 1em 1em;
+  background: radial-gradient(circle, #d6d6d7 10%, transparent 11%), radial-gradient(circle at bottom left, #d6d6d7 5%, transparent 6%), radial-gradient(circle at bottom right, #d6d6d7 5%, transparent 6%), radial-gradient(circle at top left, #d6d6d7 5%, transparent 6%), radial-gradient(circle at top right, #d6d6d7 5%, transparent 6%);
+  background-size: 1em 1em;
 }
 
 .custom-radial {
@@ -155,11 +172,11 @@ background: radial-gradient(circle, #d6d6d7 10%, transparent 11%),radial-gradien
   0% {
     transform: rotate(-5deg);
   }
- 
+
   50% {
     transform: rotate(5deg);
   }
- 
+
   100% {
     transform: rotate(-5deg);
   }
