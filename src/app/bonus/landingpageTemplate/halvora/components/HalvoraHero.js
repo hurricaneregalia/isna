@@ -17,7 +17,7 @@ export default function HalvoraHero({ data, secId, target }) {
       {/* Overlay: Warm Brown, slightly stronger for legibility without card */}
       <div className="absolute inset-0 bg-accent/60"></div>
       <div
-        className="absolute top-0 bg-content w-full min-h-screen lg:right-50 right-0 sm:bg-right-bottom bg-bottom bottom-0  bg-no-repeat lg:bg-[length:auto_800px] sm:bg-[length:auto_650px] bg-[length:auto_450px]"
+        className="absolute top-0 w-full min-h-screen lg:right-52 right-0 sm:bg-right-bottom bg-bottom bottom-0  bg-no-repeat lg:bg-[length:auto_800px] sm:bg-[length:auto_650px] bg-[length:auto_450px]"
         style={{
           backgroundImage: `url(${image})`,
         }}

@@ -11,11 +11,11 @@ export default function HalvoraAbout({ data, secId }) {
 
   return (
     <section id={secId} className="py-24 bg-base-300 relative">
-      <div className="absolute aspect-[9:16] rounded-full z-2">
+      <div className="absolute aspect-[9/16] rounded-full z-2">
         <div className="absolute inset-0 bg-base-200 rounded-full blur-xl"></div>
         <HalvoraImage src={ornament} alt="Decorative Flower" className="relative w-full h-full object-cover opacity-20" />
       </div>
-      <div className="absolute aspect-[9:16] rounded-full right-0 z-1">
+      <div className="absolute aspect-[9/16] rounded-full right-0 z-1">
         <div className="absolute inset-0 bg-base-200 rounded-full blur-xl"></div>
         <HalvoraImage src={ornament} alt="Decorative Flower" className="relative w-full h-full object-cover opacity-20 transform scale-x-[-1]" />
       </div>
