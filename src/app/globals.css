@@ -50,7 +50,7 @@
 
 /* Tema custom 2 – Solarized */
 @plugin "daisyui/theme" {
-  name: "solarized";
+  name: "halvora";
   default: false;
   prefersdark: true;
   color-scheme: "dark";
