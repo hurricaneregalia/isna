@@ -1,7 +1,7 @@
+"use client";
 import React, { useState, useEffect } from "react";
 import { HiX } from "react-icons/hi";
 import { FaWhatsapp, FaStarOfLife } from "react-icons/fa6";
-import HalvoraHeadline from "./HalvoraHeadline";
 import HalvoraWhatsAppButton from "./HalvoraWhatsAppButton";
 import HalvoraImage from "./HalvoraImage";
 

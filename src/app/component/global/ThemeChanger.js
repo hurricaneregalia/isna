@@ -39,9 +39,7 @@ const themes = [
   "abyss",
   "silk",
   "mirka",
-  "mirka dark",
   "halvora",
-  "halvora dark",
 ];
 
 export default function ThemeChanger() {
