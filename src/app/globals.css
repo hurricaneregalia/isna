@@ -62,7 +62,7 @@
 @layer components {
   /* Fix DaisyUI v5 button border-radius */
   .btn {
-    border-radius: var(--rounded-btn, var(--radius-field, 0.5rem)) ;
+    border-radius: var(--rounded-btn, var(--radius-field, 0.5rem)) !important ;
   }
 }
 
