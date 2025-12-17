@@ -27,7 +27,7 @@ export default function HalvoraAbout({ data, secId }) {
               <Image src={ornament2} alt="ornament" width={0} height={0} sizes="100vw" className="w-[25px] lg:w-[50px] h-auto" style={{ height: "auto" }} />
             </div>
             <div className="absolute top-4 left-4 w-full h-full border-2 border-primary card overflow-hidden transform translate-x-4 translate-y-4" />
-            <HalvoraImage src={image} alt="About Halvora" className="aspect-[4/5] shadow-2xl card relative" />
+            <HalvoraImage src={image} alt="About Halvora" className="aspect-4/5 shadow-2xl card relative" />
           </div>
 
           {/* Content Side */}
@@ -47,7 +47,7 @@ export default function HalvoraAbout({ data, secId }) {
               {features.map((feature) => (
                 <div key={feature.id} className=" card shadow-sm overflow-hidden border border-primary/20 hover:shadow-md transition-shadow group">
                   <div className="flex items-center gap-3 p-4 bg-base-100">
-                    <MdCheckCircle className="text-primary text-2xl flex-shrink-0 group-hover:text-base-content transition-colors" />
+                    <MdCheckCircle className="text-primary text-2xl shrink-0 group-hover:text-base-content transition-colors" />
                     <span className="font-medium text-base-content/80">{feature.text}</span>
                   </div>
                 </div>

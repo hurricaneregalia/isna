@@ -243,7 +243,7 @@ export default function SepatuSnicker() {
               <ul className="space-y-3">
                 {data.tentang.usp.map((item, index) => (
                   <li key={index} className="flex items-start" data-aos="fade-up">
-                    <FaCheck className="text-green-500 mt-1 mr-3 flex-shrink-0" />
+                    <FaCheck className="text-green-500 mt-1 mr-3 shrink-0" />
                     <span className=" opacity-75">{item}</span>
                   </li>
                 ))}
@@ -375,7 +375,7 @@ export default function SepatuSnicker() {
       <section className="relative py-32">
         <div className="absolute inset-0">
           <Image src={data.penutup.image} alt="Sepatu kasual gaya hidup" fill sizes="100vw" className="object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-black/70 to-black/40"></div>
         </div>
 
         <div className="relative container mx-auto px-4 max-w-4xl text-center">
@@ -384,7 +384,7 @@ export default function SepatuSnicker() {
           <ul className="flex flex-wrap justify-center gap-6 mb-12">
             {data.penutup.highlights.map((item, index) => (
               <li key={index} className="bg-white/10 backdrop-blur-sm text-white px-5 py-3 rounded-full flex justify-start" data-aos="flip-left">
-                <FaCheck className="text-green-500 mt-1 mr-3 flex-shrink-0" />
+                <FaCheck className="text-green-500 mt-1 mr-3 shrink-0" />
                 {item}
               </li>
             ))}

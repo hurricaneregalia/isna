@@ -177,7 +177,7 @@ export default function TasWanitaLanding() {
   return (
     <div className="min-h-screen bg-base-100">
       {/* Hero Section */}
-      <section className="hero min-h-[80vh] bg-gradient-to-r from-base-100 to-base-200">
+      <section className="hero min-h-[80vh] bg-linear-to-r from-base-100 to-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse gap-12">
           <div className="relative w-full lg:w-1/2 h-96 lg:h-[500px]">
             <Image
@@ -364,7 +364,7 @@ export default function TasWanitaLanding() {
                 <ul className="space-y-2">
                   {productData.details.materials.map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <FiCheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <FiCheckCircle className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -376,7 +376,7 @@ export default function TasWanitaLanding() {
                 <ul className="space-y-2">
                   {productData.details.craftsmanship.map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      <FiCheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <FiCheckCircle className="w-5 h-5 text-primary mt-0.5 shrink-0" />
                       <span>{item}</span>
                     </li>
                   ))}

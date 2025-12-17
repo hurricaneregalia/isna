@@ -9,7 +9,7 @@ import { FaAd } from "react-icons/fa";
 import { LiaMoneyBillWaveSolid } from "react-icons/lia";
 
 export default function ListThumbnails2({ listItem, border, iconStyle, bg }) {
-  const borderFx = border ? "border border-1" : "";
+  const borderFx = border ? "border border" : "";
   const iconFx = iconStyle === "good" ? "✅" : "❌";
   return (
     <div className="grid md:grid-cols-3 gap-3 mt-20">

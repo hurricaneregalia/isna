@@ -5,7 +5,7 @@ export default function BigCtaNurbaz({ secId, data, widthSection, fontTitle, waN
   return (
     <section className="relative py-32 bg-[url(/images/templateLandingPageBonus/Nurbaz/images/alvaro-bernal-RgIKRYhmG2k-unsplash.jpg)] bg-cover bg-center bg-fixed">
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50"></div>
+        <div className="absolute inset-0 bg-linear-to-r from-black/80 to-black/50"></div>
       </div>
       <div className="container mx-auto px-4 relative text-white">
         <div className="max-w-3xl mx-auto text-center">

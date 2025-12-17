@@ -19,7 +19,7 @@ export default function ListImage({ id, idColor, title, imageUrl, imageAlt, bg, 
               <ul className="space-y-2">
                 {list.map((item) => (
                   <li key={item.id} className="flex items-start gap-1">
-                    <FaCheck className="text-green-500 mt-1 flex-shrink-0" /> {item.title}
+                    <FaCheck className="text-green-500 mt-1 shrink-0" /> {item.title}
                   </li>
                 ))}
               </ul>

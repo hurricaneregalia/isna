@@ -18,7 +18,7 @@ export default function FiturKeunggulan({ data }) {
             data.item.map((item, idx) => (
               <div key={item.title} className="bg-base-100 card px-5 py-3 shadow-lg shadow-primary/10" data-aos="fade-up">
                 <div className="flex gap-4 items-center">
-                  <div className="text-4xl text-primary flex-shrink-0" aria-hidden="true">
+                  <div className="text-4xl text-primary shrink-0" aria-hidden="true">
                     {item.icon}
                   </div>
                   <div className="text-start">

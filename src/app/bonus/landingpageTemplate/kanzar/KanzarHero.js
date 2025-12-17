@@ -11,7 +11,7 @@ const KanzarHero = ({ data }) => {
       <div className="absolute inset-0 bg-cover bg-center bg-no-repeat md:bg-fixed bg-scroll transform scale-105" style={{ backgroundImage: `url(${backgroundImage})` }} />
       {/* Islamic Pattern Overlay */}
       <div className="absolute inset-0 bg-black/60 " />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black/90" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/80 via-transparent to-black/90" />
 
       {/* Content */}
       <div className="relative container mx-auto lg:w-6/12 w-full px-6 text-center text-white">

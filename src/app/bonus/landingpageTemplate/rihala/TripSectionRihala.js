@@ -26,7 +26,7 @@ export default function TripSectionRihala({ secId, data }) {
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110"
               />
-              <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-neutral-900/80 to-transparent text-white px-4 py-3">
+              <div className="absolute bottom-0 left-0 w-full bg-linear-to-t from-neutral-900/80 to-transparent text-white px-4 py-3">
                 <h3 className="font-semibold text-lg">{photo.title}</h3>
                 <div className=" flex justify-between w-full">
                   <span className="text-sm opacity-75">{photo.jarakRute}</span>{" "}

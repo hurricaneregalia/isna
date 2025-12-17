@@ -3,7 +3,7 @@ import LandingPageWaLink from "../LandingPageWaLink";
 
 export default function PenawaranNurbaz({ secId, data, fontTitle, widthSection, waNumber }) {
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-900 to-black text-white">
+    <section className="py-20 bg-linear-to-br from-gray-900 to-black text-white">
       <div className={`container mx-auto px-4 ${widthSection}`}>
         <div className="max-w-4xl mx-auto text-center mb-16">
           <span className="inline-block opacity-75 px-4 py-1 rounded-full text-sm font-bold mb-6">{data.offer.badge}</span>
@@ -27,7 +27,7 @@ export default function PenawaranNurbaz({ secId, data, fontTitle, widthSection, 
               <ul className="space-y-2">
                 {data.offer.features.map((feature, index) => (
                   <li key={index} className="flex items-start">
-                    <FiCheck className="text-yellow-500 mt-1 mr-2 flex-shrink-0" />
+                    <FiCheck className="text-yellow-500 mt-1 mr-2 shrink-0" />
                     <span className=" opacity-75">{feature}</span>
                   </li>
                 ))}

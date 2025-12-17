@@ -9,7 +9,7 @@ export default async function SpecialOfferZemira({ secId, data, waNumber }) {
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           {/* Konten Penawaran */}
           <div className="lg:w-1/2">
-            <div className="bg-gradient-to-r from-primary to-secondary card p-8 text-base-100 relative overflow-hidden  shadow-lg" data-aos="fade-up">
+            <div className="bg-linear-to-r from-primary to-secondary card p-8 text-base-100 relative overflow-hidden  shadow-lg" data-aos="fade-up">
               {/* Dekorasi */}
               <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-base-100/20"></div>
               <div className="absolute -bottom-20 -left-20 w-60 h-60 rounded-full bg-base-100/20"></div>
@@ -42,7 +42,7 @@ export default async function SpecialOfferZemira({ secId, data, waNumber }) {
 
                 <div className="bg-base-100/20 p-4 card" data-aos="flip-left">
                   <div className="flex items-center opacity-75">
-                    <div className="flex-shrink-0 mr-4">
+                    <div className="shrink-0 mr-4">
                       <div className="bg-base-100 text-primary w-16 h-16 card flex items-center justify-center font-bold text-xl">20</div>
                     </div>
                     <p className="text-base-100">

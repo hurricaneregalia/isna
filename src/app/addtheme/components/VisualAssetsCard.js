@@ -16,7 +16,7 @@ export default function VisualAssetsCard({ formData, handleChange }) {
         <div className="space-y-4">
           {/* Image Preview */}
           {formData.image && formData.image.length > 0 && (
-            <div className="relative h-60 w-auto aspect-[3/2] rounded-lg overflow-hidden border border-base-300">
+            <div className="relative h-60 w-auto aspect-3/2 rounded-lg overflow-hidden border border-base-300">
               <Image src={formData.image} alt="Main Preview" fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" className="object-cover" />
             </div>
           )}

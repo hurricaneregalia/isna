@@ -19,9 +19,9 @@ export default function HalvoraBestFor({ data, secId }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {items.map((item) => (
             <div key={item.id} className="group relative overflow-hidden card bg-base-100 shadow-sm hover:shadow-xl transition-all duration-500 border border-primary/20">
-              <div className="aspect-[3/4] overflow-hidden">
+              <div className="aspect-3/4 overflow-hidden">
                 <img src={item.image} alt={item.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-base-content/90 via-base-content/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-base-content/90 via-base-content/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>
 
               <div className="absolute bottom-0 left-0 w-full p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-500">

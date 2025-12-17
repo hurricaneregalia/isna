@@ -55,7 +55,7 @@ export default function PortfolioSectionMirka({ data, secId }) {
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-110 group-active:scale-105 group-active:brightness-110"
                 />
-                <div className="text-start absolute bottom-0 left-0 w-full bg-gradient-to-t from-primary to-transparent text-base-100 text-sm p-4 pt-20 transition-opacity duration-300 group-hover:opacity-0 group-active:opacity-0">
+                <div className="text-start absolute bottom-0 left-0 w-full bg-linear-to-t from-primary to-transparent text-base-100 text-sm p-4 pt-20 transition-opacity duration-300 group-hover:opacity-0 group-active:opacity-0">
                   By <span className="font-bold opacity-75">{photo.artistName}</span>
                 </div>
               </button>

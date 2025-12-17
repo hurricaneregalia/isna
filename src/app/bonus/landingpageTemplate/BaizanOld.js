@@ -176,7 +176,7 @@ const CasualWearLanding = () => {
               <ul className="space-y-3 mb-8">
                 {data.about.usps.map((usp, index) => (
                   <li key={index} className="flex items-start">
-                    <FiCheckCircle className="text-amber-600 mt-1 mr-2 flex-shrink-0" />
+                    <FiCheckCircle className="text-amber-600 mt-1 mr-2 shrink-0" />
                     <span>{usp}</span>
                   </li>
                 ))}

@@ -43,9 +43,9 @@ export default function HalvoraProduct({ data, secId, phoneNumber }) {
           {items.map((product) => (
             <div
               key={product.id}
-              className="card bg-base-100 card overflow-hidden hover:shadow-2xl transition-all duration-500 group border border-base-300 ring-1 ring-base-content/5 hover:ring-primary/30"
+              className="card bg-base-100  overflow-hidden hover:shadow-2xl transition-all duration-500 group border border-base-300 ring-1 ring-base-content/5 hover:ring-primary/30"
             >
-              <figure className="relative aspect-[4/5] overflow-hidden">
+              <figure className="relative aspect-4/5 overflow-hidden">
                 <HalvoraImage src={product.image} alt={product.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 {product.tag && <div className="absolute top-4 right-4 bg-accent text-accent-content/95 p-1 px-2 rounded-full text-sm leading-relaxed">{product.tag}</div>}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-primary/10 transition-colors duration-500"></div>
@@ -54,7 +54,7 @@ export default function HalvoraProduct({ data, secId, phoneNumber }) {
                 <div className="flex justify-between items-start">
                   <h3 className="text-xl font-serif font-bold text-base-content group-hover:text-primary transition-colors">{product.name}</h3>
                 </div>
-                <p className="text-sm text-base-content/70 line-clamp-2 min-h-[2.5rem] leading-relaxed">{product.description}</p>
+                <p className="text-sm text-base-content/70 line-clamp-2 min-h-10 leading-relaxed">{product.description}</p>
 
                 <div className="w-full h-px border-b border-dashed border-base-300 my-4" />
 

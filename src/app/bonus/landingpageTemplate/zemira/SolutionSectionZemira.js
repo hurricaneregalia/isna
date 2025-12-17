@@ -11,7 +11,7 @@ export default function SolutionSectionZemira({ children, secId, data, secIdTarg
   };
 
   return (
-    <section id={secId} className="py-16 md:py-24 bg-gradient-to-b from-base-100 to-base-200">
+    <section id={secId} className="py-16 md:py-24 bg-linear-to-b from-base-100 to-base-200">
       <div className="container mx-auto px-4">
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -88,7 +88,7 @@ export default function SolutionSectionZemira({ children, secId, data, secIdTarg
             <Image src={data.ctaBackground} alt="CTA Background" fill style={{ objectFit: "cover" }} className=" mx-auto z-0" priority={false} />
 
             {/* Overlay Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-90 z-10"></div>
+            <div className="absolute inset-0 bg-linear-to-r from-primary to-secondary opacity-90 z-10"></div>
 
             {/* Konten CTA */}
             <div className="relative z-20 p-8 md:p-12">

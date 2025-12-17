@@ -66,7 +66,7 @@ const LeadCaptureForm = () => {
         className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-800 to-blue-600 text-white p-6 relative">
+        <div className="bg-linear-to-r from-blue-800 to-blue-600 text-white p-6 relative">
           <div className="absolute top-4 right-4">
             <button
               onClick={() => setIsVisible(false)}

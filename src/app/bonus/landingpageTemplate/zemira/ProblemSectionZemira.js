@@ -45,7 +45,7 @@ export default function ProblemSectionZemira({ secId, data }) {
         <div className=" mb-10 flex flex-col-reverse lg:grid lg:grid-cols-2 lg:gap-16 items-center overflow-hidden">
           {/* Image Section */}
           <div className="relative" id="image">
-            <div className="relative card overflow-hidden shadow-xl aspect-[16/9] lg:mt-0 mt-10" data-aos="flip-left">
+            <div className="relative card overflow-hidden shadow-xl aspect-video lg:mt-0 mt-10" data-aos="flip-left">
               <Image
                 src={data.image.url}
                 alt={data.image.alt}
@@ -55,7 +55,7 @@ export default function ProblemSectionZemira({ secId, data }) {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent" />
             </div>
           </div>
 
@@ -80,7 +80,7 @@ export default function ProblemSectionZemira({ secId, data }) {
               <div className="flex flex-col h-full">
                 <div className="bg-primary/10 w-12 h-12 card flex items-center justify-center mb-4 text-primary">{problem.icon}</div>
                 <h3 className="text-lg font-semibold text-base-content mb-2">{problem.title}</h3>
-                <p className="text-base-content/70 flex-grow text-sm">{problem.description}</p>
+                <p className="text-base-content/70 grow text-sm">{problem.description}</p>
               </div>
             </div>
           ))}

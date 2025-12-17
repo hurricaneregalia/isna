@@ -79,7 +79,7 @@ export default function HeaderPackage({ title, quality, price, categoryTitle, de
               <ul className="space-y-4">
                 {sortedList.map((item, index) => (
                   <li key={index} className="flex items-start gap-3 group">
-                    <div className={`mt-1 p-1.5 rounded-full flex-shrink-0 ${item.isActive ? "bg-green-500/20 text-green-400" : "bg-red-500/10 text-red-400"}`}>
+                    <div className={`mt-1 p-1.5 rounded-full shrink-0 ${item.isActive ? "bg-green-500/20 text-green-400" : "bg-red-500/10 text-red-400"}`}>
                       {item.isActive ? <FaCheck className="text-xs" /> : <FaXmark className="text-xs" />}
                     </div>
                     <span className={`text-sm sm:text-base leading-snug ${item.isActive ? "text-gray-200" : "text-gray-500 line-through decoration-gray-600"}`}>{item.benefit.title}</span>

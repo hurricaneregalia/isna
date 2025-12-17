@@ -16,7 +16,7 @@ export default function HowtoNurbaz({ secId, data, widthSection, fontTitle }) {
               <div className="bg-base-100 text-base-content p-8 pt-16 rounded-xl shadow-md h-full flex flex-col border border-base-300">
                 <div className="text-3xl font-bold text-base-content opacity-10 mb-2 absolute top-8 right-8 select-none">0{index + 1}</div>
                 <h3 className="text-xl font-bold mb-3">{step.title}</h3>
-                <p className="text-base-content/70 flex-grow">{step.description}</p>
+                <p className="text-base-content/70 grow">{step.description}</p>
 
                 {index < data.steps.length - 1 && (
                   <div className="hidden md:block absolute top-24 -right-8">

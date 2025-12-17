@@ -24,7 +24,7 @@ export default function ServicesJson() {
               <p className="font-normal">{product.name}</p>
               <p className="text-3xl font-bold my-2">{product.price.toLocaleString("id-ID")}</p>
               <p className="font-normal flex items-start gap-1">
-                <PiSealCheckFill className="text-success mt-1 flex-shrink-0" />
+                <PiSealCheckFill className="text-success mt-1 shrink-0" />
                 <span>{product.bestFor}</span>
               </p>
               <div className="card-actions w-full mx-auto mt-5">
@@ -43,7 +43,7 @@ export default function ServicesJson() {
                     <li key={b.id}>
                       <div className="flex justify-between items-start">
                         <span className={b.isActive ? "" : "opacity-50 line-through"}>{b.benefit.title}</span>
-                        {b.isActive ? <FaCheckCircle className="text-green-500 flex-shrink-0 ml-2 mt-1" /> : <FaCircleXmark className="text-red-500 flex-shrink-0 ml-2 mt-1" />}
+                        {b.isActive ? <FaCheckCircle className="text-green-500 shrink-0 ml-2 mt-1" /> : <FaCircleXmark className="text-red-500 shrink-0 ml-2 mt-1" />}
                       </div>
                     </li>
                   ))}
@@ -51,7 +51,7 @@ export default function ServicesJson() {
 
               <hr className="my-6 border-b-base-content border-dashed" />
               <div className="mb-5 opacity-50 items-start flex gap-1">
-                <IoMdTime className="mt-1 flex-shrink-0" />
+                <IoMdTime className="mt-1 shrink-0" />
                 <p>
                   <span>Proses pembuatan</span>
                   <span className="font-bold"> {product.proccessTime}</span> <span>hari kerja.</span>

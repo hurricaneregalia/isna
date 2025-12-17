@@ -27,7 +27,7 @@ export default function KanzarTestimonials({ secId = "testimonials", data }) {
       </div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 to-transparent"></div>
+      <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 to-transparent"></div>
 
       <div className="container mx-auto px-6 relative">
         {/* Heading */}

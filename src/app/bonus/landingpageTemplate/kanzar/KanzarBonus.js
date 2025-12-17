@@ -16,12 +16,12 @@ export default function KanzarBonus({ onOrder, secId = "bonus", data }) {
         <Image src={ornament} alt="ornament" width={50} height={262.033} className="w-[25px] lg:w-[50px] h-auto" />
       </div>
       <div className="container mx-auto px-6 relative">
-        <div className="space-y-10 bg-gradient-to-br from-white/5 to-white/0 border border-warning/20 card p-8 md:p-12 shadow-2xl overflow-hidden">
+        <div className="space-y-10 bg-linear-to-br from-white/5 to-white/0 border border-warning/20 card p-8 md:p-12 shadow-2xl overflow-hidden">
           <div className="w-full">
             {/* Menggunakan Grid untuk menampilkan semua gambar (Looping dengan .map) */}
             <div className="grid sm:grid-cols-4 grid-cols-2 gap-4">
               {images.map((image, index) => (
-                <div key={index} className="relative w-full aspect-[16/9] card overflow-hidden group border border-white/10 shadow-lg" data-aos="fade-up" data-aos-delay={index * 150}>
+                <div key={index} className="relative w-full aspect-video card overflow-hidden group border border-white/10 shadow-lg" data-aos="fade-up" data-aos-delay={index * 150}>
                   <Image
                     src={image}
                     alt={`Bonus Image ${index + 1}`}
@@ -30,7 +30,7 @@ export default function KanzarBonus({ onOrder, secId = "bonus", data }) {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
                   {/* Overlay gradient tipis agar terlihat lebih menyatu */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-linear-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               ))}
             </div>
@@ -45,7 +45,7 @@ export default function KanzarBonus({ onOrder, secId = "bonus", data }) {
               </div>
 
               <h2 className="text-3xl md:text-5xl font-serif font-bold text-white mb-4 leading-tight">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-600">{offer}</span>
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-300 to-yellow-600">{offer}</span>
               </h2>
               <p className="text-slate-300 text-lg mb-2 italic">{subtitle}</p>
               <p className="text-slate-400 leading-relaxed">{description}</p>

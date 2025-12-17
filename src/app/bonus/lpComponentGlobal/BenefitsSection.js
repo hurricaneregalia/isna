@@ -45,7 +45,7 @@ export default function BenefitsSection({
               className={`flex flex-col items-center text-center ${variants[variant].padding} ${variants[variant].feature} transition-all duration-300 ${variants[variant].hover} group`}
             >
               {/* Icon Container with gradient background */}
-              <div className={`${iconSize} mb-4 p-3 bg-gradient-to-br from-primary to-secondary rounded-full text-white`}>{feature.icon}</div>
+              <div className={`${iconSize} mb-4 p-3 bg-linear-to-br from-primary to-secondary rounded-full text-white`}>{feature.icon}</div>
 
               <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3 group-hover:text-primary transition-colors">{feature.title}</h3>
 

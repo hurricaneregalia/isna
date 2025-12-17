@@ -33,7 +33,7 @@ export default function Services({ listItem, subListItem, onlyCategory }) {
                         <p className="font-normal">{item.title}</p>
                         <p className="text-3xl font-bold my-2">{item.price.toLocaleString("id-ID")}</p>
                         <p className="font-normal flex items-start gap-1">
-                          <PiSealCheckFill className="text-success mt-1 flex-shrink-0" />
+                          <PiSealCheckFill className="text-success mt-1 shrink-0" />
                           <span>{item.bestFor}</span>
                         </p>
 
@@ -46,7 +46,7 @@ export default function Services({ listItem, subListItem, onlyCategory }) {
                             btnStyle={item.isBest ? "shadow-amber-200/50" : ""}
                             btnCustom={
                               item.isBest === false
-                                ? "border-1 border-amber-300 text-amber-300 hover:border-amber-500 bg-transparent hover:bg-amber-500"
+                                ? "border border-amber-300 text-amber-300 hover:border-amber-500 bg-transparent hover:bg-amber-500"
                                 : ""
                             }
                           />
@@ -70,7 +70,7 @@ export default function Services({ listItem, subListItem, onlyCategory }) {
                         <hr className="my-8 border-b-base-content border-dashed" />
 
                         <div className="mb-5 opacity-50 items-start flex gap-1">
-                          <IoMdTime className="mt-1 flex-shrink-0" />
+                          <IoMdTime className="mt-1 shrink-0" />
                           <p>
                             <span>Proses pembuatan</span>
                             <span className="font-bold"> {item.proccessTime}</span> <span>hari kerja.</span>

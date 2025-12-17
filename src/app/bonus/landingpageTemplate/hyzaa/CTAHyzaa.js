@@ -21,10 +21,10 @@ export default function CtaHyzaa({ targetId, data }) {
             <HeaderSection aos="fade-up" label={data.label} headline={data.headline} headlineColor="text-lime-300 lg:w-4/12 sm:w-6/12 sm:px-0 px-5" labelColor="text-white/75" />
             <div className="relative bg-red-500 mb-12 flex justify-between">
               <div className={`absolute aspect-square w-10 -left-5 bg-base-100 card rotate-45 top-1/2 -translate-y-1/2`}>
-                <div className="custom-radial text-primary/10 bg-[length:1em_1em] absolute inset-0 -rotate-45 " />
+                <div className="custom-radial text-primary/10 bg-size-[1em_1em] absolute inset-0 -rotate-45 " />
               </div>
               <div className={`absolute aspect-square w-10 -right-5 bg-base-100 card rotate-45 top-1/2 -translate-y-1/2`}>
-                <div className="custom-radial text-primary/10 bg-[length:1em_1em] absolute inset-0 -rotate-45 " />
+                <div className="custom-radial text-primary/10 bg-size-[1em_1em] absolute inset-0 -rotate-45 " />
               </div>
             </div>
 

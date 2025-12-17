@@ -41,7 +41,7 @@ const KanzarAbout = ({ secId = "about", data }) => {
 
           {/* Image Content */}
           <div className="lg:w-8/12 w-full mx-auto" data-aos="flip-left">
-            <div className="relative rounded-t-full rounded-b-2xl overflow-hidden shadow-2xl border-4 border-warning/10 aspect-[2/3] group bg-slate-200">
+            <div className="relative rounded-t-full rounded-b-2xl overflow-hidden shadow-2xl border-4 border-warning/10 aspect-2/3 group bg-slate-200">
               <Image
                 src={image}
                 alt="Premium Dates"
@@ -50,7 +50,7 @@ const KanzarAbout = ({ secId = "about", data }) => {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
               {/* Overlay Border Decoration */}
-              <div className="absolute inset-0 border-[12px] border-white/10 rounded-t-full rounded-b-2xl pointer-events-none"></div>
+              <div className="absolute inset-0 border-12 border-white/10 rounded-t-full rounded-b-2xl pointer-events-none"></div>
 
               {/* Islamic Corner Flourish (Top Right) */}
               <div className="absolute top-4 right-4 w-16 h-16 pointer-events-none opacity-80 text-warning/40">

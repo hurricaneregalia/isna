@@ -35,7 +35,7 @@ export default function Kanzar({ siteData, siteName }) {
       <KanzarBonus data={db} secId="bonus" onOrder={() => openOrder()} />
       <KanzarFooter data={db} secId="footer" />
       <div
-        className={`fixed inset-0 z-[100] flex items-center justify-center p-4 transition-all duration-500 ${
+        className={`fixed inset-0 z-100 flex items-center justify-center p-4 transition-all duration-500 ${
           isOrderOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none delay-200"
         }`}
       >

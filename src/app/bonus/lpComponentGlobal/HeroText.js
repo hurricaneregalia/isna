@@ -4,7 +4,7 @@ export default function HeroText({
   title = "Bangun Brand Profesionalmu Sekarang",
   subtitle = "Gunakan landing page premium untuk meningkatkan konversi penjualan Anda.",
   cta = { text: "Mulai Sekarang", href: "#" },
-  backgroundColor = "bg-gradient-to-r from-blue-500 to-pink-700",
+  backgroundColor = "bg-linear-to-r from-blue-500 to-pink-700",
   textColor = "text-white",
 }) {
   return (

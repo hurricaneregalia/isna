@@ -97,7 +97,7 @@ Mohon info total harga dan ongkos kirimnya. Terima kasih!`;
         {/* Product Summary */}
         {product && (
           <div className="p-4 bg-base-300/50 flex gap-4 items-center border-b border-primary/10">
-            <div className="w-16 h-16 card overflow-hidden flex-shrink-0 border border-primary/20">
+            <div className="w-16 h-16 card overflow-hidden shrink-0 border border-primary/20">
               <HalvoraImage src={product.image} alt={product.name} className="w-full h-full object-cover" />
             </div>
             <div>

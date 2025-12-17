@@ -2,7 +2,7 @@ import React from "react";
 import ImageComponent from "../global/imageComponent";
 
 export default function Alur({ listItem, border }) {
-  const borderFx = border ? "border border-1" : "";
+  const borderFx = border ? "border border" : "";
   return (
     <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
       {listItem.map((item, index) => (

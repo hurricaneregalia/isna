@@ -46,7 +46,7 @@ export default function ProblemNurbaz({ secId, data, widthSection, fontTitle }) 
             <div className="space-y-6">
               {data.problem.points.map((point, index) => (
                 <div key={index} className="flex items-start" data-aos="fade-up">
-                  <div className="flex-shrink-0 mt-1">
+                  <div className="shrink-0 mt-1">
                     <div className="w-8 h-8 rounded-full bg-yellow-100 text-yellow-600 flex items-center justify-center">
                       <FiCheck />
                     </div>
@@ -55,7 +55,7 @@ export default function ProblemNurbaz({ secId, data, widthSection, fontTitle }) 
                 </div>
               ))}
             </div>
-            <div className="mt-10 p-6 rounded-xl border-1 border-neutral" data-aos="fade-up">
+            <div className="mt-10 p-6 rounded-xl border border-neutral" data-aos="fade-up">
               <p className="font-medium">
                 <span className="text-warning font-bold">Faktanya:</span> 78% eksekutif menganggap jam tangan sebagai indikator keseriusan profesional
               </p>

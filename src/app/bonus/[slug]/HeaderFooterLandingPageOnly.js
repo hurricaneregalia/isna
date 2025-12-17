@@ -25,7 +25,7 @@ export default function HeaderFooterLandingPageOnly({ siteName, children, navBg 
       </header>
 
       {/* Main Content */}
-      <main className="flex-grow">{children}</main>
+      <main className="grow">{children}</main>
 
       {/* Footer */}
       <footer className="w-full text-center py-5 bg-base-200">

@@ -15,7 +15,7 @@ export default function PricingSectionMirka({ secId, waNumber, data }) {
         backgroundSize: "100% auto",
       }}
     >
-      <div className="bg-gradient-to-t from-secondary to-secondary/50 lg:px-20 sm:py-32 py-15">
+      <div className="bg-linear-to-t from-secondary to-secondary/50 lg:px-20 sm:py-32 py-15">
         <SectionWrapper css="sm:px-20 gap-20 space-y-10">
           {/* Grid of Pricing Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">

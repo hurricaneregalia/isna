@@ -212,7 +212,7 @@ export default function TemplateOne() {
             quality={100}
             sizes="(max-width: 768px) 100vw, 75vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40"></div>
+          <div className="absolute inset-0 bg-linear-to-r from-black/70 to-black/40"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10 py-24">
@@ -292,7 +292,7 @@ export default function TemplateOne() {
           </div>
         </div>
       </section>
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-indigo-50">
+      <section className="py-20 bg-linear-to-br from-blue-50 to-indigo-50">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="font-montserrat font-bold text-3xl md:text-4xl text-gray-900 mb-4">{data.aboutCourse.title}</h2>
@@ -301,7 +301,7 @@ export default function TemplateOne() {
 
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
-              <div className="rounded-2xl overflow-hidden shadow-xl aspect-[4/3] relative">
+              <div className="rounded-2xl overflow-hidden shadow-xl aspect-4/3 relative">
                 <Image
                   src={data.aboutCourse.imageUrl}
                   alt="Sesi pembelajaran interaktif"
@@ -399,9 +399,9 @@ export default function TemplateOne() {
 
       {/* --- Special Offer / Limited-Time Bonus --- */}
       <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-700 opacity-5 z-0"></div>
+        <div className="absolute inset-0 bg-linear-to-br from-blue-500 to-indigo-700 opacity-5 z-0"></div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl shadow-2xl overflow-hidden">
+          <div className="max-w-4xl mx-auto bg-linear-to-r from-blue-600 to-indigo-700 rounded-3xl shadow-2xl overflow-hidden">
             <div className="md:flex">
               <div className="md:w-2/3 p-8 md:p-12">
                 <div className="inline-block bg-yellow-400 text-blue-900 font-bold px-4 py-1 rounded-full mb-4">PENAWARAN TERBATAS</div>
@@ -534,7 +534,7 @@ export default function TemplateOne() {
 
                     <button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-blue-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg hover:from-blue-700 hover:to-indigo-800 transition-all transform hover:scale-[1.02] duration-300 shadow-lg"
+                      className="w-full bg-linear-to-r from-blue-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg hover:from-blue-700 hover:to-indigo-800 transition-all transform hover:scale-[1.02] duration-300 shadow-lg"
                     >
                       {data.leadForm.submitText}
                     </button>
@@ -549,7 +549,7 @@ export default function TemplateOne() {
       </section>
 
       {/* --- FAQ & Trust Section (Redesigned) --- */}
-      <section className="py-20 bg-gradient-to-b from-white to-blue-50">
+      <section className="py-20 bg-linear-to-b from-white to-blue-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="font-montserrat font-bold text-3xl md:text-4xl text-gray-900 mb-4">{data.faq.title}</h2>
@@ -574,7 +574,7 @@ export default function TemplateOne() {
                     >
                       <h3 className="font-bold text-lg md:text-xl text-gray-900 pr-4">{item.question}</h3>
                       <svg
-                        className={`w-6 h-6 text-blue-600 flex-shrink-0 transition-transform duration-300 ${
+                        className={`w-6 h-6 text-blue-600 shrink-0 transition-transform duration-300 ${
                           openAccordion === index ? "rotate-180" : ""
                         }`}
                         fill="none"
@@ -599,7 +599,7 @@ export default function TemplateOne() {
               </div>
 
               {/* --- Stats Bar --- */}
-              <div className="mt-10 bg-gradient-to-r from-blue-600 to-indigo-700 rounded-2xl p-6 text-white">
+              <div className="mt-10 bg-linear-to-r from-blue-600 to-indigo-700 rounded-2xl p-6 text-white">
                 <h3 className="font-bold text-xl mb-4">Komitmen Kami Terhadap Hasil</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-blue-700/50 p-4 rounded-xl">
@@ -627,7 +627,7 @@ export default function TemplateOne() {
               <div className="sticky top-24">
                 {/* --- Trust Badges --- */}
                 <div className="bg-white rounded-2xl shadow-xl overflow-hidden mb-8">
-                  <div className="bg-gradient-to-r from-blue-600 to-indigo-700 p-6 text-white">
+                  <div className="bg-linear-to-r from-blue-600 to-indigo-700 p-6 text-white">
                     <h3 className="font-bold text-xl flex items-center">
                       <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path
@@ -644,7 +644,7 @@ export default function TemplateOne() {
                     <div className="space-y-6">
                       {data.faq.trustBadges.map((badge, index) => (
                         <div key={index} className="flex items-start p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors">
-                          <div className="bg-blue-100 text-blue-600 rounded-xl w-12 h-12 flex items-center justify-center text-xl mr-4 flex-shrink-0">
+                          <div className="bg-blue-100 text-blue-600 rounded-xl w-12 h-12 flex items-center justify-center text-xl mr-4 shrink-0">
                             {badge.icon}
                           </div>
                           <div>

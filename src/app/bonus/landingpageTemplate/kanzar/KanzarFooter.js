@@ -14,7 +14,7 @@ export default function KanzarFooter({ secId = "footer", data }) {
         backgroundRepeat: "repeat",
       }}
     >
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 to-transparent"></div>
+      <div className="absolute inset-0 bg-linear-to-t from-slate-950/90 to-transparent"></div>
 
       <div className="container mx-auto px-6 relative">
         <div className="flex flex-col md:flex-row justify-between gap-12">

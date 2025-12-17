@@ -63,7 +63,7 @@ export default function ThemeChanger() {
           <button
             key={theme}
             data-theme={theme}
-            className={`btn btn-sm justify-start px-2 text-left w-full capitalize ${isActive ? "btn-primary " : "btn-outline"}`}
+            className={`btn btn-sm justify-start px-2 text-left w-full  capitalize ${isActive ? "btn-primary " : "btn-outline"}`}
             onClick={() => handleClick(theme)}
           >
             <div className="grid shrink-0 grid-cols-2 gap-0.5 rounded-md p-1 shadow-sm bg-base-100">

@@ -10,7 +10,7 @@ export default function BonusDanGaransiSection({ widthSection, secId, data }) {
           {/* BONUS */}
           <div data-aos="fade-right" className="relative bg-primary border text-base-100 border-primary rounded-xl p-6 shadow-lg overflow-hidden">
             {/* Background Icon */}
-            <FaGift className="absolute bottom-[-60px] right-[-60px] text-base-100/10 text-[300px] rotate-[15deg] pointer-events-none z-0" />
+            <FaGift className="absolute bottom-[-60px] right-[-60px] text-base-100/10 text-[300px] rotate-15 pointer-events-none z-0" />
 
             <div className="relative z-10">
               <h3 className="text-2xl font-semibold mb-8 flex items-center gap-2">
@@ -34,7 +34,7 @@ export default function BonusDanGaransiSection({ widthSection, secId, data }) {
 
           {/* GARANSI */}
           <div data-aos="fade-left" className="relative bg-success text-base-100 border border-success rounded-xl p-6 shadow-lg overflow-hidden">
-            <FaShieldAlt className="absolute bottom-[-60px] right-[-60px] text-base-100/10 text-[300px] rotate-[-12deg] pointer-events-none z-0" />
+            <FaShieldAlt className="absolute bottom-[-60px] right-[-60px] text-base-100/10 text-[300px] -rotate-12 pointer-events-none z-0" />
 
             <div className="relative z-10 justify-end-safe">
               <h3 id="garansiTitle" className="text-2xl font-semibold mb-4 flex items-center gap-2">

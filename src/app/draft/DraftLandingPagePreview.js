@@ -42,13 +42,13 @@ export default async function DraftLandingPagePreview() {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/30 via-transparent to-transparent" />
               <span className="group-hover:rotate-6 absolute top-5 right-5 bg-slate-700 rounded-md text-white group-hover:text-amber-300 px-2 py-1 text-xs flex items-center gap-1 transition-all duration-300 ease-in-out">
                 <FaPalette /> {page.lpDesignStyle.name}
               </span>
             </div>
 
-            <div className="p-6 flex flex-col flex-grow">
+            <div className="p-6 flex flex-col grow">
               <div className="flex justify-between items-start">
                 <h2 className="text-xl font-bold capitalize line-clamp-2">{page.name}</h2>
                 <div className="flex items-center gap-1 text-sm whitespace-nowrap opacity-50">
@@ -78,15 +78,15 @@ export default async function DraftLandingPagePreview() {
                 <h3 className="text-sm font-semibold mb-2">Marketing Tools</h3>
                 <ul className="space-y-2 text-sm capitalize">
                   <li className="flex items-start gap-2">
-                    <PiRadioButtonLight className=" mt-0.5 flex-shrink-0" />
+                    <PiRadioButtonLight className=" mt-0.5 shrink-0" />
                     <span className="opacity-75">Facebook Conversion API</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <PiRadioButtonLight className=" mt-0.5 flex-shrink-0" />
+                    <PiRadioButtonLight className=" mt-0.5 shrink-0" />
                     <span className="opacity-75">Tik-tok Ads</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <PiRadioButtonLight className=" mt-0.5 flex-shrink-0" />
+                    <PiRadioButtonLight className=" mt-0.5 shrink-0" />
                     <span className="opacity-75">Google Tag Manager</span>
                   </li>
                 </ul>
@@ -98,7 +98,7 @@ export default async function DraftLandingPagePreview() {
                 <ul className="space-y-2 text-sm capitalize">
                   {page.lpFor.map((item) => (
                     <li key={item.id} className="flex items-start gap-2">
-                      <FaCheck className="text-green-500 mt-0.5 flex-shrink-0" />
+                      <FaCheck className="text-green-500 mt-0.5 shrink-0" />
                       <span className="opacity-75">{item.description || "(tidak ada deskripsi)"}</span>
                     </li>
                   ))}

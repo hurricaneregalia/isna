@@ -100,7 +100,7 @@ export default function FAQSectionZemira({ secId, data, secIdTarget }) {
           ))}
         </div>
         {/* CTA Bottom */}
-        <div className="mt-16 bg-gradient-to-r from-primary/10 to-secondary/10 card p-8 md:p-10 border border-primary/20" data-aos="fade-up">
+        <div className="mt-16 bg-linear-to-r from-primary/10 to-secondary/10 card p-8 md:p-10 border border-primary/20" data-aos="fade-up">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="md:w-2/3  text-center sm:text-left">
               <h3 className="text-2xl md:text-3xl font-playfair font-bold text-primary mb-3">{data.ctaTitle}</h3>

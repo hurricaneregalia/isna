@@ -10,7 +10,7 @@ export default function HalvoraBonus({ data, secId, target }) {
   const { title, offerTitle, description, icon, image, ornament, targetDate, pattern } = data.bonus;
 
   return (
-    <section id={secId} className="bg-gradient-to-r from-primary to-primary/80 relative overflow-hidden">
+    <section id={secId} className="bg-linear-to-r from-primary to-primary/80 relative overflow-hidden">
       <div
         className="absolute w-full  h-full z-2 bg-size-[auto_50px] opacity-10 bg-center "
         style={{
@@ -28,7 +28,7 @@ export default function HalvoraBonus({ data, secId, target }) {
       <div className="absolute -bottom-40 -left-20 w-80 h-80 bg-base-100/20 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-6 relative lg:w-8/12 w-full z-3 my-24">
-        <div className="flex flex-col sm:flex-row sm:py-25 py-10 items-center bg-gradient-to-r from-primary to-primary/80 justify-between gap-12 bg-base-content/5 p-10 card border border-base-100/30 shadow-2xl ring-1 ring-base-100/20">
+        <div className="flex flex-col sm:flex-row sm:py-25 py-10 items-center bg-linear-to-r from-primary to-primary/80 justify-between gap-12 bg-base-content/5 p-10 card border border-base-100/30 shadow-2xl ring-1 ring-base-100/20">
           {/* Left Side: Content & Countdown */}
           <div className="w-full space-y-8">
             <div className=" grid sm:grid-cols-2 grid-cols-1 gap-4">

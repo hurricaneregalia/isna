@@ -28,7 +28,7 @@ export default function BenefitSectionMirka({ data, secId }) {
                     />
                     <div
                       id="bottom"
-                      className="absolute w-full h-full bg-gradient-to-t from-primary to-primary/80 font-bold text-base-content/75 text-sm p-4 py-6 transition-all duration-500 ease-in-out group-hover:opacity-0 group-active:opacity-0"
+                      className="absolute w-full h-full bg-linear-to-t from-primary to-primary/80 font-bold text-base-content/75 text-sm p-4 py-6 transition-all duration-500 ease-in-out group-hover:opacity-0 group-active:opacity-0"
                     >
                       <div id="info" className="h-full flex flex-col justify-between text-base-100">
                         <p className="text-3xl transition-all duration-500 ease-in-out group-hover:-translate-y-10 group-active:-translate-y-10">0{index + 1}</p>

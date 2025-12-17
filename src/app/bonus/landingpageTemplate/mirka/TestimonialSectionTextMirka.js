@@ -134,7 +134,7 @@ export default function TestimonialSectionTextMirka() {
                   {"★".repeat(item.rating)}
                   {"☆".repeat(5 - item.rating)}
                 </div>
-                <div className="absolute left-0 w-0 h-0 border-t-[20px] border-t-base-200 border-r-[20px] border-r-transparent" style={{ bottom: "-20px" }}></div>
+                <div className="absolute left-0 w-0 h-0 border-t-20 border-t-base-200 border-r-20 border-r-transparent" style={{ bottom: "-20px" }}></div>
               </div>
             </div>
           ))}
