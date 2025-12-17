@@ -1,10 +1,18 @@
 /* src/app/globals.css */
 @import "tailwindcss";
 
-/* daisyUI v5 – aktifkan semua tema */
+/* =========================
+   DaisyUI v5 – aktifkan semua tema bawaan
+========================= */
 @plugin "daisyui" {
   themes: all;
 }
+
+/* =========================
+   CUSTOM THEMES
+========================= */
+
+/* Tema custom 1 – Mirka */
 @plugin "daisyui/theme" {
   name: "mirka";
   default: false;
@@ -39,8 +47,81 @@
   --depth: 1;
   --noise: 1;
 }
+
+/* Tema custom 2 – Solarized */
+@plugin "daisyui/theme" {
+  name: "solarized";
+  default: false;
+  prefersdark: true;
+  color-scheme: "dark";
+  --color-base-100: #002b36;
+  --color-base-200: #073642;
+  --color-base-300: #586e75;
+  --color-base-content: #eee8d5;
+  --color-primary: #268bd2;
+  --color-primary-content: #fdf6e3;
+  --color-secondary: #2aa198;
+  --color-secondary-content: #fdf6e3;
+  --color-accent: #b58900;
+  --color-accent-content: #fdf6e3;
+  --color-neutral: #073642;
+  --color-neutral-content: #eee8d5;
+  --color-info: #268bd2;
+  --color-info-content: #fdf6e3;
+  --color-success: #859900;
+  --color-success-content: #fdf6e3;
+  --color-warning: #cb4b16;
+  --color-warning-content: #fdf6e3;
+  --color-error: #dc322f;
+  --color-error-content: #fdf6e3;
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+/* Tema custom 3 – Forest */
+@plugin "daisyui/theme" {
+  name: "forest";
+  default: false;
+  prefersdark: false;
+  color-scheme: "light";
+  --color-base-100: #e6f2e6;
+  --color-base-200: #cce6cc;
+  --color-base-300: #99cc99;
+  --color-base-content: #003300;
+  --color-primary: #006600;
+  --color-primary-content: #e6ffe6;
+  --color-secondary: #339933;
+  --color-secondary-content: #e6ffe6;
+  --color-accent: #33cc33;
+  --color-accent-content: #003300;
+  --color-neutral: #99cc99;
+  --color-neutral-content: #003300;
+  --color-info: #3399cc;
+  --color-info-content: #003300;
+  --color-success: #66cc66;
+  --color-success-content: #003300;
+  --color-warning: #cccc33;
+  --color-warning-content: #003300;
+  --color-error: #cc3333;
+  --color-error-content: #003300;
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
 /* =========================
-   BASE
+   BASE STYLES
 ========================= */
 @layer base {
   *,
@@ -62,36 +143,13 @@
 @layer components {
   /* Fix DaisyUI v5 button border-radius */
   .btn {
-    border-radius: var(--rounded-btn, var(--radius-field, 0.5rem)) !important ;
+    border-radius: var(--rounded-btn, var(--radius-field, 0.5rem)) !important;
   }
 }
 
 /* =========================
-   UTILITIES
+   CUSTOM CLASSES / UTILITIES
 ========================= */
-@layer utilities {
-  :root {
-    --background: #ffffff;
-    --foreground: #171717;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: #0a0a0a;
-      --foreground: #ededed;
-    }
-  }
-
-  body {
-    color: var(--foreground);
-    background: var(--background);
-  }
-}
-
-/* =========================
-   CUSTOM CLASSES (AMAN)
-========================= */
-
 .status-dot {
   height: 10px;
   width: 10px;
@@ -103,22 +161,10 @@
 
 /* Animations */
 @keyframes beat-fade-zoom {
-  0% {
-    transform: scale(1);
-    opacity: 0.2;
-  }
-  33% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
-  66% {
-    transform: scale(1);
-    opacity: 0.2;
-  }
-  100% {
-    transform: scale(1.2);
-    opacity: 1;
-  }
+  0% { transform: scale(1); opacity: 0.2; }
+  33% { transform: scale(1.2); opacity: 1; }
+  66% { transform: scale(1); opacity: 0.2; }
+  100% { transform: scale(1.2); opacity: 1; }
 }
 
 .fa-beat-fade-zoom {
@@ -172,15 +218,9 @@
 }
 
 @keyframes swing {
-  0% {
-    transform: rotate(-5deg);
-  }
-  50% {
-    transform: rotate(5deg);
-  }
-  100% {
-    transform: rotate(-5deg);
-  }
+  0% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+  100% { transform: rotate(-5deg); }
 }
 
 .swing {
