@@ -17,6 +17,7 @@ const ornament1 = "/images/templateLandingPageBonus/Halvora/section/flower-01.sv
 const ornament2 = "/images/templateLandingPageBonus/Halvora/ornament/lantern-2-01.svg";
 const border1 = "/images/templateLandingPageBonus/Halvora/ornament/border-2-01.svg";
 const pattern = "/images/templateLandingPageBonus/Halvora/ornament/border-3-01.svg";
+const pattern2 = "/images/templateLandingPageBonus/Halvora/ornament/pattern-light-01.svg";
 
 export const HalvoraData = {
   brand: {
@@ -149,7 +150,7 @@ export const HalvoraData = {
     buttonText: "Klaim Bonus Sekarang",
     targetDate: new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000), // 2 days from now
     ornament: ornament2,
-    pattern: pattern,
+    pattern: pattern2,
   },
   cta: {
     title: "Siap Tampil Anggun?",
@@ -190,6 +191,7 @@ export const HalvoraData = {
   },
   footer: {
     description: "Halvora adalah brand fashion muslimah yang mengutamakan kualitas dan kenyamanan untuk menemani hijrahmu.",
+    pattern: pattern,
     contacts: [
       { icon: <FaWhatsapp />, text: "0812-3456-7890" },
       { icon: <FaInstagram />, text: "@halvora.official" },

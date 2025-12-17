@@ -105,22 +105,18 @@
     "id": "b9d20756-aa9b-4fb2-a4aa-da4ccab73171",
     "name": "halvora",
     "slug": "halvora",
-    "description": "oremo",
-    "keywords": null,
-    "ogImage": null,
-    "themeId": 2,
-    "image": "/images/uploads/products/qolilan-copy/main.jpg",
+    "description": "Template landing page khusus untuk menjual pakaian muslim wanita. Membantu meningkatkan konversi, meningkatkan kepercayaan, tampil islami, tampilan responsif, dan alur pemesanan yang lebih efektif.",
+    "keywords": "[\"pakaian muslim\",\"pakaian muslim wanita\",\"jual pakaian islami\",\"toko online muslim\",\"baju muslim\",\"landing page islami\"]",
+    "ogImage": "",
+    "themeId": 37,
+    "image": "/images/templateLandingPageBonus/Halvora/og-image/og-image.webp",
     "component": "Halvora",
-    "lpDesignStyleId": "83a977c3-b839-4a31-8b8d-1ec1021ce1ca",
-    "marketingTools": null,
+    "lpDesignStyleId": "0596cf11-8af5-417c-9617-1e2fb47cd06b",
+    "marketingTools": "",
     "isActive": false,
     "createdAt": "2025-05-20T11:54:43.503Z",
-    "updatedAt": "2025-07-01T01:31:24.602Z",
+    "updatedAt": "2025-12-17T06:11:12.851Z",
     "lpFor": [
-      {
-        "id": "6181a3bb-66b9-49d3-85c0-c24010420fcc",
-        "description": "affiliate marketing."
-      },
       {
         "id": "ecbfa549-0b21-414e-a1bf-982243a69c90",
         "description": "menjual produk branded."
@@ -143,15 +139,20 @@
         "order": 110
       },
       {
+        "id": "822dbbf4-eda5-4fa5-9d37-a97da91712d3",
+        "type": "product list",
+        "order": 9
+      },
+      {
         "id": "d2adaf07-56ce-446d-825f-a94de84dde88",
         "type": "responsive",
         "order": 90
       }
     ],
     "lpDesignStyle": {
-      "id": "83a977c3-b839-4a31-8b8d-1ec1021ce1ca",
-      "name": "Professional",
-      "description": "Tampilan formal dan tegas, cocok untuk B2B, legal, konsultan."
+      "id": "0596cf11-8af5-417c-9617-1e2fb47cd06b",
+      "name": "Feminin Islami",
+      "description": "Tampil dengan ornamen islami dengan warna feminin."
     },
     "ctas": [
       {
@@ -161,11 +162,11 @@
     ],
     "socialLinks": [],
     "theme": {
-      "id": 2,
-      "name": "dark",
-      "description": "Tema gelap dengan tampilan modern dan elegan.",
-      "createdAt": "2025-07-01T01:25:25.345Z",
-      "updatedAt": "2025-07-01T01:25:25.345Z"
+      "id": 37,
+      "name": "halvora",
+      "description": "Tema warna pastel islami, cocok untuk konten wanita muslim.",
+      "createdAt": "2025-12-17T04:36:43.594Z",
+      "updatedAt": "2025-12-17T04:38:11.787Z"
     }
   },
   {
@@ -728,6 +729,127 @@
       "id": 33,
       "name": "caramellatte",
       "description": "Warna lembut seperti kopi karamel.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
+  },
+  {
+    "id": "4f2084f5-c67e-4299-8b80-c736281a4102",
+    "name": "temaBaru",
+    "slug": "temaBaru",
+    "description": "temaBaru",
+    "keywords": "[\"lorenm\",\"ipsum dolores\"]",
+    "ogImage": null,
+    "themeId": 8,
+    "image": "/images/templateLandingPageBonus/Zemira/images/photo-1606744888344-493238951221.jpg",
+    "component": "TemaBaru",
+    "lpDesignStyleId": "3c1e712c-d927-40e9-a387-19445db1f9f6",
+    "marketingTools": null,
+    "isActive": false,
+    "createdAt": "2025-12-11T07:44:31.675Z",
+    "updatedAt": "2025-12-11T07:44:31.675Z",
+    "lpFor": [
+      {
+        "id": "8ebc59b4-e8ba-4922-a539-53f50be8670a",
+        "description": "pendaftaran acara."
+      },
+      {
+        "id": "b793484f-c8d2-4f9f-b40a-10f0410801b0",
+        "description": "toko online."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "5098707b-91bc-4628-b077-1a98e65b5cd1",
+        "type": "testimoni teks",
+        "order": 6
+      },
+      {
+        "id": "61db5e2a-7a63-482f-8994-96cade030d64",
+        "type": "hero slider",
+        "order": 3
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "3c1e712c-d927-40e9-a387-19445db1f9f6",
+      "name": "Creative",
+      "description": "Warna berani, layout tidak biasa, cocok untuk seniman, kreator, agensi kreatif."
+    },
+    "ctas": [
+      {
+        "id": "8977b9b4-4a77-4e96-8daf-70add3b92575",
+        "description": "whatsapp"
+      }
+    ],
+    "socialLinks": [
+      {
+        "id": "b3218a00-7d61-40d3-9239-9ae1424c7031",
+        "platform": "Instagram",
+        "url": "https://instagram.com/huntubnad",
+        "platformUsername": "@huntubna",
+        "landingPageId": "4f2084f5-c67e-4299-8b80-c736281a4102"
+      }
+    ],
+    "theme": {
+      "id": 8,
+      "name": "retro",
+      "description": "Tema dengan nuansa jadul yang klasik.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
+  },
+  {
+    "id": "ea3d0703-288e-40f9-8c6e-caf7ee6c1576",
+    "name": "gigantos",
+    "slug": "gigantos",
+    "description": "gigantos desz",
+    "keywords": "[\"lorem\",\"ipsum\",\"dolores\"]",
+    "ogImage": null,
+    "themeId": 31,
+    "image": "/images/templateLandingPageBonus/Zemira/images/photo-1606744888344-493238951221.jpg",
+    "component": "Gigantos",
+    "lpDesignStyleId": "3c1e712c-d927-40e9-a387-19445db1f9f6",
+    "marketingTools": null,
+    "isActive": false,
+    "createdAt": "2025-12-11T11:02:42.742Z",
+    "updatedAt": "2025-12-11T11:02:42.742Z",
+    "lpFor": [
+      {
+        "id": "6c37855a-8169-4309-ab73-da56fccb0b83",
+        "description": "mengumpulkan prospek."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "61db5e2a-7a63-482f-8994-96cade030d64",
+        "type": "hero slider",
+        "order": 3
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "3c1e712c-d927-40e9-a387-19445db1f9f6",
+      "name": "Creative",
+      "description": "Warna berani, layout tidak biasa, cocok untuk seniman, kreator, agensi kreatif."
+    },
+    "ctas": [
+      {
+        "id": "8fc68569-db32-4541-916b-a49c174722aa",
+        "description": "online shop"
+      }
+    ],
+    "socialLinks": [
+      {
+        "id": "d4184ca4-7eb2-47f9-893b-c8c036acbd0a",
+        "platform": "Youtube",
+        "url": "https://yotube.com/@huntu",
+        "platformUsername": "@hutnu",
+        "landingPageId": "ea3d0703-288e-40f9-8c6e-caf7ee6c1576"
+      }
+    ],
+    "theme": {
+      "id": 31,
+      "name": "nord",
+      "description": "Tema dingin dari palet warna Nord.",
       "createdAt": "2025-07-01T01:25:25.345Z",
       "updatedAt": "2025-07-01T01:25:25.345Z"
     }

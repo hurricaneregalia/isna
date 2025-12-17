@@ -18,26 +18,28 @@ export default function CheckboxGroup({
           <span className="label-text font-bold">{label}</span>
         </div>
       )}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 p-4 bg-base-200 rounded-lg max-h-60 overflow-y-auto">
+      <div className="flex flex-wrap gap-2 p-4 border border-base-300 rounded-lg bg-base-100">
         {options.map((option) => {
-           // Fallback ID generation if name is not provided
-           const inputId = name ? `${name}-${option[valueKey]}` : `checkbox-${option[valueKey]}`;
-           
-           return (
+          // Fallback ID generation if name is not provided
+          const inputId = name ? `${name}-${option[valueKey]}` : `checkbox-${option[valueKey]}`;
+          const isSelected = selectedValues.includes(option[valueKey]);
+
+          return (
             <label
               key={option[valueKey]}
-              className="label cursor-pointer justify-start gap-3 hover:bg-base-100 p-2 rounded transition-colors"
+              className={`cursor-pointer px-3 py-2 border rounded-full text-sm transition-all duration-200 select-none flex items-center gap-2
+                ${isSelected ? "bg-primary text-primary-content border-primary shadow-md transform scale-105" : "bg-base-100 border-base-300 hover:border-primary hover:text-primary"}`}
               htmlFor={inputId}
             >
               <input
                 id={inputId}
                 type="checkbox"
-                name={name} // Optional group name
-                className={`checkbox ${checkboxColor} checkbox-sm`}
-                checked={selectedValues.includes(option[valueKey])}
+                name={name}
+                className="hidden" // Hide default checkbox
+                checked={isSelected}
                 onChange={(e) => onChange(option[valueKey], e.target.checked)}
               />
-              <span className="label-text text-sm">{option[labelKey]}</span>
+              <span>{option[labelKey]}</span>
             </label>
           );
         })}

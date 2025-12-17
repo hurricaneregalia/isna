@@ -2,6 +2,6 @@
 import useCanvasCursor from "./useCanvasCursor";
 const CanvasCursor = () => {
   useCanvasCursor();
-  return <canvas className="pointer-events-none fixed inset-0" id="canvas" />;
+  return <canvas className="pointer-events-none fixed inset-0 z-5 " id="canvas" />;
 };
 export default CanvasCursor;
