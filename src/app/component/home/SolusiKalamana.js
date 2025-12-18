@@ -7,7 +7,7 @@ import Bodytext from "./ui/BodyText";
 
 export default function SolusiKalamana({ secId, data }) {
   return (
-    <WrapperImage src={data.background} alt={data.title}>
+    <WrapperImage src={data.background} alt={data.title} secId={secId}>
       <div className="flex sm:flex-row flex-col items-center gap-10 sm:gap-16 text-base-100 sm:py-30 py-15">
         {/* LEFT SECTION */}
         <div className="sm:w-6/12 w-full space-y-6 sm:space-y-8 text-white">

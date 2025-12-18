@@ -1,7 +1,12 @@
-// src/app/bonus/page.js
 import HeroBonus from "../bonus/HeroBonus";
 import DraftLandingPagePreview from "./DraftLandingPagePreview";
+import { notFound } from "next/navigation";
+
 export default async function BonusPage() {
+  if (process.env.NODE_ENV !== "development") {
+    notFound();
+  }
+
   return (
     <>
       <HeroBonus>

@@ -9,7 +9,7 @@ import LinkBtnOutlineWhatsapp from "./ui/LinkBtnOutlineWhatsapp";
 
 export default function KeinginanKalamana({ secId, linkTarget1, waNumber, data }) {
   return (
-    <Wrapper>
+    <Wrapper secId={secId}>
       <WrapperImage src={data.background} alt={data.title}>
         <div className="relative w-full overflow-visible space-y-10">
           <div className="flex flex-col gap-10 items-center text-base-100">

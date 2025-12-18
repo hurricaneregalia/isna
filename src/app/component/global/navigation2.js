@@ -13,12 +13,12 @@ export default function Navigation2({ siteName, bg, logo }) {
 
   const navMenu = [
     { name: "Home", href: "/", key: "home" },
-    { name: "Fakta", href: "/#fakta", key: "fakta" },
-    { name: "Solusi", href: "/#solusi", key: "solusi" },
-    { name: "Layanan", href: "/#layanan", key: "layanan" },
-    { name: "Product", href: BASE_URL + "/product", key: "product" },
+    { name: "Fakta", href: "#fakta", key: "fakta" },
+    { name: "Solusi", href: "#solusi", key: "solusi" },
+    { name: "Layanan", href: "#mulai-sekarang", key: "layanan" },
     ...(isDev
       ? [
+          { name: "Product", href: "/product", key: "product" },
           { name: "Bonus", href: "/bonus", key: "bonus" },
           { name: "Draft", href: "/draft", key: "draft" },
           { name: "Logo review", href: "/logometer", key: "logometer" },
