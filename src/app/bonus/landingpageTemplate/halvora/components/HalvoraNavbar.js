@@ -1,7 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import HalvoraSecondaryButton from "./ui/HalvoraSecondaryButton";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import ModalThemes from "@/app/component/global/ModalThemes";
+import ThemeChanger from "@/app/component/global/ThemeChanger";
+import { FaPalette } from "react-icons/fa6";
 
 export default function HalvoraNavbar({ data, children }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,12 +59,32 @@ export default function HalvoraNavbar({ data, children }) {
                   {item.label}
                 </a>
               ))}
-              {children}
+              <label className="swap swap-rotate">
+                <ModalThemes
+                  title="Pilih Tema"
+                  btnTxt={<FaPalette />}
+                  modalId="theme-modal"
+                  textColor={`${isScrolled ? "text-base-content" : "text-white"}`}
+                  borderColor={`${isScrolled ? "border-base-content/40" : "border-white/40"}`}
+                >
+                  <ThemeChanger />
+                </ModalThemes>
+              </label>
             </div>
 
             {/* Mobile Toggle */}
             <div className={`lg:hidden flex gap-2 items-center text-2xl ${isScrolled ? "text-base-content" : "text-white"}`}>
-              {children}
+              <label className="swap swap-rotate">
+                <ModalThemes
+                  title="Pilih Tema"
+                  btnTxt={<FaPalette />}
+                  modalId="theme-modal"
+                  textColor={`${isScrolled ? "text-base-content" : "text-white"}`}
+                  borderColor={`${isScrolled ? "border-base-content/40" : "border-white/40"}`}
+                >
+                  <ThemeChanger />
+                </ModalThemes>
+              </label>
               <button onClick={() => setIsOpen(!isOpen)}>{isOpen ? <HiX /> : <HiMenuAlt3 />}</button>
             </div>
           </div>

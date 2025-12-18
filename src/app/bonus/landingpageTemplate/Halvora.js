@@ -12,20 +12,11 @@ import HalvoraBonus from "./halvora/components/HalvoraBonus";
 import HalvoraTestimonials from "./halvora/components/HalvoraTestimonials";
 import HalvoraCTA from "./halvora/components/HalvoraCTA";
 import HalvoraFooter from "./halvora/components/HalvoraFooter";
-import ModalThemes from "@/app/component/global/ModalThemes";
-import ThemeChanger from "@/app/component/global/ThemeChanger";
-import { FaPalette } from "react-icons/fa6";
 
 export default function Halvora({ siteData, siteName }) {
   return (
     <div className="min-h-screen font-sans bg-white text-stone-700 overflow-x-hidden selection:bg-rose-200">
-      <HalvoraNavbar data={HalvoraData}>
-        <label className="swap swap-rotate">
-          <ModalThemes title="Pilih Tema" btnTxt={<FaPalette />} modalId="theme-modal" textColor="text-white" borderColor="border-white/40">
-            <ThemeChanger />
-          </ModalThemes>
-        </label>
-      </HalvoraNavbar>
+      <HalvoraNavbar data={HalvoraData} />
 
       <main>
         <HalvoraHero data={HalvoraData} secId="home" target="product" />
