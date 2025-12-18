@@ -115,7 +115,7 @@ Mohon info total harga dan ongkos kirimnya. Terima kasih!`;
           {/* Name */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-base-content/80 font-semibold flex items-center gap-1">
+              <span className="label-text text-base-content/80 mb-1 flex items-center gap-1">
                 Nama Lengkap <FaStarOfLife className="text-error text-[10px]" />
               </span>
             </label>
@@ -133,7 +133,7 @@ Mohon info total harga dan ongkos kirimnya. Terima kasih!`;
           {/* WhatsApp */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-base-content/80 font-semibold flex items-center gap-1">
+              <span className="label-text text-base-content/80 mb-1 flex items-center gap-1">
                 Nomor WhatsApp <FaStarOfLife className="text-error text-[10px]" />
               </span>
             </label>
@@ -151,7 +151,7 @@ Mohon info total harga dan ongkos kirimnya. Terima kasih!`;
           {/* Size Selector */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-base-content/80 font-semibold flex items-center gap-1">
+              <span className="label-text text-base-content/80 mb-1 flex items-center gap-1">
                 Pilih Ukuran <FaStarOfLife className="text-error text-[10px]" />
               </span>
             </label>
@@ -176,7 +176,7 @@ Mohon info total harga dan ongkos kirimnya. Terima kasih!`;
           {/* Address */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-base-content/80 font-semibold flex items-center gap-1">
+              <span className="label-text text-base-content/80 mb-1 flex items-center gap-1">
                 Alamat Lengkap <FaStarOfLife className="text-error text-[10px]" />
               </span>
             </label>
@@ -195,7 +195,7 @@ Mohon info total harga dan ongkos kirimnya. Terima kasih!`;
           {/* Note */}
           <div className="form-control">
             <label className="label">
-              <span className="label-text text-base-content/80 font-semibold">Catatan (Opsional)</span>
+              <span className="label-text text-base-content/80 mb-1">Catatan (Opsional)</span>
             </label>
             <textarea
               name="note"

@@ -9,18 +9,24 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Transition } from "@head
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export default function Navigation2({ siteName, bg, logo }) {
+  const isDev = process.env.NODE_ENV === "development";
+
   const navMenu = [
     { name: "Home", href: "/", key: "home" },
     { name: "Fakta", href: "/#fakta", key: "fakta" },
     { name: "Solusi", href: "/#solusi", key: "solusi" },
     { name: "Layanan", href: "/#layanan", key: "layanan" },
     { name: "Product", href: BASE_URL + "/product", key: "product" },
-    { name: "Bonus", href: "/bonus", key: "bonus" },
-    { name: "Draft", href: "/draft", key: "draft" },
-    { name: "Logo review", href: "/logometer", key: "logometer" },
-    { name: "My Api", href: "/myapi", key: "myapi" },
-    { name: "NotFound", href: "/huntuband", key: "huntuband" },
-    { name: "Landing Page", href: "/landingpage", key: "landingpage" },
+    ...(isDev
+      ? [
+          { name: "Bonus", href: "/bonus", key: "bonus" },
+          { name: "Draft", href: "/draft", key: "draft" },
+          { name: "Logo review", href: "/logometer", key: "logometer" },
+          { name: "My Api", href: "/myapi", key: "myapi" },
+          { name: "NotFound", href: "/huntuband", key: "huntuband" },
+          { name: "Landing Page", href: "/landingpage", key: "landingpage" },
+        ]
+      : []),
   ];
   return (
     <div className={`${bg} sticky top-0 z-10`}>

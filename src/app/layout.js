@@ -9,7 +9,7 @@ const roboto = Roboto({
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-scroll-behavior="smooth" className="scroll-smooth">
+    <html lang="en" data-scroll-behavior="smooth" className="scroll-smooth" data-theme="light">
       <body className={`min-h-screen bg-base-200 text-base-content ${roboto.className}`}>
         <WebVitals />
         {children}
