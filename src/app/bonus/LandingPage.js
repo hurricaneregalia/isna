@@ -34,7 +34,7 @@ export default async function LandingPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {landingPages.map((page) => (
           <div key={page.id} className="group bg-base-100 rounded-bl-3xl hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col  hover:-translate-y-1">
-            <div className="relative h-56 overflow-hidden">
+            <div className="relative w-full aspect-[3/2] overflow-hidden">
               <Image
                 src={page.image}
                 alt={page.name}

@@ -39,9 +39,9 @@ const themes = [
   "abyss",
   "silk",
   "mirka",
+  "mirka-dark",
   "halvora",
-  "mirkadark",
-  "halvoradark",
+  "halvora-dark",
 ];
 
 export default function ThemeChanger() {
@@ -74,7 +74,7 @@ export default function ThemeChanger() {
               <div className="size-1 rounded-full bg-secondary"></div>
               <div className="size-1 rounded-full bg-accent"></div>
             </div>
-            {index + 1}. {theme}
+            {index + 1}. {theme.replace(/-/g, " ")}
           </button>
         );
       })}

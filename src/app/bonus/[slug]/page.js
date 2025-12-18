@@ -36,10 +36,13 @@ export async function generateMetadata({ params }) {
     const landingPages = await loadLandingPages();
     const landingPage = landingPages.find((item) => item.slug === slug && item.isActive);
 
+    const siteData = await getSiteIdentityFromFile();
+    const siteName = siteData?.siteName || "";
+
     if (!landingPage) return {};
 
     return {
-      title: landingPage.name,
+      title: `${landingPage.name} | ${siteName}`,
       description: landingPage.name + ", " + landingPage.description,
       keywords: landingPage.keywords,
       authors: "kalamanacopy",
@@ -50,7 +53,7 @@ export async function generateMetadata({ params }) {
         canonical: `${BASE_URL}/bonus/${slug}`,
       },
       openGraph: {
-        title: landingPage.name,
+        title: `${landingPage.name} | ${siteName}`,
         description: landingPage.name + ", " + landingPage.description,
         url: `${BASE_URL}/bonus/${slug}`,
         siteName: landingPage.name,
@@ -59,7 +62,7 @@ export async function generateMetadata({ params }) {
               {
                 url: `${BASE_URL}${landingPage.image}`,
                 width: 1200,
-                height: 630,
+                height: 800,
                 alt: landingPage.name,
               },
             ]
@@ -69,7 +72,7 @@ export async function generateMetadata({ params }) {
       },
       twitter: {
         card: "summary_large_image",
-        title: landingPage.name,
+        title: `${landingPage.name} | ${siteName}`,
         description: landingPage.name + ", " + landingPage.description,
         creator: Array.isArray(landingPage.socialLinks) ? landingPage.socialLinks.find((s) => s.platform === "twitter")?.platformUsername || "@kalamanacopy" : "@kalamanacopy",
         images: landingPage.image ? [`${BASE_URL}${landingPage.image}`] : [],

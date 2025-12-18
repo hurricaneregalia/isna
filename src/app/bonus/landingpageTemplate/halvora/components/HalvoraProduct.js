@@ -24,14 +24,13 @@ export default function HalvoraProduct({ data, secId, phoneNumber }) {
   return (
     <section id={secId} className="py-24 bg-base-100 relative">
       <HalvoraOrderForm phoneNumber={phoneNumber} isOpen={isModalOpen} onClose={handleCloseModal} product={selectedProduct} />
-
-      <div className="absolute aspect-[9/16] rounded-full z-1">
+      <div className="absolute aspect-9/16 rounded-full z-1">
         <div className="absolute inset-0 bg-base-200 rounded-full blur-xl"></div>
-        <HalvoraImage src={ornament} alt="Decorative Flower" className="relative w-full h-full object-cover opacity-20" />
+        <HalvoraImage overflow="overflow-visible" src={ornament} alt="Decorative Flower" className="relative  w-full h-full object-cover opacity-20" />
       </div>
-      <div className="absolute aspect-[9/16] rounded-full right-0 z-1">
+      <div className="absolute aspect-9/16 rounded-full right-0 z-1">
         <div className="absolute inset-0 bg-base-200 rounded-full blur-xl"></div>
-        <HalvoraImage src={ornament} alt="Decorative Flower" className="relative w-full h-full object-cover opacity-20 transform scale-x-[-1]" />
+        <HalvoraImage overflow="overflow-visible" src={ornament} alt="Decorative Flower" className="relative w-full h-full object-cover opacity-20 transform scale-x-[-1]" />
       </div>
       <div className="container mx-auto px-6 lg:w-8/12 w-full z-2 relative">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">

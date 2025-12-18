@@ -19,8 +19,8 @@ export default function Navigation2({ siteName, bg, logo }) {
     ...(isDev
       ? [
           { name: "Product", href: "/product", key: "product" },
-          { name: "Bonus", href: "/bonus", key: "bonus" },
           { name: "List Theme", href: "/listtheme", key: "litstheme" },
+          { name: "Bonus", href: "/bonus", key: "bonus" },
           { name: "Draft", href: "/draft", key: "draft" },
           { name: "Logo review", href: "/logometer", key: "logometer" },
           { name: "My Api", href: "/myapi", key: "myapi" },
