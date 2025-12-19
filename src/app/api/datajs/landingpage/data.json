@@ -800,19 +800,19 @@
   },
   {
     "id": "ea3d0703-288e-40f9-8c6e-caf7ee6c1576",
-    "name": "gigantos",
-    "slug": "gigantos",
+    "name": "nirfa",
+    "slug": "nirfa",
     "description": "gigantos desz",
     "keywords": "[\"lorem\",\"ipsum\",\"dolores\"]",
-    "ogImage": null,
+    "ogImage": "",
     "themeId": 31,
     "image": "/images/templateLandingPageBonus/Zemira/images/photo-1606744888344-493238951221.jpg",
-    "component": "Gigantos",
+    "component": "Nirfa",
     "lpDesignStyleId": "3c1e712c-d927-40e9-a387-19445db1f9f6",
-    "marketingTools": null,
+    "marketingTools": "",
     "isActive": false,
     "createdAt": "2025-12-11T11:02:42.742Z",
-    "updatedAt": "2025-12-11T11:02:42.742Z",
+    "updatedAt": "2025-12-19T02:17:23.079Z",
     "lpFor": [
       {
         "id": "6c37855a-8169-4309-ab73-da56fccb0b83",
@@ -839,7 +839,7 @@
     ],
     "socialLinks": [
       {
-        "id": "d4184ca4-7eb2-47f9-893b-c8c036acbd0a",
+        "id": "6aca0f7a-653a-4e8f-ac3e-566b25ea39c2",
         "platform": "Youtube",
         "url": "https://yotube.com/@huntu",
         "platformUsername": "@hutnu",
@@ -850,6 +850,107 @@
       "id": 31,
       "name": "nord",
       "description": "Tema dingin dari palet warna Nord.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
+  },
+  {
+    "id": "6721387c-49dd-4f87-af83-538c4bca4238",
+    "name": "arventa",
+    "slug": "arventa",
+    "description": ", viora, exalvia, savheera, ascacentra, ",
+    "keywords": "[]",
+    "ogImage": "",
+    "themeId": 5,
+    "image": "/images/templateLandingPageBonus/Zemira/images/photo-1606744888344-493238951221.jpg",
+    "component": "Arventa",
+    "lpDesignStyleId": "b37c54cb-0b0d-4810-965d-b0ab15f9dc38",
+    "marketingTools": "",
+    "isActive": false,
+    "createdAt": "2025-12-19T02:22:45.202Z",
+    "updatedAt": "2025-12-19T02:35:41.452Z",
+    "lpFor": [
+      {
+        "id": "6c37855a-8169-4309-ab73-da56fccb0b83",
+        "description": "mengumpulkan prospek."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "cc490242-d750-484a-b2f9-b6905b7d0f78",
+        "type": "youtube video",
+        "order": 15
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "b37c54cb-0b0d-4810-965d-b0ab15f9dc38",
+      "name": "Modern",
+      "description": "Desain bersih, minimal, banyak white space, fokus pada UX dan kecepatan loading."
+    },
+    "ctas": [
+      {
+        "id": "8fc68569-db32-4541-916b-a49c174722aa",
+        "description": "online shop"
+      }
+    ],
+    "socialLinks": [],
+    "theme": {
+      "id": 5,
+      "name": "emerald",
+      "description": "Hijau zamrud yang segar dan profesional.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
+  },
+  {
+    "id": "9113cbc2-e973-47da-b966-99d0e9891b85",
+    "name": "exalvia",
+    "slug": "exalvia",
+    "description": "exalvia",
+    "keywords": "[]",
+    "ogImage": null,
+    "themeId": 5,
+    "image": "/images/templateLandingPageBonus/Zemira/images/photo-1606744888344-493238951221.jpg",
+    "component": "Exalvia",
+    "lpDesignStyleId": "b37c54cb-0b0d-4810-965d-b0ab15f9dc38",
+    "marketingTools": null,
+    "isActive": false,
+    "createdAt": "2025-12-19T03:39:01.170Z",
+    "updatedAt": "2025-12-19T03:39:01.170Z",
+    "lpFor": [
+      {
+        "id": "443c4e89-3266-4e10-a525-cce367a968b8",
+        "description": "pendaftaran kursus."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "96e036b7-3c44-4971-9429-383597f5aceb",
+        "type": "single product",
+        "order": 10
+      },
+      {
+        "id": "d4c37034-c728-4042-bde9-9f06d840235a",
+        "type": "hero text",
+        "order": 4
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "b37c54cb-0b0d-4810-965d-b0ab15f9dc38",
+      "name": "Modern",
+      "description": "Desain bersih, minimal, banyak white space, fokus pada UX dan kecepatan loading."
+    },
+    "ctas": [
+      {
+        "id": "8fc68569-db32-4541-916b-a49c174722aa",
+        "description": "online shop"
+      }
+    ],
+    "socialLinks": [],
+    "theme": {
+      "id": 5,
+      "name": "emerald",
+      "description": "Hijau zamrud yang segar dan profesional.",
       "createdAt": "2025-07-01T01:25:25.345Z",
       "updatedAt": "2025-07-01T01:25:25.345Z"
     }
