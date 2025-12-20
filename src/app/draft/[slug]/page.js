@@ -137,6 +137,9 @@ export default async function ProductPage({ params }) {
       case "Kanzar":
         TemplateComponent = (await import("@/app/bonus/landingpageTemplate/Kanzar")).default;
         break;
+      case "Exalvia":
+        TemplateComponent = (await import("@/app/bonus/landingpageTemplate/Exalvia")).default;
+        break;
       default:
         throw new Error(`Component ${landingPage.component} not found`);
     }

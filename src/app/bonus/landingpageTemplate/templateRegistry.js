@@ -8,6 +8,7 @@ import Rihala from "./Rihala";
 import Safna from "./Safna";
 import Zaffra from "./Zaffra";
 import Zemira from "./Zemira";
+import Exalvia from "./Exalvia";
 
 export const templateRegistry = {
   Baizan,
@@ -20,4 +21,5 @@ export const templateRegistry = {
   Safna,
   Zaffra,
   Zemira,
+  Exalvia,
 };
