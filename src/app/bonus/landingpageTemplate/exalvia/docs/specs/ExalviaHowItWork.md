@@ -1,6 +1,8 @@
 # 🛠️ Spesifikasi: ExalviaHowItWork
 
-Section ini menjelaskan proses atau alur kerja layanan secara visual dan terstruktur, memberikan kejelasan langkah-demi-langkah kepada calon klien.
+Section ini menjelaskan proses atau alur kerja layanan secara visual dan terstruktur, memberikan kejelasan langkah-langkah kepada calon klien.
+
+**Implementasi:** [ExalviaHowItWork.js](../../sections/ExalviaHowItWork.js)
 
 ---
 

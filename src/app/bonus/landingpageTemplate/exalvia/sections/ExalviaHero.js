@@ -7,12 +7,12 @@ import { FaArrowRight } from "react-icons/fa";
 
 export default function ExalviaHero({ data, secId }) {
   return (
-    <section id={secId} className="w-full bg-base-100 flex flex-col items-center">
+    <section id={secId} className="w-full bg-base-100 flex min-h-screen flex-col items-center">
       {/* 
          Main Container based on Spec:
          - Width: sm:w-10/12 w-full
       */}
-      <div className="relative w-full overflow-hidden rounded-bl-4xl bg-neutral shadow-2xl">
+      <div className="relative w-full overflow-hidden rounded-bl-4xl min-h-screen items-center flex bg-neutral shadow-2xl">
         <div className="lg:w-10/12 sm:w-11/12 w-full mx-auto">
           {/* 1. Background Layer (NO BLUR) */}
           <div className="absolute inset-0">

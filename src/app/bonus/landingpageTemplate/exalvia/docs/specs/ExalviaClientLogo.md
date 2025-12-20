@@ -2,6 +2,8 @@
 
 Section ini berfungsi sebagai elemen _Social Proof_ untuk membangun kredibilitas dengan menampilkan deretan logo klien atau partner yang telah bekerja sama.
 
+**Implementasi:** [ExalviaClientLogo.js](../../sections/ExalviaClientLogo.js)
+
 ---
 
 ## 🏗️ Tata Letak & Perilaku (Layout & Behavior)

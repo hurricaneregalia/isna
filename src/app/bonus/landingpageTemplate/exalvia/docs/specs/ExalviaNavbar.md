@@ -2,6 +2,8 @@
 
 Komponen Navigasi Utama yang bersifat interaktif dan responsif, berfungsi sebagai pusat kendali navigasi pengguna dengan indikator posisi section yang cerdas.
 
+**Implementasi:** [ExalviaNavbar.js](../../sections/ExalviaNavbar.js)
+
 ---
 
 ## 🏗️ Perilaku Layout (Layout Behavior)

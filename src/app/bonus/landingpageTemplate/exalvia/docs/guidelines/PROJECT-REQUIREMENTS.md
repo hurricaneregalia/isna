@@ -75,7 +75,17 @@ Daftar section yang menyusun landing page Exalvia beserta tautan spesifikasinya:
 
 ---
 
-## 6. Struktur File (Recommended Project Organization)
+## 6. Manajemen Konten (Content Management)
+
+Wajib mematuhi aturan "Single Source of Truth":
+
+1. **DILARANG KERAS** melakukan hardcode URL gambar, teks judul, deskripsi, atau data list di dalam komponen UI (`sections/` atau `ui-components/`).
+2. **SEMUA** aset visual (URL Gambar, Ikon) dan konten tekstual harus didefinisikan di dalam `src/app/bonus/landingpageTemplate/exalvia/database/ExalviaDatabase.js`.
+3. Komponen hanya bertugas merender data yang dilewatkan melalui `props`.
+
+---
+
+## 7. Struktur File (Recommended Project Organization)
 
 ```text
 exalvia/

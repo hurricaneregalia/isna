@@ -20,7 +20,7 @@ Fase ini fokus pada penyiapan struktur folder dan konfigurasi teknis dasar sesua
 ## 🏗️ Fase 2: Pembangunan Komponen Section
 
 Membangun setiap section berdasarkan file spesifikasi di folder `docs/specs/`.
-**Catatan Wajib:** Semua pembangunan harus merujuk pada [STYLE-GUIDE.md](./STYLE-GUIDE.md) dan [UI-COMPONENTS.md](./UI-COMPONENTS.md).
+**Catatan Wajib:** Semua pembangunan harus merujuk pada [STYLE-GUIDE.md](./STYLE-GUIDE.md), [../specs/GeneralDesign.md](../specs/GeneralDesign.md) dan [UI-COMPONENTS.md](./UI-COMPONENTS.md).
 
 ### 🟢 Spesifikasi Detail Selesai (Ready to Build)
 
@@ -28,18 +28,12 @@ Section berikut sudah memiliki instruksi AI yang lengkap dan referensi visual ya
 
 - [x] **Navbar** ([Spesifikasi](../specs/ExalviaNavbar.md))
 - [x] **Hero** ([Spesifikasi](../specs/ExalviaHero.md))
-- [ ] **General Design Guidelines** ([Spesifikasi](../specs/GeneralDesign.md))
-
-### ⏳ Menunggu Detail Spesifikasi (Draft Only)
-
-Section berikut sudah memiliki file spesifikasi dasar, namun perlu diperdalam (instruksi AI & referensi visual) sebelum mulai dikerjakan.
-
-- [ ] **Client Logo** ([Spesifikasi](../specs/ExalviaClientLogo.md))
-- [ ] **Fact** ([Spesifikasi](../specs/ExalviaFact.md))
-- [ ] **Fenomenon** ([Spesifikasi](../specs/ExalviaFenomenon.md))
-- [ ] **Solution** ([Spesifikasi](../specs/ExalviaSolution.md))
-- [ ] **Hadist** ([Spesifikasi](../specs/ExalviaHadist.md))
-- [ ] **Features** ([Spesifikasi](../specs/ExalviaFeatures.md))
+- [x] **Client Logo** ([Spesifikasi](../specs/ExalviaClientLogo.md))
+- [x] **Fact** ([Spesifikasi](../specs/ExalviaFact.md))
+- [x] **Fenomenon** ([Spesifikasi](../specs/ExalviaFenomenon.md))
+- [x] **Solution** ([Spesifikasi](../specs/ExalviaSolution.md))
+- [x] **Hadist** ([Spesifikasi](../specs/ExalviaHadist.md))
+- [x] **Features** ([Spesifikasi](../specs/ExalviaFeatures.md))
 - [ ] **How It Works** ([Spesifikasi](../specs/ExalviaHowItWork.md))
 - [ ] **Benefits** ([Spesifikasi](../specs/ExalviaBenefits.md))
 - [ ] **Service** ([Spesifikasi](../specs/ExalviaService.md))
