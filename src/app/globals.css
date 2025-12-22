@@ -156,6 +156,53 @@
   --noise: 1;
 }
 
+
+@plugin "daisyui/theme" {
+  name: "savheera";
+  default: false;
+  prefersdark: false;
+  color-scheme: "light";
+
+  --color-base-100: oklch(98% 0 0);
+  --color-base-200: oklch(97% 0 0);
+  --color-base-300: oklch(92% 0 0);
+  --color-base-content: #1b1f3b; /* Deep Navy */
+
+  --color-primary: #d4af37; /* Gold */
+  --color-primary-content: #1b1f3b;
+
+  --color-secondary: #f4c2c2; /* Soft Rose */
+  --color-secondary-content: #1b1f3b;
+
+  --color-accent: #1b1f3b; /* Deep Navy */
+  --color-accent-content: #fffff0;
+
+  --color-neutral: #1b1f3b; /* Deep Navy */
+  --color-neutral-content: #fffff0;
+
+  /* ===== Status Colors (dibuat soft, tidak agresif) ===== */
+  --color-info: #c7d2e8;
+  --color-info-content: #1b1f3b;
+
+  --color-success: #cfe3d6;
+  --color-success-content: #1b1f3b;
+
+  --color-warning: #f1d8a8;
+  --color-warning-content: #1b1f3b;
+
+  --color-error: #e6b8b8;
+  --color-error-content: #1b1f3b;
+
+  --radius-selector: 1rem;
+  --radius-field: 1rem;
+  --radius-box: 2rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 1;
+}
+
 /* =========================
    BASE STYLES
 ========================= */

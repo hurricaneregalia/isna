@@ -8,8 +8,8 @@ export default function ExalviaClientLogo({ data, secId }) {
   const duplicatedLogos = [...data.logos, ...data.logos, ...data.logos];
 
   return (
-    <section id={secId} className="py-12 bg-base-100 overflow-hidden">
-      <div className="lg:w-10/12 sm:w-11/12 w-full mx-auto px-6">
+    <section id={secId} className="py-20 md:py-32 bg-base-100 overflow-hidden">
+      <div className="lg:w-10/12 sm:w-11/12 w-full mx-auto px-6 md:px-16 lg:px-24">
         {data.title && (
           <div className="text-center mb-10">
             <span className="text-[10px] md:text-xs font-bold text-primary tracking-[0.3em] uppercase font-montserrat opacity-60">{data.title}</span>

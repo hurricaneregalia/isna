@@ -858,7 +858,7 @@
     "id": "6721387c-49dd-4f87-af83-538c4bca4238",
     "name": "arventa",
     "slug": "arventa",
-    "description": ", viora, exalvia, savheera, ascacentra, ",
+    "description": ", viora, exalvia,, ascacentra, ",
     "keywords": "[]",
     "ogImage": "",
     "themeId": 5,
@@ -868,7 +868,7 @@
     "marketingTools": "",
     "isActive": false,
     "createdAt": "2025-12-19T02:22:45.202Z",
-    "updatedAt": "2025-12-19T02:35:41.452Z",
+    "updatedAt": "2025-12-21T09:50:11.750Z",
     "lpFor": [
       {
         "id": "6c37855a-8169-4309-ab73-da56fccb0b83",
@@ -951,6 +951,112 @@
       "id": 5,
       "name": "emerald",
       "description": "Hijau zamrud yang segar dan profesional.",
+      "createdAt": "2025-07-01T01:25:25.345Z",
+      "updatedAt": "2025-07-01T01:25:25.345Z"
+    }
+  },
+  {
+    "id": "4ef52c30-20dc-4b7f-8611-fc5300e649b3",
+    "name": "savheera",
+    "slug": "savheera",
+    "description": "savheera",
+    "keywords": "[]",
+    "ogImage": "",
+    "themeId": 40,
+    "image": "/images/templateLandingPageBonus/Halvora/section/sec-hero-a2.png",
+    "component": "Savheera",
+    "lpDesignStyleId": "83a977c3-b839-4a31-8b8d-1ec1021ce1ca",
+    "marketingTools": "",
+    "isActive": false,
+    "createdAt": "2025-12-21T10:20:39.220Z",
+    "updatedAt": "2025-12-22T08:28:50.632Z",
+    "lpFor": [
+      {
+        "id": "443c4e89-3266-4e10-a525-cce367a968b8",
+        "description": "pendaftaran kursus."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "5098707b-91bc-4628-b077-1a98e65b5cd1",
+        "type": "testimoni teks",
+        "order": 6
+      },
+      {
+        "id": "822dbbf4-eda5-4fa5-9d37-a97da91712d3",
+        "type": "product list",
+        "order": 9
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "83a977c3-b839-4a31-8b8d-1ec1021ce1ca",
+      "name": "Professional",
+      "description": "Tampilan formal dan tegas, cocok untuk B2B, legal, konsultan."
+    },
+    "ctas": [
+      {
+        "id": "8977b9b4-4a77-4e96-8daf-70add3b92575",
+        "description": "whatsapp"
+      }
+    ],
+    "socialLinks": [],
+    "theme": {
+      "id": 40,
+      "name": "savheera",
+      "description": "savheera",
+      "createdAt": "2025-12-22T08:27:43.890Z",
+      "updatedAt": "2025-12-22T08:27:31.666Z"
+    }
+  },
+  {
+    "id": "80e0cac7-70c3-487a-b676-10c58976741b",
+    "name": "iffka",
+    "slug": "iffka",
+    "description": "iffka",
+    "keywords": "[]",
+    "ogImage": null,
+    "themeId": 8,
+    "image": "/images/templateLandingPageBonus/Zemira/images/photo-1606744888344-493238951221.jpg",
+    "component": "Iffka",
+    "lpDesignStyleId": "602a0a78-a753-4754-b557-f6f6519559a2",
+    "marketingTools": null,
+    "isActive": false,
+    "createdAt": "2025-12-21T13:01:32.291Z",
+    "updatedAt": "2025-12-21T13:01:32.291Z",
+    "lpFor": [
+      {
+        "id": "443c4e89-3266-4e10-a525-cce367a968b8",
+        "description": "pendaftaran kursus."
+      }
+    ],
+    "lpContentTypes": [
+      {
+        "id": "1c39504e-f456-4a1c-9ec7-823df7ec78ff",
+        "type": "form",
+        "order": 11
+      },
+      {
+        "id": "5098707b-91bc-4628-b077-1a98e65b5cd1",
+        "type": "testimoni teks",
+        "order": 6
+      }
+    ],
+    "lpDesignStyle": {
+      "id": "602a0a78-a753-4754-b557-f6f6519559a2",
+      "name": "Corporate",
+      "description": "Tampilan klasik perusahaan besar, cocok untuk institusi, perusahaan B2B."
+    },
+    "ctas": [
+      {
+        "id": "8fc68569-db32-4541-916b-a49c174722aa",
+        "description": "online shop"
+      }
+    ],
+    "socialLinks": [],
+    "theme": {
+      "id": 8,
+      "name": "retro",
+      "description": "Tema dengan nuansa jadul yang klasik.",
       "createdAt": "2025-07-01T01:25:25.345Z",
       "updatedAt": "2025-07-01T01:25:25.345Z"
     }

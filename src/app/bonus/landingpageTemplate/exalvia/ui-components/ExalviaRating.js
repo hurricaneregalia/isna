@@ -5,7 +5,7 @@ export default function ExalviaRating({ count = 5, className = "" }) {
   return (
     <div className={`flex gap-1 text-warning ${className}`}>
       {[...Array(count)].map((_, i) => (
-        <FaStar key={i} />
+        <FaStar className="animate-spin [animation-duration:3s]" key={i} />
       ))}
     </div>
   );

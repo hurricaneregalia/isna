@@ -99,6 +99,48 @@ Setiap section harus mengikuti struktur:
 - JANGAN takut menggunakan padding yang besar.
 - Minimal `py-20` atau `sm:p-10` untuk memberi ruang "bernapas" pada konten (kesan mewah muncul dari kelonggaran tata letak).
 
+#### Standar White Space (Wajib untuk `sections/`)
+
+Gunakan standar berikut untuk menjaga konsistensi jarak antar section dan keterbacaan layout.
+
+##### 1) Section Wrapper
+
+- **Vertical padding default:** `py-20 md:py-32`
+- **Background:** gunakan `bg-base-100` sebagai default, dan variasikan dengan `bg-base-200` / `bg-base-300` sesuai kebutuhan ritme visual.
+
+Contoh:
+
+```jsx
+<section id={secId} className="py-20 md:py-32 bg-base-100">
+  ...
+</section>
+```
+
+##### 2) Container Width + Horizontal Padding
+
+Pakai container standar agar semua section sejajar secara horizontal:
+
+- **Width:** `lg:w-10/12 sm:w-11/12 w-full mx-auto`
+- **Padding X:** `px-6 md:px-16 lg:px-24`
+
+Contoh:
+
+```jsx
+<div className="lg:w-10/12 sm:w-11/12 w-full mx-auto px-6 md:px-16 lg:px-24">...</div>
+```
+
+##### 3) Spacing Header ke Konten
+
+Jika section menggunakan `ExalviaSectionHeader`, gunakan spacing standar:
+
+- **Header wrapper spacing:** `mb-12 md:mb-16`
+
+##### 4) Pengecualian (Special-case)
+
+- **Hero:** boleh full-screen / `min-h-screen` dan memakai padding internal sendiri, tetapi tetap gunakan **padding horizontal** konsisten (`px-6 md:px-16 lg:px-24`).
+- **Navbar:** fixed/sticky. Gunakan **container width + padding horizontal** standar agar sejajar dengan section.
+- **Footer:** tidak wajib `py-20 md:py-32` (umumnya lebih pendek), tetapi **padding horizontal** tetap konsisten.
+
 ### Kebijakan Penggunaan Z-Index (Stacking Rules)
 
 Untuk menjaga konsistensi dan menghindari konflik dengan elemen global (seperti Navbar), penggunaan `z-index` diatur dengan ketat sebagai berikut:
@@ -130,23 +172,24 @@ DILARANG melakukan hardcode data berikut di dalam komponen:
 
 ## 📜 Catatan Perubahan (Changelog)
 
-| Versi    | Tanggal     | Perubahan                                                                                                     | Oleh           |
-| :------- | :---------- | :------------------------------------------------------------------------------------------------------------ | :------------- |
-| **1.0**  | 19 Des 2025 | Inisialisasi panduan gaya berdasarkan brief islami premium dan referensi layout.                              | Antigravity AI |
-| **1.1**  | 19 Des 2025 | Migrasi sistem warna dari variabel OKLCH kustom ke kelas utility DaisyUI (`btn-warning`, `bg-base-...`).      | Antigravity AI |
-| **1.2**  | 20 Des 2025 | Refaktor nama file aset (mengganti spasi dengan tanda hubung `-`) dan pembaruan URL di seluruh dokumen.       | Antigravity AI |
-| **1.3**  | 20 Des 2025 | Restrukturisasi folder proyek (memisahkan implementasi `.js` dan dokumentasi `.md` ke folder `docs/`).        | Antigravity AI |
-| **1.4**  | 20 Des 2025 | Penghapusan standar efek blur dan glassmorphism demi alasan performa halaman.                                 | Antigravity AI |
-| **1.5**  | 20 Des 2025 | Refaktor nama proyek dari "Excalvia" menjadi "Exalvia" (koreksi typo) di seluruh file dan folder.             | Antigravity AI |
-| **1.6**  | 20 Des 2025 | Penambahan standar visual untuk Badge, Card, Icon Box, dan Rating dalam sistem komponen atomik.               | Antigravity AI |
-| **1.7**  | 20 Des 2025 | Implementasi Navbar & Hero dengan standar arsitektural (rounded corners) dan tracking section aktif.          | Antigravity AI |
-| **1.8**  | 20 Des 2025 | Penyelesaian seluruh spesifikasi detail (v2) dan implementasi section Fact dengan elemen floating 3D.         | Antigravity AI |
-| **1.9**  | 20 Des 2025 | Penegasan aturan "No Hardcoded Content" (termasuk Image URL) di database dan perbaikan gambar Fact.           | Antigravity AI |
-| **1.10** | 20 Des 2025 | Implementasi section Fenomenon dengan layout reversed, floating card, dan aksen signature premium.            | Antigravity AI |
-| **1.11** | 20 Des 2025 | Implementasi section Solution dengan tema kontras gelap, pola digital, dan visual framed-image.               | Antigravity AI |
-| **1.12** | 20 Des 2025 | Penambahan aturan ketat penggunaan `z-index` (3-Layer Rule & Local Scope Only) untuk mencegah konflik global. | Antigravity AI |
-| **1.13** | 20 Des 2025 | Implementasi section Hadist dengan fokus pada tipografi Arab.                                                 | Antigravity AI |
-| **1.14** | 20 Des 2025 | Refaktor total Hadist menjadi layout "Wisdom Portal" dengan architectural rounding raksasa.                   | Antigravity AI |
-| **1.15** | 20 Des 2025 | Update layout Hadist menjadi 2-kolom (Ikon besar di kiri, Teks Arab di kanan) sesuai spesifikasi terbaru.     | Antigravity AI |
-| **1.16** | 20 Des 2025 | Implementasi section Features dengan grid 3-kolom, background image card, gradient overlay, dan hover effect scale. | Antigravity AI |
+| Versi    | Tanggal     | Perubahan                                                                                                                                                                          | Oleh           |
+| :------- | :---------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------- |
+| **1.0**  | 19 Des 2025 | Inisialisasi panduan gaya berdasarkan brief islami premium dan referensi layout.                                                                                                   | Antigravity AI |
+| **1.1**  | 19 Des 2025 | Migrasi sistem warna dari variabel OKLCH kustom ke kelas utility DaisyUI (`btn-warning`, `bg-base-...`).                                                                           | Antigravity AI |
+| **1.2**  | 20 Des 2025 | Refaktor nama file aset (mengganti spasi dengan tanda hubung `-`) dan pembaruan URL di seluruh dokumen.                                                                            | Antigravity AI |
+| **1.3**  | 20 Des 2025 | Restrukturisasi folder proyek (memisahkan implementasi `.js` dan dokumentasi `.md` ke folder `docs/`).                                                                             | Antigravity AI |
+| **1.4**  | 20 Des 2025 | Penghapusan standar efek blur dan glassmorphism demi alasan performa halaman.                                                                                                      | Antigravity AI |
+| **1.5**  | 20 Des 2025 | Refaktor nama proyek dari "Excalvia" menjadi "Exalvia" (koreksi typo) di seluruh file dan folder.                                                                                  | Antigravity AI |
+| **1.6**  | 20 Des 2025 | Penambahan standar visual untuk Badge, Card, Icon Box, dan Rating dalam sistem komponen atomik.                                                                                    | Antigravity AI |
+| **1.7**  | 20 Des 2025 | Implementasi Navbar & Hero dengan standar arsitektural (rounded corners) dan tracking section aktif.                                                                               | Antigravity AI |
+| **1.8**  | 20 Des 2025 | Penyelesaian seluruh spesifikasi detail (v2) dan implementasi section Fact dengan elemen floating 3D.                                                                              | Antigravity AI |
+| **1.9**  | 20 Des 2025 | Penegasan aturan "No Hardcoded Content" (termasuk Image URL) di database dan perbaikan gambar Fact.                                                                                | Antigravity AI |
+| **1.10** | 20 Des 2025 | Implementasi section Fenomenon dengan layout reversed, floating card, dan aksen signature premium.                                                                                 | Antigravity AI |
+| **1.11** | 20 Des 2025 | Implementasi section Solution dengan tema kontras gelap, pola digital, dan visual framed-image.                                                                                    | Antigravity AI |
+| **1.12** | 20 Des 2025 | Penambahan aturan ketat penggunaan `z-index` (3-Layer Rule & Local Scope Only) untuk mencegah konflik global.                                                                      | Antigravity AI |
+| **1.13** | 20 Des 2025 | Implementasi section Hadist dengan fokus pada tipografi Arab.                                                                                                                      | Antigravity AI |
+| **1.14** | 20 Des 2025 | Refaktor total Hadist menjadi layout "Wisdom Portal" dengan architectural rounding raksasa.                                                                                        | Antigravity AI |
+| **1.15** | 20 Des 2025 | Update layout Hadist menjadi 2-kolom (Ikon besar di kiri, Teks Arab di kanan) sesuai spesifikasi terbaru.                                                                          | Antigravity AI |
+| **1.16** | 20 Des 2025 | Implementasi section Features dengan grid 3-kolom, background image card, gradient overlay, dan hover effect scale.                                                                | Antigravity AI |
+| **1.17** | 20 Des 2025 | Implementasi batch section How It Works, Benefits, Service, Flow, CTA1, Bonus (countdown), Testimonials, FAQ, dan Footer sesuai spesifikasi Ready-to-Build.                        | Antigravity AI |
 | **1.17** | 20 Des 2025 | Refaktor ulang section Hadist dengan layout "Wisdom Portal" 2-kolom (icon quotes kiri, teks Arab kanan), portal framing bg-neutral dengan shadow-2xl, dan background pattern arab. | Antigravity AI |

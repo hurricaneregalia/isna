@@ -19,7 +19,7 @@ export default function ExalviaFeatures({ data, secId = "features" }) {
         {/* Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {data.items?.map((item, index) => (
-            <div key={index} className="group relative aspect-[4/5] overflow-hidden rounded-xl cursor-pointer transition-transform duration-300 hover:scale-105">
+            <div key={index} className="group relative aspect-4/5 overflow-hidden rounded-bl-4xl cursor-pointer transition-transform duration-300 hover:scale-105">
               {/* Background Image */}
               <div className="absolute inset-0">
                 <Image
@@ -32,13 +32,13 @@ export default function ExalviaFeatures({ data, secId = "features" }) {
               </div>
 
               {/* Gradient Overlay untuk keterbacaan label */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent"></div>
 
               {/* Label Area */}
               <div className="absolute bottom-0 left-0 right-0 p-6">
                 <div className="bg-base-100/90 rounded-lg p-4 flex items-center justify-between gap-3 transition-all duration-300 group-hover:bg-base-100">
                   <h3 className="font-instrument-serif text-xl md:text-2xl font-semibold text-base-content flex-1">{item.title}</h3>
-                  <div className="flex-shrink-0 w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                  <div className="shrink-0 w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full group-hover:bg-primary group-hover:text-white transition-all duration-300">
                     <FaArrowRight className="text-sm" />
                   </div>
                 </div>

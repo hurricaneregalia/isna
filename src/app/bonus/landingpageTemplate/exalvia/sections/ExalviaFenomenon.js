@@ -4,11 +4,11 @@ import ExalviaHeadline from "../ui-components/ExalviaHeadline";
 import ExalviaBodyText from "../ui-components/ExalviaBodyText";
 import ExalviaImage from "../ui-components/ExalviaImage";
 
-export default function ExalviaFenomenon({ data }) {
+export default function ExalviaFenomenon({ data, secId = "fenomenon" }) {
   if (!data) return null;
 
   return (
-    <section id="fenomenon" className="py-20 md:py-32 relative overflow-hidden bg-base-200">
+    <section id={secId} className="py-20 md:py-32 relative overflow-hidden bg-base-200/20">
       <div className="lg:w-10/12 sm:w-11/12 w-full mx-auto px-6 md:px-16 lg:px-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Kolom Visual: Posisi Kiri di Desktop */}
@@ -29,7 +29,7 @@ export default function ExalviaFenomenon({ data }) {
 
             {/* Floating Info Card */}
             <div className="absolute -bottom-6 -right-6 md:-right-10">
-              <div className="bg-base-100 p-5 md:p-6 rounded-xl shadow-xl border border-base-300 max-w-[200px] md:max-w-[240px]">
+              <div className="bg-base-100 p-5 md:p-6 rounded-bl-4xl  max-w-[200px] md:max-w-[240px]">
                 <div className="flex items-center gap-2 mb-2 text-warning">
                   <span className="text-2xl font-bold">78%</span>
                 </div>

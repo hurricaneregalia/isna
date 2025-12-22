@@ -35,7 +35,8 @@ Data diambil dari objek `bonus` di `ExalviaDatabase.js`:
 
 - **Headline:** Judul penutup yang mendesak (misal: "Dapatkan Bonus Eksklusif Anda Sekarang!").
 - **Countdown Timer:**
-  - Komponen dinamis yang menghitung mundur: Hari, Jam, Menit, Detik.
+  - Gunakan komponen UI terpisah: `ExalviaCountDown`.
+  - Komponen ini menghitung mundur: Hari, Jam, Menit, Detik.
   - Visual: Kotak-kotak berwarna kontras (misal: merah studio atau brand color).
 - **CTA Button:** Tombol solid besar (`btn-warning`) sebagai instruksi final.
 
@@ -43,7 +44,7 @@ Data diambil dari objek `bonus` di `ExalviaDatabase.js`:
 
 ## 🛠️ Instruksi Teknis untuk AI
 
-1.  **Countdown Logic:** Implementasikan logika `useEffect` di React untuk menghitung mundur waktu dari target date di database.
+1.  **Countdown Logic:** Jangan menulis `useEffect` countdown di file section. Pakai komponen `ExalviaCountDown` di `src/app/bonus/landingpageTemplate/exalvia/ui-components/ExalviaCountDown.js` dan pasang `target={data.countdownTarget}`.
 2.  **Visual Hierarchy:** Gunakan layout grid 2-kolom pada desktop untuk Bonus Items agar layar tidak terasa terlalu panjang.
 3.  **No Blur Policy:** Gunakan solid contrast untuk box countdown. Jangan gunakan blur.
 4.  **Database Binding:** Hubungkan semua item bonus, harga coret, dan target waktu countdown ke database.

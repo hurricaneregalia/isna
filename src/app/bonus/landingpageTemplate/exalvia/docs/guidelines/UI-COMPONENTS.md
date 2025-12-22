@@ -88,12 +88,58 @@ Wadah untuk ikon agar terlihat premium.
 - **Style:** Lingkaran atau square rounded.
 - **Class Dasar:** `w-12 h-12 flex items-center justify-center bg-primary/10 text-primary rounded-lg text-2xl`.
 
+#### Konsep Penggunaan Icon (Data-driven)
+
+Konsep icon di template Exalvia adalah **data-driven**: icon disimpan di database sebagai **JSX element** dan dirender langsung di section (tanpa `iconLoader` / mapping string).
+
+- **Sumber icon:** gunakan `react-icons`.
+- **Bentuk data icon:** simpan sebagai JSX, contoh:
+  ```js
+  { title: "Riset Mendalam", description: "...", icon: <FaSearch /> }
+  ```
+- **Lokasi ideal menyimpan icon:** di `src/app/bonus/landingpageTemplate/exalvia/database/ExalviaDatabase.js` (karena semua konten section ada di sana).
+
+##### Aturan Rendering di Section
+
+Di file section (contoh `ExalviaBenefits.js`) render icon cukup dengan pola berikut:
+
+```jsx
+{
+  item.icon && <ExalviaIconBox icon={item.icon} />;
+}
+```
+
+Catatan: `ExalviaIconBox` mendukung prop `icon` berupa **JSX element** (`<FaSearch />`) maupun **component type** (`FaSearch`), tapi standar yang dipakai di database adalah **JSX element**.
+
 ### C. ExalviaRating
 
 Menampilkan rating bintang.
 
 - **Style:** Row of stars.
 - **Class Dasar:** `flex gap-1 text-warning`.
+
+### D. ExalviaCountDown
+
+Komponen countdown reusable untuk kebutuhan urgency (mis. banner bonus).
+
+- **Lokasi file:** `src/app/bonus/landingpageTemplate/exalvia/ui-components/ExalviaCountDown.js`
+- **Props utama:**
+  - `target`: tanggal target countdown (string/Date yang bisa diparse oleh `new Date(target)`), contoh: `"2025-12-31T23:59:59Z"`.
+
+#### Konsep (Separation of Concerns)
+
+Logika countdown (timer state + interval) **tidak ditaruh di section**, tapi dipisah menjadi komponen `ExalviaCountDown` agar:
+
+- Section seperti `ExalviaBonus` tetap fokus ke layout + copy.
+- Countdown bisa dipakai ulang di section lain tanpa copy-paste `useEffect`/`setInterval`.
+
+#### Contoh pemakaian di section
+
+```jsx
+import ExalviaCountDown from "../ui-components/ExalviaCountDown";
+
+<ExalviaCountDown target={data.countdownTarget} />;
+```
 
 ---
 

@@ -20,14 +20,13 @@ import ExalviaBonus from "./sections/ExalviaBonus";
 import ExalviaTestimonials from "./sections/ExalviaTestimonials";
 import ExalviaFAQ from "./sections/ExalviaFAQ";
 import ExalviaFooter from "./sections/ExalviaFooter";
-import ExalviaUiComponentLibrary from "./ui-components/ExalviaUiComponentLibrary";
 
 const Exalvia = () => {
   const data = ExalviaDatabase;
 
   return (
     <main className="min-h-screen bg-base-100 text-base-content font-montserrat">
-      <ExalviaNavbar data={data.navbar} secId="navbar" />
+      <ExalviaNavbar data={data.navbar} />
       <ExalviaHero data={data.hero} secId="hero" />
       <ExalviaClientLogo data={data.clientLogo} secId="clients" />
       <ExalviaFact data={data.fact} secId="fact" />
@@ -44,7 +43,6 @@ const Exalvia = () => {
       <ExalviaTestimonials data={data.testimonials} secId="testimonials" />
       <ExalviaFAQ data={data.faq} secId="faq" />
       <ExalviaFooter data={data.footer} secId="footer" />
-      <ExalviaUiComponentLibrary />
     </main>
   );
 };

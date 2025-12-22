@@ -52,7 +52,7 @@ Data diambil dari objek `hadist` di `ExalviaDatabase.js`:
 ## 🛠️ Instruksi Teknis untuk AI
 
 1.  **Portal Framing:** Jangan gunakan `bg-base-200` pada seluruh section. Gunakan `bg-base-100` untuk section luar, dan buat `div` portal di dalamnya dengan `bg-neutral` atau warna gelap lainnya.
-2.  **Shadow & Contrast:** Tambahkan `shadow-2xl` pada portal untuk memberikan efek kedalaman (terangkat dari background utama).
+2.  **Shadow & Contrast:** Tambahkan `shadow-2xl` pada portal untuk memberikan efek kedalaman.
 3.  **Typography Focus:** Teks Arab harus menjadi elemen paling dominan secara visual.
 4.  **No Blur Policy:** Gunakan garis tajam dan kontras warna untuk memisahkan layer.
 
