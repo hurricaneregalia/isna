@@ -15,8 +15,12 @@ export default function BrandCheckerIntro() {
     }
 
     // Store brand name in sessionStorage
-    sessionStorage.setItem("brandName", brandName.trim());
-    sessionStorage.removeItem("brandCheckerAnswers");
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("brandName", brandName.trim());
+      sessionStorage.removeItem("brandCheckerAnswers");
+      sessionStorage.removeItem("brandCheckerCompleted"); // Reset completion flag
+      sessionStorage.removeItem("brandCheckerStartTime"); // Reset timer
+    }
 
     // Navigate to questions page
     router.push("/bonus/landingpageTemplate/exalvia/brand-checker/questions");
@@ -71,6 +75,11 @@ export default function BrandCheckerIntro() {
               type="text"
               value={brandName}
               onChange={(e) => setBrandName(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleStart();
+                }
+              }}
               placeholder="Masukkan nama brand Anda"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all"
               minLength={3}

@@ -14,11 +14,20 @@ export default function BrandCheckerQuestions() {
   const totalQuestions = questions.length;
 
   useEffect(() => {
+    // Check if we're on client side
+    if (typeof window === "undefined") return;
+
     // Check if brand name exists
     const brandName = sessionStorage.getItem("brandName");
     if (!brandName) {
       router.push("/bonus/landingpageTemplate/exalvia/brand-checker");
       return;
+    }
+
+    // Set start time if not already set
+    const testStartTime = sessionStorage.getItem("brandCheckerStartTime");
+    if (!testStartTime) {
+      sessionStorage.setItem("brandCheckerStartTime", new Date().toISOString());
     }
 
     // Load existing answers if any
@@ -37,7 +46,7 @@ export default function BrandCheckerQuestions() {
 
   useEffect(() => {
     // Save answers to sessionStorage whenever they change
-    if (answers.length > 0) {
+    if (typeof window !== "undefined" && answers.length > 0) {
       sessionStorage.setItem("brandCheckerAnswers", JSON.stringify(answers));
     }
   }, [answers]);
@@ -49,33 +58,34 @@ export default function BrandCheckerQuestions() {
     const selectedAnswer = question.options[optionIndex];
 
     // Save answer
-    const newAnswers = [...answers];
-    newAnswers[currentQuestion] = {
+    const newAnswer = {
       questionId: question.id,
       selectedOption: optionIndex,
-      score: selectedAnswer.value,
+      score: selectedAnswer.score,
       questionText: question.question,
       category: question.category,
       selectedText: selectedAnswer.text,
     };
 
-    setAnswers(newAnswers);
+    const updatedAnswers = [...answers, newAnswer];
+    setAnswers(updatedAnswers);
 
     // Auto-advance to next question after 500ms
     setTimeout(() => {
+      setSelectedOption(null);
       if (currentQuestion < totalQuestions - 1) {
         setCurrentQuestion(currentQuestion + 1);
-        setSelectedOption(null);
       } else {
-        // All questions completed, redirect to result
-        router.push("/brand-checker/result");
+        // All questions completed, mark test as completed and redirect to result
+        sessionStorage.setItem("brandCheckerCompleted", "true");
+        router.push("/bonus/landingpageTemplate/exalvia/brand-checker/result");
       }
     }, 500);
   };
 
   const progressPercentage = ((currentQuestion + 1) / totalQuestions) * 100;
 
-  if (questions.length === 0) {
+  if (typeof window === "undefined" || questions.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -150,7 +160,7 @@ export default function BrandCheckerQuestions() {
         {/* Brand Name Display */}
         <div className="text-center mt-6">
           <p className="text-sm text-gray-500">
-            Mengevaluasi brand: <span className="font-medium">{sessionStorage.getItem("brandName")}</span>
+            Mengevaluasi brand: <span className="font-medium">{typeof window !== "undefined" ? sessionStorage.getItem("brandName") : ""}</span>
           </p>
         </div>
       </div>

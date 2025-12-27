@@ -31,6 +31,7 @@ const Exalvia = () => {
       <ExalviaFact data={data.fact} secId="fact" />
       <ExalviaFenomenon data={data.fenomenon} secId="fenomenon" />
       <ExalviaCTA1 data={data.cta1} secId="cta1" targetLink="/bonus/landingpageTemplate/exalvia/brand-checker" />
+      <ExalviaService data={data.service} secId="service" />
       {/* 
       <ExalviaSolution data={data.solution} secId="solution" />
       <ExalviaClientLogo data={data.clientLogo} secId="clients" />
@@ -38,7 +39,6 @@ const Exalvia = () => {
       <ExalviaFeatures data={data.features} secId="features" />
       <ExalviaHowItWork data={data.howItWork} secId="how-it-works" />
       <ExalviaBenefits data={data.benefits} secId="benefits" />
-      <ExalviaService data={data.service} secId="service" />
       <ExalviaFlow data={data.flow} secId="flow" />
       <ExalviaBonus data={data.bonus} secId="bonus" />
       <ExalviaTestimonials data={data.testimonials} secId="testimonials" />
