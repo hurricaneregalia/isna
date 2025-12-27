@@ -24,7 +24,7 @@ export default function HalvoraAbout({ data, secId }) {
           {/* Image Side */}
           <div className="w-full md:w-1/2 relative">
             <div className="absolute top-0 right-10 origin-top swing z-2">
-              <Image src={ornament2} alt="ornament" width={0} height={0} sizes="100vw" className="w-[25px] lg:w-[50px] h-auto" style={{ height: "auto" }} />
+              <Image src={ornament2} alt="ornament" width={0} height={0} sizes="100vw" className="w-6.25 lg:w-12.5 h-auto" style={{ height: "auto" }} />
             </div>
             <div className="absolute top-4 left-4 w-full h-full border-2 border-primary card overflow-hidden transform translate-x-4 translate-y-4" />
             <HalvoraImage src={image} alt="About Halvora" className="aspect-4/5 shadow-2xl card relative" />

@@ -5,7 +5,7 @@ export default function ExalviaLinkButton({ text, icon: Icon, href = "#", classN
   const variantClass = variant === "primary" ? "btn-warning border-none shadow-none" : "btn-outline";
 
   return (
-    <Link href={href} onClick={onClick} className={`btn rounded-sm transition-all duration-300 font-montserrat btn-md md:btn-lg ${variantClass} ${className}`}>
+    <Link href={href} onClick={onClick} className={`btn transition-all duration-300 font-montserrat btn-md md:btn-lg ${variantClass} ${className}`}>
       {text}
       {Icon && <Icon className="text-xl" />}
     </Link>

@@ -63,7 +63,7 @@ export default function ExalviaService({ data, secId = "service" }) {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {data.plans?.map((plan, idx) => (
-            <ExalviaCard key={idx} className={`h-full flex flex-col p-0 overflow-hidden border-base-300 bg-base-200/20 ${plan.highlight ? "border-warning/60" : ""}`}>
+            <ExalviaCard key={idx} className={`h-full flex flex-col p-0 overflow-hidden bg-transparent ${plan.highlight ? "border-warning/60" : ""}`}>
               {/* Top area */}
               <div
                 ref={(el) => {
@@ -73,7 +73,7 @@ export default function ExalviaService({ data, secId = "service" }) {
                 style={maxHeight ? { minHeight: `${maxHeight}px` } : {}}
               >
                 <div className="flex items-center justify-between mb-3 h-8 ">
-                  <ExalviaRating count={plan.rating || 5} />
+                  <ExalviaRating count={plan.rating || 5} spin={plan.highlight && "animate-spin"} />
                   {plan.highlight && <span className="text-xs font-semibold tracking-wide text-warning bg-white/10 px-3 py-1 rounded-full">Popular</span>}
                 </div>
                 <h3 className="font-instrument-serif text-2xl md:text-3xl font-semibold">{plan.name}</h3>
@@ -115,7 +115,7 @@ export default function ExalviaService({ data, secId = "service" }) {
                     return (
                       <div className="w-full">
                         <div className="h-2 w-full rounded-full bg-base-300 overflow-hidden">
-                          <div className="h-full rounded-full bg-warning transition-all duration-500" style={{ width: `${pct}%` }} />
+                          <div className="h-full rounded-full bg-primary/50 transition-all duration-500" style={{ width: `${pct}%` }} />
                         </div>
                       </div>
                     );

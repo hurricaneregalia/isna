@@ -43,6 +43,7 @@ const themes = [
   "halvora",
   "halvora-dark",
   "savheera",
+  "exalvia",
 ];
 
 export default function ThemeChanger() {

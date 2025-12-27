@@ -908,15 +908,15 @@
     "slug": "exalvia",
     "description": "exalvia",
     "keywords": "[]",
-    "ogImage": null,
-    "themeId": 5,
+    "ogImage": "",
+    "themeId": 41,
     "image": "/images/templateLandingPageBonus/Zemira/images/photo-1606744888344-493238951221.jpg",
     "component": "Exalvia",
     "lpDesignStyleId": "b37c54cb-0b0d-4810-965d-b0ab15f9dc38",
-    "marketingTools": null,
+    "marketingTools": "",
     "isActive": false,
     "createdAt": "2025-12-19T03:39:01.170Z",
-    "updatedAt": "2025-12-19T03:39:01.170Z",
+    "updatedAt": "2025-12-23T09:31:02.306Z",
     "lpFor": [
       {
         "id": "443c4e89-3266-4e10-a525-cce367a968b8",
@@ -948,11 +948,11 @@
     ],
     "socialLinks": [],
     "theme": {
-      "id": 5,
-      "name": "emerald",
-      "description": "Hijau zamrud yang segar dan profesional.",
-      "createdAt": "2025-07-01T01:25:25.345Z",
-      "updatedAt": "2025-07-01T01:25:25.345Z"
+      "id": 41,
+      "name": "exalvia",
+      "description": "exalvia",
+      "createdAt": "2025-12-23T09:30:34.967Z",
+      "updatedAt": "2025-12-23T09:30:19.840Z"
     }
   },
   {

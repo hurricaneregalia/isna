@@ -36,8 +36,8 @@ export default function ExalviaFeatures({ data, secId = "features" }) {
 
               {/* Label Area */}
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="bg-base-100/90 rounded-lg p-4 flex items-center justify-between gap-3 transition-all duration-300 group-hover:bg-base-100">
-                  <h3 className="font-instrument-serif text-xl md:text-2xl font-semibold text-base-content flex-1">{item.title}</h3>
+                <div className="bg-base-100/20 text-white rounded-bl-2xl p-4 flex items-center justify-between gap-3 transition-all duration-300 group-hover:bg-base-100 group-hover:text-primary">
+                  <h3 className="font-instrument-serif text-xl md:text-2xl font-semibold flex-1">{item.title}</h3>
                   <div className="shrink-0 w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full group-hover:bg-primary group-hover:text-white transition-all duration-300">
                     <FaArrowRight className="text-sm" />
                   </div>

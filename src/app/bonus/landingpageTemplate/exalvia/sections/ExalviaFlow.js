@@ -20,7 +20,7 @@ export default function ExalviaFlow({ data, secId = "flow" }) {
           {data.items?.map((item, idx) => {
             const number = String(idx + 1).padStart(2, "0");
             return (
-              <ExalviaCard key={idx} className="h-full flex flex-col relative overflow-hidden">
+              <ExalviaCard key={idx} className="h-full flex flex-col relative overflow-hidden bg-transparent">
                 <span className="absolute top-4 left-4 text-3xl font-bold text-primary/15">{number}</span>
                 <div className="relative overflow-hidden rounded-bl-4xl  ">
                   <ExalviaImage src={item.image} alt={item.title} containerClassName="rounded-none" className="object-cover" />

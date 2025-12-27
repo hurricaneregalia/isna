@@ -156,6 +156,61 @@
   --noise: 1;
 }
 
+@plugin "daisyui/theme" {
+  name: "exalvia";
+  default: false;
+  prefersdark: false;
+  color-scheme: "light";
+
+  /* Base colors (clean, soft, premium) */
+  --color-base-100: oklch(99% 0.002 250);   /* background utama (off-white) */
+  --color-base-200: oklch(96% 0.004 250);   /* surface / card */
+  --color-base-300: oklch(92% 0.006 250);   /* border / divider */
+  --color-base-content: oklch(18% 0.01 260);/* teks utama */
+
+  /* Primary: Hitam premium */
+  --color-primary: oklch(18% 0.01 260);
+  --color-primary-content: oklch(98% 0.002 250);
+
+  /* Secondary: Abu-abu modern */
+  --color-secondary: oklch(35% 0.01 260);
+  --color-secondary-content: oklch(98% 0.002 250);
+
+  /* Accent: Kuning emas (luxury gold) */
+  --color-accent: oklch(78% 0.17 85);
+  --color-accent-content: oklch(18% 0.02 90);
+
+  /* Neutral */
+  --color-neutral: oklch(28% 0.01 260);
+  --color-neutral-content: oklch(96% 0.002 250);
+
+  /* Semantic colors */
+  --color-info: oklch(70% 0.14 240);
+  --color-info-content: oklch(0% 0 0);
+
+  --color-success: oklch(66% 0.15 155);
+  --color-success-content: oklch(0% 0 0);
+
+  --color-warning: oklch(82% 0.18 85);
+  --color-warning-content: oklch(20% 0.02 90);
+
+  --color-error: oklch(68% 0.2 25);
+  --color-error-content: oklch(0% 0 0);
+
+  /* Shape & depth (soft premium) */
+  --radius-selector: 0.25rem;
+  --radius-field: 2rem;
+  --radius-box: 1rem;
+
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+
+  --depth: 0;
+  --noise: 0;
+}
+
+
 
 @plugin "daisyui/theme" {
   name: "savheera";

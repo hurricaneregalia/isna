@@ -17,8 +17,8 @@ export default function ExalviaHadist({ data, secId = "hadist" }) {
             {/* Kolom Visual: Posisi Kiri di Desktop */}
             <div className="order-1 relative">
               {/* Main Visual Container */}
-              <div className="relative rounded-2xl overflow-hidden border-8 border-white shadow-2xl">
-                <ExalviaImage src={data.image} alt={data.source} width={800} height={600} className="w-full h-auto object-cover" />
+              <div className="relative">
+                <ExalviaImage src={data.image} alt={data.source} width={800} height={600} className="w-full h-auto object-contain" />
               </div>
             </div>
 

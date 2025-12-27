@@ -16,7 +16,7 @@ export default function ExalviaBenefits({ data, secId = "benefits" }) {
           <ExalviaSectionHeader badge={data.label} title={data.title} subtitle={data.subtitle} align="center" />
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {data.items?.map((item, idx) => {
             const number = String(idx + 1).padStart(2, "0");
             return (

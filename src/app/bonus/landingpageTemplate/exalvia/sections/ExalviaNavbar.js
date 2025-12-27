@@ -3,8 +3,10 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { HiMenuAlt3 } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
-import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 import ExalviaLinkButton from "../ui-components/ExalviaLinkButton";
+import ModalThemes from "@/app/component/global/ModalThemes";
+import { FaPalette } from "react-icons/fa6";
+import ThemeChanger from "@/app/component/global/ThemeChanger";
 
 export default function ExalviaNavbar({ data }) {
   const [scrolled, setScrolled] = useState(false);
@@ -57,8 +59,8 @@ export default function ExalviaNavbar({ data }) {
 
   return (
     <div className="relative w-full">
-      <nav className={`fixed left-0 w-full z-10 transition-all duration-300 rounded-bl-4xl ${scrolled ? "bg-primary shadow-md py-5" : "bg-transparent py-8"}`}>
-        <div className="lg:w-10/12 sm:w-11/12 w-full mx-auto px-6 md:px-16 lg:px-24">
+      <nav className={`fixed left-0 w-full z-10 transition-all duration-300 rounded-bl-4xl ${scrolled ? "bg-primary py-5" : "bg-transparent py-8"}`}>
+        <div className={`lg:w-10/12 sm:w-11/12 w-full mx-auto px-6 md:px-16  transition-all duration-300 lg:px-24 ${scrolled ? "mt-0" : "mt-5"} `}>
           <div className="flex items-center justify-between">
             {/* 1. Left: Brand */}
             <div className="flex-1 flex items-center">
@@ -88,10 +90,11 @@ export default function ExalviaNavbar({ data }) {
             {/* 3. Right: Utils */}
             <div className="flex-1 flex items-center justify-end gap-4">
               {/* Theme Toggle */}
-              <button className="btn btn-ghost btn-circle btn-sm text-white">
-                <MdOutlineLightMode size={30} className="text-xl inline-block dark:hidden" />
-                <MdOutlineDarkMode size={30} className="text-xl hidden dark:inline-block" />
-              </button>
+              <label className="swap swap-rotate">
+                <ModalThemes title="Pilih Tema" btnTxt={<FaPalette />} modalId="theme-modal" textColor=" text-white" borderColor="border-white/40">
+                  <ThemeChanger />
+                </ModalThemes>
+              </label>
 
               {/* Mobile Toggle */}
               <button

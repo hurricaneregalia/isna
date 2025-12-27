@@ -21,7 +21,7 @@ export default function ExalviaTestimonials({ data, secId = "testimonials" }) {
               <ExalviaCard key={idx} className="h-full flex flex-col gap-5 p-8">
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-full overflow-hidden">
+                    <div className="w-12 h-12 rounded-bl-2xl overflow-hidden">
                       <Image src={item.avatar} alt={item.name} width={48} height={48} className="w-full h-full object-cover" />
                     </div>
                     <div>

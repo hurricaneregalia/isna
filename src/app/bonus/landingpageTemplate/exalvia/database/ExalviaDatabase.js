@@ -1,7 +1,15 @@
 // Import semua icon yang digunakan dalam loop
-import { FaSearch, FaPenNib, FaMoon, FaRocket, FaShieldAlt, FaCheckCircle, FaTimesCircle, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { FaX } from "react-icons/fa6";
-import { HiShieldCheck, HiTrendingUp } from "react-icons/hi";
+import { BiSolidMessageCheck } from "react-icons/bi";
+import { FaSearch, FaPenNib, FaMoon, FaRocket, FaShieldAlt, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaRegFaceTired, FaToggleOn } from "react-icons/fa6";
+import { GiCrackedGlass, GiSwordBreak } from "react-icons/gi";
+import { HiChat, HiLightBulb, HiOutlineDocumentDuplicate, HiShieldCheck, HiTrendingUp, HiUserGroup } from "react-icons/hi";
+import { IoSparkles } from "react-icons/io5";
+import { MdOutlineMoneyOffCsred } from "react-icons/md";
+import { HiCheckBadge } from "react-icons/hi2";
+import { RiSwordFill } from "react-icons/ri";
+
+const ipad2 = "/images/templateLandingPageBonus/Exalvia/sections/ipad-2.webp";
 
 const ExalviaDatabase = {
   navbar: {
@@ -16,8 +24,8 @@ const ExalviaDatabase = {
     ],
   },
   hero: {
-    headline: "Transformasi Produk Anda",
-    subheadline: "Jasa penulisan landing page profesional yang dirancang khusus untuk membangun kepercayaan.",
+    headline: "Sistem cerdas untuk menjual produk branded di atas kompetitor. Spesial produk Ramadhan!",
+    subheadline: "Kami bantu Anda menyampaikan pesan yang tepat, membuat pelanggan merasa dipahami dan tertarik membeli.",
     buttonLabel: "Konsultasi Sekarang",
     backgroundImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
     patternImage: "https://www.transparenttextures.com/patterns/arabesque.png",
@@ -36,37 +44,50 @@ const ExalviaDatabase = {
     ],
   },
   fact: {
-    label: "Fakta Industri",
-    title: "Mengapa Copywriting Itu Penting?",
-    description: "90% keputusan pembelian dipengaruhi oleh emosi dan persuasi kata-kata. Tanpa bumbu copywriting yang tepat, produk branded Anda hanya akan menjadi pajangan digital.",
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2067&auto=format&fit=crop",
-    patternImage: "https://www.transparenttextures.com/patterns/arabesque.png",
+    label: "Masalah",
+    title: "Banyak pemilik produk branded muslim mengalami pola yang sama.",
+    description: "Produk yang dibuat sudah berkualitas, sudah menggunakan iklan berbayar untuk promosi, sudah ikut tren marketplace, namun ini yang terjadi:",
+    image: ipad2,
     items: [
-      { title: "Meningkatkan Trust", icon: <HiShieldCheck /> },
-      { title: "Melejitkan Konversi", icon: <HiTrendingUp /> },
+      { title: "Harga ideal sulit dipertahankan.", icon: <MdOutlineMoneyOffCsred /> },
+      { title: "Terjerumus dalam perang harga.", icon: <RiSwordFill /> },
+      { title: "Produk di anggap sama saja.", icon: <HiOutlineDocumentDuplicate /> },
+      { title: "Promosi hanya membuang uang saja.", icon: <FaRegFaceTired /> },
     ],
   },
   fenomenon: {
-    label: "Masalah Umum",
-    title: "Sulit Menembus Kepercayaan Pengusaha Muslim?",
-    description: "Banyak brand gagal karena tidak memahami psikologi audiens muslim. Kami hadir untuk menjembatani kesenjangan tersebut dengan bahasa yang etis namun sangat persuasif.",
-    image: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2070&auto=format&fit=crop",
+    label: "Solusi",
+    title: "Sebenarnya calon pembeli tidak menolak produk Anda.",
+    description: "Calong pembeli hanya belum melihat alasan yang cukup kuat untuk membayar lebih. Buat mereka mendapatkan alasan itu dengan:",
+    image: ipad2,
     patternImage: "https://www.transparenttextures.com/patterns/arabesque.png",
     signature: "Amir Al-Farabi",
     designerRole: "Head of Copy at Exalvia",
+    items: [
+      { title: "Sampaikan nilai produk dengan baik.", icon: <IoSparkles /> },
+      { title: "Bentuk kepercayaan brand yang kuat.", icon: <HiCheckBadge /> },
+      { title: "Jual produk atau jasa yang berbeda.", icon: <FaToggleOn /> },
+      { title: "Buat pesan promosi yang jelas.", icon: <BiSolidMessageCheck /> },
+    ],
   },
   solution: {
-    label: "Solusi Kami",
-    title: "Copywriting yang Menyentuh Hati & Logika",
-    description: "Exalvia bukan sekadar menulis, kami meriset audiens Anda, memahami value produk branded Anda, dan menyajikannya dalam narasi yang elegan dan profesional.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop",
+    label: "Penting",
+    title: "Sebenarnya calon pembeli tidak menolak produk Anda.",
+    description: "Calong pembeli hanya belum melihat alasan yang cukup kuat untuk membayar lebih. Dan hal ini sering terjadi karena:",
+    image: ipad2,
+    items: [
+      { title: "Nilai produk tidak tersampaikan.", icon: <HiUserGroup /> },
+      { title: "Kepercayaan brand belum terbentuk", icon: <HiLightBulb /> },
+      { title: "Brand terlihat mirip kompetitor murah", icon: <HiChat /> },
+      { title: "Pesan promosi tidak dipahami pembeli", icon: <HiChat /> },
+    ],
   },
   hadist: {
     arabic: "إِنَّ اللهَ طَيِّبٌ يُحِبُّ الطَّيِّبَ، نَظِيفٌ يُحِبُّ النَّظَافَةَ",
     translation: "Sesungguhnya Allah itu Maha Baik dan mencintai kebaikan, Maha Bersih dan mencintai kebersihan.",
     source: "HR. At-Tirmidzi",
     context: "Kebersihan dan profesionalitas dalam bisnis adalah cerminan iman.",
-    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2067&auto=format&fit=crop",
+    image: "/images/templateLandingPageBonus/Exalvia/sections/ipad-1.webp",
   },
   howItWork: {
     label: "Alur Kerja",
@@ -89,7 +110,7 @@ const ExalviaDatabase = {
         icon: <FaShieldAlt />,
       },
     ],
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=2070&auto=format&fit=crop",
+    image: "/images/templateLandingPageBonus/Exalvia/sections/iphone-2.webp",
     patternImage: "https://www.transparenttextures.com/patterns/arabesque.png",
   },
   benefits: {
@@ -180,8 +201,9 @@ const ExalviaDatabase = {
     ],
   },
   cta1: {
-    label: "Keinginan",
-    title: "Siap percepat closing dengan copy premium?",
+    label: "Faktor lain",
+    title: "Ada hal lain yang spesifik membuat produk branded Anda sulit dijual.",
+    description: "Klik tombol “Cek Kualitas Brand” di bawah untuk memahami kondisi brand Anda saat ini, supaya brand Anda bisa tumbuh dengan sehat tanpa terjebak perang harga.",
     primaryLabel: "Mulai Konsultasi",
     primaryHref: "https://wa.me/6281234567890",
     whatsappLabel: "Chat WhatsApp",
@@ -277,8 +299,8 @@ const ExalviaDatabase = {
   },
   features: {
     label: "Fitur Unggulan",
-    title: "Fitur Unggulan Exalvia",
-    subtitle: "Solusi lengkap untuk kebutuhan copywriting profesional Anda",
+    title: "Fondasi Komunikasi Bisnis",
+    subtitle: "Sistem yang dirancang khusus untuk memperkuat pengaruh brand Anda di pasar.",
     items: [
       {
         title: "Riset Kompetitor",
@@ -298,7 +320,235 @@ const ExalviaDatabase = {
         icon: <FaMoon />,
         image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
       },
+      {
+        title: "Alur Konversi",
+        description: "Memastikan pembaca melakukan tindakan nyata.",
+        icon: <FaMoon />,
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
+      },
+      {
+        title: "Optimasi Kata Kunci",
+        description: "Menggunakan diksi yang relevan bagi pelanggan.",
+        icon: <FaMoon />,
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
+      },
+      {
+        title: "Audit Struktur Penawaran",
+        description: "Menemukan celah kebocoran penjualan.",
+        icon: <FaMoon />,
+        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2070&auto=format&fit=crop",
+      },
     ],
+  },
+  brandChecker: {
+    questions: [
+      {
+        id: 1,
+        question: "Apa yang Anda jual?",
+        category: "Product Info",
+        options: [
+          { text: "Produk", value: 4 },
+          { text: "Jasa", value: 4 },
+          { text: "Produk + jasa", value: 2 },
+          { text: "Lainnya", value: 1 },
+        ],
+      },
+      {
+        id: 2,
+        question: "Apakah Anda tahu manfaat utama produk Anda?",
+        category: "Product Info",
+        options: [
+          { text: "Tahu dengan jelas", value: 4 },
+          { text: "Tahu sebagian", value: 3 },
+          { text: "Ragu-ragu", value: 2 },
+          { text: "Tidak tahu", value: 1 },
+        ],
+      },
+      {
+        id: 3,
+        question: "Apakah Anda punya kompetitor atau pesaing produk yang hampir mirip?",
+        category: "Product Info",
+        options: [
+          { text: "Punya", value: 4 },
+          { text: "Tidak punya", value: 2 },
+          { text: "Tidak peduli kompetitor", value: 1 },
+          { text: "Tidak tahu", value: 1 },
+        ],
+      },
+      {
+        id: 4,
+        question: "Apakah Anda tahu siapa orang yang cocok menggunakan produk Anda?",
+        category: "Target",
+        options: [
+          { text: "Tahu", value: 4 },
+          { text: "Tahu sedikit", value: 3 },
+          { text: "Ragu-ragu", value: 2 },
+          { text: "Tidak tahu", value: 1 },
+        ],
+      },
+      {
+        id: 5,
+        question: "Channel online apa yang paling banyak menjual produk Anda saat ini?",
+        category: "Target",
+        options: [
+          { text: "Landing page", value: 4 },
+          { text: "Marketplace (Tokopedia, Shopee, Lazada)", value: 4 },
+          { text: "Media sosial (Instagram, Facebook, TikTok, WhatsApp)", value: 4 },
+          { text: "Tidak pernah dicek", value: 1 },
+        ],
+      },
+      {
+        id: 6,
+        question: "Bagaimana perbandingan harga produk Anda dibandingkan kompetitor?",
+        category: "Harga",
+        options: [
+          { text: "Lebih murah", value: 4 },
+          { text: "Lebih mahal", value: 4 },
+          { text: "Sama saja", value: 4 },
+          { text: "Tidak tahu harga kompetitor", value: 1 },
+        ],
+      },
+      {
+        id: 7,
+        question: "Apa yang Anda lakukan jika produk kompetitor lebih murah?",
+        category: "Harga",
+        options: [
+          { text: "Turunkan harga", value: 2 },
+          { text: "Pertahankan harga & edukasi kualitas", value: 4 },
+          { text: "Ganti produk lain", value: 2 },
+          { text: "Tidak melakukan apa-apa", value: 1 },
+        ],
+      },
+      {
+        id: 8,
+        question: "Dari sekian banyak calon pembeli, seberapa sering mereka merasa bingung dan bertanya hal yang sama?",
+        category: "Cara Menjual",
+        options: [
+          { text: "Tidak pernah bertanya & banyak penjualan", value: 4 },
+          { text: "Tidak pernah bertanya & minim penjualan", value: 2 },
+          { text: "Sering bertanya & banyak penjualan", value: 3 },
+          { text: "Sering bertanya & minim penjualan", value: 1 },
+        ],
+      },
+      {
+        id: 9,
+        question: "Apa yang Anda lakukan ketika penjualan menurun?",
+        category: "Cara Menjual",
+        options: [
+          { text: "Evaluasi cara menjual", value: 4 },
+          { text: "Evaluasi produk", value: 4 },
+          { text: "Turunkan harga", value: 2 },
+          { text: "Menunggu", value: 1 },
+        ],
+      },
+      {
+        id: 10,
+        question: "Apa yang Anda rasakan melihat laporan penjualan 3 bulan terakhir?",
+        category: "Reflektif",
+        options: [
+          { text: "Senang", value: 4 },
+          { text: "Cemas", value: 3 },
+          { text: "Biasa saja", value: 2 },
+          { text: "Tidak pernah lihat laporan", value: 1 },
+        ],
+      },
+      {
+        id: 11,
+        question: "Apa masalah terbesar penjualan Anda saat ini?",
+        category: "Reflektif",
+        options: [
+          { text: "Produk tidak dikenal", value: 3 },
+          { text: "Harga lebih mahal", value: 3 },
+          { text: "Tidak tahu harus dijual ke siapa", value: 3 },
+          { text: "Semua saling terkait", value: 4 },
+        ],
+      },
+      {
+        id: 12,
+        question: "Apakah Anda merasa produk Anda bagus?",
+        category: "Reflektif",
+        options: [
+          { text: "Ya", value: 4 },
+          { text: "Tidak", value: 2 },
+          { text: "Ragu-ragu", value: 2 },
+          { text: "Tidak tahu kriterianya", value: 1 },
+        ],
+      },
+      {
+        id: 13,
+        question: "Apakah brand Anda sudah punya logo?",
+        category: "Identitas Visual",
+        options: [
+          { text: "Sudah", value: 4 },
+          { text: "Belum", value: 2 },
+          { text: "Baru ingin buat", value: 3 },
+          { text: "Tidak butuh logo", value: 1 },
+        ],
+      },
+      {
+        id: 14,
+        question: "Seperti apa tampilan logo brand Anda?",
+        category: "Identitas Visual",
+        options: [
+          { text: "Sederhana", value: 4 },
+          { text: "Warna-warni", value: 3 },
+          { text: "Detail/ramai", value: 2 },
+          { text: "Tidak punya logo", value: 1 },
+        ],
+      },
+      {
+        id: 15,
+        question: "Apakah brand Anda punya banyak logo berbeda bentuk?",
+        category: "Identitas Visual",
+        options: [
+          { text: "Ya banyak", value: 1 },
+          { text: "Tidak terlalu banyak", value: 2 },
+          { text: "Hanya satu saja", value: 4 },
+          { text: "Tidak punya logo", value: 1 },
+        ],
+      },
+      {
+        id: 16,
+        question: "Apakah ada 1 warna khusus yang digunakan sebagai ciri khas brand Anda?",
+        category: "Identitas Visual",
+        options: [
+          { text: "Ada", value: 4 },
+          { text: "Tidak ada", value: 1 },
+          { text: "Ada banyak warna digunakan bergantian", value: 2 },
+          { text: "Tidak pernah memikirkan warna", value: 1 },
+        ],
+      },
+      {
+        id: 17,
+        question: "Apakah warna brand selalu digunakan di konten promosi?",
+        category: "Identitas Visual",
+        options: [
+          { text: "Ya", value: 4 },
+          { text: "Kadang-kadang", value: 3 },
+          { text: "Tidak pernah", value: 2 },
+          { text: "Tidak ada warna khusus", value: 1 },
+        ],
+      },
+    ],
+    categories: ["Product Info", "Target", "Harga", "Cara Menjual", "Reflektif", "Identitas Visual"],
+    resultClassification: {
+      "0-25": {
+        level: "Positioning Kacau",
+        description: "Pesan brand tidak fokus, sulit dipahami, dan berisiko membingungkan pasar.",
+      },
+      "26-50": {
+        level: "Positioning Lemah",
+        description: "Arah brand mulai terlihat, tetapi masih tidak konsisten dan sulit dijual secara stabil.",
+      },
+      "51-75": {
+        level: "Positioning Cukup Kuat",
+        description: "Brand memiliki arah yang jelas, namun masih perlu perbaikan di beberapa area.",
+      },
+      "76-100": {
+        level: "Positioning Kuat",
+        description: "Brand memiliki positioning yang solid dan siap bersaing di pasar.",
+      },
+    },
   },
   // Data untuk section lainnya akan ditambahkan secara bertahap
 };

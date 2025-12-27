@@ -21,10 +21,7 @@ export default function ExalviaClientLogo({ data, secId }) {
           <div className="flex w-full overflow-hidden">
             <div className="flex animate-marquee group-hover:pause gap-6">
               {duplicatedLogos.map((logo, index) => (
-                <div
-                  key={index}
-                  className="flex-none w-40 md:w-56 h-28 md:h-32 bg-base-100 border border-base-300 rounded-xl flex items-center justify-center p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-sm"
-                >
+                <div key={index} className="flex-none w-40 md:w-56 h-28 md:h-32 bg-base-200 rounded-bl-4xl flex items-center justify-center p-6 transition-all duration-300 hover:border-primary/50">
                   <div className="relative w-full h-full grayscale opacity-50 transition-all duration-500 hover:grayscale-0 hover:opacity-100">
                     <Image src={logo.src} alt={logo.name} fill className="object-contain" sizes="(max-width: 768px) 160px, 224px" />
                   </div>
@@ -34,8 +31,8 @@ export default function ExalviaClientLogo({ data, secId }) {
           </div>
 
           {/* Side Gradients (Fade effects) */}
-          <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-base-100 to-transparent pointer-events-none"></div>
-          <div className="absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-base-100 to-transparent pointer-events-none"></div>
+          <div className="absolute inset-y-0 left-0 w-20 bg-linear-to-r from-base-100 to-transparent pointer-events-none"></div>
+          <div className="absolute inset-y-0 right-0 w-20 bg-linear-to-l from-base-100 to-transparent pointer-events-none"></div>
         </div>
       </div>
 
