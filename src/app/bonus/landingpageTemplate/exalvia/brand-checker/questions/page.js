@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import data from "../../database/ExalviaDatabase";
+import ExalviaDatabase from "../../database/ExalviaDatabase";
 
 export default function BrandCheckerQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -10,7 +10,7 @@ export default function BrandCheckerQuestions() {
   const [selectedOption, setSelectedOption] = useState(null);
   const router = useRouter();
 
-  const questions = data.brandChecker.questions;
+  const questions = ExalviaDatabase.brandChecker.questions;
   const totalQuestions = questions.length;
 
   useEffect(() => {
@@ -76,9 +76,80 @@ export default function BrandCheckerQuestions() {
       if (currentQuestion < totalQuestions - 1) {
         setCurrentQuestion(currentQuestion + 1);
       } else {
-        // All questions completed, mark test as completed and redirect to result
+        // All questions completed, mark test as completed and redirect to result with short URL
         sessionStorage.setItem("brandCheckerCompleted", "true");
-        router.push("/bonus/landingpageTemplate/exalvia/brand-checker/result");
+
+        // Prepare minimal data for short URL
+        const brandName = sessionStorage.getItem("brandName");
+        const testStartTime = sessionStorage.getItem("brandCheckerStartTime");
+        const endTime = new Date().toISOString();
+
+        // Calculate scores first
+        const rawScore = updatedAnswers.reduce((total, answer) => total + (Number(answer?.score) || 0), 0);
+        const normalizedScoreRaw = ((rawScore - 17) / (68 - 17)) * 100;
+        const normalizedScore = Number.isFinite(normalizedScoreRaw) ? Math.round(Math.max(0, Math.min(100, normalizedScoreRaw))) : 0;
+
+        // Calculate category scores with short names
+        const categoryScores = {};
+        const categoryMapping = {
+          "Product Info": "PI",
+          Target: "TA",
+          Harga: "HA",
+          "Cara Menjual": "CM",
+          Reflektif: "RE",
+          "Identitas Visual": "IV",
+        };
+
+        Object.keys(categoryMapping).forEach((category) => {
+          const categoryAnswers = updatedAnswers.filter((answer) => answer.category === category);
+          const categoryTotal = categoryAnswers.reduce((total, answer) => total + (Number(answer?.score) || 0), 0);
+          const categoryMax = categoryAnswers.length * 4;
+          const categoryPercentageRaw = categoryMax > 0 ? (categoryTotal / categoryMax) * 100 : 0;
+          const categoryPercentage = Number.isFinite(categoryPercentageRaw) ? Math.round(categoryPercentageRaw) : 0;
+          categoryScores[categoryMapping[category]] = categoryPercentage;
+        });
+
+        // Detect red flags (question-based)
+        const questionFlags = [];
+        updatedAnswers.forEach((answer) => {
+          if (answer.questionId === 8 && answer.selectedOption === 1) questionFlags.push("8-1");
+          if (answer.questionId === 11 && answer.selectedOption === 0) questionFlags.push("11-0");
+          if (answer.questionId === 11 && answer.selectedOption === 1) questionFlags.push("11-1");
+          if (answer.questionId === 11 && answer.selectedOption === 2) questionFlags.push("11-2");
+          if (answer.questionId === 15 && answer.selectedOption === 0) questionFlags.push("15-0");
+          if (answer.questionId === 16 && answer.selectedOption === 1) questionFlags.push("16-1");
+          if (answer.questionId === 16 && answer.selectedOption === 3) questionFlags.push("16-3");
+        });
+
+        // Add category-based flags
+        const categoryFlags = ExalviaDatabase.getCategoryFlags(categoryScores);
+
+        // Combine all flags
+        const redFlags = [...questionFlags, ...categoryFlags];
+
+        // Calculate duration
+        let durationText = "0s";
+        if (testStartTime && endTime) {
+          const startTime = new Date(testStartTime);
+          const endTimeDate = new Date(endTime);
+          const duration = Math.floor((endTimeDate - startTime) / 1000); // in seconds
+          const durationMinutes = Math.floor(duration / 60);
+          const durationSeconds = duration % 60;
+          durationText = durationMinutes > 0 ? `${durationMinutes}m ${durationSeconds}s` : `${durationSeconds}s`;
+        }
+
+        // Create short URL parameters with IDs - NO sessionStorage needed!
+        const params = new URLSearchParams({
+          b: brandName?.substring(0, 20) || "", // Limit brand name length
+          sc: normalizedScore.toString(),
+          rs: rawScore.toString(),
+          dur: durationText, // Send calculated duration, not timestamps
+          cs: JSON.stringify(categoryScores),
+          rf: redFlags.join(","),
+          // No more sessionStorage dependency!
+        });
+
+        router.push(`/bonus/landingpageTemplate/exalvia/brand-checker/result?${params.toString()}`);
       }
     }, 500);
   };

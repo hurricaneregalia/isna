@@ -11,6 +11,36 @@ import { RiSwordFill } from "react-icons/ri";
 
 const ipad2 = "/images/templateLandingPageBonus/Exalvia/sections/ipad-2.webp";
 
+// Brand checker red flags based on category thresholds
+const brandCheckerFlags = {
+  // Specific question-based flags
+  "8-1": "Tidak ada pertanyaan dari pembeli dengan penjualan minimal - perlu evaluasi cara komunikasi",
+  "11-0": "Masalah penjualan spesifik teridentifikasi - perlu strategi yang terukur",
+  "11-1": "Masalah penjualan spesifik teridentifikasi - perlu strategi yang terukur",
+  "11-2": "Masalah penjualan spesifik teridentifikasi - perlu strategi yang terukur",
+  "15-0": "Terlalu banyak variasi logo - perlu konsistensi visual",
+  "16-1": "Tidak ada warna khas brand - perlu identitas visual yang kuat",
+  "16-3": "Tidak ada warna khas brand - perlu identitas visual yang kuat",
+
+  // Category-based flags (triggered when score is below threshold)
+  "PI-LOW": "Product Info tidak jelas - sulit dipahami oleh calon pembeli",
+  "TA-LOW": "Target pasar tidak spesifik - sulit fokus marketing",
+  "HA-LOW": "Harga tidak sesuai value - perlu evaluasi pricing strategy",
+  "CM-LOW": "Cara menjual tidak efektif - perlu improvement sales process",
+  "RE-LOW": "Refleksi brand lemah - perlu strengthening brand identity",
+  "IV-LOW": "Identitas visual tidak konsisten - perlu brand guidelines",
+};
+
+// Threshold for category scores (below this = flag triggered)
+const categoryThresholds = {
+  PI: 40, // Product Info
+  TA: 40, // Target
+  HA: 40, // Harga
+  CM: 40, // Cara Menjual
+  RE: 40, // Reflektif
+  IV: 40, // Identitas Visual
+};
+
 const ExalviaDatabase = {
   navbar: {
     logo: "https://cdn-icons-png.flaticon.com/512/3665/3665923.png",
@@ -460,7 +490,7 @@ const ExalviaDatabase = {
           { text: "Produk tidak dikenal", score: 3 },
           { text: "Harga lebih mahal", score: 3 },
           { text: "Tidak tahu harus dijual ke siapa", score: 3 },
-          { text: "Semua saling terkait", score: 4 },
+          { text: "Tidak ada masalah", score: 1 },
         ],
       },
       {
@@ -554,7 +584,7 @@ const ExalviaDatabase = {
     image: ipad2,
     recommended: [
       {
-        name: "Brand Foundation Package",
+        name: "paket 1 Brand Foundation Package",
         price: "Rp 2.5jt",
         features: ["Brand Strategy", "Logo Design", "Basic Guidelines"],
         description: "Paket dasar untuk membangun fondasi brand yang kuat",
@@ -564,7 +594,7 @@ const ExalviaDatabase = {
         turnaround: "2-3 hari kerja",
       },
       {
-        name: "Brand Growth Package",
+        name: "paket 2 Brand Growth Package",
         price: "Rp 5jt",
         features: ["Advanced Strategy", "Visual Identity", "Content Guidelines", "Market Analysis"],
         description: "Paket pertumbuhan untuk brand yang siap naik level",
@@ -574,7 +604,7 @@ const ExalviaDatabase = {
         turnaround: "2-3 hari kerja",
       },
       {
-        name: "Brand Scale Package",
+        name: "paket 3 Brand Scale Package",
         price: "Rp 10jt",
         features: ["Scale Strategy", "Complete Brand System", "Campaign Assets", "Performance Tracking"],
         description: "Paket lengkap untuk brand siap scale",
@@ -584,7 +614,7 @@ const ExalviaDatabase = {
         turnaround: "2-3 hari kerja",
       },
       {
-        name: "Brand Elite Package",
+        name: "paket 4 Brand Elite Package",
         price: "Rp 15jt",
         features: ["Premium Strategy", "Custom Brand System", "Advanced Analytics", "Priority Support"],
         description: "Paket premium untuk brand market leader",
@@ -596,7 +626,7 @@ const ExalviaDatabase = {
     ],
     alternatives: [
       {
-        name: "Brand Foundation Package",
+        name: "paket 1 Brand Foundation Package",
         price: "Rp 2.5jt",
         features: ["Brand Strategy", "Logo Design", "Basic Guidelines"],
         description: "Paket premium untuk brand market leader",
@@ -605,7 +635,7 @@ const ExalviaDatabase = {
         turnaround: "2-3 hari kerja",
       },
       {
-        name: "Brand Growth Package",
+        name: "paket 2 Brand Growth Package",
         price: "Rp 5jt",
         features: ["Advanced Strategy", "Visual Identity", "Content Guidelines", "Market Analysis"],
         description: "Paket premium untuk brand market leader",
@@ -614,7 +644,7 @@ const ExalviaDatabase = {
         turnaround: "2-3 hari kerja",
       },
       {
-        name: "Brand Scale Package",
+        name: "paket 3 Brand Scale Package",
         price: "Rp 10jt",
         features: ["Scale Strategy", "Complete Brand System", "Campaign Assets", "Performance Tracking"],
         description: "Paket premium untuk brand market leader",
@@ -623,7 +653,7 @@ const ExalviaDatabase = {
         turnaround: "2-3 hari kerja",
       },
       {
-        name: "Brand Elite Package",
+        name: "paket 4 Brand Elite Package",
         price: "Rp 15jt",
         features: ["Premium Strategy", "Custom Brand System", "Advanced Analytics", "Priority Support"],
         description: "Paket premium untuk brand market leader",
@@ -633,6 +663,22 @@ const ExalviaDatabase = {
       },
     ],
   },
+
+  // Brand checker utilities
+  getBrandCheckerFlag: (flagId) => brandCheckerFlags[flagId] || "",
+  getCategoryThreshold: (categoryId) => categoryThresholds[categoryId] || 40,
+  getCategoryFlags: (categoryScores) => {
+    const flags = [];
+    Object.keys(categoryScores).forEach((category) => {
+      const score = categoryScores[category];
+      const threshold = categoryThresholds[category] || 40;
+      if (score < threshold) {
+        flags.push(`${category}-LOW`);
+      }
+    });
+    return flags;
+  },
+
   // Data untuk section lainnya akan ditambahkan secara bertahap
 };
 

@@ -82,7 +82,7 @@ export default function ExalviaService({ data, secId = "service" }) {
                   <span className="text-3xl md:text-4xl font-bold text-warning">{plan.price}</span>
                   <span className="text-sm opacity-70">/ {plan.period}</span>
                 </div>
-                <ExalviaLinkButton text={plan.ctaLabel || "Pilih Paket"} href="#contact" variant={plan.highlight ? "primary" : "outline"} className="w-full btn-lg" />
+                <ExalviaLinkButton text={plan.ctaLabel || "Pilih Paket"} href="#contact" className={`w-full btn-lg ${plan.highlight ? "btn-warning" : "btn-outline btn-warning"}`} />
               </div>
 
               {/* Bottom area */}

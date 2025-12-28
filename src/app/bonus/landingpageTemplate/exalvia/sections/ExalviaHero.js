@@ -35,7 +35,7 @@ export default function ExalviaHero({ data, secId, linkTarget = "" }) {
 
               {/* CTA Group */}
               <div className="flex flex-col sm:flex-row gap-5 pt-4">
-                <ExalviaLinkButton text="Lihat Lebih Lanjut" href={`#${linkTarget}`} icon={FaArrowRight} className="hover:scale-105 transition-transform" />
+                <ExalviaLinkButton text="Lihat Lebih Lanjut" href={`#${linkTarget}`} icon={FaArrowRight} className="hover:scale-105 transition-transform btn-warning btn-lg" />
               </div>
             </div>
           </div>
