@@ -31,8 +31,8 @@ const Exalvia = () => {
       <ExalviaFact data={data.fact} secId="fact" />
       <ExalviaFenomenon data={data.fenomenon} secId="fenomenon" />
       <ExalviaCTA1 data={data.cta1} secId="cta1" targetLink="/bonus/landingpageTemplate/exalvia/brand-checker" />
-      <ExalviaService data={data.service} secId="service" />
       {/* 
+      <ExalviaService data={data.service} secId="service" />
       <ExalviaSolution data={data.solution} secId="solution" />
       <ExalviaClientLogo data={data.clientLogo} secId="clients" />
       <ExalviaHadist data={data.hadist} secId="hadist" />

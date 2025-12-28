@@ -5,12 +5,13 @@ import { useRouter } from "next/navigation";
 import ExalviaButton from "../../ui-components/ExalviaButton";
 import HeroBrandChecker from "../HeroBrandChecker";
 import ExalviaDatabase from "../../database/ExalviaDatabase";
-import { FaRegClock, FaStar, FaRegStar, FaCircleCheck, FaRegCircleCheck, FaRegThumbsUp, FaArrowRight, FaPenClip, FaChevronDown } from "react-icons/fa6";
+import { FaRegClock, FaStar, FaRegStar, FaCircleCheck, FaRegCircleCheck, FaRegThumbsUp, FaArrowRight, FaPenClip, FaChevronDown, FaGift } from "react-icons/fa6";
 import { TbCircleDashedNumber9 } from "react-icons/tb";
 import { LuNotepadText } from "react-icons/lu";
 import { MdOutlineRocketLaunch } from "react-icons/md";
 import ExalviaLinkButton from "../../ui-components/ExalviaLinkButton";
 import ExalviaImage from "../../ui-components/ExalviaImage";
+import ExalviaCountDown from "../../ui-components/ExalviaCountDown";
 
 export default function BrandCheckerResult() {
   const [result, setResult] = useState(null);
@@ -553,7 +554,7 @@ export default function BrandCheckerResult() {
                           <ExalviaLinkButton text="Pilih Paket" href="#contact" icon={FaArrowRight} className="w-full btn-lg animate-pulse btn-warning" />
                           <div className="">
                             <ExalviaLinkButton
-                              text="Konsultas"
+                              text="Konsultasi"
                               href={`https://wa.me/628123456789?text=Assalamualaikum...%0A%0Apesan saya ingin konsultasi data ini.%0A%0A${encodeURIComponent(window.location.href)}`}
                               className="w-full btn-link text-white/50"
                             />
@@ -637,92 +638,34 @@ export default function BrandCheckerResult() {
               </div>
             </div>
           </div>
-
-          {/* Debug Data Section - Show All Available Data */}
-          <div className="join join-vertical bg-base-200 rounded-bl-4xl overflow-hidden p-0 m-0">
-            <div className={`collapse join-item border-t bg-base-200 rounded-bl-4xl`} style={{ "--tw-collapse-content-max-height": "none" }}>
-              <input type="checkbox" className=" p-0" />
-              <div className="collapse-title font-semibold flex items-center justify-between p-0 m-0">
-                <span>Debug: Semua Data Tersedia</span>
-                <FaChevronDown className="text-xl" />
+          <div>
+            {/* Bonus Section */}
+            <div className="flex items-center justify-between ">
+              <h3 className="text-lg font-semibold">BONUS</h3>
+              <FaGift className=" text-xl" />
+            </div>
+            <hr className="my-4" />
+            <div className=" flex items-center sm:gap-15 gap-5 sm:flex-row flex-col">
+              <div className="relative sm:w-6/12 w-full sm:h-auto h-fit">
+                <ExalviaImage src="/images/templateLandingPageBonus/Exalvia/sections/ipad-2.webp" alt="bonus" width={800} height={600} className="w-full sm:h-auto h-fit object-contain" />
               </div>
-              <div className="collapse-content text-sm">
-                <div className="bg-base-300 p-4 rounded-lg overflow-x-auto">
-                  <div className="mb-4">
-                    <strong>Short URL Format:</strong>
-                    <div className="text-xs bg-base-200 p-2 rounded mt-1 break-all">{typeof window !== "undefined" ? window.location.href : ""}</div>
+              <div className="w-full sm:w-6/12">
+                <div className="max-w-4xl mx-auto text-center">
+                  <h2 className="text-3xl font-bold mb-4">Bonus Spesial!</h2>
+                  <span className="text-lg mb-6">
+                    Gratis Review Logo senilai Rp.
+                    <span className=" relative overflow-hidden  px-2">
+                      <span className=" font-bold">500.000</span>
+                      <hr className=" border border-red-500 -rotate-6 absolute bg-amber-500  w-full top-2 right-0" />
+                    </span>{" "}
+                    dapatkan sebelum waktunya habis.
+                  </span>
+
+                  <div className="mb-8">
+                    <ExalviaCountDown target="2025-12-31T23:59:59" />
                   </div>
 
-                  <div className="mb-4">
-                    <strong>URL Parameters:</strong>
-                    <pre className="text-xs bg-base-200 p-2 rounded mt-1">
-                      {typeof window !== "undefined" ? JSON.stringify(Object.fromEntries(new URLSearchParams(window.location.search)), null, 2) : ""}
-                    </pre>
-                  </div>
-
-                  <div>
-                    <strong>Key Data Only:</strong>
-                    <div className="text-xs bg-base-200 p-2 rounded mt-1">
-                      <div>Brand: {result?.brandName}</div>
-                      <div>Score: {result?.normalizedScore}</div>
-                      <div>Classification: {result?.classification}</div>
-                      <div>Duration: {result?.duration}</div>
-                      <div>Red Flags: {result?.redFlags?.length || 0}</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Individual Data Display */}
-                <div className="mt-4 space-y-2">
-                  <div>
-                    <strong>Brand Name:</strong> {result?.brandName}
-                  </div>
-                  <div>
-                    <strong>Raw Score:</strong> {result?.rawScore}
-                  </div>
-                  <div>
-                    <strong>Normalized Score:</strong> {result?.normalizedScore}
-                  </div>
-                  <div>
-                    <strong>Classification:</strong> {result?.classification}
-                  </div>
-                  <div>
-                    <strong>Description:</strong> {result?.description}
-                  </div>
-                  <div>
-                    <strong>Total Questions:</strong> {result?.totalQuestions}
-                  </div>
-                  <div>
-                    <strong>Duration:</strong> {result?.duration}
-                  </div>
-                  <div>
-                    <strong>Start Time:</strong> {result?.startTime?.toString()}
-                  </div>
-                  <div>
-                    <strong>End Time:</strong> {result?.endTime?.toString()}
-                  </div>
-                  <div>
-                    <strong>Completed At:</strong> {result?.completedAt}
-                  </div>
-
-                  <div className="mt-4">
-                    <strong>Category Scores:</strong>
-                    <pre className="text-xs bg-base-300 p-2 rounded mt-1">{JSON.stringify(result?.categoryScores, null, 2)}</pre>
-                  </div>
-
-                  <div className="mt-4">
-                    <strong>Red Flags:</strong>
-                    <ul className="list-disc list-inside text-xs mt-1">
-                      {result?.redFlags?.map((flag, index) => (
-                        <li key={index}>{flag}</li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="mt-4">
-                    <strong>All Answers:</strong>
-                    <pre className="text-xs bg-base-300 p-2 rounded mt-1 max-h-40 overflow-y-auto">{JSON.stringify(result?.answers, null, 2)}</pre>
-                  </div>
+                  <ExalviaLinkButton text="Dapatkan Bonus" href="#rekomendasi" className="btn-lg btn-warning animate-pulse" />
                 </div>
               </div>
             </div>
@@ -768,8 +711,8 @@ export default function BrandCheckerResult() {
                 </div>
                 <div className="flex justify-end gap-3 my-8">
                   <div className="join mx-auto w-full items-center justify-center">
-                    <ExalviaButton text="Tutup" onClick={() => document.getElementById("package_modal").close()} variant="no" className="join-item w-6/12" />
-                    <ExalviaLinkButton text="Pilih Paket" href="#contact" variant="primary" className="join-item w-6/12" />
+                    <ExalviaButton text="Tutup" onClick={() => document.getElementById("package_modal").close()} className="join-item w-6/12 btn-soft" />
+                    <ExalviaLinkButton text="Pilih Paket" href="#contact" className="join-item w-6/12 btn-warning" />
                   </div>
                 </div>
               </div>
