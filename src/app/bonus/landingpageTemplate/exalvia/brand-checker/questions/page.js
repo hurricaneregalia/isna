@@ -89,13 +89,13 @@ export default function BrandCheckerQuestions() {
 
         // Calculate scores first
         const rawScore = updatedAnswers.reduce((total, answer) => total + (Number(answer?.score) || 0), 0);
-        const normalizedScoreRaw = ((rawScore - 17) / (68 - 17)) * 100;
+        const normalizedScoreRaw = ((rawScore - 24) / (96 - 24)) * 100;
         const normalizedScore = Number.isFinite(normalizedScoreRaw) ? Math.round(Math.max(0, Math.min(100, normalizedScoreRaw))) : 0;
 
         // Calculate category scores with short names
         const categoryScores = {};
         const categoryMapping = {
-          "Product Info": "PI",
+          "Informasi Produk": "PI",
           Target: "TA",
           Harga: "HA",
           "Cara Menjual": "CM",

@@ -5,13 +5,27 @@ import { useRouter } from "next/navigation";
 import ExalviaButton from "../../ui-components/ExalviaButton";
 import HeroBrandChecker from "../HeroBrandChecker";
 import ExalviaDatabase from "../../database/ExalviaDatabase";
-import { FaRegClock, FaStar, FaRegStar, FaCircleCheck, FaRegCircleCheck, FaRegThumbsUp, FaArrowRight, FaPenClip, FaChevronDown, FaGift } from "react-icons/fa6";
+import { FaRegClock, FaStar, FaRegStar, FaCircleCheck, FaRegCircleCheck, FaRegThumbsUp, FaArrowRight, FaPenClip, FaChevronDown, FaGift, FaCircleXmark, FaHandPointRight } from "react-icons/fa6";
 import { TbCircleDashedNumber9 } from "react-icons/tb";
 import { LuNotepadText } from "react-icons/lu";
 import { MdOutlineRocketLaunch } from "react-icons/md";
 import ExalviaLinkButton from "../../ui-components/ExalviaLinkButton";
 import ExalviaImage from "../../ui-components/ExalviaImage";
 import ExalviaCountDown from "../../ui-components/ExalviaCountDown";
+import { BsFillPatchCheckFill } from "react-icons/bs";
+
+// Function to format currency with dot separator
+const formatCurrency = (amount) => {
+  if (typeof amount === "number") {
+    return amount.toLocaleString("id-ID");
+  }
+  // Handle string that might contain numbers
+  const numericValue = amount.toString().replace(/[^\d]/g, "");
+  if (numericValue) {
+    return parseInt(numericValue).toLocaleString("id-ID");
+  }
+  return amount;
+};
 
 export default function BrandCheckerResult() {
   const [result, setResult] = useState(null);
@@ -64,7 +78,7 @@ export default function BrandCheckerResult() {
         const shortCategoryScores = JSON.parse(urlParams.get("cs") || "{}");
         // Convert short names back to full names
         const reverseMapping = {
-          PI: "Product Info",
+          PI: "Informasi Produk",
           TA: "Target",
           HA: "Harga",
           CM: "Cara Menjual",
@@ -114,7 +128,7 @@ export default function BrandCheckerResult() {
 
       // Calculate scores
       rawScore = answers.reduce((total, answer) => total + (Number(answer?.score) || 0), 0);
-      const normalizedScoreRaw = ((rawScore - 17) / (68 - 17)) * 100;
+      const normalizedScoreRaw = ((rawScore - 24) / (96 - 24)) * 100;
       normalizedScore = Number.isFinite(normalizedScoreRaw) ? Math.round(Math.max(0, Math.min(100, normalizedScoreRaw))) : 0;
 
       // Calculate category scores and red flags...
@@ -130,7 +144,7 @@ export default function BrandCheckerResult() {
         testStartTime = decodedData.startTime;
         endTime = decodedData.endTime;
         rawScore = answers.reduce((total, answer) => total + (Number(answer?.score) || 0), 0);
-        const normalizedScoreRaw = ((rawScore - 17) / (68 - 17)) * 100;
+        const normalizedScoreRaw = ((rawScore - 24) / (96 - 24)) * 100;
         normalizedScore = Number.isFinite(normalizedScoreRaw) ? Math.round(Math.max(0, Math.min(100, normalizedScoreRaw))) : 0;
         categoryScores = {};
         redFlags = [];
@@ -144,7 +158,7 @@ export default function BrandCheckerResult() {
         testStartTime = sessionStorage.getItem("brandCheckerStartTime");
         endTime = new Date().toISOString();
         rawScore = answers.reduce((total, answer) => total + (Number(answer?.score) || 0), 0);
-        const normalizedScoreRaw = ((rawScore - 17) / (68 - 17)) * 100;
+        const normalizedScoreRaw = ((rawScore - 24) / (96 - 24)) * 100;
         normalizedScore = Number.isFinite(normalizedScoreRaw) ? Math.round(Math.max(0, Math.min(100, normalizedScoreRaw))) : 0;
         categoryScores = {};
         redFlags = [];
@@ -164,7 +178,7 @@ export default function BrandCheckerResult() {
       answers = JSON.parse(answersData);
       endTime = new Date().toISOString();
       rawScore = answers.reduce((total, answer) => total + (Number(answer?.score) || 0), 0);
-      const normalizedScoreRaw = ((rawScore - 17) / (68 - 17)) * 100;
+      const normalizedScoreRaw = ((rawScore - 24) / (96 - 24)) * 100;
       normalizedScore = Number.isFinite(normalizedScoreRaw) ? Math.round(Math.max(0, Math.min(100, normalizedScoreRaw))) : 0;
       categoryScores = {};
       redFlags = [];
@@ -189,28 +203,16 @@ export default function BrandCheckerResult() {
     const startTime = testStartTime ? new Date(testStartTime) : new Date();
     setStartTime(startTime);
 
-    // Determine classification and description based on score
+    // Determine classification based on lowest category score and red flags
     let classification = "";
     let description = "";
+    let recommendedPackage = "";
+    let condition = "";
 
-    if (normalizedScore <= 25) {
-      classification = "Positioning Kacau";
-      description = "Pesan brand tidak fokus, sulit dipahami, dan berisiko membingungkan pasar.";
-    } else if (normalizedScore <= 50) {
-      classification = "Positioning Lemah";
-      description = "Arah brand mulai terlihat, tetapi masih tidak konsisten dan sulit dijual secara stabil.";
-    } else if (normalizedScore <= 75) {
-      classification = "Positioning Cukup Kuat";
-      description = "Brand memiliki arah yang jelas, namun masih perlu perbaikan di beberapa area.";
-    } else {
-      classification = "Positioning Tajam & Siap Scale";
-      description = "Brand memiliki positioning yang solid dan siap bersaing di pasar.";
-    }
-
-    // Calculate category scores only if not already calculated
+    // Calculate category scores first if not already calculated
     if (!categoryScores || Object.keys(categoryScores).length === 0) {
       categoryScores = {};
-      const categories = ["Product Info", "Target", "Harga", "Cara Menjual", "Reflektif", "Identitas Visual"];
+      const categories = ["Informasi Produk", "Target", "Harga", "Cara Menjual", "Reflektif", "Identitas Visual"];
       categories.forEach((category) => {
         const categoryAnswers = answers.filter((answer) => answer.category === category);
         const categoryTotal = categoryAnswers.reduce((total, answer) => total + (Number(answer?.score) || 0), 0);
@@ -221,6 +223,52 @@ export default function BrandCheckerResult() {
       });
     }
 
+    // Find the lowest scoring category
+    const sortedCategories = Object.entries(categoryScores).sort(([, a], [, b]) => a - b);
+    const lowestCategory = sortedCategories[0];
+    const lowestCategoryName = lowestCategory[0];
+    const lowestCategoryScore = lowestCategory[1];
+
+    // Classification based on lowest category and score
+    if (lowestCategoryScore < 60) {
+      // Critical issues in specific category
+      classification = " Weak";
+      description = `Brand Anda mengalami masalah serius di aspek ${lowestCategoryName} dan yang lainnya. Ini perlu segera ditangani agar tidak membuat kondisi semakin buruk.`;
+      condition = `${lowestCategoryName} membutuhkan perhatian prioritas`;
+    } else if (lowestCategoryScore < 75) {
+      // Moderate issues
+      classification = "Competitive";
+      description = `Brand Anda sudah memiliki fondasi yang baik, namun aspek ${lowestCategoryName} dan yang lainnya masih bisa di optimalkan untuk mencapai potensi maksimal.`;
+      condition = `${lowestCategoryName} perlu ditingkatkan`;
+    } else {
+      // Good overall but can be better
+      classification = "Strong";
+      description = "Brand Anda sudah berada di level yang baik dengan semua kategori menunjukkan performa memuaskan.";
+      condition = "Brand siap untuk scale";
+    }
+
+    // Determine recommended package based on lowest category
+    const categoryPackageMapping = {
+      "Informasi Produk": "Qolilan Service Pack",
+      Target: "Qolilan Service Pack",
+      Harga: "Mumtazan Service Pack",
+      "Cara Menjual": "Mumtazan Service Pack",
+      Reflektif: "Qolilan Service Pack",
+      "Identitas Visual": "Kamilan Service Pack",
+    };
+
+    recommendedPackage = categoryPackageMapping[lowestCategoryName] || "Qolilan Service Pack";
+
+    // Log classification process
+    console.log("=== CLASSIFICATION ANALYSIS ===");
+    console.log("Category Scores:", categoryScores);
+    console.log("Lowest Category:", lowestCategoryName, "with score:", lowestCategoryScore);
+    console.log("Classification:", classification);
+    console.log("Description:", description);
+    console.log("Recommended Package:", recommendedPackage);
+    console.log("Condition:", condition);
+    console.log("===============================");
+
     // Detect red flags only if not already detected
     if (!redFlags || redFlags.length === 0) {
       redFlags = [];
@@ -228,14 +276,14 @@ export default function BrandCheckerResult() {
         if (answer.questionId === 8 && answer.selectedOption === 1) {
           redFlags.push("Tidak ada pertanyaan dari pembeli dengan penjualan minimal - perlu evaluasi cara komunikasi");
         }
-        if (answer.questionId === 11 && (answer.selectedOption === 0 || answer.selectedOption === 1 || answer.selectedOption === 2)) {
-          redFlags.push("Masalah penjualan spesifik teridentifikasi - perlu strategi yang terukur");
+        if (answer.questionId === 11 && answer.selectedOption === 3) {
+          redFlags.push("Potensi penjualan menurun tapi tidak ada action - perlu strategi penjualan yang lebih baik");
         }
         if (answer.questionId === 15 && answer.selectedOption === 0) {
-          redFlags.push("Terlalu banyak variasi logo - perlu konsistensi visual");
+          redFlags.push("Terlalu banyak variasi logo - perlu strategi visual yang lebih baik");
         }
         if (answer.questionId === 16 && (answer.selectedOption === 1 || answer.selectedOption === 3)) {
-          redFlags.push("Tidak ada warna khas brand - perlu identitas visual yang kuat");
+          redFlags.push("Tidak ada warna khas brand - perlu identifikasi warna yang tepat");
         }
       });
     }
@@ -246,6 +294,8 @@ export default function BrandCheckerResult() {
       normalizedScore,
       classification,
       description,
+      recommendedPackage,
+      condition,
       categoryScores,
       redFlags,
       totalQuestions: totalQuestions || answers.length, // Use URL parameter first, fallback to answers.length
@@ -267,6 +317,8 @@ export default function BrandCheckerResult() {
         normalizedScore,
         classification,
         description,
+        recommendedPackage,
+        condition,
         categoryScores,
         redFlags,
         totalQuestions: totalQuestions || answers.length,
@@ -280,6 +332,8 @@ export default function BrandCheckerResult() {
     console.log("Normalized Score:", normalizedScore);
     console.log("Classification:", classification);
     console.log("Description:", description);
+    console.log("Recommended Package:", recommendedPackage);
+    console.log("Condition:", condition);
     console.log("Category Scores:", categoryScores);
     console.log("Red Flags:", redFlags);
     console.log("Total Questions:", totalQuestions || answers.length);
@@ -363,13 +417,13 @@ export default function BrandCheckerResult() {
     return packages.find((pkg) => score >= pkg.minScore && score <= pkg.maxScore);
   };
 
-  // Get alternative packages dari database
+  // Get alternative packages dari database (dari recommended packages, kecuali yang dipilih)
   const getAlternativePackages = (recommendedScore) => {
-    const allPackages = ExalviaDatabase.brandCheckerPackages?.alternatives || [];
+    const allRecommendedPackages = ExalviaDatabase.brandCheckerPackages?.recommended || [];
     const recommendedPkg = getRecommendedPackage(recommendedScore);
 
-    // Return all packages except the recommended one
-    return allPackages.filter((pkg) => pkg.name !== recommendedPkg?.name);
+    // Return all recommended packages except the currently recommended one
+    return allRecommendedPackages.filter((pkg) => pkg.name !== recommendedPkg?.name);
   };
 
   const getScoreColor = (score) => {
@@ -390,7 +444,7 @@ export default function BrandCheckerResult() {
     <>
       <HeroBrandChecker headline="Cek Brand Selesai!" secId="brand-checker-result">
         <div>
-          <div className="text-center border-4 border-white/50 border-b-0 p-5 text-white">
+          <div className="text-center border-4 border-white/50 border-b-0 sm:p-8 p-5 text-white">
             <div className="gap-5 grid grid-cols-1 ">
               <div className=" text-center brand-info" id="rating">
                 <span className="flex gap-1 items-center justify-center mb-4 text-warning text-2xl">{getStarRating(result.normalizedScore)}</span>
@@ -408,8 +462,9 @@ export default function BrandCheckerResult() {
                   <span className="text-6xl font-bold">{result.normalizedScore || 0}</span>
                 </div>
               </div>
-              <div className="deskripsi">
-                <h2 className="text-2xl font-bold mb-2">{result.classification || ""}</h2>
+              <div className="deskripsi ">
+                <p className="max-w-md mx-auto"> Level saat ini: </p>
+                <h2 className="text-2xl font-bold mb-2 uppercase text-warning">{result.classification || ""}</h2>
 
                 <p className="max-w-md mx-auto opacity-70">{result.description || ""}</p>
               </div>
@@ -417,7 +472,7 @@ export default function BrandCheckerResult() {
           </div>
           <div className="grid grid-cols-3 text-center sumary text-white  border-4 border-white/50 rounded-bl-4xl">
             <div className="py-4">
-              <div className="font-bold text-warning">17</div>
+              <div className="font-bold text-warning">24</div>
               <div className="text-sm opacity-70">Soal</div>
             </div>
             <div className="border-x-4 border-white/50 py-4" id="durasiPengerjaanSoal">
@@ -547,10 +602,17 @@ export default function BrandCheckerResult() {
                             <span className="badge badge-secondary badge-soft uppercase text-sm">recommended</span>
                           </div>
                           <div className=" text-white">
-                            <h4 className=" md:text-3xl text-2xl font-bold  mb-2">{recommendedPkg.name}</h4>
-                            <p className=" opacity-70">{recommendedPkg.description}</p>
+                            <h4 className=" md:text-3xl text-2xl font-bold w-6/12 mb-2">{recommendedPkg.name}</h4>
+                            <div className="mt-5 flex flex-col gap-3">
+                              <p className=" opacity-70 flex gap-2 items-start shrink">
+                                <BsFillPatchCheckFill className="text-lg shrink-0" /> {"Cocok untuk "} {recommendedPkg.description}
+                              </p>
+                              <p className=" opacity-70 flex gap-2 items-start shrink">
+                                <BsFillPatchCheckFill className="text-lg shrink-0" /> {"Output "} {recommendedPkg.output}
+                              </p>
+                            </div>
                           </div>
-                          <div className="text-2xl font-bold text-warning mb-2">{recommendedPkg.price}</div>
+                          <div className="text-2xl font-bold text-warning mb-2">Rp {formatCurrency(recommendedPkg.price)}</div>
                           <ExalviaLinkButton text="Pilih Paket" href="#contact" icon={FaArrowRight} className="w-full btn-lg animate-pulse btn-warning" />
                           <div className="">
                             <ExalviaLinkButton
@@ -563,17 +625,19 @@ export default function BrandCheckerResult() {
                       </div>
 
                       <div className="p-8">
-                        <ul className="space-y-2">
-                          {recommendedPkg.features?.map((feature, index) => (
-                            <li key={index} className="flex items-center justify-between">
-                              <span>
-                                0{index + 1}. {feature}
-                              </span>
-                              <FaCircleCheck className="text-success" />
-                            </li>
-                          ))}
-                        </ul>
-
+                        <div>
+                          <h4 className="font-semibold mb-3">Yang Anda Dapatkan:</h4>
+                          <div className="space-y-3">
+                            {recommendedPkg.included?.map((item, index) => (
+                              <div key={index} className="flex items-center justify-between">
+                                <span className="text-sm flex gap-2">
+                                  0{index + 1}. {item.title}
+                                </span>
+                                {item.status ? <FaCircleCheck className="text-success" /> : <FaCircleXmark className="text-error" />}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
                         <hr className="my-5" />
                         <div className="mt-auto space-y-2" id="recommendedTurnaround">
                           <div className="text-sm text-base-content/60">Waktu pengerjaan: {recommendedPkg.turnaround}</div>
@@ -582,11 +646,11 @@ export default function BrandCheckerResult() {
                               <div
                                 className="h-full rounded-full bg-primary/50 transition-all duration-500"
                                 style={{
-                                  width: recommendedPkg.turnaround.includes("2-3")
-                                    ? "80%"
-                                    : recommendedPkg.turnaround.includes("3-5")
-                                    ? "60%"
-                                    : recommendedPkg.turnaround.includes("5-7")
+                                  width: recommendedPkg.turnaround.includes("6-7")
+                                    ? "100%"
+                                    : recommendedPkg.turnaround.includes("2-4")
+                                    ? "70%"
+                                    : recommendedPkg.turnaround.includes("1-2")
                                     ? "40%"
                                     : "20%",
                                 }}
@@ -617,9 +681,16 @@ export default function BrandCheckerResult() {
                       <div className="w-6/12 grid grid-cols-1 gap-4">
                         <div>
                           <h6 className="font-semibold">{pkg.name}</h6>
-                          <p>{pkg.description}</p>
+                          <div className="flex flex-col gap-2 mt-2">
+                            <p className="text-sm opacity-70 flex gap-2 items-start shrink">
+                              <BsFillPatchCheckFill className="text-sm shrink-0" /> {"Cocok untuk "} {pkg.description}
+                            </p>
+                            <p className="text-sm opacity-70 flex gap-2 items-start shrink">
+                              <BsFillPatchCheckFill className="text-sm shrink-0" /> {"Output "} {pkg.output}
+                            </p>
+                          </div>
                         </div>
-                        <div className="text-warning font-bold">{pkg.price}</div>
+                        <div className="text-warning font-bold">Rp {formatCurrency(pkg.price)}</div>
                       </div>
                       <div className="w-6/12 flex items-center justify-end">
                         <ExalviaButton
@@ -678,23 +749,42 @@ export default function BrandCheckerResult() {
         <div className="modal-box max-w-2xl p-0 rounded-none rounded-bl-4xl">
           {selectedPackage && (
             <div className=" grid grid-cols-1 gap-8">
-              <div className="sm:p-8 p-5 bg-base-200 rounded-bl-4xl">
+              <div className="sm:p-8 p-5 bg-base-200 py-8 rounded-bl-4xl">
+                <div className="flex gap-1">
+                  {Array.from({ length: 5 }, (_, index) => {
+                    if (index < selectedPackage.rating) {
+                      return <FaStar key={index} className="text-warning" />;
+                    } else {
+                      return <FaRegStar key={index} className="text-warning" />;
+                    }
+                  })}
+                </div>
                 <h3 className="font-bold text-xl">{selectedPackage.name}</h3>
-                <p>{selectedPackage.description}</p>
-                <div className="text-2xl font-bold text-warning mt-4">{selectedPackage.price}</div>
+                <div className="flex flex-col gap-3 sm:my-8 my-5">
+                  <p className="opacity-70 flex gap-2 items-start shrink">
+                    <BsFillPatchCheckFill className="text-lg shrink-0" /> {"Cocok untuk "} {selectedPackage.description}
+                  </p>
+                  <p className="opacity-70 flex gap-2 items-start shrink">
+                    <BsFillPatchCheckFill className="text-lg shrink-0" /> {"Output "} {selectedPackage.output}
+                  </p>
+                </div>
+                <div className="text-2xl font-bold text-warning mt-4">Rp {formatCurrency(selectedPackage.price)}</div>
               </div>
 
               <div className="sm:px-8 px-5">
-                <ul className="space-y-2">
-                  {selectedPackage.features?.map((feature, index) => (
-                    <li key={index} className="flex items-center justify-between">
-                      <span>
-                        0{index + 1}. {feature}
-                      </span>
-                      <FaRegCircleCheck className="mr-3 text-success" />
-                    </li>
-                  ))}
-                </ul>
+                <div>
+                  <h4 className="font-semibold mb-3">Yang Anda Dapatkan:</h4>
+                  <div className="space-y-3">
+                    {selectedPackage.included?.map((item, index) => (
+                      <div key={index} className="flex items-center justify-between">
+                        <span className="text-sm flex gap-2">
+                          0{index + 1}. {item.title}
+                        </span>
+                        {item.status ? <FaCircleCheck className="text-success" /> : <FaCircleXmark className="text-error" />}
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
 
               <div className="sm:px-8 px-5">
@@ -704,7 +794,7 @@ export default function BrandCheckerResult() {
                     <div
                       className="h-full rounded-full bg-primary/50 transition-all duration-500"
                       style={{
-                        width: selectedPackage.turnaround.includes("2-3") ? "80%" : selectedPackage.turnaround.includes("3-5") ? "60%" : selectedPackage.turnaround.includes("5-7") ? "40%" : "20%",
+                        width: selectedPackage.turnaround.includes("6-7") ? "100%" : selectedPackage.turnaround.includes("2-4") ? "70%" : selectedPackage.turnaround.includes("1-2") ? "40%" : "20%",
                       }}
                     />
                   </div>

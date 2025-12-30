@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import ExalviaHeadline from "../ui-components/ExalviaHeadline";
 import ExalviaButton from "../ui-components/ExalviaButton";
 import { IoSearch } from "react-icons/io5";
+import { PiLightningFill } from "react-icons/pi";
 
 export default function BrandCheckerIntro() {
   const [brandName, setBrandName] = useState("");
@@ -42,22 +43,24 @@ export default function BrandCheckerIntro() {
 
           <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-70">Analisis positioning brand dalam waktu singkat</p>
           <div className="grid sm:grid-cols-3 grid-cols-3 p-5 text-center w-full mx-auto rounded-bl-4xl border border-white text-white">
-            <div>
-              <div className="sm:text-3xl text-xl font-bold ">
+            <div className="h-full">
+              <div className="sm:text-3xl text-xl font-bold flex flex-col justify-between h-full">
                 <p className=" text-warning">17</p>
                 <div className="text-sm opacity-70">Analisa</div>
               </div>
             </div>
-            <div>
-              <div className="sm:text-3xl text-xl font-bold border-l  border-white ">
+            <div className="h-full">
+              <div className="sm:text-3xl text-xl font-bold border-l  border-white flex flex-col justify-between h-full">
                 <p className="text-warning">6</p>
                 <div className="text-sm opacity-70">Kategori</div>
               </div>
             </div>
-            <div>
-              <div className="sm:text-3xl text-xl font-bold border-l  border-white">
-                <p className="text-warning">Proses</p>
-                <div className="text-sm opacity-70">Cepat</div>
+            <div className="h-full">
+              <div className="sm:text-3xl text-xl font-bold border-l  border-white flex flex-col justify-between h-full">
+                <p className="text-warning">
+                  <PiLightningFill className="text-warning mx-auto" />
+                </p>
+                <div className="text-sm opacity-70">Proses Cepat</div>
               </div>
             </div>
           </div>
