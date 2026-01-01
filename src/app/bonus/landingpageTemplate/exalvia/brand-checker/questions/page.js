@@ -9,6 +9,7 @@ export default function BrandCheckerQuestions() {
   const [answers, setAnswers] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [randomOptions, setRandomOptions] = useState([]);
   const router = useRouter();
 
   const questions = ExalviaDatabase.brandChecker.questions;
@@ -53,13 +54,20 @@ export default function BrandCheckerQuestions() {
     }
   }, [answers]);
 
+  useEffect(() => {
+    // Generate random options for current question
+    if (questions[currentQuestion]) {
+      const shuffled = [...questions[currentQuestion].options].sort(() => Math.random() - 0.5);
+      setRandomOptions(shuffled);
+    }
+  }, [currentQuestion, questions]);
+
   const handleAnswerSelect = (optionIndex) => {
     setSelectedOption(optionIndex);
     setIsTransitioning(true);
 
     const question = questions[currentQuestion];
-    const sortedOptions = [...question.options].sort((a, b) => a.score - b.score);
-    const selectedAnswer = sortedOptions[optionIndex];
+    const selectedAnswer = randomOptions[optionIndex];
 
     // Find the original index in the unsorted array
     const originalIndex = question.options.findIndex((opt) => opt.text === selectedAnswer.text && opt.score === selectedAnswer.score);
@@ -222,29 +230,27 @@ export default function BrandCheckerQuestions() {
 
                 {/* Answer Options */}
                 <div className="space-y-3">
-                  {[...question.options]
-                    .sort((a, b) => a.score - b.score)
-                    .map((option, index) => (
-                      <button
-                        key={index}
-                        onClick={() => handleAnswerSelect(index)}
-                        disabled={selectedOption !== null}
-                        className={`w-full text-left p-4 rounded-bl-2xl bg-base-100 border transition-all duration-200 ${
-                          selectedOption === index
-                            ? "border-primary bg-primary/10"
-                            : selectedOption !== null
-                            ? "border-gray-200 bg-gray-50 cursor-not-allowed"
-                            : "border-gray-200 hover:border-primary/50 hover:bg-gray-50 cursor-pointer"
-                        }`}
-                      >
-                        <div className="flex items-center">
-                          <div className={`w-5 h-5 rounded-full border-2 mr-3 flex items-center justify-center ${selectedOption === index ? "border-primary" : "border-gray-300"}`}>
-                            {selectedOption === index && <div className="w-2 h-2 bg-primary rounded-full" />}
-                          </div>
-                          <span className="text-gray-700">{option.text}</span>
+                  {randomOptions.map((option, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleAnswerSelect(index)}
+                      disabled={selectedOption !== null}
+                      className={`w-full text-left p-4 rounded-bl-2xl bg-base-100 border transition-all duration-200 ${
+                        selectedOption === index
+                          ? "border-primary bg-primary/10"
+                          : selectedOption !== null
+                          ? "border-gray-200 bg-gray-50 cursor-not-allowed"
+                          : "border-gray-200 hover:border-primary/50 hover:bg-gray-50 cursor-pointer"
+                      }`}
+                    >
+                      <div className="flex items-center">
+                        <div className={`w-5 h-5 rounded-full border-2 mr-3 flex items-center justify-center ${selectedOption === index ? "border-primary" : "border-gray-300"}`}>
+                          {selectedOption === index && <div className="w-2 h-2 bg-primary rounded-full" />}
                         </div>
-                      </button>
-                    ))}
+                        <span className="text-gray-700">{option.text}</span>
+                      </div>
+                    </button>
+                  ))}
                 </div>
               </>
             )}

@@ -235,9 +235,9 @@ const ExalviaDatabase = {
     ],
   },
   cta1: {
-    label: "Faktor lain",
+    label: "Scan",
     title: "Temukan elemen-elemen penting! Bantu tingkatkan penjualan brand lebih optimal!",
-    description: "Klik tombol “CEK LEVEL BRAND” di bawah untuk memahami kondisi brand Anda saat ini, supaya brand Anda bisa tumbuh dengan sehat tanpa terjebak perang harga.",
+    description: "Klik tombol “SCAN BRAND” di bawah untuk memahami kondisi brand Anda saat ini, supaya brand Anda bisa tumbuh dengan sehat tanpa terjebak perang harga.",
     primaryLabel: "Mulai Konsultasi",
     primaryHref: "https://wa.me/6281234567890",
     whatsappLabel: "Chat WhatsApp",
