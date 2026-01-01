@@ -25,10 +25,11 @@ export default function BrandCheckerQuestions() {
       return;
     }
 
-    // Set start time if not already set
-    const testStartTime = sessionStorage.getItem("brandCheckerStartTime");
+    // Set start time if not already set - use REAL current time
+    let testStartTime = sessionStorage.getItem("brandCheckerStartTime");
     if (!testStartTime) {
-      sessionStorage.setItem("brandCheckerStartTime", new Date().toISOString());
+      testStartTime = new Date().toISOString();
+      sessionStorage.setItem("brandCheckerStartTime", testStartTime);
     }
 
     // Load existing answers if any
@@ -57,12 +58,16 @@ export default function BrandCheckerQuestions() {
     setIsTransitioning(true);
 
     const question = questions[currentQuestion];
-    const selectedAnswer = question.options[optionIndex];
+    const sortedOptions = [...question.options].sort((a, b) => a.score - b.score);
+    const selectedAnswer = sortedOptions[optionIndex];
+
+    // Find the original index in the unsorted array
+    const originalIndex = question.options.findIndex((opt) => opt.text === selectedAnswer.text && opt.score === selectedAnswer.score);
 
     // Save answer
     const newAnswer = {
       questionId: question.id,
-      selectedOption: optionIndex,
+      selectedOption: originalIndex,
       score: selectedAnswer.score,
       questionText: question.question,
       category: question.category,
@@ -115,13 +120,13 @@ export default function BrandCheckerQuestions() {
         // Detect red flags (question-based)
         const questionFlags = [];
         updatedAnswers.forEach((answer) => {
-          if (answer.questionId === 8 && answer.selectedOption === 1) questionFlags.push("8-1");
-          if (answer.questionId === 11 && answer.selectedOption === 0) questionFlags.push("11-0");
-          if (answer.questionId === 11 && answer.selectedOption === 1) questionFlags.push("11-1");
-          if (answer.questionId === 11 && answer.selectedOption === 2) questionFlags.push("11-2");
-          if (answer.questionId === 15 && answer.selectedOption === 0) questionFlags.push("15-0");
-          if (answer.questionId === 16 && answer.selectedOption === 1) questionFlags.push("16-1");
-          if (answer.questionId === 16 && answer.selectedOption === 3) questionFlags.push("16-3");
+          if (answer.questionId === 8 && answer.selectedText === "Karena harganya murah") questionFlags.push("8-1");
+          if (answer.questionId === 11 && answer.selectedText === "Ikut menaikkan harga supaya lebih untung") questionFlags.push("11-0");
+          if (answer.questionId === 11 && answer.selectedText === "Mempertahankan harga") questionFlags.push("11-1");
+          if (answer.questionId === 11 && answer.selectedText === "Mempertahankan harga dan promosi") questionFlags.push("11-2");
+          if (answer.questionId === 15 && answer.selectedText === "Langsung menawarkan produk") questionFlags.push("15-0");
+          if (answer.questionId === 16 && answer.selectedText === "Mengevaluasi produk") questionFlags.push("16-1");
+          if (answer.questionId === 16 && answer.selectedText === "Menunggu saja") questionFlags.push("16-3");
         });
 
         // Add category-based flags
@@ -149,6 +154,9 @@ export default function BrandCheckerQuestions() {
           dur: durationText, // Send calculated duration, not timestamps
           cs: JSON.stringify(categoryScores),
           rf: redFlags.join(","),
+          st: testStartTime || new Date().toISOString(), // Send start time
+          et: endTime, // Send end time (when test completed)
+          mytest: myTest, // Send myTest data
           // No more sessionStorage dependency!
         });
 
@@ -170,6 +178,14 @@ export default function BrandCheckerQuestions() {
   }
 
   const question = questions[currentQuestion];
+  const myTest = new Date().toLocaleString("en-GB", {
+    day: "numeric",
+    month: "short",
+    year: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
 
   return (
     <div className="min-h-screen bg-base-100 py-8 px-4">
@@ -206,27 +222,29 @@ export default function BrandCheckerQuestions() {
 
                 {/* Answer Options */}
                 <div className="space-y-3">
-                  {question.options.map((option, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleAnswerSelect(index)}
-                      disabled={selectedOption !== null}
-                      className={`w-full text-left p-4 rounded-bl-2xl bg-base-100 border transition-all duration-200 ${
-                        selectedOption === index
-                          ? "border-primary bg-primary/10"
-                          : selectedOption !== null
-                          ? "border-gray-200 bg-gray-50 cursor-not-allowed"
-                          : "border-gray-200 hover:border-primary/50 hover:bg-gray-50 cursor-pointer"
-                      }`}
-                    >
-                      <div className="flex items-center">
-                        <div className={`w-5 h-5 rounded-full border-2 mr-3 flex items-center justify-center ${selectedOption === index ? "border-primary" : "border-gray-300"}`}>
-                          {selectedOption === index && <div className="w-2 h-2 bg-primary rounded-full" />}
+                  {[...question.options]
+                    .sort((a, b) => a.score - b.score)
+                    .map((option, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handleAnswerSelect(index)}
+                        disabled={selectedOption !== null}
+                        className={`w-full text-left p-4 rounded-bl-2xl bg-base-100 border transition-all duration-200 ${
+                          selectedOption === index
+                            ? "border-primary bg-primary/10"
+                            : selectedOption !== null
+                            ? "border-gray-200 bg-gray-50 cursor-not-allowed"
+                            : "border-gray-200 hover:border-primary/50 hover:bg-gray-50 cursor-pointer"
+                        }`}
+                      >
+                        <div className="flex items-center">
+                          <div className={`w-5 h-5 rounded-full border-2 mr-3 flex items-center justify-center ${selectedOption === index ? "border-primary" : "border-gray-300"}`}>
+                            {selectedOption === index && <div className="w-2 h-2 bg-primary rounded-full" />}
+                          </div>
+                          <span className="text-gray-700">{option.text}</span>
                         </div>
-                        <span className="text-gray-700">{option.text}</span>
-                      </div>
-                    </button>
-                  ))}
+                      </button>
+                    ))}
                 </div>
               </>
             )}

@@ -41,7 +41,7 @@ const categoryThresholds = {
   IV: 40, // Identitas Visual
 };
 const priceCore = 1900000;
-const priceDecoy1 = 900000;
+const priceDecoy1 = 890000;
 const priceDecoy2 = priceDecoy1 + 600000;
 const metaDescription =
   "membantu brand muslim merumuskan pesan penjualan yang tepat, dengan memahami kondisi brand dan mengarahkannya menjadi daya tarik yang khas di mata pembeli, agar produk bernilai tinggi tidak terjebak perang harga.";
@@ -236,8 +236,8 @@ const ExalviaDatabase = {
   },
   cta1: {
     label: "Faktor lain",
-    title: "Ada hal lain yang spesifik membuat produk branded Anda sulit dijual.",
-    description: "Klik tombol “Cek Kualitas Brand” di bawah untuk memahami kondisi brand Anda saat ini, supaya brand Anda bisa tumbuh dengan sehat tanpa terjebak perang harga.",
+    title: "Temukan elemen-elemen penting! Bantu tingkatkan penjualan brand lebih optimal!",
+    description: "Klik tombol “CEK LEVEL BRAND” di bawah untuk memahami kondisi brand Anda saat ini, supaya brand Anda bisa tumbuh dengan sehat tanpa terjebak perang harga.",
     primaryLabel: "Mulai Konsultasi",
     primaryHref: "https://wa.me/6281234567890",
     whatsappLabel: "Chat WhatsApp",
@@ -458,10 +458,10 @@ const ExalviaDatabase = {
         question: "Menurut Anda, apa alasan utama orang membeli produk Anda?",
         category: "Target",
         options: [
-          { text: "Karena harganya murah", score: 2 },
           { text: "Karena kualitasnya bagus", score: 4 },
-          { text: "Tidak tahu", score: 1 },
+          { text: "Karena harganya murah", score: 2 },
           { text: "Karena promo atau diskon", score: 2 },
+          { text: "Tidak tahu", score: 1 },
         ],
       },
       {
@@ -480,8 +480,8 @@ const ExalviaDatabase = {
         question: "Apa yang biasanya Anda lakukan jika kompetitor menjual lebih murah?",
         category: "Harga",
         options: [
-          { text: "Menurunkan harga", score: 2 },
           { text: "Mempertahankan harga dan mengedukasi kualitas", score: 4 },
+          { text: "Menurunkan harga", score: 2 },
           { text: "Mengganti produk", score: 2 },
           { text: "Tidak melakukan apa-apa", score: 1 },
         ],
@@ -491,9 +491,9 @@ const ExalviaDatabase = {
         question: "Apa yang Anda lakukan jika harga kompetitor lebih mahal dari produk Anda?",
         category: "Harga",
         options: [
-          { text: "Ikut menaikkan harga supaya lebih untung", score: 2 },
-          { text: "Mempertahankan harga", score: 3 },
           { text: "Mempertahankan harga dan promosi", score: 4 },
+          { text: "Mempertahankan harga", score: 3 },
+          { text: "Ikut menaikkan harga supaya lebih untung", score: 2 },
           { text: "Tidak melakukan apa-apa", score: 1 },
         ],
       },
@@ -514,8 +514,8 @@ const ExalviaDatabase = {
         category: "Cara Menjual",
         options: [
           { text: "Jarang bertanya dan terjadi penjualan", score: 4 },
-          { text: "Jarang bertanya tapi tidak ada penjualan", score: 2 },
           { text: "Sering bertanya dan terjadi penjualan", score: 3 },
+          { text: "Jarang bertanya tapi tidak ada penjualan", score: 2 },
           { text: "Sering bertanya tapi tidak ada penjualan", score: 1 },
         ],
       },
@@ -525,8 +525,8 @@ const ExalviaDatabase = {
         category: "Cara Menjual",
         options: [
           { text: "Sudah punya", score: 4 },
-          { text: "Belum punya", score: 1 },
           { text: "Ingin membuat", score: 2 },
+          { text: "Belum punya", score: 1 },
           { text: "Tidak tahu", score: 1 },
         ],
       },
@@ -535,8 +535,8 @@ const ExalviaDatabase = {
         question: "Apa yang biasanya Anda lakukan saat pertama kali bertemu calon pembeli?",
         category: "Cara Menjual",
         options: [
-          { text: "Langsung menawarkan produk", score: 2 },
           { text: "Mencari tahu atau menanyakan kebutuhan calon pembeli", score: 4 },
+          { text: "Langsung menawarkan produk", score: 2 },
           { text: "Menawarkan promo atau diskon", score: 2 },
           { text: "Bingung harus melakukan apa", score: 1 },
         ],
@@ -558,8 +558,8 @@ const ExalviaDatabase = {
         category: "Reflektif",
         options: [
           { text: "Senang", score: 4 },
-          { text: "Cemas", score: 2 },
           { text: "Biasa saja", score: 3 },
+          { text: "Cemas", score: 2 },
           { text: "Tidak pernah melihat laporan", score: 1 },
         ],
       },
@@ -568,10 +568,10 @@ const ExalviaDatabase = {
         question: "Apa tantangan terbesar dalam penjualan Anda saat ini?",
         category: "Reflektif",
         options: [
-          { text: "Produk belum dikenal dengan baik", score: 4 },
+          { text: "Tidak ada", score: 4 },
+          { text: "Produk belum dikenal dengan baik", score: 3 },
           { text: "Harga terasa lebih mahal", score: 3 },
           { text: "Belum tahu target pembeli yang tepat", score: 3 },
-          { text: "Tidak ada", score: 1 },
         ],
       },
       {
@@ -591,8 +591,8 @@ const ExalviaDatabase = {
         category: "Identitas Visual",
         options: [
           { text: "Sudah", score: 4 },
-          { text: "Belum", score: 2 },
           { text: "Baru berencana membuat", score: 3 },
+          { text: "Belum", score: 2 },
           { text: "Tidak merasa butuh logo", score: 1 },
         ],
       },
@@ -612,9 +612,9 @@ const ExalviaDatabase = {
         question: "Apakah brand Anda memiliki banyak logo?",
         category: "Identitas Visual",
         options: [
-          { text: "Ya, banyak", score: 1 },
-          { text: "Ada beberapa", score: 2 },
           { text: "Hanya satu", score: 4 },
+          { text: "Ada beberapa", score: 2 },
+          { text: "Ya, banyak", score: 1 },
           { text: "Belum punya logo", score: 1 },
         ],
       },
@@ -705,7 +705,7 @@ const ExalviaDatabase = {
         price: priceCore + priceDecoy1,
         features: ["Advanced Strategy", "Visual Identity", "Content Guidelines", "Market Analysis"],
         description: "merumuskan pesan penjualan + landing page",
-        output: "Dokumen PDF + Landing Page FB Ads",
+        output: "Dokumen PDF + Landing Page",
         included: [
           { title: "Analisa brand", status: true },
           { title: "Analisa target pasar", status: true },
@@ -713,7 +713,7 @@ const ExalviaDatabase = {
           { title: "Rumusan pesan penjualan", status: true },
           { title: "Brand guideline", status: true },
           { title: "Landing page", status: true },
-          { title: "Facebook Ads friendly", status: true },
+          { title: "Facebook Ads friendly", status: false },
           { title: "Fitur pembayaran otomatis", status: false },
         ],
         minScore: 26,
@@ -738,7 +738,7 @@ const ExalviaDatabase = {
           { title: "Fitur pembayaran otomatis", status: true },
         ],
         minScore: 51,
-        maxScore: 75,
+        maxScore: 100,
         rating: 4,
         turnaround: "6-7 hari kerja",
       },

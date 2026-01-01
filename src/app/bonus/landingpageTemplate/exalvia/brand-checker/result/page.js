@@ -6,6 +6,7 @@ import ExalviaButton from "../../ui-components/ExalviaButton";
 import HeroBrandChecker from "../HeroBrandChecker";
 import ExalviaDatabase from "../../database/ExalviaDatabase";
 import { FaRegClock, FaStar, FaRegStar, FaCircleCheck, FaRegCircleCheck, FaRegThumbsUp, FaArrowRight, FaPenClip, FaChevronDown, FaGift, FaCircleXmark, FaHandPointRight } from "react-icons/fa6";
+
 import { TbCircleDashedNumber9 } from "react-icons/tb";
 import { LuNotepadText } from "react-icons/lu";
 import { MdOutlineRocketLaunch } from "react-icons/md";
@@ -13,6 +14,7 @@ import ExalviaLinkButton from "../../ui-components/ExalviaLinkButton";
 import ExalviaImage from "../../ui-components/ExalviaImage";
 import ExalviaCountDown from "../../ui-components/ExalviaCountDown";
 import { BsFillPatchCheckFill } from "react-icons/bs";
+import { HiOutlineTrophy } from "react-icons/hi2";
 
 // Function to format currency with dot separator
 const formatCurrency = (amount) => {
@@ -35,6 +37,7 @@ export default function BrandCheckerResult() {
   const [isNotesOpen, setIsNotesOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [accordionOpen, setAccordionOpen] = useState("notes"); // "details", "notes", or "packages"
+  const [myTest, setMyTest] = useState("default value"); // Add state for myTest
   const router = useRouter();
 
   // Hide DaisyUI default chevron
@@ -69,22 +72,31 @@ export default function BrandCheckerResult() {
 
     // Check for short parameters
     if (urlParams.has("b") && urlParams.has("sc")) {
-      // Read from short URL parameters ONLY - no sessionStorage
       brandName = urlParams.get("b");
-      rawScore = parseInt(urlParams.get("rs")) || 0;
-      normalizedScore = parseInt(urlParams.get("sc")) || 0;
+      rawScore = parseInt(urlParams.get("rs"));
+      normalizedScore = parseFloat(urlParams.get("sc"));
+      categoryScores = urlParams.get("cs") ? JSON.parse(urlParams.get("cs")) : {};
+      redFlags = []; // Initialize empty, will be populated below
+      totalQuestions = urlParams.get("tq") ? parseInt(urlParams.get("tq")) : 16;
+      testStartTime = urlParams.get("st") || new Date().toISOString();
+      endTime = urlParams.get("et") || new Date().toISOString(); // Use current time as fallback
+      setMyTest(urlParams.get("mytest") || "default value"); // Set myTest state
 
+      // No answers needed for display - just empty array
+      answers = [];
+
+      const reverseMapping = {
+        PI: "Informasi Produk",
+        TA: "Target",
+        HA: "Harga",
+        CM: "Cara Menjual",
+        RE: "Reflektif",
+        IV: "Identitas Visual",
+      };
+
+      // Parse category scores from URL
       try {
-        const shortCategoryScores = JSON.parse(urlParams.get("cs") || "{}");
-        // Convert short names back to full names
-        const reverseMapping = {
-          PI: "Informasi Produk",
-          TA: "Target",
-          HA: "Harga",
-          CM: "Cara Menjual",
-          RE: "Reflektif",
-          IV: "Identitas Visual",
-        };
+        const shortCategoryScores = urlParams.get("cs") ? JSON.parse(urlParams.get("cs")) : {};
         categoryScores = {};
         Object.keys(shortCategoryScores).forEach((shortKey) => {
           if (reverseMapping[shortKey]) {
@@ -95,13 +107,17 @@ export default function BrandCheckerResult() {
         categoryScores = {};
       }
 
-      // Decode red flags from IDs using ExalviaDatabase
-      const redFlagIds = (urlParams.get("rf") || "").split(",").filter(Boolean);
-      redFlags = [];
-      redFlagIds.forEach((id) => {
-        const flagText = ExalviaDatabase.getBrandCheckerFlag(id);
-        if (flagText) redFlags.push(flagText);
-      });
+      // Decode red flags from IDs using ExalviaDatabase - ONLY if not perfect score
+      if (normalizedScore < 100) {
+        const redFlagIds = (urlParams.get("rf") || "").split(",").filter(Boolean);
+        redFlags = [];
+        redFlagIds.forEach((id) => {
+          const flagText = ExalviaDatabase.getBrandCheckerFlag(id);
+          if (flagText) redFlags.push(flagText);
+        });
+      } else {
+        redFlags = []; // No red flags for perfect score
+      }
 
       // Get duration directly from URL - no calculation needed!
       const durationText = urlParams.get("dur") || "0s";
@@ -156,7 +172,7 @@ export default function BrandCheckerResult() {
         const answersData = sessionStorage.getItem("brandCheckerAnswers");
         answers = answersData ? JSON.parse(answersData) : [];
         testStartTime = sessionStorage.getItem("brandCheckerStartTime");
-        endTime = new Date().toISOString();
+        endTime = new Date().toISOString(); // Use current time as fallback
         rawScore = answers.reduce((total, answer) => total + (Number(answer?.score) || 0), 0);
         const normalizedScoreRaw = ((rawScore - 24) / (96 - 24)) * 100;
         normalizedScore = Number.isFinite(normalizedScoreRaw) ? Math.round(Math.max(0, Math.min(100, normalizedScoreRaw))) : 0;
@@ -176,7 +192,7 @@ export default function BrandCheckerResult() {
       }
 
       answers = JSON.parse(answersData);
-      endTime = new Date().toISOString();
+      endTime = new Date().toISOString(); // Use current time as fallback
       rawScore = answers.reduce((total, answer) => total + (Number(answer?.score) || 0), 0);
       const normalizedScoreRaw = ((rawScore - 24) / (96 - 24)) * 100;
       normalizedScore = Number.isFinite(normalizedScoreRaw) ? Math.round(Math.max(0, Math.min(100, normalizedScoreRaw))) : 0;
@@ -232,18 +248,23 @@ export default function BrandCheckerResult() {
     // Classification based on lowest category and score
     if (lowestCategoryScore < 60) {
       // Critical issues in specific category
-      classification = " Weak";
+      classification = "Rokie";
       description = `Brand Anda mengalami masalah serius di aspek ${lowestCategoryName} dan yang lainnya. Ini perlu segera ditangani agar tidak membuat kondisi semakin buruk.`;
       condition = `${lowestCategoryName} membutuhkan perhatian prioritas`;
     } else if (lowestCategoryScore < 75) {
       // Moderate issues
-      classification = "Competitive";
+      classification = "Pro";
       description = `Brand Anda sudah memiliki fondasi yang baik, namun aspek ${lowestCategoryName} dan yang lainnya masih bisa di optimalkan untuk mencapai potensi maksimal.`;
       condition = `${lowestCategoryName} perlu ditingkatkan`;
+    } else if (lowestCategoryScore === 100) {
+      // Perfect score
+      classification = "Excellent";
+      description = "Brand Anda mencapai skor sempuran! Semua aspek brand berada di level tertinggi. Pertahankan konsistensi dan terus berinovasi untuk memimpin pasar.";
+      condition = "Brand sempurna - siap menjadi market leader";
     } else {
       // Good overall but can be better
-      classification = "Strong";
-      description = "Brand Anda sudah berada di level yang baik dengan semua kategori menunjukkan performa memuaskan.";
+      classification = "Elite";
+      description = "Brand Anda sudah berada di level yang baik dengan semua kategori menunjukkan nilai yang tinggi, namun masih bisa dioptimalkan.";
       condition = "Brand siap untuk scale";
     }
 
@@ -269,24 +290,8 @@ export default function BrandCheckerResult() {
     console.log("Condition:", condition);
     console.log("===============================");
 
-    // Detect red flags only if not already detected
-    if (!redFlags || redFlags.length === 0) {
-      redFlags = [];
-      answers.forEach((answer) => {
-        if (answer.questionId === 8 && answer.selectedOption === 1) {
-          redFlags.push("Tidak ada pertanyaan dari pembeli dengan penjualan minimal - perlu evaluasi cara komunikasi");
-        }
-        if (answer.questionId === 11 && answer.selectedOption === 3) {
-          redFlags.push("Potensi penjualan menurun tapi tidak ada action - perlu strategi penjualan yang lebih baik");
-        }
-        if (answer.questionId === 15 && answer.selectedOption === 0) {
-          redFlags.push("Terlalu banyak variasi logo - perlu strategi visual yang lebih baik");
-        }
-        if (answer.questionId === 16 && (answer.selectedOption === 1 || answer.selectedOption === 3)) {
-          redFlags.push("Tidak ada warna khas brand - perlu identifikasi warna yang tepat");
-        }
-      });
-    }
+    // Red flags already processed from URL parameters above
+    // No additional detection needed
 
     setResult({
       brandName,
@@ -299,9 +304,9 @@ export default function BrandCheckerResult() {
       categoryScores,
       redFlags,
       totalQuestions: totalQuestions || answers.length, // Use URL parameter first, fallback to answers.length
-      completedAt: (endTime ? new Date(endTime) : new Date()).toLocaleString("id-ID"),
+      completedAt: (endTime ? new Date(endTime) : testStartTime ? new Date(testStartTime) : new Date()).toLocaleString("id-ID"),
       duration: durationText,
-      startTime: startTime,
+      startTime: testStartTime ? new Date(testStartTime) : new Date(),
       endTime: endTime,
       answers: answers, // Include all answers
       testStartTime: testStartTime, // Include start time
@@ -311,7 +316,7 @@ export default function BrandCheckerResult() {
         answers,
         startTime: testStartTime,
         endTime: endTime,
-        completedAt: (endTime ? new Date(endTime) : new Date()).toLocaleString("id-ID"),
+        completedAt: (endTime ? new Date(endTime) : testStartTime ? new Date(testStartTime) : new Date()).toLocaleString("id-ID"),
         duration: durationText,
         rawScore,
         normalizedScore,
@@ -388,7 +393,21 @@ export default function BrandCheckerResult() {
 
   // Helper functions untuk rating bintang
   const getStarRating = (score) => {
-    const starCount = Math.ceil(score / 25); // Convert 0-100 to 1-4 stars
+    let starCount;
+    if (score === 100) {
+      starCount = 5; // Only 100 gets 5 stars
+    } else if (score >= 81) {
+      starCount = 4; // 81-99 gets 4 stars
+    } else if (score >= 61) {
+      starCount = 3; // 61-80 gets 3 stars
+    } else if (score >= 41) {
+      starCount = 2; // 41-60 gets 2 stars
+    } else if (score >= 1) {
+      starCount = 1; // 1-40 gets 1 star
+    } else {
+      starCount = 0; // 0 gets 0 stars
+    }
+
     return Array.from({ length: 5 }, (_, index) => {
       if (index < starCount) {
         return <FaStar key={index} className="text-warning" />;
@@ -408,7 +427,9 @@ export default function BrandCheckerResult() {
       minute: "2-digit",
       second: "2-digit",
     };
-    return new Date(date).toLocaleString("id-ID", options);
+    // Handle both string and Date object
+    const dateObj = typeof date === "string" ? new Date(date) : date;
+    return dateObj.toLocaleString("id-ID", options);
   };
 
   // Get rekomendasi paket dari database
@@ -421,6 +442,11 @@ export default function BrandCheckerResult() {
   const getAlternativePackages = (recommendedScore) => {
     const allRecommendedPackages = ExalviaDatabase.brandCheckerPackages?.recommended || [];
     const recommendedPkg = getRecommendedPackage(recommendedScore);
+
+    // If perfect score, show all packages
+    if (recommendedScore === 100) {
+      return allRecommendedPackages;
+    }
 
     // Return all recommended packages except the currently recommended one
     return allRecommendedPackages.filter((pkg) => pkg.name !== recommendedPkg?.name);
@@ -452,7 +478,7 @@ export default function BrandCheckerResult() {
                 <h1 className="text-3xl md:text-4xl font-bold uppercase">{result.brandName}</h1>
 
                 <p className="text-sm flex gap-1 items-center justify-center opacity-70" id="testTime">
-                  <FaRegClock /> {formatDateTime(result.startTime)}
+                  <FaRegClock /> {myTest}
                 </p>
               </div>
 
@@ -538,7 +564,15 @@ export default function BrandCheckerResult() {
               </div>
               <div className="collapse-content text-sm">
                 <div>
-                  {result.redFlags.length > 0 && (
+                  {result.normalizedScore === 100 ? (
+                    <div className="flex items-center p-4 bg-base-100 rounded-bl-2xl">
+                      <HiOutlineTrophy className="text-4xl mr-4 text-warning" />
+                      <div>
+                        <p className="font-semibold text-success">Brand Sempurna!</p>
+                        <p className="text-sm opacity-80">Semua aspek brand berada di level tertinggi. Pertahankan konsistensi ini!</p>
+                      </div>
+                    </div>
+                  ) : result.redFlags.length > 0 ? (
                     <div>
                       <div className="space-y-2">
                         {result.redFlags.map((flag, index) => (
@@ -555,6 +589,11 @@ export default function BrandCheckerResult() {
                           </div>
                         ))}
                       </div>
+                    </div>
+                  ) : (
+                    <div className="flex items-center p-4 bg-green-50 rounded-bl-2xl">
+                      <div className="text-2xl mr-3">✅</div>
+                      <p className="text-sm text-green-700">Tidak ada catatan khusus. Brand Anda sudah baik!</p>
                     </div>
                   )}
                 </div>
@@ -583,6 +622,23 @@ export default function BrandCheckerResult() {
               <div className="sm:w-6/12 w-full">
                 {(() => {
                   const recommendedPkg = getRecommendedPackage(result.normalizedScore);
+
+                  // Show motivational message for perfect score
+                  if (result.normalizedScore === 100) {
+                    return (
+                      <div className="border-4 border-primary rounded-bl-4xl p-8">
+                        <div className="text-center">
+                          <HiOutlineTrophy className="text-6xl mb-4 text-warning mx-auto" />
+                          <h3 className="text-2xl font-bold text-success mb-4">Brand Sempurna!</h3>
+                          <p className="text-lg mb-6">Selamat! Brand Anda telah mencapai level tertinggi di semua aspek. Pertahankan konsistensi ini dan terus berinovasi untuk memimpin pasar.</p>
+                          <div className="bg-success/10 rounded-bl-2xl p-4 mb-6">
+                            <p className="font-semibold text-success">💡 Tips: Fokus pada scaling dan market expansion untuk pertumbuhan berikutnya!</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+
                   if (!recommendedPkg) return null;
 
                   return (
@@ -733,7 +789,7 @@ export default function BrandCheckerResult() {
                   </span>
 
                   <div className="mb-8">
-                    <ExalviaCountDown target="2025-12-31T23:59:59" />
+                    <ExalviaCountDown target="2026-01-25T23:59:59" />
                   </div>
 
                   <ExalviaLinkButton text="Dapatkan Bonus" href="#rekomendasi" className="btn-lg btn-warning animate-pulse" />

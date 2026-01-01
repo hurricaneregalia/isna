@@ -15,7 +15,7 @@ export default function ExalviaCTA1({ data, secId = "cta1", targetLink = "#" }) 
           <ExalviaBodyText text={data.description} className="mb-4 text-white/80" />
 
           <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto justify-center">
-            <ExalviaLinkButton text="CEK KUALITAS BRAND" href={targetLink} icon={FaArrowRight} className="w-fit mx-auto sm:w-auto btn-lg btn-warning" />
+            <ExalviaLinkButton text="CEK LEVEL BRAND" href={targetLink} icon={FaArrowRight} className="w-fit mx-auto sm:w-auto btn-lg btn-warning" />
           </div>
         </div>
       </div>
