@@ -14,13 +14,13 @@ const ipad2 = "/images/templateLandingPageBonus/Exalvia/sections/ipad-2.webp";
 // Brand checker red flags based on category thresholds
 const brandCheckerFlags = {
   // Specific question-based flags
-  "8-1": "Tidak ada pertanyaan dari pembeli dengan penjualan minimal - perlu evaluasi cara komunikasi",
-  "11-0": "Masalah penjualan spesifik teridentifikasi - perlu strategi yang terukur",
-  "11-1": "Masalah penjualan spesifik teridentifikasi - perlu strategi yang terukur",
-  "11-2": "Masalah penjualan spesifik teridentifikasi - perlu strategi yang terukur",
-  "15-0": "Terlalu banyak variasi logo - perlu konsistensi visual",
-  "16-1": "Tidak ada warna khas brand - perlu identitas visual yang kuat",
-  "16-3": "Tidak ada warna khas brand - perlu identitas visual yang kuat",
+  "8-1": "Hanya mengandalkan harga murah berisiko terjebak perang harga yang tidak sehat",
+  "15-1": "Langsung menawarkan produk tanpa membangun rapport bisa menurunkan potensi konversi",
+  "16-2": "Menurunkan harga saat penjualan turun berisiko merusak persepsi nilai brand",
+  "16-3": "Pasif saat penjualan turun bisa membuat brand tertinggal jauh dari kompetitor",
+  "22-2": "Terlalu banyak variasi logo - perlu konsistensi visual agar brand mudah diingat",
+  "23-1": "Kualitas identitas visual sangat rendah, perlu identitas visual yang lebih kuat",
+  "23-3": "Identitas visual yang belum terencana dengan baik memerlukan perhatian khusus",
 
   // Category-based flags (triggered when score is below threshold)
   "PI-LOW": "Informasi Produk belum jelas sehingga calon pembeli sulit memahami apa yang Anda tawarkan",
@@ -33,12 +33,12 @@ const brandCheckerFlags = {
 
 // Threshold for category scores (below this = flag triggered)
 const categoryThresholds = {
-  PI: 40, // Informasi Produk
-  TA: 40, // Target
-  HA: 40, // Harga
-  CM: 40, // Cara Menjual
-  RE: 40, // Reflektif
-  IV: 40, // Identitas Visual
+  PI: 50, // Informasi Produk
+  TA: 50, // Target
+  HA: 50, // Harga
+  CM: 50, // Cara Menjual
+  RE: 50, // Reflektif
+  IV: 50, // Identitas Visual
 };
 const priceCore = 1900000;
 const priceDecoy1 = 890000;

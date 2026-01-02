@@ -150,12 +150,12 @@ export default function BrandCheckerQuestions() {
         const questionFlags = [];
         updatedAnswers.forEach((answer) => {
           if (answer.questionId === 8 && answer.selectedText === "Karena harganya murah") questionFlags.push("8-1");
-          if (answer.questionId === 11 && answer.selectedText === "Ikut menaikkan harga supaya lebih untung") questionFlags.push("11-0");
-          if (answer.questionId === 11 && answer.selectedText === "Mempertahankan harga") questionFlags.push("11-1");
-          if (answer.questionId === 11 && answer.selectedText === "Mempertahankan harga dan promosi") questionFlags.push("11-2");
-          if (answer.questionId === 15 && answer.selectedText === "Langsung menawarkan produk") questionFlags.push("15-0");
-          if (answer.questionId === 16 && answer.selectedText === "Mengevaluasi produk") questionFlags.push("16-1");
+          if (answer.questionId === 15 && answer.selectedText === "Langsung menawarkan produk") questionFlags.push("15-1");
+          if (answer.questionId === 16 && answer.selectedText === "Menurunkan harga") questionFlags.push("16-2");
           if (answer.questionId === 16 && answer.selectedText === "Menunggu saja") questionFlags.push("16-3");
+          if (answer.questionId === 22 && answer.selectedText === "Ya, banyak") questionFlags.push("22-2");
+          if (answer.questionId === 23 && answer.selectedText === "Tidak ada warna khas") questionFlags.push("23-1");
+          if (answer.questionId === 23 && answer.selectedText === "Belum pernah memikirkan warna brand") questionFlags.push("23-3");
         });
 
         // Add category-based flags

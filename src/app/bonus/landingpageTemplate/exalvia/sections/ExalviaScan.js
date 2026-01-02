@@ -10,7 +10,7 @@ export default function ExalviaScan({ brand = "BRAND", width = "" }) {
           style={{ animation: "spin 5s linear infinite" }}
         />
       </div>
-      <div className="bg-base-200 blur-sm absolute top-1 left-1 rounded-2xl right-1 bottom-1" />
+      <div className="bg-base-200 blur-sm absolute rounded-2xl top-1.5 left-1.5 right-1.5 bottom-1.5" />
 
       {/* Corner Brackets */}
       <div className="w-10 aspect-square absolute top-4 left-4 rounded-tl-2xl border-t-2 border-l-2 border-base-content/30" />
@@ -20,7 +20,7 @@ export default function ExalviaScan({ brand = "BRAND", width = "" }) {
       {/* Brand Header */}
       <div className=" relative w-full flex flex-col gap-3">
         <div className="bg-base-100 sm:py-8 py-5 px-5 font-bold text-3xl rounded-lg">
-          <span className="flex gap-1 animate-pulse items-center">
+          <span className="flex gap-1 animate-pulse items-center capitalize">
             <TbHelpSquareRoundedFilled /> {brand}
           </span>
         </div>
@@ -35,7 +35,18 @@ export default function ExalviaScan({ brand = "BRAND", width = "" }) {
       </div>
       {/* Scanning Animation */}
       <div className="absolute inset-0">
-        <div className="absolute w-full h-1 bg-error animate-pulse shadow-md shadow-error" style={{ animation: "slideUpDown 5s ease-in-out infinite" }} />
+        <div
+          className="absolute w-full h-1"
+          style={{
+            backgroundSize: "200% 100%",
+            animation: "slideUpDown 10s ease-in-out infinite, movingGradient 2s linear infinite",
+          }}
+        >
+          {/* Sharp Line */}
+          <div className="absolute inset-0 h-0.5 bg-linear-to-r from-orange-400 via-pink-500 to-blue-500" style={{ backgroundSize: "inherit", backgroundPosition: "inherit" }} />
+          {/* Glow/Blur Line */}
+          <div className="absolute inset-0 h-1 bg-linear-to-r from-orange-400 via-pink-500 to-blue-500 blur-xs" style={{ backgroundSize: "inherit", backgroundPosition: "inherit" }} />
+        </div>
       </div>
       {/* CSS Animation */}
       <style jsx>{`
@@ -48,6 +59,15 @@ export default function ExalviaScan({ brand = "BRAND", width = "" }) {
           }
           100% {
             top: -10px;
+          }
+        }
+
+        @keyframes movingGradient {
+          0% {
+            background-position: 0% 50%;
+          }
+          100% {
+            background-position: 100% 50%;
           }
         }
 
