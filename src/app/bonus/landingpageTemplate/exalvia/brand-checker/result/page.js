@@ -5,10 +5,7 @@ import { useRouter } from "next/navigation";
 import ExalviaButton from "../../ui-components/ExalviaButton";
 import HeroBrandChecker from "../HeroBrandChecker";
 import ExalviaDatabase from "../../database/ExalviaDatabase";
-import { FaRegClock, FaStar, FaRegStar, FaCircleCheck, FaRegCircleCheck, FaRegThumbsUp, FaArrowRight, FaPenClip, FaChevronDown, FaGift, FaCircleXmark, FaHandPointRight } from "react-icons/fa6";
-
-import { TbCircleDashedNumber9 } from "react-icons/tb";
-import { LuNotepadText } from "react-icons/lu";
+import { FaRegClock, FaStar, FaRegStar, FaCircleCheck, FaArrowRight, FaChevronDown, FaGift, FaCircleXmark } from "react-icons/fa6";
 import { MdOutlineRocketLaunch } from "react-icons/md";
 import ExalviaLinkButton from "../../ui-components/ExalviaLinkButton";
 import ExalviaImage from "../../ui-components/ExalviaImage";
@@ -32,9 +29,6 @@ const formatCurrency = (amount) => {
 export default function BrandCheckerResult() {
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [startTime, setStartTime] = useState(null);
-  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
-  const [isNotesOpen, setIsNotesOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [accordionOpen, setAccordionOpen] = useState("notes"); // "details", "notes", or "packages"
   const [myTest, setMyTest] = useState("default value"); // Add state for myTest
@@ -126,15 +120,6 @@ export default function BrandCheckerResult() {
       answers = [];
       testStartTime = "";
       endTime = "";
-
-      console.log("Debug - Data from URL ONLY:", {
-        brandName,
-        rawScore,
-        normalizedScore,
-        categoryScores,
-        redFlagsCount: redFlags.length,
-        duration: durationText,
-      });
     } else if (urlParams.has("brand") && urlParams.has("answers")) {
       // Fallback to readable format
       brandName = urlParams.get("brand");
@@ -216,28 +201,11 @@ export default function BrandCheckerResult() {
       durationText = durationMinutes > 0 ? `${durationMinutes}m ${durationSeconds}s` : `${durationSeconds}s`;
     }
 
-    const startTime = testStartTime ? new Date(testStartTime) : new Date();
-    setStartTime(startTime);
-
     // Determine classification based on lowest category score and red flags
     let classification = "";
     let description = "";
     let recommendedPackage = "";
     let condition = "";
-
-    // Calculate category scores first if not already calculated
-    if (!categoryScores || Object.keys(categoryScores).length === 0) {
-      categoryScores = {};
-      const categories = ["Informasi Produk", "Target", "Harga", "Cara Menjual", "Reflektif", "Identitas Visual"];
-      categories.forEach((category) => {
-        const categoryAnswers = answers.filter((answer) => answer.category === category);
-        const categoryTotal = categoryAnswers.reduce((total, answer) => total + (Number(answer?.score) || 0), 0);
-        const categoryMax = categoryAnswers.length * 4;
-        const categoryPercentageRaw = categoryMax > 0 ? (categoryTotal / categoryMax) * 100 : 0;
-        const categoryPercentage = Number.isFinite(categoryPercentageRaw) ? Math.round(categoryPercentageRaw) : 0;
-        categoryScores[category] = categoryPercentage;
-      });
-    }
 
     // Find the lowest scoring category
     const sortedCategories = Object.entries(categoryScores).sort(([, a], [, b]) => a - b);
@@ -280,16 +248,6 @@ export default function BrandCheckerResult() {
 
     recommendedPackage = categoryPackageMapping[lowestCategoryName] || "Qolilan Service Pack";
 
-    // Log classification process
-    console.log("=== CLASSIFICATION ANALYSIS ===");
-    console.log("Category Scores:", categoryScores);
-    console.log("Lowest Category:", lowestCategoryName, "with score:", lowestCategoryScore);
-    console.log("Classification:", classification);
-    console.log("Description:", description);
-    console.log("Recommended Package:", recommendedPackage);
-    console.log("Condition:", condition);
-    console.log("===============================");
-
     // Red flags already processed from URL parameters above
     // No additional detection needed
 
@@ -330,32 +288,7 @@ export default function BrandCheckerResult() {
       },
     });
 
-    // Log all available data for debugging
-    console.log("=== ALL BRAND CHECKER DATA ===");
-    console.log("Brand Name:", brandName);
-    console.log("Raw Score:", rawScore);
-    console.log("Normalized Score:", normalizedScore);
-    console.log("Classification:", classification);
-    console.log("Description:", description);
-    console.log("Recommended Package:", recommendedPackage);
-    console.log("Condition:", condition);
-    console.log("Category Scores:", categoryScores);
-    console.log("Red Flags:", redFlags);
-    console.log("Total Questions:", totalQuestions || answers.length);
-    console.log("Duration:", durationText);
-    console.log("Start Time:", startTime);
-    console.log("End Time:", endTime);
-    console.log("===============================");
-
     setLoading(false);
-  };
-
-  const handleViewDetails = () => {
-    // Store result for detailed view
-    if (typeof window !== "undefined") {
-      sessionStorage.setItem("brandCheckerResult", JSON.stringify(result));
-    }
-    router.push("/brand-checker/result/details");
   };
 
   const handleRestart = () => {

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import ExalviaDatabase from "../../database/ExalviaDatabase";
+import ExalviaScan from "../../sections/ExalviaScan";
 
 export default function BrandCheckerQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -10,6 +11,7 @@ export default function BrandCheckerQuestions() {
   const [selectedOption, setSelectedOption] = useState(null);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [randomOptions, setRandomOptions] = useState([]);
+  const [showScanning, setShowScanning] = useState(false);
   const router = useRouter();
 
   const questions = ExalviaDatabase.brandChecker.questions;
@@ -36,13 +38,19 @@ export default function BrandCheckerQuestions() {
     // Load existing answers if any
     const existingAnswers = sessionStorage.getItem("brandCheckerAnswers");
     if (existingAnswers) {
-      const parsedAnswers = JSON.parse(existingAnswers);
-      setAnswers(parsedAnswers);
-      if (parsedAnswers.length > 0 && parsedAnswers.length < totalQuestions) {
-        setCurrentQuestion(parsedAnswers.length);
-      } else if (parsedAnswers.length >= totalQuestions) {
-        // Already completed, redirect to result
-        router.push("/bonus/landingpageTemplate/exalvia/brand-checker/result");
+      try {
+        const parsedAnswers = JSON.parse(existingAnswers);
+        setAnswers(parsedAnswers);
+        if (parsedAnswers.length > 0 && parsedAnswers.length < totalQuestions) {
+          setCurrentQuestion(parsedAnswers.length);
+        } else if (parsedAnswers.length >= totalQuestions) {
+          // Already completed, redirect to result
+          router.push("/bonus/landingpageTemplate/exalvia/brand-checker/result");
+        }
+      } catch (error) {
+        console.error("Error parsing existing answers:", error);
+        // Clear corrupted data and continue
+        sessionStorage.removeItem("brandCheckerAnswers");
       }
     }
   }, [router, totalQuestions]);
@@ -50,7 +58,11 @@ export default function BrandCheckerQuestions() {
   useEffect(() => {
     // Save answers to sessionStorage whenever they change
     if (typeof window !== "undefined" && answers.length > 0) {
-      sessionStorage.setItem("brandCheckerAnswers", JSON.stringify(answers));
+      try {
+        sessionStorage.setItem("brandCheckerAnswers", JSON.stringify(answers));
+      } catch (error) {
+        console.error("Error saving answers to sessionStorage:", error);
+      }
     }
   }, [answers]);
 
@@ -61,6 +73,14 @@ export default function BrandCheckerQuestions() {
       setRandomOptions(shuffled);
     }
   }, [currentQuestion, questions]);
+
+  // Cleanup function to prevent memory leaks
+  useEffect(() => {
+    return () => {
+      // Clear any pending timeouts or intervals
+      setShowScanning(false);
+    };
+  }, []);
 
   const handleAnswerSelect = (optionIndex) => {
     setSelectedOption(optionIndex);
@@ -92,10 +112,11 @@ export default function BrandCheckerQuestions() {
       if (currentQuestion < totalQuestions - 1) {
         setCurrentQuestion(currentQuestion + 1);
       } else {
-        // All questions completed, mark test as completed and redirect to result with short URL
+        // All questions completed, show scanning for 5 seconds then redirect
         sessionStorage.setItem("brandCheckerCompleted", "true");
+        setShowScanning(true);
 
-        // Prepare minimal data for short URL
+        // Prepare all data for result page
         const brandName = sessionStorage.getItem("brandName");
         const testStartTime = sessionStorage.getItem("brandCheckerStartTime");
         const endTime = new Date().toISOString();
@@ -154,21 +175,53 @@ export default function BrandCheckerQuestions() {
           durationText = durationMinutes > 0 ? `${durationMinutes}m ${durationSeconds}s` : `${durationSeconds}s`;
         }
 
-        // Create short URL parameters with IDs - NO sessionStorage needed!
-        const params = new URLSearchParams({
-          b: brandName?.substring(0, 20) || "", // Limit brand name length
-          sc: normalizedScore.toString(),
-          rs: rawScore.toString(),
-          dur: durationText, // Send calculated duration, not timestamps
-          cs: JSON.stringify(categoryScores),
-          rf: redFlags.join(","),
-          st: testStartTime || new Date().toISOString(), // Send start time
-          et: endTime, // Send end time (when test completed)
-          mytest: myTest, // Send myTest data
-          // No more sessionStorage dependency!
-        });
+        // Store result data in sessionStorage for later use
+        const resultData = {
+          brandName: brandName?.substring(0, 20) || "",
+          normalizedScore,
+          rawScore,
+          durationText,
+          categoryScores,
+          redFlags,
+          testStartTime: testStartTime || new Date().toISOString(),
+          endTime,
+          myTest: new Date().toLocaleString("en-GB", {
+            day: "numeric",
+            month: "short",
+            year: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit",
+          }),
+        };
 
-        router.push(`/bonus/landingpageTemplate/exalvia/brand-checker/result?${params.toString()}`);
+        sessionStorage.setItem("brandCheckerResultData", JSON.stringify(resultData));
+
+        // Redirect after 5 seconds
+        const redirectTimeout = setTimeout(() => {
+          try {
+            const params = new URLSearchParams({
+              b: resultData.brandName,
+              sc: resultData.normalizedScore.toString(),
+              rs: resultData.rawScore.toString(),
+              dur: resultData.durationText,
+              cs: JSON.stringify(resultData.categoryScores),
+              rf: resultData.redFlags.join(","),
+              st: resultData.testStartTime,
+              et: resultData.endTime,
+              mytest: resultData.myTest,
+            });
+
+            router.push(`/bonus/landingpageTemplate/exalvia/brand-checker/result?${params.toString()}`);
+          } catch (error) {
+            console.error("Error during redirect:", error);
+            // Fallback redirect without parameters
+            router.push("/bonus/landingpageTemplate/exalvia/brand-checker/result");
+          }
+        }, 5000);
+
+        // Cleanup timeout if component unmounts
+        return () => clearTimeout(redirectTimeout);
       }
     }, 500);
   };
@@ -214,7 +267,11 @@ export default function BrandCheckerQuestions() {
         {/* Question Card - Middle */}
         <div className="flex-1 flex items-center justify-center">
           <div className="bg-base-200 rounded-bl-4xl sm:p-8 p-5 w-full" id="qustioncard">
-            {isTransitioning ? (
+            {showScanning ? (
+              <div className="w-full">
+                <ExalviaScan brand={typeof window !== "undefined" ? sessionStorage.getItem("brandName") : ""} />
+              </div>
+            ) : isTransitioning ? (
               <div className="text-center py-8">
                 <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
                 <p className="text-sm text-gray-500 mt-4">Memproses jawaban...</p>

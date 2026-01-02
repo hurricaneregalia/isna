@@ -687,7 +687,6 @@ const ExalviaDatabase = {
         output: "Dokumen PDF",
         included: [
           { title: "Analisa brand", status: true },
-          { title: "Analisa target pasar", status: true },
           { title: "Rumusan unik selling point", status: true },
           { title: "Rumusan pesan penjualan", status: true },
           { title: "Brand guideline", status: false },
@@ -708,7 +707,6 @@ const ExalviaDatabase = {
         output: "Dokumen PDF + Landing Page",
         included: [
           { title: "Analisa brand", status: true },
-          { title: "Analisa target pasar", status: true },
           { title: "Rumusan unik selling point", status: true },
           { title: "Rumusan pesan penjualan", status: true },
           { title: "Brand guideline", status: true },
@@ -729,7 +727,6 @@ const ExalviaDatabase = {
         output: "Dokumen PDF + Landing Page FB Ads",
         included: [
           { title: "Analisa brand", status: true },
-          { title: "Analisa target pasar", status: true },
           { title: "Rumusan unik selling point", status: true },
           { title: "Rumusan pesan penjualan", status: true },
           { title: "Brand guideline", status: true },
