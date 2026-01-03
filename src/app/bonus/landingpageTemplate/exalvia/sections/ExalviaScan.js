@@ -6,11 +6,15 @@ export default function ExalviaScan({ brand = "BRAND", width = "" }) {
     <div className={`${width} bg-base-200 mx-auto text-base-content/50 rounded-3xl w-full p-8 flex flex-col gap-5 relative overflow-hidden`}>
       <div className="absolute w-200 aspect-square top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" style={{ animation: "slowPulse 3s ease-in-out infinite" }}>
         <div
-          className="bg-linear-to-r from-orange-400 via-pink-500 to-blue-500 absolute w-200 aspect-square top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-spin rounded-full"
-          style={{ animation: "spin 5s linear infinite" }}
+          className="absolute w-200 aspect-square top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-spin rounded-full"
+          style={{
+            animation: "spin 10s linear infinite",
+            background:
+              "linear-gradient(180deg, #FB923C, #FB923C, #EC4899,#EC4899, #3B82F6, #3B82F6, transparent, #FB923C, #FB923C, #EC4899,#EC4899, #3B82F6, #3B82F6, transparent, transparent, #3B82F6, #3B82F6)",
+          }}
         />
       </div>
-      <div className="bg-base-200 blur-sm absolute rounded-2xl top-1.5 left-1.5 right-1.5 bottom-1.5" />
+      <div className="bg-base-200 blur-xs absolute rounded-2xl top-1.5 left-1.5 right-1.5 bottom-1.5" />
 
       {/* Corner Brackets */}
       <div className="w-10 aspect-square absolute top-4 left-4 rounded-tl-2xl border-t-2 border-l-2 border-base-content/30" />

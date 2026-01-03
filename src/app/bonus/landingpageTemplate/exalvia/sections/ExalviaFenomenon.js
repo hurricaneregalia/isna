@@ -24,9 +24,9 @@ export default function ExalviaFenomenon({ data, secId = "fenomenon" }) {
             <div className="absolute top-1/2 -right-6 md:-right-10 transform -translate-y-1/2">
               <div className="bg-primary/90 p-5 md:p-6 rounded-bl-4xl  max-w-[200px] md:max-w-[240px]">
                 <div className="flex items-center gap-2 mb-2 text-warning">
-                  <span className="text-2xl font-bold">78%</span>
+                  <span className="text-2xl font-bold">68%</span>
                 </div>
-                <p className="text-xs md:text-sm font-montserrat text-white/70 leading-relaxed">Calon pembeli ragu karena pesan promosi tidak profesional.</p>
+                <p className="text-xs md:text-sm font-montserrat text-white/70 leading-relaxed">Penjualan meningkat karena menggunakan pesan penjualan profesional.</p>
               </div>
             </div>
           </div>

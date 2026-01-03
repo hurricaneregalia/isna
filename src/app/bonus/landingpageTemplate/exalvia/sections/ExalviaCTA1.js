@@ -9,10 +9,20 @@ export default function ExalviaCTA1({ data, secId = "cta1", targetLink = "#" }) 
 
   return (
     <section id={secId} className="p-5 bg-base-200">
-      <div className="py-20 md:py-32 bg-neutral text-neutral-content rounded-bl-4xl">
+      <div className="py-20 md:py-32 bg-neutral text-neutral-content rounded-bl-4xl relative">
+        <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
+          <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+              <pattern id="grid" width="8" height="8" patternUnits="userSpaceOnUse">
+                <path d="M 8 0 L 0 0 0 8" fill="none" stroke="currentColor" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
+        </div>
         <div className="lg:w-7/12 sm:w-11/12 w-full mx-auto px-6 md:px-16 lg:px-24 flex flex-col items-center text-center gap-6">
           <span className="uppercase tracking-[0.2em] text-warning text-xs md:text-sm font-bold">{data.label}</span>
-          <ExalviaScan width="lg:w-6/12 sm:w-8/12" />
+          <ExalviaScan width=" sm:w-8/12 my-15" />
           <h2 className="font-instrument-serif text-4xl md:text-5xl font-semibold leading-tight text-white">{data.title}</h2>
           <ExalviaBodyText text={data.description} className="mb-4 text-white/80" />
           <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto justify-center">

@@ -58,7 +58,7 @@ const ExalviaDatabase = {
     ],
   },
   hero: {
-    headline: "Sistem cerdas untuk menjual produk branded di atas kompetitor. Spesial produk Ramadhan!",
+    headline: "Sistem online cerdas untuk menjual produk branded di atas kompetitor. Spesial produk Ramadhan!",
     subheadline: "Kami bantu Anda menyampaikan pesan yang tepat, membuat pelanggan merasa dipahami dan tertarik membeli.",
     buttonLabel: "Konsultasi Sekarang",
     backgroundImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
@@ -91,8 +91,8 @@ const ExalviaDatabase = {
   },
   fenomenon: {
     label: "Solusi",
-    title: "Sebenarnya calon pembeli tidak menolak produk Anda.",
-    description: "Calong pembeli hanya belum melihat alasan yang cukup kuat untuk membayar lebih. Buat mereka mendapatkan alasan itu dengan:",
+    title: "Berikan calon pembeli alsan yang tepat.",
+    description: "Mereka tidak menolak, calon pembeli hanya belum melihat alasan yang cukup kuat untuk membayar lebih. Buat mereka mendapatkan alasan itu dengan:",
     image: ipad2,
     patternImage: "https://www.transparenttextures.com/patterns/arabesque.png",
     signature: "Amir Al-Farabi",
