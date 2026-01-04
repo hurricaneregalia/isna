@@ -373,8 +373,8 @@ export default function BrandCheckerResult() {
               <MdOutlineRocketLaunch className=" text-xl" />
             </div>
             <hr className="my-4" />
-            <div className=" flex sm:flex-row flex-col items-center gap-15 ">
-              <div className="relative sm:w-6/12 w-full h-auto flex flex-col gap-8">
+            <div className="w-full ">
+              <div className="relative  w-full h-auto flex flex-col gap-8">
                 {result.normalizedScore < 100 && (
                   <div className="bg-base-200 rounded-bl-4xl h-full sm:p-8 p-5">
                     <div className=" w-20 mb-5 aspect-square bg-primary rounded-bl-4xl mx-auto flex items-center justify-center">
@@ -395,7 +395,7 @@ export default function BrandCheckerResult() {
                   aspectRatio="aspect-4/3 sm:block hidden"
                 />
               </div>
-              <div className="sm:w-6/12 w-full">
+              <div className=" w-full">
                 {result.normalizedScore === 100 ? (
                   <div className="border-4 border-primary rounded-bl-4xl p-8">
                     <div className="text-center">
