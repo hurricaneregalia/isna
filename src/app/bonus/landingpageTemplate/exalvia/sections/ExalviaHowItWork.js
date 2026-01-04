@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import ExalviaSectionHeader from "../ui-components/ExalviaSectionHeader";
 import ExalviaCard from "../ui-components/ExalviaCard";
@@ -18,8 +16,10 @@ export default function ExalviaHowItWork({ data, secId = "how-it-works" }) {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left: Steps */}
-          <div className="flex flex-col gap-5">
+          <div className="relative">
+            <ExalviaImage src={data.image} aspectRatio="aspect-4/3" alt={data.title} width={800} height={600} className="w-full h-auto object-contain" />
+          </div>
+          <div className="flex flex-col gap-4">
             {data.steps?.map((step, idx) => {
               const number = String(idx + 1).padStart(2, "0");
               return (
@@ -34,11 +34,6 @@ export default function ExalviaHowItWork({ data, secId = "how-it-works" }) {
                 </ExalviaCard>
               );
             })}
-          </div>
-
-          {/* Right: Image with subtle pattern */}
-          <div className="relative">
-            <ExalviaImage src={data.image} alt={data.title} width={800} height={600} className="w-full h-auto object-contain" />
           </div>
         </div>
       </div>

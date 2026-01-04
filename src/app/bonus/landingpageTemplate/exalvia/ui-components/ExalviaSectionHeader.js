@@ -7,7 +7,7 @@ export default function ExalviaSectionHeader({ badge, title, subtitle, align = "
   const alignClass = align === "center" ? "text-center items-center mx-auto" : "text-left items-start";
 
   return (
-    <div className={`flex flex-col space-y-2 max-w-4xl ${alignClass} ${className}`}>
+    <div className={`flex flex-col space-y-2 ${alignClass} ${className}`}>
       {badge && <ExalviaBadge>{badge}</ExalviaBadge>}
       <ExalviaHeadline>{title}</ExalviaHeadline>
       {subtitle && <ExalviaSubHeadline>{subtitle}</ExalviaSubHeadline>}
