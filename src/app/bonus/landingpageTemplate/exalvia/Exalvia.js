@@ -33,8 +33,8 @@ const Exalvia = () => {
       <ExalviaFenomenon data={data.fenomenon} secId="fenomenon" />
       <ExalviaCTA1 data={data.cta1} secId="cta1" targetLink={ctaLink} />
       <ExalviaBenefits data={data.benefits} secId="benefits" linkTarget="fact" targetLink={ctaLink} />
-      {/* 
-      <ExalviaHowItWork data={data.howItWork} secId="how-it-works" />
+
+      {/* <ExalviaHowItWork data={data.howItWork} secId="how-it-works" />
       <ExalviaSolution data={data.solution} secId="solution" />
       <ExalviaFeatures data={data.features} secId="features" />
       <ExalviaService data={data.service} secId="service" />
@@ -45,7 +45,7 @@ const Exalvia = () => {
       <ExalviaFAQ data={data.faq} secId="faq" />
       <ExalviaClientLogo data={data.clientLogo} secId="clients" />
       <ExalviaService data={data.service} secId="service" />
-      <ExalviaHadist data={data.hadist} secId="hadist" />
+      <ExalviaHadist data={data.hadist} secId="hadist" /> */}
       <ExalviaFooter data={data.footer} secId="footer" />
     </main>
   );
