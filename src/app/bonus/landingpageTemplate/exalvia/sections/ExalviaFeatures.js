@@ -16,35 +16,49 @@ export default function ExalviaFeatures({ data, secId = "features" }) {
           <ExalviaSectionHeader badge={data.label} title={data.title} subtitle={data.subtitle} align="center" />
         </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {data.items?.map((item, index) => (
-            <div key={index} className="group relative aspect-4/5 overflow-hidden rounded-bl-4xl cursor-pointer transition-transform duration-300 hover:scale-105">
-              {/* Background Image */}
-              <div className="absolute inset-0">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-              </div>
+        {/* Bento Grid Features */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {data.items?.map((item, index) => {
+            // Bento rules for 3-column grid:
+            // 0: Vertical (row-span-2)
+            // 1: Horizontal Large (col-span-2)
+            // 2: Small Square
+            // 3: Small Square
+            // 4: Horizontal Medium (col-span-2)
 
-              {/* Gradient Overlay untuk keterbacaan label */}
-              <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent"></div>
+            let gridClasses = "";
+            if (index === 0) gridClasses = "md:col-span-1 md:row-span-2 h-[400px] md:h-auto";
+            else if (index === 1) gridClasses = "md:col-span-2 md:row-span-1 h-[250px]";
+            else if (index === 2) gridClasses = "md:col-span-1 md:row-span-1 h-[250px]";
+            else if (index === 3) gridClasses = "md:col-span-1 md:row-span-1 h-[250px]";
+            else if (index === 4) gridClasses = "md:col-span-2 md:row-span-1 h-[250px]";
+            else gridClasses = "md:col-span-1 h-[250px]";
 
-              {/* Label Area */}
-              <div className="absolute bottom-0 left-0 right-0 p-6">
-                <div className="bg-base-100/20 text-white rounded-bl-2xl p-4 flex items-center justify-between gap-3 transition-all duration-300 group-hover:bg-base-100 group-hover:text-primary">
-                  <h3 className="font-instrument-serif text-xl md:text-2xl font-semibold flex-1">{item.title}</h3>
-                  <div className="shrink-0 w-8 h-8 flex items-center justify-center bg-primary/10 text-primary rounded-full group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                    <FaArrowRight className="text-sm" />
+            return (
+              <div key={index} className={`group relative overflow-hidden rounded-bl-4xl  cursor-pointer transition-colors duration-300 ${gridClasses}`}>
+                {/* Background Image */}
+                <div className="absolute inset-0">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  />
+                  {/* Solid Overlay for Text Contrast (No Blur/Shadow) */}
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500"></div>
+                </div>
+                {/* Content Area */}
+                <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                  <div className="flex flex-col gap-2">
+                    <h3 className="font-instrument-serif text-xl md:text-2xl text-white font-semibold leading-tight transform group-hover:-translate-y-1 transition-transform duration-500">
+                      {item.title}
+                    </h3>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

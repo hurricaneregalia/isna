@@ -23,6 +23,7 @@ import ExalviaFooter from "./sections/ExalviaFooter";
 
 const Exalvia = () => {
   const data = ExalviaDatabase;
+  const ctaLink = "/bonus/landingpageTemplate/exalvia/brand-checker";
 
   return (
     <main className="min-h-screen bg-base-100 text-base-content font-montserrat">
@@ -30,12 +31,15 @@ const Exalvia = () => {
       <ExalviaHero data={data.hero} secId="hero" linkTarget="fact" />
       <ExalviaFact data={data.fact} secId="fact" />
       <ExalviaFenomenon data={data.fenomenon} secId="fenomenon" />
-      <ExalviaSolution data={data.solution} secId="solution" />
-      <ExalviaCTA1 data={data.cta1} secId="cta1" targetLink="/bonus/landingpageTemplate/exalvia/brand-checker" />
-      <ExalviaFeatures data={data.features} secId="features" />
+      <ExalviaCTA1 data={data.cta1} secId="cta1" targetLink={ctaLink} />
+      <ExalviaBenefits data={data.benefits} secId="benefits" linkTarget="fact" targetLink={ctaLink} />
+      {/* 
       <ExalviaHowItWork data={data.howItWork} secId="how-it-works" />
-      <ExalviaTestimonials data={data.testimonials} secId="testimonials" />
-      <ExalviaBenefits data={data.benefits} secId="benefits" />
+      <ExalviaSolution data={data.solution} secId="solution" />
+      <ExalviaFeatures data={data.features} secId="features" />
+      <ExalviaService data={data.service} secId="service" />
+      <ExalviaClientLogo data={data.clientLogo} secId="clients" />
+      <ExalviaHadist data={data.hadist} secId="hadist" />
       <ExalviaFlow data={data.flow} secId="flow" />
       <ExalviaBonus data={data.bonus} secId="bonus" />
       <ExalviaFAQ data={data.faq} secId="faq" />

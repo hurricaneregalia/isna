@@ -1,13 +1,16 @@
 // Import semua icon yang digunakan dalam loop
-import { BiSolidMessageCheck } from "react-icons/bi";
-import { FaSearch, FaPenNib, FaMoon, FaRocket, FaShieldAlt, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { FaRegFaceTired, FaToggleOn } from "react-icons/fa6";
+import { BiSolidMessageCheck, BiTargetLock } from "react-icons/bi";
+import { FaSearch, FaPenNib, FaMoon, FaRocket, FaShieldAlt, FaInstagram, FaLinkedin, FaTwitter, FaBox, FaBullseye, FaTag, FaBullhorn, FaPalette } from "react-icons/fa";
+import { FaRegEye, FaRegFaceTired, FaToggleOn } from "react-icons/fa6";
 import { GiCrackedGlass, GiSwordBreak } from "react-icons/gi";
 import { HiChat, HiLightBulb, HiOutlineDocumentDuplicate, HiShieldCheck, HiTrendingUp, HiUserGroup } from "react-icons/hi";
-import { IoSparkles } from "react-icons/io5";
-import { MdOutlineMoneyOffCsred } from "react-icons/md";
+import { IoDocumentText, IoSparkles } from "react-icons/io5";
+import { MdOutlineMonetizationOn, MdOutlineMoneyOffCsred } from "react-icons/md";
 import { HiCheckBadge } from "react-icons/hi2";
 import { RiSwordFill } from "react-icons/ri";
+import { TfiTarget } from "react-icons/tfi";
+import { FiFileText, FiGlobe } from "react-icons/fi";
+import { LuBadgeCheck } from "react-icons/lu";
 
 const ipad2 = "/images/templateLandingPageBonus/Exalvia/sections/ipad-2.webp";
 
@@ -83,10 +86,10 @@ const ExalviaDatabase = {
     description: "Produk yang dibuat sudah berkualitas, sudah menggunakan iklan berbayar untuk promosi, sudah ikut tren marketplace, namun ini yang terjadi:",
     image: ipad2,
     items: [
-      { title: "Harga ideal sulit dipertahankan.", icon: <MdOutlineMoneyOffCsred /> },
-      { title: "Terjerumus dalam perang harga.", icon: <RiSwordFill /> },
-      { title: "Produk di anggap sama saja.", icon: <HiOutlineDocumentDuplicate /> },
-      { title: "Promosi hanya membuang uang saja.", icon: <FaRegFaceTired /> },
+      { title: "Harga ideal sulit dipertahankan, selalu kalah dengan kompetitor.", icon: <MdOutlineMoneyOffCsred /> },
+      { title: "Mudah terjerumus ke dalam perang harga yang menyakitkan.", icon: <RiSwordFill /> },
+      { title: "Produk di anggap sama, padahal kualitas kompetitor lebih rendah.", icon: <HiOutlineDocumentDuplicate /> },
+      { title: "Promosi hanya membuang uang saja, tanpa ada perubahan.", icon: <FaRegFaceTired /> },
     ],
   },
   fenomenon: {
@@ -101,7 +104,7 @@ const ExalviaDatabase = {
       { title: "Sampaikan nilai produk dengan baik.", icon: <IoSparkles /> },
       { title: "Bentuk kepercayaan brand yang kuat.", icon: <HiCheckBadge /> },
       { title: "Jual produk atau jasa yang berbeda.", icon: <FaToggleOn /> },
-      { title: "Buat pesan promosi yang jelas.", icon: <BiSolidMessageCheck /> },
+      { title: "Buat pesan promosi yang menarik dan jelas.", icon: <BiSolidMessageCheck /> },
     ],
   },
   solution: {
@@ -144,18 +147,45 @@ const ExalviaDatabase = {
         icon: <FaShieldAlt />,
       },
     ],
-    image: "/images/templateLandingPageBonus/Exalvia/sections/iphone-2.webp",
+    image: ipad2,
     patternImage: "https://www.transparenttextures.com/patterns/arabesque.png",
   },
   benefits: {
-    label: "Keunggulan",
-    title: "Manfaat Bekerja dengan Exalvia",
-    subtitle: "Setiap proyek dihandle dengan standar premium dan etika komunikasi yang elegan.",
+    label: "Keuntungan",
+    title: "6 Keuntungan dari SCAN BRAND",
+    subtitle: "Scan brand dapat mengidentifikasi kelebihan dan kekurangan brand Anda saat ini terkait hal-hal berikut:",
+    callToAction: "Manfaatkan semua informasi potensial di atas untuk menguatkan brand Anda sekarang juga!",
     items: [
-      { title: "Riset Mendalam", description: "Riset kompetitor + psikografi audiens sebelum menulis.", icon: <FaSearch /> },
-      { title: "Copy Etis", description: "Bahasa persuasif tanpa gimmick murahan, menjaga kredibilitas.", icon: <FaPenNib /> },
-      { title: "Visual Selaras", description: "Copy diselaraskan dengan visual Islami modern.", icon: <FaMoon /> },
-      { title: "Optimasi Konversi", description: "Struktur CTA dan narasi diarahkan untuk action nyata.", icon: <FaRocket /> },
+      {
+        title: "Informasi Produk",
+        description: "Menilai apakah informasi produk sudah jelas, ringkas, dan mudah dipahami.",
+        icon: <FiFileText />,
+      },
+      {
+        title: "Target Pasar",
+        description: "Menilai apakah target pasar sudah tepat atau justru salah sasaran.",
+        icon: <BiTargetLock />,
+      },
+      {
+        title: "Strategi Harga",
+        description: "Menilai kesesuaian harga dengan brand serta target pasar yang dituju.",
+        icon: <MdOutlineMonetizationOn />,
+      },
+      {
+        title: "Strategi Promosi Online",
+        description: "Menilai jangkauan promosi serta tingkat interaksi dari pelanggan.",
+        icon: <FiGlobe />,
+      },
+      {
+        title: "Identitas Visual",
+        description: "Menilai kualitas dan konsistensi identitas visual yang digunakan.",
+        icon: <FaRegEye />,
+      },
+      {
+        title: "Rekomendasi",
+        description: "Memberikan arahan strategis untuk pengembangan brand ke depan.",
+        icon: <LuBadgeCheck />,
+      },
     ],
   },
   service: {

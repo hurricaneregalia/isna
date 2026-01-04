@@ -17,7 +17,7 @@ export default function ExalviaFenomenon({ data, secId = "fenomenon" }) {
           <div className="order-1 relative">
             {/* Main Visual Container */}
             <div className="relative">
-              <ExalviaImage src={data.image} alt={data.title} width={800} height={600} className="w-full h-auto object-contain" />
+              <ExalviaImage src={data.image} alt={data.title} width={800} height={600} className="w-full h-auto object-contain" aspectRatio="aspect-4/3" />
             </div>
 
             {/* Floating Info Card */}
@@ -26,7 +26,7 @@ export default function ExalviaFenomenon({ data, secId = "fenomenon" }) {
                 <div className="flex items-center gap-2 mb-2 text-warning">
                   <span className="text-2xl font-bold">68%</span>
                 </div>
-                <p className="text-xs md:text-sm font-montserrat text-white/70 leading-relaxed">Penjualan meningkat karena menggunakan pesan penjualan profesional.</p>
+                <p className="text-xs md:text-sm font-montserrat text-white/70 leading-relaxed">Calon pembeli lebih percaya dengan pesan promosi profesional.</p>
               </div>
             </div>
           </div>
@@ -34,14 +34,14 @@ export default function ExalviaFenomenon({ data, secId = "fenomenon" }) {
           {/* Kolom Narasi: Posisi Kanan di Desktop */}
           <div className="order-2 flex flex-col gap-6">
             <ExalviaBadge text={data.label} />
-            <ExalviaHeadline text={data.title} className="mb-2 text-2xl" />
+            <ExalviaHeadline text={data.title} className="mb-2 font-instrument-serif text-3xl md:text-5xl font-semibold leading-tight" />
             <ExalviaBodyText text={data.description} className="mb-4" />
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {data.items?.map((item, index) => {
                 return (
-                  <ExalviaCard key={index} className="flex items-center gap-2 p-4">
+                  <ExalviaCard key={index} className="flex items-start gap-2 p-4">
                     {item.icon && <ExalviaIconBox icon={item.icon} className="shrink-0" />}
-                    <span className="font-montserrat text-sm md:text-base text-base-content">{item.title}</span>
+                    <span className="font-montserrat text-base-content">{item.title}</span>
                   </ExalviaCard>
                 );
               })}
