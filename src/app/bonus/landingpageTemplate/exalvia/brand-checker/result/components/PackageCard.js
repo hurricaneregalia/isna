@@ -16,19 +16,10 @@ export default function PackageCard({ pkg, isRecommended = false, formatCurrency
           {isRecommended && <span className="badge badge-secondary badge-soft uppercase text-sm">recommended</span>}
         </div>
 
-        <div className={isRecommended ? "text-white" : ""}>
-          <h4 className={`md:text-3xl text-2xl font-bold ${isRecommended ? "w-6/12" : ""} mb-2`}>{pkg.name}</h4>
-          <div className="mt-5 flex flex-col gap-3">
-            <p className="opacity-70 flex gap-2 items-start shrink">
-              <BsFillPatchCheckFill className="text-lg shrink-0" /> Cocok untuk {pkg.description}
-            </p>
-            <p className="opacity-70 flex gap-2 items-start shrink">
-              <BsFillPatchCheckFill className="text-lg shrink-0" /> Output {pkg.output}
-            </p>
-          </div>
+        <div className={isRecommended ? "text-white my-10" : "my-10"}>
+          <h4 className={`md:text-3xl text-2xl font-bold ${isRecommended ? "w-6/12" : ""} `}>{pkg.name}</h4>
+          <div className="text-2xl font-bold text-warning">Rp {formatCurrency(pkg.price)}</div>
         </div>
-
-        <div className="text-2xl font-bold text-warning mb-2">Rp {formatCurrency(pkg.price)}</div>
 
         {isRecommended && (
           <>
@@ -46,7 +37,7 @@ export default function PackageCard({ pkg, isRecommended = false, formatCurrency
         )}
       </div>
 
-      <div className="p-8 flex-grow">
+      <div className="p-8 grow">
         <div>
           <h4 className="font-semibold mb-3">Yang Anda Dapatkan:</h4>
           <div className="space-y-3">

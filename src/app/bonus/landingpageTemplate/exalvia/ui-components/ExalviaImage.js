@@ -6,7 +6,7 @@ export default function ExalviaImage({ src, alt, className = "", containerClassN
     <div
       className={
         followWrapper
-          ? `relative overflow-visible bg-red-500 group hover:scale-105 transition-transform duration-300 ${containerClassName}`
+          ? `relative overflow-visible group hover:scale-105 transition-transform duration-300 ${containerClassName}`
           : `relative w-full ${aspectRatio} overflow-visible group hover:scale-105 transition-transform duration-300 ${containerClassName}`
       }
     >

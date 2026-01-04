@@ -14,7 +14,14 @@ export default function BonusOffer() {
       <hr className="my-4" />
       <div className=" flex items-center sm:gap-15 gap-5 sm:flex-row flex-col">
         <div className="relative sm:w-6/12 w-full sm:h-auto h-fit">
-          <ExalviaImage src="/images/templateLandingPageBonus/Exalvia/sections/ipad-2.webp" alt="bonus" width={800} height={600} className="w-full sm:h-auto h-fit object-contain" />
+          <ExalviaImage
+            src="/images/templateLandingPageBonus/Exalvia/sections/ipad-2.webp"
+            alt="bonus"
+            width={800}
+            height={600}
+            className="w-full sm:h-auto h-fit object-contain"
+            aspectRatio="aspect-4/3"
+          />
         </div>
         <div className="w-full sm:w-6/12">
           <div className="max-w-4xl mx-auto text-center">
