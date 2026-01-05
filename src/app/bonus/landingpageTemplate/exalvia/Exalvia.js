@@ -28,11 +28,11 @@ const Exalvia = () => {
   return (
     <main className="min-h-screen bg-base-100 text-base-content font-montserrat">
       <ExalviaNavbar data={data.navbar} />
-      <ExalviaHero data={data.hero} secId="hero" linkTarget="fact" />
-      <ExalviaFact data={data.fact} secId="fact" />
-      <ExalviaFenomenon data={data.fenomenon} secId="fenomenon" />
-      <ExalviaCTA1 data={data.cta1} secId="cta1" targetLink={ctaLink} />
-      <ExalviaBenefits data={data.benefits} secId="benefits" linkTarget="fact" targetLink={ctaLink} />
+      <ExalviaHero data={data.hero} secId="hero" linkTarget="masalah" />
+      <ExalviaFact data={data.fact} secId="masalah" />
+      <ExalviaFenomenon data={data.fenomenon} secId="solusi" />
+      <ExalviaCTA1 data={data.cta1} secId="scan" targetLink={ctaLink} />
+      <ExalviaBenefits data={data.benefits} secId="keuntungan" targetLink={ctaLink} />
 
       {/* <ExalviaHowItWork data={data.howItWork} secId="how-it-works" />
       <ExalviaSolution data={data.solution} secId="solution" />

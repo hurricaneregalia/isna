@@ -53,11 +53,10 @@ const ExalviaDatabase = {
     logo: "https://cdn-icons-png.flaticon.com/512/3665/3665923.png",
     brandName: "Exalvia",
     menu: [
-      { label: "Masalah", link: "fenomenon" },
-      { label: "Fitur", link: "features" },
-      { label: "Layanan", link: "service" },
-      { label: "Alur Kerja", link: "flow" },
-      { label: "FAQ", link: "faq" },
+      { label: "Masalah", link: "masalah" },
+      { label: "Solusi", link: "solusi" },
+      { label: "Scan", link: "scan" },
+      { label: "Keuntungan", link: "keuntungan" },
     ],
   },
   hero: {
@@ -710,7 +709,7 @@ const ExalviaDatabase = {
     image: ipad2,
     recommended: [
       {
-        name: "Qolilan Service Pack",
+        name: "Qolilan",
         price: priceCore,
         features: ["Brand Strategy", "Logo Design", "Basic Guidelines"],
         description: "merumuskan pesan penjualan.",
@@ -730,7 +729,7 @@ const ExalviaDatabase = {
         turnaround: "1-2 hari kerja",
       },
       {
-        name: "Mumtazan Service Pack",
+        name: "Mumtazan",
         price: priceCore + priceDecoy1,
         features: ["Advanced Strategy", "Visual Identity", "Content Guidelines", "Market Analysis"],
         description: "merumuskan pesan penjualan + landing page",
@@ -750,7 +749,7 @@ const ExalviaDatabase = {
         turnaround: "2-4 hari kerja",
       },
       {
-        name: "Kamilan Service Pack",
+        name: "Kamilan",
         price: priceCore + priceDecoy2,
         features: ["Scale Strategy", "Complete Brand System", "Campaign Assets", "Performance Tracking"],
         description: "merumuskan pesan penjualan + landing page + fitur pembayaran otomatis",

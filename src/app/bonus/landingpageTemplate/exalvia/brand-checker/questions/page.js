@@ -2,8 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import ExalviaDatabase from "../../database/ExalviaDatabase";
+import data from "../../database/ExalviaDatabase";
 import ExalviaScan from "../../sections/ExalviaScan";
+import ExalviaNavbar from "../../sections/ExalviaNavbar";
+import ExalviaFooter from "../../sections/ExalviaFooter";
 
 export default function BrandCheckerQuestions() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -14,7 +16,7 @@ export default function BrandCheckerQuestions() {
   const [showScanning, setShowScanning] = useState(false);
   const router = useRouter();
 
-  const questions = ExalviaDatabase.brandChecker.questions;
+  const questions = data.brandChecker.questions;
   const totalQuestions = questions.length;
 
   useEffect(() => {
@@ -159,7 +161,7 @@ export default function BrandCheckerQuestions() {
         });
 
         // Add category-based flags
-        const categoryFlags = ExalviaDatabase.getCategoryFlags(categoryScores);
+        const categoryFlags = data.getCategoryFlags(categoryScores);
 
         // Combine all flags
         const redFlags = [...questionFlags, ...categoryFlags];
@@ -249,78 +251,90 @@ export default function BrandCheckerQuestions() {
   });
 
   return (
-    <div className="min-h-screen bg-base-100 py-8 px-4">
-      <div className="max-w-2xl mx-auto h-[calc(100vh-4rem)] flex flex-col justify-between">
-        {/* Progress Bar - Top */}
-        <div className="mb-8" id="progressbar">
-          <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium text-gray-600">
-              Pertanyaan {currentQuestion + 1} dari {totalQuestions}
-            </span>
-            <span className="text-sm font-medium text-gray-600">{Math.round(progressPercentage)}%</span>
-          </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
-            <div className="bg-primary h-2 rounded-full transition-all duration-500 ease-out" style={{ width: `${progressPercentage}%` }} />
-          </div>
-        </div>
+    <>
+      <ExalviaNavbar data={data.navbar} bgCustom="bg-primary" />
+      <div className="min-h-screen bg-base-100 pt-32 py-8 px-4">
+        <div className="max-w-2xl mx-auto h-[calc(100vh-4rem)] flex flex-col justify-between">
+          {/* Progress Bar - Top */}
 
-        {/* Question Card - Middle */}
-        <div className="flex-1 flex items-center justify-center">
-          <div className="bg-base-200 rounded-bl-4xl sm:p-8 p-5 w-full" id="qustioncard">
-            {showScanning ? (
-              <div className="w-full">
-                <ExalviaScan brand={typeof window !== "undefined" ? sessionStorage.getItem("brandName") : ""} />
+          {/* Question Card - Middle */}
+          <div className="flex-1 flex flex-col items-center justify-center w-full">
+            <div className="w-full">
+              <div className="mb-4" id="progressbar">
+                <div className="flex justify-between items-center mb-2">
+                  <span className="text-sm font-medium text-gray-600">
+                    Pertanyaan {currentQuestion + 1} dari {totalQuestions}
+                  </span>
+                  <span className="text-sm font-medium text-gray-600">{Math.round(progressPercentage)}%</span>
+                </div>
+                <div className="w-full bg-gray-200 rounded-full h-2">
+                  <div className="bg-primary h-2 rounded-full transition-all duration-500 ease-out" style={{ width: `${progressPercentage}%` }} />
+                </div>
               </div>
-            ) : isTransitioning ? (
-              <div className="text-center py-8">
-                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
-                <p className="text-sm text-gray-500 mt-4">Memproses jawaban...</p>
-              </div>
-            ) : (
-              <>
-                <div className="mb-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-8 h-8 bg-primary text-white rounded-bl-xl shrink-0 flex items-center justify-center font-bold text-sm mr-3">{currentQuestion + 1}</div>
-                    <h2 className="text-xl font-semibold text-primary">{question.question}</h2>
+            </div>
+            <div className="w-full flex items-center justify-center">
+              <div className="bg-base-200 rounded-bl-4xl sm:p-8 p-5 w-full" id="qustioncard">
+                {showScanning ? (
+                  <div className="w-full">
+                    <ExalviaScan brand={typeof window !== "undefined" ? sessionStorage.getItem("brandName") : ""} />
                   </div>
-                </div>
-
-                {/* Answer Options */}
-                <div className="space-y-3">
-                  {randomOptions.map((option, index) => (
-                    <button
-                      key={index}
-                      onClick={() => handleAnswerSelect(index)}
-                      disabled={selectedOption !== null}
-                      className={`w-full text-left p-4 rounded-bl-2xl bg-base-100 border transition-all duration-200 ${
-                        selectedOption === index
-                          ? "border-primary bg-primary/10"
-                          : selectedOption !== null
-                          ? "border-gray-200 bg-gray-50 cursor-not-allowed"
-                          : "border-gray-200 hover:border-primary/50 hover:bg-gray-50 cursor-pointer"
-                      }`}
-                    >
-                      <div className="flex items-center">
-                        <div className={`w-5 h-5 rounded-full border-2 mr-3 flex items-center justify-center ${selectedOption === index ? "border-primary" : "border-gray-300"}`}>
-                          {selectedOption === index && <div className="w-2 h-2 bg-primary rounded-full" />}
-                        </div>
-                        <span className="text-gray-700">{option.text}</span>
+                ) : isTransitioning ? (
+                  <div className="text-center py-8">
+                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+                    <p className="text-sm text-gray-500 mt-4">Memproses jawaban...</p>
+                  </div>
+                ) : (
+                  <>
+                    <div className="mb-6">
+                      <div className="flex items-start justify-between mb-4 gap-5">
+                        <h2 className="text-xl font-semibold text-primary">{question.question}</h2>
+                        <div className="shrink-0 flex items-center font-bold text-5xl opacity-5">{(currentQuestion + 1).toString().padStart(2, "0")}</div>
                       </div>
-                    </button>
-                  ))}
-                </div>
-              </>
-            )}
-          </div>
-        </div>
+                    </div>
 
-        {/* Brand Name Display - Bottom */}
-        <div className="text-center" id="brandname">
-          <p className="text-sm ">
-            Mengevaluasi brand: <span className="font-medium">{typeof window !== "undefined" ? sessionStorage.getItem("brandName") : ""}</span>
-          </p>
+                    {/* Answer Options */}
+                    <div className="space-y-3">
+                      {randomOptions.map((option, index) => (
+                        <button
+                          key={index}
+                          onClick={() => handleAnswerSelect(index)}
+                          disabled={selectedOption !== null}
+                          className={`w-full text-left p-4 rounded-bl-2xl bg-base-100 border transition-all duration-200 ${
+                            selectedOption === index
+                              ? "border-primary bg-primary/10"
+                              : selectedOption !== null
+                              ? "border-gray-200 bg-gray-50 cursor-not-allowed"
+                              : "border-gray-200 hover:border-primary/50 hover:bg-gray-50 cursor-pointer"
+                          }`}
+                        >
+                          <div className="flex items-start">
+                            <div
+                              className={`w-5 mt-0.5 aspect-square rounded-full border-2 mr-3 flex items-start shrink-0 justify-center ${
+                                selectedOption === index ? "border-primary" : "border-gray-300"
+                              }`}
+                            >
+                              {selectedOption === index && <div className="w-2 aspect-square bg-primary rounded-full" />}
+                            </div>
+                            <span className="text-gray-700">{option.text}</span>
+                          </div>
+                        </button>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Brand Name Display - Bottom */}
+          <div className="text-center" id="brandname">
+            <p className="text-sm ">
+              Mengevaluasi brand: <span className="font-bold capitalize ">{typeof window !== "undefined" ? sessionStorage.getItem("brandName") : ""}</span>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+      <ExalviaFooter data={data.footer} secId="footer" />
+    </>
   );
 }

@@ -8,7 +8,7 @@ import ModalThemes from "@/app/component/global/ModalThemes";
 import { FaPalette } from "react-icons/fa6";
 import ThemeChanger from "@/app/component/global/ThemeChanger";
 
-export default function ExalviaNavbar({ data }) {
+export default function ExalviaNavbar({ data, bgCustom = "bg-transparent" }) {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -59,7 +59,11 @@ export default function ExalviaNavbar({ data }) {
 
   return (
     <div className="relative w-full">
-      <nav className={`fixed left-0 w-full z-10 transition-all duration-300 rounded-bl-4xl ${scrolled ? "bg-primary py-5 px-0" : "bg-transparent py-8 px-5"}`}>
+      <nav
+        className={`fixed left-0 w-full z-10 transition-all duration-300 rounded-bl-4xl border-b ${
+          scrolled ? "bg-primary py-5 px-0 shadow-lg border-base-100/20" : bgCustom + " py-8 px-5 border-transparent"
+        }`}
+      >
         <div className={`lg:w-10/12 sm:w-11/12 w-full mx-auto px-6 md:px-16  transition-all duration-300 lg:px-24 ${scrolled ? "mt-0" : "mt-5"} `}>
           <div className="flex items-center justify-between">
             {/* 1. Left: Brand */}

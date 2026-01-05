@@ -1,6 +1,6 @@
 import React from "react";
 import { FaStar, FaRegStar, FaCircleCheck, FaCircleXmark } from "react-icons/fa6";
-import { BsFillPatchCheckFill } from "react-icons/bs";
+import { BsFillPatchCheckFill, BsHourglassSplit } from "react-icons/bs";
 import ExalviaButton from "../../../ui-components/ExalviaButton";
 import ExalviaLinkButton from "../../../ui-components/ExalviaLinkButton";
 
@@ -43,7 +43,9 @@ export default function PackageDetailModal({ selectedPackage, formatCurrency, on
             </div>
 
             <div className="sm:px-8 px-5">
-              <div className="text-sm text-base-content/60 mb-2">Waktu pengerjaan: {selectedPackage.turnaround}</div>
+              <div className="text-sm text-base-content/60 text-left flex gap-2 items-center">
+                <BsHourglassSplit /> Pengerjaan: {selectedPackage.turnaround}
+              </div>
               <div className="w-full">
                 <div className="h-2 w-full rounded-full bg-base-300 overflow-hidden">
                   <div

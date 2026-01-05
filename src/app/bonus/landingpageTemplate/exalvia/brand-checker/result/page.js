@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import ExalviaButton from "../../ui-components/ExalviaButton";
 import HeroBrandChecker from "../HeroBrandChecker";
-import ExalviaDatabase from "../../database/ExalviaDatabase";
+import data from "../../database/ExalviaDatabase";
 import { FaArrowRight, FaRegThumbsUp } from "react-icons/fa6";
 import { MdOutlineRocketLaunch } from "react-icons/md";
 import ExalviaLinkButton from "../../ui-components/ExalviaLinkButton";
@@ -21,6 +21,8 @@ import AlternativePackages from "./components/AlternativePackages";
 import BonusOffer from "./components/BonusOffer";
 import PackageDetailModal from "./components/PackageDetailModal";
 import { getAllFlags } from "./components/flagUtils";
+import ExalviaNavbar from "../../sections/ExalviaNavbar";
+import ExalviaFooter from "../../sections/ExalviaFooter";
 
 // Function to format currency with dot separator
 const formatCurrency = (amount) => {
@@ -110,12 +112,12 @@ export default function BrandCheckerResult() {
         categoryScores = {};
       }
 
-      // Decode red flags from IDs using ExalviaDatabase - ONLY if not perfect score
+      // Decode red flags from IDs using data - ONLY if not perfect score
       if (normalizedScore < 100) {
         const redFlagIds = (urlParams.get("rf") || "").split(",").filter(Boolean);
         redFlags = [];
         redFlagIds.forEach((id) => {
-          const flagText = ExalviaDatabase.getBrandCheckerFlag(id);
+          const flagText = data.getBrandCheckerFlag(id);
           if (flagText) redFlags.push(flagText);
         });
       } else {
@@ -321,13 +323,13 @@ export default function BrandCheckerResult() {
 
   // Get rekomendasi paket dari database
   const getRecommendedPackage = (score) => {
-    const packages = ExalviaDatabase.brandCheckerPackages?.recommended || [];
+    const packages = data.brandCheckerPackages?.recommended || [];
     return packages.find((pkg) => score >= pkg.minScore && score <= pkg.maxScore);
   };
 
   // Get alternative packages dari database
   const getAlternativePackages = (recommendedScore) => {
-    const allRecommendedPackages = ExalviaDatabase.brandCheckerPackages?.recommended || [];
+    const allRecommendedPackages = data.brandCheckerPackages?.recommended || [];
     const recommendedPkg = getRecommendedPackage(recommendedScore);
 
     if (recommendedScore === 100) return allRecommendedPackages;
@@ -348,6 +350,7 @@ export default function BrandCheckerResult() {
 
   return (
     <>
+      <ExalviaNavbar data={data.navbar} />
       <HeroBrandChecker headline="Cek Brand Selesai!" secId="brand-checker-result">
         <div>
           <ScoreDisplay result={result} myTest={myTest} getScoreBgColor={getScoreBgColor} />
@@ -357,60 +360,43 @@ export default function BrandCheckerResult() {
           </div>
         </div>
       </HeroBrandChecker>
-
       <section className=" bg-base-100 py-15">
         <div className=" lg:w-7/12 w-full px-5 mx-auto grid grid-cols-1 gap-15">
-          <div className="join join-vertical bg-base-200 rounded-bl-4xl overflow-hidden p-0 m-0">
+          <div className="join join-vertical overflow-hidden border-4 border-primary rounded-bl-4xl">
             <AssessmentDetails title="Detail Penilaian" result={result} isOpen={accordionOpen === "details"} onToggle={() => setAccordionOpen(accordionOpen === "details" ? "" : "details")} />
             <AssessmentNotes title="Catatan" result={result} isOpen={accordionOpen === "notes"} onToggle={() => setAccordionOpen(accordionOpen === "notes" ? "" : "notes")} />
           </div>
+          <div className="relative  w-full h-auto flex flex-col gap-8">
+            {result.normalizedScore < 100 && (
+              <div className="h-full">
+                <h3 className="text-lg font-semibold">
+                  Rekomendasi untuk brand <span className="capitalize">{result.brandName}</span>
+                </h3>
+                <hr className="my-4" />
 
+                <p className="text-sm leading-relaxed sm:w-8/12">
+                  Berdasarkan <span className="font-bold text-warning">{getAllFlags(result).length} catatan penting</span> dari analisa brand{" "}
+                  <span className="capitalize font-semibold">{result.brandName}</span>, berikut solusi yang direkomendasikan untuk mendorong penjualan online yang lebih optimal.
+                </p>
+              </div>
+            )}
+          </div>
           <div id="rekomendasi">
-            <div className="flex items-center justify-between ">
-              <h3 className="text-lg font-semibold">
-                Rekomendasi untuk brand <span className="capitalize">{result.brandName}</span>
-              </h3>
-              <MdOutlineRocketLaunch className=" text-xl" />
-            </div>
-            <hr className="my-4" />
-            <div className="w-full ">
-              <div className="relative  w-full h-auto flex flex-col gap-8">
-                {result.normalizedScore < 100 && (
-                  <div className="bg-base-200 rounded-bl-4xl h-full sm:p-8 p-5">
-                    <div className=" w-20 mb-5 aspect-square bg-primary rounded-bl-4xl mx-auto flex items-center justify-center">
-                      <FaRegThumbsUp className=" text-4xl text-white" />
-                    </div>
-                    <p className="text-lg leading-relaxed">
-                      Berdasarkan <span className="font-bold text-warning">{getAllFlags(result).length} catatan penting</span> dari analisa brand{" "}
-                      <span className="capitalize font-semibold">{result.brandName}</span>, berikut solusi yang direkomendasikan untuk mendorong penjualan online yang lebih optimal.
-                    </p>
-                  </div>
-                )}
-                <ExalviaImage
-                  src="/images/templateLandingPageBonus/Exalvia/sections/ipad-2.webp"
-                  alt={`Rekomendasi untuk brand ${result.brandName}`}
-                  width={800}
-                  height={600}
-                  className="w-full h-auto object-contain "
-                  aspectRatio="aspect-4/3 sm:block hidden"
-                />
-              </div>
-              <div className=" w-full">
-                {result.normalizedScore === 100 ? (
-                  <div className="border-4 border-primary rounded-bl-4xl p-8">
-                    <div className="text-center">
-                      <HiOutlineTrophy className="text-6xl mb-4 text-warning mx-auto" />
-                      <h3 className="text-2xl font-bold text-success mb-4">Brand Sempurna!</h3>
-                      <p className="text-lg mb-6">Selamat! Brand Anda telah mencapai level tertinggi di semua aspek.</p>
-                      <div className="bg-success/10 rounded-bl-2xl p-4 mb-6">
-                        <p className="font-semibold text-success">💡 Tips: Fokus pada scaling dan market expansion!</p>
-                      </div>
+            <div className=" w-full">
+              {result.normalizedScore === 100 ? (
+                <div className="border-4 border-primary rounded-bl-4xl p-8">
+                  <div className="text-center">
+                    <HiOutlineTrophy className="text-6xl mb-4 text-warning mx-auto" />
+                    <h3 className="text-2xl font-bold text-success mb-4">Brand Sempurna!</h3>
+                    <p className="text-lg mb-6">Selamat! Brand Anda telah mencapai level tertinggi di semua aspek.</p>
+                    <div className="bg-success/10 rounded-bl-2xl p-4 mb-6">
+                      <p className="font-semibold text-success">💡 Tips: Fokus pada scaling dan market expansion!</p>
                     </div>
                   </div>
-                ) : (
-                  <PackageCard pkg={getRecommendedPackage(result.normalizedScore)} isRecommended={true} formatCurrency={formatCurrency} />
-                )}
-              </div>
+                </div>
+              ) : (
+                <PackageCard pkg={getRecommendedPackage(result.normalizedScore)} isRecommended={true} formatCurrency={formatCurrency} />
+              )}
             </div>
           </div>
 
@@ -425,7 +411,7 @@ export default function BrandCheckerResult() {
           <BonusOffer />
         </div>
       </section>
-
+      <ExalviaFooter data={data.footer} secId="footer" />
       <PackageDetailModal selectedPackage={selectedPackage} formatCurrency={formatCurrency} onClose={() => document.getElementById("package_modal").close()} />
     </>
   );

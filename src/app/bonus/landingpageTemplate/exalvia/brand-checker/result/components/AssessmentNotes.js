@@ -8,7 +8,7 @@ export default function AssessmentNotes({ result, isOpen, onToggle, title }) {
   const allFlags = getAllFlags(result);
 
   return (
-    <div className={`collapse join-item border-t bg-base-200 rounded-bl-4xl sm:p-8 p-5 ${isOpen ? "collapse-open" : ""}`} style={{ "--tw-collapse-content-max-height": "none" }}>
+    <div className={`collapse join-item ${isOpen ? "collapse-open" : ""}`}>
       <input type="checkbox" name="my-accordion" checked={isOpen} onChange={onToggle} />
       <div className="collapse-title font-semibold flex items-center justify-between">
         <span>{title}</span>

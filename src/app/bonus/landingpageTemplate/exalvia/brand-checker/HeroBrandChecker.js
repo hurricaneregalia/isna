@@ -13,7 +13,7 @@ export default function HeroBrandChecker({
 }) {
   return (
     <section id={secId} className="w-full bg-base-100 flex flex-col items-center p-5">
-      <div className="relative w-full overflow-hidden rounded-bl-4xl sm:py-15 py-15 h-fullitems-center flex bg-neutral">
+      <div className="relative w-full overflow-hidden rounded-bl-4xl sm:py-30 py-30 h-fullitems-center flex bg-neutral">
         <div className="lg:w-10/12 sm:w-11/12 w-full mx-auto">
           <div className="absolute inset-0">
             <Image src={backgroundImage} alt="Exalvia Hero Brand Visual" fill priority className="object-cover" sizes="(max-width: 1536px) 100vw, 85vw" />

@@ -1,6 +1,6 @@
 import React from "react";
 import { FaStar, FaRegStar, FaArrowRight, FaCircleCheck, FaCircleXmark } from "react-icons/fa6";
-import { BsFillPatchCheckFill } from "react-icons/bs";
+import { BsFillPatchCheckFill, BsHourglassSplit } from "react-icons/bs";
 import ExalviaLinkButton from "../../../ui-components/ExalviaLinkButton";
 
 export default function PackageCard({ pkg, isRecommended = false, formatCurrency }) {
@@ -9,33 +9,36 @@ export default function PackageCard({ pkg, isRecommended = false, formatCurrency
   return (
     <div className={`bg-base-200 border-4 ${isRecommended ? "border-primary" : "border-transparent"} rounded-bl-4xl h-full flex flex-col`}>
       <div className={`flex flex-col gap-10 ${isRecommended ? "bg-primary p-8 rounded-bl-4xl" : "p-8"}`}>
-        <div className="flex gap-2 flex-col">
-          <div className="flex gap-1">
-            {Array.from({ length: 5 }, (_, index) => (index < pkg.rating ? <FaStar key={index} className="text-warning" /> : <FaRegStar key={index} className="text-warning" />))}
-          </div>
-          {isRecommended && <div className="badge badge-secondary badge-soft uppercase text-xs">recommended</div>}
-        </div>
-
-        <div className=" flex items-center sm:flex-row flex-col gap-y-10">
-          <div className={isRecommended ? "text-white m:w-6/12 w-full" : "my-10 w-6/12"}>
-            <h4 className={`md:text-3xl text-2xl font-bold ${isRecommended ? "lg:w-6/12 sm:w-5/12 w-7/12 " : ""} `}>{pkg.name}</h4>
-            <div className="text-2xl font-bold text-warning">Rp {formatCurrency(pkg.price)}</div>
-          </div>
-
-          {isRecommended && (
-            <div className="sm:w-6/12 w-full text-center">
-              <ExalviaLinkButton text="Pilih Paket" href="#contact" icon={FaArrowRight} className="sm:w-fit w-full btn-lg animate-pulse btn-warning" />
-              <div className="">
-                <ExalviaLinkButton
-                  text="Konsultasi"
-                  href={`https://wa.me/628123456789?text=Assalamualaikum...%0A%0Apesan saya ingin konsultasi data ini.%0A%0A${
-                    typeof window !== "undefined" ? encodeURIComponent(window.location.href) : ""
-                  }`}
-                  className="w-full btn-link text-white/50"
-                />
+        <div className=" flex items-center sm:flex-row flex-col gap-y-10 ">
+          <div className="flex gap-8 flex-col sm:w-6/12 w-full">
+            <div className="flex flex-col gap-4 text-center sm:text-left items-center sm:items-start">
+              <div className="flex gap-1">
+                {Array.from({ length: 5 }, (_, index) => (index < pkg.rating ? <FaStar key={index} className="text-warning" /> : <FaRegStar key={index} className="text-warning" />))}
               </div>
+              {isRecommended && <div className="badge mt-2 badge-secondary badge-soft uppercase text-xs">recommended</div>}
+              <div>
+                <h4 className="md:text-3xl text-4xl text-white font-bold">{pkg.name}</h4>
+                <p className="md:text-3xl text-4xl text-white font-bold">Service Pack</p>
+              </div>
+              <p className="text-xl font-bold text-warning">Rp {formatCurrency(pkg.price)}</p>
             </div>
-          )}
+          </div>
+          <div className="sm:w-6/12 w-full">
+            {isRecommended && (
+              <div className="w-full text-center">
+                <ExalviaLinkButton text="Pilih Paket" href="#contact" icon={FaArrowRight} className="sm:w-fit w-full btn-lg animate-pulse btn-warning" />
+                <div className="">
+                  <ExalviaLinkButton
+                    text="Konsultasi"
+                    href={`https://wa.me/628123456789?text=Assalamualaikum...%0A%0Apesan saya ingin konsultasi data ini.%0A%0A${
+                      typeof window !== "undefined" ? encodeURIComponent(window.location.href) : ""
+                    }`}
+                    className="w-full btn-link text-white/50"
+                  />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -53,7 +56,9 @@ export default function PackageCard({ pkg, isRecommended = false, formatCurrency
             ))}
           </div>
           <div className="mt-auto space-y-2">
-            <div className="text-sm text-base-content/60 text-left">Waktu pengerjaan: {pkg.turnaround}</div>
+            <div className="text-sm text-base-content/60 text-left flex gap-2 items-center">
+              <BsHourglassSplit /> Pengerjaan: {pkg.turnaround}
+            </div>
             <div className="w-full">
               <div className="h-2 w-full rounded-full bg-base-300 overflow-hidden">
                 <div
