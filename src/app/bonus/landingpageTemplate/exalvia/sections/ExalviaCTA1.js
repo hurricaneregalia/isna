@@ -21,12 +21,19 @@ export default function ExalviaCTA1({ data, secId = "cta1", targetLink = "#" }) 
           </svg>
         </div>
         <div className="lg:w-7/12 sm:w-11/12 w-full mx-auto px-6 md:px-16 lg:px-24 flex flex-col items-center text-center gap-6">
-          <span className="uppercase tracking-[0.2em] text-warning text-xs md:text-sm font-bold">{data.label}</span>
-          <h2 className="font-instrument-serif text-3xl md:text-5xl font-semibold leading-tight text-white">{data.title}</h2>
-          <ExalviaScan width="sm:w-8/12 my-10" />
+          <span className="uppercase tracking-[0.2em] text-warning text-xs md:text-sm font-bold" data-aos="fade-up">
+            {data.label}
+          </span>
+          <h2 className="font-instrument-serif text-3xl md:text-5xl font-semibold leading-tight text-white" data-aos="fade-up">
+            {data.title}
+          </h2>
+          <div data-aos="flip-left" className=" w-full">
+            {" "}
+            <ExalviaScan width="sm:w-8/12 my-10" />
+          </div>
           <ExalviaBodyText text={data.description} className="mb-4 text-white/80" />
           <div className="flex flex-col sm:flex-row gap-4 mt-4 w-full sm:w-auto justify-center">
-            <ExalviaLinkButton text="SCAN BRAND" href={targetLink} icon={FaArrowRight} className="w-fit mx-auto sm:w-auto btn-lg btn-warning" />
+            <ExalviaLinkButton text="SCAN BRAND" href={targetLink} icon={FaArrowRight} className="w-fit mx-auto sm:w-auto btn-lg btn-warning animate-bounce" />
           </div>
         </div>
       </div>

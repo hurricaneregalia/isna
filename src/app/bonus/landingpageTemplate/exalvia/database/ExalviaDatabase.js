@@ -12,7 +12,9 @@ import { TfiTarget } from "react-icons/tfi";
 import { FiFileText, FiGlobe } from "react-icons/fi";
 import { LuBadgeCheck } from "react-icons/lu";
 
-const ipad2 = "/images/templateLandingPageBonus/Exalvia/sections/ipad-2.webp";
+const ipad1 = "/images/templateLandingPageBonus/Exalvia/sections/ipad-happy.webp";
+const ipad2 = "/images/templateLandingPageBonus/Exalvia/sections/ipad-bingung.webp";
+const ipadHero = "/images/templateLandingPageBonus/Exalvia/sections/ipad-hero.webp";
 
 // Brand checker red flags based on category thresholds
 const brandCheckerFlags = {
@@ -60,11 +62,11 @@ const ExalviaDatabase = {
     ],
   },
   hero: {
-    headline: "Sistem online cerdas untuk menjual produk branded di atas kompetitor. Spesial produk Ramadhan!",
-    subheadline: "Kami bantu Anda menyampaikan pesan yang tepat, membuat pelanggan merasa dipahami dan tertarik membeli.",
-    buttonLabel: "Konsultasi Sekarang",
+    headline: "Cara cerdas menjual produk branded secara online di atas kompetitor.",
+    subheadline: "Spesial produk Ramadhan!.",
+    buttonLabel: "Konsultasi",
     backgroundImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
-    patternImage: "https://www.transparenttextures.com/patterns/arabesque.png",
+    image: ipadHero,
   },
   clientLogo: {
     title: "Telah Dipercaya Oleh Brand Terkemuka",
@@ -85,25 +87,23 @@ const ExalviaDatabase = {
     description: "Produk yang dibuat sudah berkualitas, sudah menggunakan iklan berbayar untuk promosi, sudah ikut tren marketplace, namun ini yang terjadi:",
     image: ipad2,
     items: [
-      { title: "Harga ideal sulit dipertahankan, selalu kalah dengan kompetitor.", icon: <MdOutlineMoneyOffCsred /> },
-      { title: "Mudah terjerumus ke dalam perang harga yang menyakitkan.", icon: <RiSwordFill /> },
-      { title: "Produk di anggap sama, padahal kualitas kompetitor lebih rendah.", icon: <HiOutlineDocumentDuplicate /> },
-      { title: "Promosi hanya membuang uang saja, tanpa ada perubahan.", icon: <FaRegFaceTired /> },
+      { title: "Harga ideal sulit untuk dipertahankan.", icon: <MdOutlineMoneyOffCsred /> },
+      { title: "Mudah terjerumus ke dalam perang harga.", icon: <RiSwordFill /> },
+      { title: "Produk tidak dianggap lebih baik.", icon: <HiOutlineDocumentDuplicate /> },
+      { title: "Promosi berjalan tapi tanpa perubahan.", icon: <FaRegFaceTired /> },
     ],
   },
   fenomenon: {
     label: "Solusi",
     title: "Berikan calon pembeli alsan yang tepat.",
     description: "Mereka tidak menolak, calon pembeli hanya belum melihat alasan yang cukup kuat untuk membayar lebih. Buat mereka mendapatkan alasan itu dengan:",
-    image: ipad2,
-    patternImage: "https://www.transparenttextures.com/patterns/arabesque.png",
-    signature: "Amir Al-Farabi",
-    designerRole: "Head of Copy at Exalvia",
+    image: ipad1,
+    additionalText: "Orang suka dengan pesan penjualan yang menarik.",
     items: [
       { title: "Sampaikan nilai produk dengan baik.", icon: <IoSparkles /> },
       { title: "Bentuk kepercayaan brand yang kuat.", icon: <HiCheckBadge /> },
       { title: "Jual produk atau jasa yang berbeda.", icon: <FaToggleOn /> },
-      { title: "Buat pesan promosi yang menarik dan jelas.", icon: <BiSolidMessageCheck /> },
+      { title: "Buat pesan promosi yang menarik.", icon: <BiSolidMessageCheck /> },
     ],
   },
   solution: {
@@ -266,7 +266,7 @@ const ExalviaDatabase = {
   cta1: {
     label: "Scan",
     title: "Temukan elemen-elemen penting! Bantu tingkatkan penjualan brand lebih optimal!",
-    description: "Klik tombol “SCAN BRAND” di bawah untuk memahami kondisi brand Anda saat ini, supaya brand Anda bisa tumbuh dengan sehat tanpa terjebak perang harga.",
+    description: "Klik “SCAN BRAND” pahami kondisi brand Anda saat ini, tumbuhlah lebih sehat hindari jebakan perang harga.",
     primaryLabel: "Mulai Konsultasi",
     primaryHref: "https://wa.me/6281234567890",
     whatsappLabel: "Chat WhatsApp",
