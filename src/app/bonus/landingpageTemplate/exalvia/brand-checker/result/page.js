@@ -13,7 +13,6 @@ import { HiOutlineTrophy } from "react-icons/hi2";
 
 // Import custom components
 import ScoreDisplay from "./components/ScoreDisplay";
-import ResultMetrics from "./components/ResultMetrics";
 import AssessmentDetails from "./components/AssessmentDetails";
 import AssessmentNotes from "./components/AssessmentNotes";
 import PackageCard from "./components/PackageCard";
@@ -337,9 +336,8 @@ export default function BrandCheckerResult() {
   };
 
   const getScoreBgColor = (score) => {
-    if (score <= 25) return "bg-error";
-    if (score <= 50) return "bg-warning";
-    if (score <= 75) return "bg-yellow-500";
+    if (score <= 50) return "bg-error";
+    if (score <= 75) return "bg-warning";
     return "bg-success";
   };
 
@@ -352,27 +350,26 @@ export default function BrandCheckerResult() {
     <>
       <ExalviaNavbar data={data.navbar} />
       <HeroBrandChecker headline="Cek Brand Selesai!" secId="brand-checker-result">
-        <div>
-          <ScoreDisplay result={result} myTest={myTest} getScoreBgColor={getScoreBgColor} />
-          <ResultMetrics result={result} />
-          <div className=" w-full justify-center flex">
-            <ExalviaLinkButton text="Rekomendasi" href="#rekomendasi" icon={FaArrowRight} className="mt-10 w-fit mx-auto btn-lg animate-pulse btn-warning" />
-          </div>
+        <div className="w-full lg:px-0 sm:px-16 px-4">
+          <ScoreDisplay result={result} myTest={myTest} getScoreBgColor={getScoreBgColor}>
+            <div className=" w-full flex items-center my-4">
+              <ExalviaLinkButton text="Rekomendasi" href="#rekomendasi" icon={FaArrowRight} className=" w-fit btn-lg lg:mx-0 mx-auto animate-pulse btn-warning" />
+            </div>
+          </ScoreDisplay>
         </div>
       </HeroBrandChecker>
       <section className=" bg-base-100 py-15">
         <div className=" lg:w-7/12 w-full px-5 mx-auto grid grid-cols-1 gap-15">
-          <div className="join join-vertical overflow-hidden border-4 border-primary rounded-bl-4xl">
+          <div className="join join-vertical overflow-hidden border-4 border-base-300 rounded-4xl rounded-tr-none">
             <AssessmentDetails title="Detail Penilaian" result={result} isOpen={accordionOpen === "details"} onToggle={() => setAccordionOpen(accordionOpen === "details" ? "" : "details")} />
             <AssessmentNotes title="Catatan" result={result} isOpen={accordionOpen === "notes"} onToggle={() => setAccordionOpen(accordionOpen === "notes" ? "" : "notes")} />
           </div>
           <div className="relative  w-full h-auto flex flex-col gap-8">
             {result.normalizedScore < 100 && (
-              <div className="h-full">
+              <div className="h-full flex-col flex gap-4">
                 <h3 className="text-lg font-semibold">
                   Rekomendasi untuk brand <span className="capitalize">{result.brandName}</span>
                 </h3>
-                <hr className="my-4" />
 
                 <p className="text-sm leading-relaxed sm:w-8/12">
                   Berdasarkan <span className="font-bold text-warning">{getAllFlags(result).length} catatan penting</span> dari analisa brand{" "}

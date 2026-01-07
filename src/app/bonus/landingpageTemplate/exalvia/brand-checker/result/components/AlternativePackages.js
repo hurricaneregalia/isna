@@ -5,8 +5,8 @@ import ExalviaButton from "../../../ui-components/ExalviaButton";
 
 export default function AlternativePackages({ packages, isOpen, onToggle, formatCurrency, onDetailClick }) {
   return (
-    <div className="join join-vertical border-4 border-primary rounded-bl-4xl overflow-hidden p-0 m-0">
-      <div className={`collapse join-item rounded-bl-4xl ${isOpen ? "collapse-open" : ""}`} style={{ "--tw-collapse-content-max-height": "none" }}>
+    <div className="join join-vertical border-4 border-base-300 rounded-4xl rounded-tr-none overflow-hidden p-0 m-0">
+      <div className={`collapse join-item  ${isOpen ? "collapse-open" : ""}`} style={{ "--tw-collapse-content-max-height": "none" }}>
         <input type="checkbox" name="my-accordion" checked={isOpen} onChange={onToggle} />
         <div className="collapse-title font-semibold flex items-center justify-between">
           <div className="flex items-center justify-between w-full">
@@ -17,7 +17,7 @@ export default function AlternativePackages({ packages, isOpen, onToggle, format
         <div className="collapse-content text-sm p-0">
           <div className="grid grid-cols-1 gap-2 p-4 pt-0">
             {packages.map((pkg, index) => (
-              <div key={index} className="sm:p-8 p-5  bg-base-200  rounded-bl-4xl flex sm:flex-row flex-col items-start w-full">
+              <div key={index} className="sm:p-8 p-4  bg-base-200  rounded-2xl rounded-tr-none flex sm:flex-row flex-col items-start w-full">
                 <div className="sm:w-6/12 w-full grid grid-cols-1 gap-4">
                   <div>
                     <h6 className="font-semibold">{pkg.name}</h6>

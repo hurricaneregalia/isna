@@ -3,7 +3,7 @@ import { FaChevronDown } from "react-icons/fa6";
 
 export default function AssessmentDetails({ result, isOpen, onToggle, title }) {
   return (
-    <div className={`collapse join-item border-b-4 border-primary ${isOpen ? "collapse-open" : ""}`}>
+    <div className={`collapse join-item border-b-4 border-base-300 ${isOpen ? "collapse-open" : ""}`}>
       <input type="checkbox" name="my-accordion" checked={isOpen} onChange={onToggle} />
       <div className="collapse-title font-semibold flex items-center justify-between">
         <span>{title}</span>
@@ -16,17 +16,17 @@ export default function AssessmentDetails({ result, isOpen, onToggle, title }) {
               const safeScore = Number.isFinite(Number(score)) ? Math.max(0, Math.min(100, Number(score))) : 0;
               return (
                 <div key={category}>
-                  <span className="text-sm font-medium text-gray-700">{category}</span>
+                  <div className="flex items-center justify-between opacity-70 mb-1">
+                    <span className="text-sm font-medium">{category}</span>
+                    <span className="text-sm font-medium text-right ">{safeScore}</span>
+                  </div>
                   <div className="flex items-center justify-end">
-                    <div className="w-full bg-gray-200 rounded-full h-2 mr-2">
+                    <div className="w-full bg-base-300 rounded-full h-2">
                       <div
-                        className={`h-2 rounded-full transition-all duration-500 ${
-                          safeScore <= 25 ? "bg-red-500" : safeScore <= 50 ? "bg-orange-500" : safeScore <= 75 ? "bg-yellow-500" : "bg-green-500"
-                        }`}
+                        className={`h-2 rounded-full transition-all duration-500 ${safeScore <= 50 ? "bg-error" : safeScore <= 75 ? "bg-warning" : "bg-success"}`}
                         style={{ width: `${safeScore}%` }}
                       />
                     </div>
-                    <span className="text-sm font-medium text-gray-600  text-right ">{safeScore}</span>
                   </div>
                 </div>
               );

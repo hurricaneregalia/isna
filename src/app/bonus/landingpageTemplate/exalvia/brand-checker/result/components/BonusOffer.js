@@ -7,11 +7,6 @@ import ExalviaLinkButton from "../../../ui-components/ExalviaLinkButton";
 export default function BonusOffer() {
   return (
     <div>
-      <div className="flex items-center justify-between ">
-        <h3 className="text-lg font-semibold">BONUS</h3>
-        <FaGift className=" text-xl" />
-      </div>
-      <hr className="my-4" />
       <div className=" flex items-center sm:gap-15 gap-5 sm:flex-row flex-col">
         <div className="relative sm:w-6/12 w-full sm:h-auto h-fit">
           <ExalviaImage
@@ -24,22 +19,22 @@ export default function BonusOffer() {
           />
         </div>
         <div className="w-full sm:w-6/12">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Bonus Spesial!</h2>
-            <span className="text-lg mb-6">
-              Gratis Review Logo senilai Rp.
+          <div className="max-w-4xl mx-auto text-center flex flex-col gap-4">
+            <h2 className="text-3xl font-bold">Bonus Spesial!</h2>
+            <span className="text-lg">
+              Gratis Review Logo senilai <span className=" font-bold">Rp.</span>
               <span className=" relative overflow-hidden  px-2">
-                <span className=" font-bold">500.000</span>
+                <span className=" font-bold">500.000,</span>
                 <hr className=" border border-red-500 -rotate-6 absolute bg-amber-500  w-full top-2 right-0" />
-              </span>{" "}
+              </span>
               dapatkan sebelum waktunya habis.
             </span>
 
-            <div className="mb-8">
+            <div>
               <ExalviaCountDown target="2026-01-25T23:59:59" />
             </div>
 
-            <ExalviaLinkButton text="Dapatkan Bonus" href="#rekomendasi" className="btn-lg btn-warning animate-pulse" />
+            <ExalviaLinkButton text="Dapatkan Bonus" href="#rekomendasi" className="btn-lg mt-4 btn-warning w-fit mx-auto animate-pulse" />
           </div>
         </div>
       </div>

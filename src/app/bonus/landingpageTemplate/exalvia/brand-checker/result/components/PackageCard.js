@@ -7,8 +7,8 @@ export default function PackageCard({ pkg, isRecommended = false, formatCurrency
   if (!pkg) return null;
 
   return (
-    <div className={`bg-base-200 border-4 ${isRecommended ? "border-primary" : "border-transparent"} rounded-bl-4xl h-full flex flex-col`}>
-      <div className={`flex flex-col gap-10 ${isRecommended ? "bg-primary p-8 rounded-bl-4xl" : "p-8"}`}>
+    <div className={`border-4 overflow-hidden ${isRecommended ? "border-primary" : "border-transparent"} rounded-4xl rounded-tr-none h-full flex flex-col`}>
+      <div className={`flex flex-col gap-10 ${isRecommended ? "bg-primary p-8 rounded-b-3xl " : "p-8"}`}>
         <div className=" flex items-center sm:flex-row flex-col gap-y-10 ">
           <div className="flex gap-8 flex-col sm:w-6/12 w-full">
             <div className="flex flex-col gap-4 text-center sm:text-left items-center sm:items-start">
@@ -47,7 +47,7 @@ export default function PackageCard({ pkg, isRecommended = false, formatCurrency
           <h4 className="font-semibold ">Yang Anda Dapatkan:</h4>
           <div className="grid grid-cols-1 md:grid-cols-2 md:grid-flow-col md:grid-rows-4 gap-y-3 md:gap-x-15">
             {pkg.included?.map((item, index) => (
-              <div key={index} className="flex items-center justify-between border-b pb-2">
+              <div key={index} className="flex items-center justify-between border-b border-base-300 pb-2">
                 <span className="text-sm flex gap-2 text-left">
                   0{index + 1}. {item.title}
                 </span>
