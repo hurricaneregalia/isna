@@ -8,8 +8,8 @@ export default function ExalviaCTA1({ data, secId = "cta1", targetLink = "#" }) 
   if (!data) return null;
 
   return (
-    <section id={secId} className="p-5 bg-base-200">
-      <div className="py-20 md:py-32 bg-neutral text-neutral-content rounded-bl-4xl relative">
+    <section id={secId} className="p-4 bg-base-200 rounded-4xl rounded-tr-none ">
+      <div className="py-20 md:py-32 bg-neutral text-neutral-content rounded-3xl rounded-tr-none  relative">
         <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
           <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>

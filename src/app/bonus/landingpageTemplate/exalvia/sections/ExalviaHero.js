@@ -10,7 +10,7 @@ import ExalviaImage from "../ui-components/ExalviaImage";
 export default function ExalviaHero({ data, secId, linkTarget = "" }) {
   return (
     <section id={secId} className="w-full bg-base-100 flex min-h-screen flex-col items-center sm:p-4 p-2">
-      <div className="relative w-full overflow-hidden rounded-bl-4xl min-h-screen items-center flex bg-neutral">
+      <div className="relative w-full overflow-hidden rounded-4xl rounded-tr-none min-h-screen items-center flex bg-neutral">
         <div className="lg:w-10/12 sm:w-11/12 w-full mx-auto">
           <div className="absolute inset-0">
             <Image src={data?.backgroundImage} alt="Exalvia Hero Brand Visual" fill priority className="object-cover" sizes="(max-width: 1536px) 100vw, 85vw" />

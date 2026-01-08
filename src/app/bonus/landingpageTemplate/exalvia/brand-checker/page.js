@@ -34,13 +34,13 @@ export default function BrandCheckerIntro() {
 
   return (
     <div className="bg-base-100 w-full min-h-screen">
-      <ExalviaNavbar data={data.navbar} bgCustom="bg-primary" />
+      <ExalviaNavbar data={data.navbar} bgCustom="bg-primary/90" />
       <div className="min-h-screen pt-32 p-5 flex items-center justify-center">
-        <div className=" lg:w-7/12 mx-auto border-3 border-primary rounded-bl-4xl overflow-hidden h-full flex items-center lg:flex-row flex-col">
+        <div className=" lg:w-7/12 mx-auto border-3 border-primary rounded-4xl rounded-tr-none  overflow-hidden h-full flex items-center lg:flex-row flex-col">
           {/* Hero Section */}
-          <div className="text-center sm:p-8 p-5  bg-primary lg:w-6/12 w-full lg:rounded-none rounded-bl-4xl text-white">
+          <div className="text-center sm:p-8 p-5  bg-primary lg:w-6/12 w-full rounded-3xl rounded-tr-none text-white">
             <div className="mb-6">
-              <div className="w-20 aspect-square bg-white/20 rounded-bl-4xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-20 aspect-square bg-white/20 rounded-4xl rounded-tr-none  flex items-center justify-center mx-auto mb-4">
                 <IoSearch className=" text-4xl text-primary" />
               </div>
             </div>
@@ -48,7 +48,7 @@ export default function BrandCheckerIntro() {
             <ExalviaHeadline className="text-3xl md:text-4xl lg:text-5xl text-center mb-4 text-white">Scan Brand</ExalviaHeadline>
 
             <p className="text-lg md:text-xl mb-8 max-w-2xl mx-auto opacity-70">Ketahui performa brand Anda dalam waktu singkat</p>
-            <div className="grid sm:grid-cols-3 grid-cols-3 py-5 text-center w-full mx-auto rounded-bl-4xl border border-white text-white">
+            <div className="grid sm:grid-cols-3 grid-cols-3 py-5 text-center w-full mx-auto rounded-3xl rounded-tr-none  border border-white text-white">
               <div className="h-full">
                 <div className="sm:text-3xl text-xl font-bold flex flex-col justify-between h-full">
                   <p className=" text-warning">{data.brandChecker.questions.length}</p>

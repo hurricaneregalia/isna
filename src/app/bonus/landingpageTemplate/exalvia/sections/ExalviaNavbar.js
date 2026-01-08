@@ -61,7 +61,7 @@ export default function ExalviaNavbar({ data, bgCustom = "bg-transparent" }) {
     <div className="relative w-full">
       <nav
         className={`fixed left-0 right-0 mx-4 z-10 transition-all duration-300 rounded-4xl rounded-tr-none border-b ${
-          scrolled ? "bg-primary py-5 px-0 shadow-lg border-base-100/20 mt-4" : bgCustom + " py-8 px-2 border-transparent"
+          scrolled ? "bg-primary/95 py-5 px-0 shadow-lg border-base-100/20 mt-4" : bgCustom + " py-8 px-2 border-transparent"
         }`}
       >
         <div className={`lg:w-10/12 w-full mx-auto px-6 sm:px-16  transition-all duration-300 lg:px-24 ${scrolled ? "mt-0" : "mt-5"} `}>

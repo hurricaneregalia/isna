@@ -13,8 +13,10 @@ import { FiFileText, FiGlobe } from "react-icons/fi";
 import { LuBadgeCheck } from "react-icons/lu";
 
 const ipad1 = "/images/templateLandingPageBonus/Exalvia/sections/ipad-happy.webp";
-const ipad2 = "/images/templateLandingPageBonus/Exalvia/sections/ipad-bingung.webp";
+const ipad2 = "/images/templateLandingPageBonus/Exalvia/sections/ipad-bingung-2.webp";
 const ipadHero = "/images/templateLandingPageBonus/Exalvia/sections/ipad-hero.webp";
+const ipadBonus = "/images/templateLandingPageBonus/Exalvia/sections/ipad-bonus.webp";
+const heroResult = "/images/templateLandingPageBonus/Exalvia/sections/hero-result.webp";
 
 // Brand checker red flags based on category thresholds
 const brandCheckerFlags = {
@@ -274,31 +276,10 @@ const ExalviaDatabase = {
   },
   bonus: {
     label: "Bonus Eksklusif",
-    title: "Hadiah Tambahan untuk Keputusan Cepat",
-    items: [
-      {
-        title: "Template Email Follow-Up",
-        description: "3 urutan email untuk nurturing setelah pengunjung mengisi form.",
-        image: "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?q=80&w=2070&auto=format&fit=crop",
-        value: "Rp1.000.000",
-      },
-      {
-        title: "Checklist UX Landing",
-        description: "Checklist siap pakai untuk memastikan halaman ramah konversi.",
-        image: "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?q=80&w=2070&auto=format&fit=crop",
-        value: "Rp750.000",
-      },
-      {
-        title: "Script Video 60 detik",
-        description: "Naskah video singkat untuk iklan atau hero background.",
-        image: "https://images.unsplash.com/photo-1525182008055-f88b95ff7980?q=80&w=2070&auto=format&fit=crop",
-        value: "Rp1.250.000",
-      },
-    ],
+    title: "Bonus Spesial!",
+    image: ipadBonus,
     urgencyTitle: "Countdown bonus berakhir dalam:",
-    countdownTarget: "2025-12-31T23:59:59Z",
-    ctaLabel: "Amankan Bonus",
-    ctaLink: "https://wa.me/6281234567890",
+    countdownTarget: "2026-01-25T23:59:59Z",
   },
   testimonials: {
     label: "Testimoni Klien",
@@ -798,6 +779,11 @@ const ExalviaDatabase = {
         turnaround: "2-3 hari kerja",
       },
     ],
+  },
+
+  pagesResult: {
+    name: "result page",
+    heroImage: heroResult,
   },
 
   // Brand checker utilities

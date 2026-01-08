@@ -85,7 +85,7 @@ export default function ScoreDisplay({ result, myTest, getScoreBgColor, children
                 </div>
               </div>
               <div className="deskripsi ">
-                <p className="max-w-md mx-auto opacity-90 uppercase"> Level saat ini</p>
+                <p className="max-w-md mx-auto opacity-90 uppercase"> Level {result.brandName} saat ini</p>
                 <h2 className="text-2xl font-bold mb-2 uppercase text-warning flex items-center gap-2 w-full justify-center">
                   <TbArrowBadgeRightFilled />
                   {result.classification || ""}

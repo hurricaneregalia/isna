@@ -273,7 +273,7 @@ export default function BrandCheckerQuestions() {
               </div>
             </div>
             <div className="w-full flex items-center justify-center">
-              <div className="bg-base-200 rounded-bl-4xl sm:p-8 p-5 w-full" id="qustioncard">
+              <div className="bg-base-200 rounded-4xl rounded-tr-none sm:p-8 p-5 w-full" id="qustioncard">
                 {showScanning ? (
                   <div className="w-full">
                     <ExalviaScan brand={typeof window !== "undefined" ? sessionStorage.getItem("brandName") : ""} />
@@ -285,21 +285,21 @@ export default function BrandCheckerQuestions() {
                   </div>
                 ) : (
                   <>
-                    <div className="mb-6">
-                      <div className="flex items-start justify-between mb-4 gap-5">
+                    <div className="mb-6 ">
+                      <div className="flex items-start justify-between mb-4 gap-5 bg-base-300 p-4 rounded-2xl rounded-tr-none">
                         <h2 className="text-xl font-semibold text-primary">{question.question}</h2>
                         <div className="shrink-0 flex items-center font-bold text-5xl opacity-5">{(currentQuestion + 1).toString().padStart(2, "0")}</div>
                       </div>
                     </div>
 
                     {/* Answer Options */}
-                    <div className="space-y-3">
+                    <div className="space-y-2">
                       {randomOptions.map((option, index) => (
                         <button
                           key={index}
                           onClick={() => handleAnswerSelect(index)}
                           disabled={selectedOption !== null}
-                          className={`w-full text-left p-4 rounded-bl-2xl bg-base-100 border transition-all duration-200 ${
+                          className={`w-full text-left p-4 rounded-2xl rounded-tr-none bg-base-100 border transition-all duration-200 ${
                             selectedOption === index
                               ? "border-primary bg-primary/10"
                               : selectedOption !== null

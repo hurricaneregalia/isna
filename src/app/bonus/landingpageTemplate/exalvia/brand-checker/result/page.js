@@ -237,19 +237,19 @@ export default function BrandCheckerResult() {
     // Classification based on lowest category and score
     if (lowestCategoryScore < 60) {
       classification = "Rokie";
-      description = `Brand Anda mengalami masalah serius di aspek ${lowestCategoryName} dan yang lainnya. Ini perlu segera ditangani agar tidak membuat kondisi semakin buruk.`;
+      description = `Brand ${brandName} mengalami masalah serius di aspek ${lowestCategoryName} dan yang lainnya. Ini perlu segera ditangani agar tidak membuat kondisi semakin buruk.`;
       condition = `${lowestCategoryName} membutuhkan perhatian prioritas`;
     } else if (lowestCategoryScore < 75) {
       classification = "Pro";
-      description = `Brand Anda sudah memiliki fondasi yang baik, namun aspek ${lowestCategoryName} dan yang lainnya masih bisa di optimalkan untuk mencapai potensi maksimal.`;
+      description = `Brand ${brandName} sudah memiliki fondasi yang baik, namun aspek ${lowestCategoryName} dan yang lainnya masih bisa di optimalkan untuk mencapai potensi maksimal.`;
       condition = `${lowestCategoryName} perlu ditingkatkan`;
     } else if (normalizedScore === 100) {
       classification = "Excellent";
-      description = "Brand Anda mencapai skor sempuran! Semua aspek brand berada di level tertinggi. Pertahankan konsistensi dan terus berinovasi untuk memimpin pasar.";
+      description = `Brand ${brandName} mencapai skor sempuran! Semua aspek brand berada di level tertinggi. Pertahankan konsistensi dan terus berinovasi untuk memimpin pasar.`;
       condition = "Brand sempurna - siap menjadi market leader";
     } else {
       classification = "Elite";
-      description = "Brand Anda sudah berada di level yang baik dengan semua kategori menunjukkan nilai yang tinggi, namun masih bisa dioptimalkan.";
+      description = `Brand ${brandName} sudah berada di level yang baik dengan semua kategori menunjukkan nilai yang tinggi, namun masih bisa dioptimalkan.`;
       condition = "Brand siap untuk scale";
     }
 
@@ -349,7 +349,7 @@ export default function BrandCheckerResult() {
   return (
     <>
       <ExalviaNavbar data={data.navbar} />
-      <HeroBrandChecker headline="Cek Brand Selesai!" secId="brand-checker-result">
+      <HeroBrandChecker headline="Cek Brand Selesai!" secId="brand-checker-result" backgroundImage={data.pagesResult.heroImage}>
         <div className="w-full lg:px-0 sm:px-16 px-4">
           <ScoreDisplay result={result} myTest={myTest} getScoreBgColor={getScoreBgColor}>
             <div className=" w-full flex items-center my-4">
@@ -405,7 +405,7 @@ export default function BrandCheckerResult() {
             onDetailClick={openPackageModal}
           />
 
-          <BonusOffer />
+          <BonusOffer data={data.bonus} />
         </div>
       </section>
       <ExalviaFooter data={data.footer} secId="footer" />
