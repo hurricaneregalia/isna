@@ -334,7 +334,7 @@ const ExalviaDatabase = {
     ],
   },
   footer: {
-    copyright: "© 2025 Exalvia Copywriting. All rights reserved.",
+    copyright: "Exalvia Copy.",
     socials: [
       { label: "Instagram", href: "https://instagram.com/exalvia", icon: <FaInstagram /> },
       { label: "LinkedIn", href: "https://linkedin.com/company/exalvia", icon: <FaLinkedin /> },
