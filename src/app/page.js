@@ -1,29 +1,20 @@
-import fs from "fs/promises";
-import path from "path";
 import HeaderFooterSqlite from "./component/global/headerFooterSqlite";
 import LayoutLandingPage from "./component/home/layoutLandingPage";
 import FacebookPixelServer from "./component/marketingTools/FacebookPixelServer";
-import { headers } from "next/headers";
+import ExalviaDatabase from "./exalvia/database/ExalviaDatabase";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-async function loadSiteIdentity() {
-  const filePath = path.join(process.cwd(), "src/app/api/datajs/siteidentity/data.json");
-  const file = await fs.readFile(filePath, "utf-8");
-  const data = JSON.parse(file);
-  return data?.[0] || null;
-}
-
 export async function generateMetadata() {
   try {
-    const data = await loadSiteIdentity();
+    const data = ExalviaDatabase.siteidentity;
 
     if (!data) throw new Error("Site identity not found");
 
     return {
       title: data.siteName,
       description: data.description,
-      keywords: Array.isArray(data.keywords) ? data.keywords.join(", ") : "",
+      keywords: data.keywords || "",
       authors: [{ name: data.siteName }],
       applicationName: data.siteName,
       generator: "Next.js",
@@ -51,7 +42,7 @@ export async function generateMetadata() {
         card: "summary_large_image",
         title: data.siteName,
         description: data.description,
-        creator: data.socialLinks?.find((s) => s.platform === "twitter")?.platformUsername || "@kalamanacopy",
+        creator: "@kalamanacopy",
         images: [`${BASE_URL}${data.ogImage}`],
       },
       robots: {
@@ -101,25 +92,14 @@ export async function generateMetadata() {
 }
 
 export default async function HomePage() {
-  const requestHeaders = await headers();
-  const referrer = requestHeaders.get("referer") || null;
-  const userAgent = requestHeaders.get("user-agent") || null;
+  const siteData = ExalviaDatabase.siteidentity;
 
-  try {
-    const siteData = await loadSiteIdentity();
-
-    if (!siteData) throw new Error("Site identity not found");
-
-    return (
-      <HeaderFooterSqlite>
-        <FacebookPixelServer testEventCode="TEST53289" />
-        <main>
-          <LayoutLandingPage waNo={siteData.phone} />
-        </main>
-      </HeaderFooterSqlite>
-    );
-  } catch (error) {
-    console.error("Failed to fetch site identity:", error);
-    return <div>Gagal memuat data.</div>;
-  }
+  return (
+    <HeaderFooterSqlite>
+      <FacebookPixelServer testEventCode="TEST53289" />
+      <main>
+        <LayoutLandingPage waNo={siteData.phone} />
+      </main>
+    </HeaderFooterSqlite>
+  );
 }

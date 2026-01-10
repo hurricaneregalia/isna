@@ -1,11 +1,28 @@
 import midtransClient from "midtrans-client";
 
-export async function POST(request) {
-  const snap = new midtransClient.Snap({
-    isProduction: false,
-    serverKey: process.env.MIDTRANS_SERVER_KEY,
-  });
+const snap = new midtransClient.Snap({
+  isProduction: false,
+  serverKey: process.env.MIDTRANS_SERVER_KEY,
+});
 
+export async function GET(request) {
+  const { searchParams } = new URL(request.url);
+  const orderId = searchParams.get("order_id");
+
+  if (!orderId) {
+    return new Response(JSON.stringify({ error: "Order ID is required" }), { status: 400 });
+  }
+
+  try {
+    const statusResponse = await snap.transaction.status(orderId);
+    return Response.json(statusResponse);
+  } catch (error) {
+    console.error("Midtrans status error:", error);
+    return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+  }
+}
+
+export async function POST(request) {
   let body;
   try {
     body = await request.json();

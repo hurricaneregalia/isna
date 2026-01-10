@@ -37,7 +37,7 @@ export default function LoadingProcess() {
           <span className="mr-1 text-slate-900">
             <FaCoins />
           </span>
-          Isna Project
+          Kalamana Copy
         </p>
         <p className="m-0 text-base-content/70">tagline lorem ipsum</p>
       </div>

@@ -3,16 +3,16 @@ import React, { useEffect, useState } from "react";
 import { LuMoon, LuSunMedium } from "react-icons/lu";
 
 export default function ThemeSwitch({ textColor }) {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("exalvia");
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") || "light";
+    const savedTheme = localStorage.getItem("theme") || "exalvia";
     setTheme(savedTheme);
     document.documentElement.setAttribute("data-theme", savedTheme);
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
+    const newTheme = theme === "exalvia" ? "dark" : "exalvia";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
     document.documentElement.setAttribute("data-theme", newTheme);
@@ -23,14 +23,7 @@ export default function ThemeSwitch({ textColor }) {
       {/* Hidden but accessible label */}
       <span className="sr-only">Toggle theme</span>
 
-      <input
-        type="checkbox"
-        id="theme-switch"
-        className="theme-controller"
-        checked={theme === "dark"}
-        onChange={toggleTheme}
-        aria-label="Toggle between light and dark theme"
-      />
+      <input type="checkbox" id="theme-switch" className="theme-controller" checked={theme === "dark"} onChange={toggleTheme} aria-label="Toggle between exalvia and dark theme" />
 
       {/* Sun icon */}
       <LuSunMedium className={`swap-on h-7 w-7 ${textColor}`} />

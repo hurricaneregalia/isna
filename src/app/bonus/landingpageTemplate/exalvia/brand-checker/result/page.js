@@ -22,6 +22,7 @@ import PackageDetailModal from "./components/PackageDetailModal";
 import { getAllFlags } from "./components/flagUtils";
 import ExalviaNavbar from "../../sections/ExalviaNavbar";
 import ExalviaFooter from "../../sections/ExalviaFooter";
+import HeaderFooterClient from "@/app/component/global/HeaderFooterClient";
 
 // Function to format currency with dot separator
 const formatCurrency = (amount) => {
@@ -372,7 +373,7 @@ export default function BrandCheckerResult() {
                 </h3>
 
                 <p className="text-sm leading-relaxed sm:w-8/12">
-                  Berdasarkan <span className="font-bold text-warning">{getAllFlags(result).length} catatan penting</span> dari analisa brand{" "}
+                  Berdasarkan <span className="font-bold text-warning">detail penilaian dan {getAllFlags(result).length} catatan penting</span> dari analisa brand{" "}
                   <span className="capitalize font-semibold">{result.brandName}</span>, berikut solusi yang direkomendasikan untuk mendorong penjualan online yang lebih optimal.
                 </p>
               </div>
@@ -410,6 +411,7 @@ export default function BrandCheckerResult() {
       </section>
       <ExalviaFooter data={data.footer} secId="footer" />
       <PackageDetailModal selectedPackage={selectedPackage} formatCurrency={formatCurrency} onClose={() => document.getElementById("package_modal").close()} />
+      <HeaderFooterClient />
     </>
   );
 }

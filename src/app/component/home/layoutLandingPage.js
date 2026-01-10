@@ -1,44 +1,33 @@
+"use client";
+import ExalviaDatabase from "@/app/exalvia/database/ExalviaDatabase";
+import ExalviaBenefits from "@/app/exalvia/sections/ExalviaBenefits";
+import ExalviaCTA1 from "@/app/exalvia/sections/ExalviaCTA1";
+import ExalviaFact from "@/app/exalvia/sections/ExalviaFact";
+import ExalviaFenomenon from "@/app/exalvia/sections/ExalviaFenomenon";
+import ExalviaFooter from "@/app/exalvia/sections/ExalviaFooter";
+import ExalviaHero from "@/app/exalvia/sections/ExalviaHero";
+import ExalviaNavbar from "@/app/exalvia/sections/ExalviaNavbar";
 import React from "react";
-import HeroKalamana from "./HeroKalamana";
-import FaktaKalamana from "./FaktaKalamana";
-import FenomenaKalamana from "./FenomenaKalamana";
-import SolusiKalamana from "./SolusiKalamana";
-import HadistKalamana from "./HadistKalamana";
-import SeriusKalamana from "./SeriusKalamana";
-import ManfaatKalamana from "./ManfaatKalamana";
-import PentingKalamana from "./PentingKalamana";
-import LayananKalamana from "./LayananKalamana";
-import AlurKalamana from "./AlurKalamana";
-import KeinginanKalamana from "./KeinginanKalamana";
-import BonusKalamana from "./BonusKalamana";
-import ClaimBonusKalamana from "./ClaimBonusKalamana";
-import KalamanaDB from "../../database/KalamanaDB";
+import HeaderFooterClient from "../global/HeaderFooterClient";
 
-const dataKalamana = KalamanaDB;
-const totalBonus = KalamanaDB.bonus.item.reduce((total, item) => total + item.price, 0);
+// Import all sections
 
-export default function layoutLandingPage({ waNo }) {
+const layoutLandingPage = () => {
+  const data = ExalviaDatabase;
+  const ctaLink = "exalvia/brand-checker";
+
   return (
-    <>
-      <HeroKalamana btnTxt="lihat fakta" data={dataKalamana.hero} linkTarget1="#fakta" />
-      <div className="myContent space-y-30 py-30">
-        <FaktaKalamana secId="fakta" data={dataKalamana.fakta} />
-        <FenomenaKalamana secId="fenomena" data={dataKalamana.fenomena} />
-      </div>
-      <SolusiKalamana secId="solusi" data={dataKalamana.solusi} />
-      <HadistKalamana secId="hadist" data={dataKalamana.hadist} />
-      <SeriusKalamana secId="serius" data={dataKalamana.serius} />
-      <div className="myContent space-y-30 py-30">
-        <ManfaatKalamana secId="manfaat" data={dataKalamana.manfaat} />
-        <PentingKalamana secId="penting" data={dataKalamana.penting} />
-      </div>
-      <LayananKalamana secId="mulai-sekarang" data={dataKalamana.layanan} />
-      <div className="myContent space-y-30 py-30">
-        <AlurKalamana secId="alur" data={dataKalamana.alur} />
-        <KeinginanKalamana secId="keinginan" linkTarget1="#mulai-sekarang" linkTarget2="#" waNumber={waNo} data={dataKalamana.keinginan} />
-        <BonusKalamana secId="bonus" data={dataKalamana.bonus} totalBonus={totalBonus} />
-      </div>
-      <ClaimBonusKalamana secId=" claim bonus" linkTarget1="#mulai-sekarang" data={dataKalamana.claimBonus} />
-    </>
+    <div className="min-h-screen bg-base-100 text-base-content font-montserrat">
+      <ExalviaNavbar data={data.navbar} />
+      <ExalviaHero data={data.hero} secId="hero" linkTarget="masalah" />
+      <ExalviaFact data={data.fact} secId="masalah" />
+      <ExalviaFenomenon data={data.fenomenon} secId="solusi" reverse={true} />
+      <ExalviaCTA1 data={data.cta1} secId="scan" targetLink={ctaLink} />
+      <ExalviaBenefits data={data.benefits} secId="keuntungan" targetLink={ctaLink} />
+      <ExalviaFooter data={data.footer} secId="footer" />
+      <HeaderFooterClient />
+    </div>
   );
-}
+};
+
+export default layoutLandingPage;

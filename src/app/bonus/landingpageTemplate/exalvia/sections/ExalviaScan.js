@@ -24,9 +24,7 @@ export default function ExalviaScan({ brand = "BRAND", width = "" }) {
       {/* Brand Header */}
       <div className=" relative w-full flex flex-col gap-3">
         <div className="bg-base-100 sm:py-8 py-5 px-5 font-bold text-3xl rounded-lg">
-          <span className="flex gap-1 animate-pulse items-center capitalize">
-            <TbHelpSquareRoundedFilled /> {brand}
-          </span>
+          <span className="animate-pulse capitalize">{brand === "BRAND" ? brand : "scan" + brand}</span>
         </div>
         {/* Content Placeholder */}
         <div className="bg-base-100 p-5 flex rounded-lg gap-2">
