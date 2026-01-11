@@ -819,7 +819,7 @@ const ExalviaDatabase = {
 
   pagesResult: {
     name: "result page",
-    heroImage: heroResult,
+    heroImage: heroBg1,
   },
 
   // Brand checker utilities
