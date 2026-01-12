@@ -12,12 +12,9 @@ export default function Navigation2({ siteName, bg, logo }) {
   const isDev = process.env.NODE_ENV === "development";
 
   const navMenu = [
-    { name: "Home", href: "/", key: "home" },
-    { name: "Fakta", href: "#fakta", key: "fakta" },
-    { name: "Solusi", href: "#solusi", key: "solusi" },
-    { name: "Layanan", href: "#mulai-sekarang", key: "layanan" },
     ...(isDev
       ? [
+          { name: "Home", href: "/", key: "home" },
           { name: "Product", href: "/product", key: "product" },
           { name: "List Theme", href: "/listtheme", key: "litstheme" },
           { name: "Bonus", href: "/bonus", key: "bonus" },
@@ -30,24 +27,16 @@ export default function Navigation2({ siteName, bg, logo }) {
       : []),
   ];
   return (
-    <div className={`${bg} sticky top-0 z-10`}>
+    <div className={`${bg} sticky top-0 z-20`}>
       <Disclosure as="nav" className="bg-slate-900 text-slate-400 ">
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-          <div className="relative flex h-16 items-center justify-between">
-            <div className="flex items-center md:block px-4 sm:px-0">
-              <div className="flex shrink-0 items-center">
-                <Link href="/" className="flex items-center gap-1">
-                  <Image src={logo} alt="logo" width={20} height={20} className="w-5 h-5" />
-                  <span className="font-bold capitalize hover:text-amber-300">{siteName}</span>
-                </Link>
-              </div>
-            </div>
-            <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start" id="desktopNav">
-              <div className="hidden sm:ml-6 md:block w-full">
-                <div className="flex flex-row-reverse">
-                  <div className="space-x-4">
+          <div className="relative flex h-16 items-center justify-center">
+            <div className="flex items-center justify-center" id="desktopNav">
+              <div className="hidden md:block">
+                <div className="flex justify-center">
+                  <div className="space-x-4 flex items-center">
                     {navMenu.map((item) => (
-                      <Link key={item.key} href={item.href} aria-current={item.current ? "page" : undefined} className="text-slate-400 hover:text-amber-300">
+                      <Link key={item.key} href={item.href} aria-current={item.current ? "page" : undefined} className="text-slate-400 hover:text-amber-300 text-sm font-medium">
                         <DisclosureButton as="button">{item.name}</DisclosureButton>
                       </Link>
                     ))}
@@ -56,8 +45,6 @@ export default function Navigation2({ siteName, bg, logo }) {
               </div>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              <ThemeSwitch textColor="text-slate-400 hover:text-amber-300" />
-
               <DisclosureButton
                 className="group relative inline-flex items-center justify-center rounded-md p-2 text-slate-400 sm:hidden"
                 aria-expanded="false" // Menambahkan aria-expanded untuk tombol menu

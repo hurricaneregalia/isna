@@ -8,19 +8,20 @@ export default function PackageDetailModal({ selectedPackage, formatCurrency, on
   return (
     <dialog id="package_modal" className="modal rounded-none">
       {selectedPackage && (
-        <div className="modal-box max-w-2xl p-0 rounded-none rounded-bl-4xl">
+        <div className="modal-box max-w-2xl p-0 rounded-4xl rounded-tr-none">
           <div className=" grid grid-cols-1 gap-8">
-            <div className="sm:p-8 p-5 bg-base-200 py-8 rounded-bl-4xl">
+            <div className="sm:p-8 p-5 bg-secondary py-8 ">
               <div className="flex gap-1">
                 {Array.from({ length: 5 }, (_, index) => (index < selectedPackage.rating ? <FaStar key={index} className="text-warning" /> : <FaRegStar key={index} className="text-warning" />))}
               </div>
-              <h3 className="font-bold text-xl">{selectedPackage.name}</h3>
-              <div className="flex flex-col gap-3 sm:my-8 my-5">
-                <p className="opacity-70 flex gap-2 items-start shrink">
-                  <BsFillPatchCheckFill className="text-lg shrink-0" /> Cocok untuk {selectedPackage.description}
+              <h3 className="font-bold text-4xl text-secondary-content mt-2">{selectedPackage.name}</h3>
+              <h3 className="font-bold text-4xl text-secondary-content capitalize">service pack</h3>
+              <div className="flex flex-col gap-2 text-secondary-content/80 sm:my-8 my-5">
+                <p className="flex gap-2 items-start shrink">
+                  <BsFillPatchCheckFill className="text-lg shrink-0 text-success mt-0.5" /> Cocok untuk {selectedPackage.description}
                 </p>
-                <p className="opacity-70 flex gap-2 items-start shrink">
-                  <BsFillPatchCheckFill className="text-lg shrink-0" /> Output {selectedPackage.output}
+                <p className="flex gap-2 items-start shrink">
+                  <BsFillPatchCheckFill className="text-lg shrink-0 text-success mt-0.5" /> Output {selectedPackage.output}
                 </p>
               </div>
               <div className="text-2xl font-bold text-warning mt-4">Rp {formatCurrency(selectedPackage.price)}</div>
@@ -43,7 +44,7 @@ export default function PackageDetailModal({ selectedPackage, formatCurrency, on
             </div>
 
             <div className="sm:px-8 px-5">
-              <div className="text-sm text-base-content/60 text-left flex gap-2 items-center">
+              <div className="text-sm text-base-content/60 text-left flex gap-2 items-center mb-2">
                 <BsHourglassSplit /> Pengerjaan: {selectedPackage.turnaround}
               </div>
               <div className="w-full">
@@ -58,7 +59,7 @@ export default function PackageDetailModal({ selectedPackage, formatCurrency, on
               </div>
               <div className="flex justify-end gap-3 my-8">
                 <div className="join mx-auto w-full items-center justify-center">
-                  <ExalviaButton text="Tutup" onClick={onClose} className="join-item w-6/12 btn-soft" />
+                  <ExalviaButton text="Tutup" onClick={onClose} className="join-item w-6/12 btn-soft" variant=" " />
                   <ExalviaLinkButton text="Pilih Paket" href="#contact" className="join-item w-6/12 btn-warning" />
                 </div>
               </div>

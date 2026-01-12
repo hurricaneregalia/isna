@@ -77,7 +77,7 @@ export default function PackageCard({ pkg, isRecommended = false, formatCurrency
 
   return (
     <div className={` border-4 overflow-hidden ${isRecommended ? "border-primary" : "border-transparent"} rounded-4xl rounded-tr-none h-full flex flex-col`}>
-      <div className={`flex relative flex-col gap-10 ${isRecommended ? "bg-primary p-8 rounded-b-3xl " : "p-8"}`}>
+      <div className={`flex relative flex-col gap-10 ${isRecommended ? "bg-primary p-8  " : "p-8"}`}>
         <div className="absolute top-0 left-0 w-full h-full bg-primary opacity-10">
           <Image src={pkg?.backgroundImage} alt="background" fill priority className="object-cover" sizes="(max-width: 1536px) 100vw, 85vw" />
         </div>

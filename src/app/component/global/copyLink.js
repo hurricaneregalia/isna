@@ -18,7 +18,7 @@ export default function CopyLink({ link, cssStyle, copyLinkTxt }) {
 
   return (
     <div className="space-y-2">
-      <div className="tooltip tooltip-bottom cursor-pointer w-full" data-tip="Klik untuk menyalin" onClick={handleCopy}>
+      <div className="tooltip tooltip-bottom cursor-pointer w-full" data-tip="Salin link" onClick={handleCopy}>
         <p className="text-md">
           <span className={cssStyle}>
             {textFx} <LuCopy />

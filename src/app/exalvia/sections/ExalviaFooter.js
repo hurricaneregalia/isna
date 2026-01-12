@@ -1,5 +1,4 @@
-"use client";
-
+import Image from "next/image";
 import React from "react";
 
 export default function ExalviaFooter({ data, secId = "footer" }) {
@@ -8,7 +7,9 @@ export default function ExalviaFooter({ data, secId = "footer" }) {
   return (
     <footer id={secId} className="py-8 bg-primary text-white/50">
       <div className="lg:w-10/12 sm:w-11/12 w-full mx-auto px-6 md:px-16 lg:px-24 flex flex-col md:flex-row items-center md:justify-between gap-4">
-        <p className="text-sm font-montserrat text-center md:text-left">{data.copyright}</p>
+        <div className="relative w-55 h-8 text-start ">
+          <Image src={data?.logoFullLight} alt="logo" fill className="object-contain sm:object-left object-center" />
+        </div>
         <div className="flex items-center gap-4">
           {data.socials?.map((item, idx) => {
             return (

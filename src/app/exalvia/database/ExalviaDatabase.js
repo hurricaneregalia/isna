@@ -1,6 +1,23 @@
 // Import semua icon yang digunakan dalam loop
 import { BiSolidMessageCheck, BiTargetLock } from "react-icons/bi";
-import { FaSearch, FaPenNib, FaMoon, FaRocket, FaShieldAlt, FaInstagram, FaLinkedin, FaTwitter, FaBox, FaBullseye, FaTag, FaBullhorn, FaPalette } from "react-icons/fa";
+import {
+  FaSearch,
+  FaPenNib,
+  FaMoon,
+  FaRocket,
+  FaShieldAlt,
+  FaInstagram,
+  FaLinkedin,
+  FaTwitter,
+  FaBox,
+  FaBullseye,
+  FaTag,
+  FaBullhorn,
+  FaPalette,
+  FaFacebook,
+  FaTiktok,
+  FaPinterest,
+} from "react-icons/fa";
 import { FaRegEye, FaRegFaceTired, FaToggleOn } from "react-icons/fa6";
 import { GiCrackedGlass, GiSwordBreak } from "react-icons/gi";
 import { HiChat, HiLightBulb, HiOutlineDocumentDuplicate, HiShieldCheck, HiTrendingUp, HiUserGroup } from "react-icons/hi";
@@ -366,11 +383,13 @@ const ExalviaDatabase = {
     ],
   },
   footer: {
+    logoFullLight: logoFullLight,
     copyright: "Kalamana Copy",
     socials: [
-      { label: "Instagram", href: "https://instagram.com/exalvia", icon: <FaInstagram /> },
-      { label: "LinkedIn", href: "https://linkedin.com/company/exalvia", icon: <FaLinkedin /> },
-      { label: "X", href: "https://x.com/exalvia", icon: <FaTwitter /> },
+      { label: "Instagram", href: "https://instagram.com/kalamanacopy", icon: <FaInstagram /> },
+      { label: "Facebook", href: "https://facebook.com/kalamanacopy", icon: <FaFacebook /> },
+      { label: "TikTok", href: "https://tiktok.com/@kalamanacopy", icon: <FaTiktok /> },
+      { label: "Pinterest", href: "https://pinterest.com/kalamanacopy", icon: <FaPinterest /> },
     ],
   },
   features: {

@@ -45,9 +45,9 @@ export default function ScoreDisplay({ result, myTest, getScoreBgColor, children
   return (
     <>
       <div className="text-center border-2 border-white/50 rounded-3xl rounded-tr-none text-white">
-        <div className="grid lg:grid-cols-2 grid-cols-1 lg:divide-x-2 divide-x-0 divide-white/50 ">
-          <div className="scoring w-full">
-            <div className=" w-full  flex flex-col gap-4 py-8">
+        <div className="grid lg:grid-cols-2 grid-cols-1 rounded-4xl lg:divide-x-2 divide-x-0 divide-white/50 ">
+          <div className="scoring w-full ">
+            <div className=" w-full  flex flex-col gap-4 py-8 ">
               <div className=" text-center brand-info" id="rating">
                 <span className="flex gap-1 items-center justify-center mb-4 text-warning text-2xl">{getStarRating(result.normalizedScore)}</span>
                 <p className="font-bold flex gap-1 items-center justify-center opacity-90">--- Analisa Brand ---</p>

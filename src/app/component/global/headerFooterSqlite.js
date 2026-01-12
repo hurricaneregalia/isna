@@ -29,9 +29,8 @@ export default async function HeaderFooterSqlite({ children }) {
   const currentYear = new Date().getFullYear();
   return (
     <div className="relative min-h-screen flex flex-col">
-      <Navigation2 siteName={siteData.siteName} bg={landingPageStyle.bg1} logo={siteData.logoUrl} />
+      {process.env.NODE_ENV === "development" && <Navigation2 siteName={siteData.siteName} bg={landingPageStyle.bg1} logo={siteData.logoUrl} />}
       {children}
-      <Footer footerText={currentYear} siteName={siteData.siteName} bg="bg-slate-900 text-slate-600" />
       <HeaderFooterClient />
     </div>
   );
