@@ -7,6 +7,7 @@ import HeaderFooterClient from "../component/global/HeaderFooterClient";
 import HeroBrandChecker from "../exalvia/brand-checker/HeroBrandChecker";
 import ExalviaButton from "../exalvia/ui-components/ExalviaButton";
 import ExalviaFormInput from "../exalvia/ui-components/ExalviaFormInput";
+import AgePicker from "../exalvia/ui-components/AgePicker";
 import {
   IoSendOutline,
   IoRocketOutline,
@@ -36,6 +37,9 @@ import {
   IoLogoWhatsapp,
   IoCalendarOutline,
   IoCubeOutline,
+  IoEyeOutline,
+  IoCheckmarkCircle,
+  IoWarning,
 } from "react-icons/io5";
 import { FaUsers } from "react-icons/fa";
 import { TbLocationShare } from "react-icons/tb";
@@ -43,6 +47,8 @@ import { RiSwordLine } from "react-icons/ri";
 import { PiIdentificationCard } from "react-icons/pi";
 import { LuSwords } from "react-icons/lu";
 import { ArrowRight, ArrowLeft } from "lucide-react";
+
+const GOOGLE_SCRIPT = process.env.WEB_APP_SPREADSHEET;
 
 const StepIndicator = ({ steps, currentStep, totalSteps, onStepClick }) => (
   <div className="mb-12 w-full max-w-4xl mx-auto px-4">
@@ -152,6 +158,7 @@ const FormSection = ({ title, icon, children, description }) => (
 
 export default function FormDataBrandPage() {
   const [currentStep, setCurrentStep] = useState(1);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const totalSteps = 9;
 
   const [formData, setFormData] = useState({
@@ -169,31 +176,20 @@ export default function FormDataBrandPage() {
     socialMedia: [{ platform: "instagram", username: "" }],
 
     // Step 2: Visi, Misi & Tujuan
-    brandVision: "",
-    brandMission: "",
-    shortTermGoal: "",
-    longTermGoal: "",
+    brandVision: [""],
+    brandMission: [""],
+    shortTermGoal: [""],
+    longTermGoal: [""],
 
-    // Step 3: Detail Produk
-    productStatus: "",
-    productName: "",
-    productVariants: "",
-    productDescription: "",
-    productFeatures: "",
-    productCertifications: [{ name: "", description: "" }],
-    productPriceRange: "",
-    priceStrategy: "",
-    priceReasoning: "",
-    productUniqueBenefits: "",
-    productWarranty: "",
-    businessType: "", // Pindah dari Step 1
+    // Step 3: Detail Audiens
     targetDescription: "",
-    targetAge: "",
+    targetAgeMin: "",
+    targetAgeMax: "",
     targetGender: "",
     targetMaritalStatus: "",
-    targetReligion: "",
-    targetEthnicity: "",
-    targetEducation: "",
+    targetReligion: "all",
+    targetEthnicity: "all",
+    targetEducation: "all",
     targetLanguage: "",
     targetLocation: "",
     targetEconomy: "",
@@ -201,28 +197,35 @@ export default function FormDataBrandPage() {
     targetLifestyle: "",
     targetProblem: "",
 
-    // Step 4: Analisis Kompetitor
-    competitors: [{ name: "", products: "", strengths: "", weaknesses: "" }],
-    marketOpportunity: "",
-
-    // Step 5: Value Proposition & Keunikan
-    brandValues: "",
+    // Step 4: Detail Produk
+    businessType: "",
+    productStatus: "",
+    productName: "",
+    productVariants: "",
+    productDescription: "",
+    productCertifications: [{ name: "", description: "" }],
+    productPriceRange: "",
+    priceStrategy: "",
+    priceReasoning: "",
+    productWarranty: "",
     usp: "",
-    consumerBenefits: "",
-    whyChooseUs: "",
 
-    // Step 6: Identitas Visual
+    // Step 5: Identitas Visual
     hasLogo: "",
     logoMeaning: "",
     primaryColor: "",
     primaryFont: "",
-    visualStyle: "",
+    visualStyle: [],
     visualConsistency: "",
 
-    // Step 7: Customer Experience & Touchpoints
+    // Step 6: Customer Experience & Touchpoints
     mainTouchpoints: "",
-    expectedExperience: "",
-    frequentComplaints: "",
+    positiveFeedback: [""],
+    negativeFeedback: [""],
+
+    // Step 7: Analisis Kompetitor
+    competitors: [{ name: "", products: "", strengths: "", weaknesses: "" }],
+    marketOpportunity: "",
 
     // Step 8: Masalah Brand
     commonProblems: [],
@@ -241,9 +244,13 @@ export default function FormDataBrandPage() {
   };
 
   const addSocialMedia = () => {
+    const allPlatforms = ["instagram", "tiktok", "facebook", "youtube", "twitter"];
+    const usedPlatforms = formData.socialMedia.map((sm) => sm.platform);
+    const nextPlatform = allPlatforms.find((p) => !usedPlatforms.includes(p)) || "others";
+
     setFormData((prev) => ({
       ...prev,
-      socialMedia: [...prev.socialMedia, { platform: "instagram", username: "" }],
+      socialMedia: [...prev.socialMedia, { platform: nextPlatform, username: "" }],
     }));
   };
 
@@ -292,6 +299,49 @@ export default function FormDataBrandPage() {
     setFormData((prev) => ({ ...prev, productCertifications: newCerts }));
   };
 
+  const handleFeedbackChange = (type, index, value) => {
+    const field = type === "positive" ? "positiveFeedback" : "negativeFeedback";
+    const newFeedback = [...formData[field]];
+    newFeedback[index] = value;
+    setFormData((prev) => ({ ...prev, [field]: newFeedback }));
+  };
+
+  const addFeedback = (type) => {
+    const field = type === "positive" ? "positiveFeedback" : "negativeFeedback";
+    setFormData((prev) => ({
+      ...prev,
+      [field]: [...prev[field], ""],
+    }));
+  };
+
+  const removeFeedback = (type, index) => {
+    const field = type === "positive" ? "positiveFeedback" : "negativeFeedback";
+    if (formData[field].length > 1) {
+      const newFeedback = formData[field].filter((_, i) => i !== index);
+      setFormData((prev) => ({ ...prev, [field]: newFeedback }));
+    }
+  };
+
+  const handleVisionMissionChange = (field, index, value) => {
+    const newArray = [...formData[field]];
+    newArray[index] = value;
+    setFormData((prev) => ({ ...prev, [field]: newArray }));
+  };
+
+  const addVisionMissionItem = (field) => {
+    setFormData((prev) => ({
+      ...prev,
+      [field]: [...prev[field], ""],
+    }));
+  };
+
+  const removeVisionMissionItem = (field, index) => {
+    if (formData[field].length > 1) {
+      const newArray = formData[field].filter((_, i) => i !== index);
+      setFormData((prev) => ({ ...prev, [field]: newArray }));
+    }
+  };
+
   const handleNext = () => {
     if (currentStep < totalSteps) {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -306,32 +356,147 @@ export default function FormDataBrandPage() {
     }
   };
 
-  const handleSubmit = (e) => {
+  // State untuk Modal Kustom
+  const [modalState, setModalState] = useState({
+    isOpen: false,
+    type: "success", // 'success' | 'error' | 'confirm'
+    title: "",
+    message: "",
+    onConfirm: null, // Callback khusus untuk konfirmasi
+  });
+
+  const closeModal = () => {
+    setModalState((prev) => ({ ...prev, isOpen: false }));
+    // Jika sukses, bisa redirect atau reset form di sini jika diinginkan
+    if (modalState.type === "success") {
+      // window.location.href = "/thank-you"; // Opsional
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form Submitted:", formData);
-    alert("Terima kasih! Data rumusan brand Anda telah kami terima.");
+
+    // Ganti window.confirm dengan Modal Konfirmasi
+    setModalState({
+      isOpen: true,
+      type: "confirm",
+      title: "Konfirmasi Pengiriman",
+      message: "Apakah Anda yakin data yang diisi sudah benar dan siap untuk dikirim?",
+      onConfirm: async () => {
+        setModalState((prev) => ({ ...prev, isOpen: false })); // Tutup modal konfirmasi
+        processSubmission(); // Lanjut ke proses kirim
+      },
+    });
+  };
+
+  // Fungsi terpisah untuk proses pengiriman sesungguhnya
+  const processSubmission = async () => {
+    setIsSubmitting(true);
+
+    try {
+      // Ambil URL dari Environment Variable
+      const SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
+
+      // Validasi: Cek jika URL tidak ada di .env
+      if (!SCRIPT_URL) {
+        setModalState({
+          isOpen: true,
+          type: "error",
+          title: "Konfigurasi Hilang",
+          message: "URL Google Apps Script belum ditemukan di .env (NEXT_PUBLIC_GOOGLE_SCRIPT_URL)!",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Gunakan text/plain untuk menghindari Preflight CORS
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      // Sukses
+      setModalState({
+        isOpen: true,
+        type: "success",
+        title: "Pengiriman Berhasil!",
+        message: "Data brand Anda telah berhasil dikirim ke sistem kami. Tim kami akan segera menganalisanya.",
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setModalState({
+        isOpen: true,
+        type: "error",
+        title: "Gagal Mengirim",
+        message: "Terjadi kesalahan saat mengirim data. Silakan periksa koneksi internet Anda atau coba lagi nanti.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const steps = [
     { title: "Identitas", icon: <PiIdentificationCard /> },
     { title: "Visi", icon: <IoRocketOutline /> },
-    { title: "Produk", icon: <IoCubeOutline /> },
     { title: "Audiens", icon: <IoPeopleOutline /> },
-    { title: "Pesaing", icon: <LuSwords /> },
-    { title: "Keunikan", icon: <IoDiamondOutline /> },
+    { title: "Produk", icon: <IoCubeOutline /> },
     { title: "Visual", icon: <IoColorPaletteOutline /> },
     { title: "Testimoni", icon: <IoChatbubblesOutline /> },
+    { title: "Pesaing", icon: <LuSwords /> },
     { title: "Masalah", icon: <IoAlertCircleOutline /> },
+    { title: "Review", icon: <IoEyeOutline /> },
   ];
 
   return (
-    <div className="bg-base-100 min-h-screen flex flex-col font-montserrat overflow-hidden">
+    <div className="bg-base-100 min-h-screen flex flex-col font-montserrat overflow-hidden relative">
       <ExalviaNavbar data={data.navbar} bgCustom="bg-transparent" />
+
+      {/* --- MODAL COMPONENT --- */}
+      {modalState.isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-base-100 rounded-3xl p-8 max-w-sm w-full shadow-2xl scale-100 animate-in zoom-in-95 duration-200 flex flex-col items-center text-center gap-4">
+            {/* Icon */}
+            <div
+              className={`w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-2 ${
+                modalState.type === "success" ? "bg-success/10 text-success" : modalState.type === "error" ? "bg-error/10 text-error" : "bg-warning/10 text-warning"
+              }`}
+            >
+              {modalState.type === "success" ? <IoCheckmarkCircle /> : modalState.type === "error" ? <IoWarning /> : <IoAlertCircleOutline />}
+            </div>
+
+            {/* Content */}
+            <h3 className="text-xl font-black">{modalState.title}</h3>
+            <p className="text-sm opacity-60 leading-relaxed">{modalState.message}</p>
+
+            {/* Actions */}
+            <div className="flex gap-3 w-full mt-4">
+              {modalState.type === "confirm" ? (
+                <>
+                  <button onClick={closeModal} className="btn btn-ghost flex-1 rounded-xl">
+                    Batal
+                  </button>
+                  <button onClick={modalState.onConfirm} className="btn btn-primary flex-1 rounded-xl text-white shadow-lg shadow-primary/30">
+                    Ya, Kirim
+                  </button>
+                </>
+              ) : (
+                <button onClick={closeModal} className="btn btn-primary w-full rounded-xl text-white shadow-lg shadow-primary/30">
+                  Mengerti
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       <HeroBrandChecker headline="Lengkapi Data Brand" secId="form-hero" backgroundImage={data.pagesResult.heroImage}>
         <div className="w-full max-w-2xl mx-auto flex flex-col items-center text-center gap-4 py-10">
           <IoSparklesOutline className="text-6xl text-warning animate-pulse" />
-          <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white leading-tight">Rumusan Strategis</h1>
+          <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white leading-tight">Data Brand</h1>
           <p className="text-white/60 max-w-lg">Lengkapi data di bawah ini untuk membantu kami merumuskan pesan penjualan yang tepat untuk brand Anda.</p>
         </div>
       </HeroBrandChecker>
@@ -390,6 +555,7 @@ export default function FormDataBrandPage() {
                   placeholder="Pilih tahun berdiri"
                   value={formData.yearEstablished}
                   onChange={handleChange}
+                  max={new Date().toISOString().split("T")[0]}
                   required
                 />
                 <ExalviaFormInput
@@ -434,50 +600,58 @@ export default function FormDataBrandPage() {
                   required
                 />
                 <ExalviaFormInput label="Website (Opsional)" name="website" placeholder="https://www.brandanda.com" value={formData.website} onChange={handleChange} />
-                <div className="flex flex-col gap-4">
-                  <label className="text-sm font-bold uppercase opacity-50">Media Sosial (Opsional)</label>
-                  {formData.socialMedia.map((sm, index) => {
-                    const icons = {
-                      instagram: <IoLogoInstagram className="text-pink-500" />,
-                      tiktok: <IoLogoTiktok className="text-base-content" />,
-                      facebook: <IoLogoFacebook className="text-blue-600" />,
-                      youtube: <IoLogoYoutube className="text-red-600" />,
-                      twitter: <IoLogoTwitter className="text-sky-400" />,
-                      others: <IoShareSocialOutline />,
-                    };
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm font-bold opacity-50">Media Sosial (Opsional)</label>
+                  <div className="flex flex-col gap-4">
+                    {formData.socialMedia.map((sm, index) => {
+                      const icons = {
+                        instagram: <IoLogoInstagram className="text-pink-500" />,
+                        tiktok: <IoLogoTiktok className="text-base-content" />,
+                        facebook: <IoLogoFacebook className="text-blue-600" />,
+                        youtube: <IoLogoYoutube className="text-red-600" />,
+                        twitter: <IoLogoTwitter className="text-sky-400" />,
+                        others: <IoShareSocialOutline />,
+                      };
 
-                    return (
-                      <div key={index} className="flex flex-col md:flex-row gap-3 items-end md:items-center animate-in fade-in slide-in-from-left-4">
-                        <div className="w-full md:w-1/3">
-                          <ExalviaFormInput
-                            type="select"
-                            icon={icons[sm.platform] || icons.others}
-                            value={sm.platform}
-                            onChange={(e) => handleSocialMediaChange(index, "platform", e.target.value)}
-                            options={[
-                              { label: "Instagram", value: "instagram" },
-                              { label: "TikTok", value: "tiktok" },
-                              { label: "Facebook", value: "facebook" },
-                              { label: "YouTube", value: "youtube" },
-                              { label: "Twitter / X", value: "twitter" },
-                              { label: "Lainnya", value: "others" },
-                            ]}
-                          />
-                        </div>
-                        <div className="w-full flex-1 flex flex-row gap-3 items-center">
-                          <div className="flex-1">
-                            <ExalviaFormInput placeholder="Username / URL" value={sm.username} onChange={(e) => handleSocialMediaChange(index, "username", e.target.value)} />
+                      const allSocialOptions = [
+                        { label: "Instagram", value: "instagram" },
+                        { label: "TikTok", value: "tiktok" },
+                        { label: "Facebook", value: "facebook" },
+                        { label: "YouTube", value: "youtube" },
+                        { label: "Twitter / X", value: "twitter" },
+                        { label: "Lainnya", value: "others" },
+                      ];
+
+                      // Filter pilihan agar yang sudah dipilih tidak muncul lagi (kecuali 'others')
+                      const selectedPlatforms = formData.socialMedia.map((item) => item.platform);
+                      const filteredOptions = allSocialOptions.filter((opt) => opt.value === sm.platform || opt.value === "others" || !selectedPlatforms.includes(opt.value));
+
+                      return (
+                        <div key={index} className="flex flex-col md:flex-row gap-3 items-end md:items-center animate-in fade-in slide-in-from-left-4">
+                          <div className="w-full md:w-1/3">
+                            <ExalviaFormInput
+                              type="select"
+                              icon={icons[sm.platform] || icons.others}
+                              value={sm.platform}
+                              onChange={(e) => handleSocialMediaChange(index, "platform", e.target.value)}
+                              options={filteredOptions}
+                            />
                           </div>
-                          {formData.socialMedia.length > 1 && (
-                            <button type="button" onClick={() => removeSocialMedia(index)} className="btn btn-error btn-square btn-lg h-14 rounded-xl text-white shrink-0">
-                              ×
-                            </button>
-                          )}
+                          <div className="w-full flex-1 flex flex-row gap-3 items-center">
+                            <div className="flex-1">
+                              <ExalviaFormInput placeholder="Username / URL" value={sm.username} onChange={(e) => handleSocialMediaChange(index, "username", e.target.value)} />
+                            </div>
+                            {formData.socialMedia.length > 1 && (
+                              <button type="button" onClick={() => removeSocialMedia(index)} className="btn btn-error btn-square btn-lg h-14 rounded-xl text-white shrink-0">
+                                ×
+                              </button>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
-                  <button type="button" onClick={addSocialMedia} className="btn btn-outline btn-primary btn-md rounded-xl w-full md:w-fit gap-2">
+                      );
+                    })}
+                  </div>
+                  <button type="button" onClick={addSocialMedia} className="mt-4 btn btn-outline btn-primary btn-md rounded-xl w-full md:w-fit gap-2">
                     <span>+</span> Sosial Media
                   </button>
                 </div>
@@ -487,48 +661,315 @@ export default function FormDataBrandPage() {
             {/* GROUP 2: Visi, Misi & Tujuan Brand */}
             {currentStep === 2 && (
               <FormSection title="2. Visi & Misi" icon={steps[1].icon} description="Tujuan: menangkap arah dan niat strategis brand.">
-                <ExalviaFormInput
-                  label="Visi Brand (jika ada)"
-                  type="textarea"
-                  name="brandVision"
-                  placeholder="Apa impian besar yang ingin dicapai brand Anda di masa depan?"
-                  value={formData.brandVision}
-                  onChange={handleChange}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Misi Brand (jika ada)"
-                  type="textarea"
-                  name="brandMission"
-                  placeholder="Apa yang brand Anda lakukan setiap hari untuk mencapai visi tersebut?"
-                  value={formData.brandMission}
-                  onChange={handleChange}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Tujuan Jangka Pendek (jika ada)"
-                  type="textarea"
-                  name="shortTermGoal"
-                  placeholder="Target yang ingin dicapai dalam 6-12 bulan ke depan"
-                  value={formData.shortTermGoal}
-                  onChange={handleChange}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Tujuan Jangka Panjang (jika ada)"
-                  type="textarea"
-                  name="longTermGoal"
-                  placeholder="Target besar dalam 3-5 tahun ke depan"
-                  value={formData.longTermGoal}
-                  onChange={handleChange}
-                  required
-                />
+                {/* VISI BRAND */}
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm font-bold opacity-50">Visi Brand</label>
+                  <div className="flex flex-col gap-4">
+                    {formData.brandVision.map((vision, index) => (
+                      <div key={index} className="flex gap-3 animate-in fade-in slide-in-from-left-4">
+                        <div className="flex-1">
+                          <ExalviaFormInput
+                            placeholder="Contoh: Membuat remaja Indonesia lebih percaya diri mengekspresikan diri"
+                            value={vision}
+                            onChange={(e) => handleVisionMissionChange("brandVision", index, e.target.value)}
+                            required
+                          />
+                        </div>
+                        {formData.brandVision.length > 1 && (
+                          <button type="button" onClick={() => removeVisionMissionItem("brandVision", index)} className="btn btn-error btn-square h-14 w-14 rounded-xl text-white">
+                            ×
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <button type="button" onClick={() => addVisionMissionItem("brandVision")} className="mt-4 btn btn-outline btn-primary btn-sm rounded-xl w-fit gap-2">
+                    <span>+</span> Tambah Visi
+                  </button>
+                </div>
+
+                {/* MISI BRAND */}
+                <div className="flex flex-col gap-2 pt-4 border-t border-base-300 border-dashed">
+                  <label className="text-sm font-bold opacity-50">Misi Brand (upaya mewujudkan visi)</label>
+                  <div className="flex flex-col gap-4">
+                    {formData.brandMission.map((mission, index) => (
+                      <div key={index} className="flex gap-3 animate-in fade-in slide-in-from-left-4">
+                        <div className="flex-1">
+                          <ExalviaFormInput
+                            placeholder="Contoh: Menyediakan fashion streetwear yang terjangkau dan berkualitas"
+                            value={mission}
+                            onChange={(e) => handleVisionMissionChange("brandMission", index, e.target.value)}
+                            required
+                          />
+                        </div>
+                        {formData.brandMission.length > 1 && (
+                          <button type="button" onClick={() => removeVisionMissionItem("brandMission", index)} className="btn btn-error btn-square h-14 w-14 rounded-xl text-white">
+                            ×
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <button type="button" onClick={() => addVisionMissionItem("brandMission")} className="mt-4 btn btn-outline btn-primary btn-sm rounded-xl w-fit gap-2">
+                    <span>+</span> Tambah Misi
+                  </button>
+                </div>
+
+                {/* TUJUAN JANGKA PENDEK */}
+                <div className="flex flex-col gap-2 pt-4 border-t border-base-300 border-dashed">
+                  <label className="text-sm font-bold opacity-50">Tujuan Jangka Pendek (6-12 Bulan)</label>
+                  <div className="flex flex-col gap-4">
+                    {formData.shortTermGoal.map((goal, index) => (
+                      <div key={index} className="flex gap-3 animate-in fade-in slide-in-from-left-4">
+                        <div className="flex-1">
+                          <ExalviaFormInput
+                            placeholder="Contoh: Mencapai 10.000 followers di Instagram dalam 6 bulan"
+                            value={goal}
+                            onChange={(e) => handleVisionMissionChange("shortTermGoal", index, e.target.value)}
+                            required
+                          />
+                        </div>
+                        {formData.shortTermGoal.length > 1 && (
+                          <button type="button" onClick={() => removeVisionMissionItem("shortTermGoal", index)} className="btn btn-error btn-square h-14 w-14 rounded-xl text-white">
+                            ×
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <button type="button" onClick={() => addVisionMissionItem("shortTermGoal")} className="mt-4 btn btn-outline btn-primary btn-sm rounded-xl w-fit gap-2">
+                    <span>+</span> Tambah Tujuan
+                  </button>
+                </div>
+
+                {/* TUJUAN JANGKA PANJANG */}
+                <div className="flex flex-col gap-2 pt-4 border-t border-base-300 border-dashed">
+                  <label className="text-sm font-bold opacity-50">Tujuan Jangka Panjang (3-5 Tahun)</label>
+                  <div className="flex flex-col gap-4">
+                    {formData.longTermGoal.map((goal, index) => (
+                      <div key={index} className="flex gap-3 animate-in fade-in slide-in-from-left-4">
+                        <div className="flex-1">
+                          <ExalviaFormInput
+                            placeholder="Contoh: Menjadi brand streetwear pilihan utama remaja se-Indonesia"
+                            value={goal}
+                            onChange={(e) => handleVisionMissionChange("longTermGoal", index, e.target.value)}
+                            required
+                          />
+                        </div>
+                        {formData.longTermGoal.length > 1 && (
+                          <button type="button" onClick={() => removeVisionMissionItem("longTermGoal", index)} className="btn btn-error btn-square h-14 w-14 rounded-xl text-white">
+                            ×
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <button type="button" onClick={() => addVisionMissionItem("longTermGoal")} className="mt-4 btn btn-outline btn-primary btn-sm rounded-xl w-fit gap-2">
+                    <span>+</span> Tambah Tujuan
+                  </button>
+                </div>
               </FormSection>
             )}
 
-            {/* GROUP 3: Detail Produk */}
+            {/* GROUP 3: Target Audiens */}
             {currentStep === 3 && (
-              <FormSection title="3. Detail Produk" icon={steps[2].icon} description="Berikan informasi tentang produk atau layanan yang Anda tawarkan.">
+              <FormSection title="3. Target Audiens" icon={steps[2].icon} description="Tujuan: memahami siapa yang disasar brand.">
+                {/* --- DEMOGRAFI --- */}
+                <div className="col-span-full border-b border-base-300 pb-2">
+                  <h4 className="text-xs font-black uppercase tracking-widest text-primary">A. Demografi</h4>
+                </div>
+                <AgePicker
+                  minAge={parseInt(formData.targetAgeMin) || 18}
+                  maxAge={parseInt(formData.targetAgeMax) || 18}
+                  onChange={(min, max) => {
+                    setFormData((prev) => ({
+                      ...prev,
+                      targetAgeMin: min.toString(),
+                      targetAgeMax: max.toString(),
+                    }));
+                  }}
+                  required
+                />
+                <ExalviaFormInput
+                  label="Gender Audiens"
+                  type="radio"
+                  name="targetGender"
+                  value={formData.targetGender}
+                  onChange={handleChange}
+                  options={[
+                    { label: "Laki-laki", value: "male" },
+                    { label: "Perempuan", value: "female" },
+                    { label: "Semua", value: "all" },
+                  ]}
+                  required
+                />
+                <ExalviaFormInput
+                  label="Status Pernikahan Audiens"
+                  type="radio"
+                  name="targetMaritalStatus"
+                  value={formData.targetMaritalStatus}
+                  onChange={handleChange}
+                  options={[
+                    { label: "Belum Menikah", value: "single" },
+                    { label: "Menikah", value: "married" },
+                    { label: "Single parent", value: "single_parent" },
+                    { label: "Semua", value: "all" },
+                  ]}
+                  required
+                />
+                <ExalviaFormInput
+                  label="Agama Audiens"
+                  type="select"
+                  name="targetReligion"
+                  placeholder="Pilih Agama"
+                  value={formData.targetReligion}
+                  onChange={handleChange}
+                  options={[
+                    { label: "Semua Agama", value: "all" },
+                    { label: "Islam", value: "islam" },
+                    { label: "Kristen", value: "kristen" },
+                    { label: "Katolik", value: "katolik" },
+                    { label: "Hindu", value: "hindu" },
+                    { label: "Budha", value: "budha" },
+                    { label: "Konghucu", value: "khonghucu" },
+                    { label: "Lainnya", value: "other" },
+                  ]}
+                  required
+                />
+                <ExalviaFormInput
+                  label="Ras / Suku Audiens"
+                  type="select"
+                  name="targetEthnicity"
+                  placeholder="Pilih Suku"
+                  value={formData.targetEthnicity}
+                  onChange={handleChange}
+                  options={[
+                    { label: "Semua Suku", value: "all" },
+                    { label: "Jawa", value: "jawa" },
+                    { label: "Sunda", value: "sunda" },
+                    { label: "Batak", value: "batak" },
+                    { label: "Madura", value: "madura" },
+                    { label: "Betawi", value: "betawi" },
+                    { label: "Minangkabau", value: "minangkabau" },
+                    { label: "Bugis", value: "bugis" },
+                    { label: "Melayu", value: "melayu" },
+                    { label: "Banten", value: "banten" },
+                    { label: "Banjar", value: "banjar" },
+                    { label: "Lainnya", value: "other" },
+                  ]}
+                  required
+                />
+                <ExalviaFormInput
+                  label="Pendidikan Terakhir Audiens"
+                  type="select"
+                  name="targetEducation"
+                  placeholder="Pilih Pendidikan"
+                  value={formData.targetEducation}
+                  onChange={handleChange}
+                  options={[
+                    { label: "Semua Pendidikan", value: "all" },
+                    { label: "SD", value: "sd" },
+                    { label: "SMP", value: "smp" },
+                    { label: "SMA", value: "sma" },
+                    { label: "SMK", value: "smk" },
+                    { label: "Diploma", value: "diploma" },
+                    { label: "Sarjana (S1)", value: "bachelor" },
+                    { label: "Pascasarjana", value: "postgraduate" },
+                  ]}
+                  required
+                />
+                <ExalviaFormInput
+                  label="Profesi Audiens"
+                  name="targetBackground"
+                  placeholder="Contoh: Karyawan swasta, Pengusaha, atau Mahasiswa"
+                  value={formData.targetBackground}
+                  onChange={handleChange}
+                  required
+                />
+                <ExalviaFormInput
+                  label="Tingkat Ekonomi Audiens"
+                  type="radio"
+                  name="targetEconomy"
+                  value={formData.targetEconomy}
+                  onChange={handleChange}
+                  options={[
+                    { label: "Bawah", value: "low" },
+                    { label: "Menengah", value: "middle" },
+                    { label: "Atas", value: "high" },
+                  ]}
+                  required
+                />
+
+                {/* --- GEOGRAFI --- */}
+                <div className="col-span-full border-b border-base-300 pb-2 mt-4">
+                  <h4 className="text-xs font-black uppercase tracking-widest text-primary">B. Geografi</h4>
+                </div>
+                <ExalviaFormInput
+                  label="Lokasi Geografis Audiens"
+                  name="targetLocation"
+                  placeholder="Contoh: Perkotaan besar (Jabodetabek) atau Seluruh Indonesia"
+                  value={formData.targetLocation}
+                  onChange={handleChange}
+                  required
+                />
+                <ExalviaFormInput
+                  label="Bahasa Utama Audiens"
+                  type="radio"
+                  name="targetLanguage"
+                  value={formData.targetLanguage}
+                  onChange={handleChange}
+                  options={[
+                    { label: "Bahasa Indonesia", value: "indonesia" },
+                    { label: "Bahasa Daerah", value: "daerah" },
+                    { label: "Bahasa Inggris", value: "english" },
+                    { label: "Lainnya", value: "other" },
+                  ]}
+                  required
+                />
+
+                {/* --- PSIKOGRAFI --- */}
+                <div className="col-span-full border-b border-base-300 pb-2 mt-4">
+                  <h4 className="text-xs font-black uppercase tracking-widest text-primary">C. Psikografi</h4>
+                </div>
+                <div className="col-span-full">
+                  <ExalviaFormInput
+                    label="Target Utama (Deskripsi Singkat)"
+                    type="textarea"
+                    name="targetDescription"
+                    placeholder="Contoh: Remaja Gen Z yang aktif di media sosial dan suka mengikuti tren fashion"
+                    value={formData.targetDescription}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="col-span-full">
+                  <ExalviaFormInput
+                    label="Minat & Gaya Hidup Audiens"
+                    type="textarea"
+                    name="targetLifestyle"
+                    placeholder="Apa hobi mereka? Apa yang mereka sukai? (Contoh: Nongkrong di kafe, main game, konten kreator)"
+                    value={formData.targetLifestyle}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="col-span-full">
+                  <ExalviaFormInput
+                    label="Masalah / Kebutuhan Audiens"
+                    type="textarea"
+                    name="targetProblem"
+                    placeholder="Kesulitan apa yang sedang mereka hadapi? (Contoh: Sulit menemukan outfit keren dengan budget terbatas)"
+                    value={formData.targetProblem}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+              </FormSection>
+            )}
+
+            {/* GROUP 4: Detail Produk */}
+            {currentStep === 4 && (
+              <FormSection title="4. Detail Produk" icon={steps[3].icon} description="Berikan informasi tentang produk atau layanan yang Anda tawarkan.">
                 <ExalviaFormInput
                   label="Apa Yang Anda Jual?"
                   type="radio"
@@ -536,8 +977,8 @@ export default function FormDataBrandPage() {
                   value={formData.businessType}
                   onChange={handleChange}
                   options={[
-                    { label: "Produk Fisik", value: "produk" },
-                    { label: "Jasa / Layanan", value: "jasa" },
+                    { label: "Produk", value: "produk" },
+                    { label: "Jasa", value: "jasa" },
                     { label: "Produk & Jasa", value: "keduanya" },
                     { label: "Lain-lain", value: "lainnya" },
                   ]}
@@ -551,8 +992,8 @@ export default function FormDataBrandPage() {
                   onChange={handleChange}
                   options={[
                     { label: "Sudah Rilis", value: "launched" },
-                    { label: "Pre-Launch", value: "pre_launch" },
-                    { label: "Konsep", value: "concept" },
+                    { label: "Belum Rilis", value: "pre_launch" },
+                    { label: "Masih Konsep", value: "concept" },
                   ]}
                   required
                 />
@@ -566,10 +1007,16 @@ export default function FormDataBrandPage() {
                 />
                 <ExalviaFormInput
                   label="Jumlah Produk / Varian"
+                  type="radio"
                   name="productVariants"
-                  placeholder="Contoh: 5 varian rasa atau 3 paket layanan"
                   value={formData.productVariants}
                   onChange={handleChange}
+                  options={[
+                    { label: "1 varian", value: "1" },
+                    { label: "3 varian", value: "3" },
+                    { label: "5 varian", value: "5" },
+                    { label: "Lebih dari 5", value: ">5" },
+                  ]}
                   required
                 />
                 <ExalviaFormInput
@@ -581,41 +1028,34 @@ export default function FormDataBrandPage() {
                   onChange={handleChange}
                   required
                 />
-                <ExalviaFormInput
-                  label="Fitur / Spesifikasi Unggulan"
-                  type="textarea"
-                  name="productFeatures"
-                  placeholder="Sebutkan 3-5 fitur atau kelebihan teknis produk Anda."
-                  value={formData.productFeatures}
-                  onChange={handleChange}
-                  required
-                />
-                <div className="flex flex-col gap-6">
-                  <label className="text-sm font-bold uppercase opacity-50">Sertifikasi / Penghargaan (Jika ada)</label>
-                  {formData.productCertifications.map((cert, index) => (
-                    <div key={index} className="flex flex-col gap-4 p-6 bg-base-200/50 rounded-2xl border border-base-300 relative animate-in fade-in slide-in-from-left-4">
-                      {formData.productCertifications.length > 0 && (
-                        <button type="button" onClick={() => removeCertification(index)} className="absolute top-4 right-4 btn btn-error btn-cirle btn-sm text-white">
-                          ×
-                        </button>
-                      )}
-                      <ExalviaFormInput
-                        label={`Nama Sertifikat / Penghargaan #${index + 1}`}
-                        placeholder="Contoh: Sertifikat Halal MUI atau BPOM"
-                        value={cert.name}
-                        onChange={(e) => handleCertificationChange(index, "name", e.target.value)}
-                      />
-                      <ExalviaFormInput
-                        label="Deskripsi Singkat"
-                        type="textarea"
-                        placeholder="Berikan penjelasan singkat mengenai sertifikasi ini..."
-                        className="min-h-[80px]"
-                        value={cert.description}
-                        onChange={(e) => handleCertificationChange(index, "description", e.target.value)}
-                      />
-                    </div>
-                  ))}
-                  <button type="button" onClick={addCertification} className="btn btn-outline btn-primary btn-sm rounded-xl w-fit gap-2">
+                <div className="flex flex-col gap-2">
+                  <label className="text-sm font-bold opacity-50">Sertifikasi / Penghargaan (Jika ada)</label>
+                  <div className="flex flex-col gap-4">
+                    {formData.productCertifications.map((cert, index) => (
+                      <div key={index} className="flex flex-col gap-4 p-6 bg-base-200/50 rounded-2xl border border-base-300 relative animate-in fade-in slide-in-from-left-4">
+                        {formData.productCertifications.length > 0 && (
+                          <button type="button" onClick={() => removeCertification(index)} className="absolute top-4 right-4 btn btn-error btn-cirle btn-sm text-white">
+                            ×
+                          </button>
+                        )}
+                        <ExalviaFormInput
+                          label={`Nama Sertifikat / Penghargaan #${index + 1}`}
+                          placeholder="Contoh: Sertifikat Halal MUI atau BPOM"
+                          value={cert.name}
+                          onChange={(e) => handleCertificationChange(index, "name", e.target.value)}
+                        />
+                        <ExalviaFormInput
+                          label="Deskripsi Singkat"
+                          type="textarea"
+                          placeholder="Berikan penjelasan singkat mengenai sertifikasi ini..."
+                          className="min-h-[80px]"
+                          value={cert.description}
+                          onChange={(e) => handleCertificationChange(index, "description", e.target.value)}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  <button type="button" onClick={addCertification} className="mt-4 btn btn-outline btn-primary btn-sm rounded-xl w-fit gap-2">
                     <span>+</span> Tambah Sertifikat
                   </button>
                 </div>
@@ -626,7 +1066,7 @@ export default function FormDataBrandPage() {
                   name="productPriceRange"
                   value={formData.productPriceRange}
                   onChange={handleChange}
-                  placeholder="Pilih Kisaran Harga"
+                  placeholder="Pilih"
                   options={[
                     { label: "Di bawah Rp 50rb", value: "under_50k" },
                     { label: "Rp 50rb - 100rb", value: "50k_100k" },
@@ -664,15 +1104,6 @@ export default function FormDataBrandPage() {
                   required
                 />
                 <ExalviaFormInput
-                  label="Manfaat Utama bagi Pengguna"
-                  type="textarea"
-                  name="productUniqueBenefits"
-                  placeholder="Apa manfaat emosional atau fungsional yang paling dirasakan konsumen?"
-                  value={formData.productUniqueBenefits}
-                  onChange={handleChange}
-                  required
-                />
-                <ExalviaFormInput
                   label="Garansi / Layanan Purna Jual"
                   type="textarea"
                   name="productWarranty"
@@ -681,194 +1112,158 @@ export default function FormDataBrandPage() {
                   onChange={handleChange}
                   required
                 />
+                <ExalviaFormInput
+                  label="Unique Selling Proposition (USP)"
+                  type="textarea"
+                  name="usp"
+                  placeholder="Apa satu hal yang paling membedakan Anda dari semua pesaing?"
+                  value={formData.usp}
+                  onChange={handleChange}
+                  required
+                />
               </FormSection>
             )}
 
-            {/* GROUP 4: Target Audiens */}
-            {currentStep === 4 && (
-              <FormSection title="4. Target Audiens" icon={steps[3].icon} description="Tujuan: memahami siapa yang disasar brand.">
-                {/* --- DEMOGRAFI --- */}
-                <div className="col-span-full border-b border-base-300 pb-2">
-                  <h4 className="text-xs font-black uppercase tracking-widest text-primary">A. Demografi</h4>
-                </div>
-                <ExalviaFormInput label="Usia" name="targetAge" placeholder="Contoh: 25 - 40 tahun" value={formData.targetAge} onChange={handleChange} required />
-                <ExalviaFormInput
-                  label="Jenis Kelamin"
-                  type="radio"
-                  name="targetGender"
-                  value={formData.targetGender}
-                  onChange={handleChange}
-                  options={[
-                    { label: "Laki-laki", value: "male" },
-                    { label: "Perempuan", value: "female" },
-                    { label: "Keduanya", value: "both" },
-                  ]}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Status Pernikahan"
-                  type="radio"
-                  name="targetMaritalStatus"
-                  value={formData.targetMaritalStatus}
-                  onChange={handleChange}
-                  options={[
-                    { label: "Belum Menikah", value: "single" },
-                    { label: "Menikah", value: "married" },
-                    { label: "Single parent", value: "single_parent" },
-                  ]}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Agama"
-                  type="select"
-                  name="targetReligion"
-                  placeholder="Pilih Agama"
-                  value={formData.targetReligion}
-                  onChange={handleChange}
-                  options={[
-                    { label: "Semua Agama", value: "all" },
-                    { label: "Islam", value: "islam" },
-                    { label: "Kristen", value: "kristen" },
-                    { label: "Katolik", value: "katolik" },
-                    { label: "Hindu", value: "hindu" },
-                    { label: "Budha", value: "budha" },
-                    { label: "Konghucu", value: "khonghucu" },
-                    { label: "Lainnya", value: "other" },
-                  ]}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Ras / Suku"
-                  type="select"
-                  name="targetEthnicity"
-                  placeholder="Pilih Suku"
-                  value={formData.targetEthnicity}
-                  onChange={handleChange}
-                  options={[
-                    { label: "Jawa", value: "jawa" },
-                    { label: "Sunda", value: "sunda" },
-                    { label: "Batak", value: "batak" },
-                    { label: "Madura", value: "madura" },
-                    { label: "Betawi", value: "betawi" },
-                    { label: "Minangkabau", value: "minangkabau" },
-                    { label: "Bugis", value: "bugis" },
-                    { label: "Melayu", value: "melayu" },
-                    { label: "Banten", value: "banten" },
-                    { label: "Banjar", value: "banjar" },
-                    { label: "Lainnya", value: "other" },
-                  ]}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Pendidikan Terakhir"
-                  type="select"
-                  name="targetEducation"
-                  placeholder="Pilih Pendidikan"
-                  value={formData.targetEducation}
-                  onChange={handleChange}
-                  options={[
-                    { label: "SD", value: "sd" },
-                    { label: "SMP", value: "smp" },
-                    { label: "SMA", value: "sma" },
-                    { label: "SMK", value: "smk" },
-                    { label: "Diploma", value: "diploma" },
-                    { label: "Sarjana (S1)", value: "bachelor" },
-                    { label: "Pascasarjana", value: "postgraduate" },
-                  ]}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Profesi"
-                  name="targetBackground"
-                  placeholder="Contoh: Karyawan swasta, Pengusaha, atau Mahasiswa"
-                  value={formData.targetBackground}
-                  onChange={handleChange}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Tingkat Ekonomi"
-                  type="radio"
-                  name="targetEconomy"
-                  value={formData.targetEconomy}
-                  onChange={handleChange}
-                  options={[
-                    { label: "Bawah", value: "low" },
-                    { label: "Menengah", value: "middle" },
-                    { label: "Atas", value: "high" },
-                  ]}
-                  required
-                />
-
-                {/* --- GEOGRAFI --- */}
-                <div className="col-span-full border-b border-base-300 pb-2 mt-4">
-                  <h4 className="text-xs font-black uppercase tracking-widest text-primary">B. Geografi</h4>
-                </div>
-                <ExalviaFormInput
-                  label="Lokasi Geografis"
-                  name="targetLocation"
-                  placeholder="Contoh: Perkotaan besar (Jabodetabek) atau Seluruh Indonesia"
-                  value={formData.targetLocation}
-                  onChange={handleChange}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Bahasa Utama"
-                  type="radio"
-                  name="targetLanguage"
-                  value={formData.targetLanguage}
-                  onChange={handleChange}
-                  options={[
-                    { label: "Bahasa Indonesia", value: "indonesia" },
-                    { label: "Bahasa Daerah", value: "daerah" },
-                    { label: "Bahasa Inggris", value: "english" },
-                    { label: "Lainnya", value: "other" },
-                  ]}
-                  required
-                />
-
-                {/* --- PSIKOGRAFI --- */}
-                <div className="col-span-full border-b border-base-300 pb-2 mt-4">
-                  <h4 className="text-xs font-black uppercase tracking-widest text-primary">C. Psikografi</h4>
-                </div>
-                <div className="col-span-full">
-                  <ExalviaFormInput
-                    label="Target Utama (Deskripsi Singkat)"
-                    type="textarea"
-                    name="targetDescription"
-                    placeholder="Contoh: Ibu rumah tangga milenial yang peduli kesehatan keluarga"
-                    value={formData.targetDescription}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="col-span-full">
-                  <ExalviaFormInput
-                    label="Minat & Gaya Hidup"
-                    type="textarea"
-                    name="targetLifestyle"
-                    placeholder="Apa hobi mereka? Apa yang mereka sukai? (Contoh: Suka traveling, peduli lingkungan)"
-                    value={formData.targetLifestyle}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-                <div className="col-span-full">
-                  <ExalviaFormInput
-                    label="Masalah / Kebutuhan Audiens"
-                    type="textarea"
-                    name="targetProblem"
-                    placeholder="Kesulitan apa yang sedang mereka hadapi saat ini?"
-                    value={formData.targetProblem}
-                    onChange={handleChange}
-                    required
-                  />
-                </div>
-              </FormSection>
-            )}
-
-            {/* GROUP 5: Analisis Persaingan */}
+            {/* GROUP 5: Identitas Visual */}
             {currentStep === 5 && (
-              <FormSection title="5. Analisis Persaingan" icon={steps[4].icon} description="Kompetitor: tujuan mengetahui karakteristik kompetitor.">
+              <FormSection title="5. Identitas Visual" icon={steps[4].icon} description="Tujuan: mengevaluasi konsistensi visual.">
+                <ExalviaFormInput
+                  label="Apakah Brand Sudah Memiliki Logo?"
+                  type="radio"
+                  name="hasLogo"
+                  value={formData.hasLogo}
+                  onChange={handleChange}
+                  options={[
+                    { label: "Sudah", value: "yes" },
+                    { label: "Belum", value: "no" },
+                  ]}
+                  required
+                />
+                <ExalviaFormInput
+                  label="Makna Logo (Opsional)"
+                  type="textarea"
+                  name="logoMeaning"
+                  placeholder="Ceritakan filosofi atau makna di balik logo brand Anda saat ini..."
+                  value={formData.logoMeaning}
+                  onChange={handleChange}
+                />
+                <ExalviaFormInput label="Warna Utama Brand" type="color" name="primaryColor" value={formData.primaryColor} onChange={handleChange} required />
+                <ExalviaFormInput label="Font Utama" name="primaryFont" placeholder="Contoh: Montserrat, Roboto, atau Playfair Display" value={formData.primaryFont} onChange={handleChange} required />
+                <ExalviaFormInput
+                  gridCols="sm:grid-cols-4 grid-cols-2"
+                  itemAlign="items-center"
+                  checkboxClass="checkbox-xs"
+                  label="Gaya Visual Brand"
+                  type="checkbox"
+                  name="visualStyle"
+                  value={formData.visualStyle}
+                  onChange={handleChange}
+                  options={[
+                    { label: "Minimalis", value: "minimalist" },
+                    { label: "Bold", value: "bold" },
+                    { label: "Playful", value: "playful" },
+                    { label: "Serius", value: "serious" },
+                    { label: "Tradisional", value: "traditional" },
+                    { label: "Modern", value: "modern" },
+                    { label: "Retro", value: "retro" },
+                    { label: "Profesional", value: "professional" },
+                    { label: "Feminin", value: "feminine" },
+                    { label: "Maskulin", value: "masculine" },
+                    { label: "Colorful", value: "colorful" },
+                    { label: "Ekonimis", value: "economic" },
+                    { label: "Premium", value: "premium" },
+                  ]}
+                  required
+                />
+                <ExalviaFormInput
+                  label="Konsistensi visual yang di gunakna saat ini"
+                  type="radio"
+                  name="visualConsistency"
+                  value={formData.visualConsistency}
+                  onChange={handleChange}
+                  options={[
+                    { label: "Baik", value: "good" },
+                    { label: "Sedang", value: "neutral" },
+                    { label: "Buruk", value: "bad" },
+                    { label: "Tidak Tahu", value: "unknown" },
+                  ]}
+                  required
+                />
+              </FormSection>
+            )}
+
+            {/* GROUP 6: Customer Experience & Touchpoints */}
+            {currentStep === 6 && (
+              <FormSection title="6. Customer Experience" icon={steps[5].icon} description="Tujuan: melihat interaksi dan feedback dari konsumen.">
+                <ExalviaFormInput
+                  label="Titik interaksi paling banyak"
+                  type="textarea"
+                  name="mainTouchpoints"
+                  placeholder="Contoh: Media sosial, Website, Toko fisik, Whatsapp CS, dsb."
+                  value={formData.mainTouchpoints}
+                  onChange={handleChange}
+                  required
+                />
+
+                {/* POSITIVE FEEDBACK */}
+                <div className="flex flex-col gap-2 pt-4 border-t border-base-300 border-dashed">
+                  <label className="text-sm font-bold opacity-50">Feedback Positif / Kepuasan Konsumen</label>
+                  <div className="flex flex-col gap-4">
+                    {formData.positiveFeedback.map((feedback, index) => (
+                      <div key={index} className="flex gap-3 animate-in fade-in slide-in-from-left-4">
+                        <div className="flex-1">
+                          <ExalviaFormInput
+                            placeholder="Contoh: Pengiriman sangat cepat dan packing aman"
+                            value={feedback}
+                            onChange={(e) => handleFeedbackChange("positive", index, e.target.value)}
+                            required
+                          />
+                        </div>
+                        {formData.positiveFeedback.length > 1 && (
+                          <button type="button" onClick={() => removeFeedback("positive", index)} className="btn btn-error btn-square h-14 w-14 rounded-xl text-white">
+                            ×
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <button type="button" onClick={() => addFeedback("positive")} className="mt-4 btn btn-outline btn-primary btn-sm rounded-xl w-fit gap-2">
+                    <span>+</span> Tambah Feedback
+                  </button>
+                </div>
+
+                {/* NEGATIVE FEEDBACK */}
+                <div className="flex flex-col gap-2 pt-4 border-t border-base-300 border-dashed">
+                  <label className="text-sm font-bold opacity-50 text-error/70">Feedback Negatif / Keluhan Konsumen</label>
+                  <div className="flex flex-col gap-4">
+                    {formData.negativeFeedback.map((feedback, index) => (
+                      <div key={index} className="flex gap-3 animate-in fade-in slide-in-from-left-4">
+                        <div className="flex-1">
+                          <ExalviaFormInput
+                            placeholder="Contoh: Ukuran sizenya ternyata kekecilan dari standar"
+                            value={feedback}
+                            onChange={(e) => handleFeedbackChange("negative", index, e.target.value)}
+                            required
+                          />
+                        </div>
+                        {formData.negativeFeedback.length > 1 && (
+                          <button type="button" onClick={() => removeFeedback("negative", index)} className="btn btn-error btn-square h-14 w-14 rounded-xl text-white">
+                            ×
+                          </button>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <button type="button" onClick={() => addFeedback("negative")} className="mt-4 btn btn-outline btn-error btn-sm rounded-xl w-fit gap-2">
+                    <span>+</span> Tambah Feedback
+                  </button>
+                </div>
+              </FormSection>
+            )}
+
+            {/* GROUP 7: Analisis Persaingan */}
+            {currentStep === 7 && (
+              <FormSection title="7. Analisis Persaingan" icon={steps[6].icon} description="Kompetitor: tujuan mengetahui karakteristik kompetitor.">
                 <div className="flex flex-col gap-10">
                   {formData.competitors.map((competitor, index) => (
                     <div key={index} className="flex flex-col gap-6 p-6 md:p-8 bg-base-200/50 rounded-3xl border border-base-300 relative animate-in fade-in slide-in-from-bottom-4">
@@ -900,7 +1295,7 @@ export default function FormDataBrandPage() {
                       <ExalviaFormInput
                         label="Kelebihan Kompetitor"
                         type="textarea"
-                        placeholder="Apa saja 3 keunggulan utama mereka?"
+                        placeholder="Apa saja keunggulan mereka?"
                         value={competitor.strengths}
                         onChange={(e) => handleCompetitorChange(index, "strengths", e.target.value)}
                         required
@@ -918,15 +1313,15 @@ export default function FormDataBrandPage() {
                   ))}
 
                   <button type="button" onClick={addCompetitor} className="btn btn-outline btn-primary btn-md rounded-xl w-full md:w-fit gap-2">
-                    <span>+</span> Tambah Pesaing Baru
+                    <span>+</span> Tambah Pesaing
                   </button>
 
                   <div className="mt-4 pt-10 border-t border-base-300 border-dashed">
                     <ExalviaFormInput
-                      label="Peluang Utama di Pasar"
+                      label="Peluang Brand Anda"
                       type="textarea"
                       name="marketOpportunity"
-                      placeholder="Berdasarkan analisis di atas, apa peluang besar yang bisa diambil oleh brand Anda?"
+                      placeholder="Apa saja peluang brand Anda dibandingkan dengan kompetitor?"
                       value={formData.marketOpportunity}
                       onChange={handleChange}
                       required
@@ -935,125 +1330,10 @@ export default function FormDataBrandPage() {
                 </div>
               </FormSection>
             )}
-            {/* GROUP 6: Value Proposition & Keunikan Brand */}
-            {currentStep === 6 && (
-              <FormSection title="6. Value Proposition & Keunikan" icon={steps[5].icon} description="Tujuan: mengetahui pembeda brand.">
-                <ExalviaFormInput
-                  label="Nilai Utama Brand (Brand Values)"
-                  type="textarea"
-                  name="brandValues"
-                  placeholder="Contoh: Kejujuran, Inovasi, Keberlanjutan..."
-                  value={formData.brandValues}
-                  onChange={handleChange}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Unique Selling Proposition (USP)"
-                  type="textarea"
-                  name="usp"
-                  placeholder="Apa satu hal yang paling membedakan Anda dari semua pesaing?"
-                  value={formData.usp}
-                  onChange={handleChange}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Manfaat Utama bagi Konsumen"
-                  type="textarea"
-                  name="consumerBenefits"
-                  placeholder="Apa keuntungan nyata yang didapat konsumen setelah membeli produk Anda?"
-                  value={formData.consumerBenefits}
-                  onChange={handleChange}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Alasan Konsumen Harus Memilih Brand Ini"
-                  type="textarea"
-                  name="whyChooseUs"
-                  placeholder="Mengapa mereka harus percaya pada Anda dibandingkan yang lain?"
-                  value={formData.whyChooseUs}
-                  onChange={handleChange}
-                  required
-                />
-              </FormSection>
-            )}
 
-            {/* GROUP 7: Identitas Visual */}
-            {currentStep === 7 && (
-              <FormSection title="7. Identitas Visual" icon={steps[6].icon} description="Tujuan: mengevaluasi konsistensi visual.">
-                <ExalviaFormInput
-                  label="Apakah Brand Sudah Memiliki Logo?"
-                  type="radio"
-                  name="hasLogo"
-                  value={formData.hasLogo}
-                  onChange={handleChange}
-                  options={[
-                    { label: "Ya", value: "yes" },
-                    { label: "Tidak", value: "no" },
-                  ]}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Makna Logo (Opsional)"
-                  type="textarea"
-                  name="logoMeaning"
-                  placeholder="Ceritakan filosofi atau makna di balik logo brand Anda saat ini..."
-                  value={formData.logoMeaning}
-                  onChange={handleChange}
-                />
-                <ExalviaFormInput label="Warna Utama Brand" name="primaryColor" placeholder="Contoh: Biru Navy (#000080) dan Putih" value={formData.primaryColor} onChange={handleChange} required />
-                <ExalviaFormInput label="Font Utama" name="primaryFont" placeholder="Contoh: Montserrat, Roboto, atau Playfair Display" value={formData.primaryFont} onChange={handleChange} required />
-                <ExalviaFormInput label="Gaya Visual" name="visualStyle" placeholder="Contoh: Minimalis, Bold, Modern, vintage, dsb." value={formData.visualStyle} onChange={handleChange} required />
-                <ExalviaFormInput
-                  label="Konsistensi visual yang di gunakna saat ini"
-                  type="radio"
-                  name="visualConsistency"
-                  value={formData.visualConsistency}
-                  onChange={handleChange}
-                  options={[
-                    { label: "Baik", value: "good" },
-                    { label: "Sedang", value: "neutral" },
-                    { label: "Buruk", value: "bad" },
-                  ]}
-                  required
-                />
-              </FormSection>
-            )}
-            {/* GROUP 8: Customer Experience & Touchpoints */}
+            {/* GROUP 8: Masalah Brand */}
             {currentStep === 8 && (
-              <FormSection title="8. Customer Experience" icon={steps[7].icon} description="Tujuan: melihat interaksi brand dengan konsumen.">
-                <ExalviaFormInput
-                  label="Titik interaksi paling banyak"
-                  type="textarea"
-                  name="mainTouchpoints"
-                  placeholder="Contoh: Media sosial, Website, Toko fisik, Whatsapp CS, dsb."
-                  value={formData.mainTouchpoints}
-                  onChange={handleChange}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Pengalaman Konsumen yang Diharapkan"
-                  type="textarea"
-                  name="expectedExperience"
-                  placeholder="Bagaimana perasaan atau kesan yang ingin Anda berikan kepada konsumen setelah berinteraksi dengan brand?"
-                  value={formData.expectedExperience}
-                  onChange={handleChange}
-                  required
-                />
-                <ExalviaFormInput
-                  label="Keluhan yang Sering Muncul"
-                  type="textarea"
-                  name="frequentComplaints"
-                  placeholder="Apa saja kendala atau komplain yang biasanya disampaikan oleh konsumen saat ini?"
-                  value={formData.frequentComplaints}
-                  onChange={handleChange}
-                  required
-                />
-              </FormSection>
-            )}
-
-            {/* GROUP 9: Masalah Brand */}
-            {currentStep === 9 && (
-              <FormSection title="9. Masalah Brand" icon={steps[8].icon} description="Pilih beberapa masalah yang paling relevan dengan kondisi brand Anda saat ini.">
+              <FormSection title="8. Masalah Brand" icon={steps[7].icon} description="Pilih beberapa masalah yang paling relevan dengan kondisi brand Anda saat ini.">
                 <ExalviaFormInput
                   label="Masalah Umum yang Dihadapi"
                   type="checkbox"
@@ -1083,6 +1363,111 @@ export default function FormDataBrandPage() {
                 />
               </FormSection>
             )}
+
+            {/* GROUP 9: Review & Konfirmasi */}
+            {currentStep === 9 && (
+              <FormSection title="9. Review Data" icon={steps[8].icon} description="Silakan periksa kembali data yang telah Anda isi sebelum mengirimkannya.">
+                <div className="flex flex-col gap-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Ringkasan Identitas */}
+                    <div className="p-6 bg-base-200/50 rounded-3xl border border-base-300">
+                      <h4 className="text-sm font-black uppercase tracking-widest text-primary mb-4">Identitas & Bisnis</h4>
+                      <div className="space-y-4">
+                        <div>
+                          <p className="text-[10px] opacity-40 font-bold uppercase">Owner</p>
+                          <p className="font-bold">
+                            {formData.fullName} ({formData.role})
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-[10px] opacity-40 font-bold uppercase">Brand</p>
+                          <p className="font-bold">
+                            {formData.brandName} - {formData.brandOrigin}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-[10px] opacity-40 font-bold uppercase">Kontak</p>
+                          <p className="font-bold">
+                            {formData.whatsappNumber} / {formData.contactEmail}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Ringkasan Audiens */}
+                    <div className="p-6 bg-base-200/50 rounded-3xl border border-base-300">
+                      <h4 className="text-sm font-black uppercase tracking-widest text-primary mb-4">Target Audiens</h4>
+                      <div className="space-y-4">
+                        <div>
+                          <p className="text-[10px] opacity-40 font-bold uppercase">Profil</p>
+                          <p className="font-bold">
+                            {formData.targetAgeMin && formData.targetAgeMax ? `${formData.targetAgeMin} - ${formData.targetAgeMax} tahun` : "-"}, {formData.targetGender}, {formData.targetLocation}
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-[10px] opacity-40 font-bold uppercase">Deskripsi</p>
+                          <p className="text-sm line-clamp-2 italic">"{formData.targetDescription}"</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Ringkasan Produk */}
+                    <div className="p-6 bg-base-200/50 rounded-3xl border border-base-300 md:col-span-2">
+                      <h4 className="text-sm font-black uppercase tracking-widest text-primary mb-4">Detail Produk & Harga</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                          <p className="text-[10px] opacity-40 font-bold uppercase">Produk Utama</p>
+                          <p className="font-bold">
+                            {formData.productName} ({formData.productStatus})
+                          </p>
+                        </div>
+                        <div>
+                          <p className="text-[10px] opacity-40 font-bold uppercase">Kisaran Harga</p>
+                          <p className="font-bold">
+                            {formData.productPriceRange} ({formData.priceStrategy})
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Ringkasan Feedback */}
+                    <div className="p-6 bg-base-200/50 rounded-3xl border border-base-300 md:col-span-2">
+                      <h4 className="text-sm font-black uppercase tracking-widest text-primary mb-4">Feedback Konsumen</h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                          <p className="text-[10px] opacity-40 font-bold uppercase mb-2">Feedback Positif</p>
+                          <ul className="list-disc list-inside text-sm space-y-1 opacity-70">{formData.positiveFeedback.map((f, i) => f && <li key={i}>{f}</li>)}</ul>
+                        </div>
+                        <div>
+                          <p className="text-[10px] opacity-40 font-bold uppercase mb-2 text-error/70">Feedback Negatif</p>
+                          <ul className="list-disc list-inside text-sm space-y-1 opacity-70">{formData.negativeFeedback.map((f, i) => f && <li key={i}>{f}</li>)}</ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-8 bg-primary/5 rounded-4xl border-2 border-primary/20 flex flex-col items-center text-center gap-4">
+                    <div className="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center text-3xl">
+                      <IoSparklesOutline />
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold uppercase">Semua Data Sudah Benar?</h4>
+                      <p className="text-sm opacity-60">Dengan menekan tombol kirim, Anda menyetujui bahwa data ini akan digunakan untuk merumuskan strategi brand Anda.</p>
+                    </div>
+                  </div>
+
+                  {/* DEBUG DATA */}
+                  <div className="w-full">
+                    <details className="collapse bg-base-200">
+                      <summary className="collapse-title text-sm font-medium opacity-50">Show Raw Data JSON (Debug)</summary>
+                      <div className="collapse-content">
+                        <pre className="text-xs overflow-x-auto p-4 bg-black text-green-400 rounded-lg">{JSON.stringify(formData, null, 2)}</pre>
+                      </div>
+                    </details>
+                  </div>
+                </div>
+              </FormSection>
+            )}
             <div className="pt-10 border-t border-base-300 border-dashed mt-auto flex flex-row items-center justify-between gap-3">
               <button
                 type="button"
@@ -1107,9 +1492,10 @@ export default function FormDataBrandPage() {
                 ) : (
                   <div>
                     <ExalviaButton
-                      text="Kirim Data"
+                      text={isSubmitting ? "Mengirim..." : "Kirim Data"}
                       type="submit"
-                      icon={ArrowRight}
+                      disabled={isSubmitting}
+                      icon={isSubmitting ? null : ArrowRight}
                       iconPosition="right"
                       className="btn-warning btn-md md:btn-lg w-full md:w-fit uppercase text-[10px] md:text-xs font-bold"
                     />
