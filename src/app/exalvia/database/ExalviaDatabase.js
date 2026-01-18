@@ -1,31 +1,12 @@
 // Import semua icon yang digunakan dalam loop
 import { BiSolidMessageCheck, BiTargetLock } from "react-icons/bi";
-import {
-  FaSearch,
-  FaPenNib,
-  FaMoon,
-  FaRocket,
-  FaShieldAlt,
-  FaInstagram,
-  FaLinkedin,
-  FaTwitter,
-  FaBox,
-  FaBullseye,
-  FaTag,
-  FaBullhorn,
-  FaPalette,
-  FaFacebook,
-  FaTiktok,
-  FaPinterest,
-} from "react-icons/fa";
+import { FaSearch, FaPenNib, FaMoon, FaShieldAlt, FaInstagram, FaFacebook, FaTiktok, FaPinterest } from "react-icons/fa";
 import { FaRegEye, FaRegFaceTired, FaToggleOn } from "react-icons/fa6";
-import { GiCrackedGlass, GiSwordBreak } from "react-icons/gi";
-import { HiChat, HiLightBulb, HiOutlineDocumentDuplicate, HiShieldCheck, HiTrendingUp, HiUserGroup } from "react-icons/hi";
-import { IoDocumentText, IoSparkles } from "react-icons/io5";
+import { HiChat, HiLightBulb, HiOutlineDocumentDuplicate, HiUserGroup } from "react-icons/hi";
+import { IoSparkles } from "react-icons/io5";
 import { MdOutlineMonetizationOn, MdOutlineMoneyOffCsred } from "react-icons/md";
 import { HiCheckBadge } from "react-icons/hi2";
 import { RiSwordFill } from "react-icons/ri";
-import { TfiTarget } from "react-icons/tfi";
 import { FiFileText, FiGlobe } from "react-icons/fi";
 import { LuBadgeCheck } from "react-icons/lu";
 
@@ -71,11 +52,11 @@ const priceCore = 1900000;
 const priceDecoy1 = 890000;
 const priceDecoy2 = priceDecoy1 + 600000;
 const siteName = "Kalamana Copy";
-const tagline = "tagline";
+const tagline = "Muslim Brands Should Feel Alive";
 const description =
-  "membantu brand muslim merumuskan pesan penjualan yang tepat, dengan memahami kondisi brand dan mengarahkannya menjadi daya tarik yang khas di mata pembeli, agar produk bernilai tinggi tidak terjebak perang harga.";
+  "Membantu brand muslim merumuskan pesan penjualan yang tepat, dengan metode branding thinking untuk memahami kondisi brand dan mengarahkannya menjadi daya tarik yang khas di mata pembeli, agar brand muslim bernilai tinggi, siklus hidup lebih sehat dan tidak terjebak perang harga.";
 const keywords =
-  "strategi branding muslim, pesan penjualan brand muslim, positioning brand muslim, diferensiasi brand muslim, nilai jual produk muslim, branding produk halal, komunikasi pemasaran muslim, strategi harga premium muslim, branding tanpa perang harga, daya tarik brand muslim, branding bisnis muslim, strategi pemasaran syariah, brand muslim bernilai tinggi, value based marketing, value base muslim brand, vbmb";
+  "pesan penjualan brand muslim, brand muslim, positioning brand muslim, diferensiasi brand muslim, strategi branding muslim, branding thinking, strategi harga premium muslim, brand muslim bernilai tinggi,";
 const logoFullLight = "/images/templateLandingPageBonus/Exalvia/site-Identity/kalamana-copy_logo-full-light.svg";
 const logoGramLight = "/images/templateLandingPageBonus/Exalvia/site-Identity/kalamana-copy_logo-gram-light.svg";
 const logoFullDark = "/images/templateLandingPageBonus/Exalvia/site-Identity/kalamana-copy_logo-full.svg";

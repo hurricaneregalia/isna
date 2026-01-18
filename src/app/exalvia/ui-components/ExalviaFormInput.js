@@ -146,7 +146,7 @@ export default function ExalviaFormInput({
             ))}
           </select>
         ) : type === "radio" ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-1">
+          <div className={`grid ${gridCols} lg:grid-cols-4 gap-4 mt-1`}>
             {options.map((opt) => (
               <label
                 key={opt.value}

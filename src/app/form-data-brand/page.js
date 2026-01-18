@@ -9,44 +9,61 @@ import ExalviaButton from "../exalvia/ui-components/ExalviaButton";
 import ExalviaFormInput from "../exalvia/ui-components/ExalviaFormInput";
 import AgePicker from "../exalvia/ui-components/AgePicker";
 import {
-  IoSendOutline,
   IoRocketOutline,
   IoSparklesOutline,
-  IoBusinessOutline,
   IoPeopleOutline,
-  IoChatboxEllipsesOutline,
-  IoLocationOutline,
-  IoTimeOutline,
-  IoHelpCircleOutline,
-  IoAppsOutline,
-  IoGlobeOutline,
   IoShareSocialOutline,
-  IoFlagOutline,
-  IoDocumentTextOutline,
-  IoArrowForward,
-  IoArrowBack,
   IoLogoInstagram,
   IoLogoTiktok,
   IoLogoFacebook,
   IoLogoYoutube,
   IoLogoTwitter,
-  IoDiamondOutline,
   IoColorPaletteOutline,
   IoChatbubblesOutline,
   IoAlertCircleOutline,
-  IoLogoWhatsapp,
   IoCalendarOutline,
   IoCubeOutline,
   IoEyeOutline,
   IoCheckmarkCircle,
   IoWarning,
 } from "react-icons/io5";
-import { FaUsers } from "react-icons/fa";
-import { TbLocationShare } from "react-icons/tb";
-import { RiSwordLine } from "react-icons/ri";
 import { PiIdentificationCard } from "react-icons/pi";
 import { LuSwords } from "react-icons/lu";
 import { ArrowRight, ArrowLeft } from "lucide-react";
+
+// --- HELPER COMPONENTS FOR REVIEW STEP ---
+const ReviewItem = ({ label, value, children, className = "" }) => {
+  const isEmpty = !value || (Array.isArray(value) && value.length === 0);
+  return (
+    <div className={`p-3 rounded-xl border ${isEmpty ? "border-warning bg-warning/5" : "border-base-300 bg-base-100"} ${className}`}>
+      <p className="text-[10px] font-bold uppercase tracking-widest opacity-50 mb-1">{label}</p>
+      {children ? children : <p className={`font-medium ${isEmpty ? "text-warning italic text-sm" : "text-base"}`}>{isEmpty ? "Belum diisi" : value}</p>}
+    </div>
+  );
+};
+
+const ReviewList = ({ label, items, isNegative = false, className = "" }) => {
+  const isEmpty = !items || items.length === 0 || (items.length === 1 && !items[0]);
+  return (
+    <div className={`p-3 rounded-xl border ${isEmpty ? "border-warning bg-warning/5" : "border-base-300 bg-base-100"} ${className}`}>
+      <p className="text-[10px] font-bold uppercase tracking-widest opacity-50 mb-2">{label}</p>
+      {isEmpty ? (
+        <p className="text-warning italic text-sm">Belum diisi</p>
+      ) : (
+        <ul className="list-disc ml-4 space-y-1">
+          {items.map(
+            (item, idx) =>
+              item && (
+                <li key={idx} className={`text-sm ${isNegative ? "text-error" : ""}`}>
+                  {item}
+                </li>
+              )
+          )}
+        </ul>
+      )}
+    </div>
+  );
+};
 
 const GOOGLE_SCRIPT = process.env.WEB_APP_SPREADSHEET;
 
@@ -92,51 +109,54 @@ const StepIndicator = ({ steps, currentStep, totalSteps, onStepClick }) => (
     </div>
 
     {/* Mobile View: Focus View & Progress Summary */}
-    <div className="md:hidden flex flex-col gap-4 animate-in fade-in slide-in-from-top-4 duration-500">
+    {/* Mobile View: Horizontal Scrollable Steps */}
+    <div className="md:hidden flex flex-col gap-4">
+      {/* Header Info */}
       <div className="flex items-center justify-between px-1">
         <div className="flex flex-col">
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">Langkah Terkini</span>
-          <h4 className="text-lg font-black uppercase tracking-tight flex items-center gap-2 italic">
-            <span className="text-primary">{currentStep.toString().padStart(2, "0")}</span>
-            <span className="opacity-20">/</span>
-            <span className="opacity-40">{totalSteps}</span>
-          </h4>
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary/60">Step {currentStep}</span>
+          <h4 className="text-lg font-black uppercase tracking-tight text-base-content">{steps[currentStep - 1].title}</h4>
         </div>
-        <div className="bg-primary/10 px-4 py-2 rounded-xl border border-primary/20">
-          <span className="text-xs font-bold text-primary">{Math.round((currentStep / totalSteps) * 100)}% Selesai</span>
+        <div className="radial-progress text-primary text-[10px] font-bold" style={{ "--value": Math.round((currentStep / totalSteps) * 100), "--size": "2.5rem" }} role="progressbar">
+          {Math.round((currentStep / totalSteps) * 100)}%
         </div>
       </div>
 
-      <div className="relative overflow-hidden bg-base-200 p-4 rounded-2xl border border-base-300 flex items-center gap-5 ">
-        <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
-        <div className="w-14 h-14 shrink-0 rounded-2xl bg-primary text-primary-content flex items-center justify-center text-2xl  animate-in zoom-in-75 duration-300">
-          {steps[currentStep - 1].icon}
-        </div>
-        <div className="flex flex-col py-1">
-          <span className="text-[10px] uppercase font-bold opacity-40 mb-1 tracking-widest leading-none">Sedang Mengisi:</span>
-          <h3 className="text-md font-black uppercase tracking-wider text-base-content leading-tight">{steps[currentStep - 1].title}</h3>
-        </div>
-      </div>
-
-      <div className="flex flex-col gap-2">
-        <div className="w-full h-1.5 bg-base-200 rounded-full overflow-hidden border border-base-300">
-          <div className="h-full bg-primary transition-all duration-1000 ease-out " style={{ width: `${((currentStep - 1) / (totalSteps - 1)) * 100}%` }} />
-        </div>
-        {/* Clickable Mobile Step Dots */}
-        <div className="flex justify-between px-1">
+      {/* Scrollable Step Numbers */}
+      <div className="w-full overflow-x-auto py-2 scrollbar-hide">
+        <div className="flex items-center gap-3 w-max px-1">
           {steps.map((_, index) => {
             const stepNum = index + 1;
+            const isActive = currentStep === stepNum;
+            const isCompleted = currentStep > stepNum;
+
             return (
               <button
                 key={index}
                 onClick={() => onStepClick(stepNum)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${currentStep === stepNum ? "bg-primary w-4" : currentStep > stepNum ? "bg-success" : "bg-base-300"}`}
-                aria-label={`Go to step ${stepNum}`}
-              />
+                id={`mobile-step-${stepNum}`}
+                className={`
+                  flex items-center justify-center w-10 h-10 rounded-xl font-bold text-sm transition-all duration-300 shrink-0 border-2
+                  ${isActive ? "bg-primary text-white border-primary  scale-110" : ""}
+                  ${isCompleted ? "bg-success text-white border-success" : ""}
+                  ${!isActive && !isCompleted ? "bg-base-100 text-base-content/40 border-base-200" : ""}
+                `}
+              >
+                {stepNum}
+              </button>
             );
           })}
         </div>
       </div>
+
+      {/* Auto-scroll script effect (inline is acceptable here for simplicity or use useEffect in parent if preferred, but this is a pure render update) */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+        document.getElementById('mobile-step-${currentStep}')?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      `,
+        }}
+      />
     </div>
   </div>
 );
@@ -458,7 +478,7 @@ export default function FormDataBrandPage() {
       {/* --- MODAL COMPONENT --- */}
       {modalState.isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-base-100 rounded-3xl p-8 max-w-sm w-full shadow-2xl scale-100 animate-in zoom-in-95 duration-200 flex flex-col items-center text-center gap-4">
+          <div className="bg-base-100 rounded-3xl p-8 max-w-sm w-full  scale-100 animate-in zoom-in-95 duration-200 flex flex-col items-center text-center gap-4">
             {/* Icon */}
             <div
               className={`w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-2 ${
@@ -479,12 +499,12 @@ export default function FormDataBrandPage() {
                   <button onClick={closeModal} className="btn btn-ghost flex-1 rounded-xl">
                     Batal
                   </button>
-                  <button onClick={modalState.onConfirm} className="btn btn-primary flex-1 rounded-xl text-white shadow-lg shadow-primary/30">
+                  <button onClick={modalState.onConfirm} className="btn btn-primary flex-1 rounded-xl text-white ">
                     Ya, Kirim
                   </button>
                 </>
               ) : (
-                <button onClick={closeModal} className="btn btn-primary w-full rounded-xl text-white shadow-lg shadow-primary/30">
+                <button onClick={closeModal} className="btn btn-primary w-full rounded-xl text-white ">
                   Mengerti
                 </button>
               )}
@@ -568,6 +588,7 @@ export default function FormDataBrandPage() {
                 />
                 <ExalviaFormInput
                   label="Skala Bisnis"
+                  gridCols="lg:grid-cols-4 sm:grid-cols-3  grid-cols-1"
                   type="radio"
                   name="businessScale"
                   value={formData.businessScale}
@@ -792,6 +813,7 @@ export default function FormDataBrandPage() {
                 />
                 <ExalviaFormInput
                   label="Gender Audiens"
+                  gridCols="sm:grid-cols-3 grid-cols-2"
                   type="radio"
                   name="targetGender"
                   value={formData.targetGender}
@@ -805,6 +827,7 @@ export default function FormDataBrandPage() {
                 />
                 <ExalviaFormInput
                   label="Status Pernikahan Audiens"
+                  gridCols="lg:grid-cols-4  grid-cols-2"
                   type="radio"
                   name="targetMaritalStatus"
                   value={formData.targetMaritalStatus}
@@ -888,6 +911,7 @@ export default function FormDataBrandPage() {
                 />
                 <ExalviaFormInput
                   label="Tingkat Ekonomi Audiens"
+                  gridCols="lg:grid-cols-4  grid-cols-3"
                   type="radio"
                   name="targetEconomy"
                   value={formData.targetEconomy}
@@ -914,6 +938,7 @@ export default function FormDataBrandPage() {
                 />
                 <ExalviaFormInput
                   label="Bahasa Utama Audiens"
+                  gridCols="lg:grid-cols-4 sm:grid-cols-3  grid-cols-1"
                   type="radio"
                   name="targetLanguage"
                   value={formData.targetLanguage}
@@ -972,6 +997,7 @@ export default function FormDataBrandPage() {
               <FormSection title="4. Detail Produk" icon={steps[3].icon} description="Berikan informasi tentang produk atau layanan yang Anda tawarkan.">
                 <ExalviaFormInput
                   label="Apa Yang Anda Jual?"
+                  gridCols="lg:grid-cols-4 sm:grid-cols-3  grid-cols-2"
                   type="radio"
                   name="businessType"
                   value={formData.businessType}
@@ -986,6 +1012,7 @@ export default function FormDataBrandPage() {
                 />
                 <ExalviaFormInput
                   label="Status Produk"
+                  gridCols="lg:grid-cols-4 sm:grid-cols-3  grid-cols-2"
                   type="radio"
                   name="productStatus"
                   value={formData.productStatus}
@@ -1007,6 +1034,7 @@ export default function FormDataBrandPage() {
                 />
                 <ExalviaFormInput
                   label="Jumlah Produk / Varian"
+                  gridCols="lg:grid-cols-4 sm:grid-cols-3  grid-cols-2"
                   type="radio"
                   name="productVariants"
                   value={formData.productVariants}
@@ -1083,6 +1111,7 @@ export default function FormDataBrandPage() {
                 />
                 <ExalviaFormInput
                   label="Strategi Harga"
+                  gridCols="lg:grid-cols-4 sm:grid-cols-3  grid-cols-2"
                   type="radio"
                   name="priceStrategy"
                   value={formData.priceStrategy}
@@ -1129,6 +1158,7 @@ export default function FormDataBrandPage() {
               <FormSection title="5. Identitas Visual" icon={steps[4].icon} description="Tujuan: mengevaluasi konsistensi visual.">
                 <ExalviaFormInput
                   label="Apakah Brand Sudah Memiliki Logo?"
+                  gridCols="sm:grid-cols-4 grid-cols-2"
                   type="radio"
                   name="hasLogo"
                   value={formData.hasLogo}
@@ -1177,6 +1207,7 @@ export default function FormDataBrandPage() {
                 />
                 <ExalviaFormInput
                   label="Konsistensi visual yang di gunakna saat ini"
+                  gridCols="sm:grid-cols-4 grid-cols-2"
                   type="radio"
                   name="visualConsistency"
                   value={formData.visualConsistency}
@@ -1366,108 +1397,154 @@ export default function FormDataBrandPage() {
 
             {/* GROUP 9: Review & Konfirmasi */}
             {currentStep === 9 && (
-              <FormSection title="9. Review Data" icon={steps[8].icon} description="Silakan periksa kembali data yang telah Anda isi sebelum mengirimkannya.">
-                <div className="flex flex-col gap-10">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Ringkasan Identitas */}
-                    <div className="p-6 bg-base-200/50 rounded-3xl border border-base-300">
-                      <h4 className="text-sm font-black uppercase tracking-widest text-primary mb-4">Identitas & Bisnis</h4>
-                      <div className="space-y-4">
-                        <div>
-                          <p className="text-[10px] opacity-40 font-bold uppercase">Owner</p>
-                          <p className="font-bold">
-                            {formData.fullName} ({formData.role})
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-[10px] opacity-40 font-bold uppercase">Brand</p>
-                          <p className="font-bold">
-                            {formData.brandName} - {formData.brandOrigin}
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-[10px] opacity-40 font-bold uppercase">Kontak</p>
-                          <p className="font-bold">
-                            {formData.whatsappNumber} / {formData.contactEmail}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
+              <FormSection
+                title="9. Cek Kembali Data Anda"
+                icon={steps[8].icon}
+                description="Pastikan semua data sudah terisi dengan benar. Bagian yang ditandai merah/kuning wajib diisi atau diperiksa kembali."
+              >
+                <div className="flex flex-col gap-8">
+                  {/* ITERASI SEMUA FIELD SECARA STRUKTUR MANUAL AGAR RAPI */}
 
-                    {/* Ringkasan Audiens */}
-                    <div className="p-6 bg-base-200/50 rounded-3xl border border-base-300">
-                      <h4 className="text-sm font-black uppercase tracking-widest text-primary mb-4">Target Audiens</h4>
-                      <div className="space-y-4">
-                        <div>
-                          <p className="text-[10px] opacity-40 font-bold uppercase">Profil</p>
-                          <p className="font-bold">
-                            {formData.targetAgeMin && formData.targetAgeMax ? `${formData.targetAgeMin} - ${formData.targetAgeMax} tahun` : "-"}, {formData.targetGender}, {formData.targetLocation}
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-[10px] opacity-40 font-bold uppercase">Deskripsi</p>
-                          <p className="text-sm line-clamp-2 italic">"{formData.targetDescription}"</p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Ringkasan Produk */}
-                    <div className="p-6 bg-base-200/50 rounded-3xl border border-base-300 md:col-span-2">
-                      <h4 className="text-sm font-black uppercase tracking-widest text-primary mb-4">Detail Produk & Harga</h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                          <p className="text-[10px] opacity-40 font-bold uppercase">Produk Utama</p>
-                          <p className="font-bold">
-                            {formData.productName} ({formData.productStatus})
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-[10px] opacity-40 font-bold uppercase">Kisaran Harga</p>
-                          <p className="font-bold">
-                            {formData.productPriceRange} ({formData.priceStrategy})
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Ringkasan Feedback */}
-                    <div className="p-6 bg-base-200/50 rounded-3xl border border-base-300 md:col-span-2">
-                      <h4 className="text-sm font-black uppercase tracking-widest text-primary mb-4">Feedback Konsumen</h4>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                          <p className="text-[10px] opacity-40 font-bold uppercase mb-2">Feedback Positif</p>
-                          <ul className="list-disc list-inside text-sm space-y-1 opacity-70">{formData.positiveFeedback.map((f, i) => f && <li key={i}>{f}</li>)}</ul>
-                        </div>
-                        <div>
-                          <p className="text-[10px] opacity-40 font-bold uppercase mb-2 text-error/70">Feedback Negatif</p>
-                          <ul className="list-disc list-inside text-sm space-y-1 opacity-70">{formData.negativeFeedback.map((f, i) => f && <li key={i}>{f}</li>)}</ul>
-                        </div>
-                      </div>
+                  {/* 1. IDENTITAS PENJAWAB */}
+                  <div className="space-y-4">
+                    <h3 className="font-black text-lg border-b border-base-300 pb-2">1. Identitas Penjawab</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <ReviewItem label="Nama Lengkap" value={formData.fullName} />
+                      <ReviewItem label="Peran / Jabatan" value={formData.role} />
+                      <ReviewItem label="Email Kontak" value={formData.contactEmail} />
+                      <ReviewItem label="Nomor WhatsApp" value={formData.whatsappNumber} />
                     </div>
                   </div>
 
-                  <div className="p-8 bg-primary/5 rounded-4xl border-2 border-primary/20 flex flex-col items-center text-center gap-4">
-                    <div className="w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center text-3xl">
-                      <IoSparklesOutline />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-bold uppercase">Semua Data Sudah Benar?</h4>
-                      <p className="text-sm opacity-60">Dengan menekan tombol kirim, Anda menyetujui bahwa data ini akan digunakan untuk merumuskan strategi brand Anda.</p>
+                  {/* 2. PROFIL BISNIS */}
+                  <div className="space-y-4">
+                    <h3 className="font-black text-lg border-b border-base-300 pb-2">2. Profil Bisnis</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <ReviewItem label="Nama Brand" value={formData.brandName} />
+                      <ReviewItem label="Kategori Bisnis" value={formData.businessCategory} />
+                      <ReviewItem label="Tahun Berdiri" value={formData.yearEstablished} />
+                      <ReviewItem label="Asal Brand" value={formData.brandOrigin} />
+                      <ReviewItem label="Skala Bisnis" value={formData.businessScale} />
+                      <ReviewItem label="Website / Link" value={formData.website} />
+                      <ReviewList label="Media Sosial" items={formData.socialMedia?.map((sm) => `${sm.platform}: ${sm.username || "-"}`)} />
                     </div>
                   </div>
 
-                  {/* DEBUG DATA */}
-                  <div className="w-full">
-                    <details className="collapse bg-base-200">
-                      <summary className="collapse-title text-sm font-medium opacity-50">Show Raw Data JSON (Debug)</summary>
-                      <div className="collapse-content">
-                        <pre className="text-xs overflow-x-auto p-4 bg-black text-green-400 rounded-lg">{JSON.stringify(formData, null, 2)}</pre>
-                      </div>
-                    </details>
+                  {/* 3. VISI & MISI */}
+                  <div className="space-y-4">
+                    <h3 className="font-black text-lg border-b border-base-300 pb-2">3. Visi & Misi</h3>
+                    <div className="grid grid-cols-1 gap-4">
+                      <ReviewList label="Visi Brand" items={formData.brandVision} />
+                      <ReviewList label="Misi Brand" items={formData.brandMission} />
+                      <ReviewList label="Tujuan Jangka Pendek" items={formData.shortTermGoal} />
+                      <ReviewList label="Tujuan Jangka Panjang" items={formData.longTermGoal} />
+                    </div>
+                  </div>
+
+                  {/* 4. TARGET AUDIENS */}
+                  <div className="space-y-4">
+                    <h3 className="font-black text-lg border-b border-base-300 pb-2">4. Target Audiens</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <ReviewItem label="Deskripsi Umum" value={formData.targetDescription} className="col-span-full" />
+                      <ReviewItem label="Rentang Usia" value={`${formData.targetAgeMin} - ${formData.targetAgeMax} Tahun`} />
+                      <ReviewItem label="Gender Dominan" value={formData.targetGender} />
+                      <ReviewItem label="Status Pernikahan" value={formData.targetMaritalStatus} />
+                      <ReviewItem label="Agama Target" value={formData.targetReligion} />
+                      <ReviewItem label="Suku / Ras" value={formData.targetEthnicity} />
+                      <ReviewItem label="Pendidikan Terakhir" value={formData.targetEducation} />
+                      <ReviewItem label="Bahasa Utama" value={formData.targetLanguage} />
+                      <ReviewItem label="Lokasi Geografis" value={formData.targetLocation} />
+                      <ReviewItem label="Tingkat Ekonomi (SES)" value={formData.targetEconomy} />
+                      <ReviewItem label="Latar Belakang Profesi" value={formData.targetBackground} />
+                      <ReviewItem label="Gaya Hidup & Minat" value={formData.targetLifestyle} className="col-span-full" />
+                      <ReviewItem label="Masalah Utama Audiens" value={formData.targetProblem} className="col-span-full" />
+                    </div>
+                  </div>
+
+                  {/* 5. DETAIL PRODUK */}
+                  <div className="space-y-4">
+                    <h3 className="font-black text-lg border-b border-base-300 pb-2">5. Detail Produk / Layanan</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <ReviewItem label="Jenis Bisnis" value={formData.businessType} />
+                      <ReviewItem label="Status Produk" value={formData.productStatus} />
+                      <ReviewItem label="Nama Produk Utama" value={formData.productName} />
+                      <ReviewItem label="Jumlah Varian" value={formData.productVariants} />
+                      <ReviewItem label="Deskripsi Produk" value={formData.productDescription} className="col-span-full" />
+                      <ReviewList label="Sertifikasi" items={formData.productCertifications?.map((c) => `${c.name} (${c.description})`)} className="col-span-full" />
+                      <ReviewItem label="Kisaran Harga" value={formData.productPriceRange} />
+                      <ReviewItem label="Strategi Harga" value={formData.priceStrategy} />
+                      <ReviewItem label="Alasan Penentuan Harga" value={formData.priceReasoning} className="col-span-full" />
+                      <ReviewItem label="Garansi / Layanan Purna Jual" value={formData.productWarranty} className="col-span-full" />
+                      <ReviewItem label="USP (Unique Selling Point)" value={formData.usp} className="col-span-full" />
+                    </div>
+                  </div>
+
+                  {/* 6. IDENTITAS VISUAL */}
+                  <div className="space-y-4">
+                    <h3 className="font-black text-lg border-b border-base-300 pb-2">6. Identitas Visual</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <ReviewItem label="Kepemilikan Logo" value={formData.hasLogo} />
+                      <ReviewItem label="Makna Logo" value={formData.logoMeaning} />
+                      <ReviewItem label="Warna Utama" value={formData.primaryColor}>
+                        {formData.primaryColor && <div className="w-8 h-8 rounded-full border border-base-300 mt-2" style={{ backgroundColor: formData.primaryColor }}></div>}
+                      </ReviewItem>
+                      <ReviewItem label="Font Utama" value={formData.primaryFont} />
+                      <ReviewList label="Gaya Visual" items={formData.visualStyle} />
+                      <ReviewItem label="Konsistensi Visual" value={formData.visualConsistency} />
+                    </div>
+                  </div>
+
+                  {/* 7. CUSTOMER EXPERIENCE */}
+                  <div className="space-y-4">
+                    <h3 className="font-black text-lg border-b border-base-300 pb-2">7. Customer Experience</h3>
+                    <div className="grid grid-cols-1 gap-4">
+                      <ReviewItem label="Touchpoints Utama" value={formData.mainTouchpoints} />
+                      <ReviewList label="Feedback Positif" items={formData.positiveFeedback} />
+                      <ReviewList label="Feedback Negatif" items={formData.negativeFeedback} isNegative />
+                    </div>
+                  </div>
+
+                  {/* 8. KOMPETITOR & PASAR */}
+                  <div className="space-y-4">
+                    <h3 className="font-black text-lg border-b border-base-300 pb-2">8. Kompetitor & Pasar</h3>
+                    <div className="grid grid-cols-1 gap-4">
+                      {formData.competitors?.map((comp, idx) => (
+                        <div key={idx} className="p-4 rounded-xl border border-base-300 bg-base-100">
+                          <p className="font-bold mb-2">
+                            Pesaing #{idx + 1}: {comp.name || "(Nama Kosong)"}
+                          </p>
+                          <ul className="text-sm space-y-1 opacity-70 list-disc ml-5">
+                            <li>Produk: {comp.products || "-"}</li>
+                            <li>Kelebihan: {comp.strengths || "-"}</li>
+                            <li>Kelemahan: {comp.weaknesses || "-"}</li>
+                          </ul>
+                        </div>
+                      ))}
+                      <ReviewItem label="Peluang Pasar" value={formData.marketOpportunity} />
+                    </div>
+                  </div>
+
+                  {/* 9. MASALAH BRAND */}
+                  <div className="space-y-4">
+                    <h3 className="font-black text-lg border-b border-base-300 pb-2">9. Masalah Brand</h3>
+                    <div className="grid grid-cols-1 gap-4">
+                      <ReviewList label="Masalah Umum" items={formData.commonProblems} isNegative />
+                      <ReviewItem label="Masalah Lainnya" value={formData.otherProblem} />
+                    </div>
+                  </div>
+
+                  {/* DEBUG DATA (Collapsible) */}
+                  <div className="collapse collapse-arrow bg-base-200 border border-base-300 rounded-box mt-8">
+                    <input type="checkbox" />
+                    <div className="collapse-title text-xs font-mono font-bold uppercase opacity-50">Show Raw Data JSON (Debug Only)</div>
+                    <div className="collapse-content">
+                      <pre className="text-[10px] leading-tight overflow-x-auto p-4 bg-black text-green-400 rounded-xl font-mono">{JSON.stringify(formData, null, 2)}</pre>
+                    </div>
                   </div>
                 </div>
               </FormSection>
             )}
+
             <div className="pt-10 border-t border-base-300 border-dashed mt-auto flex flex-row items-center justify-between gap-3">
               <button
                 type="button"

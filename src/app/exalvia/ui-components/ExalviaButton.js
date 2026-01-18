@@ -5,9 +5,9 @@ export default function ExalviaButton({ text, icon: Icon, onClick, className = "
 
   return (
     <button onClick={onClick} className={`btn transition-all duration-300 font-montserrat flex items-center gap-2 ${variantClass} ${className}`} {...props}>
-      {Icon && iconPosition === "left" && <Icon className="text-xl" />}
+      {Icon && iconPosition === "left" && <Icon />}
       {text}
-      {Icon && iconPosition === "right" && <Icon className="text-xl" />}
+      {Icon && iconPosition === "right" && <Icon />}
     </button>
   );
 }
