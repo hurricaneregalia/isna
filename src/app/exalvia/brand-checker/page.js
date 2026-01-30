@@ -40,7 +40,7 @@ export default function BrandCheckerIntro() {
           {/* Hero Section */}
           <div className="text-center sm:p-8 p-5  bg-primary lg:w-6/12 w-full rounded-3xl rounded-tr-none text-white">
             <div className="mb-6">
-              <div className="w-20 aspect-square bg-white/20 rounded-4xl rounded-tr-none  flex items-center justify-center mx-auto mb-4">
+              <div className="w-20 aspect-square bg-white/20 rounded-full rounded-tr-none  flex items-center justify-center mx-auto mb-4">
                 <IoSearch className=" text-4xl text-primary" />
               </div>
             </div>

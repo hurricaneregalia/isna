@@ -29,13 +29,21 @@ const brandCheckerFlags = {
   "23-1": "Kualitas identitas visual sangat rendah, perlu identitas visual yang lebih kuat",
   "23-3": "Identitas visual yang belum terencana dengan baik memerlukan perhatian khusus",
 
-  // Category-based flags (triggered when score is below threshold)
+  // Category-based flags - CRITICAL (score < 50)
   "PI-LOW": "Informasi Produk belum jelas sehingga calon pembeli sulit memahami apa yang Anda tawarkan",
   "TA-LOW": "Target pasar belum spesifik sehingga pesan marketing berpotensi tidak tepat sasaran",
   "HA-LOW": "Strategi harga belum selaras dengan value yang dirasakan pasar",
   "CM-LOW": "Cara menjual belum terstruktur sehingga potensi konversi belum maksimal",
   "RE-LOW": "Refleksi dan kepercayaan diri terhadap brand masih lemah",
   "IV-LOW": "Identitas visual belum konsisten sehingga brand sulit diingat",
+
+  // Category-based flags - WARNING (score 50-69)
+  "PI-MED": "Informasi Produk perlu diperkuat agar lebih meyakinkan calon pembeli.",
+  "TA-MED": "Target pasar sudah ada namun perlu dipertajam untuk hasil marketing yang lebih optimal.",
+  "HA-MED": "Strategi harga cukup baik namun masih bisa dioptimalkan untuk meningkatkan perceived value.",
+  "CM-MED": "Cara menjual sudah ada fondasi namun perlu ditingkatkan untuk konversi yang lebih tinggi.",
+  "RE-MED": "Kepercayaan diri terhadap brand perlu diperkuat untuk komunikasi yang lebih meyakinkan.",
+  "IV-MED": "Identitas visual cukup baik namun perlu konsistensi lebih agar brand semakin mudah diingat.",
 };
 
 // Threshold for category scores (below this = flag triggered)

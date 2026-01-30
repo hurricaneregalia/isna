@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
 import ExalviaNavbar from "../exalvia/sections/ExalviaNavbar";
 import ExalviaFooter from "../exalvia/sections/ExalviaFooter";
 import data from "../exalvia/database/ExalviaDatabase";
@@ -57,7 +58,7 @@ const ReviewList = ({ label, items, isNegative = false, className = "" }) => {
                 <li key={idx} className={`text-sm ${isNegative ? "text-error" : ""}`}>
                   {item}
                 </li>
-              )
+              ),
           )}
         </ul>
       )}
@@ -84,8 +85,8 @@ const StepIndicator = ({ steps, currentStep, totalSteps, onStepClick }) => (
                   isActive
                     ? "border-primary bg-primary text-primary-content scale-110 "
                     : isCompleted
-                    ? "border-success bg-success text-base-100"
-                    : "border-base-300 bg-base-200 text-base-content/30 group-hover:border-primary/50"
+                      ? "border-success bg-success text-base-100"
+                      : "border-base-300 bg-base-200 text-base-content/30 group-hover:border-primary/50"
                 }`}
               >
                 {React.cloneElement(step.icon, { className: "text-xl" })}
@@ -177,6 +178,34 @@ const FormSection = ({ title, icon, children, description }) => (
 );
 
 export default function FormDataBrandPage() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const orderId = searchParams.get("order_id");
+
+  // Validasi order ID - redirect jika tidak ada atau tidak valid
+  useEffect(() => {
+    async function validateOrder() {
+      if (!orderId) {
+        router.push("/form-data-brand/not-found");
+        return;
+      }
+
+      try {
+        const response = await fetch(`/api/transaction?order_id=${orderId}`);
+        const data = await response.json();
+
+        if (!response.ok || !data) {
+          router.push("/form-data-brand/not-found");
+        }
+      } catch (error) {
+        console.error("Error validating order:", error);
+        router.push("/form-data-brand/not-found");
+      }
+    }
+
+    validateOrder();
+  }, [orderId, router]);
+
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const totalSteps = 9;
@@ -478,10 +507,10 @@ export default function FormDataBrandPage() {
       {/* --- MODAL COMPONENT --- */}
       {modalState.isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="bg-base-100 rounded-3xl p-8 max-w-sm w-full  scale-100 animate-in zoom-in-95 duration-200 flex flex-col items-center text-center gap-4">
+          <div className="bg-base-100 rounded-3xl rounded-tr-none p-8 max-w-sm w-full  scale-100 animate-in zoom-in-95 duration-200 flex flex-col items-center text-center gap-4">
             {/* Icon */}
             <div
-              className={`w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-2 ${
+              className={`w-16 h-16 rounded-full rounded-tr-none flex items-center justify-center text-3xl mb-2 ${
                 modalState.type === "success" ? "bg-success/10 text-success" : modalState.type === "error" ? "bg-error/10 text-error" : "bg-warning/10 text-warning"
               }`}
             >
@@ -518,6 +547,12 @@ export default function FormDataBrandPage() {
           <IoSparklesOutline className="text-6xl text-warning animate-pulse" />
           <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white leading-tight">Data Brand</h1>
           <p className="text-white/60 max-w-lg">Lengkapi data di bawah ini untuk membantu kami merumuskan pesan penjualan yang tepat untuk brand Anda.</p>
+          {orderId && (
+            <div className="bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
+              <span className="text-white/80 text-sm">Order ID: </span>
+              <span className="text-white font-mono font-bold">{orderId}</span>
+            </div>
+          )}
         </div>
       </HeroBrandChecker>
 
@@ -557,7 +592,7 @@ export default function FormDataBrandPage() {
                   label="Nomor WhatsApp"
                   name="whatsappNumber"
                   type="tel"
-                  placeholder="Contoh: 081234567890"
+                  placeholder="Contoh: 6281234567890"
                   value={formData.whatsappNumber}
                   onChange={(e) => {
                     const value = e.target.value.replace(/\D/g, "");
@@ -616,6 +651,17 @@ export default function FormDataBrandPage() {
                     { label: "Edukasi & Pendidikan", value: "education" },
                     { label: "Properti & Real Estate", value: "property" },
                     { label: "Otomotif", value: "automotive" },
+                    { label: "Pertanian & Perkebunan", value: "agriculture" },
+                    { label: "Peternakan & Perikanan", value: "livestock_fishery" },
+                    { label: "Manufaktur & Industri", value: "manufacturing" },
+                    { label: "Konstruksi & Bangunan", value: "construction" },
+                    { label: "Transportasi & Logistik", value: "logistics" },
+                    { label: "Pariwisata & Hospitality", value: "tourism" },
+                    { label: "Keuangan & Asuransi", value: "finance" },
+                    { label: "Media & Hiburan", value: "media_entertainment" },
+                    { label: "Olahraga & Fitness", value: "sports_fitness" },
+                    { label: "Kreatif & Desain", value: "creative" },
+                    { label: "Retail & E-commerce", value: "retail" },
                     { label: "Lain-lain", value: "other" },
                   ]}
                   required

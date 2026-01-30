@@ -109,7 +109,7 @@ function doPost(e) {
       requestData.logoMeaning || "-",
       requestData.primaryColor || "-",
       requestData.primaryFont || "-",
-      requestData.visualStyle || "-",
+      Array.isArray(requestData.visualStyle) && requestData.visualStyle.length > 0 ? requestData.visualStyle.join(", ") : "-",
       requestData.visualConsistency || "-",
 
       // -- CUSTOMER EXPERIENCE --

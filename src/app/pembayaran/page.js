@@ -149,11 +149,11 @@ function PembayaranContent() {
                 title="Click to copy"
               >
                 {copied ? (
-                  <span className="animate-in fade-in zoom-in duration-300">Copied to Clipboard!</span>
+                  <span className="animate-in fade-in zoom-in duration-300 text-success">Copied to Clipboard!</span>
                 ) : (
                   <>
                     <span className="opacity-60 italic normal-case font-medium tracking-normal mr-1">Order ID</span>
-                    {orderId?.split("-")[1] || orderId}
+                    {orderId}
                     <IoCopyOutline className="text-xs group-hover:scale-110 transition-transform" />
                   </>
                 )}

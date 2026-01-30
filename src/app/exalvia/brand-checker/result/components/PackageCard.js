@@ -103,12 +103,12 @@ export default function PackageCard({ pkg, isRecommended = false, formatCurrency
           </div>
           <div className="sm:w-6/12 w-full">
             {isRecommended && (
-              <div className="w-full text-center">
+              <div className="w-full text-center ">
                 <ExalviaButton
                   text={loading ? "Processing..." : "Pilih Paket"}
                   onClick={handlePayment}
                   icon={FaArrowRight}
-                  className={`sm:w-fit w-full btn-lg ${loading ? "btn-disabled" : "animate-pulse btn-warning"}`}
+                  className={`sm:w-fit w-full mx-auto btn-lg ${loading ? "btn-disabled" : "animate-pulse btn-warning"}`}
                 />
                 <div className="">
                   <ExalviaLinkButton

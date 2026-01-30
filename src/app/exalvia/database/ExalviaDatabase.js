@@ -30,13 +30,21 @@ const brandCheckerFlags = {
   "23-1": "Kualitas identitas visual sangat rendah, perlu identitas visual yang lebih kuat.",
   "23-3": "Identitas visual yang belum terencana dengan baik memerlukan perhatian khusus.",
 
-  // Category-based flags (triggered when score is below threshold)
+  // Category-based flags - CRITICAL (score < 50)
   "PI-LOW": "Informasi Produk belum jelas sehingga calon pembeli sulit memahami apa yang Anda tawarkan.",
   "TA-LOW": "Target pasar belum spesifik sehingga pesan marketing berpotensi tidak tepat sasaran.",
   "HA-LOW": "Strategi harga belum selaras dengan value yang dirasakan pasar.",
   "CM-LOW": "Cara menjual belum terstruktur sehingga potensi konversi belum maksimal.",
   "RE-LOW": "Refleksi dan kepercayaan diri terhadap brand masih lemah.",
   "IV-LOW": "Identitas visual belum konsisten sehingga brand sulit diingat.",
+
+  // Category-based flags - WARNING (score 50-69)
+  "PI-MED": "Informasi Produk perlu diperkuat agar lebih meyakinkan calon pembeli.",
+  "TA-MED": "Target pasar sudah ada namun perlu dipertajam untuk hasil marketing yang lebih optimal.",
+  "HA-MED": "Strategi harga cukup baik namun masih bisa dioptimalkan untuk meningkatkan perceived value.",
+  "CM-MED": "Cara menjual sudah ada fondasi namun perlu ditingkatkan untuk konversi yang lebih tinggi.",
+  "RE-MED": "Kepercayaan diri terhadap brand perlu diperkuat untuk komunikasi yang lebih meyakinkan.",
+  "IV-MED": "Identitas visual cukup baik namun perlu konsistensi lebih agar brand semakin mudah diingat.",
 };
 
 // Threshold for category scores (below this = flag triggered)
@@ -48,13 +56,12 @@ const categoryThresholds = {
   RE: 50, // Reflektif
   IV: 50, // Identitas Visual
 };
-const priceCore = 1900000;
-const priceDecoy1 = 890000;
-const priceDecoy2 = priceDecoy1 + 600000;
+const priceCore = 5000000;
+const priceDecoy1 = 5000000;
+const priceDecoy2 = priceDecoy1 + 10000000;
 const siteName = "Kalamana Copy";
 const tagline = "Muslim Brands Should Feel Alive";
-const description =
-  "Membantu brand muslim merumuskan pesan penjualan yang tepat, dengan metode branding thinking untuk memahami kondisi brand dan mengarahkannya menjadi daya tarik yang khas di mata pembeli, agar brand muslim bernilai tinggi, siklus hidup lebih sehat dan tidak terjebak perang harga.";
+const description = "Membantu brand muslim merumuskan pesan penjualan dengan strategi branding thinking, agar brand bernilai tinggi dan siklus hidup yang sehat tanpa perang harga.";
 const keywords =
   "pesan penjualan brand muslim, brand muslim, positioning brand muslim, diferensiasi brand muslim, strategi branding muslim, branding thinking, strategi harga premium muslim, brand muslim bernilai tinggi,";
 const logoFullLight = "/images/templateLandingPageBonus/Exalvia/site-Identity/kalamana-copy_logo-full-light.svg";
