@@ -30,7 +30,7 @@ function PembayaranContent() {
   const [details, setDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [copied, setCopied] = useState(false);
-  const [countdown, setCountdown] = useState(600);
+  const [countdown, setCountdown] = useState(6);
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleCopyOrderId = () => {
