@@ -30,7 +30,7 @@ function PembayaranContent() {
   const [details, setDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [copied, setCopied] = useState(false);
-  const [countdown, setCountdown] = useState(6);
+  const [countdown, setCountdown] = useState(600);
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleCopyOrderId = () => {
@@ -218,6 +218,31 @@ function PembayaranContent() {
                     <FaSpinner className="animate-spin" />
                     PROSES
                   </div>
+                </div>
+
+                {/* Preview Pesan WhatsApp */}
+                <div className="w-full max-w-2xl bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 mb-8">
+                  <h3 className="text-white font-bold mb-4 flex items-center gap-2">
+                    <IoCopyOutline className="text-lg" />
+                    Pesan yang akan dikirim ke WhatsApp:
+                  </h3>
+                  <div className="bg-black/20 rounded-lg p-4 text-sm text-white/90 font-mono whitespace-pre-line">
+                    {`TRANSAKSI BERHASIL DIPROSES!
+
+Detail Transaksi:
+- Order ID: ${orderId}
+- Paket: Service Pack
+- Harga: ${details ? formatCurrency(details.gross_amount) : "-"}
+- Metode: ${details?.payment_type?.replace(/_/g, " ") || "-"}
+- Status: Berhasil Diproses
+- Waktu: ${details?.transaction_time ? formatDate(details.transaction_time) : new Date().toLocaleString("id-ID")}
+
+Link Lengkap:
+${window.location.origin}/pembayaran?order_id=${orderId}&status=success
+
+Terima kasih telah melakukan transaksi!`}
+                  </div>
+                  <p className="text-white/60 text-xs mt-3 text-center">Pesan akan otomatis dikirim saat countdown selesai</p>
                 </div>
               </div>
             </div>
