@@ -71,26 +71,34 @@ function PembayaranContent() {
   }, [urlStatus, orderId]);
 
   const sendWhatsAppNotification = () => {
-    const phoneNumber = "6282127902505"; // Hardcode phone number
-    const successUrl = `${window.location.origin}/pembayaran?order_id=${orderId}&status=success`;
+    // Tunggu sebentar untuk memastikan data sudah terisi
+    setTimeout(() => {
+      console.log("Details data:", details); // Debug log
+      console.log("Gross amount:", details?.gross_amount); // Debug log
 
-    // Format pesan WhatsApp dengan data transaksi LENGKAP
-    const message =
-      `TRANSAKSI BERHASIL DIPROSES!\n\n` +
-      `Detail Transaksi:\n` +
-      `- Order ID: ${orderId}\n` +
-      `- Paket: ${details ? data.brandCheckerPackages.recommended.find((p) => p.price === Number(details?.gross_amount))?.name || "Service Pack" : "Service Pack"} Service Pack\n` +
-      `- Harga: ${details ? formatCurrency(details.gross_amount) : "-"}\n` +
-      `- Metode: ${details?.payment_type?.replace(/_/g, " ") || "-"}\n` +
-      `- Status: Berhasil Diproses\n` +
-      `- Waktu: ${details?.transaction_time ? formatDate(details.transaction_time) : new Date().toLocaleString("id-ID")}\n\n` +
-      `Link Lengkap:\n${successUrl}\n\n` +
-      `Terima kasih telah melakukan transaksi!`;
+      const phoneNumber = "6282127902505"; // Hardcode phone number
+      const successUrl = `${window.location.origin}/pembayaran?order_id=${orderId}&status=success`;
 
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+      // Format pesan WhatsApp dengan data transaksi LENGKAP
+      const message =
+        `TRANSAKSI BERHASIL DIPROSES!\n\n` +
+        `Detail Transaksi:\n` +
+        `- Order ID: ${orderId}\n` +
+        `- Paket: ${details ? data.brandCheckerPackages.recommended.find((p) => p.price === Number(details?.gross_amount))?.name || "Service Pack" : "Service Pack"} Service Pack\n` +
+        `- Harga: ${details ? formatCurrency(details.gross_amount) : "-"}\n` +
+        `- Metode: ${details?.payment_type?.replace(/_/g, " ") || "-"}\n` +
+        `- Status: Berhasil Diproses\n` +
+        `- Waktu: ${details?.transaction_time ? formatDate(details.transaction_time) : new Date().toLocaleString("id-ID")}\n\n` +
+        `Link Lengkap:\n${successUrl}\n\n` +
+        `Terima kasih telah melakukan transaksi!`;
 
-    // Redirect langsung ke WhatsApp URL
-    window.location.href = whatsappUrl;
+      console.log("WhatsApp message:", message); // Debug log
+
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+      // Redirect langsung ke WhatsApp URL
+      window.location.href = whatsappUrl;
+    }, 500); // Tunggu 500ms untuk memastikan data terisi
   };
 
   async function fetchTransactionDetails() {
