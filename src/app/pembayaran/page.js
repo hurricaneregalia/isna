@@ -2,6 +2,7 @@
 
 import React, { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import ExalviaNavbar from "../exalvia/sections/ExalviaNavbar";
 import ExalviaFooter from "../exalvia/sections/ExalviaFooter";
 import data from "../exalvia/database/ExalviaDatabase";
@@ -21,7 +22,7 @@ import ExalviaLinkButton from "../exalvia/ui-components/ExalviaLinkButton";
 import HeaderFooterClient from "../component/global/HeaderFooterClient";
 import HeroBrandChecker from "../exalvia/brand-checker/HeroBrandChecker";
 import LoadingProcess from "../component/global/loadingProcess";
-import { FaSpinner } from "react-icons/fa";
+import { FaSpinner, FaWhatsapp } from "react-icons/fa";
 
 function PembayaranContent() {
   const searchParams = useSearchParams();
@@ -30,7 +31,7 @@ function PembayaranContent() {
   const [details, setDetails] = useState(null);
   const [loading, setLoading] = useState(true);
   const [copied, setCopied] = useState(false);
-  const [countdown, setCountdown] = useState(6);
+  const [countdown, setCountdown] = useState(600);
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleCopyOrderId = () => {
@@ -71,34 +72,31 @@ function PembayaranContent() {
   }, [urlStatus, orderId]);
 
   const sendWhatsAppNotification = () => {
-    // Tunggu sebentar untuk memastikan data sudah terisi
-    setTimeout(() => {
-      console.log("Details data:", details); // Debug log
-      console.log("Gross amount:", details?.gross_amount); // Debug log
+    console.log("Details data:", details); // Debug log
+    console.log("Gross amount:", details?.gross_amount); // Debug log
 
-      const phoneNumber = "6282127902505"; // Hardcode phone number
-      const successUrl = `${window.location.origin}/pembayaran?order_id=${orderId}&status=success`;
+    const phoneNumber = "6282127902505"; // Hardcode phone number
+    const successUrl = `${window.location.origin}/pembayaran?order_id=${orderId}&status=success`;
 
-      // Format pesan WhatsApp dengan data transaksi LENGKAP
-      const message =
-        `TRANSAKSI BERHASIL DIPROSES!\n\n` +
-        `Detail Transaksi:\n` +
-        `- Order ID: ${orderId}\n` +
-        `- Paket: ${details ? data.brandCheckerPackages.recommended.find((p) => p.price === Number(details?.gross_amount))?.name || "Service Pack" : "Service Pack"} Service Pack\n` +
-        `- Harga: ${details ? formatCurrency(details.gross_amount) : "-"}\n` +
-        `- Metode: ${details?.payment_type?.replace(/_/g, " ") || "-"}\n` +
-        `- Status: Berhasil Diproses\n` +
-        `- Waktu: ${details?.transaction_time ? formatDate(details.transaction_time) : new Date().toLocaleString("id-ID")}\n\n` +
-        `Link Lengkap:\n${successUrl}\n\n` +
-        `Terima kasih telah melakukan transaksi!`;
+    // Format pesan WhatsApp dengan data transaksi LENGKAP
+    const message =
+      `TRANSAKSI BERHASIL DIPROSES!\n\n` +
+      `Detail Transaksi:\n` +
+      `- Order ID: ${orderId}\n` +
+      `- Paket: ${details ? data.brandCheckerPackages.recommended.find((p) => p.price === Number(details?.gross_amount))?.name || "Service Pack" : "Service Pack"} Service Pack\n` +
+      `- Harga: ${details ? formatCurrency(details.gross_amount) : "-"}\n` +
+      `- Metode: ${details?.payment_type?.replace(/_/g, " ") || "-"}\n` +
+      `- Status: Berhasil Diproses\n` +
+      `- Waktu: ${details?.transaction_time ? formatDate(details.transaction_time) : new Date().toLocaleString("id-ID")}\n\n` +
+      `Link Lengkap:\n${successUrl}\n\n` +
+      `Terima kasih telah melakukan transaksi!`;
 
-      console.log("WhatsApp message:", message); // Debug log
+    console.log("WhatsApp message:", message); // Debug log
 
-      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-      // Redirect langsung ke WhatsApp URL
-      window.location.href = whatsappUrl;
-    }, 500); // Tunggu 500ms untuk memastikan data terisi
+    // Redirect langsung ke WhatsApp URL
+    window.location.href = whatsappUrl;
   };
 
   async function fetchTransactionDetails() {
@@ -251,6 +249,32 @@ ${window.location.origin}/pembayaran?order_id=${orderId}&status=success
 Terima kasih telah melakukan transaksi!`}
                   </div>
                   <p className="text-white/60 text-xs mt-3 text-center">Pesan akan otomatis dikirim saat countdown selesai</p>
+
+                  {/* WhatsApp Link Button */}
+                  <div className="mt-6 flex flex-col items-center gap-3">
+                    <Link
+                      href={`https://wa.me/6282127902505?text=${encodeURIComponent(
+                        `TRANSAKSI BERHASIL DIPROSES!\n\n` +
+                          `Detail Transaksi:\n` +
+                          `- Order ID: ${orderId}\n` +
+                          `- Paket: ${details ? data.brandCheckerPackages.recommended.find((p) => p.price === Number(details?.gross_amount))?.name || "Service Pack" : "Service Pack"} Service Pack\n` +
+                          `- Harga: ${details ? formatCurrency(details.gross_amount) : "-"}\n` +
+                          `- Metode: ${details?.payment_type?.replace(/_/g, " ") || "-"}\n` +
+                          `- Status: Berhasil Diproses\n` +
+                          `- Waktu: ${details?.transaction_time ? formatDate(details.transaction_time) : new Date().toLocaleString("id-ID")}\n\n` +
+                          `Link Lengkap:\n${window.location.origin}/pembayaran?order_id=${orderId}&status=success\n\n` +
+                          `Terima kasih telah melakukan transaksi!`,
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-success btn-wide gap-2 text-white font-bold shadow-lg hover:shadow-xl transition-all hover:scale-105 inline-flex items-center justify-center"
+                    >
+                      <FaWhatsapp className="text-xl" />
+                      Kirim ke WhatsApp Sekarang
+                    </Link>
+
+                    <p className="text-white/40 text-xs text-center">Atau tunggu {countdown} detik untuk pengiriman otomatis</p>
+                  </div>
                 </div>
               </div>
             </div>
