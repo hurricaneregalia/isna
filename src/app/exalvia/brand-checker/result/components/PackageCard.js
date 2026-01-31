@@ -51,7 +51,8 @@ export default function PackageCard({ pkg, isRecommended = false, formatCurrency
         if (typeof window !== "undefined" && window.snap) {
           window.snap.pay(data.token, {
             onSuccess: (result) => {
-              router.push(`/pembayaran?order_id=${result.order_id}&status=success`);
+              // Redirect ke halaman pembayaran dengan parameter status=process
+              router.push(`/pembayaran?order_id=${result.order_id}&status=process`);
             },
             onPending: (result) => {
               router.push(`/pembayaran?order_id=${result.order_id}&status=pending`);

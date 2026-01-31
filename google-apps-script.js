@@ -54,6 +54,9 @@ function doPost(e) {
     var rowData = [
       new Date(), // Timestamp
 
+      // -- ORDER INFO --
+      requestData.orderId || "-",
+
       // -- IDENTITAS --
       requestData.fullName || "-",
       requestData.role || "-",
@@ -134,7 +137,7 @@ function doPost(e) {
       JSON.stringify({
         status: "success",
         message: "Data saved successfully to Google Sheets",
-      })
+      }),
     ).setMimeType(ContentService.MimeType.JSON);
   } catch (error) {
     // 10. Return Response Error
@@ -142,7 +145,7 @@ function doPost(e) {
       JSON.stringify({
         status: "error",
         message: error.toString(),
-      })
+      }),
     ).setMimeType(ContentService.MimeType.JSON);
   }
 }
@@ -170,6 +173,9 @@ function setupHeaders() {
   // Daftar Header Kolom
   var headers = [
     "Timestamp",
+
+    // -- ORDER INFO --
+    "Order ID",
 
     // -- IDENTITAS --
     "Nama Lengkap",
