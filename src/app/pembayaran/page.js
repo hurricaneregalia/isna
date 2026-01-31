@@ -79,7 +79,7 @@ function PembayaranContent() {
       `TRANSAKSI BERHASIL DIPROSES!\n\n` +
       `Detail Transaksi:\n` +
       `- Order ID: ${orderId}\n` +
-      `- Paket: Service Pack\n` +
+      `- Paket: ${details ? data.brandCheckerPackages.recommended.find((p) => p.price === Number(details?.gross_amount))?.name || "Service Pack" : "Service Pack"} Service Pack\n` +
       `- Harga: ${details ? formatCurrency(details.gross_amount) : "-"}\n` +
       `- Metode: ${details?.payment_type?.replace(/_/g, " ") || "-"}\n` +
       `- Status: Berhasil Diproses\n` +
@@ -231,7 +231,7 @@ function PembayaranContent() {
 
 Detail Transaksi:
 - Order ID: ${orderId}
-- Paket: Service Pack
+- Paket: ${details ? data.brandCheckerPackages.recommended.find((p) => p.price === Number(details?.gross_amount))?.name || "Service Pack" : "Service Pack"} Service Pack
 - Harga: ${details ? formatCurrency(details.gross_amount) : "-"}
 - Metode: ${details?.payment_type?.replace(/_/g, " ") || "-"}
 - Status: Berhasil Diproses
