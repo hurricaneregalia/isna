@@ -76,16 +76,16 @@ function PembayaranContent() {
 
     // Format pesan WhatsApp dengan data transaksi LENGKAP
     const message =
-      `🎉 *TRANSAKSI BERHASIL DIPROSES!*\n\n` +
-      `📋 *Detail Transaksi:*\n` +
-      `🔸 Order ID: ${orderId}\n` +
-      `🔸 Paket: ${details ? data.brandCheckerPackages.recommended.find((p) => p.price === Number(details?.gross_amount))?.name || "Service Pack" : "Service Pack"}\n` +
-      `🔸 Harga: ${details ? formatCurrency(details.gross_amount) : "-"}\n` +
-      `🔸 Metode: ${details?.payment_type?.replace(/_/g, " ") || "-"}\n` +
-      `🔸 Status: Berhasil Diproses\n` +
-      `🔸 Waktu: ${details?.transaction_time ? formatDate(details.transaction_time) : new Date().toLocaleString("id-ID")}\n\n` +
-      `🔗 *Link Lengkap:* ${successUrl}\n\n` +
-      `Terima kasih telah melakukan transaksi! 🙏`;
+      `TRANSAKSI BERHASIL DIPROSES!\n\n` +
+      `Detail Transaksi:\n` +
+      `- Order ID: ${orderId}\n` +
+      `- Paket: ${details ? data.brandCheckerPackages.recommended.find((p) => p.price === Number(details?.gross_amount))?.name || "Service Pack" : "Service Pack"}\n` +
+      `- Harga: ${details ? formatCurrency(details.gross_amount) : "-"}\n` +
+      `- Metode: ${details?.payment_type?.replace(/_/g, " ") || "-"}\n` +
+      `- Status: Berhasil Diproses\n` +
+      `- Waktu: ${details?.transaction_time ? formatDate(details.transaction_time) : new Date().toLocaleString("id-ID")}\n\n` +
+      `Link Lengkap:\n${successUrl}\n\n` +
+      `Terima kasih telah melakukan transaksi!`;
 
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
